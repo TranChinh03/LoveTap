@@ -24,11 +24,11 @@ namespace LoveTap.ViewModel
                 //homePersonal.ShowDialog();
                 //HomeProfileEdit homeProfileEdit = new HomeProfileEdit();
                 //homeProfileEdit.ShowDialog();
-                LoginWindow loginWindow = new LoginWindow();
-                loginWindow.ShowDialog();
+                //LoginWindow loginWindow = new LoginWindow();
+                //loginWindow.ShowDialog();
 
-                //GoodsWindow goodsWindow = new GoodsWindow();
-                //goodsWindow.ShowDialog();
+                GoodsWindow goodsWindow = new GoodsWindow();
+                goodsWindow.ShowDialog();
 
                 //EmployeeWindow employeeWindow = new EmployeeWindow();
                 //employeeWindow.ShowDialog();
