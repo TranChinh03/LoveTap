@@ -1,0 +1,55 @@
+﻿<UserControl x:Class="LoveTap.UserControlCustom.FailedModelUC"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:LoveTap.UserControlCustom"
+             mc:Ignorable="d" 
+             Name="ucFailedModel"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes">
+    <Grid>
+        <materialDesign:Card>
+            <StackPanel
+                Margin="25 0 25 25">
+                <Image
+                    Source="../img/sms_failed.png" Height="250" Width="200"/>
+
+                <TextBlock
+                    Text="Update Failed!"
+                    FontWeight="Bold"
+                    FontSize="30"
+                    Foreground="{DynamicResource Regal Blue}"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Center"/>
+
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+
+                    <Button
+                        Grid.Column="0"
+                        Style="{StaticResource MaterialDesignRaisedButton}"
+                        Content="Back"
+                        Margin="0, 20, 0,0 "
+                        IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" 
+                        Background="{DynamicResource Burnt Sienna}" 
+                        BorderBrush="Transparent"/>
+                    <Button
+                        Grid.Column="2"
+                        Style="{StaticResource MaterialDesignRaisedButton}"
+                        Content="Continue"
+                        Margin="0, 20, 0,0 "
+                        IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" 
+                        Background="{DynamicResource Celestial Blue}" 
+                        BorderBrush="Transparent"/>
+
+                </Grid>
+            </StackPanel>
+        </materialDesign:Card>
+
+
+    </Grid>
+</UserControl>

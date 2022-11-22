@@ -1,0 +1,196 @@
+﻿<Window x:Class="LoveTap.LoadingWindow"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:LoveTap"
+        xmlns:uc="clr-namespace:LoveTap.UserControlCustom"
+        mc:Ignorable="d"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="14"
+        TextOptions.TextFormattingMode="Ideal"
+        TextOptions.TextRenderingMode="Auto"
+        Background="{DynamicResource MaterialDesignPaper}"
+        FontFamily="{DynamicResource MaterialDesignFont}"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize"
+        WindowStyle="None"
+        Name="loadingWindow"
+        Title="LoadingWindow" Height="550" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+
+        <Image 
+            Source="img/imageBackground.png" 
+            Grid.Row="0"
+            Grid.RowSpan="4"
+            Grid.ColumnSpan="5"
+            Stretch="Fill" 
+            Panel.ZIndex="0" RenderTransformOrigin="0.5,0.5">
+            <Image.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform ScaleX="1.01"/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Image.RenderTransform>
+        </Image>
+        <uc:ControlBarUC
+            Grid.Row="0" Grid.ColumnSpan="5" Loaded="ControlBarUC_Loaded"/>
+        <!--<Image
+            Source="/img/LoveTap.png"
+            Grid.Row="1"
+            Grid.Column="1"
+            Grid.ColumnSpan="3" Margin="0,20,0,10"
+            />-->
+        <Line
+            Margin="0,45,0,48"
+            Grid.Column="0"
+            Grid.ColumnSpan="4"
+            Grid.Row="3"
+            HorizontalAlignment="Left"
+            Height="100"
+            Width="350"
+            X1="0" Y1="0"
+            X2="{Binding RelativeSource={RelativeSource Self}, Path=Width}" Y2="{Binding RelativeSource={RelativeSource Self}, Path=Height}"
+            StrokeThickness="1"
+            Stroke="{StaticResource Catalina Blue}" Grid.RowSpan="2"
+            />
+        <Line
+            Margin="0,45,0,48"
+            Grid.Column="2"
+            Grid.ColumnSpan="3"
+            Grid.Row="3"
+            HorizontalAlignment="Right"
+            Height="100"
+            Width="350"
+            X1="{Binding RelativeSource={RelativeSource Self}, Path=Width}" Y1="0"
+            X2="0" Y2="{Binding RelativeSource={RelativeSource Self}, Path=Height}"
+            StrokeThickness="1"
+            Stroke="{StaticResource Catalina Blue}" Grid.RowSpan="2"
+            />
+
+        <Ellipse
+            Grid.Column="2"
+            Grid.Row="3" RenderTransformOrigin="0.5,0.5" Fill="{DynamicResource Tropical Blue 0.5}" Margin="0,96,0,0" Grid.RowSpan="2"
+            
+            >
+            <Ellipse.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform ScaleX="1.4" ScaleY="2"/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Ellipse.RenderTransform>
+        </Ellipse>
+        <Ellipse
+            Grid.Column="2"
+            Grid.Row="3" RenderTransformOrigin="0.5,0.5" Fill="{DynamicResource Catalina Blue}" Margin="0,96,0,0" Grid.RowSpan="2"
+        >
+            <Ellipse.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform ScaleX="1.17" ScaleY="1.65"/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Ellipse.RenderTransform>
+        </Ellipse>
+
+        <ProgressBar
+          Grid.Row="4"
+          Grid.Column="2"
+          Style="{StaticResource MaterialDesignCircularProgressBar}"
+          Value="0"
+          IsIndeterminate="True" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5" Margin="60,86,60,0" Grid.RowSpan="2">
+            <ProgressBar.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform ScaleX="1.5" ScaleY="1.5"/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </ProgressBar.RenderTransform>
+            <ProgressBar.Foreground>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1" >
+                    <GradientStop Color="#1156AA" Offset="0" />
+                    <!--<GradientStop Color="#1368AA" Offset="0.1" />
+                    <GradientStop Color="#1578AD" Offset="0.2" />
+                    <GradientStop Color="#178AB1" Offset="0.3" />
+                    <GradientStop Color="#199FB6" Offset="0.4" />
+                    <GradientStop Color="#1BAFB9" Offset="0.5" />
+                    <GradientStop Color="#1DC4BD" Offset="0.6" />
+                    <GradientStop Color="#1FD3C1" Offset="0.7" />
+                    <GradientStop Color="#20DFC3" Offset="0.8" />
+                    <GradientStop Color="#22EAC6" Offset="0.9" />-->
+                    <GradientStop Color="#24FECA" Offset="1" />
+
+                </LinearGradientBrush>
+            </ProgressBar.Foreground>
+
+        </ProgressBar>
+        <Image 
+            Source="/img/LoveTap_green.png"
+            Grid.Row="3"
+            Grid.Column="2" RenderTransformOrigin="0.5,0.5" Margin="0,96,0,0" Grid.RowSpan="2"
+            >
+            <Image.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform ScaleX="0.8" ScaleY="0.8"/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform Y="23"/>
+                </TransformGroup>
+            </Image.RenderTransform>
+        </Image>
+        <Image 
+            Source="/img/LoveTap_green.png"
+            Grid.Row="3"
+            Grid.Column="2" RenderTransformOrigin="0.5,0.5" Margin="0,96,0,0" Grid.RowSpan="2"
+            >
+            <Image.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform ScaleX="0.8" ScaleY="0.8"/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform Y="-26"/>
+                </TransformGroup>
+            </Image.RenderTransform>
+        </Image>
+
+        <Image 
+            Source="/img/LoveTap.png"
+            Grid.Row="3"
+            Grid.Column="2" RenderTransformOrigin="0.5,0.5" Margin="0,96,0,0" Grid.RowSpan="2"
+            >
+            <Image.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform ScaleX="0.85"/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform Y="3"/>
+                </TransformGroup>
+            </Image.RenderTransform>
+        </Image>
+
+    </Grid>
+</Window>
