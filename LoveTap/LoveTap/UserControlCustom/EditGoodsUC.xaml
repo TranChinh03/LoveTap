@@ -1,0 +1,170 @@
+﻿<UserControl x:Class="LoveTap.UserControlCustom.EditGoodsUC"
+              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:LoveTap.UserControlCustom"
+             mc:Ignorable="d" 
+             Name="ucEditGoods"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes">
+    <Grid>
+       
+        <Grid Background="White">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+
+            <StackPanel Grid.Row="4" Grid.RowSpan="2"  Orientation="Horizontal">
+                <ListBox>
+                    <ListBoxItem Height="32">
+                        <Image Source="/img/checkCircle.png"></Image>
+                    </ListBoxItem>
+                    <ListBoxItem Height="32">
+                        <Image Source="/img/checkCircle.png"></Image>
+                    </ListBoxItem>
+                    <ListBoxItem Height="32">
+                        <Image Source="/img/checkCircle.png"></Image>
+                    </ListBoxItem>
+                    <ListBoxItem Height="32">
+                        <Image Source="/img/checkCircle.png"></Image>
+                    </ListBoxItem>
+                </ListBox>
+                <ListBox>
+                    <ListBoxItem Height ="32" Content="Bảo hành chính hãng 24 tháng" Foreground="#033270" FontSize="10"></ListBoxItem>
+                    <ListBoxItem Height ="32" Content="Hỗ trợ đổi mới trong 7 ngày" Foreground="#033270" FontSize="10"></ListBoxItem>
+                    <ListBoxItem Height ="32" Content="Window bản quyền tích hợp" Foreground="#033270" FontSize="10"></ListBoxItem>
+                    <ListBoxItem Height ="32" Content="Miễn phí giao hàng toàn quốc" Foreground="#033270" FontSize="10"></ListBoxItem>
+                </ListBox>
+            </StackPanel>
+            <Border Grid.RowSpan="3"  CornerRadius="30" BorderBrush="#5684B0" BorderThickness="0.5" Margin="7 7 7 7" Background="White">
+                <Grid >
+                    <Image x:Name="picHolder" Source="/img/laptopModel0.png" Stretch="Fill"></Image>
+                    <Button Width="20" Height="20" Background="White" Padding="0" HorizontalAlignment="Left" Margin="3 0 0 0" BorderBrush="White" >
+                        <Image Source="/img/previousButton.png"></Image>
+                    </Button>
+                    <Button Height="20" Background="White" Padding="0" HorizontalAlignment="Right" Margin="0 0 3 0" BorderBrush="White" >
+                        <Image Source="/img/nextButton.png"></Image>
+                    </Button>
+                </Grid>
+            </Border>
+            <StackPanel Grid.Row="3" Orientation="Horizontal">
+                <Border Height="40" Width="40" BorderBrush="#5684B0" BorderThickness="1" HorizontalAlignment="Left" Margin="10 0 0 0" Background="White" >
+                    <Image Source="/img/laptopModel1.png" Stretch="Fill" ></Image>
+                </Border>
+                <Border Height="40" Width="40" BorderBrush="#5684B0" BorderThickness="1" HorizontalAlignment="Left" Margin="10 0 0 0" Background="White">
+                    <Image Source="/img/laptopModel2.png" Stretch="Fill" ></Image>
+                </Border>
+                <Border Height="40" Width="40" BorderBrush="#5684B0" BorderThickness="1" HorizontalAlignment="Left" Margin="10 0 0 0" Background="White">
+                    <Image Source="/img/laptopModel3.png" Stretch="Fill" ></Image>
+                </Border>
+                <Border Height="40" Width="40" BorderBrush="#5684B0" BorderThickness="1" HorizontalAlignment="Left" Margin="10 0 0 0" Background="White">
+                    <Image Source="/img/laptopModel4.png" Stretch="Fill" ></Image>
+                </Border>
+            </StackPanel>
+            <StackPanel Grid.Column="2" Orientation="Horizontal">
+                <Button Background="#F26A4F" Content="Back" Padding="0" Width="90" VerticalAlignment="Top" Margin="15 10 0 0" BorderBrush="Transparent"></Button>
+                <Button Background="#26B69F" Content="Done" Padding="0" Width="90" VerticalAlignment="Top" Margin="10 10 0 0" BorderBrush="Transparent"></Button>
+            </StackPanel>
+            <StackPanel Grid.Column="1" Grid.ColumnSpan="2" Grid.RowSpan="3" Margin="10 50 10 0" >
+                <DockPanel>
+                    <TextBlock Text="Product Title: " Foreground="#1368AA" FontSize="15" VerticalAlignment="Center"></TextBlock>
+                    <Border BorderBrush="#79A7CB" BorderThickness="1">
+                        <TextBlock Text="Laptop Lenovo IdeaPad Gaming 3 15IHU682K101B5VN" FontSize="15" Foreground="#033270" TextWrapping="WrapWithOverflow" VerticalAlignment="Center"/>
+                    </Border>
+                </DockPanel>
+                <StackPanel Orientation="Horizontal" Margin="0 10 0 0">
+                    <TextBlock Text="Brand: " Foreground="#1368AA" FontSize="15" VerticalAlignment="Center" ></TextBlock>
+                    <Border BorderBrush="#79A7CB" BorderThickness="1">
+                        <TextBlock Text="Lenovo" FontSize="15" Foreground="#033270" TextWrapping="WrapWithOverflow" Width="120" VerticalAlignment="Center" Padding="5"/>
+                    </Border>
+                    <TextBlock Text="Publish day: " Foreground="#1368AA" FontSize="15" VerticalAlignment="Center" Margin="25 0 0 0"></TextBlock>
+                    <Border BorderBrush="#79A7CB" BorderThickness="1">
+                        <TextBlock  Text="1/1/2022" FontSize="15" Foreground="#033270"  Width="100" TextWrapping="WrapWithOverflow"  VerticalAlignment="Center" Padding="5"></TextBlock>
+                    </Border>
+                </StackPanel >
+                <StackPanel Orientation="Horizontal" Margin="0 10 0 0" >
+                    <TextBlock Text="Price: " Foreground="#1368AA" FontSize="15" VerticalAlignment="Center" ></TextBlock>
+                    <Border BorderBrush="#79A7CB" BorderThickness="1" CornerRadius="3">
+                        <TextBlock  Text="17,990,000" FontSize="15" Foreground="#033270"  Width="130" TextWrapping="WrapWithOverflow"  VerticalAlignment="Center" Padding="5"></TextBlock>
+                    </Border>
+                    <TextBlock Text="Available: " Foreground="#1368AA" FontSize="15" VerticalAlignment="Center" Margin="30 0 0 0"></TextBlock>
+                    <Border BorderBrush="#79A7CB" BorderThickness="1" CornerRadius="3">
+                        <TextBlock  Text="2048" FontSize="15" Foreground="#033270"  Width="130" TextWrapping="WrapWithOverflow"  VerticalAlignment="Center" Padding="5"></TextBlock>
+                    </Border>
+                </StackPanel>
+            </StackPanel>
+
+            <TextBlock Grid.Column="1" Grid.Row="2" Text="Thông số kỹ thuật: " Foreground="#1368AA" FontSize="16" Margin="20 35 0 0"></TextBlock>
+            <Border Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2" Grid.RowSpan="3"  Margin="5 0 5 8" BorderBrush="#79A7CB" BorderThickness="0.5">
+                <DockPanel >
+                    <DockPanel DockPanel.Dock="Top">
+                        <Border BorderBrush="#79A7CB" BorderThickness="0.5" DockPanel.Dock="Left">
+                            <TextBlock Text="CPU" Foreground="#033270" FontSize="14" Width="100" VerticalAlignment="Center" Padding="5 1 0 1" ></TextBlock>
+                        </Border>
+                        <Border  BorderBrush="#79A7CB" BorderThickness="0.5" DockPanel.Dock="Left">
+                            <TextBlock Text="Intel Core i5-11320H 3.2GHz up to 4.5GHz 8MB" Foreground="#033270" Opacity="0.8" FontSize="14" TextWrapping="WrapWithOverflow" Padding="5 1 0 1" VerticalAlignment="Center"></TextBlock>
+                        </Border>
+                    </DockPanel>
+                    <DockPanel DockPanel.Dock="Top" >
+                        <Border BorderBrush="#79A7CB" BorderThickness="0.5" DockPanel.Dock="Left">
+                            <TextBlock Text="RAM" Foreground="#033270" FontSize="14" Width="100" VerticalAlignment="Center" Padding="5 2 0 2"></TextBlock>
+                        </Border>
+                        <Border  BorderBrush="#79A7CB" BorderThickness="0.5" DockPanel.Dock="Left">
+                            <TextBlock Text="8GB (8x1) DDR4 3200MHz (2x SO-DIMM socket, up to 16GB SDRAM)" Foreground="#033270" Opacity="0.8" FontSize="14" TextWrapping="WrapWithOverflow" Padding="5 1 0 1" VerticalAlignment="Center"></TextBlock>
+                        </Border>
+                    </DockPanel>
+                    <DockPanel DockPanel.Dock="Top">
+                        <Border BorderBrush="#79A7CB" BorderThickness="0.5" DockPanel.Dock="Left">
+                            <TextBlock Text="Hard Disk" Foreground="#033270" FontSize="14" Width="100" VerticalAlignment="Center" Padding="5 1 0 1"></TextBlock>
+                        </Border>
+                        <Border  BorderBrush="#79A7CB" BorderThickness="0.5" DockPanel.Dock="Left">
+                            <TextBlock Text="512GB SSD M.2 2280 PCIe 3.0x4 NVMe" Foreground="#033270" Opacity="0.8" FontSize="14" TextWrapping="WrapWithOverflow" Padding="5 1 0 1" VerticalAlignment="Center"></TextBlock>
+                        </Border>
+                    </DockPanel>
+                    <DockPanel DockPanel.Dock="Top">
+                        <Border BorderBrush="#79A7CB" BorderThickness="0.5" DockPanel.Dock="Left">
+                            <TextBlock Text="VGA" Foreground="#033270" FontSize="14" Width="100" VerticalAlignment="Center" Padding="5 1 0 1"></TextBlock>
+                        </Border>
+                        <Border  BorderBrush="#79A7CB" BorderThickness="0.5" DockPanel.Dock="Left">
+                            <TextBlock Text="VIDIA GeForce RTX 3050 4GB GDDR6, Boost Clock 1500 / 1740MHz, TGP 90W" Foreground="#033270" Opacity="0.8" FontSize="14" TextWrapping="WrapWithOverflow" Padding="5 1 0 1" VerticalAlignment="Center"></TextBlock>
+                        </Border>
+                    </DockPanel>
+                    <DockPanel DockPanel.Dock="Top" >
+                        <Border BorderBrush="#79A7CB" BorderThickness="0.5" DockPanel.Dock="Left">
+                            <TextBlock Text="Screen Size" Foreground="#033270" FontSize="14" Width="100" VerticalAlignment="Center" Padding="5 1 0 1"></TextBlock>
+                        </Border>
+                        <Border  BorderBrush="#79A7CB" BorderThickness="0.5" DockPanel.Dock="Left">
+                            <TextBlock Text="15.6 FHD (1920x1080) IPS 250nits Anti-glare, 120Hz, 45% NTSC, C dimmer" Foreground="#033270" Opacity="0.8" FontSize="14" TextWrapping="WrapWithOverflow" Padding="5 1 0 1" VerticalAlignment="Center"></TextBlock>
+                        </Border>
+                    </DockPanel>
+                    <DockPanel DockPanel.Dock="Top">
+                        <Border BorderBrush="#79A7CB" BorderThickness="0.5" DockPanel.Dock="Left">
+                            <TextBlock Text="OS" Foreground="#033270" FontSize="14" Width="100" VerticalAlignment="Center" Padding="5 1 0 1"></TextBlock>
+                        </Border>
+                        <Border  BorderBrush="#79A7CB" BorderThickness="0.5" DockPanel.Dock="Left">
+                            <TextBlock Text="Windows 11 Home" Foreground="#033270" Opacity="0.8" FontSize="14" TextWrapping="WrapWithOverflow" Padding="5 1 0 1" VerticalAlignment="Center"></TextBlock>
+                        </Border>
+                    </DockPanel>
+                    <DockPanel DockPanel.Dock="Top">
+                        <Border BorderBrush="#79A7CB" BorderThickness="0.5" DockPanel.Dock="Left">
+                            <TextBlock Text="Color" Foreground="#033270" FontSize="14" Width="100" VerticalAlignment="Center" Padding="5 1 0 1"></TextBlock>
+                        </Border>
+                        <Border  BorderBrush="#79A7CB" BorderThickness="0.5" DockPanel.Dock="Left">
+                            <TextBlock Text="Shadow Black" Foreground="#033270" Opacity="0.8" FontSize="14" TextWrapping="WrapWithOverflow" Padding="5 1 0 1" VerticalAlignment="Center"></TextBlock>
+                        </Border>
+                    </DockPanel>
+                </DockPanel>
+            </Border>
+        </Grid>
+    </Grid>
+</UserControl>

@@ -1,0 +1,91 @@
+﻿<UserControl x:Class="LoveTap.UserControlCustom.LoginModelUC"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:LoveTap.UserControlCustom"
+             mc:Ignorable="d" 
+             Name="ucLoginModel"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes">
+    <Grid>
+        <materialDesign:Card>
+            <StackPanel
+                Margin="25">
+                <TextBlock
+                    TextAlignment="Center"
+                    FontSize="20"
+                    Text="Welcome Back!" 
+                    FontWeight="SemiBold" 
+                    Foreground="{DynamicResource Regal Blue}"/>
+                <TextBlock
+                    TextAlignment="Center"
+                    FontSize="20"
+                    Text="Sign in to continue to LoveTap."
+                    FontWeight="Light"
+                    Margin="0, 0, 0, 10"
+                    Foreground="{DynamicResource Regal Blue}"/>
+                <Label
+                    Content="UserName"
+                    FontSize="20"
+                    FontWeight="Bold"
+                    Foreground="{DynamicResource Regal Blue}"
+                    />
+                <TextBox
+                  Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                  VerticalAlignment="Top"
+                  materialDesign:HintAssist.Hint="Enter your username!" 
+                  BorderBrush="{DynamicResource Regal Blue}">
+                </TextBox>
+                <DockPanel>
+                    <Label
+                        DockPanel.Dock="Left"
+                        Content="Password"
+                        FontSize="20"
+                        FontWeight="Bold"
+                        Foreground="{DynamicResource Regal Blue}"
+                        />
+                    <Button
+                        DockPanel.Dock="Right"
+                        Content="Forget Password"
+                        VerticalAlignment="Bottom"
+                        VerticalContentAlignment="Bottom"
+                        HorizontalAlignment="Right"
+                        Width="Auto"
+                        Background="Transparent"
+                        BorderBrush="Transparent"
+                        Foreground="{DynamicResource Regal Blue}"
+                        FontWeight="Light"
+                        
+                        />
+                </DockPanel>
+                <PasswordBox
+                    Style="{StaticResource MaterialDesignOutlinedRevealPasswordBox}"
+                    materialDesign:HintAssist.Hint="Password"
+                    materialDesign:TextFieldAssist.HasClearButton="True"
+                    BorderBrush="{DynamicResource Regal Blue}"
+                    />
+
+                <DockPanel>
+                    <CheckBox 
+                        Background="{DynamicResource Regal Blue}" 
+                        BorderBrush="{DynamicResource Regal Blue}"
+                        />
+                    <Label 
+                        Content="Remeber me"
+                        Foreground="{DynamicResource Regal Blue}"
+                        />
+                </DockPanel>
+
+                <Button
+              Style="{StaticResource MaterialDesignRaisedButton}"
+              Content="Sign In"
+              Margin="0, 10, 0,0 "
+              IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" 
+              Background="{DynamicResource Celestial Blue}" 
+              BorderBrush="Transparent"/>   
+            </StackPanel>
+        </materialDesign:Card>
+
+
+    </Grid>
+</UserControl>
