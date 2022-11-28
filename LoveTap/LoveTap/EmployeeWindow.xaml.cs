@@ -19,9 +19,29 @@ namespace LoveTap
     /// </summary>
     public partial class EmployeeWindow : Window
     {
-        public EmployeeWindow()
+        public Visibility visibilitiBG(object sender, SelectionChangedEventArgs e)
+        {
+            string vis;
+            return BackgroundOpacity.Visibility;
+        }
+
+            public EmployeeWindow()
         {
             InitializeComponent();
         }
+
+        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+        private void Add_Employee_Click(object sender, RoutedEventArgs e)
+        {
+            AddEmployee.Visibility=Visibility.Visible;
+        }
+        private void DeleteButton_Click(object sender, RoutedEventArgs e)
+        {
+            DetailOfE.Visibility=Visibility.Visible;
+        }
+
     }
 }

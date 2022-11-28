@@ -12,26 +12,16 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace LoveTap
+namespace LoveTap.UserControlCustom
 {
     /// <summary>
-    /// Interaction logic for CustomerWindow.xaml
+    /// Interaction logic for CustomerDetailUC.xaml
     /// </summary>
-    public partial class CustomerWindow : Window
+    public partial class CustomerDetailUC : UserControl
     {
-        public CustomerWindow()
+        public CustomerDetailUC()
         {
             InitializeComponent();
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            DetailCustomer.Visibility=Visibility.Visible;
-        }
-
-        private void addButton_Click_1(object sender, RoutedEventArgs e)
-        {
-            AddCustomer.Visibility=Visibility.Visible;
         }
     }
 }

@@ -27,11 +27,14 @@ namespace LoveTap.ViewModel
                 //LoginWindow loginWindow = new LoginWindow();
                 //loginWindow.ShowDialog();
 
-                GoodsWindow goodsWindow = new GoodsWindow();
-                goodsWindow.ShowDialog();
+                //GoodsWindow goodsWindow = new GoodsWindow();
+                //goodsWindow.ShowDialog();
 
                 //EmployeeWindow employeeWindow = new EmployeeWindow();
                 //employeeWindow.ShowDialog();
+
+                CustomerWindow customerWindow = new CustomerWindow();   
+                customerWindow.ShowDialog();
                 IsLoaded = true;
             }
 
