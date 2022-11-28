@@ -12,14 +12,14 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace LoveTap
+namespace LoveTap.UserControlCustom
 {
     /// <summary>
-    /// Interaction logic for EditEmployeeWindow.xaml
+    /// Interaction logic for AddCustomerUC.xaml
     /// </summary>
-    public partial class EditEmployeeWindow : Window
+    public partial class AddCustomerUC : UserControl
     {
-        public EditEmployeeWindow()
+        public AddCustomerUC()
         {
             InitializeComponent();
         }

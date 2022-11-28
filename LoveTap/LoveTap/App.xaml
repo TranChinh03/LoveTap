@@ -6,6 +6,8 @@
              StartupUri="MainWindow.xaml">
     <Application.Resources>
         <ResourceDictionary>
+            
+            <!--COLOR-->
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Light.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />
@@ -26,7 +28,10 @@
             <SolidColorBrush x:Key="Catalina Blue 72" Color="#033270" Opacity="0.72"/>
             <SolidColorBrush x:Key="Celestial Blue" Color="#4091C9"/>
             <SolidColorBrush x:Key="Porcelain" Color="#E8ECEE"/>
+            <SolidColorBrush x:Key ="Light Red 62" Color="#FFD3C7" Opacity="0.62"/>
 
+
+            <!--STYLE-->
             <Style x:Key="tabButton"  TargetType="Button">
                 <Setter Property="FontSize" Value="12"/>
                 <Setter Property="Width" Value="20"/>
@@ -56,6 +61,8 @@
                 <Setter Property="Width" Value="120"/>
                 <Setter Property="IsEnabled" Value="True"/>
                 <Setter Property="FontWeight" Value="DemiBold"/>
+                <Setter Property="ToolTip" Value="Resource name: MaterialDesignRaisedSecondaryLightButton"/>
+
                 <Setter Property="Template">
                     <Setter.Value>
                         <ControlTemplate TargetType="Button">
@@ -92,8 +99,8 @@
                 <Setter Property="Foreground" Value="{StaticResource Catalina Blue 72}"/>
                 <Setter Property="FontSize" Value="20"/>
                 <Setter Property="FontWeight" Value="Bold"/>
-                <Setter Property="Margin" Value="0, 10, 0 , 0"/>
-            </Style>
+                <Setter Property="Margin" Value="0, 12, 0 , 0"/>
+                </Style>
 
             <Style x:Key="detailTextValue" TargetType="TextBlock">
                 <Setter Property="Foreground" Value="{StaticResource Celestial Blue}"/>
@@ -106,12 +113,18 @@
                 <Setter Property="Foreground" Value="{StaticResource Celestial Blue}"/>
                 <Setter Property="FontSize" Value="20"/>
                 <Setter Property="FontWeight" Value="Bold"/>
-                <Setter Property="Margin" Value="0, 10, 0 , 0"/>
-                <Setter Property="Width" Value="300"/>
-                <Setter Property="Height" Value="35"/>
+                <Setter Property="Margin" Value="0, 7, 0 , 0"/>
+                <Setter Property="Width" Value="230"/>
+                <Setter Property="Height" Value="30"/>
                 <Setter Property="VerticalContentAlignment" Value="Center"/>
+                <Setter Property="BorderBrush" Value="{StaticResource Cyan Azure}"/>
+                <Setter Property="BorderThickness" Value="0.5"/>
+                <Setter Property="materialDesign:HintAssist.Hint" Value="Fullname"/>
             </Style>
 
+
+                
+             <!--TEMPLATE-->
 
             <ControlTemplate x:Key="searchBox" TargetType="TextBox">
                 <TextBox Grid.Column="0" Margin="20,0,20,0" 
@@ -121,7 +134,7 @@
                                 Style="{StaticResource MaterialDesignFloatingHintTextBox}" 
                                 VerticalContentAlignment="Center" 
                                 HorizontalContentAlignment="Left"
-                                 HorizontalAlignment="Left"/>
+                                HorizontalAlignment="Left"/>
             </ControlTemplate>
 
             <ControlTemplate x:Key="Combobox" TargetType="ComboBox">

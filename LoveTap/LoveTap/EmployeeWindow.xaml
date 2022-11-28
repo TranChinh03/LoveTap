@@ -59,10 +59,20 @@
         <Grid Grid.Row="1" Background="LightGoldenrodYellow" 
               Grid.Column="2" Grid.ColumnSpan="10"></Grid>
 
-        <!--Detail-->
+        <!--ACTION-->
+        <!--Add E-->
+        <uc:AddEmployee x:Name="AddEmployee"  Grid.Column="1" Grid.ColumnSpan="10" Grid.Row="2" Grid.RowSpan="8" Background="White"
+                                 Visibility="Visible" Panel.ZIndex="2" />
+        
+        <!--EditEmployee-->
+        <uc:EditEmployeeUC x:Name="EditValue" Grid.Column="1" Grid.ColumnSpan="10" Grid.Row="2" Grid.RowSpan="8" Background="White"
+                                 Visibility="Hidden" Panel.ZIndex="2" />
+
+        <!--EmployeeDetail-->
         <uc:EmployeeDetailUC x:Name="DetailOfE" Grid.Column="1" Grid.ColumnSpan="10" Grid.Row="2" Grid.RowSpan="8" Background="White"
                                  Visibility="Hidden" Panel.ZIndex="2"></uc:EmployeeDetailUC>
-        <Grid x:Name="BackgroundOpacity" Grid.RowSpan="11" Grid.ColumnSpan="12" Background="{StaticResource Catalina Blue}" Opacity="0.5" Panel.ZIndex="1" Visibility="Hidden"></Grid>
+        <Grid x:Name="BackgroundOpacity" Grid.RowSpan="11" Grid.ColumnSpan="12" Background="{StaticResource Catalina Blue}" 
+              Opacity="0.5" Panel.ZIndex="1" Visibility="{Binding Path=Visibility, ElementName=DetailOfE}"></Grid>
 
         <!--CONTENT-->
         <Grid Grid.Row="2" Background="Transparent" Grid.RowSpan="9"
@@ -94,10 +104,13 @@
                         <DockPanel Grid.Column="1" >
                             <Button Background="{StaticResource Linen}"
                                 BorderBrush="Transparent" 
-                                DockPanel.Dock="Right"/>
-                            <Button Style="{StaticResource greenButton}"
-                                Content="+Add Customer" 
+                                DockPanel.Dock="Right" Click="DeleteButton_Click"/>
+                            <Button Style="{StaticResource MaterialDesignRaisedButton}"
+                                Content="+Add Employee" 
                                 DockPanel.Dock="Right"
+                                Background="{StaticResource Light Sea Green}"
+                                Margin="10"
+                                Click="Add_Employee_Click"
                             />
 
                             <Grid DockPanel.Dock="Left">
@@ -155,7 +168,7 @@
                     </Grid>
 
                     <ComboBox Template="{StaticResource Combobox}"
-                              materialDesign:HintAssist.Hint="Khu vực" 
+                              materialDesign:HintAssist.Hint="Khu vực" SelectionChanged="ComboBox_SelectionChanged" 
                               />
                 </Grid>
 

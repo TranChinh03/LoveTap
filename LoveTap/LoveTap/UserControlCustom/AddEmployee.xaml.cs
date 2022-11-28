@@ -10,31 +10,30 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace LoveTap.UserControlCustom
 {
     /// <summary>
-    /// Interaction logic for EmployeeDetailUC.xaml
+    /// Interaction logic for AddEmployee.xaml
     /// </summary>
-    public partial class EmployeeDetailUC : UserControl
+    public partial class AddEmployee : UserControl
     {
-        public EmployeeDetailUC()
+        public AddEmployee()
         {
             InitializeComponent();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void backButton_Click(object sender, RoutedEventArgs e)
         {
+            MessageBox.Show("Thông tin thay đổi chưa được lưu!");
             this.Visibility = Visibility.Collapsed;
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+        private void doneButton_Click(object sender, RoutedEventArgs e)
         {
-            this.Visibility=Visibility.Collapsed;
-
-
+            MessageBox.Show("Đã thêm nhân viên!");
+            this.Visibility = Visibility.Collapsed;
         }
     }
 }

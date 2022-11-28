@@ -81,9 +81,6 @@
     <Compile Include="CustomerWindow.xaml.cs">
       <DependentUpon>CustomerWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="EditEmployeeWindow.xaml.cs">
-      <DependentUpon>EditEmployeeWindow.xaml</DependentUpon>
-    </Compile>
     <Compile Include="EmployeeWindow.xaml.cs">
       <DependentUpon>EmployeeWindow.xaml</DependentUpon>
     </Compile>
@@ -105,11 +102,26 @@
     <Compile Include="LoadingWindow.xaml.cs">
       <DependentUpon>LoadingWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UserControlCustom\AddCustomerUC.xaml.cs">
+      <DependentUpon>AddCustomerUC.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControlCustom\AddEmployee.xaml.cs">
+      <DependentUpon>AddEmployee.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserControlCustom\AddGoods.xaml.cs">
       <DependentUpon>AddGoods.xaml</DependentUpon>
     </Compile>
     <Compile Include="UserControlCustom\CreatePasswordUC.xaml.cs">
       <DependentUpon>CreatePasswordUC.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControlCustom\CustomerDetailUC.xaml.cs">
+      <DependentUpon>CustomerDetailUC.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControlCustom\EditCustomerUC.xaml.cs">
+      <DependentUpon>EditCustomerUC.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControlCustom\EditEmployeeUC.xaml.cs">
+      <DependentUpon>EditEmployeeUC.xaml</DependentUpon>
     </Compile>
     <Compile Include="UserControlCustom\EditGoodsUC.xaml.cs">
       <DependentUpon>EditGoodsUC.xaml</DependentUpon>
@@ -147,10 +159,6 @@
     <Compile Include="ViewModel\ControlBarViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Page Include="CustomerWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="EditEmployeeWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -202,6 +210,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="UserControlCustom\AddCustomerUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControlCustom\AddEmployee.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="UserControlCustom\AddGoods.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -211,6 +227,18 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="UserControlCustom\CreatePasswordUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControlCustom\CustomerDetailUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControlCustom\EditCustomerUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControlCustom\EditEmployeeUC.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
