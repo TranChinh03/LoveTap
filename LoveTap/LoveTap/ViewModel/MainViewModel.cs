@@ -33,8 +33,8 @@ namespace LoveTap.ViewModel
                 //EmployeeWindow employeeWindow = new EmployeeWindow();
                 //employeeWindow.ShowDialog();
 
-                CustomerWindow customerWindow = new CustomerWindow();   
-                customerWindow.ShowDialog();
+                GoodsWindow goodsWindow = new GoodsWindow();   
+                goodsWindow.ShowDialog();
                 IsLoaded = true;
             }
 
