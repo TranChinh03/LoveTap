@@ -368,7 +368,7 @@
             Margin="10"
             Grid.Row="4" Grid.Column="4" Grid.RowSpan="7" Grid.ColumnSpan="8">
             <ScrollViewer VerticalScrollBarVisibility="Auto">
-                <ListView ItemsSource="{Binding ProductList}" SelectedItem="{Binding SelectedItem, Mode=OneWayToSource}">
+                <ListView ItemsSource="{Binding ProductList}" SelectedItem="{Binding SelectedItem, Mode=OneWayToSource}" d:ItemsSource="{d:SampleData ItemCount=5}">
                     <ListView.View>
                         <GridView>
                             <GridViewColumn Header="ProductID" DisplayMemberBinding="{Binding MASP}"></GridViewColumn>
