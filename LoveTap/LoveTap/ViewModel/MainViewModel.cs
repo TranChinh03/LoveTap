@@ -18,8 +18,8 @@ namespace LoveTap.ViewModel
         {
             if (!IsLoaded)
             {
-                //Home home = new Home();
-                //home.ShowDialog();
+                HomeScreen home = new HomeScreen();
+                home.ShowDialog();
                 //HomePersonal homePersonal = new HomePersonal();
                 //homePersonal.ShowDialog();
                 //HomeProfileEdit homeProfileEdit = new HomeProfileEdit();
@@ -33,8 +33,8 @@ namespace LoveTap.ViewModel
                 //EmployeeWindow employeeWindow = new EmployeeWindow();
                 //employeeWindow.ShowDialog();
 
-                GoodsWindow goodsWindow = new GoodsWindow();   
-                goodsWindow.ShowDialog();
+                //GoodsWindow goodsWindow = new GoodsWindow();   
+                //goodsWindow.ShowDialog();
                 IsLoaded = true;
             }
 

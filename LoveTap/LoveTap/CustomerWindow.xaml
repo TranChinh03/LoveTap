@@ -15,6 +15,7 @@
         Background="{DynamicResource MaterialDesignPaper}"
         ResizeMode="NoResize"
         WindowStartupLocation="CenterScreen"
+        WindowStyle="None"
         FontFamily="{DynamicResource MaterialDesignFont}"
         Title="CustomerWindow" Height="550" Width="800">
     
@@ -49,13 +50,11 @@
         </Grid.ColumnDefinitions>
 
         <!--MENU-->
-        <Grid Grid.ColumnSpan="2" Grid.RowSpan="11
-              " Background="#033270" ></Grid>
+        <uc:StatusBarUC
+                Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="10" x:Name="Customer"/>
+        <uc:MenuBarUC Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Grid.RowSpan="11"/>
 
-        <!--BAR-->
-        <Grid Grid.Row="1" Background="LightGoldenrodYellow" 
-              Grid.Column="2" Grid.ColumnSpan="10"></Grid>
-        
+
         <!--ACTION-->
         <!--Detail-->
         <uc:CustomerDetailUC x:Name="DetailCustomer"  Grid.Column="1" Grid.ColumnSpan="10" Grid.Row="2" Grid.RowSpan="8" Background="White"

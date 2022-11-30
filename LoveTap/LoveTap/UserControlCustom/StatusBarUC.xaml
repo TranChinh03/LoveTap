@@ -5,22 +5,27 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:LoveTap.UserControlCustom"
              mc:Ignorable="d" 
-             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes">
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             x:Name="ucStatusBar">
     <Grid Background= "White">
         <DockPanel>
-            <TextBlock x:Name="txbl" DockPanel.Dock="Left" Text="Goods" Foreground="#033270" FontSize="30" FontWeight="Bold" Margin="10 0 0 0"></TextBlock>
-            <Image Source="../img/horizontalLine.png" Height ="40" Margin="10 0 0 0"></Image>
             <DockPanel DockPanel.Dock="Left">
+                <TextBlock Padding="0 5 0 0" x:Name="txbl" DockPanel.Dock="Left" Text="{Binding ElementName=ucStatusBar, Path=Name}" Foreground="#033270" FontSize="30" FontWeight="Bold" Margin="10 0 0 0"></TextBlock>
+                <Image Source="../img/horizontalLine.png" Height ="40" Margin="10 0 0 0"></Image>
+            </DockPanel>
+            <DockPanel DockPanel.Dock="Left" Margin="0 5 0 0">
                 <TextBlock DockPanel.Dock="Top" Text="Have a good day, Xuân Thảo!" FontSize="15" Foreground="#033270" FontWeight="Bold" Margin="10 0 0 0"></TextBlock>
                 <TextBlock DockPanel.Dock="Bottom" Text="Here's what's happening with your store today"  Margin="10 0 0 0" Foreground ="#033270" FontSize="15" FontWeight="Light"></TextBlock>
             </DockPanel>
-            <Button Margin="100 0 0 0" Padding="0" BorderBrush="Transparent" Background="Transparent">
-                <Grid>
-                    <Image Source="/img/avatar.png" HorizontalAlignment="Left"></Image>
-                    <TextBlock Text="Xuân Thảo" HorizontalAlignment="Left"  Margin="40 0 0 0" Foreground="#033270" FontWeight="Bold"></TextBlock>
-                    <TextBlock Text="Staff"  HorizontalAlignment="Left"  Margin="40 15 0 0" Foreground="#033270" FontWeight="Light"></TextBlock>
-                </Grid>
-            </Button>
+            <DockPanel DockPanel.Dock="Right">
+                <Button Margin="50 0 0 0" Padding="0" BorderBrush="Transparent" Background="Transparent">
+                    <Grid>
+                        <Image Source="/img/avatar.png" HorizontalAlignment="Left"></Image>
+                        <TextBlock Text="Xuân Thảo" HorizontalAlignment="Left"  Margin="40 0 0 0" Foreground="#033270" FontWeight="Bold"></TextBlock>
+                        <TextBlock Text="Staff"  HorizontalAlignment="Left"  Margin="40 15 0 0" Foreground="#033270" FontWeight="Light"></TextBlock>
+                    </Grid>
+                </Button>
+            </DockPanel>
         </DockPanel>
     </Grid>
 </UserControl>

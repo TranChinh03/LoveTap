@@ -50,11 +50,8 @@
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
 
-
-        <uc:ControlBarUC
-            Grid.Row="0" Grid.ColumnSpan="12" Background="#21507D"/>
-
-        <uc:StatusBarUC Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="10" VerticalAlignment="Center"/>
+        <uc:StatusBarUC
+                Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="10" x:Name="Goods"/>
 
 
         <!--<uc:AddGoods
