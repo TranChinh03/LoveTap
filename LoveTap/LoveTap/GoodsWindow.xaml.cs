@@ -28,5 +28,10 @@ namespace LoveTap
         {
 
         }
+
+        private void ControlBarUC_Loaded(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

@@ -20,6 +20,7 @@ namespace LoveTap.UserControlCustom
     /// </summary>
     public partial class StatusBarUC : UserControl
     {
+
         public StatusBarUC()
         {
             InitializeComponent();

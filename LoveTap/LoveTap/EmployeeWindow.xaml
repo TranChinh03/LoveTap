@@ -18,7 +18,7 @@
         ResizeMode="NoResize"
         FontFamily="{DynamicResource MaterialDesignFont}"
         WindowStartupLocation="CenterScreen"
-        
+        WindowStyle="None"
         Title="EmployeeWindow" Height="550" Width="800">
 
     <Grid Background="#EEEEFC">
@@ -52,17 +52,15 @@
         </Grid.ColumnDefinitions>
 
         <!--MENU-->
-        <Grid Grid.ColumnSpan="2" Grid.RowSpan="11
-              " Background="#033270" ></Grid>
+        <uc:StatusBarUC
+                Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="10" x:Name="Employee"/>
+        <uc:MenuBarUC Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Grid.RowSpan="11"/>
 
-        <!--BAR-->
-        <Grid Grid.Row="1" Background="LightGoldenrodYellow" 
-              Grid.Column="2" Grid.ColumnSpan="10"></Grid>
 
         <!--ACTION-->
         <!--Add E-->
-        <uc:AddEmployee x:Name="AddEmployee"  Grid.Column="1" Grid.ColumnSpan="10" Grid.Row="2" Grid.RowSpan="8" Background="White"
-                                 Visibility="Visible" Panel.ZIndex="2" />
+        <!--<uc:AddEmployee x:Name="AddEmployee"  Grid.Column="1" Grid.ColumnSpan="10" Grid.Row="2" Grid.RowSpan="8" Background="White"
+                                 Visibility="Visible" Panel.ZIndex="2" />-->
         
         <!--EditEmployee-->
         <uc:EditEmployeeUC x:Name="EditValue" Grid.Column="1" Grid.ColumnSpan="10" Grid.Row="2" Grid.RowSpan="8" Background="White"
