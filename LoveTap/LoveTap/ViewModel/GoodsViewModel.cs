@@ -11,12 +11,12 @@ namespace LoveTap.ViewModel
 {
     public class GoodsViewModel : BaseViewModel
     {
-        //private ObservableCollection<SANPHAM> _ProductList;
-        //public ObservableCollection<SANPHAM> ProductList { get => _ProductList; set { _ProductList = value; OnPropertyChanged(); } }
+        private ObservableCollection<SANPHAM> _ProductList;
+        public ObservableCollection<SANPHAM> ProductList { get => _ProductList; set { _ProductList = value; OnPropertyChanged(); } }
 
-        //public GoodsViewModel()
-        //{
-        //    ProductList = new ObservableCollection<SANPHAM>(DataProvider.Ins.DB.SANPHAMs);
-        //}
+        public GoodsViewModel()
+        {
+            ProductList = new ObservableCollection<SANPHAM>(DataProvider.Ins.DB.SANPHAMs);
+        }
     }
 }
