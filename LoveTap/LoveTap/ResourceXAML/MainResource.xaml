@@ -4,5 +4,4 @@
                     xmlns:local="clr-namespace:LoveTap.ResourceXAML">
     <viewmodel:MainViewModel x:Key="MainVM"></viewmodel:MainViewModel>
     <viewmodel:GoodsViewModel x:Key="GoodsVM"></viewmodel:GoodsViewModel>
-    
 </ResourceDictionary>

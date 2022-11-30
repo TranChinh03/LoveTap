@@ -1,5 +1,4 @@
-﻿using LoveTap.Model;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -33,9 +32,15 @@ namespace LoveTap.ViewModel
                 //EmployeeWindow employeeWindow = new EmployeeWindow();
                 //employeeWindow.ShowDialog();
 
-                GoodsWindow goodsWindow = new GoodsWindow();   
+                GoodsWindow goodsWindow = new GoodsWindow();
                 goodsWindow.ShowDialog();
                 IsLoaded = true;
+
+                //LoginWindow loginWindow = new LoginWindow();
+                //loginWindow.ShowDialog();
+                //IsLoaded = true;
+
+                //MessageBox.Show(DataProvider.Ins.DB.SANPHAMs.First().TEN);
             }
 
            

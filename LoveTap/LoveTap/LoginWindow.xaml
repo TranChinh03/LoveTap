@@ -69,11 +69,11 @@
             />-->
         
         <!--Sign In-->
-        <uc:FailedModelUC
+        <uc:LoginModelUC
             x:Name="LoginModel"
             Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="3" Grid.RowSpan="5" Loaded="LoginModel_Loaded">
 
-        </uc:FailedModelUC>
+        </uc:LoginModelUC>
 
         
 

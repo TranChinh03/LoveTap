@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="d0edd947d7c94803b2ae5460012e1a56" Name="Diagram1">
+        <EntityTypeShape EntityType="LOVETAPModel.CHINHANH" Width="1.5" PointX="3" PointY="12.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="LOVETAPModel.CTHD" Width="1.5" PointX="5.25" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="LOVETAPModel.DANHMUC" Width="1.5" PointX="0.75" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="LOVETAPModel.HOADON" Width="1.5" PointX="10.5" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="LOVETAPModel.KHACHHANG" Width="1.5" PointX="8.25" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="LOVETAPModel.KHO" Width="1.5" PointX="3" PointY="9.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="LOVETAPModel.NHANVIEN" Width="1.5" PointX="0.75" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="LOVETAPModel.SANPHAM" Width="1.5" PointX="3" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="LOVETAPModel.TONKHO" Width="1.5" PointX="5.25" PointY="1.5" IsExpanded="true" />
+        <AssociationConnector Association="LOVETAPModel.FK__CHINHANH__MAADMI__267ABA7A" ManuallyRouted="false" />
+        <AssociationConnector Association="LOVETAPModel.FK__CTHD__MAHD__34C8D9D1" ManuallyRouted="false" />
+        <AssociationConnector Association="LOVETAPModel.FK__CTHD__MASP__35BCFE0A" ManuallyRouted="false" />
+        <AssociationConnector Association="LOVETAPModel.FK__SANPHAM__MADM__31EC6D26" ManuallyRouted="false" />
+        <AssociationConnector Association="LOVETAPModel.FK__HOADON__MANV__2C3393D0" ManuallyRouted="false" />
+        <AssociationConnector Association="LOVETAPModel.FK__HOADON__SDT__2D27B809" ManuallyRouted="false" />
+        <AssociationConnector Association="LOVETAPModel.FK__KHACHHANG__MANV__29572725" ManuallyRouted="false" />
+        <AssociationConnector Association="LOVETAPModel.FK__KHO__MANQL__38996AB5" ManuallyRouted="false" />
+        <AssociationConnector Association="LOVETAPModel.FK__TONKHO__MAKHO__3B75D760" ManuallyRouted="false" />
+        <AssociationConnector Association="LOVETAPModel.FK__TONKHO__MASP__3C69FB99" ManuallyRouted="false" />
+        <AssociationConnector Association="LOVETAPModel.BAOHANH" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

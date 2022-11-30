@@ -102,6 +102,52 @@
     <Compile Include="LoadingWindow.xaml.cs">
       <DependentUpon>LoadingWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Model\CHINHANH.cs">
+      <DependentUpon>LoveTap.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\CTHD.cs">
+      <DependentUpon>LoveTap.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\DANHMUC.cs">
+      <DependentUpon>LoveTap.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\DataProvider.cs" />
+    <Compile Include="Model\HOADON.cs">
+      <DependentUpon>LoveTap.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\KHACHHANG.cs">
+      <DependentUpon>LoveTap.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\KHO.cs">
+      <DependentUpon>LoveTap.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\LoveTap.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LoveTap.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\LoveTap.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LoveTap.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\LoveTap.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LoveTap.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Model\NHANVIEN.cs">
+      <DependentUpon>LoveTap.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\SANPHAM.cs">
+      <DependentUpon>LoveTap.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\TONKHO.cs">
+      <DependentUpon>LoveTap.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ResourceXAML\MainResource.xaml.cs">
+      <DependentUpon>MainResource.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserControlCustom\AddCustomerUC.xaml.cs">
       <DependentUpon>AddCustomerUC.xaml</DependentUpon>
     </Compile>
@@ -147,11 +193,9 @@
     <Compile Include="UserControlCustom\SuccessModelUC.xaml.cs">
       <DependentUpon>SuccessModelUC.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ViewModel\GoodsViewModel.cs" />
     <Compile Include="LoginWindow.xaml.cs">
       <DependentUpon>LoginWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Model\DataProvider.cs" />
     <Compile Include="UserControlCustom\ControlBarUC.xaml.cs">
       <DependentUpon>ControlBarUC.xaml</DependentUpon>
     </Compile>
@@ -160,6 +204,7 @@
     </Compile>
     <Compile Include="ViewModel\BaseViewModel.cs" />
     <Compile Include="ViewModel\ControlBarViewModel.cs" />
+    <Compile Include="ViewModel\GoodsViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Page Include="CustomerWindow.xaml">
       <SubType>Designer</SubType>
@@ -210,8 +255,8 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="ResourceXAML\MainResource.xaml">
-      <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UserControlCustom\AddCustomerUC.xaml">
       <SubType>Designer</SubType>
@@ -301,6 +346,13 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="img\staff.webp" />
+    <EntityDeploy Include="Model\LoveTap.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>LoveTap.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Model\LoveTap.edmx.diagram">
+      <DependentUpon>LoveTap.edmx</DependentUpon>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -384,6 +436,19 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="img\horizontalLine.png" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Model\LoveTap.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>LoveTap.edmx</DependentUpon>
+      <LastGenOutput>LoveTap.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Model\LoveTap.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>LoveTap.edmx</DependentUpon>
+      <LastGenOutput>LoveTap.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\MaterialDesignThemes.4.6.1\build\MaterialDesignThemes.targets" Condition="Exists('..\packages\MaterialDesignThemes.4.6.1\build\MaterialDesignThemes.targets')" />
