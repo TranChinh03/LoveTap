@@ -13,7 +13,7 @@
         </Grid.RowDefinitions>
         <Image
             Margin="10 30 10 20"
-            Grid.Row="0" Source="../img/LoveTap.png" RenderTransformOrigin="0.5,0.5">
+            Grid.Row="0" Source="../img/LoveTap.png" RenderTransformOrigin="0.5,0.5" >
             <Image.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform ScaleX="0.5" ScaleY="0.5"/>
@@ -23,20 +23,50 @@
                 </TransformGroup>
             </Image.RenderTransform>
         </Image>
-        <ListBox Grid.Row="1" Foreground="White" FontSize="20" Margin="10"
+        <ListBox Grid.Row="1" Foreground="White" Margin="3"
   IsEnabled="{Binding IsChecked, ElementName=EnableListBox}">
-            <TextBlock
-    Text="Home" />
-            <TextBlock
-    Text="Goods" />
-            <TextBlock
-    Text="Orders" />
-            <TextBlock
-    Text="Customers" />
-            <TextBlock
-    Text="Statistic" />
-            <TextBlock
-    Text="Employee" />
+            <Button Padding="0" Background="Transparent" BorderBrush="Transparent" Click="Home_Click" HorizontalAlignment="Left">
+                <Grid  VerticalAlignment="Center">
+                    <Image x:Name="homeImg1" Source="../img/home.png" Width="13" Height="13" HorizontalAlignment="Left"/>
+                    <Image Visibility="Hidden" x:Name="homeImg2" Source="../img/homeClick.png" Width="13" Height="13" HorizontalAlignment="Left"/>
+                    <TextBlock x:Name="homeTbl" Text="Home" Margin="17 0 0 0" FontSize="13" Foreground="#79A7CB" HorizontalAlignment="Left"></TextBlock>
+                </Grid>
+            </Button>
+            <Button Padding="0" Background="Transparent" BorderBrush="Transparent" Click="Goods_Click" HorizontalAlignment="Left">
+                <Grid VerticalAlignment="Center">
+                    <Image x:Name="goodsImg1" Source="../img/goods.png" Width="13" Height="13" HorizontalAlignment="Left"/>
+                    <Image x:Name="goodsImg2" Visibility="Hidden" Source="../img/goodsClick.png" Width="13" Height="13" HorizontalAlignment="Left"/>
+                    <TextBlock x:Name="goodsTbl" Text="Goods" Margin="17 0 0 0" FontSize="13" Foreground="#79A7CB" HorizontalAlignment="Left"></TextBlock>
+                </Grid>
+            </Button>
+            <Button Padding="0" Background="Transparent" BorderBrush="Transparent" Click="Orders_Click" HorizontalAlignment="Left">
+                <Grid VerticalAlignment="Center">
+                    <Image x:Name="ordersImg1" Source="../img/orders.png" Width="13" Height="13" HorizontalAlignment="Left"/>
+                    <Image x:Name="ordersImg2" Visibility="Hidden" Source="../img/ordersClick.png" Width="13" Height="13" HorizontalAlignment="Left"/>
+                    <TextBlock x:Name="ordersTbl" Text="Orders" Margin="17 0 0 0" FontSize="13" Foreground="#79A7CB" HorizontalAlignment="Left"></TextBlock>
+                </Grid>
+            </Button>
+            <Button Padding="0" Background="Transparent" BorderBrush="Transparent" Click="Customer_Click" HorizontalAlignment="Left">
+                <Grid VerticalAlignment="Center">
+                    <Image x:Name="customerImg1" Source="../img/customer.png" Width="13" Height="13" HorizontalAlignment="Left"/>
+                    <Image x:Name="customerImg2" Visibility="Hidden" Source="../img/customerClick.png" Width="13" Height="13" HorizontalAlignment="Left"/>
+                    <TextBlock x:Name="customerTbl" Text="Customer" Margin="17 0 0 0" FontSize="13" Foreground="#79A7CB" HorizontalAlignment="Left"></TextBlock>
+                </Grid>
+            </Button>
+            <Button Padding="0" Background="Transparent" BorderBrush="Transparent" Click="Statistic_Click" HorizontalAlignment="Left">
+                <Grid VerticalAlignment="Center">
+                    <Image x:Name="statisticImg1" Source="../img/statistic.png" Width="13" Height="13" HorizontalAlignment="Left"/>
+                    <Image x:Name="statisticImg2" Visibility="Hidden" Source="../img/statisticClick.png" Width="13" Height="13" HorizontalAlignment="Left"/>
+                    <TextBlock x:Name="statisticTbl" Text="Statistic" Margin="17 0 0 0" FontSize="13" Foreground="#79A7CB" HorizontalAlignment="Left"></TextBlock>
+                </Grid>
+            </Button>
+            <Button Padding="0" Background="Transparent" BorderBrush="Transparent" Click="Employee_Click" HorizontalAlignment="Left">
+                <Grid VerticalAlignment="Center">
+                    <Image x:Name="employeeImg1" Source="../img/employee.png" Width="13" Height="13" HorizontalAlignment="Left"/>
+                    <Image x:Name="employeeImg2" Visibility="Hidden" Source="../img/employeeClick.png" Width="13" Height="13" HorizontalAlignment="Left"/>
+                    <TextBlock x:Name="employeeTbl" Text="Employee" Margin="17 0 0 0" FontSize="13" Foreground="#79A7CB" HorizontalAlignment="Left"></TextBlock>
+                </Grid>
+            </Button>
         </ListBox>
     </Grid>
 </UserControl>

@@ -50,11 +50,13 @@
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
 
-          
+
         <uc:ControlBarUC
             Grid.Row="0" Grid.ColumnSpan="12" Background="#21507D"/>
-          
-        
+
+        <uc:StatusBarUC Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="10" VerticalAlignment="Center"/>
+
+
         <!--<uc:AddGoods
             Grid.Column="1"
             Grid.Row="2"
@@ -63,9 +65,6 @@
             Panel.ZIndex="2" Loaded="AddGoods_Loaded"
             />-->
 
-        <Grid Grid.Row="1" Grid.ColumnSpan="12">
-        </Grid >
-        <TextBlock Background="Pink" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="12"/>
         <uc:MenuBarUC Grid.Column="0" Grid.Row="1" Grid.RowSpan="10" Grid.ColumnSpan="2"/>
         <Grid  Grid.Column="2" Grid.Row="2" Grid.ColumnSpan="10" Grid.RowSpan="2">
             <materialDesign:Card>

@@ -50,7 +50,7 @@
             </Grid.RowDefinitions>
 
             <TextBlock Background="Transparent" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="12"/>
-            <uc:ControlBarUC
+            <uc:ControlBarUC 
             Grid.Row="0" Grid.ColumnSpan="12" Panel.ZIndex="2"/>
             <uc:MenuBarUC Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Grid.RowSpan="11"/>
             <TextBlock Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="12" Grid.RowSpan="2" Background="Transparent"/>
