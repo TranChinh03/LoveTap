@@ -18,8 +18,8 @@ namespace LoveTap.ViewModel
         {
             if (!IsLoaded)
             {
-                HomeScreen home = new HomeScreen();
-                home.ShowDialog();
+                //HomeScreen home = new HomeScreen();
+                //home.ShowDialog();
                 //HomePersonal homePersonal = new HomePersonal();
                 //homePersonal.ShowDialog();
                 //HomeProfileEdit homeProfileEdit = new HomeProfileEdit();
@@ -32,6 +32,9 @@ namespace LoveTap.ViewModel
 
                 //EmployeeWindow employeeWindow = new EmployeeWindow();
                 //employeeWindow.ShowDialog();
+
+                CustomerWindow customerWindow = new CustomerWindow();
+                customerWindow.ShowDialog();
 
                 //GoodsWindow goodsWindow = new GoodsWindow();   
                 //goodsWindow.ShowDialog();
