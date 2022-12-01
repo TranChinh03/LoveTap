@@ -193,6 +193,8 @@
     <Compile Include="UserControlCustom\SuccessModelUC.xaml.cs">
       <DependentUpon>SuccessModelUC.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ViewModel\CustomerViewModel.cs" />
+    <Compile Include="ViewModel\EmployeeViewModel.cs" />
     <Compile Include="ViewModel\GoodsViewModel.cs" />
     <Compile Include="LoginWindow.xaml.cs">
       <DependentUpon>LoginWindow.xaml</DependentUpon>

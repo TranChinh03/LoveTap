@@ -1,4 +1,4 @@
-﻿using LoveTap.Model;
+using LoveTap.Model;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -18,6 +18,7 @@ namespace LoveTap.ViewModel
         public ICommand LoadedHomeCommand { get; set; }
         public MainViewModel()
         {
+
             LoadedHomeCommand = new RelayCommand<Window>((p) => { return true; },(p)=> {
                 IsLoaded = true;
                 if (p == null)

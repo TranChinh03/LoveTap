@@ -19,6 +19,7 @@
         ResizeMode="NoResize"
         WindowStyle="None"
         Name="goods"
+        DataContext="{StaticResource GoodsVM}"
         Title="Goods" Height="550" Width="800">
     <Grid>
         <Grid.ColumnDefinitions>
