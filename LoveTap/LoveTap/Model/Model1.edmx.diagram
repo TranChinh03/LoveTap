@@ -4,13 +4,14 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="dfa3dd7b6aa1431da23026208e820a81" Name="Diagram1" ZoomLevel="50">
+      <Diagram DiagramId="c52b4140e2644181916443a1696c15fb" Name="Diagram1">
         <EntityTypeShape EntityType="LOVETAPModel.CHINHANH" Width="1.5" PointX="3" PointY="12.375" IsExpanded="true" />
         <EntityTypeShape EntityType="LOVETAPModel.CTHD" Width="1.5" PointX="5.25" PointY="4.5" IsExpanded="true" />
         <EntityTypeShape EntityType="LOVETAPModel.DANHMUC" Width="1.5" PointX="0.75" PointY="4.625" IsExpanded="true" />
         <EntityTypeShape EntityType="LOVETAPModel.HOADON" Width="1.5" PointX="10.5" PointY="4.125" IsExpanded="true" />
         <EntityTypeShape EntityType="LOVETAPModel.KHACHHANG" Width="1.5" PointX="8.25" PointY="4" IsExpanded="true" />
         <EntityTypeShape EntityType="LOVETAPModel.KHO" Width="1.5" PointX="3" PointY="9.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="LOVETAPModel.LOGIN" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="LOVETAPModel.NHANVIEN" Width="1.5" PointX="0.75" PointY="8.5" IsExpanded="true" />
         <EntityTypeShape EntityType="LOVETAPModel.SANPHAM" Width="1.5" PointX="3" PointY="4" IsExpanded="true" />
         <EntityTypeShape EntityType="LOVETAPModel.TONKHO" Width="1.5" PointX="5.25" PointY="1.5" IsExpanded="true" />

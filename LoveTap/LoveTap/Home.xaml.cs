@@ -17,9 +17,9 @@ namespace LoveTap
     /// <summary>
     /// Interaction logic for Home.xaml
     /// </summary>
-    public partial class HomeScreen : Window
+    public partial class HomeWindow : Window
     {
-        public HomeScreen()
+        public HomeWindow()
         {
             InitializeComponent();
         }

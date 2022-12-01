@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LoveTap.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,16 +24,6 @@ namespace LoveTap.UserControlCustom
         public LoginModelUC()
         {
             InitializeComponent();
-        }
-
-        private void NameTextBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
-        }
-
-        private void CheckBox_Checked(object sender, RoutedEventArgs e)
-        {
-
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿using LoveTap.Model;
+using LoveTap.Model;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Input;
 
 namespace LoveTap.ViewModel
 {
@@ -14,34 +15,32 @@ namespace LoveTap.ViewModel
     {
 
         public bool IsLoaded = false;
+        public ICommand LoadedHomeCommand { get; set; }
         public MainViewModel()
         {
-            if (!IsLoaded)
-            {
-                //HomeScreen home = new HomeScreen();
-                //home.ShowDialog();
-                //HomePersonal homePersonal = new HomePersonal();
-                //homePersonal.ShowDialog();
-                //HomeProfileEdit homeProfileEdit = new HomeProfileEdit();
-                //homeProfileEdit.ShowDialog();
-                //LoginWindow loginWindow = new LoginWindow();
-                //loginWindow.ShowDialog();
 
-                //GoodsWindow goodsWindow = new GoodsWindow();
-                //goodsWindow.ShowDialog();
-
-                //EmployeeWindow employeeWindow = new EmployeeWindow();
-                //employeeWindow.ShowDialog();
-
-                CustomerWindow customerWindow = new CustomerWindow();
-                customerWindow.ShowDialog();
-
-                //GoodsWindow goodsWindow = new GoodsWindow();   
-                //goodsWindow.ShowDialog();
+            LoadedHomeCommand = new RelayCommand<Window>((p) => { return true; },(p)=> {
                 IsLoaded = true;
-            }
+                if (p == null)
+                    return;
+                p.Hide();
+                LoginWindow loginWindow = new LoginWindow();
+                loginWindow.ShowDialog();
 
-           
+                if (loginWindow.DataContext == null)
+                    return;
+                var loginVM=loginWindow.DataContext as LoginViewModel;
+                if (loginVM.IsLogin)
+                {
+                    p.Show();
+                }
+                else
+                {
+                    p.Close();
+                }
+            });
+
+            //LoadedHomeCommand = new RelayCommand<object>((p) => { return true; }, (p) => { HomeWindow homeWindow = new HomeWindow(); homeWindow.ShowDialog(); });
         }
     }
 }

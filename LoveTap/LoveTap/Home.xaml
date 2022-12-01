@@ -1,9 +1,10 @@
-﻿<Window x:Class="LoveTap.HomeScreen"
+﻿<Window x:Class="LoveTap.HomeWindow"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
         xmlns:local="clr-namespace:LoveTap"
         xmlns:uc="clr-namespace:LoveTap.UserControlCustom"
         mc:Ignorable="d"
@@ -17,8 +18,16 @@
         WindowStartupLocation="CenterScreen"
         ResizeMode="NoResize"
         WindowStyle="None"
+        DataContext="{StaticResource MainVM}"
         Name="mainWindow"
         Title="MainWindow" Height="550" Width="800">
+
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding LoadedHomeCommand}" CommandParameter="{Binding ElementName=mainWindow}"/>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+    
     <Grid Background="WhiteSmoke">
         <Grid>
             <Grid.ColumnDefinitions>
