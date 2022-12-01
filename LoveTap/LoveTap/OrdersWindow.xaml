@@ -1,0 +1,302 @@
+﻿<Window x:Class="LoveTap.OrdersWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:LoveTap"
+        mc:Ignorable="d"
+       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:uc="clr-namespace:LoveTap.UserControlCustom"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="14"
+        TextOptions.TextFormattingMode="Ideal"
+        TextOptions.TextRenderingMode="Auto"
+        Background="{DynamicResource MaterialDesignPaper}"
+        FontFamily="{DynamicResource MaterialDesignFont}"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize"
+        WindowStyle="None"
+        Name="ordersWindow"
+        Title="OrdersWindow" Height="450" Width="800">
+    <Grid Background="WhiteSmoke">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition Width="58.333"></ColumnDefinition>
+            <ColumnDefinition Width="58.333"></ColumnDefinition>
+            <ColumnDefinition Width="58.333"></ColumnDefinition>
+            <ColumnDefinition Width="58.333"></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <TextBlock Background="Transparent" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="12"/>
+        <uc:ControlBarUC
+            Grid.Row="0" Grid.ColumnSpan="12" Panel.ZIndex="2"/>
+        <uc:MenuBarUC Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Grid.RowSpan="11"/>
+        <TextBlock Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="12" Grid.RowSpan="2" Background="Transparent"/>
+
+        <Border Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="10" Grid.RowSpan="2"
+                    Background="White" 
+                    CornerRadius="5" 
+                    Margin="10,10,5,10">
+            <Grid>
+
+
+                <!--BUTTONS-->
+
+                <Button Padding="0" Margin="5,50,0,0" Width="85" HorizontalAlignment="Left" Background="{x:Null}" BorderBrush="{x:Null}">
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                        <Image Source="/img/all_orders.png" Height="15" Panel.ZIndex="0" ></Image>
+                        <TextBlock Margin="5,0,0,0" Foreground="#26B69F" Width="60" Height="15" FontSize="10" >All Orders</TextBlock>
+                    </StackPanel>
+                </Button>
+
+
+                <Button Padding="0" Margin="90,50,0,0" Width="80" HorizontalAlignment="Left" Background="{x:Null}" BorderBrush="{x:Null}">
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                        <Image Source="/img/delivered.png" Height="15" Panel.ZIndex="0" ></Image>
+                        <TextBlock Margin="5,0,0,0" Foreground="#FF033270" Width="60" Height="15" FontSize="10" >Delivered</TextBlock>
+                    </StackPanel>
+                </Button>
+
+                <Button Padding="0" Margin="170,50,0,0" Width="80" HorizontalAlignment="Left" Background="{x:Null}" BorderBrush="{x:Null}">
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                        <Image Source="/img/pickups.png" Height="15" Panel.ZIndex="0" ></Image>
+                        <TextBlock Margin="5,0,0,0" Foreground="#FF033270" Width="50" Height="15" FontSize="10" >Pickups</TextBlock>
+                    </StackPanel>
+                </Button>
+
+                <Button Padding="0" Margin="240,50,0,0" Width="80" HorizontalAlignment="Left" Background="{x:Null}" BorderBrush="{x:Null}">
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                        <Image Source="/img/returns.png" Height="15" Panel.ZIndex="0" ></Image>
+                        <TextBlock Margin="5,0,0,0" Foreground="#FF033270" Width="45" Height="15" FontSize="10" >Returns</TextBlock>
+                    </StackPanel>
+                </Button>
+
+                <Button Padding="0" Margin="315,50,0,0" Width="80" HorizontalAlignment="Left" Background="{x:Null}" BorderBrush="{x:Null}">
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                        <Image Source="/img/cancelled.png" Height="15" Panel.ZIndex="0" ></Image>
+                        <TextBlock Margin="5,0,0,0" Foreground="#FF033270" Width="65" Height="15" FontSize="10" >Cancelled</TextBlock>
+                    </StackPanel>
+                </Button>
+
+                <Button
+                    HorizontalAlignment="Left"
+                    Margin="399,48,0,0"
+                    Style="{StaticResource MaterialDesignRaisedSecondaryLightButton}"
+                    Width="120"
+                    Background="#26B69F"
+                    ToolTip="Resource name: MaterialDesignRaisedSecondaryLightButton"
+                    Content="+ Create Order"
+                    FontSize="13"
+                    IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" />
+
+                <Button Background="{StaticResource Linen}"
+                BorderBrush="Transparent" 
+                DockPanel.Dock="Right" Margin="524,48,0,0" RenderTransformOrigin="0.598,0.35">
+                    <Image Source="/img/trash.png" Width="10" Height="10" HorizontalAlignment="Center" VerticalAlignment="Center">
+                    </Image>
+                </Button>
+            </Grid>
+
+        </Border>
+
+
+
+        <Border Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="10" Grid.RowSpan="7"  Background="White"
+                    CornerRadius="5" 
+                    Margin="10,35,10,10">
+            <Border.Effect>
+                <DropShadowEffect BlurRadius="10" Color="Gray"/>
+            </Border.Effect>
+            <Grid>
+                <TextBlock VerticalAlignment="Bottom" Margin="10" FontSize="12" Foreground="{StaticResource Cyan Azure}" HorizontalAlignment="Left">Showing 5 of 25 Results</TextBlock>
+
+                <!--Page-->
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Bottom">
+                    <Button Style="{StaticResource tabButton}">
+                        <materialDesign:PackIcon Kind="ArrowLeftBold"/>
+                    </Button>
+                    <Button Style="{StaticResource tabButton}" BorderBrush="Red" >1</Button>
+                    <Button Style="{StaticResource tabButton}" BorderBrush="Red" >2</Button>
+                    <Button Style="{StaticResource tabButton}" BorderBrush="Red" >3</Button>
+
+                    <Button Style="{StaticResource tabButton}">
+                        <materialDesign:PackIcon Kind="ArrowRightBold"/>
+                    </Button>
+                </StackPanel>
+
+
+            </Grid>
+
+
+        </Border>
+
+        <DataGrid      Grid.Row="3" Grid.Column="2" Grid.RowSpan="6" Grid.ColumnSpan="10" Margin="10,0,10,0"
+                           AutoGenerateColumns="False"
+                           CanUserAddRows="False"
+                           HeadersVisibility="All"
+                           Background="Transparent" HorizontalContentAlignment="Right" VerticalContentAlignment="Stretch">
+            <!--<DataGrid.Resources>
+                    -->
+            <!--<domain:BindingProxy
+      x:Key="DataContextProxy"
+      Data="{Binding}" xmlns:domain="clr-namespace:MaterialDesignDemo.Domain" />-->
+            <!--
+                </DataGrid.Resources>-->
+            <DataGrid.Columns >
+
+                <DataGridCheckBoxColumn
+                                        Binding="{Binding IsSelected, UpdateSourceTrigger=PropertyChanged}"
+                                        EditingElementStyle="{StaticResource MaterialDesignDataGridCheckBoxColumnEditingStyle}"
+                                        ElementStyle="{StaticResource MaterialDesignDataGridCheckBoxColumnStyle}" >
+                    <DataGridCheckBoxColumn.Header >
+                        <Border>
+                            <CheckBox/>
+                            <!--IsChecked="{Binding Data.IsAllItems1Selected, Source={StaticResource DataContextProxy}}" />-->
+                        </Border>
+                    </DataGridCheckBoxColumn.Header >
+                    <DataGridCheckBoxColumn.HeaderStyle>
+                        <Style
+          TargetType="{x:Type DataGridColumnHeader}"
+          BasedOn="{StaticResource MaterialDesignDataGridColumnHeader}">
+                            <Setter
+            Property="HorizontalContentAlignment"
+            Value="Center" />
+                        </Style>
+                    </DataGridCheckBoxColumn.HeaderStyle>
+                </DataGridCheckBoxColumn>
+                <DataGridTextColumn 
+      Binding="{Binding Code}"
+      EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" 
+      ElementStyle="{StaticResource MaterialDesignDataGridTextColumnStyle}"
+                        Width="115"
+      Header="Customer ID" Foreground="{StaticResource Cyan Azure}" />
+                <!-- if you want to use the pop up style (MaterialDesignDataGridTextColumnPopupEditingStyle), you must use MaterialDataGridTextColumn -->
+                <materialDesign:DataGridTextColumn
+      EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}"
+      ElementStyle="{StaticResource MaterialDesignDataGridTextColumnStyle}"
+      Header="Customer" Width="115">
+                    <!--<materialDesign:DataGridTextColumn.Binding>
+                                -->
+                    <!--<Binding
+          Path="Name">
+                                    <Binding.ValidationRules>
+                                        -->
+                    <!--<domain:NotEmptyValidationRule xmlns:domain="clr-namespace:MaterialDesignDemo.Domain" />-->
+                    <!--
+                                    </Binding.ValidationRules>
+                                </Binding>-->
+                    <!--
+                            </materialDesign:DataGridTextColumn.Binding>-->
+                </materialDesign:DataGridTextColumn>
+                <!-- set a max length to get an indicator in the editor -->
+                <DataGridTextColumn
+      EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}"
+      ElementStyle="{StaticResource MaterialDesignDataGridTextColumnStyle}"
+      Header="Address" Width="115">
+                    <DataGridTextColumn.Binding>
+                        <Binding
+          Path="Description">
+                            <Binding.ValidationRules>
+                                <!--<domain:NotEmptyValidationRule xmlns:domain="clr-namespace:MaterialDesignDemo.Domain" />-->
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </DataGridTextColumn.Binding>
+                </DataGridTextColumn>
+                <materialDesign:DataGridTextColumn
+      Binding="{Binding Numeric}"
+      EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}"
+      Header="Phone" Width="115">
+                    <DataGridTextColumn.HeaderStyle>
+                        <Style
+          TargetType="{x:Type DataGridColumnHeader}"
+          BasedOn="{StaticResource MaterialDesignDataGridColumnHeader}">
+                            <Setter
+            Property="ContentTemplate">
+                                <Setter.Value>
+                                    <DataTemplate>
+                                        <TextBlock
+                  Text="{Binding}"
+                  TextAlignment="Right"
+                  TextWrapping="Wrap" />
+                                    </DataTemplate>
+                                </Setter.Value>
+                            </Setter>
+                            <Setter
+            Property="HorizontalContentAlignment"
+            Value="Right" />
+                        </Style>
+                    </DataGridTextColumn.HeaderStyle>
+                    <DataGridTextColumn.ElementStyle>
+                        <Style
+          TargetType="{x:Type TextBlock}"
+          BasedOn="{StaticResource MaterialDesignDataGridTextColumnStyle}">
+                            <Setter
+            Property="HorizontalAlignment"
+            Value="Right" />
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </materialDesign:DataGridTextColumn>
+                <!-- use custom combo box column to get better combos. Use ItemsSourceBinding as your binding template to be applied to each combo -->
+                <materialDesign:DataGridComboBoxColumn
+      Header="Order"
+      IsEditable="True"
+      ItemsSourceBinding="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type DataGrid}}, Path=DataContext.Foods}"
+      SelectedValueBinding="{Binding Food}">
+                    <!--Setting the editing element style allows access to all of the combo box's properties
+                      <materialDesign:MaterialDataGridComboBoxColumn.EditingElementStyle>
+                          <Style TargetType="ComboBox" BasedOn="{StaticResource {ComponentResourceKey TypeInTargetAssembly={x:Type ComboBox}, ResourceId=MaterialDataGridComboBoxColumnEditingStyle}}" >
+                              <Setter Property="IsEditable" Value="True" />
+                          </Style>
+                      </materialDesign:MaterialDataGridComboBoxColumn.EditingElementStyle>
+          -->
+                </materialDesign:DataGridComboBoxColumn>
+                <materialDesign:DataGridComboBoxColumn
+      Header="Action"
+      ItemsSourceBinding="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type DataGrid}}, Path=DataContext.Files}"
+      SelectedValueBinding="{Binding Files}" />
+                <DataGridTemplateColumn
+      Header="Template Column">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <!--DataType="{x:Type domain:SelectableViewModel}">-->
+                            <TextBlock
+            FontSize="14"
+            FontStyle="Italic"
+            Text="{Binding Name}" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                    <DataGridTemplateColumn.CellEditingTemplate>
+                        <DataTemplate>
+                            <!--DataType="{x:Type domain:SelectableViewModel}">-->
+                            <TextBox
+            Foreground="{DynamicResource SecondaryHueMidBrush}"
+            Text="{Binding Name}" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellEditingTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+
+    </Grid>
+</Window>

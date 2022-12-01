@@ -6,7 +6,6 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LoveTap"
         xmlns:uc="clr-namespace:LoveTap.UserControlCustom" 
-        DataContext="{StaticResource GoodsVM}"
         mc:Ignorable="d"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
         TextElement.FontWeight="Regular"
