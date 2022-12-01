@@ -71,6 +71,14 @@
           <Property Name="DIENTICH" Type="float" />
           <Property Name="MANQL" Type="char" MaxLength="65" />
         </EntityType>
+        <EntityType Name="LOGIN">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="char" MaxLength="255" Nullable="false" />
+          <Property Name="USERNAME" Type="varchar" MaxLength="255" />
+          <Property Name="USERPASS" Type="varchar" MaxLength="255" />
+        </EntityType>
         <EntityType Name="NHANVIEN">
           <Key>
             <PropertyRef Name="MANV" />
@@ -258,6 +266,7 @@
           <EntitySet Name="HOADON" EntityType="Self.HOADON" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="KHACHHANG" EntityType="Self.KHACHHANG" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="KHO" EntityType="Self.KHO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LOGIN" EntityType="Self.LOGIN" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="NHANVIEN" EntityType="Self.NHANVIEN" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SANPHAM" EntityType="Self.SANPHAM" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TONKHO" EntityType="Self.TONKHO" Schema="dbo" store:Type="Tables" />
@@ -384,6 +393,14 @@
           <Property Name="MANQL" Type="String" MaxLength="65" FixedLength="true" Unicode="false" />
           <NavigationProperty Name="NHANVIEN" Relationship="Self.FK__KHO__MANQL__38996AB5" FromRole="KHO" ToRole="NHANVIEN" />
           <NavigationProperty Name="TONKHOes" Relationship="Self.FK__TONKHO__MAKHO__3B75D760" FromRole="KHO" ToRole="TONKHO" />
+        </EntityType>
+        <EntityType Name="LOGIN">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="String" MaxLength="255" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="USERNAME" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="USERPASS" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="NHANVIEN">
           <Key>
@@ -561,6 +578,7 @@
           <EntitySet Name="HOADONs" EntityType="Self.HOADON" />
           <EntitySet Name="KHACHHANGs" EntityType="Self.KHACHHANG" />
           <EntitySet Name="KHOes" EntityType="Self.KHO" />
+          <EntitySet Name="LOGINs" EntityType="Self.LOGIN" />
           <EntitySet Name="NHANVIENs" EntityType="Self.NHANVIEN" />
           <EntitySet Name="SANPHAMs" EntityType="Self.SANPHAM" />
           <EntitySet Name="TONKHOes" EntityType="Self.TONKHO" />
@@ -675,6 +693,15 @@
                 <ScalarProperty Name="DIACHI" ColumnName="DIACHI" />
                 <ScalarProperty Name="DIENTICH" ColumnName="DIENTICH" />
                 <ScalarProperty Name="MANQL" ColumnName="MANQL" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LOGINs">
+            <EntityTypeMapping TypeName="LOVETAPModel.LOGIN">
+              <MappingFragment StoreEntitySet="LOGIN">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="USERNAME" ColumnName="USERNAME" />
+                <ScalarProperty Name="USERPASS" ColumnName="USERPASS" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

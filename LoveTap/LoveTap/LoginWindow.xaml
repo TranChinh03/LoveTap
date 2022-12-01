@@ -18,7 +18,8 @@
         ResizeMode="NoResize"
         WindowStyle="None"
         Name="loginWindow"
-        Title="LoginWindow" Height="550" Width="800">
+        Title="LoginWindow" Height="550" Width="800"
+        DataContext="{StaticResource LoginVM}">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"></RowDefinition>
@@ -69,11 +70,11 @@
             />-->
         
         <!--Sign In-->
-        <uc:FailedModelUC
+        <uc:LoginModelUC
             x:Name="LoginModel"
             Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="3" Grid.RowSpan="5" Loaded="LoginModel_Loaded">
 
-        </uc:FailedModelUC>
+        </uc:LoginModelUC>
 
         
 
