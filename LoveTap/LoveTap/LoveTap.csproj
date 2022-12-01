@@ -87,9 +87,6 @@
     <Compile Include="ErrorWindow.xaml.cs">
       <DependentUpon>ErrorWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="GoodsStatisticWindow.xaml.cs">
-      <DependentUpon>GoodsStatisticWindow.xaml</DependentUpon>
-    </Compile>
     <Compile Include="GoodsWindow.xaml.cs">
       <DependentUpon>GoodsWindow.xaml</DependentUpon>
     </Compile>
@@ -151,12 +148,6 @@
     <Compile Include="Model\TONKHO.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="OrdersWindow.xaml.cs">
-      <DependentUpon>OrdersWindow.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="SalesStatisticWindow.xaml.cs">
-      <DependentUpon>SalesStatisticWindow.xaml</DependentUpon>
-    </Compile>
     <Compile Include="UserControlCustom\AddCustomerUC.xaml.cs">
       <DependentUpon>AddCustomerUC.xaml</DependentUpon>
     </Compile>
@@ -165,9 +156,6 @@
     </Compile>
     <Compile Include="UserControlCustom\AddGoods.xaml.cs">
       <DependentUpon>AddGoods.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="UserControlCustom\CreateOrderUC.xaml.cs">
-      <DependentUpon>CreateOrderUC.xaml</DependentUpon>
     </Compile>
     <Compile Include="UserControlCustom\CreatePasswordUC.xaml.cs">
       <DependentUpon>CreatePasswordUC.xaml</DependentUpon>
@@ -195,9 +183,6 @@
     </Compile>
     <Compile Include="UserControlCustom\LoginModelUC.xaml.cs">
       <DependentUpon>LoginModelUC.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="UserControlCustom\OrdersDetailUC.xaml.cs">
-      <DependentUpon>OrdersDetailUC.xaml</DependentUpon>
     </Compile>
     <Compile Include="UserControlCustom\SignUpModelUC.xaml.cs">
       <DependentUpon>SignUpModelUC.xaml</DependentUpon>
@@ -238,10 +223,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="GoodsStatisticWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="GoodsWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -270,11 +251,6 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="MainWindow.xaml.cs">
-      <DependentUpon>MainWindow.xaml</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
-    <Page Include="OrdersWindow.xaml">
     <Page Include="MainWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -282,10 +258,6 @@
     <Page Include="ResourceXAML\MainResource.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
-    </Page>
-    <Page Include="SalesStatisticWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UserControlCustom\AddCustomerUC.xaml">
       <SubType>Designer</SubType>
@@ -302,10 +274,6 @@
     <Page Include="UserControlCustom\ControlBarUC.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
-    </Page>
-    <Page Include="UserControlCustom\CreateOrderUC.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UserControlCustom\CreatePasswordUC.xaml">
       <SubType>Designer</SubType>
@@ -344,10 +312,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UserControlCustom\MenuBarUC.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="UserControlCustom\OrdersDetailUC.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -475,16 +439,6 @@
     <Resource Include="img\horizontalLine.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="img\categories.png" />
-    <Resource Include="img\goodsReport.png" />
-    <Resource Include="img\salesReport.png" />
-    <Resource Include="img\all_orders.png" />
-    <Resource Include="img\cancelled.png" />
-    <Resource Include="img\delivered.png" />
-    <Resource Include="img\keyboard.png" />
-    <Resource Include="img\mouse.png" />
-    <Resource Include="img\pickups.png" />
-    <Resource Include="img\returns.png" />
     <Content Include="Model\Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Model1.edmx</DependentUpon>

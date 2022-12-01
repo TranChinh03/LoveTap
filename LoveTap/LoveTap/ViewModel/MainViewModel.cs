@@ -85,8 +85,7 @@ namespace LoveTap.ViewModel
         public MainViewModel()
         {
 
-            LoadedHomeCommand = new RelayCommand<Window>((p) => { return true; }, (p) =>
-            {
+            LoadedHomeCommand = new RelayCommand<Window>((p) => { return true; },(p)=> {
                 IsLoaded = true;
                 if (p == null)
                     return;
@@ -96,7 +95,7 @@ namespace LoveTap.ViewModel
 
                 if (loginWindow.DataContext == null)
                     return;
-                var loginVM = loginWindow.DataContext as LoginViewModel;
+                var loginVM=loginWindow.DataContext as LoginViewModel;
                 if (loginVM.IsLogin)
                 {
                     p.Show();
@@ -108,8 +107,6 @@ namespace LoveTap.ViewModel
             });
 
             //LoadedHomeCommand = new RelayCommand<object>((p) => { return true; }, (p) => { HomeWindow homeWindow = new HomeWindow(); homeWindow.ShowDialog(); });
-
-
         }
     }
 }
