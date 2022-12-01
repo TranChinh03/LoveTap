@@ -17,9 +17,11 @@
         WindowStartupLocation="CenterScreen"
         ResizeMode="NoResize"
         WindowStyle="None"
-        Name="mainWindow"
-        Title="MainWindow" Height="550" Width="800">
+        Name="homeWindow"
+        Title="homeWindow" Height="550" Width="800">
+
     <Grid Background="WhiteSmoke">
+
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition></ColumnDefinition>
@@ -37,7 +39,7 @@
             </Grid.ColumnDefinitions>
 
             <Grid.RowDefinitions>
-                <RowDefinition></RowDefinition>
+                <RowDefinition Height="0.65*"></RowDefinition>
                 <RowDefinition></RowDefinition>
                 <RowDefinition></RowDefinition>
                 <RowDefinition></RowDefinition>
@@ -49,20 +51,25 @@
                 <RowDefinition></RowDefinition>
             </Grid.RowDefinitions>
 
+            <!--Control Bar-->
+            <uc:ControlBarUC Grid.Row="0" Grid.ColumnSpan="12"/>
+            
+            <!--Status Bar - MenuBar -->
             <uc:StatusBarUC
-                Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="10" x:Name="Home"/>
-            <uc:MenuBarUC Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Grid.RowSpan="11"/>
+                Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="10" x:Name="Home"/>
+            
+            <uc:MenuBarUC x:Uid="0" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Grid.RowSpan="11"/>
 
             <!-- REVENUE - ORDERS - CUSTOMER -->
-            <Grid Grid.Column="2" Grid.Row="1" Grid.ColumnSpan="8" Grid.RowSpan="3" Margin="10, -10, 5, 5">
+            <Grid Grid.Column="2" Grid.Row="2" Grid.ColumnSpan="8" Grid.RowSpan="2" >
                 <StackPanel Orientation="Horizontal">
                     <!-- REVENUE -->
                     <materialDesign:Card 
-                            Margin="0, 0, 6, 0" 
+                            Margin="10, 0, 20, 0" 
                             Height="100" 
                             Width="142"
                             >
-                        <Grid>
+                        <Grid >
                             <TextBlock Margin="10, 10, 10, 10" 
                                         FontSize="10"
                                         HorizontalAlignment="Left"
@@ -107,7 +114,7 @@
 
                     <!--ORDERS -->
                     <materialDesign:Card 
-                            Margin="6, 0, 6, 0" 
+                            Margin="20, 0, 20, 0" 
                             Height="100" 
                             Width="142"
                             >
@@ -154,7 +161,7 @@
 
                     <!-- CUSTOMER -->
                     <materialDesign:Card 
-                            Margin="6, 0, 0, 0" 
+                            Margin="20, 0, 20, 0" 
                             Height="100" 
                             Width="142"
                             >
@@ -206,12 +213,12 @@
 
 
             <!-- BEST SELLING -->
-            <Grid  Grid.Column="2" Grid.Row="4" Grid.ColumnSpan="8" Grid.RowSpan="6" Margin="10, -18, 5, 5 " >
+            <Grid  Grid.Column="2" Grid.Row="4" Grid.ColumnSpan="8" Grid.RowSpan="6" Margin="10 0 15 0" >
 
                 <StackPanel>
                     <!-- NAV -->
                     <TextBlock  Background="White" Height="36" VerticalAlignment="Center">
-                        <Grid>
+                        <Grid HorizontalAlignment="Stretch">
                             <TextBlock 
                             Margin="10, 10, 10, 10" 
                             FontSize="12"
@@ -423,15 +430,15 @@
 
 
             <!-- CALENDAR - MAP -->
-            <Grid  Grid.Column="10" Grid.Row="1" Grid.ColumnSpan="2" Grid.RowSpan="9" Margin="5, 5, 5, 5">
+            <Grid  Grid.Column="10" Grid.Row="2" Grid.ColumnSpan="2" Grid.RowSpan="9" Margin="5, -20, 5, 5">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="1*"></RowDefinition>
                         <RowDefinition Height="2*"></RowDefinition>
                     </Grid.RowDefinitions>
 
-                    <Image Grid.Row="0" 
-                        Source="./img/calendar.png" Margin="-8,-12,-8,285" Grid.RowSpan="2"/>
+                    <Image Grid.Row="0" VerticalAlignment="Center"
+                        Source="./img/calendar.png" />
                     <Image 
                         Source="./img/map4.png" Margin="0,91,0,4" Grid.RowSpan="2">
                         <Image.Effect>

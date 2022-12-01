@@ -76,13 +76,14 @@
                         />
                 </DockPanel>
 
-                <Button
+                <Button x:Name="btSignIn"
               Style="{StaticResource MaterialDesignRaisedButton}"
               Content="Sign In"
               Margin="0, 10, 0,0 "
               IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" 
               Background="{DynamicResource Celestial Blue}" 
-              BorderBrush="Transparent"/>   
+              BorderBrush="Transparent"   Command="{Binding CloseWindowCommand}"
+                            CommandParameter="{Binding ElementName=btSignIn}" Click="btSignIn_Click" />   
             </StackPanel>
         </materialDesign:Card>
 

@@ -69,9 +69,12 @@
             />-->
         
         <!--Sign In-->
+        <uc:LoginModelUC x:Name="LoginModel"
+            Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="3" Grid.RowSpan="5" Loaded="LoginModel_Loaded"/>
+        <!--Fail-->
         <uc:FailedModelUC
-            x:Name="LoginModel"
-            Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="3" Grid.RowSpan="5" Loaded="LoginModel_Loaded">
+            x:Name="FailModel"
+            Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="3" Grid.RowSpan="5" Loaded="LoginModel_Loaded" Visibility="Collapsed">
 
         </uc:FailedModelUC>
 

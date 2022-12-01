@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Principal;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -33,6 +34,16 @@ namespace LoveTap.UserControlCustom
         private void CheckBox_Checked(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void btSignIn_Click(object sender, RoutedEventArgs e)
+        {
+            HomeScreen homeWd = new HomeScreen();
+            homeWd.Show();
+           
+            //MainWindow mainWd = new MainWindow();
+            //mainWd.Show();
+            Window.GetWindow(this).Close();
         }
     }
 }
