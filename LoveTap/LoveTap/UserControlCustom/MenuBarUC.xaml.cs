@@ -173,7 +173,7 @@ namespace LoveTap.UserControlCustom
             //CustomerUncheck();
             //StatisticUncheck();
             //EmployeeUncheck();
-            HomeScreen homeWd = new HomeScreen();
+            HomeWindow homeWd = new HomeWindow();
             homeWd.Show();
             Window.GetWindow(this).Close();
 
@@ -200,6 +200,9 @@ namespace LoveTap.UserControlCustom
             //CustomerUncheck();
             //StatisticUncheck();
             //EmployeeUncheck();
+            OrdersWindow orderWd = new OrdersWindow();
+            orderWd.Show();
+            Window.GetWindow(this).Close();
 
         }
 
@@ -225,7 +228,10 @@ namespace LoveTap.UserControlCustom
             //CustomerUncheck();
             //StatisticCheck();
             //EmployeeUncheck();
-            
+            SalesStatisticWindow statisticWd = new SalesStatisticWindow();
+            statisticWd.Show();
+            Window.GetWindow(this).Close();
+
         }
         private void Employee_Click(object sender, RoutedEventArgs e)
         {
