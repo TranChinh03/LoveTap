@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LoveTap.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,12 +21,70 @@ namespace LoveTap.UserControlCustom
     /// </summary>
     public partial class MenuBarUC : UserControl
     {
+        public ICommand GetIdTab { get; set; }
+
        
         public MenuBarUC()
         {
             InitializeComponent();
+            //buttonClick();
+
         }
 
+        //public void buttonClick()
+        //{
+        //    switch (index)
+        //    {
+        //        case 0:
+        //            {
+        //                HomeCheck();
+        //                break;
+        //            }
+        //        case 1:
+        //            {
+        //                GoodsCheck();
+        //                break;
+        //            }
+        //        case 2:
+        //            {
+        //                OrdersCheck();
+        //               break;
+        //            }
+        //        case 3:
+        //            {
+        //               CustomerCheck();
+        //                break;
+        //            }
+        //        case 4:
+        //            {
+        //                StatisticCheck();
+        //                break;
+        //            }
+        //        case 5:
+        //            {
+        //                EmployeeCheck();
+        //                break;
+        //            }
+        //        //case 6:
+        //        //    {
+        //        //        _Loadwd(p);
+        //        //        p.Main.NavigationService.Navigate(new QLNVView());
+        //        //        break;
+        //        //    }
+        //        //case 7:
+        //        //    {
+        //        //        _Loadwd(p);
+        //        //        p.Main.NavigationService.Navigate(new SettingView());
+        //        //        break;
+        //        //    }
+        //        default:
+        //            {
+        //                break;
+        //            }
+        //    }
+        //}
+
+    
         private void HomeCheck()
         {
             homeTbl.Foreground = Brushes.White;
@@ -108,61 +167,78 @@ namespace LoveTap.UserControlCustom
         }
         private void Home_Click(object sender, RoutedEventArgs e)
         {
-            HomeCheck();
-            GoodsUncheck();
-            OrdersUncheck();
-            CustomerUncheck();
-            StatisticUncheck();
-            EmployeeUncheck();
+            //HomeCheck();
+            //GoodsUncheck();
+            //OrdersUncheck();
+            //CustomerUncheck();
+            //StatisticUncheck();
+            //EmployeeUncheck();
+            HomeScreen homeWd = new HomeScreen();
+            homeWd.Show();
+            Window.GetWindow(this).Close();
+
         }
 
         private void Goods_Click(object sender, RoutedEventArgs e)
         {
-            HomeUncheck();
-            GoodsCheck();
-            OrdersUncheck();
-            CustomerUncheck();
-            StatisticUncheck();
-            EmployeeUncheck();
+            //HomeUncheck();
+            //GoodsCheck();
+            //OrdersUncheck();
+            //CustomerUncheck();
+            //StatisticUncheck();
+            //EmployeeUncheck();
+            GoodsWindow goodWd = new GoodsWindow();
+            goodWd.Show();
+            Window.GetWindow(this).Close();
         }
 
         private void Orders_Click(object sender, RoutedEventArgs e)
         {
-            HomeUncheck();
-            GoodsUncheck();
-            OrdersCheck();
-            CustomerUncheck();
-            StatisticUncheck();
-            EmployeeUncheck();
+            //HomeUncheck();
+            //GoodsUncheck();
+            //OrdersCheck();
+            //CustomerUncheck();
+            //StatisticUncheck();
+            //EmployeeUncheck();
+
         }
 
         private void Customer_Click(object sender, RoutedEventArgs e)
         {
-            HomeUncheck();
-            GoodsUncheck();
-            OrdersUncheck();
-            CustomerCheck();
-            StatisticUncheck();
-            EmployeeUncheck();
+           
+            CustomerWindow customerWd = new CustomerWindow();
+            customerWd.Show();
+            Window.GetWindow(this).Close();
+            //HomeUncheck();
+            //GoodsUncheck();
+            //OrdersUncheck();
+            //CustomerCheck();
+            //StatisticUncheck();
+            //EmployeeUncheck();
         }
 
         private void Statistic_Click(object sender, RoutedEventArgs e)
         {
-            HomeUncheck();
-            GoodsUncheck();
-            OrdersUncheck();
-            CustomerUncheck();
-            StatisticCheck();
-            EmployeeUncheck();
+            //HomeUncheck();
+            //GoodsUncheck();
+            //OrdersUncheck();
+            //CustomerUncheck();
+            //StatisticCheck();
+            //EmployeeUncheck();
+            
         }
         private void Employee_Click(object sender, RoutedEventArgs e)
         {
-            HomeUncheck();
-            GoodsUncheck();
-            OrdersUncheck();
-            CustomerUncheck();
-            StatisticUncheck();
-            EmployeeCheck();
+           
+            EmployeeWindow employeeWd = new EmployeeWindow();
+            employeeWd.Show();
+            Window.GetWindow(this).Close();
+            //HomeUncheck();
+            //GoodsUncheck();
+            //OrdersUncheck();
+            //CustomerUncheck();
+            //StatisticUncheck();
+            //EmployeeCheck();
         }
     }
 }

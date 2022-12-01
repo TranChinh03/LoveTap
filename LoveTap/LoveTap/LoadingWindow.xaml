@@ -18,7 +18,8 @@
         ResizeMode="NoResize"
         WindowStyle="None"
         Name="loadingWindow"
-        Title="LoadingWindow" Height="550" Width="800">
+        Title="LoadingWindow" Height="550" Width="800"
+        DataContext="{StaticResource MainVM}">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"></RowDefinition>
@@ -130,6 +131,7 @@
                     <TranslateTransform/>
                 </TransformGroup>
             </ProgressBar.RenderTransform>
+            
             <ProgressBar.Foreground>
                 <LinearGradientBrush StartPoint="0,0" EndPoint="1,1" >
                     <GradientStop Color="#1156AA" Offset="0" />

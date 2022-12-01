@@ -5,9 +5,9 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:uc="clr-namespace:LoveTap.UserControlCustom"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
         xmlns:local="clr-namespace:LoveTap" 
         xmlns:viewmodel="clr-namespace:LoveTap.ViewModel" 
-        d:DataContext="{d:DesignInstance Type=viewmodel:MainViewModel}"
         mc:Ignorable="d"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
         TextElement.FontWeight="Regular"
@@ -19,8 +19,17 @@
         FontFamily="{DynamicResource MaterialDesignFont}"
         WindowStartupLocation="CenterScreen"
         WindowStyle="None"
-        DataContext="{StaticResource EmployeeVM}"
-        Title="EmployeeWindow" Height="550" Width="800">
+
+        Title="EmployeeWindow" Height="550" Width="800"
+        DataContext="{StaticResource EmployeeVM}">
+
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding LoadEmployeeCm}"
+                                                       CommandParameter="{Binding ElementName=EmployeeCm}"></i:InvokeCommandAction>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+
 
     <Grid Background="#EEEEFC">
         <Grid.RowDefinitions>
@@ -52,17 +61,17 @@
             <ColumnDefinition ></ColumnDefinition>
         </Grid.ColumnDefinitions>
 
-        <!--MENU-->
+        <!--MENU STATUS-->
         <uc:StatusBarUC
-                Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="10" x:Name="Employee"/>
-        <uc:MenuBarUC Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Grid.RowSpan="11"/>
+                Grid.RowSpan="2" Grid.Column="2" Grid.ColumnSpan="10" x:Name="Employee"/>
+        <uc:MenuBarUC x:Uid="5" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Grid.RowSpan="11"/>
 
 
         <!--ACTION-->
         <!--Add E-->
         <uc:AddEmployee x:Name="AddEmployee"  Grid.Column="1" Grid.ColumnSpan="10" Grid.Row="2" Grid.RowSpan="8" Background="White"
                                  Visibility="Hidden" Panel.ZIndex="2" />
-        
+
         <!--EditEmployee-->
         <uc:EditEmployeeUC x:Name="EditValue" Grid.Column="1" Grid.ColumnSpan="10" Grid.Row="2" Grid.RowSpan="8" Background="White"
                                  Visibility="Hidden" Panel.ZIndex="2" />
@@ -103,14 +112,20 @@
                         <DockPanel Grid.Column="1" >
                             <Button Background="{StaticResource Linen}"
                                 BorderBrush="Transparent" 
-                                DockPanel.Dock="Right" Click="DeleteButton_Click"/>
+                                DockPanel.Dock="Right"/>
                             <Button Style="{StaticResource MaterialDesignRaisedButton}"
                                 Content="+Add Employee" 
                                 DockPanel.Dock="Right"
                                 Background="{StaticResource Light Sea Green}"
                                 Margin="10"
-                                Click="Add_Employee_Click"
-                            />
+                            >
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="Click">
+                                        <i:InvokeCommandAction Command="{Binding AddCsCommand}"
+                                                       CommandParameter="{Binding ElementName=Cswd}"></i:InvokeCommandAction>
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                            </Button>
 
                             <Grid DockPanel.Dock="Left">
                             </Grid>
@@ -167,7 +182,7 @@
                     </Grid>
 
                     <ComboBox Template="{StaticResource Combobox}"
-                              materialDesign:HintAssist.Hint="Khu vực" SelectionChanged="ComboBox_SelectionChanged" 
+                              materialDesign:HintAssist.Hint="Khu vực" 
                               />
                 </Grid>
 

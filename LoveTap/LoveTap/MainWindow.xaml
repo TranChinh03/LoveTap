@@ -4,8 +4,10 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:LoveTap"
         xmlns:uc="clr-namespace:LoveTap.UserControlCustom"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        xmlns:local="clr-namespace:LoveTap" 
+        xmlns:viewmodel="clr-namespace:LoveTap.ViewModel" 
         mc:Ignorable="d"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
         TextElement.FontWeight="Regular"
@@ -13,19 +15,60 @@
         TextOptions.TextFormattingMode="Ideal"
         TextOptions.TextRenderingMode="Auto"
         Background="{DynamicResource MaterialDesignPaper}"
-        FontFamily="{DynamicResource MaterialDesignFont}"
-        DataContext="{StaticResource MainVM}"
-        WindowStartupLocation="CenterScreen"
         ResizeMode="NoResize"
+        FontFamily="{DynamicResource MaterialDesignFont}"
+        WindowStartupLocation="CenterScreen"
         WindowStyle="None"
-        Name="mainWindow"
-        Title="MainWindow" Height="500" Width="700">
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"></RowDefinition>
-            <RowDefinition></RowDefinition>
-        </Grid.RowDefinitions>
+        Title="EmployeeWindow" Height="550" Width="800"
+        DataContext="{StaticResource MainVM}">
 
-        <uc:ControlBarUC Tag="{Binding Title, ElementName=mainWindow}" Grid.Row="0"/>
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding Loadwd}"
+                                                       CommandParameter="{Binding ElementName=Mainwd}"></i:InvokeCommandAction>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+
+    <Grid Background="WhiteSmoke">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto">
+            </RowDefinition>
+            <RowDefinition ></RowDefinition>
+            <RowDefinition ></RowDefinition>
+            <RowDefinition ></RowDefinition>
+            <RowDefinition ></RowDefinition>
+            <RowDefinition ></RowDefinition>
+            <RowDefinition ></RowDefinition>
+            <RowDefinition ></RowDefinition>
+            <RowDefinition ></RowDefinition>
+            <RowDefinition ></RowDefinition>
+            <RowDefinition ></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition ></ColumnDefinition>
+            <ColumnDefinition ></ColumnDefinition>
+            <ColumnDefinition ></ColumnDefinition>
+            <ColumnDefinition ></ColumnDefinition>
+            <ColumnDefinition ></ColumnDefinition>
+            <ColumnDefinition ></ColumnDefinition>
+            <ColumnDefinition ></ColumnDefinition>
+            <ColumnDefinition ></ColumnDefinition>
+            <ColumnDefinition ></ColumnDefinition>
+            <ColumnDefinition ></ColumnDefinition>
+            <ColumnDefinition ></ColumnDefinition>
+            <ColumnDefinition ></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <!--Control Bar-->
+        <uc:ControlBarUC Grid.Row="0" Grid.ColumnSpan="12"/>
+
+        <!--Status Bar - MenuBar -->
+        <uc:StatusBarUC
+                Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="10" x:Name="Home"/>
+
+        <uc:MenuBarUC x:Uid="0" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Grid.RowSpan="11"/>
+
+        <Frame x:Name="Main" DataContext="{StaticResource MainVM}" Source="Home.xaml" NavigationUIVisibility="Hidden" Grid.Row="2" Grid.Column="2" Grid.RowSpan="9" Grid.ColumnSpan="10" Background="Transparent"></Frame>
+
     </Grid>
 </Window>

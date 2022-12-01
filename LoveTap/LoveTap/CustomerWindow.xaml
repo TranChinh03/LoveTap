@@ -53,7 +53,7 @@
         <!--MENU-->
         <uc:StatusBarUC
                 Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="10" x:Name="Customer"/>
-        <uc:MenuBarUC Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Grid.RowSpan="11"/>
+        <uc:MenuBarUC x:Uid="3" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Grid.RowSpan="11"/>
 
 
         <!--ACTION-->
