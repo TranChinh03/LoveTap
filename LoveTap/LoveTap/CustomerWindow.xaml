@@ -63,7 +63,7 @@
         <uc:AddCustomerUC x:Name="AddCustomer" Grid.Column="1" Grid.ColumnSpan="10" Grid.Row="2" Grid.RowSpan="8" Background="White"
                                  Visibility="Hidden" Panel.ZIndex="2"/>
         <!--CONTENT-->
-        <Grid Grid.Row="2" Background="Transparent" Grid.RowSpan="9"
+        <Grid Grid.Row="1" Background="Transparent" Grid.RowSpan="9"
               Grid.Column="2" Grid.ColumnSpan="10">
             <Grid.RowDefinitions>
                 <RowDefinition ></RowDefinition>
