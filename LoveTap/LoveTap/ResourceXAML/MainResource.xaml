@@ -3,7 +3,9 @@
                     xmlns:viewmodel="clr-namespace:LoveTap.ViewModel"
                     xmlns:local="clr-namespace:LoveTap.ResourceXAML">
     <viewmodel:MainViewModel x:Key="MainVM"></viewmodel:MainViewModel>
+    <viewmodel:LoginViewModel x:Key="LoginVM"></viewmodel:LoginViewModel>
     <viewmodel:GoodsViewModel x:Key="GoodsVM"></viewmodel:GoodsViewModel>
     <viewmodel:EmployeeViewModel x:Key="EmployeeVM"></viewmodel:EmployeeViewModel>
     <viewmodel:menuBarUC x:Key="menuBarVM"></viewmodel:menuBarUC>
+    <viewmodel:CustomerViewModel x:Key="CustomerVM"></viewmodel:CustomerViewModel>
 </ResourceDictionary>

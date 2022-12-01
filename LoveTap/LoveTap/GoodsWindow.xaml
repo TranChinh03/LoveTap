@@ -5,7 +5,8 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LoveTap"
-        xmlns:uc="clr-namespace:LoveTap.UserControlCustom"
+        xmlns:uc="clr-namespace:LoveTap.UserControlCustom" 
+        DataContext="{StaticResource GoodsVM}"
         mc:Ignorable="d"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
         TextElement.FontWeight="Regular"
@@ -18,6 +19,7 @@
         ResizeMode="NoResize"
         WindowStyle="None"
         Name="goods"
+        DataContext="{StaticResource GoodsVM}"
         Title="Goods" Height="550" Width="800">
     <Grid>
         <Grid.ColumnDefinitions>

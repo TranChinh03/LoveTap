@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LoveTap.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Principal;
@@ -26,24 +27,5 @@ namespace LoveTap.UserControlCustom
             InitializeComponent();
         }
 
-        private void NameTextBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
-        }
-
-        private void CheckBox_Checked(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void btSignIn_Click(object sender, RoutedEventArgs e)
-        {
-            HomeScreen homeWd = new HomeScreen();
-            homeWd.Show();
-           
-            //MainWindow mainWd = new MainWindow();
-            //mainWd.Show();
-            Window.GetWindow(this).Close();
-        }
     }
 }
