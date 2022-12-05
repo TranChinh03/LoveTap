@@ -1,10 +1,9 @@
-﻿<Window x:Class="LoveTap.HomeWindow"
+﻿<Page x:Class="LoveTap.HomeScreen"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
         xmlns:local="clr-namespace:LoveTap"
         xmlns:uc="clr-namespace:LoveTap.UserControlCustom"
         mc:Ignorable="d"
@@ -15,25 +14,14 @@
         TextOptions.TextRenderingMode="Auto"
         Background="{DynamicResource MaterialDesignPaper}"
         FontFamily="{DynamicResource MaterialDesignFont}"
-        WindowStartupLocation="CenterScreen"
-        ResizeMode="NoResize"
-        WindowStyle="None"
-        DataContext="{StaticResource MainVM}"
-        Name="mainWindow"
-        Title="MainWindow" Height="550" Width="800">
+        Name="homeWindow"
+        Title="homePage" Height="466.2" Width="666.666666666667"
+        DataContext="{StaticResource HomeVM}">
 
-    <i:Interaction.Triggers>
-        <i:EventTrigger EventName="Loaded">
-            <i:InvokeCommandAction Command="{Binding LoadedHomeCommand}" CommandParameter="{Binding ElementName=mainWindow}"/>
-        </i:EventTrigger>
-    </i:Interaction.Triggers>
-    
     <Grid Background="WhiteSmoke">
 
         <Grid>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition></ColumnDefinition>
-                <ColumnDefinition></ColumnDefinition>
                 <ColumnDefinition></ColumnDefinition>
                 <ColumnDefinition></ColumnDefinition>
                 <ColumnDefinition></ColumnDefinition>
@@ -47,8 +35,6 @@
             </Grid.ColumnDefinitions>
 
             <Grid.RowDefinitions>
-                <RowDefinition Height="0.65*"></RowDefinition>
-                <RowDefinition></RowDefinition>
                 <RowDefinition></RowDefinition>
                 <RowDefinition></RowDefinition>
                 <RowDefinition></RowDefinition>
@@ -60,16 +46,16 @@
             </Grid.RowDefinitions>
 
             <!--Control Bar-->
-            <uc:ControlBarUC Grid.Row="0" Grid.ColumnSpan="12"/>
-            
+            <!--<uc:ControlBarUC Grid.Row="0" Grid.ColumnSpan="12"/>-->
+
             <!--Status Bar - MenuBar -->
-            <uc:StatusBarUC
+            <!--<uc:StatusBarUC
                 Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="10" x:Name="Home"/>
             
-            <uc:MenuBarUC x:Uid="0" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Grid.RowSpan="11"/>
+            <uc:MenuBarUC x:Uid="0" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Grid.RowSpan="11"/>-->
 
             <!-- REVENUE - ORDERS - CUSTOMER -->
-            <Grid Grid.Column="2" Grid.Row="2" Grid.ColumnSpan="8" Grid.RowSpan="2" >
+            <Grid Grid.ColumnSpan="8" Grid.RowSpan="2" >
                 <StackPanel Orientation="Horizontal">
                     <!-- REVENUE -->
                     <materialDesign:Card 
@@ -116,7 +102,7 @@
 
 
                         </Grid>
-                    
+
                     </materialDesign:Card>
 
 
@@ -215,18 +201,18 @@
                     </materialDesign:Card>
 
                 </StackPanel>
-                
+
             </Grid>
 
 
 
             <!-- BEST SELLING -->
-            <Grid  Grid.Column="2" Grid.Row="4" Grid.ColumnSpan="8" Grid.RowSpan="6" Margin="10 0 15 0" >
+            <Grid Grid.Row="2" Grid.ColumnSpan="8" Grid.RowSpan="5" Margin="10 0 15 0" >
 
                 <StackPanel>
                     <!-- NAV -->
-                    <TextBlock  Background="White" Height="36" VerticalAlignment="Center">
-                        <Grid HorizontalAlignment="Stretch">
+                    <DockPanel  Background="White" Height="36" VerticalAlignment="Center">
+                        <Grid >
                             <TextBlock 
                             Margin="10, 10, 10, 10" 
                             FontSize="12"
@@ -235,188 +221,191 @@
                         >
                                 <Bold>Best Selling Products</Bold>
                             </TextBlock>
-                            
-                            <TextBlock 
-                            Margin="320, 10, 10, 10" 
+
+                            <TextBlock  VerticalAlignment="Center"
+                            HorizontalAlignment="Right"
                             FontSize="12"
                             Foreground="#033270"
                             Opacity="0.69"
-                            HorizontalAlignment="Right"
                         >
                                 <Bold Foreground="#033270">SORT BY: </Bold>
                                 Today 
                                 <Image Width="14" Source="./img/arrow.png"></Image>
                             </TextBlock>
                         </Grid>
-                        
-                        
-                    </TextBlock>
+
+
+                    </DockPanel>
 
                     <TextBlock Height="2" Background="#ccc"></TextBlock>
                     <!-- LINE -->
 
                     <!-- PRODUCTS -->
-                    <TextBlock Background="white" Height="45">
-                        <StackPanel Orientation="Horizontal">
-                            <Image Margin="10, 10, 10, 10" Width="35" Source="./img/laptop.jpg"></Image>
-                            
-                            <StackPanel Margin="10, 10, 10, 10" HorizontalAlignment="Center" VerticalAlignment="Center">
-                                <TextBlock FontSize="12" Foreground="#033270"
+                    <DockPanel >
+                        <Image Margin="10, 10, 10, 10" Width="35" Source="./img/laptop.jpg"></Image>
+
+                        <StackPanel Margin="10, 10, 10, 10" HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <TextBlock FontSize="12" Foreground="#033270"
                                 ><Bold>Laptop MSI Modern 14 B11MOU 1028VN</Bold></TextBlock>
-                                <TextBlock FontSize="12"
+                            <TextBlock FontSize="12"
                                 >10,990,000 VND</TextBlock>
-                            </StackPanel> 
-                            
-                            <StackPanel Margin="40, 10, 10, 10" HorizontalAlignment="Center" VerticalAlignment="Center" >
+                        </StackPanel>
+
+                        <WrapPanel HorizontalAlignment="Right">
+                            <StackPanel HorizontalAlignment="Right" VerticalAlignment="Center" >
                                 <TextBlock FontSize="12" HorizontalAlignment="Center" Foreground="#033270"
                                 ><Bold>99</Bold></TextBlock>
                                 <TextBlock FontSize="12"
                                 >Orders</TextBlock>
                             </StackPanel >
-                            
-                            <StackPanel Margin="10, 10, 10, 10" HorizontalAlignment="Center" VerticalAlignment="Center">
+
+                            <StackPanel Margin="10" HorizontalAlignment="Right" VerticalAlignment="Center">
                                 <TextBlock FontSize="12" HorizontalAlignment="Center" Foreground="#033270"
                                 ><Bold>510</Bold></TextBlock>
                                 <TextBlock FontSize="12"
                                 >Stocks</TextBlock>
                             </StackPanel>
-                        </StackPanel>
-                    </TextBlock>
+                        </WrapPanel>
+
+                    </DockPanel>
                     <TextBlock Height="2" Background="#ccc"></TextBlock>
                     <!-- LINE -->
 
-                    <TextBlock Background="white" Height="45">
-                        <StackPanel Orientation="Horizontal">
-                            <Image Margin="10, 10, 10, 10" Width="35" Source="./img/laptop.jpg"></Image>
-                            
-                            <StackPanel Margin="10, 10, 10, 10" HorizontalAlignment="Center" VerticalAlignment="Center">
-                                <TextBlock FontSize="12" Foreground="#033270"
+                    <DockPanel>
+                        <Image Margin="10, 10, 10, 10" Width="35" Source="./img/laptop.jpg"></Image>
+
+                        <StackPanel Margin="10, 10, 10, 10" HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <TextBlock FontSize="12" Foreground="#033270"
                                 ><Bold>Laptop MSI Modern 14 B11MOU 1028VN</Bold></TextBlock>
-                                <TextBlock FontSize="12"
+                            <TextBlock FontSize="12"
                                 >10,990,000 VND</TextBlock>
-                            </StackPanel> 
-                            
-                            <StackPanel Margin="40, 10, 10, 10" HorizontalAlignment="Center" VerticalAlignment="Center" >
+                        </StackPanel>
+
+                        <WrapPanel HorizontalAlignment="Right">
+                            <StackPanel HorizontalAlignment="Right" VerticalAlignment="Center" >
                                 <TextBlock FontSize="12" HorizontalAlignment="Center" Foreground="#033270"
                                 ><Bold>99</Bold></TextBlock>
                                 <TextBlock FontSize="12"
                                 >Orders</TextBlock>
                             </StackPanel >
-                            
-                            <StackPanel Margin="10, 10, 10, 10" HorizontalAlignment="Center" VerticalAlignment="Center">
+
+                            <StackPanel Margin="10" HorizontalAlignment="Right" VerticalAlignment="Center">
                                 <TextBlock FontSize="12" HorizontalAlignment="Center" Foreground="#033270"
                                 ><Bold>510</Bold></TextBlock>
                                 <TextBlock FontSize="12"
                                 >Stocks</TextBlock>
                             </StackPanel>
-                        </StackPanel>
-                    </TextBlock>
+                        </WrapPanel>
+                    </DockPanel>
                     <TextBlock Height="2" Background="#ccc"></TextBlock>
                     <!-- LINE -->
 
-                    <TextBlock Background="white" Height="45">
-                        <StackPanel Orientation="Horizontal">
-                            <Image Margin="10, 10, 10, 10" Width="35" Source="./img/laptop.jpg"></Image>
-                            
-                            <StackPanel Margin="10, 10, 10, 10" HorizontalAlignment="Center" VerticalAlignment="Center">
-                                <TextBlock FontSize="12" Foreground="#033270"
+                    <DockPanel>
+                        <Image Margin="10, 10, 10, 10" Width="35" Source="./img/laptop.jpg"></Image>
+
+                        <StackPanel Margin="10, 10, 10, 10" HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <TextBlock FontSize="12" Foreground="#033270"
                                 ><Bold>Laptop MSI Modern 14 B11MOU 1028VN</Bold></TextBlock>
-                                <TextBlock FontSize="12"
+                            <TextBlock FontSize="12"
                                 >10,990,000 VND</TextBlock>
-                            </StackPanel> 
-                            
-                            <StackPanel Margin="40, 10, 10, 10" HorizontalAlignment="Center" VerticalAlignment="Center" >
+                        </StackPanel>
+
+                        <WrapPanel HorizontalAlignment="Right">
+                            <StackPanel HorizontalAlignment="Right" VerticalAlignment="Center" >
                                 <TextBlock FontSize="12" HorizontalAlignment="Center" Foreground="#033270"
                                 ><Bold>99</Bold></TextBlock>
                                 <TextBlock FontSize="12"
                                 >Orders</TextBlock>
                             </StackPanel >
-                            
-                            <StackPanel Margin="10, 10, 10, 10" HorizontalAlignment="Center" VerticalAlignment="Center">
+
+                            <StackPanel Margin="10" HorizontalAlignment="Right" VerticalAlignment="Center">
                                 <TextBlock FontSize="12" HorizontalAlignment="Center" Foreground="#033270"
                                 ><Bold>510</Bold></TextBlock>
                                 <TextBlock FontSize="12"
                                 >Stocks</TextBlock>
                             </StackPanel>
-                        </StackPanel>
-                    </TextBlock>
+                        </WrapPanel>
+                    </DockPanel>
+
                     <TextBlock Height="2" Background="#ccc"></TextBlock>
                     <!-- LINE -->
 
-                    <TextBlock Background="white" Height="45">
-                        <StackPanel Orientation="Horizontal">
-                            <Image Margin="10, 10, 10, 10" Width="35" Source="./img/laptop.jpg"></Image>
-                            
-                            <StackPanel Margin="10, 10, 10, 10" HorizontalAlignment="Center" VerticalAlignment="Center">
-                                <TextBlock FontSize="12" Foreground="#033270"
+                    <DockPanel>
+                        <Image Margin="10, 10, 10, 10" Width="35" Source="./img/laptop.jpg"></Image>
+
+                        <StackPanel Margin="10, 10, 10, 10" HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <TextBlock FontSize="12" Foreground="#033270"
                                 ><Bold>Laptop MSI Modern 14 B11MOU 1028VN</Bold></TextBlock>
-                                <TextBlock FontSize="12"
+                            <TextBlock FontSize="12"
                                 >10,990,000 VND</TextBlock>
-                            </StackPanel> 
-                            
-                            <StackPanel Margin="40, 10, 10, 10" HorizontalAlignment="Center" VerticalAlignment="Center" >
+                        </StackPanel>
+
+                        <WrapPanel HorizontalAlignment="Right">
+                            <StackPanel HorizontalAlignment="Right" VerticalAlignment="Center" >
                                 <TextBlock FontSize="12" HorizontalAlignment="Center" Foreground="#033270"
                                 ><Bold>99</Bold></TextBlock>
                                 <TextBlock FontSize="12"
                                 >Orders</TextBlock>
                             </StackPanel >
-                            
-                            <StackPanel Margin="10, 10, 10, 10" HorizontalAlignment="Center" VerticalAlignment="Center">
+
+                            <StackPanel Margin="10" HorizontalAlignment="Right" VerticalAlignment="Center">
                                 <TextBlock FontSize="12" HorizontalAlignment="Center" Foreground="#033270"
                                 ><Bold>510</Bold></TextBlock>
                                 <TextBlock FontSize="12"
                                 >Stocks</TextBlock>
                             </StackPanel>
-                        </StackPanel>
-                    </TextBlock>
+                        </WrapPanel>
+                    </DockPanel>
+
                     <TextBlock Height="2" Background="#ccc"></TextBlock>
                     <!-- LINE -->
+                    <DockPanel>
+                        <Image Margin="10, 10, 10, 10" Width="35" Source="./img/laptop.jpg"></Image>
 
-                    <TextBlock Background="white" Height="45">
-                        <StackPanel Orientation="Horizontal">
-                            <Image Margin="10, 10, 10, 10" Width="35" Source="./img/laptop.jpg"></Image>
-                            
-                            <StackPanel Margin="10, 10, 10, 10" HorizontalAlignment="Center" VerticalAlignment="Center">
-                                <TextBlock FontSize="12" Foreground="#033270"
+                        <StackPanel Margin="10, 10, 10, 10" HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <TextBlock FontSize="12" Foreground="#033270"
                                 ><Bold>Laptop MSI Modern 14 B11MOU 1028VN</Bold></TextBlock>
-                                <TextBlock FontSize="12"
+                            <TextBlock FontSize="12"
                                 >10,990,000 VND</TextBlock>
-                            </StackPanel> 
-                            
-                            <StackPanel Margin="40, 10, 10, 10" HorizontalAlignment="Center" VerticalAlignment="Center" >
+                        </StackPanel>
+
+                        <WrapPanel HorizontalAlignment="Right">
+                            <StackPanel HorizontalAlignment="Right" VerticalAlignment="Center" >
                                 <TextBlock FontSize="12" HorizontalAlignment="Center" Foreground="#033270"
                                 ><Bold>99</Bold></TextBlock>
                                 <TextBlock FontSize="12"
                                 >Orders</TextBlock>
                             </StackPanel >
-                            
-                            <StackPanel Margin="10, 10, 10, 10" HorizontalAlignment="Center" VerticalAlignment="Center">
+
+                            <StackPanel Margin="10" HorizontalAlignment="Right" VerticalAlignment="Center">
                                 <TextBlock FontSize="12" HorizontalAlignment="Center" Foreground="#033270"
                                 ><Bold>510</Bold></TextBlock>
                                 <TextBlock FontSize="12"
                                 >Stocks</TextBlock>
                             </StackPanel>
-                        </StackPanel>
-                    </TextBlock>
+                        </WrapPanel>
+                    </DockPanel>
+
                     <TextBlock Height="2" Background="#ccc"></TextBlock>
                     <!-- LINE -->
 
                     <!-- SHOWING-->
-                    <TextBlock  Background="White" Height="37">
-                        <Grid VerticalAlignment="Center" HorizontalAlignment="Center">
-                            <TextBlock 
-                            Margin="10, 12, 10, 10" 
+                </StackPanel>
+
+            </Grid>
+            <Grid VerticalAlignment="Center" Grid.Row="7" Grid.ColumnSpan="8" Margin="20">
+                <TextBlock 
                             FontSize="12"
                             Foreground="#033270"
                             Opacity="0.65"
-                            HorizontalAlignment="Left"
+                            HorizontalAlignment="Left" VerticalAlignment="Center"
                                 
                         >
                                 Showing <Bold>5</Bold> of <Bold>25</Bold> results
-                            </TextBlock>
-                            
-                            <TextBlock 
-                                Margin="320, 10, 10, 10" >
+                </TextBlock>
+
+                <TextBlock 
+                                HorizontalAlignment="Right">
                                 <StackPanel Orientation="Horizontal">
                                     <materialDesign:PackIcon Kind="ArrowLeftThick" Height="20" Width="25" Foreground="#1368AA"/>
                                     <materialDesign:PackIcon Kind="Numeric1BoxOutline" Height="20" Width="25" Foreground="#1368AA"/>
@@ -424,31 +413,26 @@
                                     <materialDesign:PackIcon Kind="Numeric3BoxOutline" Height="20" Width="25"/>
                                     <materialDesign:PackIcon Kind="ArrowRightThick" Height="20" Width="25" Foreground="#1368AA"/>
                                 </StackPanel>
-                            </TextBlock>
-                        </Grid>
-                        
-                        
-                    </TextBlock>
-
-                </StackPanel>
+                </TextBlock>
 
             </Grid>
 
 
 
 
+
             <!-- CALENDAR - MAP -->
-            <Grid  Grid.Column="10" Grid.Row="2" Grid.ColumnSpan="2" Grid.RowSpan="9" Margin="5, -20, 5, 5">
+            <Grid  Grid.Column="8"  Grid.ColumnSpan="2" Grid.RowSpan="8" Margin="10">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="1*"></RowDefinition>
                         <RowDefinition Height="2*"></RowDefinition>
                     </Grid.RowDefinitions>
 
-                    <Image Grid.Row="0" VerticalAlignment="Center"
+                    <Image Grid.Row="0" VerticalAlignment="Top"
                         Source="./img/calendar.png" />
                     <Image 
-                        Source="./img/map4.png" Margin="0,91,0,4" Grid.RowSpan="2">
+                        Source="./img/map4.png" VerticalAlignment="Center" Grid.RowSpan="2" Margin="0 0 0 0">
                         <Image.Effect>
                             <DropShadowEffect Direction="0" Color="#FFB6C2CB" ShadowDepth="2" BlurRadius="3" />
                         </Image.Effect>
@@ -458,4 +442,4 @@
             </Grid>
         </Grid>
     </Grid>
-</Window>
+</Page>

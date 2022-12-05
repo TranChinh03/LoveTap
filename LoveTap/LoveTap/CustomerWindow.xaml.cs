@@ -17,7 +17,7 @@ namespace LoveTap
     /// <summary>
     /// Interaction logic for CustomerWindow.xaml
     /// </summary>
-    public partial class CustomerWindow : Window
+    public partial class CustomerWindow : Page
     {
         public CustomerWindow()
         {

@@ -9,83 +9,32 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Media;
 
 namespace LoveTap.ViewModel
 {
     public class MainViewModel : BaseViewModel
     {
-
-        //public bool IsLoaded = false;
-            //if (!IsLoaded)
-            //{
-            //    //HomeScreen home = new HomeScreen();
-            //    //home.ShowDialog();
-            //    //HomePersonal homePersonal = new HomePersonal();
-            //    //homePersonal.ShowDialog();
-            //    //HomeProfileEdit homeProfileEdit = new HomeProfileEdit();
-            //    //homeProfileEdit.ShowDialog();
-            //    //LoginWindow loginWindow = new LoginWindow();
-            //    //loginWindow.ShowDialog();
-
-            //    //GoodsWindow goodsWindow = new GoodsWindow();
-            //    //goodsWindow.ShowDialog();
-
-            //    EmployeeWindow employeeWindow = new EmployeeWindow();
-            //    employeeWindow.ShowDialog();
-
-            //    //GoodsWindow goodsWindow = new GoodsWindow();   
-            //    //goodsWindow.ShowDialog();
-            //    IsLoaded = true;
-            //}
-
-        //    public ICommand CloseLogin { get; set; }
-        //public ICommand MinimizeLogin { get; set; }
-        //public ICommand MoveWindow { get; set; }
+        public string TabName;
         public ICommand GetIdTab { get; set; }
+
         public ICommand SwitchTab { get; set; }
         public ICommand TenDangNhap_Loaded { get; set; }
         public ICommand Quyen_Loaded { get; set; }
         public ICommand LogOutCommand { get; set; }
-        //private NGUOIDUNG _User;
-        //public NGUOIDUNG User { get => _User; set { _User = value; OnPropertyChanged(); } }
         private Visibility _SetQuanLy;
         public Visibility SetQuanLy { get => _SetQuanLy; set { _SetQuanLy = value; OnPropertyChanged(); } }
         public string Name;
         private string _Ava;
         public string Ava { get => _Ava; set { _Ava = value; OnPropertyChanged(); } }
         public ICommand Loadwd { get; set; }
-        //public MainViewModel()
-        //{
-        //    Loadwd = new RelayCommand<MainWindow>((p) => true, (p) => _Loadwd(p));
-        //    CloseLogin = new RelayCommand<MainWindow>((p) => true, (p) => Close());
-        //    MinimizeLogin = new RelayCommand<MainWindow>((p) => true, (p) => Minimize(p));
-        //    MoveWindow = new RelayCommand<MainWindow>((p) => true, (p) => moveWindow(p));
-        //    GetIdTab = new RelayCommand<RadioButton>((p) => true, (p) => Name = p.Uid);
-        //    SwitchTab = new RelayCommand<MainWindow>((p) => true, (p) => switchtab(p));
-        //    TenDangNhap_Loaded = new RelayCommand<MainWindow>((p) => true, (p) => LoadTenND(p));
-        //    Quyen_Loaded = new RelayCommand<MainWindow>((p) => true, (p) => LoadQuyen(p));
-        //    LogOutCommand = new RelayCommand<MainWindow>((p) => { return true; }, (p) => LogOut(p));
-        //}
-        //void _Loadwd(MainWindow p)
-        //{
-        //    if (LoginViewModel.IsLogin)
-        //    {
-        //        string a = Const.TenDangNhap;
-        //        User = DataProvider.Ins.DB.NGUOIDUNGs.Where(x => x.USERNAME == a).FirstOrDefault();
-        //        Const.ND = User;
-        //        SetQuanLy = User.QTV ? Visibility.Visible : Visibility.Collapsed;
-        //        Const.Admin = User.QTV;
-        //        Ava = User.AVA;
-        //        LoadTenND(p);
-        //    }
-        //}
-
         public bool IsLoaded = false;
-        public ICommand LoadedHomeCommand { get; set; }
+        public ICommand LoadMainWd { get; set; }
         public MainViewModel()
         {
-
-            LoadedHomeCommand = new RelayCommand<Window>((p) => { return true; },(p)=> {
+            
+            LoadMainWd = new RelayCommand<Window>((p) => { return true; }, (p) =>
+            {
                 IsLoaded = true;
                 if (p == null)
                     return;
@@ -95,7 +44,7 @@ namespace LoveTap.ViewModel
 
                 if (loginWindow.DataContext == null)
                     return;
-                var loginVM=loginWindow.DataContext as LoginViewModel;
+                var loginVM = loginWindow.DataContext as LoginViewModel;
                 if (loginVM.IsLogin)
                 {
                     p.Show();
@@ -106,7 +55,184 @@ namespace LoveTap.ViewModel
                 }
             });
 
-            //LoadedHomeCommand = new RelayCommand<object>((p) => { return true; }, (p) => { HomeWindow homeWindow = new HomeWindow(); homeWindow.ShowDialog(); });
+            GetIdTab = new RelayCommand<Button>((p) => true, (p) => Name = p.Uid);
+            SwitchTab = new RelayCommand<MainWindow>((p) => true, (p) => switchtab(p));
         }
+
+        void switchtab(MainWindow p)
+        {
+            int index = int.Parse(Name);
+            switch (index)
+            {
+                case 0:
+                    {
+                        p.Main.NavigationService.Navigate(new HomeScreen());
+                        p.Tabtxbl.Text = "Home";
+                        HomeCheck();
+                        GoodsUncheck();
+                        OrdersUncheck();
+                        CustomerUncheck();
+                        StatisticUncheck();
+                        EmployeeUncheck();
+                        break;
+                    }
+                case 1:
+                    {
+                        p.Tabtxbl.Text = "Goods";
+                        HomeUnCheck();
+                        GoodsCheck();
+                        OrdersUncheck();
+                        CustomerUncheck();
+                        StatisticUncheck();
+                        EmployeeUncheck();
+                        p.Main.NavigationService.Navigate(new GoodsWindow());
+                        break;
+                    }
+                case 2:
+                    {
+                        p.Tabtxbl.Text = "Orders";
+                        HomeUnCheck();
+                        GoodsUncheck();
+                        OrdersCheck();
+                        CustomerUncheck();
+                        StatisticUncheck();
+                        EmployeeUncheck();
+                        p.Main.NavigationService.Navigate(new OrdersWindow());
+                        break;
+                    }
+                case 3:
+                    {
+                        p.Tabtxbl.Text = "Customer";
+                        HomeUnCheck();
+                        GoodsUncheck();
+                        OrdersUncheck();
+                        CustomerCheck();
+                        StatisticUncheck();
+                        EmployeeUncheck();
+                        p.Main.NavigationService.Navigate(new CustomerWindow());
+                        break;
+                    }
+                case 4:
+                    {
+                        p.Tabtxbl.Text = "Statistic";
+                        HomeUnCheck();
+                        GoodsUncheck();
+                        OrdersUncheck();
+                        CustomerUncheck();
+                        StatisticCheck();
+                        EmployeeUncheck(); p.Main.NavigationService.Navigate(new SalesStatisticWindow());
+                        break;
+                    }
+                case 5:
+                    {
+                        p.Tabtxbl.Text = "Employee";
+                        HomeUnCheck();
+                        GoodsUncheck();
+                        OrdersUncheck();
+                        CustomerUncheck();
+                        StatisticUncheck();
+                        EmployeeCheck(); p.Main.NavigationService.Navigate(new EmployeeWindow());
+                        break;
+                    }
+                //case 6:
+                //    {
+                //        _Loadwd(p);
+                //        p.Main.NavigationService.Navigate(new QLNVView());
+                //        break;
+                //    }
+                //case 7:
+                //    {
+                //        _Loadwd(p);
+                //        p.Main.NavigationService.Navigate(new SettingView());
+                //        break;
+                //    }
+                default:
+                    {
+                        break;
+                    }
+            }
+
+            void HomeCheck()
+            {
+                p.homeTbl.Foreground = Brushes.White;
+                p.homeImg1.Visibility = Visibility.Collapsed;
+                p.homeImg2.Visibility = Visibility.Visible;
+            }
+
+            void HomeUnCheck()
+            {
+                p.homeTbl.Foreground = new SolidColorBrush(Color.FromRgb(121, 167, 203));
+                p.homeImg1.Visibility = Visibility.Visible;
+                p.homeImg2.Visibility = Visibility.Collapsed;
+            }
+
+            void GoodsCheck()
+            {
+                p.goodsTbl.Foreground = Brushes.White;
+                p.goodsImg1.Visibility = Visibility.Collapsed;
+                p.goodsImg2.Visibility = Visibility.Visible;
+            }
+
+            void GoodsUncheck()
+            {
+                p.goodsTbl.Foreground = new SolidColorBrush(Color.FromRgb(121, 167, 203));
+                p.goodsImg1.Visibility = Visibility.Visible;
+                p.goodsImg2.Visibility = Visibility.Collapsed;
+            }
+
+            void OrdersCheck()
+            {
+                p.ordersTbl.Foreground = Brushes.White;
+                p.ordersImg1.Visibility = Visibility.Collapsed;
+                p.ordersImg2.Visibility = Visibility.Visible;
+            }
+
+            void OrdersUncheck()
+            {
+                p.ordersTbl.Foreground = new SolidColorBrush(Color.FromRgb(121, 167, 203));
+                p.ordersImg1.Visibility = Visibility.Visible;
+                p.ordersImg2.Visibility = Visibility.Collapsed;
+            }
+            void CustomerCheck()
+            {
+                p.customerTbl.Foreground = Brushes.White;
+                p.customerImg1.Visibility = Visibility.Collapsed;
+                p.customerImg2.Visibility = Visibility.Visible;
+            }
+
+            void CustomerUncheck()
+            {
+                p.customerTbl.Foreground = new SolidColorBrush(Color.FromRgb(121, 167, 203));
+                p.customerImg1.Visibility = Visibility.Visible;
+                p.customerImg2.Visibility = Visibility.Collapsed;
+            }
+            void StatisticCheck()
+            {
+                p.statisticTbl.Foreground = Brushes.White;
+                p.statisticImg1.Visibility = Visibility.Collapsed;
+                p.statisticImg2.Visibility = Visibility.Visible;
+            }
+
+            void StatisticUncheck()
+            {
+                p.statisticTbl.Foreground = new SolidColorBrush(Color.FromRgb(121, 167, 203));
+                p.statisticImg1.Visibility = Visibility.Visible;
+                p.statisticImg2.Visibility = Visibility.Collapsed;
+            }
+
+            void EmployeeCheck()
+            {
+                p.employeeTbl.Foreground = Brushes.White;
+                p.employeeImg1.Visibility = Visibility.Collapsed;
+                p.employeeImg2.Visibility = Visibility.Visible;
+            }
+            void EmployeeUncheck()
+            {
+                p.employeeTbl.Foreground = new SolidColorBrush(Color.FromRgb(121, 167, 203));
+                p.employeeImg1.Visibility = Visibility.Visible;
+                p.employeeImg2.Visibility = Visibility.Collapsed;
+            }
+        }
+
     }
 }

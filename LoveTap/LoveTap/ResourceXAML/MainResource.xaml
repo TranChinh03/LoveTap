@@ -6,6 +6,7 @@
     <viewmodel:LoginViewModel x:Key="LoginVM"></viewmodel:LoginViewModel>
     <viewmodel:GoodsViewModel x:Key="GoodsVM"></viewmodel:GoodsViewModel>
     <viewmodel:EmployeeViewModel x:Key="EmployeeVM"></viewmodel:EmployeeViewModel>
-    <viewmodel:menuBarUC x:Key="menuBarVM"></viewmodel:menuBarUC>
+    <viewmodel:MenuBarUC x:Key="MenuBarVM"></viewmodel:MenuBarUC>
     <viewmodel:CustomerViewModel x:Key="CustomerVM"></viewmodel:CustomerViewModel>
+    <viewmodel:HomeViewModel x:Key="HomeVM"></viewmodel:HomeViewModel>
 </ResourceDictionary>
