@@ -173,9 +173,9 @@ namespace LoveTap.UserControlCustom
             //CustomerUncheck();
             //StatisticUncheck();
             //EmployeeUncheck();
-            HomeWindow homeWd = new HomeWindow();
-            homeWd.Show();
-            Window.GetWindow(this).Close();
+            //HomeWindow homeWd = new HomeWindow();
+            //homeWd.Show();
+            //Window.GetWindow(this).Close();
 
         }
 
@@ -187,9 +187,9 @@ namespace LoveTap.UserControlCustom
             //CustomerUncheck();
             //StatisticUncheck();
             //EmployeeUncheck();
-            GoodsWindow goodWd = new GoodsWindow();
-            goodWd.Show();
-            Window.GetWindow(this).Close();
+            //GoodsWindow goodWd = new GoodsWindow();
+            //goodWd.Show();
+            //Window.GetWindow(this).Close();
         }
 
         private void Orders_Click(object sender, RoutedEventArgs e)
@@ -200,18 +200,18 @@ namespace LoveTap.UserControlCustom
             //CustomerUncheck();
             //StatisticUncheck();
             //EmployeeUncheck();
-            OrdersWindow orderWd = new OrdersWindow();
-            orderWd.Show();
-            Window.GetWindow(this).Close();
+            //OrdersWindow orderWd = new OrdersWindow();
+            //orderWd.Show();
+            //Window.GetWindow(this).Close();
 
         }
 
         private void Customer_Click(object sender, RoutedEventArgs e)
         {
            
-            CustomerWindow customerWd = new CustomerWindow();
-            customerWd.Show();
-            Window.GetWindow(this).Close();
+            //CustomerWindow customerWd = new CustomerWindow();
+            //customerWd.Show();
+            //Window.GetWindow(this).Close();
             //HomeUncheck();
             //GoodsUncheck();
             //OrdersUncheck();
@@ -228,17 +228,17 @@ namespace LoveTap.UserControlCustom
             //CustomerUncheck();
             //StatisticCheck();
             //EmployeeUncheck();
-            SalesStatisticWindow statisticWd = new SalesStatisticWindow();
-            statisticWd.Show();
-            Window.GetWindow(this).Close();
+            //SalesStatisticWindow statisticWd = new SalesStatisticWindow();
+            //statisticWd.Show();
+            //Window.GetWindow(this).Close();
 
         }
         private void Employee_Click(object sender, RoutedEventArgs e)
         {
            
-            EmployeeWindow employeeWd = new EmployeeWindow();
-            employeeWd.Show();
-            Window.GetWindow(this).Close();
+            //EmployeeWindow employeeWd = new EmployeeWindow();
+            //employeeWd.Show();
+            //Window.GetWindow(this).Close();
             //HomeUncheck();
             //GoodsUncheck();
             //OrdersUncheck();
