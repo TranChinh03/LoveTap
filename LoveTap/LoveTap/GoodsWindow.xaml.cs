@@ -17,7 +17,7 @@ namespace LoveTap
     /// <summary>
     /// Interaction logic for GoodsWindow.xaml
     /// </summary>
-    public partial class GoodsWindow : Window
+    public partial class GoodsWindow : Page
     {
         public GoodsWindow()
         {

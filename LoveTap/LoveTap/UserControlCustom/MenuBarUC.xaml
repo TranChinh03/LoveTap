@@ -7,7 +7,7 @@
              xmlns:local="clr-namespace:LoveTap.UserControlCustom"
              mc:Ignorable="d" 
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-             DataContext="{StaticResource menuBarVM}">
+             DataContext="{StaticResource MenuBarVM}" Name="menuBarUC">
     
     
     <Grid Background="{StaticResource Catalina Blue}">
@@ -57,12 +57,26 @@
                 </Grid>
             </Button>
 
-            <Button Padding="0" Background="Transparent" BorderBrush="Transparent" Click="Customer_Click" HorizontalContentAlignment="Left" Uid="3" >
+            <Button Padding="0" Background="Transparent" 
+                    BorderBrush="Transparent" 
+                    HorizontalContentAlignment="Left" 
+                    Uid="3" 
+                    x:Name="customerTab">
                 <Grid VerticalAlignment="Center">
                     <Image x:Name="customerImg1" Source="../img/customer.png" Width="13" Height="13" HorizontalAlignment="Left"/>
                     <Image x:Name="customerImg2" Visibility="Hidden" Source="../img/customerClick.png" Width="13" Height="13" HorizontalAlignment="Left"/>
                     <TextBlock x:Name="customerTbl" Text="Customer" Margin="17 0 0 0" FontSize="13" Foreground="#79A7CB" HorizontalAlignment="Left"></TextBlock>
                 </Grid>
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="Click">
+                        <i:InvokeCommandAction Command="{Binding SwitchTab}"
+                                                           CommandParameter="{Binding ElementName=menuBarUC}"></i:InvokeCommandAction>
+                    </i:EventTrigger>
+                    <i:EventTrigger EventName="MouseMove">
+                        <i:InvokeCommandAction Command="{Binding GetIdTab}"
+                                                           CommandParameter="{Binding ElementName=customerTab}"></i:InvokeCommandAction>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
             </Button>
 
             <Button Padding="0" Background="Transparent" BorderBrush="Transparent" Click="Statistic_Click" HorizontalContentAlignment="Left" Uid="4">
@@ -73,22 +87,13 @@
                 </Grid>
             </Button>
 
-            <Button Padding="0" Background="Transparent" BorderBrush="Transparent" Click="Employee_Click" HorizontalContentAlignment="Left" Uid="5">
+            <Button Padding="0" Background="Transparent" BorderBrush="Transparent"  HorizontalContentAlignment="Left" Uid="5">
                 <Grid VerticalAlignment="Center">
                     <Image x:Name="employeeImg1" Source="../img/employee.png" Width="13" Height="13" HorizontalAlignment="Left"/>
                     <Image x:Name="employeeImg2" Visibility="Hidden" Source="../img/employeeClick.png" Width="13" Height="13" HorizontalAlignment="Left"/>
                     <TextBlock x:Name="employeeTbl" Text="Employee" Margin="17 0 0 0" FontSize="13" Foreground="#79A7CB" HorizontalAlignment="Left"></TextBlock>
                 </Grid>
-                <i:Interaction.Triggers>
-                    <i:EventTrigger EventName="Click">
-                        <i:InvokeCommandAction Command="{Binding SwitchTab}"
-                                                       CommandParameter="{Binding ElementName=Mainwd}"></i:InvokeCommandAction>
-                    </i:EventTrigger>
-                    <i:EventTrigger EventName="MouseMove">
-                        <i:InvokeCommandAction Command="{Binding GetIdTab}"
-                                                       CommandParameter="{Binding ElementName=btnHome}"></i:InvokeCommandAction>
-                    </i:EventTrigger>
-                </i:Interaction.Triggers>
+                
             </Button>
         </StackPanel>
     </Grid>

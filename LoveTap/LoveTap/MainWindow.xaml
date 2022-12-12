@@ -20,14 +20,15 @@
         WindowStartupLocation="CenterScreen"
         WindowStyle="None"
         Title="EmployeeWindow" Height="550" Width="800"
-        DataContext="{StaticResource MainVM}">
+        DataContext="{StaticResource MainVM}" Name="mainWindow"
+>
 
-    <i:Interaction.Triggers>
+    <!--<i:Interaction.Triggers>
         <i:EventTrigger EventName="Loaded">
-            <i:InvokeCommandAction Command="{Binding Loadwd}"
-                                                       CommandParameter="{Binding ElementName=Mainwd}"></i:InvokeCommandAction>
+            <i:InvokeCommandAction Command="{Binding LoadMainWd}"
+                                                       CommandParameter="{Binding ElementName=mainWindow}"></i:InvokeCommandAction>
         </i:EventTrigger>
-    </i:Interaction.Triggers>
+    </i:Interaction.Triggers>-->
 
     <Grid Background="WhiteSmoke">
         <Grid.RowDefinitions>
@@ -62,11 +63,190 @@
         <!--Control Bar-->
         <uc:ControlBarUC Grid.Row="0" Grid.ColumnSpan="12"/>
 
-        <!--Status Bar - MenuBar -->
-        <uc:StatusBarUC
-                Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="10" x:Name="Home"/>
+        <!--Status Bar -->
+        <Grid Background= "White" Grid.Row="1" Grid.ColumnSpan="10" Grid.Column="2">
+            <DockPanel>
+                <DockPanel DockPanel.Dock="Left">
+                    <TextBlock  x:Name="Tabtxbl" Width="100" DockPanel.Dock="Left" Text="{Binding TabName}" Foreground="#033270" FontSize="20" FontWeight="Bold" Margin="10 0 0 0" VerticalAlignment="Center"
+                           HorizontalAlignment="Center">Home</TextBlock>
+                    <Image Source="/img/horizontalLine.png" Height ="40" Margin="10 0 0 0"></Image>
+                </DockPanel>
+                <DockPanel DockPanel.Dock="Left" Margin="0 5 0 0">
+                    <TextBlock DockPanel.Dock="Top" Text="Have a good day, Xuân Thảo!" FontSize="15" Foreground="#033270" FontWeight="Bold" Margin="10 0 0 0"></TextBlock>
+                    <TextBlock DockPanel.Dock="Bottom" Text="Here's what's happening with your store today"  Margin="10 0 0 0" Foreground ="#033270" FontSize="15" FontWeight="Light"></TextBlock>
+                </DockPanel>
+                <DockPanel DockPanel.Dock="Right">
+                    <Button Margin="50 0 0 0" Padding="0" BorderBrush="Transparent" Background="Transparent">
+                        <Grid>
+                            <Image Source="/img/avatar.png" HorizontalAlignment="Left"></Image>
+                            <TextBlock Text="Xuân Thảo" HorizontalAlignment="Left"  Margin="40 0 0 0" Foreground="#033270" FontWeight="Bold"></TextBlock>
+                            <TextBlock Text="Staff"  HorizontalAlignment="Left"  Margin="40 15 0 0" Foreground="#033270" FontWeight="Light"></TextBlock>
+                        </Grid>
+                    </Button>
+                </DockPanel>
+            </DockPanel>
+        </Grid>
 
-        <uc:MenuBarUC x:Uid="0" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Grid.RowSpan="11"/>
+        <!--Menu Bar-->
+        <Grid Background="{StaticResource Catalina Blue}" Grid.RowSpan="11"  Grid.ColumnSpan="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+
+            <!--Logo Lovetap-->
+            <Image
+            Margin="10 40 10 20"
+            Grid.Row="0" Source="/img/LoveTap.png" RenderTransformOrigin="0.5,0.5" >
+                <Image.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform ScaleX="0.85" ScaleY="0.85"/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Image.RenderTransform>
+            </Image>
+
+            <!--Menu Tab-->
+            <StackPanel Grid.Row="1"  Margin="10"
+            IsEnabled="{Binding IsChecked, ElementName=EnableListBox}" >
+                <Button  x:Name="homeTab" Padding="0" Background="Transparent" BorderBrush="Transparent"  HorizontalContentAlignment="Left" Uid="0" BorderThickness="0,0,0,0"  >
+                    <StackPanel  VerticalAlignment="Center" Orientation="Horizontal" HorizontalAlignment="Left" Margin="10 0">
+                        <Image x:Name="homeImg1" Visibility="Collapsed" Source="/img/home.png" Width="13" Height="13" HorizontalAlignment="Left"/>
+                        <Image x:Name="homeImg2" Visibility="Visible"  Source="/img/homeClick.png" Width="13" Height="13" />
+                        <TextBlock x:Name="homeTbl" Text="Home"  FontSize="13" Foreground="White" HorizontalAlignment="Left" Margin="10 0"></TextBlock>
+                    </StackPanel>
+                    
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="Click">
+                            <i:InvokeCommandAction Command="{Binding SwitchTab}"
+                                                       CommandParameter="{Binding ElementName=mainWindow}"></i:InvokeCommandAction>
+                        </i:EventTrigger>
+                        <i:EventTrigger EventName="MouseMove">
+                            <i:InvokeCommandAction Command="{Binding GetIdTab}"
+                                                       CommandParameter="{Binding ElementName=homeTab}"></i:InvokeCommandAction>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+
+                </Button>
+
+                <Button x:Name="goodTab" Padding="0" Background="Transparent" BorderBrush="Transparent" HorizontalContentAlignment="Left" Uid="1"  >
+                    <StackPanel  VerticalAlignment="Center" Orientation="Horizontal" HorizontalAlignment="Left" Margin="10 0">
+                        <Image x:Name="goodsImg1" Source="/img/goods.png" Width="13" Height="13" HorizontalAlignment="Left"/>
+                        <Image x:Name="goodsImg2" Visibility="Collapsed" Source="/img/goodsClick.png" Width="13" Height="13" HorizontalAlignment="Left"/>
+                        <TextBlock x:Name="goodsTbl" Text="Goods" FontSize="13" Foreground="#79A7CB" HorizontalAlignment="Left" Margin="10 0"></TextBlock>
+                    </StackPanel>
+
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="Click">
+                            <i:InvokeCommandAction Command="{Binding SwitchTab}"
+                                                       CommandParameter="{Binding ElementName=mainWindow}"></i:InvokeCommandAction>
+                        </i:EventTrigger>
+                        <i:EventTrigger EventName="MouseMove">
+                            <i:InvokeCommandAction Command="{Binding GetIdTab}"
+                                                       CommandParameter="{Binding ElementName=goodTab}"></i:InvokeCommandAction>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+
+                </Button>
+
+                <Button x:Name="ordersTab" Padding="0" Background="Transparent" BorderBrush="Transparent"  HorizontalContentAlignment="Left" Uid="2"  >
+                    <StackPanel  VerticalAlignment="Center" Orientation="Horizontal" HorizontalAlignment="Left" Margin="10 0">
+                        <Image x:Name="ordersImg1" Source="/img/orders.png" Width="13" Height="13" HorizontalAlignment="Left"/>
+                        <Image x:Name="ordersImg2" Visibility="Collapsed" Source="/img/ordersClick.png" Width="13" Height="13" HorizontalAlignment="Left"/>
+                        <TextBlock x:Name="ordersTbl" Text="Orders" FontSize="13" Foreground="#79A7CB" HorizontalAlignment="Left" Margin="10 0"></TextBlock>
+                    </StackPanel>
+
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="Click">
+                            <i:InvokeCommandAction Command="{Binding SwitchTab}"
+                                                       CommandParameter="{Binding ElementName=mainWindow}"></i:InvokeCommandAction>
+                        </i:EventTrigger>
+                        <i:EventTrigger EventName="MouseMove">
+                            <i:InvokeCommandAction Command="{Binding GetIdTab}"
+                                                       CommandParameter="{Binding ElementName=ordersTab}"></i:InvokeCommandAction>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+
+                </Button>
+
+                <Button Padding="0" Background="Transparent" 
+                    BorderBrush="Transparent" 
+                    HorizontalContentAlignment="Left" 
+                    Uid="3"  
+                    x:Name="customerTab">
+                    <StackPanel  VerticalAlignment="Center" Orientation="Horizontal" HorizontalAlignment="Left" Margin="10 0">
+                        <Image x:Name="customerImg1" Source="/img/customer.png" Width="13" Height="13" HorizontalAlignment="Left"/>
+                        <Image x:Name="customerImg2" Visibility="Collapsed" Source="/img/customerClick.png" Width="13" Height="13" HorizontalAlignment="Left"/>
+                        <TextBlock x:Name="customerTbl" Text="Customer" FontSize="13" Foreground="#79A7CB" HorizontalAlignment="Left"  Margin="10 0"></TextBlock>
+                    </StackPanel>
+                    
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="Click">
+                            <i:InvokeCommandAction Command="{Binding SwitchTab}"
+                                                           CommandParameter="{Binding ElementName=mainWindow}"></i:InvokeCommandAction>
+                        </i:EventTrigger>
+                        <i:EventTrigger EventName="MouseMove">
+                            <i:InvokeCommandAction Command="{Binding GetIdTab}"
+                                                           CommandParameter="{Binding ElementName=customerTab}"></i:InvokeCommandAction>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </Button>
+
+                <Button x:Name="statisticTab" Padding="0" Background="Transparent" BorderBrush="Transparent" HorizontalContentAlignment="Left" Uid="4" >
+                    <StackPanel  VerticalAlignment="Center" Orientation="Horizontal" HorizontalAlignment="Left" Margin="10 0">
+                        <Image x:Name="statisticImg1" Source="/img/statistic.png" Width="13" Height="13" HorizontalAlignment="Left"/>
+                        <Image x:Name="statisticImg2" Visibility="Collapsed" Source="/img/statisticClick.png" Width="13" Height="13" HorizontalAlignment="Left"/>
+                        <TextBlock x:Name="statisticTbl" Text="Statistic" FontSize="13" Foreground="#79A7CB" HorizontalAlignment="Left"  Margin="10 0"></TextBlock>
+                    </StackPanel>
+
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="Click">
+                            <i:InvokeCommandAction Command="{Binding SwitchTab}"
+                                                       CommandParameter="{Binding ElementName=mainWindow}"></i:InvokeCommandAction>
+                        </i:EventTrigger>
+                        <i:EventTrigger EventName="MouseMove">
+                            <i:InvokeCommandAction Command="{Binding GetIdTab}"
+                                                       CommandParameter="{Binding ElementName=statisticTab}"></i:InvokeCommandAction>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+
+                </Button>
+
+                <Button x:Name="employeeTab" Padding="0" Background="Transparent" BorderBrush="Transparent"  HorizontalContentAlignment="Left" Uid="5" >
+                    <StackPanel  VerticalAlignment="Center" Orientation="Horizontal" HorizontalAlignment="Left" Margin="10 0">
+                        <Image x:Name="employeeImg1" Source="/img/employee.png" Width="13" Height="13" HorizontalAlignment="Left"/>
+                        <Image x:Name="employeeImg2" Visibility="Collapsed" Source="/img/employeeClick.png" Width="13" Height="13" HorizontalAlignment="Left"/>
+                        <TextBlock x:Name="employeeTbl" Text="Employee" FontSize="13" Foreground="#79A7CB" HorizontalAlignment="Left"  Margin="10 0"></TextBlock>
+                    </StackPanel>
+
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="Click">
+                            <i:InvokeCommandAction Command="{Binding SwitchTab}"
+                                                       CommandParameter="{Binding ElementName=mainWindow}"></i:InvokeCommandAction>
+                        </i:EventTrigger>
+                        <i:EventTrigger EventName="MouseMove">
+                            <i:InvokeCommandAction Command="{Binding GetIdTab}"
+                                                       CommandParameter="{Binding ElementName=employeeTab}"></i:InvokeCommandAction>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+
+                </Button>
+
+                <Button Padding="0" Background="Transparent" BorderBrush="Transparent" 
+                        HorizontalContentAlignment="Left" Uid="6" Margin="10 80 0 0">
+                    <Grid VerticalAlignment="Center">
+                        <TextBlock x:Name="logoutTbl" Text="Log out" Margin="17 0 0 0" FontSize="13" Foreground="#79A7CB" HorizontalAlignment="Left"></TextBlock>
+                        <Image x:Name="logoutImg1" Source="/img/employee.png" Width="13" Height="13" HorizontalAlignment="Left"/>
+                        <Image x:Name="logoutImg2" Visibility="Collapsed" Source="/img/employeeClick.png" Width="13" Height="13" HorizontalAlignment="Left" />
+                    </Grid>
+
+                </Button>
+
+            </StackPanel>
+        </Grid>
+
 
         <Frame x:Name="Main" DataContext="{StaticResource MainVM}" Source="Home.xaml" NavigationUIVisibility="Hidden" Grid.Row="2" Grid.Column="2" Grid.RowSpan="9" Grid.ColumnSpan="10" Background="Transparent"></Frame>
 

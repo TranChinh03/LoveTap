@@ -38,6 +38,8 @@ namespace LoveTap.ViewModel
             if (accCount > 0) 
             {
                 IsLogin = true;
+                //MainWindow mainWd = new MainWindow();
+                //mainWd.Show();
                 FrameworkElement window = GetWindowParent(p);
                 var w = (window as Window);
                 if (w != null)
