@@ -17,7 +17,8 @@
         WindowStartupLocation="CenterScreen"
         ResizeMode="NoResize"
         WindowStyle="None"
-        Title="Home" Height="450" Width="800">
+        Title="Home" Height="450" Width="800"
+    DataContext="{StaticResource HomeProfileEditVM}">
     <Grid Background="WhiteSmoke">
         <Grid.ColumnDefinitions>
             <ColumnDefinition></ColumnDefinition>
@@ -73,6 +74,7 @@
                     Content="Back"
                     FontSize="15"
                     IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" 
+                
                 />
 
             <Button
@@ -85,7 +87,7 @@
                     ToolTip="Resource name: MaterialDesignRaisedSecondaryLightButton"
                     Content="Next"
                     FontSize="15"
-                    IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" 
+                    IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" Command="{Binding EditCommand}" 
                 />
 
             <!--MAIN FORM-->
@@ -119,7 +121,8 @@
                                         BorderBrush="#79A7CB"
                                         MinWidth="200"
                                         Padding="10, 0, 0, 0" Grid.ColumnSpan="2" Width="279"
-                                        >Võ Xuân Thảo</TextBox>
+                                        Text="{Binding FullName}"
+                                        ></TextBox>
 
                     </Grid>
                     <Grid Margin="0, 58, 0, 0">
@@ -138,9 +141,14 @@
                                         BorderBrush="#79A7CB"
                                         MinWidth="200"
                                         Padding="10, 0, 0, 0" Grid.ColumnSpan="2" Width="279"
-                                        >dd/mm/yyyy</TextBox>
+                                        Text="{Binding Birthday}"
+                                        ></TextBox>
                     </Grid>
                     <Grid Margin="0, 86, 0, 0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="61*"/>
+                            <ColumnDefinition Width="19*"/>
+                        </Grid.ColumnDefinitions>
                         <TextBlock Margin="10,0,0,0" 
                                         FontSize="14"
                                         HorizontalAlignment="Left"
@@ -156,9 +164,14 @@
                                         BorderBrush="#79A7CB"
                                         MinWidth="200"
                                         Padding="10, 0, 0, 0" Grid.ColumnSpan="2" Width="279"
-                                        >0123456xxx</TextBox>
+                                        Text="{Binding PhoneNumber}"
+                                        ></TextBox>
                     </Grid>
                     <Grid Margin="0, 114, 0, 0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="187*"/>
+                            <ColumnDefinition Width="213*"/>
+                        </Grid.ColumnDefinitions>
                         <TextBlock Margin="10,0,0,0" 
                                         FontSize="14"
                                         HorizontalAlignment="Left"
@@ -174,7 +187,8 @@
                                         BorderBrush="#79A7CB"
                                         MinWidth="200"
                                         Padding="10, 0, 0, 0" Grid.ColumnSpan="2" Width="279"
-                                        >nhanvien1@gmail.com</TextBox>
+                                        Text="{Binding Email}"
+                                        ></TextBox>
                     </Grid>
                     <Grid Margin="0, 142, 0, 0">
                         <TextBlock Margin="10,0,0,0" 
@@ -192,7 +206,8 @@
                                         BorderBrush="#79A7CB"
                                         MinWidth="200"
                                         Padding="10, 0, 0, 0" Grid.ColumnSpan="2" Width="279"
-                                        >Linh Trung, Thủ Đức</TextBox>
+                                        Text="{Binding Address}"
+                                        ></TextBox>
                     </Grid>
 
 
@@ -223,7 +238,8 @@
                                         BorderBrush="#79A7CB"
                                         MinWidth="200"
                                         Padding="10, 0, 0, 0" Grid.ColumnSpan="2" Width="279"
-                                            >NV01</TextBox>
+                            Text="{Binding ID}"
+                                            ></TextBox>
 
                     </Grid>
                     <Grid Margin="0, 58, 0, 0">
@@ -242,7 +258,8 @@
                                         BorderBrush="#79A7CB"
                                         MinWidth="200"
                                         Padding="10, 0, 0, 0" Grid.ColumnSpan="2" Width="279"
-                                            >TP HCM</TextBox>
+                                 Text="{Binding Branch}"
+                                            ></TextBox>
                     </Grid>
                     <Grid Margin="0, 86, 0, 0">
                         <TextBlock Margin="10,0,0,0" 
@@ -260,7 +277,8 @@
                                         BorderBrush="#79A7CB"
                                         MinWidth="200"
                                         Padding="10, 0, 0, 0" Grid.ColumnSpan="2" Width="279"
-                                            >1.2</TextBox>
+                                 Text="{Binding CoefficientsSalary}"
+                                            ></TextBox>
                     </Grid>
                     <Grid Margin="0, 114, 0, 0">
                         <TextBlock Margin="10,0,0,0" 
@@ -278,7 +296,8 @@
                                         BorderBrush="#79A7CB"
                                         MinWidth="200"
                                         Padding="10, 0, 0, 0" Grid.ColumnSpan="2" Width="279"
-                                            >8 000 0000 VND</TextBox>
+                                 Text="{Binding BasicPay}"
+                                            ></TextBox>
                     </Grid>
                     <Grid Margin="0, 142, 0, 0">
                         <TextBlock Margin="10,0,0,0" 
@@ -296,7 +315,8 @@
                                         BorderBrush="#79A7CB"
                                         MinWidth="200"
                                         Padding="10, 0, 0, 0" Grid.ColumnSpan="2" Width="279"
-                                            >Nhân viên</TextBox>
+                                 Text="{Binding Role}"
+                                            ></TextBox>
                     </Grid>
 
 

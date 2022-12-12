@@ -15,7 +15,9 @@
         Background="{DynamicResource MaterialDesignPaper}"
         FontFamily="{DynamicResource MaterialDesignFont}"
         Name="ordersWindow"
+        DataContext="{StaticResource OrdersVM}"
         Title="OrdersWindow" Height="466.2" Width="666.666666666667">
+
     <Grid Background="WhiteSmoke">
         <Grid.ColumnDefinitions>
             <ColumnDefinition></ColumnDefinition>
@@ -145,7 +147,8 @@
                            AutoGenerateColumns="False"
                            CanUserAddRows="False"
                            HeadersVisibility="All"
-                           Background="Transparent" HorizontalContentAlignment="Right" VerticalContentAlignment="Stretch">
+                           Background="Transparent" HorizontalContentAlignment="Right" VerticalContentAlignment="Stretch"
+                            ItemsSource="{Binding OrdersList}">
             <!--<DataGrid.Resources>
                     -->
             <!--<domain:BindingProxy
@@ -179,101 +182,37 @@
       Binding="{Binding MAHD}"
       EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" 
       ElementStyle="{StaticResource MaterialDesignDataGridTextColumnStyle}"
-                        Width="115"
+                        Width="85"
       Header="ID" Foreground="{StaticResource Cyan Azure}" />
                 <!-- if you want to use the pop up style (MaterialDesignDataGridTextColumnPopupEditingStyle), you must use MaterialDataGridTextColumn -->
                 <materialDesign:DataGridTextColumn
-      Binding="{Binding MAKH}"
+      Binding="{Binding SDT}"
       EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}"
       ElementStyle="{StaticResource MaterialDesignDataGridTextColumnStyle}"
-      Header="Customer" Width="115">
+      Header="Customer Phone Number" Width="200">
                 </materialDesign:DataGridTextColumn>
                 <!-- set a max length to get an indicator in the editor -->
-                <DataGridTextColumn
-      EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}"
-      ElementStyle="{StaticResource MaterialDesignDataGridTextColumnStyle}"
-      Header="Address" Width="115">
-                    <DataGridTextColumn.Binding>
-                        <Binding
-          Path="Description">
-                            <Binding.ValidationRules>
-                                <!--<domain:NotEmptyValidationRule xmlns:domain="clr-namespace:MaterialDesignDemo.Domain" />-->
-                            </Binding.ValidationRules>
-                        </Binding>
-                    </DataGridTextColumn.Binding>
-                </DataGridTextColumn>
                 <materialDesign:DataGridTextColumn
-      Binding="{Binding Numeric}"
+      Binding="{Binding NGMUA}"
       EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}"
-      Header="Phone" Width="115">
-                    <DataGridTextColumn.HeaderStyle>
-                        <Style
-          TargetType="{x:Type DataGridColumnHeader}"
-          BasedOn="{StaticResource MaterialDesignDataGridColumnHeader}">
-                            <Setter
-            Property="ContentTemplate">
-                                <Setter.Value>
-                                    <DataTemplate>
-                                        <TextBlock
-                  Text="{Binding}"
-                  TextAlignment="Right"
-                  TextWrapping="Wrap" />
-                                    </DataTemplate>
-                                </Setter.Value>
-                            </Setter>
-                            <Setter
-            Property="HorizontalContentAlignment"
-            Value="Right" />
-                        </Style>
-                    </DataGridTextColumn.HeaderStyle>
-                    <DataGridTextColumn.ElementStyle>
-                        <Style
-          TargetType="{x:Type TextBlock}"
-          BasedOn="{StaticResource MaterialDesignDataGridTextColumnStyle}">
-                            <Setter
-            Property="HorizontalAlignment"
-            Value="Right" />
-                        </Style>
-                    </DataGridTextColumn.ElementStyle>
+      ElementStyle="{StaticResource MaterialDesignDataGridTextColumnStyle}"
+      Header="Purchase Date" Width="150">
                 </materialDesign:DataGridTextColumn>
-                <!-- use custom combo box column to get better combos. Use ItemsSourceBinding as your binding template to be applied to each combo -->
-                <materialDesign:DataGridComboBoxColumn
-      Header="Order"
-      IsEditable="True"
-      ItemsSourceBinding="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type DataGrid}}, Path=DataContext.Foods}"
-      SelectedValueBinding="{Binding Food}">
-                    <!--Setting the editing element style allows access to all of the combo box's properties
-                      <materialDesign:MaterialDataGridComboBoxColumn.EditingElementStyle>
-                          <Style TargetType="ComboBox" BasedOn="{StaticResource {ComponentResourceKey TypeInTargetAssembly={x:Type ComboBox}, ResourceId=MaterialDataGridComboBoxColumnEditingStyle}}" >
-                              <Setter Property="IsEditable" Value="True" />
-                          </Style>
-                      </materialDesign:MaterialDataGridComboBoxColumn.EditingElementStyle>
-          -->
-                </materialDesign:DataGridComboBoxColumn>
-                <materialDesign:DataGridComboBoxColumn
-      Header="Action"
-      ItemsSourceBinding="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type DataGrid}}, Path=DataContext.Files}"
-      SelectedValueBinding="{Binding Files}" />
-                <DataGridTemplateColumn
-      Header="Template Column">
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <!--DataType="{x:Type domain:SelectableViewModel}">-->
-                            <TextBlock
-            FontSize="14"
-            FontStyle="Italic"
-            Text="{Binding Name}" />
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                    <DataGridTemplateColumn.CellEditingTemplate>
-                        <DataTemplate>
-                            <!--DataType="{x:Type domain:SelectableViewModel}">-->
-                            <TextBox
-            Foreground="{DynamicResource SecondaryHueMidBrush}"
-            Text="{Binding Name}" />
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellEditingTemplate>
-                </DataGridTemplateColumn>
+
+                <materialDesign:DataGridTextColumn
+      Binding="{Binding TONGTIEN}"
+      EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}"
+      ElementStyle="{StaticResource MaterialDesignDataGridTextColumnStyle}"
+      Header="Total Price" Width="150">
+                </materialDesign:DataGridTextColumn>
+
+                <materialDesign:DataGridTextColumn
+      Binding="{Binding MANV}"
+      EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}"
+      ElementStyle="{StaticResource MaterialDesignDataGridTextColumnStyle}"
+      Header="Employee ID" Width="200">
+                </materialDesign:DataGridTextColumn>
+
             </DataGrid.Columns>
         </DataGrid>
 
