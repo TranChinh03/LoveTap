@@ -16,31 +16,35 @@ namespace LoveTap.ViewModel
     {
 
         //public bool IsLoaded = false;
-            //if (!IsLoaded)
-            //{
-            //    //HomeScreen home = new HomeScreen();
-            //    //home.ShowDialog();
-            //    //HomePersonal homePersonal = new HomePersonal();
-            //    //homePersonal.ShowDialog();
-            //    //HomeProfileEdit homeProfileEdit = new HomeProfileEdit();
-            //    //homeProfileEdit.ShowDialog();
-            //    //LoginWindow loginWindow = new LoginWindow();
-            //    //loginWindow.ShowDialog();
+        //if (!IsLoaded)
+        //{
+        //    //HomeScreen home = new HomeScreen();
+        //    //home.ShowDialog();
+        //    //HomePersonal homePersonal = new HomePersonal();
+        //    //homePersonal.ShowDialog();
+        //    //HomeProfileEdit homeProfileEdit = new HomeProfileEdit();
+        //    //homeProfileEdit.ShowDialog();
+        //    //LoginWindow loginWindow = new LoginWindow();
+        //    //loginWindow.ShowDialog();
 
-            //    //GoodsWindow goodsWindow = new GoodsWindow();
-            //    //goodsWindow.ShowDialog();
+        //    //GoodsWindow goodsWindow = new GoodsWindow();
+        //    //goodsWindow.ShowDialog();
 
-            //    EmployeeWindow employeeWindow = new EmployeeWindow();
-            //    employeeWindow.ShowDialog();
+        //    EmployeeWindow employeeWindow = new EmployeeWindow();
+        //    employeeWindow.ShowDialog();
 
-            //    //GoodsWindow goodsWindow = new GoodsWindow();   
-            //    //goodsWindow.ShowDialog();
-            //    IsLoaded = true;
-            //}
+        //    //GoodsWindow goodsWindow = new GoodsWindow();   
+        //    //goodsWindow.ShowDialog();
+        //    IsLoaded = true;
+        //}
 
         //    public ICommand CloseLogin { get; set; }
         //public ICommand MinimizeLogin { get; set; }
         //public ICommand MoveWindow { get; set; }
+
+
+
+
         public ICommand GetIdTab { get; set; }
         public ICommand SwitchTab { get; set; }
         public ICommand TenDangNhap_Loaded { get; set; }

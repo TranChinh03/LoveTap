@@ -34,11 +34,11 @@
         <StackPanel Grid.Row="1"  Margin="15"
             IsEnabled="{Binding IsChecked, ElementName=EnableListBox}" >
             <Button Padding="0" Background="Transparent" BorderBrush="Transparent" Click="Home_Click" HorizontalContentAlignment="Left" Uid="0" >
-                <StackPanel  VerticalAlignment="Center" Orientation="Horizontal" HorizontalAlignment="Left">
+                <Grid  VerticalAlignment="Center">
                     <Image x:Name="homeImg1" Source="../img/home.png" Width="13" Height="13" HorizontalAlignment="Left"/>
                     <Image Visibility="Hidden" x:Name="homeImg2" Source="../img/homeClick.png" Width="13" Height="13" HorizontalAlignment="Left"/>
-                    <TextBlock x:Name="homeTbl" Text="Home"  FontSize="13" Foreground="#79A7CB" HorizontalAlignment="Left"></TextBlock>
-                </StackPanel>
+                    <TextBlock x:Name="homeTbl" Text="Home"  FontSize="13" Foreground="#79A7CB" HorizontalAlignment="Left" Margin="17 0 0 0"></TextBlock>
+                </Grid>
             </Button>
 
             <Button Padding="0" Background="Transparent" BorderBrush="Transparent" Click="Goods_Click" HorizontalContentAlignment="Left" Uid="1" >
