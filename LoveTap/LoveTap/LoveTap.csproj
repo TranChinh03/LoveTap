@@ -488,6 +488,7 @@
     <Resource Include="img\categories.png" />
     <Resource Include="img\salesReport.png" />
     <Resource Include="img\goodsReport.png" />
+    <Resource Include="img\background1.png" />
     <Content Include="Model\Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Model1.edmx</DependentUpon>

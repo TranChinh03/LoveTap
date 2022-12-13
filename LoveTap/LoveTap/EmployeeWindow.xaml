@@ -83,6 +83,7 @@
                     Background="White" 
                     CornerRadius="5" 
                     Margin="10">
+    
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition >
@@ -174,7 +175,7 @@
 
                 <Border.Effect>
                     <DropShadowEffect BlurRadius="10" 
-                                      Color="Gray"/>
+                                      Color="Gray" Opacity="0.3"/>
                 </Border.Effect>
             </Border>
 
