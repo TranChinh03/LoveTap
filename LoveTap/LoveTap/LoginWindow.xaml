@@ -32,11 +32,12 @@
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition></ColumnDefinition>
-            <ColumnDefinition></ColumnDefinition>
-            <ColumnDefinition></ColumnDefinition>
-            <ColumnDefinition></ColumnDefinition>
-            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition Width="80*"></ColumnDefinition>
+            <ColumnDefinition Width="80*"></ColumnDefinition>
+            <ColumnDefinition Width="80*"></ColumnDefinition>
+            <ColumnDefinition Width="80*"></ColumnDefinition>
+            <ColumnDefinition Width="3*"></ColumnDefinition>
+            <ColumnDefinition Width="77*"/>
         </Grid.ColumnDefinitions>
 
 
@@ -44,7 +45,7 @@
             Source="img/imageBackground_2.png" 
             Grid.Row="0"
             Grid.RowSpan="5"
-            Grid.ColumnSpan="5"
+            Grid.ColumnSpan="6"
             Stretch="Fill" 
             Panel.ZIndex="0" RenderTransformOrigin="0.5,0.5">
             <Image.RenderTransform>
@@ -61,14 +62,14 @@
             Grid.Row="1"
             Source="img/LoveTap.png"/>
         <uc:ControlBarUC
-            Grid.Row="0" Grid.ColumnSpan="5" Loaded="ControlBarUC_Loaded"/>
+            Grid.Row="0" Grid.ColumnSpan="6" Loaded="ControlBarUC_Loaded"/>
         <!--<Image
             Source="/img/LoveTap.png"
             Grid.Row="1"
             Grid.Column="1"
             Grid.ColumnSpan="3" Margin="0,20,0,10"
             />-->
-        
+
         <!--Sign In-->
         <uc:LoginModelUC
             x:Name="LoginModel"
@@ -76,13 +77,12 @@
 
         </uc:LoginModelUC>
 
-        
+
 
         <TextBlock
             x:Name="LoginText"
             Grid.Row="7"
-            Grid.Column="1"
-            Grid.ColumnSpan="3"
+            Grid.Column="2"
             HorizontalAlignment="Center"
             VerticalAlignment="Top"
             FontSize="25"
@@ -106,7 +106,7 @@
                 </Button.RenderTransform>
             </Button>
         </TextBlock>
-        
+
         <!--Sign Up-->
         <uc:SignUpModelUC
             x:Name="SignUpModel"
@@ -121,8 +121,7 @@
         <TextBlock
             x:Name="SignUpText"
             Grid.Row="7"
-            Grid.Column="1"
-            Grid.ColumnSpan="3"
+            Grid.Column="2"
             HorizontalAlignment="Center"
             VerticalAlignment="Top"
             FontSize="25"
@@ -161,8 +160,7 @@
         <TextBlock
             x:Name="CreatePasswordText"
             Grid.Row="7"
-            Grid.Column="1"
-            Grid.ColumnSpan="3"
+            Grid.Column="2"
             HorizontalAlignment="Center"
             VerticalAlignment="Top"
             FontSize="25"

@@ -226,6 +226,8 @@
     <Compile Include="ViewModel\LoginViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\MenuBarUC.cs" />
+    <Compile Include="ViewModel\ProfileUsrViewModel.cs" />
+    <Compile Include="ViewModel\UsrPro5EditViewModel.cs" />
     <Page Include="CustomerWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

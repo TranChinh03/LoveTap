@@ -9,4 +9,8 @@
     <viewmodel:MenuBarUC x:Key="MenuBarVM"></viewmodel:MenuBarUC>
     <viewmodel:CustomerViewModel x:Key="CustomerVM"></viewmodel:CustomerViewModel>
     <viewmodel:HomeViewModel x:Key="HomeVM"></viewmodel:HomeViewModel>
+    <viewmodel:ProfileUsrViewModel x:Key="ProfileUsrVM"></viewmodel:ProfileUsrViewModel>
+    <viewmodel:UsrPro5EditViewModel x:Key="UsrPro5VM"></viewmodel:UsrPro5EditViewModel>
+
+
 </ResourceDictionary>
