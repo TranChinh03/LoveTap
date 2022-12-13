@@ -223,6 +223,22 @@
                 </Style.Triggers>
             </Style>-->
 
+            <!--<Style x:Key="ProfileTrv" TargetType="TreeView">
+                <Style.Setters>
+                    <Setter  Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate>
+                                <Grid Margin="50 0 0 0" Height="50" Background="Transparent" >
+                                  
+                                    <TextBlock Text="Xuân Thảo"  Margin="60 10 0 0" Foreground="#033270" FontWeight="Bold"></TextBlock>
+                                    <TextBlock Text="Staff"    Margin="60 25 0 0" Foreground="#033270" FontWeight="Light"></TextBlock>
+                                </Grid>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style.Setters>
+            </Style>-->
+
 
         </ResourceDictionary>
     </Application.Resources>

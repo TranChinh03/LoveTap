@@ -17,7 +17,7 @@ namespace LoveTap
     /// <summary>
     /// Interaction logic for HomePersonal.xaml
     /// </summary>
-    public partial class HomePersonal : Window
+    public partial class HomePersonal : Page
     {
         public HomePersonal()
         {

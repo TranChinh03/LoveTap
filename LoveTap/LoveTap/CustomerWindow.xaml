@@ -139,7 +139,7 @@
                 </Grid>
                 <Border.Effect>
                     <DropShadowEffect BlurRadius="10" 
-                                      Color="Gray"/>
+                                      Color="Gray" Opacity="0.3"/>
                 </Border.Effect>
             </Border>
 

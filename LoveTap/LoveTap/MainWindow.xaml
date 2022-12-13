@@ -75,15 +75,32 @@
                     <TextBlock DockPanel.Dock="Top" Text="Have a good day, Xuân Thảo!" FontSize="15" Foreground="#033270" FontWeight="Bold" Margin="10 0 0 0"></TextBlock>
                     <TextBlock DockPanel.Dock="Bottom" Text="Here's what's happening with your store today"  Margin="10 0 0 0" Foreground ="#033270" FontSize="15" FontWeight="Light"></TextBlock>
                 </DockPanel>
+
                 <DockPanel DockPanel.Dock="Right">
-                    <Button Margin="50 0 0 0" Padding="0" BorderBrush="Transparent" Background="Transparent">
+                    <Button x:Name="profileDia" Margin="50 0 0 0" Height="50" Padding="0" BorderBrush="Transparent" Background="Transparent" Uid="7">
                         <Grid>
-                            <Image Source="/img/avatar.png" HorizontalAlignment="Left"></Image>
-                            <TextBlock Text="Xuân Thảo" HorizontalAlignment="Left"  Margin="40 0 0 0" Foreground="#033270" FontWeight="Bold"></TextBlock>
-                            <TextBlock Text="Staff"  HorizontalAlignment="Left"  Margin="40 15 0 0" Foreground="#033270" FontWeight="Light"></TextBlock>
+                            <Ellipse Height="45" Width="45" HorizontalAlignment="Left">
+                                <Ellipse.Fill>
+                                    <ImageBrush ImageSource="/img/avatar.png" ></ImageBrush>
+                                </Ellipse.Fill>
+                            </Ellipse>
+                            <TextBlock Text="Xuân Thảo" HorizontalAlignment="Left"  Margin="50 7 0 0" Foreground="#033270" FontWeight="Bold"></TextBlock>
+                            <TextBlock Text="Staff"  HorizontalAlignment="Left"  Margin="50 22 0 0" Foreground="#033270" FontWeight="Light"></TextBlock>
                         </Grid>
+
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="Click">
+                                <i:InvokeCommandAction Command="{Binding SwitchTab}"
+                                                       CommandParameter="{Binding ElementName=mainWindow}"></i:InvokeCommandAction>
+                            </i:EventTrigger>
+                            <i:EventTrigger EventName="MouseMove">
+                                <i:InvokeCommandAction Command="{Binding GetIdTab}"
+                                                       CommandParameter="{Binding ElementName=profileDia}"></i:InvokeCommandAction>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
                     </Button>
                 </DockPanel>
+                    
             </DockPanel>
         </Grid>
 
@@ -247,8 +264,11 @@
             </StackPanel>
         </Grid>
 
-
+        <!--Frame for Main Screens-->
         <Frame x:Name="Main" DataContext="{StaticResource MainVM}" Source="Home.xaml" NavigationUIVisibility="Hidden" Grid.Row="2" Grid.Column="2" Grid.RowSpan="9" Grid.ColumnSpan="10" Background="Transparent"></Frame>
+        
+        <!--Frame for Action Screens-->
+        <Frame x:Name="Action" DataContext="{StaticResource MainVM}"  NavigationUIVisibility="Hidden" Grid.Row="2" Grid.Column="1" Grid.RowSpan="8" Grid.ColumnSpan="10" Background="red" Visibility="Hidden"></Frame>
 
     </Grid>
 </Window>

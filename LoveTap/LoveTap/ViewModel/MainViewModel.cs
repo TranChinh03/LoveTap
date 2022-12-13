@@ -19,6 +19,7 @@ namespace LoveTap.ViewModel
         public ICommand GetIdTab { get; set; }
 
         public ICommand SwitchTab { get; set; }
+
         public ICommand TenDangNhap_Loaded { get; set; }
         public ICommand Quyen_Loaded { get; set; }
         public ICommand LogOutCommand { get; set; }
@@ -57,6 +58,7 @@ namespace LoveTap.ViewModel
 
             GetIdTab = new RelayCommand<Button>((p) => true, (p) => Name = p.Uid);
             SwitchTab = new RelayCommand<MainWindow>((p) => true, (p) => switchtab(p));
+
         }
 
         void switchtab(MainWindow p)
@@ -131,7 +133,8 @@ namespace LoveTap.ViewModel
                         OrdersUncheck();
                         CustomerUncheck();
                         StatisticUncheck();
-                        EmployeeCheck(); p.Main.NavigationService.Navigate(new EmployeeWindow());
+                        EmployeeCheck();
+                        p.Main.NavigationService.Navigate(new EmployeeWindow());
                         break;
                     }
                 //case 6:
@@ -140,12 +143,17 @@ namespace LoveTap.ViewModel
                 //        p.Main.NavigationService.Navigate(new QLNVView());
                 //        break;
                 //    }
-                //case 7:
-                //    {
-                //        _Loadwd(p);
-                //        p.Main.NavigationService.Navigate(new SettingView());
-                //        break;
-                //    }
+                case 7:
+                    {
+                        HomeUnCheck();
+                        GoodsUncheck();
+                        OrdersUncheck();
+                        CustomerUncheck();
+                        StatisticUncheck();
+                        EmployeeUncheck();
+                        p.Main.NavigationService.Navigate(new HomePersonal ());
+                        break;
+                    }
                 default:
                     {
                         break;
