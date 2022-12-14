@@ -15,7 +15,7 @@ using System.Xml.Linq;
 
 namespace LoveTap.ViewModel
 {
-    internal class ProfileUsrViewModel : BaseViewModel
+    public class ProfileUsrViewModel : BaseViewModel
     {
         public string UserID { get; set; }
         public ICommand GetIdTab { get; set; }
@@ -68,6 +68,19 @@ namespace LoveTap.ViewModel
                 if (User != null && User.Count > 0)
                 {
                     FullName = User[0].HOTEN;
+                    Birthday = User[0].NTNS.ToString();
+                    PhoneNumber = User[0].SDT;
+                    Email = User[0].EMAIL;
+                    Address = User[0].DIACHI;
+                    ID = User[0].MANV;
+                    Branch = User[0].MACN;
+                    CoefficientsSalary = User[0].HESOLUONG.ToString();
+                    BasicPay = User[0].LUONGCB.ToString();
+                    string role = User[0].VAITRO.ToString();
+                    if (role == "True")
+                        Role = "Admin";
+                    else
+                        Role = "Staff";
                 }
             });
 
