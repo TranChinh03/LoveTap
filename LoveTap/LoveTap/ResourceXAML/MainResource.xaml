@@ -11,4 +11,8 @@
     <viewmodel:OrdersViewModel x:Key="OrdersVM"></viewmodel:OrdersViewModel>
     <viewmodel:HomeProfileEditViewModel x:Key="HomeProfileEditVM"></viewmodel:HomeProfileEditViewModel>
     <viewmodel:HomeViewModel x:Key="HomeVM"></viewmodel:HomeViewModel>
+    <viewmodel:ProfileUsrViewModel x:Key="ProfileUsrVM"></viewmodel:ProfileUsrViewModel>
+    <viewmodel:UsrPro5EditViewModel x:Key="UsrPro5VM"></viewmodel:UsrPro5EditViewModel>
+
+
 </ResourceDictionary>

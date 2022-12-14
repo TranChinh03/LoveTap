@@ -4,6 +4,8 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+
         xmlns:local="clr-namespace:LoveTap"
         xmlns:uc="clr-namespace:LoveTap.UserControlCustom"
         mc:Ignorable="d"
@@ -17,12 +19,14 @@
         WindowStartupLocation="CenterScreen"
         ResizeMode="NoResize"
         WindowStyle="None"
-        Title="Home" Height="450" Width="800"
-    DataContext="{StaticResource HomeProfileEditVM}">
+
+        Name="ProfileEdit" Height="466.2" Width="666.666666666667"
+        DataContext="{StaticResource UsrPro5VM}">
+
+       
+
     <Grid Background="WhiteSmoke">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition></ColumnDefinition>
-            <ColumnDefinition></ColumnDefinition>
             <ColumnDefinition></ColumnDefinition>
             <ColumnDefinition></ColumnDefinition>
             <ColumnDefinition></ColumnDefinition>
@@ -41,31 +45,192 @@
             <RowDefinition></RowDefinition>
             <RowDefinition></RowDefinition>
             <RowDefinition></RowDefinition>
-            <RowDefinition Height="43.404"></RowDefinition>
-            <RowDefinition></RowDefinition>
             <RowDefinition></RowDefinition>
             <RowDefinition></RowDefinition>
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
 
-        <TextBlock Background="Transparent" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="12"/>
-        <uc:ControlBarUC
-            Grid.Row="0" Grid.ColumnSpan="12" Panel.ZIndex="2"/>
-        <uc:MenuBarUC Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Grid.RowSpan="11"/>
-        <TextBlock Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="12" Grid.RowSpan="2" Background="Transparent"/>
+
+        <!--MAIN FORM-->
+        <Grid Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="9" Grid.RowSpan="7" Margin="0 10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="2.5*"/>
+            </Grid.ColumnDefinitions>
+
+            <!--PROFILE-->
+            <StackPanel>
+                <TextBlock Padding="7"
+                                        FontSize="18"
+                                        Foreground="#033270"
+                                        FontWeight="Bold"
+                                        >Profile:</TextBlock>
+                <TextBlock Padding="7"
+                                        FontSize="14"
+                                        Foreground="#033270"
+                                        >Full name:</TextBlock>
+
+                <TextBlock Padding="7"
+
+                                        FontSize="14"
+                                        Foreground="#033270"
+                                        >Birthday:</TextBlock>
+                <TextBlock Padding="7"
+                                        FontSize="14"
+
+                                        Foreground="#033270"
+                                        >Mobile:</TextBlock>
+                <TextBlock Padding="7" 
+                                        FontSize="14"
+                                        Foreground="#033270"
+                                        >Email:</TextBlock>
+
+                <TextBlock Padding="7"
+                                        FontSize="14"
+                                        Foreground="#033270"
+                                        >Address:</TextBlock>
+
+                <!--JOB-->
+                <TextBlock Padding="7"
+                                            FontSize="18"
+                                            Foreground="#033270"
+                                            FontWeight="Bold"
+                                            >Job:</TextBlock>
+                <TextBlock Padding="7"
+                                            FontSize="14"
+                                            Foreground="#033270"
+                                            >ID:</TextBlock>
+                <TextBlock Padding="7"
+                                            FontSize="14"
+                                            Foreground="#033270"
+                                            >Branch:</TextBlock>
+                <TextBlock Padding="7"
+                                            FontSize="14"
+
+                                            Foreground="#033270"
+                                            >Coefficients pay:</TextBlock>
+                <TextBlock Padding="7"
+                                            FontSize="14"
+                                            Foreground="#033270"
+                                            >Basic pay:</TextBlock>
+                <TextBlock Padding="7"
+                                            FontSize="14"
+                                            Foreground="#033270"
+                                            >Position:</TextBlock>
+
+            </StackPanel>
+
+            <!--VALUE-->
+            <StackPanel Grid.Column="1" Margin="0 35 0 0 ">
+                <TextBox Padding="5"
+                                        FontSize="14"
+                                        Foreground="#79A7CB" 
+                                        BorderThickness="2"
+                                        BorderBrush="#79A7CB"
+                                        MinWidth="200"
+                                        Grid.ColumnSpan="2" Width="279"
+                                        >Võ Xuân Thảo</TextBox>
+                <TextBox Padding="5"
+                                        FontSize="14"
+                                        Foreground="#79A7CB" 
+                                        BorderThickness="2"
+                                        BorderBrush="#79A7CB"
+                                        MinWidth="200"
+                                        Grid.ColumnSpan="2" Width="279"
+                                        >dd/mm/yyyy</TextBox>
+                <TextBox Padding="5"
+                                        FontSize="14"
+                                        Foreground="#79A7CB" 
+                                        BorderThickness="2"
+                                        BorderBrush="#79A7CB"
+                                        MinWidth="200"
+                                        Grid.ColumnSpan="2" Width="279"
+                                        >012345678</TextBox>
+                <TextBox Padding="5"
+                                        FontSize="14"
+                                        Foreground="#79A7CB" 
+                                        BorderThickness="2"
+                                        BorderBrush="#79A7CB"
+                                        MinWidth="200"
+                                        Grid.ColumnSpan="2" Width="279"
+                                        >nhavien01@gmail.com</TextBox>
+                <TextBox Padding="5"
+                                        FontSize="14"
+                                        Foreground="#79A7CB" 
+                                        BorderThickness="2"
+                                        BorderBrush="#79A7CB"
+                                        MinWidth="200"
+                                        Grid.ColumnSpan="2" Width="279"
+                                        >abcdxyz</TextBox>
+                <TextBox Padding="5" Margin="0 35 0 0 "
+                                        FontSize="14"
+                                        Foreground="#79A7CB" 
+                                        BorderThickness="2"
+                                        BorderBrush="#79A7CB"
+                                        MinWidth="200"
+                                        Grid.ColumnSpan="2" Width="279"
+                                        >abcdxyz</TextBox>
+                <TextBox Padding="5" 
+                                        FontSize="14"
+                                        Foreground="#79A7CB" 
+                                        BorderThickness="2"
+                                        BorderBrush="#79A7CB"
+                                        MinWidth="200"
+                                        Grid.ColumnSpan="2" Width="279"
+                                        >abcdxyz</TextBox>
+                <TextBox Padding="5" 
+                                        FontSize="14"
+                                        Foreground="#79A7CB" 
+                                        BorderThickness="2"
+                                        BorderBrush="#79A7CB"
+                                        MinWidth="200"
+                                        Grid.ColumnSpan="2" Width="279"
+                                        >abcdxyz</TextBox>
+                <TextBox Padding="5" 
+                                        FontSize="14"
+                                        Foreground="#79A7CB" 
+                                        BorderThickness="2"
+                                        BorderBrush="#79A7CB"
+                                        MinWidth="200"
+                                        Grid.ColumnSpan="2" Width="279"
+                                        >abcdxyz</TextBox>
+                <TextBox Padding="5" 
+                                        FontSize="14"
+                                        Foreground="#79A7CB" 
+                                        BorderThickness="2"
+                                        BorderBrush="#79A7CB"
+                                        MinWidth="200"
+                                        Grid.ColumnSpan="2" Width="279"
+                                        >abcdxyz</TextBox>
+            </StackPanel>
 
 
-        <Grid  Grid.Column="2" Grid.Row="1" Grid.ColumnSpan="10" Grid.RowSpan="9"
-               Margin="10, 14, 10, 14"
-               Background="White">
-            <Grid.Effect>
-                <DropShadowEffect Opacity="0.6"/>
-            </Grid.Effect>
 
-            <Button
-                    HorizontalAlignment="Right"
-                VerticalAlignment="Top"
-                    Margin="0,8,105,0"
+
+        </Grid>
+
+        <Button Grid.Column="6" Grid.ColumnSpan="2" VerticalAlignment="Bottom" Uid="1" Name="doneBt"
+                    Style="{StaticResource MaterialDesignRaisedSecondaryLightButton}"
+                    Width="86"
+                    Height="30"
+                    Background="#26B69F"
+                    ToolTip="Resource name: MaterialDesignRaisedSecondaryLightButton"
+                    Content="Done"
+                    FontSize="15"
+                >
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="Click">
+                    <i:InvokeCommandAction Command="{Binding Todo}"
+                                                       CommandParameter="{Binding ElementName=ProfileEdit}"></i:InvokeCommandAction>
+                </i:EventTrigger>
+                <i:EventTrigger EventName="MouseMove">
+                    <i:InvokeCommandAction Command="{Binding GetIdButton}"
+                                                       CommandParameter="{Binding ElementName=doneBt}"></i:InvokeCommandAction>
+                </i:EventTrigger>
+                </i:Interaction.Triggers>
+
+        </Button>
+        <Button Grid.Column="8" Grid.ColumnSpan="2" VerticalAlignment="Bottom" Uid="2" Name="backBt"
                     Style="{StaticResource MaterialDesignRaisedSecondaryLightButton}"
                     Width="86"
                     Height="30"
@@ -73,256 +238,19 @@
                     ToolTip="Resource name: MaterialDesignRaisedSecondaryLightButton"
                     Content="Back"
                     FontSize="15"
-                    IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" 
-                
-                />
-
-            <Button
-                    HorizontalAlignment="Left"
-                    Margin="554,9,0,338"
-                    Style="{StaticResource MaterialDesignRaisedSecondaryLightButton}"
-                    Width="86"
-                    Height="30"
-                    Background="#26B69F"
-                    ToolTip="Resource name: MaterialDesignRaisedSecondaryLightButton"
-                    Content="Next"
-                    FontSize="15"
-                    IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" Command="{Binding EditCommand}" 
-                />
-
-            <!--MAIN FORM-->
-            <Grid>
-                <!--PROFILE-->
-                <Grid Margin="3, 30, 0, 0" HorizontalAlignment="Center" Width="400">
-                    <TextBlock Margin="10,10,207,0" 
-                                        FontSize="14"
-                                        VerticalAlignment="Top"
-                                        Foreground="#033270"
-                                           FontWeight="Bold"
-                                        >Profile:</TextBlock>
-                    <Grid Margin="0, 30, 0, 0">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="3*"/>
-                            <ColumnDefinition Width="5*"/>
-                        </Grid.ColumnDefinitions>
-                        <TextBlock Margin="10,0,0,0" 
-                                        FontSize="14"
-                                        HorizontalAlignment="Left"
-                                        VerticalAlignment="Top"
-                                        Foreground="#033270"
-                                        >Full name:</TextBlock>
-                        <TextBox 
-                                        FontSize="14"
-                                        Margin="121,0,0,0"
-                                        HorizontalAlignment="Left"
-                                        VerticalAlignment="Top"
-                                        Foreground="#79A7CB" 
-                                        BorderThickness="2"
-                                        BorderBrush="#79A7CB"
-                                        MinWidth="200"
-                                        Padding="10, 0, 0, 0" Grid.ColumnSpan="2" Width="279"
-                                        Text="{Binding FullName}"
-                                        ></TextBox>
-
-                    </Grid>
-                    <Grid Margin="0, 58, 0, 0">
-                        <TextBlock Margin="10,0,0,0" 
-                                        FontSize="14"
-                                        HorizontalAlignment="Left"
-                                        VerticalAlignment="Top"
-                                        Foreground="#033270"
-                                        >Birthday:</TextBlock>
-                        <TextBox 
-                                        FontSize="14"
-                                        HorizontalAlignment="Left"
-                                        VerticalAlignment="Top"
-                                        Foreground="#79A7CB" Margin="121,0,0,0"
-                                        BorderThickness="2"
-                                        BorderBrush="#79A7CB"
-                                        MinWidth="200"
-                                        Padding="10, 0, 0, 0" Grid.ColumnSpan="2" Width="279"
-                                        Text="{Binding Birthday}"
-                                        ></TextBox>
-                    </Grid>
-                    <Grid Margin="0, 86, 0, 0">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="61*"/>
-                            <ColumnDefinition Width="19*"/>
-                        </Grid.ColumnDefinitions>
-                        <TextBlock Margin="10,0,0,0" 
-                                        FontSize="14"
-                                        HorizontalAlignment="Left"
-                                        VerticalAlignment="Top"
-                                        Foreground="#033270"
-                                        >Mobile:</TextBlock>
-                        <TextBox Margin="121,0,0,0"
-                                        FontSize="14"
-                                        HorizontalAlignment="Left"
-                                        VerticalAlignment="Top"
-                                        Foreground="#79A7CB"
-                                    BorderThickness="2"
-                                        BorderBrush="#79A7CB"
-                                        MinWidth="200"
-                                        Padding="10, 0, 0, 0" Grid.ColumnSpan="2" Width="279"
-                                        Text="{Binding PhoneNumber}"
-                                        ></TextBox>
-                    </Grid>
-                    <Grid Margin="0, 114, 0, 0">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="187*"/>
-                            <ColumnDefinition Width="213*"/>
-                        </Grid.ColumnDefinitions>
-                        <TextBlock Margin="10,0,0,0" 
-                                        FontSize="14"
-                                        HorizontalAlignment="Left"
-                                        VerticalAlignment="Top"
-                                        Foreground="#033270"
-                                        >Email:</TextBlock>
-                        <TextBox Margin="121,0,0,0"
-                                        FontSize="14"
-                                        HorizontalAlignment="Left"
-                                        VerticalAlignment="Top"
-                                        Foreground="#79A7CB"
-                                  BorderThickness="2"
-                                        BorderBrush="#79A7CB"
-                                        MinWidth="200"
-                                        Padding="10, 0, 0, 0" Grid.ColumnSpan="2" Width="279"
-                                        Text="{Binding Email}"
-                                        ></TextBox>
-                    </Grid>
-                    <Grid Margin="0, 142, 0, 0">
-                        <TextBlock Margin="10,0,0,0" 
-                                        FontSize="14"
-                                        HorizontalAlignment="Left"
-                                        VerticalAlignment="Top"
-                                        Foreground="#033270"
-                                        >Address:</TextBlock>
-                        <TextBox Margin="121,0,0,0"
-                                        FontSize="14"
-                                        HorizontalAlignment="Left"
-                                        VerticalAlignment="Top"
-                                        Foreground="#79A7CB"
-                                  BorderThickness="2"
-                                        BorderBrush="#79A7CB"
-                                        MinWidth="200"
-                                        Padding="10, 0, 0, 0" Grid.ColumnSpan="2" Width="279"
-                                        Text="{Binding Address}"
-                                        ></TextBox>
-                    </Grid>
-
-
-                </Grid>
-
-                <!--JOB-->
-                <Grid Margin="3, 190, 0, 0" HorizontalAlignment="Center"  Width="400">
-                    <TextBlock Margin="10, 10, 10, 10" 
-                                            FontSize="14"
-                                            HorizontalAlignment="Left"
-                                            VerticalAlignment="Top"
-                                            Foreground="#033270"
-                                               FontWeight="Bold"
-                                            >Job:</TextBlock>
-                    <Grid Margin="0, 30, 0, 0">
-                        <TextBlock Margin="10,0,0,0" 
-                                            FontSize="14"
-                                            HorizontalAlignment="Left"
-                                            VerticalAlignment="Top"
-                                            Foreground="#033270"
-                                            >ID:</TextBlock>
-                        <TextBox 
-                                            FontSize="14"
-                                            HorizontalAlignment="Left"
-                                            VerticalAlignment="Top"
-                                            Foreground="#79A7CB" Margin="121,0,0,0"
-                             BorderThickness="2"
-                                        BorderBrush="#79A7CB"
-                                        MinWidth="200"
-                                        Padding="10, 0, 0, 0" Grid.ColumnSpan="2" Width="279"
-                            Text="{Binding ID}"
-                                            ></TextBox>
-
-                    </Grid>
-                    <Grid Margin="0, 58, 0, 0">
-                        <TextBlock Margin="10,0,0,0" 
-                                            FontSize="14"
-                                            HorizontalAlignment="Left"
-                                            VerticalAlignment="Top"
-                                            Foreground="#033270"
-                                            >Chi nhánh:</TextBlock>
-                        <TextBox Margin="121,0,0,0"
-                                            FontSize="14"
-                                            HorizontalAlignment="Left"
-                                            VerticalAlignment="Top"
-                                            Foreground="#79A7CB"
-                                  BorderThickness="2"
-                                        BorderBrush="#79A7CB"
-                                        MinWidth="200"
-                                        Padding="10, 0, 0, 0" Grid.ColumnSpan="2" Width="279"
-                                 Text="{Binding Branch}"
-                                            ></TextBox>
-                    </Grid>
-                    <Grid Margin="0, 86, 0, 0">
-                        <TextBlock Margin="10,0,0,0" 
-                                            FontSize="14"
-                                            HorizontalAlignment="Left"
-                                            VerticalAlignment="Top"
-                                            Foreground="#033270"
-                                            >Hệ số lương:</TextBlock>
-                        <TextBox Margin="121,0,0,0"
-                                            FontSize="14"
-                                            HorizontalAlignment="Left"
-                                            VerticalAlignment="Top"
-                                            Foreground="#79A7CB"
-                                  BorderThickness="2"
-                                        BorderBrush="#79A7CB"
-                                        MinWidth="200"
-                                        Padding="10, 0, 0, 0" Grid.ColumnSpan="2" Width="279"
-                                 Text="{Binding CoefficientsSalary}"
-                                            ></TextBox>
-                    </Grid>
-                    <Grid Margin="0, 114, 0, 0">
-                        <TextBlock Margin="10,0,0,0" 
-                                            FontSize="14"
-                                            HorizontalAlignment="Left"
-                                            VerticalAlignment="Top"
-                                            Foreground="#033270"
-                                            >Lương cơ bản:</TextBlock>
-                        <TextBox Margin="121,0,0,0"
-                                            FontSize="14"
-                                            HorizontalAlignment="Left"
-                                            VerticalAlignment="Top"
-                                            Foreground="#79A7CB"
-                                  BorderThickness="2"
-                                        BorderBrush="#79A7CB"
-                                        MinWidth="200"
-                                        Padding="10, 0, 0, 0" Grid.ColumnSpan="2" Width="279"
-                                 Text="{Binding BasicPay}"
-                                            ></TextBox>
-                    </Grid>
-                    <Grid Margin="0, 142, 0, 0">
-                        <TextBlock Margin="10,0,0,0" 
-                                            FontSize="14"
-                                            HorizontalAlignment="Left"
-                                            VerticalAlignment="Top"
-                                            Foreground="#033270"
-                                            >Vai trò:</TextBlock>
-                        <TextBox Margin="121,0,0,0"
-                                            FontSize="14"
-                                            HorizontalAlignment="Left"
-                                            VerticalAlignment="Top"
-                                            Foreground="#79A7CB"
-                                  BorderThickness="2"
-                                        BorderBrush="#79A7CB"
-                                        MinWidth="200"
-                                        Padding="10, 0, 0, 0" Grid.ColumnSpan="2" Width="279"
-                                 Text="{Binding Role}"
-                                            ></TextBox>
-                    </Grid>
-
-
-                </Grid>
-            </Grid>
-
-        </Grid>
+                >
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="Click">
+                    <i:InvokeCommandAction Command="{Binding Todo}"
+                                                       CommandParameter="{Binding ElementName=ProfileEdit}"></i:InvokeCommandAction>
+                </i:EventTrigger>
+                <i:EventTrigger EventName="MouseMove">
+                    <i:InvokeCommandAction Command="{Binding GetIdButton}"
+                                                       CommandParameter="{Binding ElementName=backBt}"></i:InvokeCommandAction>
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+        </Button>
     </Grid>
+
+
 </Window>
