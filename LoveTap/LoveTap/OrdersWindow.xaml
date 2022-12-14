@@ -183,34 +183,34 @@
       EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" 
       ElementStyle="{StaticResource MaterialDesignDataGridTextColumnStyle}"
                         Width="85"
-      Header="ID" Foreground="{StaticResource Cyan Azure}" />
+      Header="ID" Foreground="{StaticResource Cyan Azure}" IsReadOnly="True"/>
                 <!-- if you want to use the pop up style (MaterialDesignDataGridTextColumnPopupEditingStyle), you must use MaterialDataGridTextColumn -->
                 <materialDesign:DataGridTextColumn
       Binding="{Binding SDT}"
       EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}"
       ElementStyle="{StaticResource MaterialDesignDataGridTextColumnStyle}"
-      Header="Customer Phone Number" Width="200">
+      Header="Customer Phone Number" Width="200" IsReadOnly="True">
                 </materialDesign:DataGridTextColumn>
                 <!-- set a max length to get an indicator in the editor -->
                 <materialDesign:DataGridTextColumn
       Binding="{Binding NGMUA}"
       EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}"
       ElementStyle="{StaticResource MaterialDesignDataGridTextColumnStyle}"
-      Header="Purchase Date" Width="150">
+      Header="Purchase Date" Width="150" IsReadOnly="True">
                 </materialDesign:DataGridTextColumn>
 
                 <materialDesign:DataGridTextColumn
       Binding="{Binding TONGTIEN}"
       EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}"
       ElementStyle="{StaticResource MaterialDesignDataGridTextColumnStyle}"
-      Header="Total Price" Width="150">
+      Header="Total Price" Width="150" IsReadOnly="True">
                 </materialDesign:DataGridTextColumn>
 
                 <materialDesign:DataGridTextColumn
       Binding="{Binding MANV}"
       EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}"
       ElementStyle="{StaticResource MaterialDesignDataGridTextColumnStyle}"
-      Header="Employee ID" Width="200">
+      Header="Employee ID" Width="200" IsReadOnly="True">
                 </materialDesign:DataGridTextColumn>
 
             </DataGrid.Columns>
