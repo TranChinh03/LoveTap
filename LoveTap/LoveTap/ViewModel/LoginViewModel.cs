@@ -13,7 +13,7 @@ namespace LoveTap.ViewModel
 {
     public class LoginViewModel : BaseViewModel
     {
-        public bool IsLogin { get; set; }
+        public bool IsLogin { get; set; } = false;
         private string _UserName;
         public string UserName { get { return _UserName; } set { _UserName = value; OnPropertyChanged(); }}
         private string _Password;
@@ -22,7 +22,6 @@ namespace LoveTap.ViewModel
         public ICommand PasswordChangedCommand { get; set; }
         public LoginViewModel()
         {
-            IsLogin = false;
             UserName = "";
             Password = "";
             LoginCommand = new RelayCommand<object>((p) => { return true; }, (p) => { Login(p); });
@@ -38,8 +37,6 @@ namespace LoveTap.ViewModel
             if (accCount > 0) 
             {
                 IsLogin = true;
-                //MainWindow mainWd = new MainWindow();
-                //mainWd.Show();
                 FrameworkElement window = GetWindowParent(p);
                 var w = (window as Window);
                 if (w != null)
