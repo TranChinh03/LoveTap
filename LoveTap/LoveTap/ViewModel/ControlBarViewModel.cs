@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using System.Xml.Linq;
 
 namespace LoveTap.ViewModel
 {
@@ -62,7 +63,7 @@ namespace LoveTap.ViewModel
                         w.DragMove();
                 });
         }
-
+        
         FrameworkElement GetWindowParent(UserControl p)
         {
             FrameworkElement parent = p;

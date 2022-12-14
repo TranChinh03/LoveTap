@@ -23,9 +23,8 @@
         Name="ProfileEdit" Height="466.2" Width="666.666666666667"
         DataContext="{StaticResource UsrPro5VM}">
 
-       
 
-    <Grid Background="WhiteSmoke">
+    <Grid Background="WhiteSmoke" >
         <Grid.ColumnDefinitions>
             <ColumnDefinition></ColumnDefinition>
             <ColumnDefinition></ColumnDefinition>
@@ -251,6 +250,5 @@
             </i:Interaction.Triggers>
         </Button>
     </Grid>
-
 
 </Window>
