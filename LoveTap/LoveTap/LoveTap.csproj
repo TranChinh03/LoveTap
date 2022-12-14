@@ -214,6 +214,7 @@
     <Compile Include="UserControlCustom\SuccessModelUC.xaml.cs">
       <DependentUpon>SuccessModelUC.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ViewModel\CreateOrdersViewModel.cs" />
     <Compile Include="ViewModel\CustomerViewModel.cs" />
     <Compile Include="ViewModel\EmployeeViewModel.cs" />
     <Compile Include="ViewModel\GoodsViewModel.cs" />

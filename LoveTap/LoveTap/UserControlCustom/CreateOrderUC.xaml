@@ -6,7 +6,8 @@
              xmlns:local="clr-namespace:LoveTap.UserControlCustom"
              mc:Ignorable="d" 
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-             Name="ucCreateOrder">
+             Name="ucCreateOrder"
+             DataContext="CreOdVM">
     <!--d:DesignHeight="450" d:DesignWidth="800">-->
     <Grid Background="Transparent">
         <Grid.RowDefinitions>
