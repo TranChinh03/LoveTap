@@ -30,12 +30,12 @@ namespace LoveTap.ViewModel
         private string _Ava;
         public string Ava { get => _Ava; set { _Ava = value; OnPropertyChanged(); } }
         public ICommand Loadwd { get; set; }
-        public bool IsLoaded = false;
-        public ICommand LoadMainWd { get; set; }
+        public bool IsLoaded { get; set; } = false;
+        public ICommand LoadedMainWd { get; set; }
         public MainViewModel()
         {
             
-            LoadMainWd = new RelayCommand<Window>((p) => { return true; }, (p) =>
+            LoadedMainWd = new RelayCommand<Window>((p) => { return true; }, (p) =>
             {
                 IsLoaded = true;
                 if (p == null)
