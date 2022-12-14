@@ -32,6 +32,7 @@ namespace LoveTap.ViewModel
         public ICommand Loadwd { get; set; }
         public bool IsLoaded { get; set; } = false;
         public ICommand LoadedMainWd { get; set; }
+        public static string ID { get; set; }
         public MainViewModel()
         {
             
@@ -49,6 +50,7 @@ namespace LoveTap.ViewModel
                 var loginVM = loginWindow.DataContext as LoginViewModel;
                 if (loginVM.IsLogin)
                 {
+                    ID = loginVM.ID;
                     p.Show();
                 }
                 else

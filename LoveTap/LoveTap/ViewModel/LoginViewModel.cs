@@ -8,6 +8,7 @@ using System.Windows;
 using System.Windows.Input;
 using LoveTap.Model;
 using System.Security.Cryptography;
+using System.Data.Entity;
 
 namespace LoveTap.ViewModel
 {
@@ -18,6 +19,7 @@ namespace LoveTap.ViewModel
         public string UserName { get { return _UserName; } set { _UserName = value; OnPropertyChanged(); }}
         private string _Password;
         public string Password { get { return _Password; } set { _Password = value; OnPropertyChanged(); } }
+        public string ID { get; set; }
         public ICommand LoginCommand { get; set; }
         public ICommand PasswordChangedCommand { get; set; }
         public LoginViewModel()
@@ -37,6 +39,8 @@ namespace LoveTap.ViewModel
             if (accCount > 0) 
             {
                 IsLogin = true;
+                var user = DataProvider.Ins.DB.LOGINs.Where(x => x.USERNAME == UserName && x.USERPASS == passEncode).ToList();
+                ID = user[0].ID;
                 FrameworkElement window = GetWindowParent(p);
                 var w = (window as Window);
                 if (w != null)

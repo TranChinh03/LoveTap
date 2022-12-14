@@ -17,6 +17,7 @@ namespace LoveTap.Model
         public string MAHD { get; set; }
         public string MASP { get; set; }
         public Nullable<int> SOLUONG { get; set; }
+        public Nullable<bool> DELETED { get; set; }
     
         public virtual HOADON HOADON { get; set; }
         public virtual SANPHAM SANPHAM { get; set; }

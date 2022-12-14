@@ -26,6 +26,7 @@ namespace LoveTap.Model
         public Nullable<bool> LOAIHD { get; set; }
         public string MANV { get; set; }
         public string SDT { get; set; }
+        public Nullable<bool> DELETED { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CTHD> CTHDs { get; set; }

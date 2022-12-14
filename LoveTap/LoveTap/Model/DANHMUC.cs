@@ -22,6 +22,7 @@ namespace LoveTap.Model
     
         public string MADM { get; set; }
         public string TENDM { get; set; }
+        public Nullable<bool> DELETED { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SANPHAM> SANPHAMs { get; set; }

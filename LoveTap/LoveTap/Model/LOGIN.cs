@@ -14,8 +14,17 @@ namespace LoveTap.Model
     
     public partial class LOGIN
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public LOGIN()
+        {
+            this.NHANVIENs = new HashSet<NHANVIEN>();
+        }
+    
         public string ID { get; set; }
         public string USERNAME { get; set; }
         public string USERPASS { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<NHANVIEN> NHANVIENs { get; set; }
     }
 }
