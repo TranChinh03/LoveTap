@@ -14,13 +14,16 @@ namespace LoveTap.ViewModel
 {
     public class UsrPro5EditViewModel:BaseViewModel
     {
+        public string UserID { get; set; }
+
+        public ICommand LoadedHomeProfileEdit { get; set; }
         public ICommand GetIdButton { get; set; }
 
         public ICommand Todo { get; set; }
 
         string Name;
-        private ObservableCollection<NHANVIEN> _EmployeeList;
-        public ObservableCollection<NHANVIEN> EmployeeList { get => _EmployeeList; set { _EmployeeList = value; OnPropertyChanged(); } }
+        private ObservableCollection<NHANVIEN> _User;
+        public ObservableCollection<NHANVIEN> User { get => _User; set { _User = value; OnPropertyChanged(); } }
 
         private string _FullName;
         public string FullName { get => _FullName; set { _FullName = value; OnPropertyChanged(); } }
@@ -57,9 +60,34 @@ namespace LoveTap.ViewModel
 
 
         public UsrPro5EditViewModel() {
+
+            LoadedHomeProfileEdit = new RelayCommand<Window>((p) => { return true; }, (p) =>
+            {
+                UserID = MainViewModel.ID;
+                User = new ObservableCollection<NHANVIEN>(DataProvider.Ins.DB.NHANVIENs.Where(x => x.NVID == UserID));
+                if (User != null && User.Count > 0)
+                {
+                    FullName = User[0].HOTEN;
+                    Birthday = User[0].NTNS.ToString();
+                    PhoneNumber = User[0].SDT;
+                    Email = User[0].EMAIL;
+                    Address = User[0].DIACHI;
+                    ID = User[0].MANV;
+                    Branch = User[0].MACN;
+                    CoefficientsSalary = User[0].HESOLUONG.ToString();
+                    BasicPay = User[0].LUONGCB.ToString();
+                    string role = User[0].VAITRO.ToString();
+                    if (role == "1")
+                        Role = "Admin";
+                    else
+                        Role = "Staff";
+                }
+            });
+
+
             GetIdButton = new RelayCommand<Button>((p) => true, (p) => Name = p.Uid);
             Todo = new RelayCommand<HomeProfileEdit>((p) => true, (p) => ToDo(p));
-            EmployeeList = new ObservableCollection<NHANVIEN>(DataProvider.Ins.DB.NHANVIENs);
+            
 
 
             EditCommand = new RelayCommand<object>((p) =>
