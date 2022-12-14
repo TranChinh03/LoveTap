@@ -15,6 +15,7 @@ namespace LoveTap.ViewModel
 {
     public class MainViewModel : BaseViewModel
     {
+
         public string TabName;
         public ICommand GetIdTab { get; set; }
 
