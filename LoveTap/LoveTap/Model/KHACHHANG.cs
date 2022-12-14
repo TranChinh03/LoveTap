@@ -17,8 +17,8 @@ namespace LoveTap.Model
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public KHACHHANG()
         {
+            this.BAOHANHs = new HashSet<BAOHANH>();
             this.HOADONs = new HashSet<HOADON>();
-            this.SANPHAMs = new HashSet<SANPHAM>();
         }
     
         public string HOTEN { get; set; }
@@ -28,11 +28,12 @@ namespace LoveTap.Model
         public Nullable<double> DOANHSO { get; set; }
         public string MANV { get; set; }
         public Nullable<System.DateTime> NGSINH { get; set; }
+        public Nullable<bool> DELETED { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<BAOHANH> BAOHANHs { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<HOADON> HOADONs { get; set; }
         public virtual NHANVIEN NHANVIEN { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<SANPHAM> SANPHAMs { get; set; }
     }
 }

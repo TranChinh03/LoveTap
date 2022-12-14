@@ -12,14 +12,13 @@ namespace LoveTap.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class TONKHO
+    public partial class BAOHANH
     {
-        public string MAKHO { get; set; }
+        public string SDT { get; set; }
         public string MASP { get; set; }
-        public Nullable<int> SOLUONG { get; set; }
         public Nullable<bool> DELETED { get; set; }
     
-        public virtual KHO KHO { get; set; }
         public virtual SANPHAM SANPHAM { get; set; }
+        public virtual KHACHHANG KHACHHANG { get; set; }
     }
 }

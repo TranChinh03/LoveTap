@@ -5,7 +5,6 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
-
         xmlns:local="clr-namespace:LoveTap"
         xmlns:uc="clr-namespace:LoveTap.UserControlCustom"
         mc:Ignorable="d"
@@ -18,8 +17,15 @@
         FontFamily="{DynamicResource MaterialDesignFont}"
         Name="profileUsr"
         Height="466.2" Width="666.666666666667"
-        DataContext="{StaticResource ProfileUsrVM}"
->
+        DataContext="{StaticResource ProfileUsrVM}">
+
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding LoadedProfileUsr}"
+                                                       CommandParameter="{Binding ElementName=profileUsr}"></i:InvokeCommandAction>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+
     <Grid Background="WhiteSmoke">
         <Grid>
             <Grid.ColumnDefinitions>
@@ -160,7 +166,7 @@
                     FontSize="12" 
                     >
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                            <Image Source="D:\LTTQ_LoveTap\LoveTap\LoveTap\img\edit2.png" Height="15"></Image>
+                            <Image Source="././img/edit2.png" Height="15"></Image>
                             <TextBlock VerticalAlignment="Center" Margin="3">Edit profile</TextBlock>
                         </StackPanel>
 
@@ -245,8 +251,9 @@
                         <StackPanel Grid.Column="1" Margin="0 47 0 0">
                             <TextBlock Padding="6"
                                         FontSize="14"
-                                        Foreground="#79A7CB" 
-                                        >Võ Xuân Thảo</TextBlock>
+                                        Foreground="#79A7CB"
+                                        Text="{Binding FullName}"
+                                        ></TextBlock>
                             <TextBlock Padding="6"
                                         FontSize="14"
                                         Foreground="#79A7CB"
