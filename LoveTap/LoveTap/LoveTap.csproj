@@ -218,6 +218,7 @@
     <Compile Include="ViewModel\AddGoodViewModel.cs" />
     <Compile Include="ViewModel\CreatePwViewModel.cs" />
     <Compile Include="ViewModel\CustomerDetailViewModel.cs" />
+    <Compile Include="ViewModel\CreateOrdersViewModel.cs" />
     <Compile Include="ViewModel\CustomerViewModel.cs" />
     <Compile Include="ViewModel\EditCustomerViewModel.cs" />
     <Compile Include="ViewModel\EmployeeViewModel.cs" />

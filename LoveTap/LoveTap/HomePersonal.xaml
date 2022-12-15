@@ -93,8 +93,8 @@
                                         HorizontalAlignment="Left"
                                         VerticalAlignment="Top"
                                         Foreground="#fff"
+                                        Text="{Binding FullName}"
                            >
-                    Xuân Thảo
                 </TextBlock>
 
                 <TextBlock Margin="195,91,0,0" 
@@ -257,19 +257,23 @@
                             <TextBlock Padding="6"
                                         FontSize="14"
                                         Foreground="#79A7CB"
-                                        >dd/mm/yyyy</TextBlock>
+                                        Text="{Binding Birthday}"
+                                        ></TextBlock>
                             <TextBlock Padding="6"
                                         FontSize="14"
                                         Foreground="#79A7CB"
-                                        >012345678</TextBlock>
+                                        Text="{Binding PhoneNumber}"
+                                        ></TextBlock>
                             <TextBlock Padding="6"
                                         FontSize="14"
                                         Foreground="#79A7CB"
-                                        >nhanvien1@gmail.com</TextBlock>
+                                        Text="{Binding Email}"
+                                        ></TextBlock>
                             <TextBlock Padding="6"
                                         FontSize="14"
                                         Foreground="#79A7CB"
-                                        >Linh Trung, Thủ Đức</TextBlock>
+                                        Text="{Binding Address}"
+                                        ></TextBlock>
 
 
 
@@ -324,23 +328,28 @@
                             <TextBlock Padding="6"
                                         FontSize="14"
                                         Foreground="#79A7CB" 
-                                        >Võ Xuân Thảo</TextBlock>
+                                        Text="{Binding ID}"
+                                        ></TextBlock>
                             <TextBlock Padding="6"
                                         FontSize="14"
                                         Foreground="#79A7CB"
-                                        >dd/mm/yyyy</TextBlock>
+                                        Text="{Binding Branch}"
+                                        ></TextBlock>
                             <TextBlock Padding="6"
                                         FontSize="14"
                                         Foreground="#79A7CB"
-                                        >012345678</TextBlock>
+                                        Text="{Binding CoefficientsSalary}"
+                                        ></TextBlock>
                             <TextBlock Padding="6"
                                         FontSize="14"
                                         Foreground="#79A7CB"
-                                        >nhanvien1@gmail.com</TextBlock>
+                                        Text="{Binding BasicPay}"
+                                        ></TextBlock>
                             <TextBlock Padding="6"
                                         FontSize="14"
                                         Foreground="#79A7CB"
-                                        >Linh Trung, Thủ Đức</TextBlock>
+                                        Text="{Binding Role}"
+                                        ></TextBlock>
 
 
 

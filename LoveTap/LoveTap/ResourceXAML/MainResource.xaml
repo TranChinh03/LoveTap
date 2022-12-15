@@ -19,6 +19,7 @@
     <viewmodel:EditCustomerViewModel x:Key="EditCustomerVM"></viewmodel:EditCustomerViewModel>
     <viewmodel:GoodDetailViewModel x:Key="GoodDetailVM"></viewmodel:GoodDetailViewModel>
     <viewmodel:AddGoodViewModel x:Key="AddGoodVM"></viewmodel:AddGoodViewModel>
+    <viewmodel:CreateOrdersViewModel x:Key="CreOdVM"></viewmodel:CreateOrdersViewModel>
 
 
 </ResourceDictionary>

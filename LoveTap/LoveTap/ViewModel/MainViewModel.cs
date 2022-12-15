@@ -33,6 +33,7 @@ namespace LoveTap.ViewModel
         public bool IsLoaded { get; set; } = false;
         public ICommand LoadedMainWd { get; set; }
         public static string ID { get; set; }
+        public bool IsAdmin { get; set; } = false;
         public MainViewModel()
         {
             LoadedMainWd = new RelayCommand<Window>((p) => { return true; }, (p) =>
@@ -50,6 +51,8 @@ namespace LoveTap.ViewModel
                 if (loginVM.IsLogin)
                 {
                     ID = loginVM.ID;
+                    if ((DataProvider.Ins.DB.NHANVIENs.Where(x => x.NVID == ID).ToList())[0].VAITRO == true)
+                        IsAdmin = true;
                     p.Show();
                 }
                 else

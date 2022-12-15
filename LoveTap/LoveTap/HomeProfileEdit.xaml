@@ -1,4 +1,4 @@
-﻿<Window x:Class="LoveTap.HomeProfileEdit"
+<Window x:Class="LoveTap.HomeProfileEdit"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -22,6 +22,14 @@
 
         Name="ProfileEdit" Height="466.2" Width="666.666666666667"
         DataContext="{StaticResource UsrPro5VM}">
+
+
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding LoadedHomeProfileEdit}"
+                                                       CommandParameter="{Binding ElementName=ProfileEdit}"></i:InvokeCommandAction>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
 
 
     <Grid Background="WhiteSmoke" >
@@ -128,7 +136,8 @@
                                         BorderBrush="#79A7CB"
                                         MinWidth="200"
                                         Grid.ColumnSpan="2" Width="279"
-                                        >Võ Xuân Thảo</TextBox>
+                                        Text="{Binding FullName}"
+                                        ></TextBox>
                 <TextBox Padding="5"
                                         FontSize="14"
                                         Foreground="#79A7CB" 
@@ -136,7 +145,8 @@
                                         BorderBrush="#79A7CB"
                                         MinWidth="200"
                                         Grid.ColumnSpan="2" Width="279"
-                                        >dd/mm/yyyy</TextBox>
+                                        Text="{Binding Birthday}"
+                                        ></TextBox>
                 <TextBox Padding="5"
                                         FontSize="14"
                                         Foreground="#79A7CB" 
@@ -144,7 +154,8 @@
                                         BorderBrush="#79A7CB"
                                         MinWidth="200"
                                         Grid.ColumnSpan="2" Width="279"
-                                        >012345678</TextBox>
+                                        Text="{Binding PhoneNumber}"
+                                        ></TextBox>
                 <TextBox Padding="5"
                                         FontSize="14"
                                         Foreground="#79A7CB" 
@@ -152,7 +163,8 @@
                                         BorderBrush="#79A7CB"
                                         MinWidth="200"
                                         Grid.ColumnSpan="2" Width="279"
-                                        >nhavien01@gmail.com</TextBox>
+                                        Text="{Binding Email}"
+                                        ></TextBox>
                 <TextBox Padding="5"
                                         FontSize="14"
                                         Foreground="#79A7CB" 
@@ -160,7 +172,8 @@
                                         BorderBrush="#79A7CB"
                                         MinWidth="200"
                                         Grid.ColumnSpan="2" Width="279"
-                                        >abcdxyz</TextBox>
+                                        Text="{Binding Address}"
+                                        ></TextBox>
                 <TextBox Padding="5" Margin="0 35 0 0 "
                                         FontSize="14"
                                         Foreground="#79A7CB" 
@@ -168,7 +181,8 @@
                                         BorderBrush="#79A7CB"
                                         MinWidth="200"
                                         Grid.ColumnSpan="2" Width="279"
-                                        >abcdxyz</TextBox>
+                                        Text="{Binding ID}"
+                                        ></TextBox>
                 <TextBox Padding="5" 
                                         FontSize="14"
                                         Foreground="#79A7CB" 
@@ -176,7 +190,8 @@
                                         BorderBrush="#79A7CB"
                                         MinWidth="200"
                                         Grid.ColumnSpan="2" Width="279"
-                                        >abcdxyz</TextBox>
+                                        Text="{Binding Branch}"
+                                        ></TextBox>
                 <TextBox Padding="5" 
                                         FontSize="14"
                                         Foreground="#79A7CB" 
@@ -184,7 +199,8 @@
                                         BorderBrush="#79A7CB"
                                         MinWidth="200"
                                         Grid.ColumnSpan="2" Width="279"
-                                        >abcdxyz</TextBox>
+                                        Text="{Binding CoefficientsSalary}"
+                                        ></TextBox>
                 <TextBox Padding="5" 
                                         FontSize="14"
                                         Foreground="#79A7CB" 
@@ -192,7 +208,8 @@
                                         BorderBrush="#79A7CB"
                                         MinWidth="200"
                                         Grid.ColumnSpan="2" Width="279"
-                                        >abcdxyz</TextBox>
+                                        Text="{Binding BasicPay}"
+                                        ></TextBox>
                 <TextBox Padding="5" 
                                         FontSize="14"
                                         Foreground="#79A7CB" 
@@ -200,7 +217,8 @@
                                         BorderBrush="#79A7CB"
                                         MinWidth="200"
                                         Grid.ColumnSpan="2" Width="279"
-                                        >abcdxyz</TextBox>
+                                        Text="{Binding Role}"
+                                        ></TextBox>
             </StackPanel>
 
 
@@ -216,6 +234,7 @@
                     ToolTip="Resource name: MaterialDesignRaisedSecondaryLightButton"
                     Content="Done"
                     FontSize="15"
+                    Command="{Binding EditCommand}"
                 >
             <i:Interaction.Triggers>
                 <i:EventTrigger EventName="Click">
