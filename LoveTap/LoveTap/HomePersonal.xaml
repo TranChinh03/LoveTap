@@ -248,8 +248,8 @@
                                         >Address:</TextBlock>
 
                         </StackPanel>
-                        <StackPanel Grid.Column="1" Margin="0 47 0 0">
-                            <TextBlock Padding="6"
+                        <StackPanel x:Name="Data1" Grid.Column="1" Margin="0 47 0 0">
+                            <TextBlock  Padding="6"
                                         FontSize="14"
                                         Foreground="#79A7CB"
                                         Text="{Binding FullName}"

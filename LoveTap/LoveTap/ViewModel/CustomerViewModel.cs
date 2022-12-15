@@ -24,9 +24,10 @@ namespace LoveTap.ViewModel
         private ObservableCollection<KHACHHANG> _CustomerList;
         public ObservableCollection<KHACHHANG> CustomerList { get => _CustomerList; set { _CustomerList = value; } }
         string Name;
+        public static KHACHHANG CurrentSelected { get; set; }
         public CustomerViewModel()
         {
-            CustomerList = new ObservableCollection<KHACHHANG>(DataProvider.Ins.DB.KHACHHANGs);
+            CustomerList = new ObservableCollection<KHACHHANG>(DataProvider.Ins.DB.KHACHHANGs.Where(x => x.DELETED == false));
             GetIdButton = new RelayCommand<Button>((p) => true, (p) => Name = p.Uid);
             SwitchTab = new RelayCommand<CustomerWindow>((p) => true, (p) => switchtab(p));
             Detail = new RelayCommand<CustomerWindow>((p) => { return p.CustomerList.SelectedItem == null ? false : true; }, (p) => _DetailCs(p));
@@ -76,6 +77,7 @@ namespace LoveTap.ViewModel
             //listKH = new ObservableCollection<KHACHHANG>(DataProvider.Ins.DB.KHACHHANGs);
             //paramater.ListViewKH.ItemsSource = listKH;
             //paramater.ListViewKH.SelectedItem = null;
+            CurrentSelected = (KHACHHANG)p.CustomerList.SelectedItem;
         }
     }
 }

@@ -21,6 +21,7 @@ namespace LoveTap.ViewModel
         public ObservableCollection<NHANVIEN> EmployeeList { get => _EmployeeList; set { _EmployeeList = value; OnPropertyChanged(); } }
 
         private string _Role;
+        
         public string Role { get => _Role; set { _Role = value; OnPropertyChanged(); } }    
         //public NHANVIEN VAITRO { get => _VAITRO; set { _VAITRO = value;
         //        if (VAITRO != null)
