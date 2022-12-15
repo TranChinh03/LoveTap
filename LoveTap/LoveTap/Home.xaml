@@ -4,6 +4,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
         xmlns:local="clr-namespace:LoveTap"
         xmlns:uc="clr-namespace:LoveTap.UserControlCustom"
         mc:Ignorable="d"
@@ -44,16 +45,10 @@
                 <RowDefinition></RowDefinition>
                 <RowDefinition></RowDefinition>
             </Grid.RowDefinitions>
-
-            <!--Control Bar-->
-            <!--<uc:ControlBarUC Grid.Row="0" Grid.ColumnSpan="12"/>-->
-
-            <!--Status Bar - MenuBar -->
-            <!--<uc:StatusBarUC
-                Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="10" x:Name="Home"/>
             
-            <uc:MenuBarUC x:Uid="0" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Grid.RowSpan="11"/>-->
+            <!--Detail BestSelling Product-->
 
+            <uc:GoodsDetailUC x:Name="DetailBestSl" Panel.ZIndex="2" Grid.RowSpan="8" Grid.ColumnSpan="10" Visibility="Hidden"></uc:GoodsDetailUC>
             <!-- REVENUE - ORDERS - CUSTOMER -->
             <Grid Grid.ColumnSpan="8" Grid.RowSpan="2" >
                 <StackPanel Orientation="Horizontal">
@@ -207,193 +202,58 @@
 
 
             <!-- BEST SELLING -->
-            <Grid Grid.Row="2" Grid.ColumnSpan="8" Grid.RowSpan="5" Margin="10 0 15 0" >
 
-                <StackPanel>
-                    <!-- NAV -->
-                    <DockPanel  Background="White" Height="36" VerticalAlignment="Center">
-                        <Grid >
-                            <TextBlock 
-                            Margin="10, 10, 10, 10" 
-                            FontSize="12"
-                            Foreground="#033270"
-                            HorizontalAlignment="Left"
-                        >
-                                <Bold>Best Selling Products</Bold>
-                            </TextBlock>
+            <Border Grid.Row="2" Grid.RowSpan="6" Grid.ColumnSpan="8" Background="White"
+                    CornerRadius="5" Margin="10" >
+                <Border.Effect>
+                    <DropShadowEffect BlurRadius="10" Color="Gray"/>
+                </Border.Effect>
+                <Grid>
+                    <ScrollViewer VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Visible">
+                        <ListView Name="BestSellingList" ItemsSource="{Binding CustomerList}" SelectedItem="{Binding SelectedItem, Mode=OneWayToSource}" HorizontalContentAlignment="Center">
+                            <ListView.Resources>
+                                <Style TargetType="{x:Type GridViewColumnHeader}">
+                                    <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                                    <Setter Property="Foreground" Value="{StaticResource Cyan Azure}"/>
+                                </Style>
+                            </ListView.Resources>
+                            <ListView.View >
+                                <GridView>
+                                    <GridViewColumn Header="Best Selling Product" DisplayMemberBinding="{Binding SDT}"></GridViewColumn>
+                                    <GridViewColumn Header="Oder" DisplayMemberBinding="{Binding HOTEN}"></GridViewColumn>
+                                    <GridViewColumn Header="Stock" DisplayMemberBinding="{Binding NGSINH}"></GridViewColumn>
+                                </GridView>
+                            </ListView.View>
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="SelectionChanged">
+                                    <i:InvokeCommandAction     Command="{Binding Detail}"
+                                                           CommandParameter="{Binding ElementName=homeWindow}"></i:InvokeCommandAction>
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </ListView>
+                    </ScrollViewer>
 
-                            <TextBlock  VerticalAlignment="Center"
-                            HorizontalAlignment="Right"
-                            FontSize="12"
-                            Foreground="#033270"
-                            Opacity="0.69"
-                        >
-                                <Bold Foreground="#033270">SORT BY: </Bold>
-                                Today 
-                                <Image Width="14" Source="./img/arrow.png"></Image>
-                            </TextBlock>
-                        </Grid>
 
+                    <!-- TAB PAGE RESULT-->
 
-                    </DockPanel>
+                    <!--<TextBlock VerticalAlignment="Bottom" Margin="10" FontSize="12" Foreground="{StaticResource Cyan Azure}" HorizontalAlignment="Left">Showing 5 of 25 Results</TextBlock>-->
 
-                    <TextBlock Height="2" Background="#ccc"></TextBlock>
-                    <!-- LINE -->
+                    <!--Page-->
+                    <!--<StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Bottom">
+                        <Button Style="{StaticResource tabButton}">
+                            <materialDesign:PackIcon Kind="ArrowLeftBold"/>
+                        </Button>
+                        <Button Style="{StaticResource tabButton}" BorderBrush="Red" >1</Button>
+                        <Button Style="{StaticResource tabButton}" BorderBrush="Red" >2</Button>
+                        <Button Style="{StaticResource tabButton}" BorderBrush="Red" >3</Button>
 
-                    <!-- PRODUCTS -->
-                    <DockPanel >
-                        <Image Margin="10, 10, 10, 10" Width="35" Source="./img/laptop.jpg"></Image>
-
-                        <StackPanel Margin="10, 10, 10, 10" HorizontalAlignment="Center" VerticalAlignment="Center">
-                            <TextBlock FontSize="12" Foreground="#033270"
-                                ><Bold>Laptop MSI Modern 14 B11MOU 1028VN</Bold></TextBlock>
-                            <TextBlock FontSize="12"
-                                >10,990,000 VND</TextBlock>
-                        </StackPanel>
-
-                        <WrapPanel HorizontalAlignment="Right">
-                            <StackPanel HorizontalAlignment="Right" VerticalAlignment="Center" >
-                                <TextBlock FontSize="12" HorizontalAlignment="Center" Foreground="#033270"
-                                ><Bold>99</Bold></TextBlock>
-                                <TextBlock FontSize="12"
-                                >Orders</TextBlock>
-                            </StackPanel >
-
-                            <StackPanel Margin="10" HorizontalAlignment="Right" VerticalAlignment="Center">
-                                <TextBlock FontSize="12" HorizontalAlignment="Center" Foreground="#033270"
-                                ><Bold>510</Bold></TextBlock>
-                                <TextBlock FontSize="12"
-                                >Stocks</TextBlock>
-                            </StackPanel>
-                        </WrapPanel>
-
-                    </DockPanel>
-                    <TextBlock Height="2" Background="#ccc"></TextBlock>
-                    <!-- LINE -->
-
-                    <DockPanel>
-                        <Image Margin="10, 10, 10, 10" Width="35" Source="./img/laptop.jpg"></Image>
-
-                        <StackPanel Margin="10, 10, 10, 10" HorizontalAlignment="Center" VerticalAlignment="Center">
-                            <TextBlock FontSize="12" Foreground="#033270"
-                                ><Bold>Laptop MSI Modern 14 B11MOU 1028VN</Bold></TextBlock>
-                            <TextBlock FontSize="12"
-                                >10,990,000 VND</TextBlock>
-                        </StackPanel>
-
-                        <WrapPanel HorizontalAlignment="Right">
-                            <StackPanel HorizontalAlignment="Right" VerticalAlignment="Center" >
-                                <TextBlock FontSize="12" HorizontalAlignment="Center" Foreground="#033270"
-                                ><Bold>99</Bold></TextBlock>
-                                <TextBlock FontSize="12"
-                                >Orders</TextBlock>
-                            </StackPanel >
-
-                            <StackPanel Margin="10" HorizontalAlignment="Right" VerticalAlignment="Center">
-                                <TextBlock FontSize="12" HorizontalAlignment="Center" Foreground="#033270"
-                                ><Bold>510</Bold></TextBlock>
-                                <TextBlock FontSize="12"
-                                >Stocks</TextBlock>
-                            </StackPanel>
-                        </WrapPanel>
-                    </DockPanel>
-                    <TextBlock Height="2" Background="#ccc"></TextBlock>
-                    <!-- LINE -->
-
-                    <DockPanel>
-                        <Image Margin="10, 10, 10, 10" Width="35" Source="./img/laptop.jpg"></Image>
-
-                        <StackPanel Margin="10, 10, 10, 10" HorizontalAlignment="Center" VerticalAlignment="Center">
-                            <TextBlock FontSize="12" Foreground="#033270"
-                                ><Bold>Laptop MSI Modern 14 B11MOU 1028VN</Bold></TextBlock>
-                            <TextBlock FontSize="12"
-                                >10,990,000 VND</TextBlock>
-                        </StackPanel>
-
-                        <WrapPanel HorizontalAlignment="Right">
-                            <StackPanel HorizontalAlignment="Right" VerticalAlignment="Center" >
-                                <TextBlock FontSize="12" HorizontalAlignment="Center" Foreground="#033270"
-                                ><Bold>99</Bold></TextBlock>
-                                <TextBlock FontSize="12"
-                                >Orders</TextBlock>
-                            </StackPanel >
-
-                            <StackPanel Margin="10" HorizontalAlignment="Right" VerticalAlignment="Center">
-                                <TextBlock FontSize="12" HorizontalAlignment="Center" Foreground="#033270"
-                                ><Bold>510</Bold></TextBlock>
-                                <TextBlock FontSize="12"
-                                >Stocks</TextBlock>
-                            </StackPanel>
-                        </WrapPanel>
-                    </DockPanel>
-
-                    <TextBlock Height="2" Background="#ccc"></TextBlock>
-                    <!-- LINE -->
-
-                    <DockPanel>
-                        <Image Margin="10, 10, 10, 10" Width="35" Source="./img/laptop.jpg"></Image>
-
-                        <StackPanel Margin="10, 10, 10, 10" HorizontalAlignment="Center" VerticalAlignment="Center">
-                            <TextBlock FontSize="12" Foreground="#033270"
-                                ><Bold>Laptop MSI Modern 14 B11MOU 1028VN</Bold></TextBlock>
-                            <TextBlock FontSize="12"
-                                >10,990,000 VND</TextBlock>
-                        </StackPanel>
-
-                        <WrapPanel HorizontalAlignment="Right">
-                            <StackPanel HorizontalAlignment="Right" VerticalAlignment="Center" >
-                                <TextBlock FontSize="12" HorizontalAlignment="Center" Foreground="#033270"
-                                ><Bold>99</Bold></TextBlock>
-                                <TextBlock FontSize="12"
-                                >Orders</TextBlock>
-                            </StackPanel >
-
-                            <StackPanel Margin="10" HorizontalAlignment="Right" VerticalAlignment="Center">
-                                <TextBlock FontSize="12" HorizontalAlignment="Center" Foreground="#033270"
-                                ><Bold>510</Bold></TextBlock>
-                                <TextBlock FontSize="12"
-                                >Stocks</TextBlock>
-                            </StackPanel>
-                        </WrapPanel>
-                    </DockPanel>
-
-                    <TextBlock Height="2" Background="#ccc"></TextBlock>
-                    <!-- LINE -->
-                    <DockPanel>
-                        <Image Margin="10, 10, 10, 10" Width="35" Source="./img/laptop.jpg"></Image>
-
-                        <StackPanel Margin="10, 10, 10, 10" HorizontalAlignment="Center" VerticalAlignment="Center">
-                            <TextBlock FontSize="12" Foreground="#033270"
-                                ><Bold>Laptop MSI Modern 14 B11MOU 1028VN</Bold></TextBlock>
-                            <TextBlock FontSize="12"
-                                >10,990,000 VND</TextBlock>
-                        </StackPanel>
-
-                        <WrapPanel HorizontalAlignment="Right">
-                            <StackPanel HorizontalAlignment="Right" VerticalAlignment="Center" >
-                                <TextBlock FontSize="12" HorizontalAlignment="Center" Foreground="#033270"
-                                ><Bold>99</Bold></TextBlock>
-                                <TextBlock FontSize="12"
-                                >Orders</TextBlock>
-                            </StackPanel >
-
-                            <StackPanel Margin="10" HorizontalAlignment="Right" VerticalAlignment="Center">
-                                <TextBlock FontSize="12" HorizontalAlignment="Center" Foreground="#033270"
-                                ><Bold>510</Bold></TextBlock>
-                                <TextBlock FontSize="12"
-                                >Stocks</TextBlock>
-                            </StackPanel>
-                        </WrapPanel>
-                    </DockPanel>
-
-                    <TextBlock Height="2" Background="#ccc"></TextBlock>
-                    <!-- LINE -->
-
-                    <!-- SHOWING-->
-                </StackPanel>
-
-            </Grid>
-            <Grid VerticalAlignment="Center" Grid.Row="7" Grid.ColumnSpan="8" Margin="20">
+                        <Button Style="{StaticResource tabButton}">
+                            <materialDesign:PackIcon Kind="ArrowRightBold"/>
+                        </Button>
+                    </StackPanel>-->
+                </Grid>
+            </Border>
+            <!--<Grid VerticalAlignment="Center" Grid.Row="7" Grid.ColumnSpan="8" Margin="20">
                 <TextBlock 
                             FontSize="12"
                             Foreground="#033270"
@@ -415,11 +275,7 @@
                                 </StackPanel>
                 </TextBlock>
 
-            </Grid>
-
-
-
-
+            </Grid>-->
 
             <!-- CALENDAR - MAP -->
             <Grid  Grid.Column="8"  Grid.ColumnSpan="2" Grid.RowSpan="8" Margin="10">

@@ -21,6 +21,7 @@
             <SolidColorBrush x:Key="Bright Turquoise" Color="#24FECA"/>
             <SolidColorBrush x:Key="Regal Blue" Color="#034270"/>
             <SolidColorBrush x:Key="Cyan Azure" Color="#5684B0"/>
+            <SolidColorBrush x:Key="Cyan Azure 0.5" Color="#5684B0" Opacity="0.3"/>
             <SolidColorBrush x:Key="Light Sea Green" Color="#26B69F"/>
             <SolidColorBrush x:Key ="Light Red" Color="#FFD3C7" Opacity="0.38"/>
             <SolidColorBrush x:Key="Linen" Color="#ffeeea"/>

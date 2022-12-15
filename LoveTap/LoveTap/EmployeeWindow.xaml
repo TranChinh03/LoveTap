@@ -17,7 +17,7 @@
         Background="{DynamicResource MaterialDesignPaper}"
         FontFamily="{DynamicResource MaterialDesignFont}"
 
-        Title="EmployeeWindow" Height="466.2" Width="666.666666666667"
+        Title="EmployeeWindow" Height="466.2" Width="666.666666666667" Name="EmployeePage"
         DataContext="{StaticResource EmployeeVM}">
 
     <i:Interaction.Triggers>
@@ -55,19 +55,12 @@
 
         <!--ACTION-->
         <!--Add E-->
-        <uc:AddEmployee x:Name="AddEmployee"  Grid.Column="1" Grid.ColumnSpan="10" Grid.Row="2" Grid.RowSpan="8" Background="White"
-                                 Visibility="Hidden" Panel.ZIndex="2" />
-
-        <!--EditEmployee-->
-        <uc:EditEmployeeUC x:Name="EditValue" Grid.Column="1" Grid.ColumnSpan="10" Grid.Row="2" Grid.RowSpan="8" Background="White"
-                                 Visibility="Hidden" Panel.ZIndex="2" />
+        <uc:AddEmployee x:Name="AddEmployee"  Grid.ColumnSpan="10" Grid.RowSpan="9" Background="White"
+                                 Visibility="Hidden" Margin="10" Panel.ZIndex="2" />
 
         <!--EmployeeDetail-->
-        <uc:EmployeeDetailUC x:Name="DetailOfE" Grid.Column="1" Grid.ColumnSpan="10" Grid.Row="2" Grid.RowSpan="8" Background="White"
-                                 Visibility="Hidden" Panel.ZIndex="2"></uc:EmployeeDetailUC>
-        <Grid x:Name="BackgroundOpacity" Grid.RowSpan="11" Grid.ColumnSpan="12" Background="{StaticResource Catalina Blue}" 
-              Opacity="0.5" Panel.ZIndex="1" Visibility="Hidden"></Grid>
-
+        <uc:EmployeeDetailUC x:Name="EmployeeDetail"  Grid.ColumnSpan="10" Grid.RowSpan="9" Background="White"
+                                 Visibility="Hidden" Margin="10" Panel.ZIndex="2"></uc:EmployeeDetailUC>
         <!--CONTENT-->
         <Grid  Background="Transparent" Grid.RowSpan="9"
               Grid.ColumnSpan="10">
@@ -104,14 +97,19 @@
                                 Content="+Add Employee" 
                                 DockPanel.Dock="Right"
                                 Background="{StaticResource Light Sea Green}"
-                                Margin="10"
+                                Margin="10" Uid="1" Name="AddEmployeeBt"
                             >
                                 <i:Interaction.Triggers>
                                     <i:EventTrigger EventName="Click">
-                                        <i:InvokeCommandAction Command="{Binding AddCsCommand}"
-                                                       CommandParameter="{Binding ElementName=Cswd}"></i:InvokeCommandAction>
+                                        <i:InvokeCommandAction Command="{Binding SwitchTab}"
+                                                       CommandParameter="{Binding ElementName=EmployeePage}"></i:InvokeCommandAction>
+                                    </i:EventTrigger>
+                                    <i:EventTrigger EventName="MouseMove">
+                                        <i:InvokeCommandAction Command="{Binding GetIdButton}"
+                                                       CommandParameter="{Binding ElementName=AddEmployeeBt}"></i:InvokeCommandAction>
                                     </i:EventTrigger>
                                 </i:Interaction.Triggers>
+                                
                             </Button>
 
                             <Grid DockPanel.Dock="Left">
@@ -190,7 +188,7 @@
                     <TextBlock VerticalAlignment="Bottom" Margin="10" FontSize="12" Foreground="{StaticResource Cyan Azure}" HorizontalAlignment="Left">Showing 5 of 25 Results</TextBlock>
 
                     <!--Page-->
-                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Bottom">
+                    <!--<StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Bottom">
                         <Button Style="{StaticResource tabButton}">
                             <materialDesign:PackIcon Kind="ArrowLeftBold"/>
                         </Button>
@@ -201,7 +199,7 @@
                         <Button Style="{StaticResource tabButton}">
                             <materialDesign:PackIcon Kind="ArrowRightBold"/>
                         </Button>
-                    </StackPanel>
+                    </StackPanel>-->
 
 
                 </Grid>
@@ -209,143 +207,61 @@
 
             </Border>
 
-            <DataGrid      Grid.Row="1" Margin="10,0,10,48"
-                           AutoGenerateColumns="False"
-                           CanUserAddRows="False"
-                           HeadersVisibility="All"
-                           Background="Transparent" HorizontalContentAlignment="Right" VerticalContentAlignment="Stretch"
-                           ItemsSource ="{Binding EmployeeList}">
-                <!--<DataGrid.Resources>
-                    -->
-                <!--<domain:BindingProxy
-      x:Key="DataContextProxy"
-      Data="{Binding}" xmlns:domain="clr-namespace:MaterialDesignDemo.Domain" />-->
-                <!--
-                </DataGrid.Resources>-->
-                <DataGrid.Columns >
+            <!--2 GridView-->
+            <Border Grid.Row="1" Background="White"
+                    CornerRadius="5" Margin="10" >
+                <Border.Effect>
+                    <DropShadowEffect BlurRadius="10" Color="Gray"/>
+                </Border.Effect>
+                <Grid>
+                    <ScrollViewer VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Visible">
+                        <ListView Name="EmployeeList" ItemsSource="{Binding EmployeeList}" SelectedItem="{Binding SelectedItem, Mode=OneWayToSource}" HorizontalContentAlignment="Center">
+                            <ListView.Resources>
+                                <Style TargetType="{x:Type GridViewColumnHeader}">
+                                    <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                                    <Setter Property="Foreground" Value="{StaticResource Cyan Azure}"/>
+                                </Style>
+                            </ListView.Resources>
+                            <ListView.View >
+                                <GridView>
+                                    <GridViewColumn Header="Employee Code" DisplayMemberBinding="{Binding MANV}"></GridViewColumn>
+                                    <GridViewColumn Header="Name" DisplayMemberBinding="{Binding HOTEN}"></GridViewColumn>
+                                    <GridViewColumn Header="Phone" DisplayMemberBinding="{Binding SDT}"></GridViewColumn>
+                                    <GridViewColumn Header="Email" DisplayMemberBinding="{Binding EMAIL}"></GridViewColumn>
+                                    <GridViewColumn Header="Branch" DisplayMemberBinding="{Binding MACN}"></GridViewColumn>
+                                    <GridViewColumn Header="Position" DisplayMemberBinding="{Binding VAITRO}"></GridViewColumn>
+                                </GridView>
+                            </ListView.View>
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="SelectionChanged">
+                                    <i:InvokeCommandAction     Command="{Binding Detail}"
+                                                           CommandParameter="{Binding ElementName=EmployeePage}"></i:InvokeCommandAction>
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </ListView>
+                    </ScrollViewer>
 
-                    <DataGridCheckBoxColumn
-                                        Binding="{Binding IsSelected, UpdateSourceTrigger=PropertyChanged}"
-                                        EditingElementStyle="{StaticResource MaterialDesignDataGridCheckBoxColumnEditingStyle}"
-                                        ElementStyle="{StaticResource MaterialDesignDataGridCheckBoxColumnStyle}" >
-                        <DataGridCheckBoxColumn.Header >
-                            <Border>
-                                <CheckBox/>
-                                <!--IsChecked="{Binding Data.IsAllItems1Selected, Source={StaticResource DataContextProxy}}" />-->
-                            </Border>
-                        </DataGridCheckBoxColumn.Header >
-                        <DataGridCheckBoxColumn.HeaderStyle>
-                            <Style
-          TargetType="{x:Type DataGridColumnHeader}"
-          BasedOn="{StaticResource MaterialDesignDataGridColumnHeader}">
-                                <Setter
-            Property="HorizontalContentAlignment"
-            Value="Center" />
-                            </Style>
-                        </DataGridCheckBoxColumn.HeaderStyle>
-                    </DataGridCheckBoxColumn>
-                    <DataGridTextColumn 
-      Binding="{Binding MANV}"
-      EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" 
-      ElementStyle="{StaticResource MaterialDesignDataGridTextColumnStyle}"
-                        Width="65"
-      Header="ID" Foreground="{StaticResource Cyan Azure}" />
-                    <!-- if you want to use the pop up style (MaterialDesignDataGridTextColumnPopupEditingStyle), you must use MaterialDataGridTextColumn -->
-                    <materialDesign:DataGridTextColumn
-      Binding="{Binding HOTEN}"
-      EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}"
-      ElementStyle="{StaticResource MaterialDesignDataGridTextColumnStyle}"
-      Header="Name" Width="200">
-                        <!--<materialDesign:DataGridTextColumn.Binding>
-                                -->
-                        <!--<Binding
-          Path="Name">
-                                    <Binding.ValidationRules>
-                                        -->
-                        <!--<domain:NotEmptyValidationRule xmlns:domain="clr-namespace:MaterialDesignDemo.Domain" />-->
-                        <!--
-                                    </Binding.ValidationRules>
-                                </Binding>-->
-                        <!--
-                            </materialDesign:DataGridTextColumn.Binding>-->
-                    </materialDesign:DataGridTextColumn>
-                    <!-- set a max length to get an indicator in the editor -->
-                    
-                    <!--<DataGridTextColumn
-      EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}"
-      ElementStyle="{StaticResource MaterialDesignDataGridTextColumnStyle}"
-      Header="Brand" Width="115">
-                        <DataGridTextColumn.Binding>
-                            <Binding
-          Path="Description">
-                                <Binding.ValidationRules>
-                                    --><!--<domain:NotEmptyValidationRule xmlns:domain="clr-namespace:MaterialDesignDemo.Domain" />--><!--
-                                </Binding.ValidationRules>
-                            </Binding>
-                        </DataGridTextColumn.Binding>
-                    </DataGridTextColumn>-->
 
-                    <materialDesign:DataGridTextColumn
-      Binding="{Binding MACN}"
-      EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}"
-      ElementStyle="{StaticResource MaterialDesignDataGridTextColumnStyle}"
-      Header="Branch" Width="80">
-                    </materialDesign:DataGridTextColumn>
+                    <!-- TAB PAGE RESULT-->
 
-                    <materialDesign:DataGridTextColumn
-      Binding="{Binding VAITRO}"
-      EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}"
-      ElementStyle="{StaticResource MaterialDesignDataGridTextColumnStyle}"
-      Header="Position" Width="80">
-                    </materialDesign:DataGridTextColumn>
-                    <!-- use custom combo box column to get better combos. Use ItemsSourceBinding as your binding template to be applied to each combo -->
-                    <!--<materialDesign:DataGridComboBoxColumn
-      Header="Phone"
-      IsEditable="True"
-      ItemsSourceBinding="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type DataGrid}}, Path=DataContext.Foods}"
-      SelectedValueBinding="{Binding Food}">
-                        --><!--Setting the editing element style allows access to all of the combo box's properties
-                      <materialDesign:MaterialDataGridComboBoxColumn.EditingElementStyle>
-                          <Style TargetType="ComboBox" BasedOn="{StaticResource {ComponentResourceKey TypeInTargetAssembly={x:Type ComboBox}, ResourceId=MaterialDataGridComboBoxColumnEditingStyle}}" >
-                              <Setter Property="IsEditable" Value="True" />
-                          </Style>
-                      </materialDesign:MaterialDataGridComboBoxColumn.EditingElementStyle>
-          --><!--
-                    </materialDesign:DataGridComboBoxColumn>-->
+                    <!--<TextBlock VerticalAlignment="Bottom" Margin="10" FontSize="12" Foreground="{StaticResource Cyan Azure}" HorizontalAlignment="Left">Showing 5 of 25 Results</TextBlock>-->
 
-                    <materialDesign:DataGridTextColumn
-      Binding="{Binding SDT}"
-      EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}"
-      ElementStyle="{StaticResource MaterialDesignDataGridTextColumnStyle}"
-      Header="Phone Number" Width="150">
-                    </materialDesign:DataGridTextColumn>
+                    <!--Page-->
+                    <!--<StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Bottom">
+                        <Button Style="{StaticResource tabButton}">
+                            <materialDesign:PackIcon Kind="ArrowLeftBold"/>
+                        </Button>
+                        <Button Style="{StaticResource tabButton}" BorderBrush="Red" >1</Button>
+                        <Button Style="{StaticResource tabButton}" BorderBrush="Red" >2</Button>
+                        <Button Style="{StaticResource tabButton}" BorderBrush="Red" >3</Button>
 
-                    <materialDesign:DataGridComboBoxColumn
-      Header="Action"
-      ItemsSourceBinding="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type DataGrid}}, Path=DataContext.Files}"
-      SelectedValueBinding="{Binding Files}" />
-                    <!--<DataGridTemplateColumn
-      Header="Template Column">
-                        <DataGridTemplateColumn.CellTemplate>
-                            <DataTemplate>
-                                --><!--DataType="{x:Type domain:SelectableViewModel}">--><!--
-                                <TextBlock
-            FontSize="14"
-            FontStyle="Italic"
-            Text="{Binding Name}" />
-                            </DataTemplate>
-                        </DataGridTemplateColumn.CellTemplate>
-                        <DataGridTemplateColumn.CellEditingTemplate>
-                            <DataTemplate>
-                                --><!--DataType="{x:Type domain:SelectableViewModel}">--><!--
-                                <TextBox
-            Foreground="{DynamicResource SecondaryHueMidBrush}"
-            Text="{Binding Name}" />
-                            </DataTemplate>
-                        </DataGridTemplateColumn.CellEditingTemplate>
-                    </DataGridTemplateColumn>-->
-                </DataGrid.Columns>
-            </DataGrid>
+                        <Button Style="{StaticResource tabButton}">
+                            <materialDesign:PackIcon Kind="ArrowRightBold"/>
+                        </Button>
+                    </StackPanel>-->
+                </Grid>
+            </Border>
+
 
         </Grid>
 

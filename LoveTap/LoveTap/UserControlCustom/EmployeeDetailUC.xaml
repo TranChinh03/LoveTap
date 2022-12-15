@@ -7,8 +7,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LoveTap.UserControlCustom"
         mc:Ignorable="d"
-        Name="ucEmployeeDetail"
-        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes">
+        Name="ucEmployeeDetail" Height="456.2" Width="656.666666666667"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        DataContext="{StaticResource EmployeeDetailVM}">
 
 
     <Grid Background="Transparent">
@@ -17,6 +18,11 @@
             <RowDefinition Height="3*"/>
             <RowDefinition Height="6*"/>
         </Grid.RowDefinitions>
+
+        <!--EditEmployee-->
+        <uc:EditEmployeeUC x:Name="EditEmployee" Grid.ColumnSpan="10" Grid.RowSpan="9" Background="White"
+                                 Visibility="Hidden"  Panel.ZIndex="2" />
+
         <!--Top Button-->
         <DockPanel Margin="15,0,15,0">
             <TextBlock FontSize="20"
@@ -24,21 +30,57 @@
                        Foreground="{StaticResource Catalina Blue}"
                        VerticalAlignment="Center"
                        >#NV001</TextBlock>
+            <!--Back Button-->
             <Button DockPanel.Dock="Right" Style="{StaticResource OrangeButton}"
-                    HorizontalAlignment="Right" Click="Button_Click" >Back</Button>
-            <Button DockPanel.Dock="Right" Style="{StaticResource greenButton}"
-                    HorizontalAlignment="Right" >
+                    HorizontalAlignment="Right" Uid="3" Name="backBt" Content="Back">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="Click">
+                        <i:InvokeCommandAction Command="{Binding SwitchTab}"
+                                                           CommandParameter="{Binding ElementName=ucEmployeeDetail}"></i:InvokeCommandAction>
+                    </i:EventTrigger>
+                    <i:EventTrigger EventName="MouseMove">
+                        <i:InvokeCommandAction Command="{Binding GetIdButton}"
+                                                           CommandParameter="{Binding ElementName=backBt}"></i:InvokeCommandAction>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </Button>
+
+            <!--Invoice Button-->
+            <Button Name="invoiceBt" Uid="2" DockPanel.Dock="Right" Style="{StaticResource greenButton}"
+                    HorizontalAlignment="Right" Width="90" >
                 <StackPanel Orientation="Horizontal">
                     <materialDesign:PackIcon Kind="Download" />
                     <TextBlock Margin="8,0,0,0">Invoice</TextBlock>
                 </StackPanel>
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="Click">
+                        <i:InvokeCommandAction Command="{Binding SwitchTab}"
+                                                           CommandParameter="{Binding ElementName=ucEmployeeDetail}"></i:InvokeCommandAction>
+                    </i:EventTrigger>
+                    <i:EventTrigger EventName="MouseMove">
+                        <i:InvokeCommandAction Command="{Binding GetIdButton}"
+                                                           CommandParameter="{Binding ElementName=invoiceBt}"></i:InvokeCommandAction>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
             </Button>
-            <Button DockPanel.Dock="Right" Style="{StaticResource greenButton}"
-                    HorizontalAlignment="Right" Width="90" Click="Button_Click_1" >
+
+            <!--Edit Button-->
+            <Button x:Name="editBt" Uid="1" DockPanel.Dock="Right" Style="{StaticResource greenButton}"
+                    HorizontalAlignment="Right" Width="90" >
                 <StackPanel Orientation="Horizontal">
                     <materialDesign:PackIcon Kind="Pencil" />
                     <TextBlock Margin="7,0,0,0">Edit</TextBlock>
                 </StackPanel>
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="Click">
+                        <i:InvokeCommandAction Command="{Binding SwitchTab}"
+                                                           CommandParameter="{Binding ElementName=ucEmployeeDetail}"></i:InvokeCommandAction>
+                    </i:EventTrigger>
+                    <i:EventTrigger EventName="MouseMove">
+                        <i:InvokeCommandAction Command="{Binding GetIdButton}"
+                                                           CommandParameter="{Binding ElementName=editBt}"></i:InvokeCommandAction>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
             </Button>
         </DockPanel>
 

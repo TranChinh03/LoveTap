@@ -23,12 +23,12 @@
         DataContext="{StaticResource MainVM}" Name="mainWindow"
 >
 
-    <!--<i:Interaction.Triggers>
+    <i:Interaction.Triggers>
         <i:EventTrigger EventName="Loaded">
             <i:InvokeCommandAction Command="{Binding LoadedMainWd}"
                                                        CommandParameter="{Binding ElementName=mainWindow}"></i:InvokeCommandAction>
         </i:EventTrigger>
-    </i:Interaction.Triggers>-->
+    </i:Interaction.Triggers>
 
     <Grid Background="WhiteSmoke">
         <Grid.RowDefinitions>

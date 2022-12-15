@@ -27,20 +27,8 @@
                        ></TextBox>
             </Border>
 
-            <Button DockPanel.Dock="Right" Style="{StaticResource greenButton}" 
-                    HorizontalAlignment="Right" Width="90" Content="Done" Uid="2" x:Name="doneBt">
-                <i:Interaction.Triggers>
-                    <i:EventTrigger EventName="Click">
-                        <i:InvokeCommandAction Command="{Binding SwitchTab}"
-                                                           CommandParameter="{Binding ElementName=ucAddCustomer}"></i:InvokeCommandAction>
-                    </i:EventTrigger>
-                    <i:EventTrigger EventName="MouseMove">
-                        <i:InvokeCommandAction Command="{Binding GetIdButton}"
-                                                           CommandParameter="{Binding ElementName=doneBt}"></i:InvokeCommandAction>
-                    </i:EventTrigger>
-                </i:Interaction.Triggers>
-            </Button>
 
+            <!--Back Button-->
             <Button DockPanel.Dock="Right" Style="{StaticResource OrangeButton}"
                     HorizontalAlignment="Right" Content="Back" Uid="1" x:Name="backBt" >
                 <i:Interaction.Triggers>
@@ -51,6 +39,21 @@
                     <i:EventTrigger EventName="MouseMove">
                         <i:InvokeCommandAction Command="{Binding GetIdButton}"
                                                            CommandParameter="{Binding ElementName=backBt}"></i:InvokeCommandAction>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </Button>
+            
+            <!--Done Button-->
+            <Button DockPanel.Dock="Right" Style="{StaticResource greenButton}" 
+                    HorizontalAlignment="Right" Width="90" Content="Done" Uid="2" x:Name="doneBt">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="Click">
+                        <i:InvokeCommandAction Command="{Binding SwitchTab}"
+                                                           CommandParameter="{Binding ElementName=ucAddCustomer}"></i:InvokeCommandAction>
+                    </i:EventTrigger>
+                    <i:EventTrigger EventName="MouseMove">
+                        <i:InvokeCommandAction Command="{Binding GetIdButton}"
+                                                           CommandParameter="{Binding ElementName=doneBt}"></i:InvokeCommandAction>
                     </i:EventTrigger>
                 </i:Interaction.Triggers>
             </Button>
