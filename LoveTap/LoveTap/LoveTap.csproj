@@ -215,12 +215,16 @@
       <DependentUpon>SuccessModelUC.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModel\AddCustomerViewModel.cs" />
+    <Compile Include="ViewModel\AddEmployeeViewModel.cs" />
     <Compile Include="ViewModel\AddGoodViewModel.cs" />
     <Compile Include="ViewModel\CreatePwViewModel.cs" />
     <Compile Include="ViewModel\CustomerDetailViewModel.cs" />
     <Compile Include="ViewModel\CreateOrdersViewModel.cs" />
     <Compile Include="ViewModel\CustomerViewModel.cs" />
     <Compile Include="ViewModel\EditCustomerViewModel.cs" />
+    <Compile Include="ViewModel\EditEmployeeViewModel.cs" />
+    <Compile Include="ViewModel\EditGoodViewModel.cs" />
+    <Compile Include="ViewModel\EmployeeDetailViewModel.cs" />
     <Compile Include="ViewModel\EmployeeViewModel.cs" />
     <Compile Include="ViewModel\GoodDetailViewModel.cs" />
     <Compile Include="ViewModel\GoodsViewModel.cs" />
@@ -239,6 +243,7 @@
     <Compile Include="ViewModel\HomeViewModel.cs" />
     <Compile Include="ViewModel\LoginViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
+    <Compile Include="ViewModel\OrderDetailViewModel.cs" />
     <Compile Include="ViewModel\OrdersViewModel.cs" />
     <Compile Include="ViewModel\MenuBarUC.cs" />
     <Compile Include="ViewModel\ProfileUsrViewModel.cs" />
@@ -440,7 +445,6 @@
     <Resource Include="img\staff.png" />
     <Resource Include="img\imageBackground_2.png" />
     <Resource Include="img\available.png" />
-    <Resource Include="img\checkCircle.png" />
     <Resource Include="img\edit.png" />
     <Resource Include="img\laptopModel0.png" />
     <Resource Include="img\laptopModel1.png" />
@@ -505,6 +509,7 @@
     <Resource Include="img\background1.png" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="img\checkCircle.jpg" />
     <Content Include="Model\Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Model1.edmx</DependentUpon>

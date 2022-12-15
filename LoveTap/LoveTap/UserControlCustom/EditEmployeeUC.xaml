@@ -6,8 +6,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LoveTap.UserControlCustom"
         mc:Ignorable="d"
-        Name="ucEditEmployee"
-        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes">
+        Name="ucEditEmployee" Height="456.2" Width="656.666666666667"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        DataContext="{StaticResource EditEmployeeVM}">
 
 
     <Grid Background="White">
@@ -19,26 +20,48 @@
 
         <!--Top Button-->
         <DockPanel Margin="15,0,15,0">
-            <Border BorderBrush="{StaticResource Cyan Azure}"  BorderThickness="0.5" CornerRadius="5">
+            <Border BorderBrush="{StaticResource Cyan Azure}"  BorderThickness="0.5" CornerRadius="5" VerticalAlignment="Center">
                 <TextBox FontSize="20"
                        FontWeight="Black"
                        Foreground="{StaticResource Catalina Blue}"
                        VerticalAlignment="Center" Width="150"  BorderThickness="0"
                        >#NV001</TextBox>
             </Border>
-            <Button DockPanel.Dock="Right" Style="{StaticResource greenButton}" 
-                    HorizontalAlignment="Right" Width="90">
-                <TextBlock Margin="8,0,0,0" >Done</TextBlock>
+            <!--Back Button-->
+            <Button DockPanel.Dock="Right" Style="{StaticResource OrangeButton}"
+                    HorizontalAlignment="Right" Uid="2" Name="backBt" Content="Back">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="Click">
+                        <i:InvokeCommandAction Command="{Binding SwitchTab}"
+                                                           CommandParameter="{Binding ElementName=ucEditEmployee}"></i:InvokeCommandAction>
+                    </i:EventTrigger>
+                    <i:EventTrigger EventName="MouseMove">
+                        <i:InvokeCommandAction Command="{Binding GetIdButton}"
+                                                           CommandParameter="{Binding ElementName=backBt}"></i:InvokeCommandAction>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
             </Button>
 
-            <Button DockPanel.Dock="Right" Style="{StaticResource OrangeButton}"
-                    HorizontalAlignment="Right" >Back</Button>
+            <!--Done Button-->
+            <Button Uid="1" Name="doneBt" Content="Done" DockPanel.Dock="Right" Style="{StaticResource greenButton}" 
+                    HorizontalAlignment="Right" Width="90">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="Click">
+                        <i:InvokeCommandAction Command="{Binding SwitchTab}"
+                                                           CommandParameter="{Binding ElementName=ucEditEmployee}"></i:InvokeCommandAction>
+                    </i:EventTrigger>
+                    <i:EventTrigger EventName="MouseMove">
+                        <i:InvokeCommandAction Command="{Binding GetIdButton}"
+                                                           CommandParameter="{Binding ElementName=doneBt}"></i:InvokeCommandAction>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </Button>
         </DockPanel>
 
         <!--Image and Name-->
         <StackPanel Margin="15,0,15,0"
                     Grid.Row="1" Orientation="Horizontal">
-            <Border CornerRadius="15" BorderBrush="#5684B0" BorderThickness="0.5" Background="Transparent"  >
+            <Border CornerRadius="15" BorderBrush="#5684B0" BorderThickness="0.5" Background="Transparent" Height="110"  >
                 <Button Grid.RowSpan="3"  Padding="10" Height="100"  Width="100" BorderBrush="Transparent"  Background="Transparent">
                         <Image Source="/img/ImageofEmployee.png"  Stretch="Uniform"></Image>
                 </Button>
@@ -68,21 +91,21 @@
             </Grid.ColumnDefinitions>
 
             <StackPanel HorizontalAlignment="Center" >
-                <TextBlock Style="{StaticResource detailText}" Margin="0,28,0,0">Ngày sinh:</TextBlock>
-                <TextBlock Style="{StaticResource detailText}" Margin="0,28,0,0">Số điện thoại:</TextBlock>
-                <TextBlock Style="{StaticResource detailText}" Margin="0,28,0,0">Địa chỉ:</TextBlock>
-                <TextBlock Style="{StaticResource detailText}" Margin="0,28,0,0">Hệ số lương:</TextBlock>
-                <TextBlock Style="{StaticResource detailText}" Margin="0,28,0,0">Lương cơ bản:</TextBlock>
-                <TextBlock Style="{StaticResource detailText}" Margin="0,28,0,0">Chi nhánh:</TextBlock>
+                <TextBlock Style="{StaticResource detailText}" Margin="0,20,0,0">Ngày sinh:</TextBlock>
+                <TextBlock Style="{StaticResource detailText}" Margin="0,20,0,0">Số điện thoại:</TextBlock>
+                <TextBlock Style="{StaticResource detailText}" Margin="0,20,0,0">Địa chỉ:</TextBlock>
+                <TextBlock Style="{StaticResource detailText}" Margin="0,20,0,0">Hệ số lương:</TextBlock>
+                <TextBlock Style="{StaticResource detailText}" Margin="0,20,0,0">Lương cơ bản:</TextBlock>
+                <TextBlock Style="{StaticResource detailText}" Margin="0,20,0,0">Chi nhánh:</TextBlock>
             </StackPanel>
 
             <StackPanel Grid.Column="1" HorizontalAlignment="Center" >
-                <TextBox Style="{StaticResource editTextValue}" Height="45">16/05/2003</TextBox>
-                <TextBox Style="{StaticResource editTextValue}" Height="45">0123456</TextBox>
-                <TextBox Style="{StaticResource editTextValue}" Height="45">Phú Nhuận, TPHCM</TextBox>
-                <TextBox Style="{StaticResource editTextValue}" Height="45">1.5</TextBox>
-                <TextBox Style="{StaticResource editTextValue}" Height="45">8,000,000 VND</TextBox>
-                <TextBox Style="{StaticResource editTextValue}" Height="45">TP HCM</TextBox>
+                <TextBox Style="{StaticResource editTextValue}" Height="35">16/05/2003</TextBox>
+                <TextBox Style="{StaticResource editTextValue}" Height="35">0123356</TextBox>
+                <TextBox Style="{StaticResource editTextValue}" Height="35">Phú Nhuận, TPHCM</TextBox>
+                <TextBox Style="{StaticResource editTextValue}" Height="35">1.5</TextBox>
+                <TextBox Style="{StaticResource editTextValue}" Height="35">8,000,000 VND</TextBox>
+                <TextBox Style="{StaticResource editTextValue}" Height="35">TP HCM</TextBox>
             </StackPanel>
         </Grid>
 

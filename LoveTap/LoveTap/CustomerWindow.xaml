@@ -211,62 +211,6 @@
                 </Grid>
             </Border>
 
-            <!--<DataGrid      SelectionUnit="{Binding ElementName=selectionUnitComboBox, Path=SelectedValue}"
-                           ItemsSource="{Binding CustomerList}"
-                           Grid.Row="1"
-                           AutoGenerateColumns="False"
-                           CanUserAddRows="False" Name="CustomerList"
-                           HeadersVisibility="All" SelectionMode="Single"
-                           Background="Transparent" HorizontalContentAlignment="Right" VerticalContentAlignment="Stretch" Padding="0">
-                <DataGrid.Columns >
-                    <DataGridTextColumn 
-      Binding="{Binding SDT }"
-      EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" 
-      ElementStyle="{StaticResource MaterialDesignDataGridTextColumnStyle}"
-                        Width="150"
-      Header="Phone" Foreground="{StaticResource Cyan Azure}" />
-                    <materialDesign:DataGridTextColumn
-      Binding="{Binding HOTEN}"
-      EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}"
-      ElementStyle="{StaticResource MaterialDesignDataGridTextColumnStyle}"
-      Header="Name" Width="200">
-                    </materialDesign:DataGridTextColumn>
-                    <materialDesign:DataGridTextColumn
-      Binding="{Binding NGDK}"
-      EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}"
-      ElementStyle="{StaticResource MaterialDesignDataGridTextColumnStyle}"
-      Header="Registation Date" Width="150">
-                    </materialDesign:DataGridTextColumn>
-
-                    <materialDesign:DataGridTextColumn
-      Binding="{Binding DOANHSO}"
-      EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}"
-      ElementStyle="{StaticResource MaterialDesignDataGridTextColumnStyle}"
-      Header="Sale" Width="100">
-                    </materialDesign:DataGridTextColumn>
-
-                    <materialDesign:DataGridTextColumn
-      Binding="{Binding DIACHI}"
-      EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}"
-      ElementStyle="{StaticResource MaterialDesignDataGridTextColumnStyle}"
-      Header="Address" Width="500">
-                    </materialDesign:DataGridTextColumn>
-
-                    <materialDesign:DataGridTextColumn
-      Binding="{Binding NGSINH}"
-      EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}"
-      ElementStyle="{StaticResource MaterialDesignDataGridTextColumnStyle}"
-      Header="Date of birth" Width="150">
-                    </materialDesign:DataGridTextColumn>
-                </DataGrid.Columns>
-                <i:Interaction.Triggers>
-                    <i:EventTrigger EventName="SelectionChanged">
-                        <i:InvokeCommandAction     Command="{Binding Detail}"
-                                                           CommandParameter="{Binding ElementName=CustomerPage}"></i:InvokeCommandAction>
-                    </i:EventTrigger>
-                </i:Interaction.Triggers>
-            </DataGrid>-->
-
         </Grid>
 
 
