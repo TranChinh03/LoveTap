@@ -15,7 +15,7 @@
                 <Image Source="../img/horizontalLine.png" Height ="40" Margin="10 0 0 0"></Image>
             </DockPanel>
             <DockPanel DockPanel.Dock="Left" Margin="0 5 0 0">
-                <TextBlock DockPanel.Dock="Top" Text="Have a good day, Xuân Thảo!" FontSize="15" Foreground="#033270" FontWeight="Bold" Margin="10 0 0 0"></TextBlock>
+                <TextBlock DockPanel.Dock="Top" Text="" FontSize="15" Foreground="#033270" FontWeight="Bold" Margin="10 0 0 0">Have a good day!</TextBlock>
                 <TextBlock DockPanel.Dock="Bottom" Text="Here's what's happening with your store today"  Margin="10 0 0 0" Foreground ="#033270" FontSize="15" FontWeight="Light"></TextBlock>
             </DockPanel>
             <DockPanel DockPanel.Dock="Right">

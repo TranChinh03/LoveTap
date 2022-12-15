@@ -82,6 +82,8 @@ namespace LoveTap.ViewModel
                     else
                         Role = "Staff";
                 }
+                HomePersonal homePersonal = new HomePersonal();
+                
             });
 
 
@@ -119,7 +121,6 @@ namespace LoveTap.ViewModel
 
                 DataProvider.Ins.DB.SaveChanges();
 
-                
             });
         }
 

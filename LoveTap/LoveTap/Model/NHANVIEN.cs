@@ -9,11 +9,10 @@
 
 namespace LoveTap.Model
 {
-    using LoveTap.ViewModel;
     using System;
     using System.Collections.Generic;
     
-    public partial class NHANVIEN : BaseViewModel
+    public partial class NHANVIEN
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public NHANVIEN()
@@ -23,27 +22,17 @@ namespace LoveTap.Model
             this.KHACHHANGs = new HashSet<KHACHHANG>();
             this.KHOes = new HashSet<KHO>();
         }
-
-        private string _MANV;
-        public string MANV { get => _MANV; set { _MANV = value; OnPropertyChanged(); } }
-        private string _HOTEN;
-        public string HOTEN { get => _HOTEN; set { _HOTEN = value; OnPropertyChanged(); } }
-        private Nullable<System.DateTime> _NTNS;
-        public Nullable<System.DateTime> NTNS { get => _NTNS; set { _NTNS = value; OnPropertyChanged(); } }
-        private string _SDT;
-        public string SDT { get => _SDT; set { _SDT = value; OnPropertyChanged(); } }
-        private string _DIACHI;
-        public string DIACHI { get => _DIACHI; set { _DIACHI = value; OnPropertyChanged(); } }
-        private Nullable<double> _HESOLUONG;
-        public Nullable<double> HESOLUONG { get => _HESOLUONG; set { _HESOLUONG = value; OnPropertyChanged(); } }
-        private Nullable<double> _LUONGCB;
-        public Nullable<double> LUONGCB { get => _LUONGCB; set { _LUONGCB = value; OnPropertyChanged(); } }
-        private string _MACN;
-        public string MACN { get => _MACN; set { _MACN = value; OnPropertyChanged(); } }
-        private Nullable<bool> _VAITRO;
-        public Nullable<bool> VAITRO { get => _VAITRO; set { _VAITRO = value; OnPropertyChanged(); } }
-        private string _EMAIL;
-        public string EMAIL { get => _EMAIL; set { _EMAIL = value; OnPropertyChanged(); } }
+    
+        public string MANV { get; set; }
+        public string HOTEN { get; set; }
+        public Nullable<System.DateTime> NTNS { get; set; }
+        public string SDT { get; set; }
+        public string DIACHI { get; set; }
+        public Nullable<double> HESOLUONG { get; set; }
+        public Nullable<double> LUONGCB { get; set; }
+        public string MACN { get; set; }
+        public Nullable<bool> VAITRO { get; set; }
+        public string EMAIL { get; set; }
         public string NVID { get; set; }
         public Nullable<bool> DELETED { get; set; }
     

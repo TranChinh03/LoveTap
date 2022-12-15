@@ -33,7 +33,7 @@ namespace LoveTap.ViewModel
         public bool IsLoaded { get; set; } = false;
         public ICommand LoadedMainWd { get; set; }
         public static string ID { get; set; }
-        public bool IsAdmin { get; set; } = false;
+        public static bool IsAdmin { get; set; } = false;
         public MainViewModel()
         {
             LoadedMainWd = new RelayCommand<Window>((p) => { return true; }, (p) =>

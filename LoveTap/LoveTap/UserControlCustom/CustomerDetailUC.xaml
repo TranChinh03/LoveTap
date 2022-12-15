@@ -11,6 +11,13 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         DataContext="{StaticResource DetailCustomerVM}">
 
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="MouseMove">
+            <i:InvokeCommandAction Command="{Binding LoadedDetailCustomer}"
+                                                       CommandParameter="{Binding ElementName=ucCustomerDetail}"></i:InvokeCommandAction>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+
 
     <Grid Background="Transparent">
         <Grid.RowDefinitions>
@@ -99,14 +106,14 @@
             </StackPanel>
 
             <StackPanel Margin="10 0 0 0" Grid.Column="1" HorizontalAlignment="Center" >
-                <TextBlock Style="{StaticResource detailTextValue}">0908200585</TextBlock>
-                <TextBlock Style="{StaticResource detailTextValue}">Nguyễn Hoàng Duy</TextBlock>
-                <TextBlock Style="{StaticResource detailTextValue}">01/01/2001</TextBlock>
-                <TextBlock Style="{StaticResource detailTextValue}">Hẻm 133 Hòa Hưng, phường 12,quận 10</TextBlock>
-                <TextBlock Style="{StaticResource detailTextValue}">20/11/2021</TextBlock>
-                <TextBlock Style="{StaticResource detailTextValue}">3</TextBlock>
-                <TextBlock Background="{StaticResource Light Red 62}"  Foreground="{StaticResource Burnt Sienna}"
-                           HorizontalAlignment="Left" Padding="7">Vàng</TextBlock>
+                <TextBlock Style="{StaticResource detailTextValue}" Text="{Binding Phone}"></TextBlock>
+                <TextBlock Style="{StaticResource detailTextValue}" Text="{Binding CusName}"></TextBlock>
+                <TextBlock Style="{StaticResource detailTextValue}" Text="{Binding DOB}"></TextBlock>
+                <TextBlock Style="{StaticResource detailTextValue}" Text="{Binding Address}"></TextBlock>
+                <TextBlock Style="{StaticResource detailTextValue}" Text="{Binding RegistDate}"></TextBlock>
+                <TextBlock Style="{StaticResource detailTextValue}" Text="{Binding Sale}"></TextBlock>
+                <TextBlock Background="{StaticResource Light Red 62}" Text="{Binding Type}" Foreground="{StaticResource Burnt Sienna}"
+                           HorizontalAlignment="Left" Padding="7"></TextBlock>
             </StackPanel>
         </Grid>
 
