@@ -214,9 +214,15 @@
     <Compile Include="UserControlCustom\SuccessModelUC.xaml.cs">
       <DependentUpon>SuccessModelUC.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ViewModel\AddCustomerViewModel.cs" />
+    <Compile Include="ViewModel\AddGoodViewModel.cs" />
+    <Compile Include="ViewModel\CreatePwViewModel.cs" />
+    <Compile Include="ViewModel\CustomerDetailViewModel.cs" />
     <Compile Include="ViewModel\CreateOrdersViewModel.cs" />
     <Compile Include="ViewModel\CustomerViewModel.cs" />
+    <Compile Include="ViewModel\EditCustomerViewModel.cs" />
     <Compile Include="ViewModel\EmployeeViewModel.cs" />
+    <Compile Include="ViewModel\GoodDetailViewModel.cs" />
     <Compile Include="ViewModel\GoodsViewModel.cs" />
     <Compile Include="LoginWindow.xaml.cs">
       <DependentUpon>LoginWindow.xaml</DependentUpon>

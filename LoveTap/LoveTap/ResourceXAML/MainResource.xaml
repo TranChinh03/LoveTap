@@ -13,6 +13,12 @@
     <viewmodel:HomeViewModel x:Key="HomeVM"></viewmodel:HomeViewModel>
     <viewmodel:ProfileUsrViewModel x:Key="ProfileUsrVM"></viewmodel:ProfileUsrViewModel>
     <viewmodel:UsrPro5EditViewModel x:Key="UsrPro5VM"></viewmodel:UsrPro5EditViewModel>
+    <viewmodel:CreatePwViewModel x:Key="CreatePwVM"></viewmodel:CreatePwViewModel>
+    <viewmodel:AddCustomerViewModel x:Key="AddCustomerVM"></viewmodel:AddCustomerViewModel>
+    <viewmodel:CustomerDetailViewModel x:Key="DetailCustomerVM"></viewmodel:CustomerDetailViewModel>
+    <viewmodel:EditCustomerViewModel x:Key="EditCustomerVM"></viewmodel:EditCustomerViewModel>
+    <viewmodel:GoodDetailViewModel x:Key="GoodDetailVM"></viewmodel:GoodDetailViewModel>
+    <viewmodel:AddGoodViewModel x:Key="AddGoodVM"></viewmodel:AddGoodViewModel>
     <viewmodel:CreateOrdersViewModel x:Key="CreOdVM"></viewmodel:CreateOrdersViewModel>
 
 

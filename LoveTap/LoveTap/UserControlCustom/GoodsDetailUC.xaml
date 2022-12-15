@@ -6,8 +6,9 @@
              xmlns:local="clr-namespace:LoveTap.UserControlCustom"
              mc:Ignorable="d" 
              Name="ucGoodsDetail"
-             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes">
-
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:uc="clr-namespace:LoveTap.UserControlCustom" 
+             >
 
 
     <Grid Background="White">

@@ -20,11 +20,10 @@ namespace LoveTap.ViewModel
         public string UserID { get; set; }
         public ICommand GetIdTab { get; set; }
         public ICommand LoadedProfileUsr { get; set; }
-
-        public ICommand SwitchTab { get; set; }
-        public ICommand changePw { get; set; }
         public ICommand HiddenBG { get; set; }
 
+
+        public ICommand SwitchTab { get; set; }
         private ObservableCollection<NHANVIEN> _User;
         public ObservableCollection<NHANVIEN> User { get => _User; set { _User = value; OnPropertyChanged(); } }
 
@@ -86,7 +85,6 @@ namespace LoveTap.ViewModel
 
             GetIdTab = new RelayCommand<Button>((p) => true, (p) => Name = p.Uid);
             SwitchTab = new RelayCommand<HomePersonal>((p) => true, (p) => switchtab(p));
-            changePw = new RelayCommand<CreatePasswordUC>((p) => true, (p) => changePass(p));
             HiddenBG = new RelayCommand<Grid>((p) => true, (p) => hiddenBG(p));
         }
         void switchtab(HomePersonal p)
@@ -107,11 +105,6 @@ namespace LoveTap.ViewModel
                     }
 
             }
-        }
-
-        void changePass(CreatePasswordUC p)
-        {
-            p.Visibility = Visibility.Collapsed;
         }
 
         void hiddenBG(Grid p)
