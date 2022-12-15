@@ -50,7 +50,7 @@
 
             <!--Invoice Button-->
             <Button Name="invoiceBt" Uid="2" DockPanel.Dock="Right" Style="{StaticResource greenButton}"
-                    HorizontalAlignment="Right" >
+                    HorizontalAlignment="Right" Width="90" >
                 <StackPanel Orientation="Horizontal">
                     <materialDesign:PackIcon Kind="Download" />
                     <TextBlock Margin="8,0,0,0">Invoice</TextBlock>
@@ -118,7 +118,7 @@
         </Grid>
 
         <!--Edit UC-->
-        <uc:EditCustomerUC x:Name="EditCustomerUC" Grid.RowSpan="2" Visibility="Hidden"></uc:EditCustomerUC>
+        <uc:EditCustomerUC x:Name="EditCustomerUC" Grid.RowSpan="2" Visibility="Hidden" Margin="10"></uc:EditCustomerUC>
 
     </Grid>
 </UserControl>

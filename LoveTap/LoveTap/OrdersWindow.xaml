@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LoveTap"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
         mc:Ignorable="d"
        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:uc="clr-namespace:LoveTap.UserControlCustom"
@@ -14,7 +15,7 @@
         TextOptions.TextRenderingMode="Auto"
         Background="{DynamicResource MaterialDesignPaper}"
         FontFamily="{DynamicResource MaterialDesignFont}"
-        Name="ordersWindow"
+        Name="OrderPage"
         DataContext="{StaticResource OrdersVM}"
         Title="OrdersWindow" Height="466.2" Width="666.666666666667">
 
@@ -42,6 +43,10 @@
             <RowDefinition></RowDefinition>
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
+
+        <!--Add Order-->
+        <uc:CreateOrderUC x:Name="AddOrder" Visibility="Hidden" Margin="10" Grid.RowSpan="8" Grid.ColumnSpan="11" Panel.ZIndex="2" Background="White"></uc:CreateOrderUC>
+        <uc:OrdersDetailUC x:Name="OrderDetail" Visibility="Hidden" Margin="10" Grid.RowSpan="8" Grid.ColumnSpan="11" Panel.ZIndex="2" Background="White"></uc:OrdersDetailUC>
 
 
         <Border  Grid.ColumnSpan="10" Grid.RowSpan="2"
@@ -94,13 +99,23 @@
 
                 <Button
                     Style="{StaticResource MaterialDesignRaisedSecondaryLightButton}"
-                    Width="120"
+                    Width="120" Name="addOrderBt" Uid="1"
                     Background="#26B69F"
                     ToolTip="Resource name: MaterialDesignRaisedSecondaryLightButton"
-                    Content="+ Create Order"
+                    Content="+ Add Order"
                     FontSize="13"
-                    IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" 
-                    VerticalAlignment="Bottom" Margin="5 0 5 0"/>
+                    VerticalAlignment="Bottom" Margin="5 0">
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="Click">
+                            <i:InvokeCommandAction Command="{Binding SwitchTab}"
+                                                           CommandParameter="{Binding ElementName=OrderPage}"></i:InvokeCommandAction>
+                        </i:EventTrigger>
+                        <i:EventTrigger EventName="MouseMove">
+                            <i:InvokeCommandAction Command="{Binding GetIdButton}"
+                                                           CommandParameter="{Binding ElementName=addOrderBt}"></i:InvokeCommandAction>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </Button>
 
                 <Button Background="{StaticResource Linen}"
                 BorderBrush="Transparent"  VerticalAlignment="Bottom" Margin="5 0"
@@ -116,15 +131,15 @@
 
         <Border Grid.Row="2"  Grid.ColumnSpan="10" Grid.RowSpan="7"  Background="White"
                     CornerRadius="5" 
-                    Margin="10,35,10,10">
+                    Margin="10 0 10 10">
             <Border.Effect>
                 <DropShadowEffect BlurRadius="10" Color="Gray"/>
             </Border.Effect>
             <Grid>
-                <TextBlock VerticalAlignment="Bottom" Margin="10" FontSize="12" Foreground="{StaticResource Cyan Azure}" HorizontalAlignment="Left">Showing 5 of 25 Results</TextBlock>
+                <!--<TextBlock VerticalAlignment="Bottom" Margin="10" FontSize="12" Foreground="{StaticResource Cyan Azure}" HorizontalAlignment="Left">Showing 5 of 25 Results</TextBlock>-->
 
                 <!--Page-->
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Bottom">
+                <!--<StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Bottom">
                     <Button Style="{StaticResource tabButton}">
                         <materialDesign:PackIcon Kind="ArrowLeftBold"/>
                     </Button>
@@ -135,86 +150,39 @@
                     <Button Style="{StaticResource tabButton}">
                         <materialDesign:PackIcon Kind="ArrowRightBold"/>
                     </Button>
-                </StackPanel>
+                </StackPanel>-->
 
+                <ScrollViewer VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Visible">
+                    <ListView Name="OrderList" ItemsSource="{Binding OrdersList}" SelectedItem="{Binding SelectedItem, Mode=OneWayToSource}" HorizontalContentAlignment="Center">
+                        <ListView.Resources>
+                            <Style TargetType="{x:Type GridViewColumnHeader}">
+                                <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                                <Setter Property="Foreground" Value="{StaticResource Cyan Azure}"/>
+                            </Style>
+                        </ListView.Resources>
+                        <ListView.View >
+                            <GridView>
+                                <GridViewColumn Header="Order  Code" DisplayMemberBinding="{Binding MAHD}"></GridViewColumn>
+                                <GridViewColumn Header="Phone" DisplayMemberBinding="{Binding SDT}"></GridViewColumn>
+                                <GridViewColumn Header="Date" DisplayMemberBinding="{Binding NGMUA}"></GridViewColumn>
+                                <GridViewColumn Header="Total" DisplayMemberBinding="{Binding TONGTIEN}"></GridViewColumn>
+                                <GridViewColumn Header="Type" DisplayMemberBinding="{Binding LOAIHD}"></GridViewColumn>
+                            </GridView>
+                        </ListView.View>
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="SelectionChanged">
+                                <i:InvokeCommandAction     Command="{Binding Detail}"
+                                                           CommandParameter="{Binding ElementName=OrderPage}"></i:InvokeCommandAction>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </ListView>
+                </ScrollViewer>
 
             </Grid>
 
 
         </Border>
 
-        <DataGrid      Grid.Row="2"  Grid.RowSpan="6" Grid.ColumnSpan="10" Margin="10,0,10,0"
-                           AutoGenerateColumns="False"
-                           CanUserAddRows="False"
-                           HeadersVisibility="All"
-                           Background="Transparent" HorizontalContentAlignment="Right" VerticalContentAlignment="Stretch"
-                            ItemsSource="{Binding OrdersList}">
-            <!--<DataGrid.Resources>
-                    -->
-            <!--<domain:BindingProxy
-      x:Key="DataContextProxy"
-      Data="{Binding}" xmlns:domain="clr-namespace:MaterialDesignDemo.Domain" />-->
-            <!--
-                </DataGrid.Resources>-->
-            <DataGrid.Columns >
-
-                <DataGridCheckBoxColumn
-                                        Binding="{Binding IsSelected, UpdateSourceTrigger=PropertyChanged}"
-                                        EditingElementStyle="{StaticResource MaterialDesignDataGridCheckBoxColumnEditingStyle}"
-                                        ElementStyle="{StaticResource MaterialDesignDataGridCheckBoxColumnStyle}" >
-                    <DataGridCheckBoxColumn.Header >
-                        <Border>
-                            <CheckBox/>
-                            <!--IsChecked="{Binding Data.IsAllItems1Selected, Source={StaticResource DataContextProxy}}" />-->
-                        </Border>
-                    </DataGridCheckBoxColumn.Header >
-                    <DataGridCheckBoxColumn.HeaderStyle>
-                        <Style
-          TargetType="{x:Type DataGridColumnHeader}"
-          BasedOn="{StaticResource MaterialDesignDataGridColumnHeader}">
-                            <Setter
-            Property="HorizontalContentAlignment"
-            Value="Center" />
-                        </Style>
-                    </DataGridCheckBoxColumn.HeaderStyle>
-                </DataGridCheckBoxColumn>
-                <DataGridTextColumn 
-      Binding="{Binding MAHD}"
-      EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" 
-      ElementStyle="{StaticResource MaterialDesignDataGridTextColumnStyle}"
-                        Width="85"
-      Header="ID" Foreground="{StaticResource Cyan Azure}" IsReadOnly="True"/>
-                <!-- if you want to use the pop up style (MaterialDesignDataGridTextColumnPopupEditingStyle), you must use MaterialDataGridTextColumn -->
-                <materialDesign:DataGridTextColumn
-      Binding="{Binding SDT}"
-      EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}"
-      ElementStyle="{StaticResource MaterialDesignDataGridTextColumnStyle}"
-      Header="Customer Phone Number" Width="200" IsReadOnly="True">
-                </materialDesign:DataGridTextColumn>
-                <!-- set a max length to get an indicator in the editor -->
-                <materialDesign:DataGridTextColumn
-      Binding="{Binding NGMUA}"
-      EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}"
-      ElementStyle="{StaticResource MaterialDesignDataGridTextColumnStyle}"
-      Header="Purchase Date" Width="150" IsReadOnly="True">
-                </materialDesign:DataGridTextColumn>
-
-                <materialDesign:DataGridTextColumn
-      Binding="{Binding TONGTIEN}"
-      EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}"
-      ElementStyle="{StaticResource MaterialDesignDataGridTextColumnStyle}"
-      Header="Total Price" Width="150" IsReadOnly="True">
-                </materialDesign:DataGridTextColumn>
-
-                <materialDesign:DataGridTextColumn
-      Binding="{Binding MANV}"
-      EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}"
-      ElementStyle="{StaticResource MaterialDesignDataGridTextColumnStyle}"
-      Header="Employee ID" Width="200" IsReadOnly="True">
-                </materialDesign:DataGridTextColumn>
-
-            </DataGrid.Columns>
-        </DataGrid>
 
     </Grid>
 </Page>

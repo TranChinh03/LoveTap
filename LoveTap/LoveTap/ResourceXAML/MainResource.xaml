@@ -4,22 +4,27 @@
                     xmlns:local="clr-namespace:LoveTap.ResourceXAML">
     <viewmodel:MainViewModel x:Key="MainVM"></viewmodel:MainViewModel>
     <viewmodel:LoginViewModel x:Key="LoginVM"></viewmodel:LoginViewModel>
-    <viewmodel:GoodsViewModel x:Key="GoodsVM"></viewmodel:GoodsViewModel>
-    <viewmodel:EmployeeViewModel x:Key="EmployeeVM"></viewmodel:EmployeeViewModel>
-    <viewmodel:MenuBarUC x:Key="MenuBarVM"></viewmodel:MenuBarUC>
-    <viewmodel:CustomerViewModel x:Key="CustomerVM"></viewmodel:CustomerViewModel>
-    <viewmodel:OrdersViewModel x:Key="OrdersVM"></viewmodel:OrdersViewModel>
+    <viewmodel:CreatePwViewModel x:Key="CreatePwVM"></viewmodel:CreatePwViewModel>
     <viewmodel:HomeProfileEditViewModel x:Key="HomeProfileEditVM"></viewmodel:HomeProfileEditViewModel>
     <viewmodel:HomeViewModel x:Key="HomeVM"></viewmodel:HomeViewModel>
     <viewmodel:ProfileUsrViewModel x:Key="ProfileUsrVM"></viewmodel:ProfileUsrViewModel>
     <viewmodel:UsrPro5EditViewModel x:Key="UsrPro5VM"></viewmodel:UsrPro5EditViewModel>
-    <viewmodel:CreatePwViewModel x:Key="CreatePwVM"></viewmodel:CreatePwViewModel>
+    <viewmodel:GoodsViewModel x:Key="GoodsVM"></viewmodel:GoodsViewModel>
+    <viewmodel:GoodDetailViewModel x:Key="GoodDetailVM"></viewmodel:GoodDetailViewModel>
+    <viewmodel:AddGoodViewModel x:Key="AddGoodVM"></viewmodel:AddGoodViewModel>
+    <viewmodel:EditGoodViewModel x:Key="EditGoodVM"></viewmodel:EditGoodViewModel>
+    <viewmodel:OrderDetailViewModel x:Key="OrderDetailVM"></viewmodel:OrderDetailViewModel>
+    <viewmodel:OrdersViewModel x:Key="OrdersVM"></viewmodel:OrdersViewModel>
+    <viewmodel:CreateOrdersViewModel x:Key="CreOdVM"></viewmodel:CreateOrdersViewModel>
+    <viewmodel:CustomerViewModel x:Key="CustomerVM"></viewmodel:CustomerViewModel>
     <viewmodel:AddCustomerViewModel x:Key="AddCustomerVM"></viewmodel:AddCustomerViewModel>
     <viewmodel:CustomerDetailViewModel x:Key="DetailCustomerVM"></viewmodel:CustomerDetailViewModel>
     <viewmodel:EditCustomerViewModel x:Key="EditCustomerVM"></viewmodel:EditCustomerViewModel>
-    <viewmodel:GoodDetailViewModel x:Key="GoodDetailVM"></viewmodel:GoodDetailViewModel>
-    <viewmodel:AddGoodViewModel x:Key="AddGoodVM"></viewmodel:AddGoodViewModel>
-    <viewmodel:CreateOrdersViewModel x:Key="CreOdVM"></viewmodel:CreateOrdersViewModel>
+    <viewmodel:EmployeeViewModel x:Key="EmployeeVM"></viewmodel:EmployeeViewModel>
+    <viewmodel:EmployeeDetailViewModel x:Key="EmployeeDetailVM"></viewmodel:EmployeeDetailViewModel>
+    <viewmodel:EditEmployeeViewModel x:Key="EditEmployeeVM"></viewmodel:EditEmployeeViewModel>
+    <viewmodel:AddEmployeeViewModel x:Key="AddEmployeeVM"></viewmodel:AddEmployeeViewModel>
+    <viewmodel:MenuBarUC x:Key="MenuBarVM"></viewmodel:MenuBarUC>
 
 
 </ResourceDictionary>
