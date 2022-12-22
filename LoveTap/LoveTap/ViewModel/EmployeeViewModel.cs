@@ -17,6 +17,8 @@ namespace LoveTap.ViewModel
 {
     public class EmployeeViewModel : BaseViewModel
     {
+
+        public static NHANVIEN EmployeeSelected { get; set; }
         public ICommand GetIdButton { get; set; }
 
         public ICommand SwitchTab { get; set; }
@@ -95,6 +97,7 @@ namespace LoveTap.ViewModel
             //listKH = new ObservableCollection<KHACHHANG>(DataProvider.Ins.DB.KHACHHANGs);
             //paramater.ListViewKH.ItemsSource = listKH;
             //paramater.ListViewKH.SelectedItem = null;
+            EmployeeSelected = (NHANVIEN)p.EmployeeList.SelectedItem;
         }
 
     }

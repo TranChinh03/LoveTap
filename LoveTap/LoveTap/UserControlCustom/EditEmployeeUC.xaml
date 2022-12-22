@@ -10,6 +10,12 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         DataContext="{StaticResource EditEmployeeVM}">
 
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="MouseMove">
+            <i:InvokeCommandAction Command="{Binding LoadedEditEmployeeUC}"
+                                                       CommandParameter="{Binding ElementName=ucEditEmployee}"></i:InvokeCommandAction>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
 
     <Grid Background="White">
         <Grid.RowDefinitions>
@@ -25,7 +31,8 @@
                        FontWeight="Black"
                        Foreground="{StaticResource Catalina Blue}"
                        VerticalAlignment="Center" Width="150"  BorderThickness="0"
-                       >#NV001</TextBox>
+                       Text="{Binding ID}"
+                       ></TextBox>
             </Border>
             <!--Back Button-->
             <Button DockPanel.Dock="Right" Style="{StaticResource OrangeButton}"
@@ -44,7 +51,8 @@
 
             <!--Done Button-->
             <Button Uid="1" Name="doneBt" Content="Done" DockPanel.Dock="Right" Style="{StaticResource greenButton}" 
-                    HorizontalAlignment="Right" Width="90">
+                    HorizontalAlignment="Right" Width="90"
+                    Command="{Binding EditCommand}">
                 <i:Interaction.Triggers>
                     <i:EventTrigger EventName="Click">
                         <i:InvokeCommandAction Command="{Binding SwitchTab}"
@@ -77,9 +85,9 @@
                     <RowDefinition/>
                 </Grid.RowDefinitions>
 
-                <TextBox Style="{StaticResource editTextValue}" Text="Trần Minh Chính" FontSize="45" FontWeight="DemiBold" Width="350" Height="55" Grid.ColumnSpan="2" />
+                <TextBox Style="{StaticResource editTextValue}" Text="{Binding EmployeeName}" FontSize="45" FontWeight="DemiBold" Width="350" Height="55" Grid.ColumnSpan="2" />
 
-                <TextBox Grid.Row="1" Style="{StaticResource editTextValue}" Text="Staff" FontSize="20" FontWeight="DemiBold" Width="350" Height="30" Grid.ColumnSpan="2" Margin="0,8,0,0"/>
+                <TextBox Grid.Row="1" Style="{StaticResource editTextValue}" Text="{Binding Position}" FontSize="20" FontWeight="DemiBold" Width="350" Height="30" Grid.ColumnSpan="2" Margin="0,8,0,0"/>
             </Grid>
         </StackPanel>
 
@@ -100,12 +108,12 @@
             </StackPanel>
 
             <StackPanel Grid.Column="1" HorizontalAlignment="Center" >
-                <TextBox Style="{StaticResource editTextValue}" Height="35">16/05/2003</TextBox>
-                <TextBox Style="{StaticResource editTextValue}" Height="35">0123356</TextBox>
-                <TextBox Style="{StaticResource editTextValue}" Height="35">Phú Nhuận, TPHCM</TextBox>
-                <TextBox Style="{StaticResource editTextValue}" Height="35">1.5</TextBox>
-                <TextBox Style="{StaticResource editTextValue}" Height="35">8,000,000 VND</TextBox>
-                <TextBox Style="{StaticResource editTextValue}" Height="35">TP HCM</TextBox>
+                <TextBox Style="{StaticResource editTextValue}" Height="35" Text="{Binding Birthday}"></TextBox>
+                <TextBox Style="{StaticResource editTextValue}" Height="35" Text="{Binding PhoneNumber}"></TextBox>
+                <TextBox Style="{StaticResource editTextValue}" Height="35" Text="{Binding Address}"></TextBox>
+                <TextBox Style="{StaticResource editTextValue}" Height="35" Text="{Binding CoefficientSalary}"></TextBox>
+                <TextBox Style="{StaticResource editTextValue}" Height="35" Text="{Binding BasicPay}"></TextBox>
+                <TextBox Style="{StaticResource editTextValue}" Height="35" Text="{Binding Branch}"></TextBox>
             </StackPanel>
         </Grid>
 

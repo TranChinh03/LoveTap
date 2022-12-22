@@ -19,6 +19,13 @@
         Title="homePage" Height="466.2" Width="666.666666666667"
         DataContext="{StaticResource HomeVM}">
 
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding LoadHome}"
+                                                       CommandParameter="{Binding ElementName=homeWindow}"></i:InvokeCommandAction>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+
     <Grid Background="WhiteSmoke">
 
         <Grid>
@@ -210,7 +217,7 @@
                 </Border.Effect>
                 <Grid>
                     <ScrollViewer VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Visible">
-                        <ListView Name="BestSellingList" ItemsSource="{Binding CustomerList}" SelectedItem="{Binding SelectedItem, Mode=OneWayToSource}" HorizontalContentAlignment="Center">
+                        <ListView x:Name="BestSellingList" ItemsSource="{Binding ProductList}" SelectedItem="{Binding SelectedItem, Mode=TwoWay}" HorizontalContentAlignment="Center">
                             <ListView.Resources>
                                 <Style TargetType="{x:Type GridViewColumnHeader}">
                                     <Setter Property="HorizontalContentAlignment" Value="Center"/>
@@ -219,9 +226,9 @@
                             </ListView.Resources>
                             <ListView.View >
                                 <GridView>
-                                    <GridViewColumn Header="Best Selling Product" DisplayMemberBinding="{Binding SDT}"></GridViewColumn>
-                                    <GridViewColumn Header="Oder" DisplayMemberBinding="{Binding HOTEN}"></GridViewColumn>
-                                    <GridViewColumn Header="Stock" DisplayMemberBinding="{Binding NGSINH}"></GridViewColumn>
+                                    <GridViewColumn Header="Best Selling Product" DisplayMemberBinding="{Binding TEN}"></GridViewColumn>
+                                    <GridViewColumn Header="Class ID" DisplayMemberBinding="{Binding MADM}"></GridViewColumn>
+                                    <GridViewColumn Header="Product ID" DisplayMemberBinding="{Binding MASP}"></GridViewColumn>
                                 </GridView>
                             </ListView.View>
                             <i:Interaction.Triggers>

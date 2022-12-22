@@ -82,7 +82,8 @@
         <TextBlock
             x:Name="LoginText"
             Grid.Row="7"
-            Grid.Column="2"
+            Grid.Column="1"
+            Grid.ColumnSpan="3"
             HorizontalAlignment="Center"
             VerticalAlignment="Top"
             FontSize="25"
