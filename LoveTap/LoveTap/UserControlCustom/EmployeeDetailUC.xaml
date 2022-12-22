@@ -10,6 +10,13 @@
         Name="ucEmployeeDetail" Height="456.2" Width="656.666666666667"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         DataContext="{StaticResource EmployeeDetailVM}">
+    
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="MouseMove">
+            <i:InvokeCommandAction Command="{Binding LoadedEmployeeDetailUC}"
+                                                       CommandParameter="{Binding ElementName=ucEmployeeDetail}"></i:InvokeCommandAction>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
 
 
     <Grid Background="Transparent">
@@ -29,7 +36,8 @@
                        FontWeight="Black"
                        Foreground="{StaticResource Catalina Blue}"
                        VerticalAlignment="Center"
-                       >#NV001</TextBlock>
+                       Text="{Binding ID}"
+                       ></TextBlock>
             <!--Back Button-->
             <Button DockPanel.Dock="Right" Style="{StaticResource OrangeButton}"
                     HorizontalAlignment="Right" Uid="3" Name="backBt" Content="Back">
@@ -96,9 +104,10 @@
 
                 <TextBlock FontSize="45" 
                        FontWeight="DemiBold"
-                       Foreground="{StaticResource Catalina Blue}">Trần Minh Chính
+                       Foreground="{StaticResource Catalina Blue}"
+                       Text="{Binding EmployeeName}">
                 </TextBlock>
-                <TextBlock Grid.Row="1" FontSize="30" VerticalAlignment="Top" FontWeight="DemiBold" Foreground="{StaticResource Cyan Azure}">Staff</TextBlock>
+                <TextBlock Grid.Row="1" FontSize="30" VerticalAlignment="Top" FontWeight="DemiBold" Foreground="{StaticResource Cyan Azure}" Text="{Binding Position}"></TextBlock>
             </Grid>
         </StackPanel>
 
@@ -110,21 +119,21 @@
             </Grid.ColumnDefinitions>
 
             <StackPanel HorizontalAlignment="Center" >
-                <TextBlock Style="{StaticResource detailText}">Ngày sinh:</TextBlock>
-                <TextBlock Style="{StaticResource detailText}">Số điện thoại:</TextBlock>
-                <TextBlock Style="{StaticResource detailText}">Địa chỉ:</TextBlock>
-                <TextBlock Style="{StaticResource detailText}">Hệ số lương:</TextBlock>
-                <TextBlock Style="{StaticResource detailText}">Lương cơ bản:</TextBlock>
-                <TextBlock Style="{StaticResource detailText}">Chi nhánh:</TextBlock>
+                <TextBlock Style="{StaticResource detailText}" Margin="0 10 0 0">Ngày sinh:</TextBlock>
+                <TextBlock Style="{StaticResource detailText}" Margin="0 20 0 0">Số điện thoại:</TextBlock>
+                <TextBlock Style="{StaticResource detailText}" Margin="0 20 0 0">Địa chỉ:</TextBlock>
+                <TextBlock Style="{StaticResource detailText}" Margin="0 20 0 0">Hệ số lương:</TextBlock>
+                <TextBlock Style="{StaticResource detailText}" Margin="0 20 0 0">Lương cơ bản:</TextBlock>
+                <TextBlock Style="{StaticResource detailText}" Margin="0 20 0 0">Chi nhánh:</TextBlock>
             </StackPanel>
 
             <StackPanel Grid.Column="1" HorizontalAlignment="Center" >
-                <TextBlock Style="{StaticResource detailTextValue}">16/05/2003</TextBlock>
-                <TextBlock Style="{StaticResource detailTextValue}">0123456</TextBlock>
-                <TextBlock Style="{StaticResource detailTextValue}">Phú Nhuận, TPHCM</TextBlock>
-                <TextBlock Style="{StaticResource detailTextValue}">1.5</TextBlock>
-                <TextBlock Style="{StaticResource detailTextValue}">8,000,000 VND</TextBlock>
-                <TextBlock Style="{StaticResource detailTextValue}">TP HCM</TextBlock>
+                <TextBlock Style="{StaticResource detailTextValue}" Text="{Binding Birthday}"></TextBlock>
+                <TextBlock Style="{StaticResource detailTextValue}" Text="{Binding PhoneNumber}"></TextBlock>
+                <TextBlock Style="{StaticResource detailTextValue}" Text="{Binding Address}"></TextBlock>
+                <TextBlock Style="{StaticResource detailTextValue}" Text="{Binding CoefficientSalary}"></TextBlock>
+                <TextBlock Style="{StaticResource detailTextValue}" Text="{Binding BasicPay}"></TextBlock>
+                <TextBlock Style="{StaticResource detailTextValue}" Text="{Binding Branch}"></TextBlock>
             </StackPanel>
         </Grid>
     </Grid>
