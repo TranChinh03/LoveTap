@@ -1,4 +1,5 @@
 ﻿using LoveTap.Model;
+using LoveTap.Stores;
 using LoveTap.ViewModel;
 using System;
 using System.Collections.Generic;
@@ -14,7 +15,7 @@ using System.Xml.Linq;
 
 namespace LoveTap.ViewModel
 {
-    public class CustomerViewModel
+    public class CustomerViewModel:BaseViewModel
     {
         public ICommand GetIdButton { get; set; }
 
@@ -25,7 +26,7 @@ namespace LoveTap.ViewModel
         public ObservableCollection<KHACHHANG> CustomerList { get => _CustomerList; set { _CustomerList = value; } }
         string Name;
         public static KHACHHANG CurrentSelected { get; set; }
-        public CustomerViewModel()
+        public CustomerViewModel(NavigationStore navigationStore)
         {
             CustomerList = new ObservableCollection<KHACHHANG>(DataProvider.Ins.DB.KHACHHANGs.Where(x => x.DELETED == false));
             GetIdButton = new RelayCommand<Button>((p) => true, (p) => Name = p.Uid);

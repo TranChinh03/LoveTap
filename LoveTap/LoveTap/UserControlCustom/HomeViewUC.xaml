@@ -1,5 +1,5 @@
-﻿<Page x:Class="LoveTap.HomeScreen"
-        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+﻿<UserControl x:Class="LoveTap.UserControlCustom.HomeViewUC"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -15,10 +15,9 @@
         TextOptions.TextRenderingMode="Auto"
         Background="{DynamicResource MaterialDesignPaper}"
         FontFamily="{DynamicResource MaterialDesignFont}"
-        Name="homeWindow"
-        Title="homePage" Height="466.2" Width="666.666666666667"
-        >
-
+             Height="466.2" Width="666.666666666667"
+             
+>
     <i:Interaction.Triggers>
         <i:EventTrigger EventName="Loaded">
             <i:InvokeCommandAction Command="{Binding LoadHome}"
@@ -52,7 +51,7 @@
                 <RowDefinition></RowDefinition>
                 <RowDefinition></RowDefinition>
             </Grid.RowDefinitions>
-            
+
             <!--Detail BestSelling Product-->
 
             <uc:GoodsDetailUC x:Name="DetailBestSl" Panel.ZIndex="2" Grid.RowSpan="8" Grid.ColumnSpan="10" Visibility="Hidden"></uc:GoodsDetailUC>
@@ -95,7 +94,7 @@
                                         >See details</TextBlock>
                             <Image 
                                 Width="15" 
-                                Source="./img/dollar.jpg"
+                                Source="../img/dollar.jpg"
                                 HorizontalAlignment="Right"
                                 VerticalAlignment="Bottom"
                                 Margin="10, 10, 10, 10" 
@@ -145,7 +144,7 @@
                                         >See details</TextBlock>
                             <Image 
                                 Width="22" 
-                                Source="./img/bag.jpg"
+                                Source="../img/bag.jpg"
                                 HorizontalAlignment="Right"
                                 VerticalAlignment="Bottom"
                                 Margin="10, 10, 10, 10" 
@@ -192,7 +191,7 @@
                                         >See details</TextBlock>
                             <Image 
                                 Width="15" 
-                                Source="./img/person.jpg"
+                                Source="../img/person.jpg"
                                 HorizontalAlignment="Right"
                                 VerticalAlignment="Bottom"
                                 Margin="10, 10, 10, 10" 
@@ -239,50 +238,8 @@
                             </i:Interaction.Triggers>
                         </ListView>
                     </ScrollViewer>
-
-
-                    <!-- TAB PAGE RESULT-->
-
-                    <!--<TextBlock VerticalAlignment="Bottom" Margin="10" FontSize="12" Foreground="{StaticResource Cyan Azure}" HorizontalAlignment="Left">Showing 5 of 25 Results</TextBlock>-->
-
-                    <!--Page-->
-                    <!--<StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Bottom">
-                        <Button Style="{StaticResource tabButton}">
-                            <materialDesign:PackIcon Kind="ArrowLeftBold"/>
-                        </Button>
-                        <Button Style="{StaticResource tabButton}" BorderBrush="Red" >1</Button>
-                        <Button Style="{StaticResource tabButton}" BorderBrush="Red" >2</Button>
-                        <Button Style="{StaticResource tabButton}" BorderBrush="Red" >3</Button>
-
-                        <Button Style="{StaticResource tabButton}">
-                            <materialDesign:PackIcon Kind="ArrowRightBold"/>
-                        </Button>
-                    </StackPanel>-->
                 </Grid>
             </Border>
-            <!--<Grid VerticalAlignment="Center" Grid.Row="7" Grid.ColumnSpan="8" Margin="20">
-                <TextBlock 
-                            FontSize="12"
-                            Foreground="#033270"
-                            Opacity="0.65"
-                            HorizontalAlignment="Left" VerticalAlignment="Center"
-                                
-                        >
-                                Showing <Bold>5</Bold> of <Bold>25</Bold> results
-                </TextBlock>
-
-                <TextBlock 
-                                HorizontalAlignment="Right">
-                                <StackPanel Orientation="Horizontal">
-                                    <materialDesign:PackIcon Kind="ArrowLeftThick" Height="20" Width="25" Foreground="#1368AA"/>
-                                    <materialDesign:PackIcon Kind="Numeric1BoxOutline" Height="20" Width="25" Foreground="#1368AA"/>
-                                    <materialDesign:PackIcon Kind="Numeric2BoxOutline" Height="20" Width="25" />
-                                    <materialDesign:PackIcon Kind="Numeric3BoxOutline" Height="20" Width="25"/>
-                                    <materialDesign:PackIcon Kind="ArrowRightThick" Height="20" Width="25" Foreground="#1368AA"/>
-                                </StackPanel>
-                </TextBlock>
-
-            </Grid>-->
 
             <!-- CALENDAR - MAP -->
             <Grid  Grid.Column="8"  Grid.ColumnSpan="2" Grid.RowSpan="8" Margin="10">
@@ -293,9 +250,9 @@
                     </Grid.RowDefinitions>
 
                     <Image Grid.Row="0" VerticalAlignment="Top"
-                        Source="./img/calendar.png" />
+                        Source="../img/calendar.png" />
                     <Image 
-                        Source="./img/map4.png" VerticalAlignment="Center" Grid.RowSpan="2" Margin="0 0 0 0">
+                        Source="../img/map4.png" VerticalAlignment="Center" Grid.RowSpan="2" Margin="0 0 0 0">
                         <Image.Effect>
                             <DropShadowEffect Direction="0" Color="#FFB6C2CB" ShadowDepth="2" BlurRadius="3" />
                         </Image.Effect>
@@ -305,4 +262,4 @@
             </Grid>
         </Grid>
     </Grid>
-</Page>
+</UserControl>

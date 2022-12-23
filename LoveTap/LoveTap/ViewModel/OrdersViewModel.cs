@@ -1,4 +1,5 @@
 ﻿using LoveTap.Model;
+using LoveTap.Stores;
 using LoveTap.UserControlCustom;
 using LoveTap.ViewModel;
 using System;
@@ -23,7 +24,7 @@ namespace LoveTap.ViewModel
 
         private ObservableCollection<HOADON> _OrdersList;
         public ObservableCollection<HOADON> OrdersList { get => _OrdersList; set { _OrdersList = value; } }
-        public OrdersViewModel()
+        public OrdersViewModel(NavigationStore navigationStore)
         {
             OrdersList = new ObservableCollection<HOADON>(DataProvider.Ins.DB.HOADONs);
             GetIdButton = new RelayCommand<Button>((p) => true, (p) => Name = p.Uid);

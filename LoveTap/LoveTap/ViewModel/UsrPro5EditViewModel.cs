@@ -1,4 +1,6 @@
-﻿using LoveTap.Model;
+﻿using LoveTap.Commands;
+using LoveTap.Model;
+using LoveTap.Stores;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -17,6 +19,7 @@ namespace LoveTap.ViewModel
         public string UserID { get; set; }
 
         public ICommand LoadedHomeProfileEdit { get; set; }
+        public ICommand NavBack2Pro5 { get; set; }
         public ICommand GetIdButton { get; set; }
 
         public ICommand Todo { get; set; }
@@ -59,7 +62,7 @@ namespace LoveTap.ViewModel
         public ICommand EditCommand { get; set; }
 
 
-        public UsrPro5EditViewModel() {
+        public UsrPro5EditViewModel(NavigationStore navigationStore) {
 
             LoadedHomeProfileEdit = new RelayCommand<Window>((p) => { return true; }, (p) =>
             {
@@ -82,9 +85,10 @@ namespace LoveTap.ViewModel
                     else
                         Role = "Staff";
                 }
-                HomePersonal homePersonal = new HomePersonal();
                 
             });
+
+            NavBack2Pro5 = new NavigationCommand<ProfileUsrViewModel>(navigationStore, () => new ProfileUsrViewModel(navigationStore));
 
 
             GetIdButton = new RelayCommand<Button>((p) => true, (p) => Name = p.Uid);

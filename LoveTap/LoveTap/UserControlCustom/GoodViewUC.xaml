@@ -1,0 +1,379 @@
+﻿<UserControl x:Class="LoveTap.UserControlCustom.GoodViewUC"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:LoveTap"
+        xmlns:uc="clr-namespace:LoveTap.UserControlCustom" 
+        mc:Ignorable="d"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="14"
+        TextOptions.TextFormattingMode="Ideal"
+        TextOptions.TextRenderingMode="Auto"
+        Background="{DynamicResource MaterialDesignPaper}"
+        FontFamily="{DynamicResource MaterialDesignFont}"
+        Height="466.2" Width="666.666666666667"
+             >
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <!--ACTION-->
+        <!--Detail-->
+        <uc:GoodsDetailUC x:Name="DetailGood"   Grid.ColumnSpan="10" Grid.RowSpan="9" Background="White"
+                                 Visibility="Hidden" Panel.ZIndex="2" Margin="10"/>
+
+        <!--Add customer-->
+        <uc:AddGoods x:Name="AddProduct" Grid.ColumnSpan="10" Grid.RowSpan="9" Background="White" Visibility="Hidden" Panel.ZIndex="2" Margin="10"/>
+
+        <!--CONTENT-->
+        <Border   Grid.ColumnSpan="10" Grid.RowSpan="2" CornerRadius="5" Margin="10 10 10 0">
+            <Border.Effect>
+                <DropShadowEffect BlurRadius="10" Opacity="0.3"></DropShadowEffect>
+            </Border.Effect>
+            <materialDesign:Card>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                    </Grid.RowDefinitions>
+
+                    <Button Uid="1" x:Name="addProductBt"
+                    HorizontalAlignment="Left" VerticalAlignment="Center"
+                    Margin="28,0,0,0"
+                    Style="{StaticResource MaterialDesignRaisedSecondaryLightButton}"
+                    Width="120"
+                    Background="#26B69F"
+                    Content="+ Add Product"
+                    FontSize="13" Command="{Binding navAddGood}"
+                     >
+                    </Button>
+
+
+                    <Button
+	                BorderThickness="0"
+                    HorizontalAlignment="Left"
+                    Grid.Row="2"
+                    Width="auto"
+                    Foreground="#033270"
+                    FontSize="13"
+                    Content="All"
+                    Style="{StaticResource MaterialDesignFlatSecondaryLightButton}"
+                    ToolTip="MaterialDesignFlatButton"
+                    IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" />
+                    <Button
+                    Margin="55,0,0,0"
+	                BorderThickness="0"
+                    HorizontalAlignment="Left"
+                    Grid.Row="2"
+                    Width="auto"
+                    Foreground="#033270"
+                    FontSize="13"
+                    Content="Discount"
+                    Style="{StaticResource MaterialDesignFlatSecondaryLightButton}"
+                    ToolTip="MaterialDesignFlatButton"
+                    IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" />
+                    <Button
+                    Margin="160,0,0,0"
+	                BorderThickness="0"
+                    HorizontalAlignment="Left"
+                    Grid.Row="2"
+                    Width="auto"
+                    Foreground="#033270"
+                    FontSize="13"
+                    Content="New"
+                    Style="{StaticResource MaterialDesignFlatSecondaryLightButton}"
+                    ToolTip="MaterialDesignFlatButton"
+                    IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" />
+                    <Button
+                    Margin="230,0,0,0"
+	                BorderThickness="0"
+                    HorizontalAlignment="Left"
+                    Grid.Row="2"
+                    Width="auto"
+                    Foreground="#033270"
+                    FontSize="13"
+                    Content="Out of stock"
+                    Style="{StaticResource MaterialDesignFlatSecondaryLightButton}"
+                    ToolTip="MaterialDesignFlatButton"
+                    IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" />
+                    <ComboBox
+                    VerticalAlignment="Bottom"
+                    Grid.Row="1"
+                    Grid.RowSpan="2"
+                    Margin="400,0,0,5"
+                    Style="{StaticResource MaterialDesignOutlinedComboBox}"
+                    materialDesign:HintAssist.Hint="Sort by: "
+                    VerticalContentAlignment="Center"
+                    Height="30"
+                    FontSize="16"
+                    Foreground="#033270"
+                    Width="200"
+                    Padding="10 0 0 0">
+                        <ComboBoxItem
+                        Content="Nổi bật" />
+                    </ComboBox>
+                    <materialDesign:Card Grid.Row="0"  Width="300"  BorderThickness="2" HorizontalAlignment="Right" Margin="25 0" VerticalAlignment="Center">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="21*"/>
+                                <RowDefinition Height="11*"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition
+                            Width="Auto" />
+                                <ColumnDefinition
+                            Width="*" />
+                                <ColumnDefinition
+                            Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <Button
+                        Style="{StaticResource MaterialDesignToolButton}" Grid.RowSpan="2">
+                                <materialDesign:PackIcon
+                        Kind="Search"
+                        Opacity=".56"
+                        Height="30"
+                        Width="20"/>
+                            </Button>
+                            <TextBox
+                        Grid.Column="1"
+                        Margin="8,4,0,0"
+                        materialDesign:HintAssist.Hint="Search Products..."
+                        materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
+                        BorderThickness="0"
+                        MinWidth="200"
+                        FontSize="16"
+                        VerticalAlignment="Center" Grid.RowSpan="2" 
+                        />
+                            <Button
+                        Style="{StaticResource MaterialDesignToolButton}"
+                        Grid.Column="2" Grid.RowSpan="2">
+                                <materialDesign:PackIcon
+                        Kind="Microphone"
+                        Opacity=".56"
+                        Margin="8 0 0 0"
+                        Height="30"
+                        Width="20"/>
+                            </Button>
+                        </Grid>
+                    </materialDesign:Card>
+                </Grid>
+            </materialDesign:Card>
+        </Border>
+
+
+        <Grid Grid.Row="2" Grid.ColumnSpan ="10" Grid.RowSpan="7">
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="6*"/>
+            </Grid.ColumnDefinitions>
+            <Grid  Margin="10 0 0 0">
+                <materialDesign:Card Margin="5,10,5,10">
+                    <Grid >
+                        <Grid.RowDefinitions>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <TextBlock
+                    Grid.Row="0"
+                    Text="Filters"
+                    Width="auto"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Center"
+                    FontSize="13"
+                    Foreground="#033270"
+                    FontWeight="SemiBold"
+                    Margin="10"
+                    />
+                        <Button
+                    Background="#FFFF"
+                    Margin="45,0,0,0"
+                    HorizontalAlignment="Right"
+                    HorizontalContentAlignment="Right"
+                    Grid.Row="0"
+                    Width="auto"
+                    FontSize="10"
+                    Foreground="#034270"
+                    Style="{StaticResource MaterialDesignFlatSecondaryLightButton}"
+                    ToolTip="MaterialDesignFlatButton"
+                    IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" >
+                            <Underline>Clear all</Underline>
+                        </Button>
+
+                        <Grid Grid.Row="1" Grid.RowSpan="2">
+                            <StackPanel Orientation="Horizontal" Background="#21507D" Height="15" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10 0 0 0">
+                                <TextBlock Text="Laptop" Foreground="#FFFF" VerticalAlignment="Center" FontSize="10"></TextBlock>
+                                <Button Content="X" Background="#21507D" VerticalAlignment="Center" FontSize="10" HorizontalAlignment="Left" Width="15" Padding="0"></Button>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Background="#21507D" Height="15" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10,25,0,0">
+                                <TextBlock Text="15.6 inch" Foreground="#FFFF" VerticalAlignment="Center" FontSize="10"></TextBlock>
+                                <Button Content="X" Background="#21507D" VerticalAlignment="Center" FontSize="10"  HorizontalAlignment="Left" Width="15" Padding="0"></Button>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Background="#21507D" Height="15" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0 0 20 0">
+                                <TextBlock Text="MSI" Foreground="#FFFF" VerticalAlignment="Center" FontSize="10"></TextBlock>
+                                <Button Content="X" Background="#21507D" VerticalAlignment="Center" FontSize="10" HorizontalAlignment="Left" Width="15" Padding="0"></Button>
+                            </StackPanel>
+                            <Button Background="#21507D" Height="25" Width="25" HorizontalAlignment="Right" VerticalAlignment="Bottom" Padding="0" Margin="0 0 10 5" >
+                                <StackPanel>
+                                    <Border Width="15" Height="1.5" Background="White" Margin="0 3 0 0"/>
+                                    <Border Width="10" Height="1.5" Background="White" Margin="0 2 0 0"/>
+                                    <Border Width="5" Height="1.5" Background="White" Margin="0 2 0 0"/>
+                                    <TextBlock Text="Filters" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0 5 0 5" FontSize="6"/>
+                                </StackPanel>
+                            </Button>
+                            <Border Background="#5684B0" VerticalAlignment="Bottom" Height="1"/>
+                        </Grid>
+
+                        <TextBox 
+                        Grid.Row="9"
+                        BorderThickness="0.5"
+                        Height="20"
+                        Width="40"
+                        HorizontalAlignment="Left"
+                        Margin="10 0 0 0"/>
+                        <TextBlock 
+                        Text="to" HorizontalAlignment="Center"
+                        Grid.Row="9"
+                        VerticalAlignment="Center"
+                        Foreground="#033270"/>
+                        <TextBox
+                        Grid.Row="9"
+                        BorderThickness="0.5"
+                        Height="20"
+                        Width="40"
+                        Margin="0 0 10 0"
+                        HorizontalAlignment="Right"/>
+
+
+                        <TextBlock 
+                    Grid.Row="3"  
+                    FontSize="18" 
+                    Foreground="#033270"
+                    Text="Products"
+                    FontWeight="Bold"
+                    HorizontalAlignment="Left"
+                    Margin="10,0,0,0"
+                    VerticalAlignment="Center">
+                        </TextBlock>
+                        <Button
+                    Foreground="#033270"
+                    Background="#FFFF"
+                    Grid.Row="4"
+                    HorizontalAlignment="Left"
+                    FontSize="13"
+                    Content="Laptop"
+                    Style="{StaticResource MaterialDesignFlatSecondaryLightButton}"
+                    ToolTip="MaterialDesignFlatButton"
+                    IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+                    />
+                        <Button
+                    Foreground="#033270"
+                    Background="#FFFF"
+                    Grid.Row="5"
+                    HorizontalAlignment="Left"
+                    FontSize="13"
+                    Content="Mobilephone"
+                    Style="{StaticResource MaterialDesignFlatSecondaryLightButton}"
+                    ToolTip="MaterialDesignFlatButton"
+                    IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"/>
+                        <Button
+                    Foreground="#033270"
+                    Background="#FFFF"
+                    Grid.Row="6"
+                    HorizontalAlignment="Left"
+                    FontSize="13"
+                    Content="Smart Watch"
+                    Style="{StaticResource MaterialDesignFlatSecondaryLightButton}"
+                    ToolTip="MaterialDesignFlatButton"
+                    IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"/>
+                        <TextBlock
+                    Grid.Row="7"
+                    Text="Price:"
+                    FontSize="18"
+                    FontWeight="Bold"
+                    Foreground="#033270"
+                    Margin="10,0,0,0"
+                    VerticalAlignment="Center"/>
+                        <Border Grid.Row="6" Background="#5684B0" VerticalAlignment="Bottom" Height="1"/>
+
+                        <Grid Height="20" Width="100" Grid.Row="8">
+                            <Slider
+                        VerticalAlignment="Center"
+                        Minimum="0"
+                        Maximum="50"
+                        Value="35"
+                        Cursor="Hand"/>
+                        </Grid>
+                    </Grid>
+                </materialDesign:Card>
+
+            </Grid>
+            <materialDesign:Card
+            Margin=" 10"
+             Grid.Column="1">
+                <ScrollViewer VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Visible">
+                    <ListView x:Name="GoodList" ItemsSource="{Binding ProductList}" SelectedItem="{Binding SelectedItem, Mode=OneWayToSource}">
+                        <ListView.Resources>
+                            <Style TargetType="{x:Type GridViewColumnHeader}">
+                                <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                                <Setter Property="Foreground" Value="{StaticResource Cyan Azure}"/>
+                            </Style>
+                        </ListView.Resources>
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Header="ProductID" DisplayMemberBinding="{Binding MASP}"></GridViewColumn>
+                                <GridViewColumn Header="Name" DisplayMemberBinding="{Binding TEN}"></GridViewColumn>
+                                <GridViewColumn Header="Price" DisplayMemberBinding="{Binding GIA}"></GridViewColumn>
+                                <GridViewColumn Header="Desc" DisplayMemberBinding="{Binding CHITIET}"></GridViewColumn>
+                                <GridViewColumn Header="Type" DisplayMemberBinding="{Binding MADM}"></GridViewColumn>
+                            </GridView>
+                        </ListView.View>
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="SelectionChanged">
+                                <i:InvokeCommandAction     Command="{Binding navDetail}"></i:InvokeCommandAction>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </ListView>
+                </ScrollViewer>
+
+            </materialDesign:Card>
+
+        </Grid>
+
+    </Grid>
+</UserControl>
