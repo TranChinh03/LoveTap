@@ -24,12 +24,12 @@
         Name="mainWindow"
 >
 
-    <!--<i:Interaction.Triggers>
+    <i:Interaction.Triggers>
         <i:EventTrigger EventName="Loaded">
             <i:InvokeCommandAction Command="{Binding LoadedMainWd}"
                                                        CommandParameter="{Binding ElementName=mainWindow}"></i:InvokeCommandAction>
         </i:EventTrigger>
-    </i:Interaction.Triggers>-->
+    </i:Interaction.Triggers>
 
     <Grid Background="WhiteSmoke">
         <Grid.RowDefinitions>
@@ -78,15 +78,15 @@
                 </DockPanel>
 
                 <DockPanel DockPanel.Dock="Right">
-                    <Button x:Name="profileDia" Margin="50 0 0 0" Height="50" Padding="0" BorderBrush="Transparent" Background="Transparent" Uid="7" Command="{Binding navProfile}">
-                        <Grid>
+                    <Button  Margin="55 0 0 0" Height="50" Width="180" Command="{Binding navProfile}" Background="White" BorderThickness="0">
+                        <Grid Height="50" Margin="-10">
                             <Ellipse Height="45" Width="45" HorizontalAlignment="Left">
                                 <Ellipse.Fill>
                                     <ImageBrush ImageSource="/img/avatar.png" ></ImageBrush>
                                 </Ellipse.Fill>
                             </Ellipse>
-                            <TextBlock Text="Xuân Thảo" HorizontalAlignment="Left"  Margin="50 7 0 0" Foreground="#033270" FontWeight="Bold"></TextBlock>
-                            <TextBlock Text="Staff"  HorizontalAlignment="Left"  Margin="50 22 0 0" Foreground="#033270" FontWeight="Light"></TextBlock>
+                            <TextBlock Text="Xuân Thảo" HorizontalAlignment="Left"  Margin="50 10 0 0" Foreground="#033270" FontWeight="Bold"></TextBlock>
+                            <TextBlock Text="Staff"  HorizontalAlignment="Left"  Margin="50 25 0 0" Foreground="#033270" FontWeight="Light"></TextBlock>
                         </Grid>
                     </Button>
                 </DockPanel>
@@ -244,6 +244,9 @@
                 <DataTemplate DataType="{x:Type viewmodel:UsrPro5EditViewModel}">
                     <uc:EditUsrUC></uc:EditUsrUC>
                 </DataTemplate>
+                <DataTemplate DataType="{x:Type viewmodel:CreatePwViewModel}">
+                    <uc:CreatePasswordUC></uc:CreatePasswordUC>
+                </DataTemplate>
                 <DataTemplate DataType="{x:Type viewmodel:AddGoodViewModel}">
                     <uc:AddGoods></uc:AddGoods>
                 </DataTemplate>
@@ -252,6 +255,30 @@
                 </DataTemplate>
                 <DataTemplate DataType="{x:Type viewmodel:EditGoodViewModel}">
                     <uc:EditGoodsUC></uc:EditGoodsUC>
+                </DataTemplate>
+                <DataTemplate DataType="{x:Type viewmodel:AddOrdersViewModel}">
+                    <uc:CreateOrderUC></uc:CreateOrderUC>
+                </DataTemplate>
+                <DataTemplate DataType="{x:Type viewmodel:OrderDetailViewModel}">
+                    <uc:OrdersDetailUC></uc:OrdersDetailUC>
+                </DataTemplate>
+                <DataTemplate DataType="{x:Type viewmodel:CustomerDetailViewModel}">
+                    <uc:CustomerDetailUC></uc:CustomerDetailUC>
+                </DataTemplate>
+                <DataTemplate DataType="{x:Type viewmodel:EditCustomerViewModel}">
+                    <uc:EditCustomerUC></uc:EditCustomerUC>
+                </DataTemplate>
+                <DataTemplate DataType="{x:Type viewmodel:AddCustomerViewModel}">
+                    <uc:AddCustomerUC></uc:AddCustomerUC>
+                </DataTemplate>
+                <DataTemplate DataType="{x:Type viewmodel:EmployeeDetailViewModel}">
+                    <uc:EmployeeDetailUC></uc:EmployeeDetailUC>
+                </DataTemplate>
+                <DataTemplate DataType="{x:Type viewmodel:EditEmployeeViewModel}">
+                    <uc:EditEmployeeUC></uc:EditEmployeeUC>
+                </DataTemplate>
+                <DataTemplate DataType="{x:Type viewmodel:AddEmployeeViewModel}">
+                    <uc:AddEmployee></uc:AddEmployee>
                 </DataTemplate>
             </ContentControl.Resources>
         </ContentControl>

@@ -9,80 +9,70 @@
         mc:Ignorable="d"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         Name="ucAddCustomer"
-        DataContext="{StaticResource AddCustomerVM}">
+       >
 
-    <Grid Background="Transparent">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="2.5*"/>
-            <RowDefinition Height="7.5*"/>
-        </Grid.RowDefinitions>
+    <Border>
+        <Border.Effect>
+            <DropShadowEffect Opacity="0.3" BlurRadius="10" Direction="315"></DropShadowEffect>
+        </Border.Effect>
+        <Grid Background="White" Margin="10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="2.5*"/>
+                <RowDefinition Height="7.5*"/>
+            </Grid.RowDefinitions>
 
-        <!--Top Button-->
-        <DockPanel Margin="15,0,15,0">
-            <Border BorderBrush="{StaticResource Cyan Azure}"  BorderThickness="0.5" CornerRadius="5" VerticalAlignment="Center">
-                <TextBox FontSize="20"
+            <!--Top Button-->
+            <DockPanel Margin="15,0,15,0">
+                <Border BorderBrush="{StaticResource Cyan Azure}"  BorderThickness="0.5" CornerRadius="5" VerticalAlignment="Center">
+                    <TextBox FontSize="20"
                        FontWeight="Black"
                        Foreground="{StaticResource Catalina Blue}"
                        VerticalAlignment="Center" Width="150" materialDesign:HintAssist.Hint="#ID" BorderThickness="0"
                        ></TextBox>
-            </Border>
+                </Border>
 
 
-            <!--Back Button-->
-            <Button DockPanel.Dock="Right" Style="{StaticResource OrangeButton}"
-                    HorizontalAlignment="Right" Content="Back" Uid="1" x:Name="backBt" >
-                <i:Interaction.Triggers>
-                    <i:EventTrigger EventName="Click">
-                        <i:InvokeCommandAction Command="{Binding SwitchTab}"
-                                                           CommandParameter="{Binding ElementName=ucAddCustomer}"></i:InvokeCommandAction>
-                    </i:EventTrigger>
-                    <i:EventTrigger EventName="MouseMove">
-                        <i:InvokeCommandAction Command="{Binding GetIdButton}"
-                                                           CommandParameter="{Binding ElementName=backBt}"></i:InvokeCommandAction>
-                    </i:EventTrigger>
-                </i:Interaction.Triggers>
-            </Button>
-            
-            <!--Done Button-->
-            <Button DockPanel.Dock="Right" Style="{StaticResource greenButton}" 
+                <!--Back Button-->
+                <Button DockPanel.Dock="Right" Style="{StaticResource OrangeButton}"
+                    HorizontalAlignment="Right" Content="Back" Uid="1" Command="{Binding navBack}">
+                </Button>
+
+                <!--Done Button-->
+                <Button DockPanel.Dock="Right" Style="{StaticResource greenButton}" 
                     HorizontalAlignment="Right" Width="90" Content="Done" Uid="2" x:Name="doneBt">
-                <i:Interaction.Triggers>
-                    <i:EventTrigger EventName="Click">
-                        <i:InvokeCommandAction Command="{Binding SwitchTab}"
-                                                           CommandParameter="{Binding ElementName=ucAddCustomer}"></i:InvokeCommandAction>
-                    </i:EventTrigger>
-                    <i:EventTrigger EventName="MouseMove">
-                        <i:InvokeCommandAction Command="{Binding GetIdButton}"
-                                                           CommandParameter="{Binding ElementName=doneBt}"></i:InvokeCommandAction>
-                    </i:EventTrigger>
-                </i:Interaction.Triggers>
-            </Button>
-        </DockPanel>
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="Click">
+                            <i:InvokeCommandAction Command="{Binding navDone}"></i:InvokeCommandAction>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </Button>
+            </DockPanel>
 
-        <!--Detail Info-->
-        <Grid Grid.Row="1">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
-                <ColumnDefinition Width="4*" />
-            </Grid.ColumnDefinitions>
+            <!--Detail Info-->
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="4*" />
+                </Grid.ColumnDefinitions>
 
-            <StackPanel HorizontalAlignment="Left" Margin="20 0 0 0">
-                <TextBlock Style="{StaticResource detailText}" Padding="3">Phone:</TextBlock>
-                <TextBlock Style="{StaticResource detailText}" Padding="3">Name:</TextBlock>
-                <TextBlock Style="{StaticResource detailText}" Padding="3">Date of Birth:</TextBlock>
-                <TextBlock Style="{StaticResource detailText}" Padding="3">Address:</TextBlock>
-                <TextBlock Style="{StaticResource detailText}" Padding="3">Registation Date:</TextBlock>
-                <TextBlock Style="{StaticResource detailText}" Padding="3">Sale:</TextBlock>
-            </StackPanel>
+                <StackPanel HorizontalAlignment="Left" Margin="20 0 0 0">
+                    <TextBlock Style="{StaticResource detailText}" Padding="3">Phone:</TextBlock>
+                    <TextBlock Style="{StaticResource detailText}" Padding="3">Name:</TextBlock>
+                    <TextBlock Style="{StaticResource detailText}" Padding="3">Date of Birth:</TextBlock>
+                    <TextBlock Style="{StaticResource detailText}" Padding="3">Address:</TextBlock>
+                    <TextBlock Style="{StaticResource detailText}" Padding="3">Registation Date:</TextBlock>
+                    <TextBlock Style="{StaticResource detailText}" Padding="3">Sale:</TextBlock>
+                </StackPanel>
 
-            <StackPanel Margin="10 0 0 0" Grid.Column="1" HorizontalAlignment="Center" >
-                <TextBox  Style="{StaticResource editTextValue}"></TextBox>
-                <TextBox  Style="{StaticResource editTextValue}"></TextBox>
-                <TextBox  Style="{StaticResource editTextValue}"></TextBox>
-                <TextBox  Style="{StaticResource editTextValue}"></TextBox>
-                <TextBox  Style="{StaticResource editTextValue}"></TextBox>
-                <TextBox  Style="{StaticResource editTextValue}"></TextBox>
-            </StackPanel>
+                <StackPanel Margin="10 0 0 0" Grid.Column="1" HorizontalAlignment="Center" >
+                    <TextBox  Style="{StaticResource editTextValue}"></TextBox>
+                    <TextBox  Style="{StaticResource editTextValue}"></TextBox>
+                    <TextBox  Style="{StaticResource editTextValue}"></TextBox>
+                    <TextBox  Style="{StaticResource editTextValue}"></TextBox>
+                    <TextBox  Style="{StaticResource editTextValue}"></TextBox>
+                    <TextBox  Style="{StaticResource editTextValue}"></TextBox>
+                </StackPanel>
+            </Grid>
         </Grid>
-    </Grid>
+    </Border>
 </UserControl>

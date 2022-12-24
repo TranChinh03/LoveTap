@@ -9,116 +9,91 @@
         mc:Ignorable="d"
         Name="ucCustomerDetail"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-        DataContext="{StaticResource DetailCustomerVM}">
+       >
 
     <i:Interaction.Triggers>
-        <i:EventTrigger EventName="MouseMove">
+        <i:EventTrigger EventName="Loaded">
             <i:InvokeCommandAction Command="{Binding LoadedDetailCustomer}"
                                                        CommandParameter="{Binding ElementName=ucCustomerDetail}"></i:InvokeCommandAction>
         </i:EventTrigger>
     </i:Interaction.Triggers>
 
 
-    <Grid Background="Transparent">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="2.5*"/>
-            <RowDefinition Height="7.5*"/>
-        </Grid.RowDefinitions>
+    <Border>
+        <Border.Effect>
+            <DropShadowEffect Opacity="0.3" BlurRadius="10" Direction="315"></DropShadowEffect>
+        </Border.Effect>
+        <Grid Background="White" Margin="10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="2.5*"/>
+                <RowDefinition Height="7.5*"/>
+            </Grid.RowDefinitions>
 
-        <!--3 Button-->
-        <DockPanel Margin="15,0,15,0">
-            <TextBlock FontSize="20"
+            <!--3 Button-->
+            <DockPanel Margin="15,0,15,0">
+                <TextBlock FontSize="20"
                        FontWeight="Black"
                        Foreground="{StaticResource Catalina Blue}"
                        VerticalAlignment="Center"
                        >#KH001</TextBlock>
 
-            <!--Back Button-->
-            <Button DockPanel.Dock="Right" Style="{StaticResource OrangeButton}"
-                    HorizontalAlignment="Right" Uid="3" Name="backBt" Content="Back">
-                <i:Interaction.Triggers>
-                    <i:EventTrigger EventName="Click">
-                        <i:InvokeCommandAction Command="{Binding SwitchTab}"
-                                                           CommandParameter="{Binding ElementName=ucCustomerDetail}"></i:InvokeCommandAction>
-                    </i:EventTrigger>
-                    <i:EventTrigger EventName="MouseMove">
-                        <i:InvokeCommandAction Command="{Binding GetIdButton}"
-                                                           CommandParameter="{Binding ElementName=backBt}"></i:InvokeCommandAction>
-                    </i:EventTrigger>
-                </i:Interaction.Triggers>
-            </Button>
+                <!--Back Button-->
+                <Button DockPanel.Dock="Right" Style="{StaticResource OrangeButton}"
+                    HorizontalAlignment="Right" Uid="3" Name="backBt" Content="Back" Command="{Binding navBack}">
+                </Button>
 
-            <!--Invoice Button-->
-            <Button Name="invoiceBt" Uid="2" DockPanel.Dock="Right" Style="{StaticResource greenButton}"
+                <!--Invoice Button-->
+                <Button Name="invoiceBt" Uid="2" DockPanel.Dock="Right" Style="{StaticResource greenButton}"
                     HorizontalAlignment="Right" Width="90" >
-                <StackPanel Orientation="Horizontal">
-                    <materialDesign:PackIcon Kind="Download" />
-                    <TextBlock Margin="8,0,0,0">Invoice</TextBlock>
+                    <StackPanel Orientation="Horizontal">
+                        <materialDesign:PackIcon Kind="Download" />
+                        <TextBlock Margin="8,0,0,0">Invoice</TextBlock>
+                    </StackPanel>
+                </Button>
+
+                <!--Edit Button-->
+                <Button x:Name="editBt" Uid="1" DockPanel.Dock="Right" Style="{StaticResource greenButton}"
+                    HorizontalAlignment="Right" Width="90" Command="{Binding navEdit}">
+                    <StackPanel Orientation="Horizontal">
+                        <materialDesign:PackIcon Kind="Pencil" />
+                        <TextBlock Margin="7,0,0,0" >Edit</TextBlock>
+                    </StackPanel>
+                </Button>
+            </DockPanel>
+
+            <!--Detail Info-->
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="3*"/>
+                </Grid.ColumnDefinitions>
+
+
+                <StackPanel Margin="20,0,0,0" Grid.Column="0" >
+                    <TextBlock Style="{StaticResource detailText}" Padding="3">Phone:</TextBlock>
+                    <TextBlock Style="{StaticResource detailText}" Padding="3">Name:</TextBlock>
+                    <TextBlock Style="{StaticResource detailText}" Padding="3">Date of Birth:</TextBlock>
+                    <TextBlock Style="{StaticResource detailText}" Padding="3">Address:</TextBlock>
+                    <TextBlock Style="{StaticResource detailText}" Padding="3">Registation Date:</TextBlock>
+                    <TextBlock Style="{StaticResource detailText}" Padding="3">Sale:</TextBlock>
+                    <TextBlock Style="{StaticResource detailText}" Padding="3">Type:</TextBlock>
                 </StackPanel>
-                <i:Interaction.Triggers>
-                    <i:EventTrigger EventName="Click">
-                        <i:InvokeCommandAction Command="{Binding SwitchTab}"
-                                                           CommandParameter="{Binding ElementName=ucCustomerDetail}"></i:InvokeCommandAction>
-                    </i:EventTrigger>
-                    <i:EventTrigger EventName="MouseMove">
-                        <i:InvokeCommandAction Command="{Binding GetIdButton}"
-                                                           CommandParameter="{Binding ElementName=invoiceBt}"></i:InvokeCommandAction>
-                    </i:EventTrigger>
-                </i:Interaction.Triggers>
-            </Button>
 
-            <!--Edit Button-->
-            <Button x:Name="editBt" Uid="1" DockPanel.Dock="Right" Style="{StaticResource greenButton}"
-                    HorizontalAlignment="Right" Width="90" >
-                <StackPanel Orientation="Horizontal">
-                    <materialDesign:PackIcon Kind="Pencil" />
-                    <TextBlock Margin="7,0,0,0">Edit</TextBlock>
-                </StackPanel>
-                <i:Interaction.Triggers>
-                    <i:EventTrigger EventName="Click">
-                        <i:InvokeCommandAction Command="{Binding SwitchTab}"
-                                                           CommandParameter="{Binding ElementName=ucCustomerDetail}"></i:InvokeCommandAction>
-                    </i:EventTrigger>
-                    <i:EventTrigger EventName="MouseMove">
-                        <i:InvokeCommandAction Command="{Binding GetIdButton}"
-                                                           CommandParameter="{Binding ElementName=editBt}"></i:InvokeCommandAction>
-                    </i:EventTrigger>
-                </i:Interaction.Triggers>
-            </Button>
-        </DockPanel>
-
-        <!--Detail Info-->
-        <Grid Grid.Row="1">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="2*"/>
-                <ColumnDefinition Width="3*"/>
-            </Grid.ColumnDefinitions>
-
-
-            <StackPanel Margin="20,0,0,0" Grid.Column="0" >
-                <TextBlock Style="{StaticResource detailText}" Padding="3">Phone:</TextBlock>
-                <TextBlock Style="{StaticResource detailText}" Padding="3">Name:</TextBlock>
-                <TextBlock Style="{StaticResource detailText}" Padding="3">Date of Birth:</TextBlock>
-                <TextBlock Style="{StaticResource detailText}" Padding="3">Address:</TextBlock>
-                <TextBlock Style="{StaticResource detailText}" Padding="3">Registation Date:</TextBlock>
-                <TextBlock Style="{StaticResource detailText}" Padding="3">Sale:</TextBlock>
-                <TextBlock Style="{StaticResource detailText}" Padding="3">Type:</TextBlock>
-            </StackPanel>
-
-            <StackPanel Margin="10 0 0 0" Grid.Column="1" HorizontalAlignment="Center" >
-                <TextBlock Style="{StaticResource detailTextValue}" Text="{Binding Phone}"></TextBlock>
-                <TextBlock Style="{StaticResource detailTextValue}" Text="{Binding CusName}"></TextBlock>
-                <TextBlock Style="{StaticResource detailTextValue}" Text="{Binding DOB}"></TextBlock>
-                <TextBlock Style="{StaticResource detailTextValue}" Text="{Binding Address}"></TextBlock>
-                <TextBlock Style="{StaticResource detailTextValue}" Text="{Binding RegistDate}"></TextBlock>
-                <TextBlock Style="{StaticResource detailTextValue}" Text="{Binding Sale}"></TextBlock>
-                <TextBlock Background="{StaticResource Light Red 62}" Text="{Binding Type}" Foreground="{StaticResource Burnt Sienna}"
+                <StackPanel Margin="10 0 0 0" Grid.Column="1" HorizontalAlignment="Center" >
+                    <TextBlock Style="{StaticResource detailTextValue}" Text="{Binding Phone}"></TextBlock>
+                    <TextBlock Style="{StaticResource detailTextValue}" Text="{Binding CusName}"></TextBlock>
+                    <TextBlock Style="{StaticResource detailTextValue}" Text="{Binding DOB}"></TextBlock>
+                    <TextBlock Style="{StaticResource detailTextValue}" Text="{Binding Address}"></TextBlock>
+                    <TextBlock Style="{StaticResource detailTextValue}" Text="{Binding RegistDate}"></TextBlock>
+                    <TextBlock Style="{StaticResource detailTextValue}" Text="{Binding Sale}"></TextBlock>
+                    <TextBlock Background="{StaticResource Light Red 62}" Text="{Binding Type}" Foreground="{StaticResource Burnt Sienna}"
                            HorizontalAlignment="Left" Padding="7"></TextBlock>
-            </StackPanel>
+                </StackPanel>
+            </Grid>
+
+            <!--Edit UC-->
+            <uc:EditCustomerUC x:Name="EditCustomerUC" Grid.RowSpan="2" Visibility="Hidden" Margin="10"></uc:EditCustomerUC>
+
         </Grid>
-
-        <!--Edit UC-->
-        <uc:EditCustomerUC x:Name="EditCustomerUC" Grid.RowSpan="2" Visibility="Hidden" Margin="10"></uc:EditCustomerUC>
-
-    </Grid>
+    </Border>
 </UserControl>

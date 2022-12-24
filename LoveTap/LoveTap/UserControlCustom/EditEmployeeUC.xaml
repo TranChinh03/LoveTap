@@ -8,7 +8,7 @@
         mc:Ignorable="d"
         Name="ucEditEmployee" Height="456.2" Width="656.666666666667"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-        DataContext="{StaticResource EditEmployeeVM}">
+       >
 
     <i:Interaction.Triggers>
         <i:EventTrigger EventName="MouseMove">
@@ -17,107 +17,97 @@
         </i:EventTrigger>
     </i:Interaction.Triggers>
 
-    <Grid Background="White">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="1.5*"/>
-            <RowDefinition Height="3*"/>
-            <RowDefinition Height="6*"/>
-        </Grid.RowDefinitions>
+    <Border>
+        <Border.Effect>
+            <DropShadowEffect Opacity="0.3" BlurRadius="10" Direction="315"></DropShadowEffect>
+        </Border.Effect>
+        <Grid Background="White" Margin="10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1.5*"/>
+                <RowDefinition Height="3*"/>
+                <RowDefinition Height="6*"/>
+            </Grid.RowDefinitions>
 
-        <!--Top Button-->
-        <DockPanel Margin="15,0,15,0">
-            <Border BorderBrush="{StaticResource Cyan Azure}"  BorderThickness="0.5" CornerRadius="5" VerticalAlignment="Center">
-                <TextBox FontSize="20"
+            <!--Top Button-->
+            <DockPanel Margin="15,0,15,0">
+                <Border BorderBrush="{StaticResource Cyan Azure}"  BorderThickness="0.5" CornerRadius="5" VerticalAlignment="Center">
+                    <TextBox FontSize="20"
                        FontWeight="Black"
                        Foreground="{StaticResource Catalina Blue}"
                        VerticalAlignment="Center" Width="150"  BorderThickness="0"
                        Text="{Binding ID}"
                        ></TextBox>
-            </Border>
-            <!--Back Button-->
-            <Button DockPanel.Dock="Right" Style="{StaticResource OrangeButton}"
-                    HorizontalAlignment="Right" Uid="2" Name="backBt" Content="Back">
-                <i:Interaction.Triggers>
-                    <i:EventTrigger EventName="Click">
-                        <i:InvokeCommandAction Command="{Binding SwitchTab}"
-                                                           CommandParameter="{Binding ElementName=ucEditEmployee}"></i:InvokeCommandAction>
-                    </i:EventTrigger>
-                    <i:EventTrigger EventName="MouseMove">
-                        <i:InvokeCommandAction Command="{Binding GetIdButton}"
-                                                           CommandParameter="{Binding ElementName=backBt}"></i:InvokeCommandAction>
-                    </i:EventTrigger>
-                </i:Interaction.Triggers>
-            </Button>
+                </Border>
+                <!--Back Button-->
+                <Button DockPanel.Dock="Right" Style="{StaticResource OrangeButton}"
+                    HorizontalAlignment="Right" Uid="2" Name="backBt" Content="Back" Command="{Binding navBack}">
+                </Button> 
 
-            <!--Done Button-->
-            <Button Uid="1" Name="doneBt" Content="Done" DockPanel.Dock="Right" Style="{StaticResource greenButton}" 
+                <!--Done Button-->
+                <Button Uid="1" Name="doneBt" Content="Done" DockPanel.Dock="Right" Style="{StaticResource greenButton}" 
                     HorizontalAlignment="Right" Width="90"
                     Command="{Binding EditCommand}">
-                <i:Interaction.Triggers>
-                    <i:EventTrigger EventName="Click">
-                        <i:InvokeCommandAction Command="{Binding SwitchTab}"
-                                                           CommandParameter="{Binding ElementName=ucEditEmployee}"></i:InvokeCommandAction>
-                    </i:EventTrigger>
-                    <i:EventTrigger EventName="MouseMove">
-                        <i:InvokeCommandAction Command="{Binding GetIdButton}"
-                                                           CommandParameter="{Binding ElementName=doneBt}"></i:InvokeCommandAction>
-                    </i:EventTrigger>
-                </i:Interaction.Triggers>
-            </Button>
-        </DockPanel>
-
-        <!--Image and Name-->
-        <StackPanel Margin="15,0,15,0"
-                    Grid.Row="1" Orientation="Horizontal">
-            <Border CornerRadius="15" BorderBrush="#5684B0" BorderThickness="0.5" Background="Transparent" Height="110"  >
-                <Button Grid.RowSpan="3"  Padding="10" Height="100"  Width="100" BorderBrush="Transparent"  Background="Transparent">
-                        <Image Source="/img/ImageofEmployee.png"  Stretch="Uniform"></Image>
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="Click">
+                            <i:InvokeCommandAction Command="{Binding navDone}"></i:InvokeCommandAction>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
                 </Button>
-            </Border>
+            </DockPanel>
 
-            <Grid Margin="20,0,0,0">
+            <!--Image and Name-->
+            <StackPanel Margin="15,0,15,0"
+                    Grid.Row="1" Orientation="Horizontal">
+                <Border CornerRadius="15" BorderBrush="#5684B0" BorderThickness="0.5" Background="Transparent" Height="110"  >
+                    <Button Grid.RowSpan="3"  Padding="10" Height="100"  Width="100" BorderBrush="Transparent"  Background="Transparent">
+                        <Image Source="/img/ImageofEmployee.png"  Stretch="Uniform"></Image>
+                    </Button>
+                </Border>
+
+                <Grid Margin="20,0,0,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="233*"/>
+                        <ColumnDefinition Width="117*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+
+                    <TextBox Style="{StaticResource editTextValue}" Text="{Binding EmployeeName}" FontSize="45" FontWeight="DemiBold" Width="480" Height="55" Grid.ColumnSpan="2" />
+
+                    <TextBox Grid.Row="1" Style="{StaticResource editTextValue}" Text="{Binding Position}" FontSize="20" FontWeight="DemiBold" Width="350" Height="30" Grid.ColumnSpan="2" Margin="0,8,0,0"/>
+                </Grid>
+            </StackPanel>
+
+            <!--Detail Info-->
+            <Grid Grid.Row="2">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="233*"/>
-                    <ColumnDefinition Width="117*"/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                </Grid.RowDefinitions>
 
-                <TextBox Style="{StaticResource editTextValue}" Text="{Binding EmployeeName}" FontSize="45" FontWeight="DemiBold" Width="350" Height="55" Grid.ColumnSpan="2" />
+                <StackPanel HorizontalAlignment="Center" >
+                    <TextBlock Style="{StaticResource detailText}" Margin="0,20,0,0">Ngày sinh:</TextBlock>
+                    <TextBlock Style="{StaticResource detailText}" Margin="0,20,0,0">Số điện thoại:</TextBlock>
+                    <TextBlock Style="{StaticResource detailText}" Margin="0,20,0,0">Địa chỉ:</TextBlock>
+                    <TextBlock Style="{StaticResource detailText}" Margin="0,20,0,0">Hệ số lương:</TextBlock>
+                    <TextBlock Style="{StaticResource detailText}" Margin="0,20,0,0">Lương cơ bản:</TextBlock>
+                    <TextBlock Style="{StaticResource detailText}" Margin="0,20,0,0">Chi nhánh:</TextBlock>
+                </StackPanel>
 
-                <TextBox Grid.Row="1" Style="{StaticResource editTextValue}" Text="{Binding Position}" FontSize="20" FontWeight="DemiBold" Width="350" Height="30" Grid.ColumnSpan="2" Margin="0,8,0,0"/>
+                <StackPanel Grid.Column="1" HorizontalAlignment="Center" >
+                    <TextBox Style="{StaticResource editTextValue}" Height="35" Text="{Binding Birthday}"></TextBox>
+                    <TextBox Style="{StaticResource editTextValue}" Height="35" Text="{Binding PhoneNumber}"></TextBox>
+                    <TextBox Style="{StaticResource editTextValue}" Height="35" Text="{Binding Address}"></TextBox>
+                    <TextBox Style="{StaticResource editTextValue}" Height="35" Text="{Binding CoefficientSalary}"></TextBox>
+                    <TextBox Style="{StaticResource editTextValue}" Height="35" Text="{Binding BasicPay}"></TextBox>
+                    <TextBox Style="{StaticResource editTextValue}" Height="35" Text="{Binding Branch}"></TextBox>
+                </StackPanel>
             </Grid>
-        </StackPanel>
 
-        <!--Detail Info-->
-        <Grid Grid.Row="2">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-            </Grid.ColumnDefinitions>
 
-            <StackPanel HorizontalAlignment="Center" >
-                <TextBlock Style="{StaticResource detailText}" Margin="0,20,0,0">Ngày sinh:</TextBlock>
-                <TextBlock Style="{StaticResource detailText}" Margin="0,20,0,0">Số điện thoại:</TextBlock>
-                <TextBlock Style="{StaticResource detailText}" Margin="0,20,0,0">Địa chỉ:</TextBlock>
-                <TextBlock Style="{StaticResource detailText}" Margin="0,20,0,0">Hệ số lương:</TextBlock>
-                <TextBlock Style="{StaticResource detailText}" Margin="0,20,0,0">Lương cơ bản:</TextBlock>
-                <TextBlock Style="{StaticResource detailText}" Margin="0,20,0,0">Chi nhánh:</TextBlock>
-            </StackPanel>
 
-            <StackPanel Grid.Column="1" HorizontalAlignment="Center" >
-                <TextBox Style="{StaticResource editTextValue}" Height="35" Text="{Binding Birthday}"></TextBox>
-                <TextBox Style="{StaticResource editTextValue}" Height="35" Text="{Binding PhoneNumber}"></TextBox>
-                <TextBox Style="{StaticResource editTextValue}" Height="35" Text="{Binding Address}"></TextBox>
-                <TextBox Style="{StaticResource editTextValue}" Height="35" Text="{Binding CoefficientSalary}"></TextBox>
-                <TextBox Style="{StaticResource editTextValue}" Height="35" Text="{Binding BasicPay}"></TextBox>
-                <TextBox Style="{StaticResource editTextValue}" Height="35" Text="{Binding Branch}"></TextBox>
-            </StackPanel>
         </Grid>
-
-
-
-    </Grid>
+    </Border>
 </UserControl>

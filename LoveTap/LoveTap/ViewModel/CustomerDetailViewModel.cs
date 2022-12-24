@@ -8,6 +8,8 @@ using System.Windows.Controls;
 using System.Windows;
 using System.Windows.Input;
 using LoveTap.Model;
+using LoveTap.Stores;
+using LoveTap.Commands;
 
 namespace LoveTap.ViewModel
 {
@@ -27,11 +29,10 @@ namespace LoveTap.ViewModel
         public Nullable<double> Sale { get => _Sale; set { _Sale = value; OnPropertyChanged(); } }
         private string _Type;
         public string Type { get => _Type; set { _Type = value; OnPropertyChanged(); } }
-        public ICommand GetIdButton { get; set; }
-        string Name;
-        public ICommand SwitchTab { get; set; }
+        public ICommand navEdit { get; set; }
+        public ICommand navBack { get; set; }
         public ICommand LoadedDetailCustomer { get; set; }
-        public CustomerDetailViewModel() {
+        public CustomerDetailViewModel(NavigationStore navigationStore) {
             LoadedDetailCustomer = new RelayCommand<UserControl>((p) => { return true; }, (p) =>
             {
                 KHACHHANG x = CustomerViewModel.CurrentSelected;
@@ -53,31 +54,8 @@ namespace LoveTap.ViewModel
                 }
 
             });
-            GetIdButton = new RelayCommand<Button>((p) => true, (p) => Name = p.Uid);
-            SwitchTab = new RelayCommand<CustomerDetailUC>((p) => true, (p) => switchtab(p));
-        }
-
-        void switchtab(CustomerDetailUC p)
-        {
-            int index = int.Parse(Name);
-            switch (index)
-            {
-                case 1:
-                    {
-                        p.EditCustomerUC.Visibility=Visibility.Visible;
-                        break;
-                    }
-                case 2:
-                    {
-                        p.Visibility=Visibility.Collapsed;
-                        break;
-                    }
-                case 3:
-                    {
-                        p.Visibility=Visibility.Collapsed;
-                        break;
-                    }
-            }
+            navBack = new NavigationCommand<CustomerViewModel>(navigationStore, () => new CustomerViewModel(navigationStore));
+            navEdit = new NavigationCommand<EditCustomerViewModel>(navigationStore, () => new EditCustomerViewModel(navigationStore));
         }
     }
 }

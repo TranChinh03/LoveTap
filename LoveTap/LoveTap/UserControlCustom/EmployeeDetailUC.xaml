@@ -9,8 +9,102 @@
         mc:Ignorable="d"
         Name="ucEmployeeDetail" Height="456.2" Width="656.666666666667"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-        DataContext="{StaticResource EmployeeDetailVM}">
-    
+       >
+
+    <Border>
+        <Border.Effect>
+            <DropShadowEffect Opacity="0.3" BlurRadius="10" Direction="315"></DropShadowEffect>
+        </Border.Effect>
+        <Grid Background="White" Margin="10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1.5*"/>
+                <RowDefinition Height="3*"/>
+                <RowDefinition Height="6*"/>
+            </Grid.RowDefinitions>
+
+            <!--EditEmployee-->
+            <uc:EditEmployeeUC x:Name="EditEmployee" Grid.ColumnSpan="10" Grid.RowSpan="9" Background="White"
+                                 Visibility="Hidden"  Panel.ZIndex="2" />
+
+            <!--3 Button-->
+            <DockPanel Margin="15,0,15,0">
+                <TextBlock FontSize="20"
+                       FontWeight="Black"
+                       Foreground="{StaticResource Catalina Blue}"
+                       VerticalAlignment="Center"
+                       >#KH001</TextBlock>
+
+                <!--Back Button-->
+                <Button DockPanel.Dock="Right" Style="{StaticResource OrangeButton}"
+                    HorizontalAlignment="Right" Uid="3" Name="backBt" Content="Back" Command="{Binding navBack}">
+                </Button>
+
+                <!--Invoice Button-->
+                <Button Name="invoiceBt" Uid="2" DockPanel.Dock="Right" Style="{StaticResource greenButton}"
+                    HorizontalAlignment="Right" Width="90" >
+                    <StackPanel Orientation="Horizontal">
+                        <materialDesign:PackIcon Kind="Download" />
+                        <TextBlock Margin="8,0,0,0">Invoice</TextBlock>
+                    </StackPanel>
+                </Button>
+
+                <!--Edit Button-->
+                <Button x:Name="editBt" Uid="1" DockPanel.Dock="Right" Style="{StaticResource greenButton}"
+                    HorizontalAlignment="Right" Width="90" Command="{Binding navEdit}">
+                    <StackPanel Orientation="Horizontal">
+                        <materialDesign:PackIcon Kind="Pencil" />
+                        <TextBlock Margin="7,0,0,0" >Edit</TextBlock>
+                    </StackPanel>
+                </Button>
+            </DockPanel>
+
+
+            <!--Image and Name-->
+            <StackPanel Margin="15,0,15,0"
+                    Grid.Row="1" Orientation="Horizontal">
+                <Image Source="/img/ImageofEmployee.png"  Stretch="Uniform" Height="100" Width="100"/>
+                <Grid Margin="20,0,0,0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+
+                    <TextBlock FontSize="40" 
+                       FontWeight="DemiBold"
+                       Foreground="{StaticResource Catalina Blue}"
+                       Text="{Binding EmployeeName}" TextWrapping="Wrap" Width="480">
+                    </TextBlock>
+                    <TextBlock Grid.Row="1" FontSize="30" VerticalAlignment="Top" FontWeight="DemiBold" Foreground="{StaticResource Cyan Azure}" Text="{Binding Position}"></TextBlock>
+                </Grid>
+            </StackPanel>
+
+            <!--Detail Info-->
+            <Grid Grid.Row="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+                <StackPanel HorizontalAlignment="Center" >
+                    <TextBlock Style="{StaticResource detailText}" Margin="0 10 0 0">Ngày sinh:</TextBlock>
+                    <TextBlock Style="{StaticResource detailText}" Margin="0 20 0 0">Số điện thoại:</TextBlock>
+                    <TextBlock Style="{StaticResource detailText}" Margin="0 20 0 0">Địa chỉ:</TextBlock>
+                    <TextBlock Style="{StaticResource detailText}" Margin="0 20 0 0">Hệ số lương:</TextBlock>
+                    <TextBlock Style="{StaticResource detailText}" Margin="0 20 0 0">Lương cơ bản:</TextBlock>
+                    <TextBlock Style="{StaticResource detailText}" Margin="0 20 0 0">Chi nhánh:</TextBlock>
+                </StackPanel>
+
+                <StackPanel Grid.Column="1" HorizontalAlignment="Center" >
+                    <TextBlock Style="{StaticResource detailTextValue}" Text="{Binding Birthday}"></TextBlock>
+                    <TextBlock Style="{StaticResource detailTextValue}" Text="{Binding PhoneNumber}"></TextBlock>
+                    <TextBlock Style="{StaticResource detailTextValue}" Text="{Binding Address}"></TextBlock>
+                    <TextBlock Style="{StaticResource detailTextValue}" Text="{Binding CoefficientSalary}"></TextBlock>
+                    <TextBlock Style="{StaticResource detailTextValue}" Text="{Binding BasicPay}"></TextBlock>
+                    <TextBlock Style="{StaticResource detailTextValue}" Text="{Binding Branch}"></TextBlock>
+                </StackPanel>
+            </Grid>
+        </Grid>
+    </Border>
     <i:Interaction.Triggers>
         <i:EventTrigger EventName="MouseMove">
             <i:InvokeCommandAction Command="{Binding LoadedEmployeeDetailUC}"
@@ -19,122 +113,4 @@
     </i:Interaction.Triggers>
 
 
-    <Grid Background="Transparent">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="1.5*"/>
-            <RowDefinition Height="3*"/>
-            <RowDefinition Height="6*"/>
-        </Grid.RowDefinitions>
-
-        <!--EditEmployee-->
-        <uc:EditEmployeeUC x:Name="EditEmployee" Grid.ColumnSpan="10" Grid.RowSpan="9" Background="White"
-                                 Visibility="Hidden"  Panel.ZIndex="2" />
-
-        <!--Top Button-->
-        <DockPanel Margin="15,0,15,0">
-            <TextBlock FontSize="20"
-                       FontWeight="Black"
-                       Foreground="{StaticResource Catalina Blue}"
-                       VerticalAlignment="Center"
-                       Text="{Binding ID}"
-                       ></TextBlock>
-            <!--Back Button-->
-            <Button DockPanel.Dock="Right" Style="{StaticResource OrangeButton}"
-                    HorizontalAlignment="Right" Uid="3" Name="backBt" Content="Back">
-                <i:Interaction.Triggers>
-                    <i:EventTrigger EventName="Click">
-                        <i:InvokeCommandAction Command="{Binding SwitchTab}"
-                                                           CommandParameter="{Binding ElementName=ucEmployeeDetail}"></i:InvokeCommandAction>
-                    </i:EventTrigger>
-                    <i:EventTrigger EventName="MouseMove">
-                        <i:InvokeCommandAction Command="{Binding GetIdButton}"
-                                                           CommandParameter="{Binding ElementName=backBt}"></i:InvokeCommandAction>
-                    </i:EventTrigger>
-                </i:Interaction.Triggers>
-            </Button>
-
-            <!--Invoice Button-->
-            <Button Name="invoiceBt" Uid="2" DockPanel.Dock="Right" Style="{StaticResource greenButton}"
-                    HorizontalAlignment="Right" Width="90" >
-                <StackPanel Orientation="Horizontal">
-                    <materialDesign:PackIcon Kind="Download" />
-                    <TextBlock Margin="8,0,0,0">Invoice</TextBlock>
-                </StackPanel>
-                <i:Interaction.Triggers>
-                    <i:EventTrigger EventName="Click">
-                        <i:InvokeCommandAction Command="{Binding SwitchTab}"
-                                                           CommandParameter="{Binding ElementName=ucEmployeeDetail}"></i:InvokeCommandAction>
-                    </i:EventTrigger>
-                    <i:EventTrigger EventName="MouseMove">
-                        <i:InvokeCommandAction Command="{Binding GetIdButton}"
-                                                           CommandParameter="{Binding ElementName=invoiceBt}"></i:InvokeCommandAction>
-                    </i:EventTrigger>
-                </i:Interaction.Triggers>
-            </Button>
-
-            <!--Edit Button-->
-            <Button x:Name="editBt" Uid="1" DockPanel.Dock="Right" Style="{StaticResource greenButton}"
-                    HorizontalAlignment="Right" Width="90" >
-                <StackPanel Orientation="Horizontal">
-                    <materialDesign:PackIcon Kind="Pencil" />
-                    <TextBlock Margin="7,0,0,0">Edit</TextBlock>
-                </StackPanel>
-                <i:Interaction.Triggers>
-                    <i:EventTrigger EventName="Click">
-                        <i:InvokeCommandAction Command="{Binding SwitchTab}"
-                                                           CommandParameter="{Binding ElementName=ucEmployeeDetail}"></i:InvokeCommandAction>
-                    </i:EventTrigger>
-                    <i:EventTrigger EventName="MouseMove">
-                        <i:InvokeCommandAction Command="{Binding GetIdButton}"
-                                                           CommandParameter="{Binding ElementName=editBt}"></i:InvokeCommandAction>
-                    </i:EventTrigger>
-                </i:Interaction.Triggers>
-            </Button>
-        </DockPanel>
-
-        <!--Image and Name-->
-        <StackPanel Margin="15,0,15,0"
-                    Grid.Row="1" Orientation="Horizontal">
-            <Image Source="/img/ImageofEmployee.png"  Stretch="Uniform" Height="100" Width="100"/>
-            <Grid Margin="20,0,0,0">
-                <Grid.RowDefinitions>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                </Grid.RowDefinitions>
-
-                <TextBlock FontSize="45" 
-                       FontWeight="DemiBold"
-                       Foreground="{StaticResource Catalina Blue}"
-                       Text="{Binding EmployeeName}">
-                </TextBlock>
-                <TextBlock Grid.Row="1" FontSize="30" VerticalAlignment="Top" FontWeight="DemiBold" Foreground="{StaticResource Cyan Azure}" Text="{Binding Position}"></TextBlock>
-            </Grid>
-        </StackPanel>
-
-        <!--Detail Info-->
-        <Grid Grid.Row="2">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-            </Grid.ColumnDefinitions>
-
-            <StackPanel HorizontalAlignment="Center" >
-                <TextBlock Style="{StaticResource detailText}" Margin="0 10 0 0">Ngày sinh:</TextBlock>
-                <TextBlock Style="{StaticResource detailText}" Margin="0 20 0 0">Số điện thoại:</TextBlock>
-                <TextBlock Style="{StaticResource detailText}" Margin="0 20 0 0">Địa chỉ:</TextBlock>
-                <TextBlock Style="{StaticResource detailText}" Margin="0 20 0 0">Hệ số lương:</TextBlock>
-                <TextBlock Style="{StaticResource detailText}" Margin="0 20 0 0">Lương cơ bản:</TextBlock>
-                <TextBlock Style="{StaticResource detailText}" Margin="0 20 0 0">Chi nhánh:</TextBlock>
-            </StackPanel>
-
-            <StackPanel Grid.Column="1" HorizontalAlignment="Center" >
-                <TextBlock Style="{StaticResource detailTextValue}" Text="{Binding Birthday}"></TextBlock>
-                <TextBlock Style="{StaticResource detailTextValue}" Text="{Binding PhoneNumber}"></TextBlock>
-                <TextBlock Style="{StaticResource detailTextValue}" Text="{Binding Address}"></TextBlock>
-                <TextBlock Style="{StaticResource detailTextValue}" Text="{Binding CoefficientSalary}"></TextBlock>
-                <TextBlock Style="{StaticResource detailTextValue}" Text="{Binding BasicPay}"></TextBlock>
-                <TextBlock Style="{StaticResource detailTextValue}" Text="{Binding Branch}"></TextBlock>
-            </StackPanel>
-        </Grid>
-    </Grid>
 </UserControl>
