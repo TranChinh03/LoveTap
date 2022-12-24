@@ -53,7 +53,8 @@ namespace LoveTap.ViewModel
             public int SoLuongTon { get; set; }
         }
 
-        public List<BestSelling> BestSellingList = new List<BestSelling>();
+        private List<BestSelling> _BestSellingList = new List<BestSelling>();
+        public List<BestSelling> BestSellingList { get => _BestSellingList ; set { _BestSellingList = value; } }
         public HomeViewModel(NavigationStore navigationStore)
         {
             

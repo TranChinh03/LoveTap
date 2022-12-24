@@ -33,5 +33,10 @@ namespace LoveTap
         {
 
         }
+
+        private void GoodList_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }
