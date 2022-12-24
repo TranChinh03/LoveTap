@@ -34,18 +34,6 @@ namespace LoveTap.ViewModel
             navAddOrder = new NavigationCommand<AddOrdersViewModel>(navigationStore, () => new AddOrdersViewModel(navigationStore));
             navDetail = new NavigationCommand<OrderDetailViewModel>(navigationStore, () => new OrderDetailViewModel(navigationStore));
         }
-        void switchtab(OrdersWindow p)
-        {
-            int index = int.Parse(Name);
-            switch (index)
-            {
-                case 1:
-                    {
-                        p.AddOrder.Visibility=Visibility.Visible;
-                        break;
-                    }
-            }
-        }
         void _DetailCs(OrdersWindow p)
         {
             //CODE CỦA ANH KHÔI Á. ĐỂ LẠI MÍ PÀ CÓ XÀI GÌ XÀI
