@@ -1,4 +1,5 @@
 ﻿using LoveTap.Model;
+using LoveTap.Stores;
 using LoveTap.UserControlCustom;
 using MaterialDesignThemes.Wpf;
 using System;
@@ -40,7 +41,7 @@ namespace LoveTap.ViewModel
 
         //private string _VITRI;
         //public string VITRI { get => _VITRI; set { _VITRI = value;} }
-        public EmployeeViewModel()
+        public EmployeeViewModel(NavigationStore navigationStore)
         {
             EmployeeList = new ObservableCollection<NHANVIEN>(DataProvider.Ins.DB.NHANVIENs);
             string role =  EmployeeList[0].VAITRO.ToString();

@@ -1,4 +1,6 @@
-﻿using LoveTap.Model;
+﻿using LoveTap.Commands;
+using LoveTap.Model;
+using LoveTap.Stores;
 using LoveTap.UserControlCustom;
 using MaterialDesignThemes.Wpf;
 using System;
@@ -19,6 +21,7 @@ namespace LoveTap.ViewModel
     {
         public string UserID { get; set; }
         public ICommand GetIdTab { get; set; }
+        public ICommand NavEditUsr { get;}
         public ICommand LoadedProfileUsr { get; set; }
         public ICommand HiddenBG { get; set; }
 
@@ -58,7 +61,7 @@ namespace LoveTap.ViewModel
         public string Role { get => _Role; set { _Role = value; OnPropertyChanged(); } }
 
         string Name;
-        public ProfileUsrViewModel()
+        public ProfileUsrViewModel(NavigationStore navigationStore)
         {
             LoadedProfileUsr = new RelayCommand<Page>((p) => { return true; }, (p) =>
             {
@@ -86,6 +89,8 @@ namespace LoveTap.ViewModel
             GetIdTab = new RelayCommand<Button>((p) => true, (p) => Name = p.Uid);
             SwitchTab = new RelayCommand<HomePersonal>((p) => true, (p) => switchtab(p));
             HiddenBG = new RelayCommand<Grid>((p) => true, (p) => hiddenBG(p));
+
+            NavEditUsr = new NavigationCommand<UsrPro5EditViewModel>(navigationStore, () => new UsrPro5EditViewModel(navigationStore));
         }
         void switchtab(HomePersonal p)
         {

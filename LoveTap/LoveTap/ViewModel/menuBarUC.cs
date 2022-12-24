@@ -69,7 +69,7 @@ namespace LoveTap.ViewModel
                     {
                         //_Loadwd(p);
                         MainWindow mainwd = new MainWindow();
-                        mainwd.Main.NavigationService.Navigate(new CustomerWindow());
+                        //mainwd.Main.NavigationService.Navigate(new CustomerWindow());
                         break;
                     }
                     //            case 4:

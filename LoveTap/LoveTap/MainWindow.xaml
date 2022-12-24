@@ -9,6 +9,7 @@
         xmlns:local="clr-namespace:LoveTap" 
         xmlns:viewmodel="clr-namespace:LoveTap.ViewModel" 
         mc:Ignorable="d"
+        
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
         TextElement.FontWeight="Regular"
         TextElement.FontSize="14"
@@ -20,15 +21,15 @@
         WindowStartupLocation="CenterScreen"
         WindowStyle="None"
         Title="EmployeeWindow" Height="550" Width="800"
-        DataContext="{StaticResource MainVM}" Name="mainWindow"
+        Name="mainWindow"
 >
 
-    <i:Interaction.Triggers>
+    <!--<i:Interaction.Triggers>
         <i:EventTrigger EventName="Loaded">
             <i:InvokeCommandAction Command="{Binding LoadedMainWd}"
                                                        CommandParameter="{Binding ElementName=mainWindow}"></i:InvokeCommandAction>
         </i:EventTrigger>
-    </i:Interaction.Triggers>
+    </i:Interaction.Triggers>-->
 
     <Grid Background="WhiteSmoke">
         <Grid.RowDefinitions>
@@ -100,7 +101,7 @@
                         </i:Interaction.Triggers>
                     </Button>
                 </DockPanel>
-                    
+
             </DockPanel>
         </Grid>
 
@@ -134,7 +135,7 @@
                         <Image x:Name="homeImg2" Visibility="Visible"  Source="/img/homeClick.png" Width="13" Height="13" />
                         <TextBlock x:Name="homeTbl" Text="Home"  FontSize="13" Foreground="White" HorizontalAlignment="Left" Margin="10 0"></TextBlock>
                     </StackPanel>
-                    
+
                     <i:Interaction.Triggers>
                         <i:EventTrigger EventName="Click">
                             <i:InvokeCommandAction Command="{Binding SwitchTab}"
@@ -198,7 +199,7 @@
                         <Image x:Name="customerImg2" Visibility="Collapsed" Source="/img/customerClick.png" Width="13" Height="13" HorizontalAlignment="Left"/>
                         <TextBlock x:Name="customerTbl" Text="Customer" FontSize="13" Foreground="#79A7CB" HorizontalAlignment="Left"  Margin="10 0"></TextBlock>
                     </StackPanel>
-                    
+
                     <i:Interaction.Triggers>
                         <i:EventTrigger EventName="Click">
                             <i:InvokeCommandAction Command="{Binding SwitchTab}"
@@ -265,10 +266,35 @@
         </Grid>
 
         <!--Frame for Main Screens-->
-        <Frame x:Name="Main" DataContext="{StaticResource MainVM}" Source="Home.xaml" NavigationUIVisibility="Hidden" Grid.Row="2" Grid.Column="2" Grid.RowSpan="9" Grid.ColumnSpan="10" Background="Transparent"></Frame>
-        
-        <!--Frame for Action Screens-->
-        <Frame x:Name="Action" DataContext="{StaticResource MainVM}"  NavigationUIVisibility="Hidden" Grid.Row="2" Grid.Column="1" Grid.RowSpan="8" Grid.ColumnSpan="10" Background="red" Visibility="Hidden"></Frame>
+        <!--<ContentControl Content="{Binding CurrentViewModel}" Grid.Row="2" Grid.Column="2" Grid.RowSpan="9" Grid.ColumnSpan="10" Background="Transparent">
+            <ContentControl.Resources>
+                <DataTemplate DataType="{x:Type viewmodel:HomeViewModel}">
+                    <uc:HomeViewUC></uc:HomeViewUC>
+                </DataTemplate>
+                <DataTemplate DataType="{x:Type viewmodel:GoodsViewModel}">
+                    <uc:GoodViewUC></uc:GoodViewUC>
+                </DataTemplate>
+                <DataTemplate DataType="{x:Type viewmodel:OrdersViewModel}">
+                    <uc:OrderViewUC></uc:OrderViewUC>
+                </DataTemplate>
+                <DataTemplate DataType="{x:Type viewmodel:CustomerViewModel}">
+                    <uc:CustomerViewUC></uc:CustomerViewUC>
+                </DataTemplate>
+                <DataTemplate DataType="{x:Type viewmodel:Statis}">
+                    <uc:HomeUC></uc:HomeUC>
+                </DataTemplate>
+                <DataTemplate DataType="{x:Type viewmodel:EmployeeViewModel}">
+                    <uc:EmployeeViewUC></uc:EmployeeViewUC>
+                </DataTemplate>
+                <DataTemplate DataType="{x:Type viewmodel:ProfileUsrViewModel}">
+                    <uc:ProfileViewUC></uc:ProfileViewUC>
+                </DataTemplate>
+                <DataTemplate DataType="{x:Type viewmodel:UsrPro5EditViewModel}">
+                    <uc:edit></uc:edit>
+                </DataTemplate>
+            </ContentControl.Resources>
+        </ContentControl>-->
+
 
     </Grid>
 </Window>

@@ -20,6 +20,7 @@
     <viewmodel:AddCustomerViewModel x:Key="AddCustomerVM"></viewmodel:AddCustomerViewModel>
     <viewmodel:CustomerDetailViewModel x:Key="DetailCustomerVM"></viewmodel:CustomerDetailViewModel>
     <viewmodel:EditCustomerViewModel x:Key="EditCustomerVM"></viewmodel:EditCustomerViewModel>
+    <viewmodel:StatisticViewModel x:Key="StatisticVM"></viewmodel:StatisticViewModel>
     <viewmodel:EmployeeViewModel x:Key="EmployeeVM"></viewmodel:EmployeeViewModel>
     <viewmodel:EmployeeDetailViewModel x:Key="EmployeeDetailVM"></viewmodel:EmployeeDetailViewModel>
     <viewmodel:EditEmployeeViewModel x:Key="EditEmployeeVM"></viewmodel:EditEmployeeViewModel>
