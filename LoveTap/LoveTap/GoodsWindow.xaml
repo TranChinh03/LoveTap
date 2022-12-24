@@ -136,6 +136,7 @@
                     ToolTip="MaterialDesignFlatButton"
                     IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" />
                     <ComboBox
+                    Text="{Binding sortText, UpdateSourceTrigger=PropertyChanged}"
                     VerticalAlignment="Bottom"
                     Grid.Row="1"
                     Grid.RowSpan="2"
@@ -149,7 +150,15 @@
                     Width="200"
                     Padding="10 0 0 0">
                         <ComboBoxItem
-                        Content="Nổi bật" />
+                        Content="Product ID" />
+                        <ComboBoxItem
+                        Content="Product Name" />
+                        <ComboBoxItem
+                        Content="Price" />
+                        <ComboBoxItem
+                        Content="Details" />
+                        <ComboBoxItem
+                        Content="Category" />
                     </ComboBox>
                     <materialDesign:Card Grid.Row="0"  Width="300"  BorderThickness="2" HorizontalAlignment="Right" Margin="25 0" VerticalAlignment="Center">
                         <Grid>
@@ -174,6 +183,7 @@
                         Width="20"/>
                             </Button>
                             <TextBox
+                        x:Name="searchTbx"
                         Grid.Column="1"
                         Margin="8,4,0,0"
                         materialDesign:HintAssist.Hint="Search Products..."
@@ -181,7 +191,8 @@
                         BorderThickness="0"
                         MinWidth="200"
                         FontSize="16"
-                        VerticalAlignment="Center" Grid.RowSpan="2" 
+                        VerticalAlignment="Center" Grid.RowSpan="2"
+                        Text="{Binding searchText, UpdateSourceTrigger=PropertyChanged}"
                         />
                             <Button
                         Style="{StaticResource MaterialDesignToolButton}"
@@ -359,7 +370,7 @@
             Margin=" 10"
              Grid.Column="1">
                 <ScrollViewer VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Visible">
-                    <ListView x:Name="GoodList" ItemsSource="{Binding ProductList}" SelectedItem="{Binding SelectedItem, Mode=OneWayToSource}">
+                    <ListView x:Name="GoodList" ItemsSource="{Binding MyFilterList}" SelectedItem="{Binding SelectedItem, Mode=OneWayToSource}" SelectionChanged="GoodList_SelectionChanged">
                         <ListView.Resources>
                             <Style TargetType="{x:Type GridViewColumnHeader}">
                                 <Setter Property="HorizontalContentAlignment" Value="Center"/>
@@ -372,7 +383,7 @@
                                 <GridViewColumn Header="Name" DisplayMemberBinding="{Binding TEN}"></GridViewColumn>
                                 <GridViewColumn Header="Price" DisplayMemberBinding="{Binding GIA}"></GridViewColumn>
                                 <GridViewColumn Header="Desc" DisplayMemberBinding="{Binding CHITIET}"></GridViewColumn>
-                                <GridViewColumn Header="Type" DisplayMemberBinding="{Binding MADM}"></GridViewColumn>
+                                <GridViewColumn Header="Category" DisplayMemberBinding="{Binding MADM}"></GridViewColumn>
                             </GridView>
                         </ListView.View>
                         <i:Interaction.Triggers>

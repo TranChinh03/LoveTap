@@ -115,13 +115,20 @@
                                        FontSize="15" Foreground="{StaticResource Catalina Blue}" FontWeight="Bold"
                                        >Find by:</TextBlock>
 
-                            <ComboBox 
+                            <ComboBox  
+                                Text="{Binding findText, UpdateSourceTrigger=PropertyChanged}"
                                       Width="150"
                                     Height="30"
                                   BorderBrush="{StaticResource Cyan Azure}"
                                    materialDesign:HintAssist.Hint="Id , Name, ..."
                                   Style="{StaticResource MaterialDesignOutlinedComboBox}" 
                                 Padding="5,0,5,0" VerticalContentAlignment="Center">
+                                <ComboBoxItem Content="Phone"/>
+                                <ComboBoxItem Content="Name"/>
+                                <ComboBoxItem Content="Date of Birth"/>
+                                <ComboBoxItem Content="Adress"/>
+                                <ComboBoxItem Content="Registation Date"/>
+                                <ComboBoxItem Content="Sale"/>
                             </ComboBox>
                         </DockPanel>
                     </Grid>
@@ -134,12 +141,57 @@
                             <ColumnDefinition  />
                         </Grid.ColumnDefinitions>
 
-                        <TextBox Grid.Column="0" Template="{StaticResource searchBox}"/>
+                        <!--<TextBox Grid.Column="0" 
+                                 Template="{StaticResource searchBox}" 
+                                 Text="{Binding searchText, UpdateSourceTrigger=PropertyChanged}"/>
 
-                        <materialDesign:PackIcon Kind="Magnify" HorizontalAlignment="Right" Margin="0,16,24,0" Foreground="{StaticResource Cyan Azure}"/>
+                        <materialDesign:PackIcon Kind="Magnify" HorizontalAlignment="Right" Margin="0,16,24,0" Foreground="{StaticResource Cyan Azure}"/>-->
+
+                        <materialDesign:Card Grid.Column="0"   BorderThickness="2" HorizontalAlignment="Right"  VerticalAlignment="Center">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="21*"/>
+                                    <RowDefinition Height="11*"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition
+                            Width="Auto" />
+                                    <ColumnDefinition
+                            Width="*" />
+                                    <ColumnDefinition
+                            Width="Auto" />
+                                </Grid.ColumnDefinitions>
+                                <Button
+                        Style="{StaticResource MaterialDesignToolButton}" Grid.RowSpan="2">
+                                    <materialDesign:PackIcon
+                        Kind="Search"
+                        Opacity=".56"
+                        Height="30"
+                        Width="20"/>
+                                </Button>
+                                <TextBox
+                        x:Name="searchTbx"
+                        Grid.Column="1"
+                        Margin="8,4,0,0"
+                        materialDesign:HintAssist.Hint="Search Products..."
+                        materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
+                        BorderThickness="0"
+                        MinWidth="200"
+                        FontSize="16"
+                        VerticalAlignment="Center" Grid.RowSpan="2"
+                        Text="{Binding searchText, UpdateSourceTrigger=PropertyChanged}"
+                        />
+                                <Button
+                        Style="{StaticResource MaterialDesignToolButton}"
+                        Grid.Column="2" Grid.RowSpan="2">
+                                    
+                                </Button>
+                            </Grid>
+                        </materialDesign:Card>
 
                         <ComboBox  Grid.Column="1" Template="{StaticResource Combobox}"
-                                    materialDesign:HintAssist.Hint="Chi nhánh" 
+                                    materialDesign:HintAssist.Hint="Chi nhánh"
+                                   ItemsSource="{Binding BranchIDList}"
                                   >
                         </ComboBox>
 
@@ -164,7 +216,7 @@
                 </Border.Effect>
                 <Grid>
                     <ScrollViewer VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Visible">
-                        <ListView Name="CustomerList" ItemsSource="{Binding CustomerList}" SelectedItem="{Binding SelectedItem, Mode=OneWayToSource}" HorizontalContentAlignment="Center">
+                        <ListView Name="CustomerList" ItemsSource="{Binding MyFilterList}" SelectedItem="{Binding SelectedItem, Mode=OneWayToSource}" HorizontalContentAlignment="Center">
                             <ListView.Resources>
                                 <Style TargetType="{x:Type GridViewColumnHeader}">
                                     <Setter Property="HorizontalContentAlignment" Value="Center"/>

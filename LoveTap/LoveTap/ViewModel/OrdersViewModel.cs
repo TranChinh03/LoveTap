@@ -1,6 +1,6 @@
 ﻿using LoveTap.Model;
 using LoveTap.UserControlCustom;
-using LoveTap.ViewModel;
+using MaterialDesignThemes.Wpf;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -10,11 +10,15 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Navigation;
+using System.Xml.Linq;
 
 namespace LoveTap.ViewModel
 {
     public class OrdersViewModel : BaseViewModel
     {
+        public static HOADON OrderSelected { get; set; }
+
         public ICommand GetIdButton { get; set; }
 
         public ICommand SwitchTab { get; set; }
@@ -74,6 +78,7 @@ namespace LoveTap.ViewModel
             //listKH = new ObservableCollection<KHACHHANG>(DataProvider.Ins.DB.KHACHHANGs);
             //paramater.ListViewKH.ItemsSource = listKH;
             //paramater.ListViewKH.SelectedItem = null;
+            OrderSelected = (HOADON)p.OrderList.SelectedItem;
         }
 
     }
