@@ -1,0 +1,265 @@
+﻿<UserControl x:Class="LoveTap.UserControlCustom.HomeViewUC"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        xmlns:local="clr-namespace:LoveTap"
+        xmlns:uc="clr-namespace:LoveTap.UserControlCustom"
+        mc:Ignorable="d"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="14"
+        TextOptions.TextFormattingMode="Ideal"
+        TextOptions.TextRenderingMode="Auto"
+        Background="{DynamicResource MaterialDesignPaper}"
+        FontFamily="{DynamicResource MaterialDesignFont}"
+        Name="HomeView"
+             
+>
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding LoadHome}"
+                                                       CommandParameter="{Binding ElementName=homeWindow}"></i:InvokeCommandAction>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+
+    <Grid Background="WhiteSmoke">
+
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition Width="58.333"></ColumnDefinition>
+                <ColumnDefinition Width="58.333"></ColumnDefinition>
+                <ColumnDefinition Width="58.333"></ColumnDefinition>
+                <ColumnDefinition Width="58.333"></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+
+            <!--Detail BestSelling Product-->
+
+            <uc:GoodsDetailUC x:Name="DetailBestSl" Panel.ZIndex="2" Grid.RowSpan="8" Grid.ColumnSpan="10" Visibility="Hidden"></uc:GoodsDetailUC>
+            <!-- REVENUE - ORDERS - CUSTOMER -->
+            <Grid Grid.ColumnSpan="8" Grid.RowSpan="2" >
+                <StackPanel Orientation="Horizontal">
+                    <!-- REVENUE -->
+                    <materialDesign:Card 
+                            Margin="10, 0, 20, 0" 
+                            Height="100" 
+                            Width="142"
+                            >
+                        <Grid >
+                            <TextBlock Margin="10, 10, 10, 10" 
+                                        FontSize="10"
+                                        HorizontalAlignment="Left"
+                                        VerticalAlignment="Top"
+                                        Foreground="#5684B0"
+                                        >REVENUE/DAY</TextBlock>
+                            <TextBlock Margin="10, 10, 10, 10" 
+                                        FontSize="10"
+                                        HorizontalAlignment="Right"
+                                        VerticalAlignment="Top"
+                                       Foreground="#59B39C"
+                                        >+16.24%</TextBlock>
+                            <TextBlock Margin="0, 10, 10, 10" 
+                                        FontSize="16"
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Center"
+                                        Foreground="#000"
+                                        >
+                                <Bold>999.99M VND</Bold>
+                            </TextBlock>
+                            <TextBlock Margin="10, 10, 10, 10" 
+                                        FontSize="10"
+                                        HorizontalAlignment="Left"
+                                        VerticalAlignment="Bottom"
+                                        Foreground="#5684B0"
+                                        TextDecorations="Underline"
+                                        >See details</TextBlock>
+                            <Image 
+                                Width="15" 
+                                Source="../img/dollar.jpg"
+                                HorizontalAlignment="Right"
+                                VerticalAlignment="Bottom"
+                                Margin="10, 10, 10, 10" 
+                                ></Image>
+
+
+
+                        </Grid>
+
+                    </materialDesign:Card>
+
+
+                    <!--ORDERS -->
+                    <materialDesign:Card 
+                            Margin="20, 0, 20, 0" 
+                            Height="100" 
+                            Width="142"
+                            >
+                        <Grid>
+                            <TextBlock Margin="10, 10, 10, 10" 
+                                        FontSize="10"
+                                        HorizontalAlignment="Left"
+                                        VerticalAlignment="Top"
+                                       Foreground="#5684B0"
+                                        >ORDERS/DAY</TextBlock>
+                            <TextBlock Margin="10, 10, 10, 10" 
+                                        FontSize="10"
+                                        HorizontalAlignment="Right"
+                                        VerticalAlignment="Top"
+                                       Foreground="#F26A4F
+"
+                                        >-16.24%</TextBlock>
+                            <TextBlock Margin="0, 10, 10, 10" 
+                                        FontSize="16"
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Center"
+                                        Foreground="#000"
+                                        >
+                                <Bold>999.99M VND</Bold>
+                            </TextBlock>
+                            <TextBlock Margin="10, 10, 10, 10" 
+                                        FontSize="10"
+                                        HorizontalAlignment="Left"
+                                        VerticalAlignment="Bottom"
+                                        Foreground="#5684B0"
+                                        TextDecorations="Underline"
+                                        >See details</TextBlock>
+                            <Image 
+                                Width="22" 
+                                Source="../img/bag.jpg"
+                                HorizontalAlignment="Right"
+                                VerticalAlignment="Bottom"
+                                Margin="10, 10, 10, 10" 
+                                ></Image>
+
+                        </Grid>
+
+                    </materialDesign:Card>
+
+                    <!-- CUSTOMER -->
+                    <materialDesign:Card 
+                            Margin="20, 0, 20, 0" 
+                            Height="100" 
+                            Width="142"
+                            >
+                        <Grid>
+                            <TextBlock Margin="10, 10, 10, 10" 
+                                        FontSize="10"
+                                        HorizontalAlignment="Left"
+                                        VerticalAlignment="Top"
+                                       Foreground="#5684B0"
+                                        >CUSTOMERS/DAY</TextBlock>
+                            <TextBlock Margin="10, 10, 10, 10" 
+                                        FontSize="10"
+                                        HorizontalAlignment="Right"
+                                        VerticalAlignment="Top"
+                                       Foreground="#F26A4F
+"
+                                        >-16.24%</TextBlock>
+                            <TextBlock Margin="0, 10, 10, 10" 
+                                        FontSize="16"
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Center"
+                                        Foreground="#000"
+                                        >
+                                <Bold>999.99M VND</Bold>
+                            </TextBlock>
+                            <TextBlock Margin="10, 10, 10, 10" 
+                                        FontSize="10"
+                                        HorizontalAlignment="Left"
+                                        VerticalAlignment="Bottom"
+                                        Foreground="#5684B0"
+                                        TextDecorations="Underline"
+                                        >See details</TextBlock>
+                            <Image 
+                                Width="15" 
+                                Source="../img/person.jpg"
+                                HorizontalAlignment="Right"
+                                VerticalAlignment="Bottom"
+                                Margin="10, 10, 10, 10" 
+                                ></Image>
+
+                        </Grid>
+
+                    </materialDesign:Card>
+
+                </StackPanel>
+
+            </Grid>
+
+
+
+            <!-- BEST SELLING -->
+
+            <Border Grid.Row="2" Grid.RowSpan="6" Grid.ColumnSpan="8" Background="White"
+                    CornerRadius="5" Margin="10" >
+                <Border.Effect>
+                    <DropShadowEffect BlurRadius="10" Color="Gray"/>
+                </Border.Effect>
+                <Grid>
+                    <ScrollViewer VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Visible">
+                        <ListView x:Name="BestSellingList" ItemsSource="{Binding ProductList}" SelectedItem="{Binding SelectedItem, Mode=TwoWay}" HorizontalContentAlignment="Center">
+                            <ListView.Resources>
+                                <Style TargetType="{x:Type GridViewColumnHeader}">
+                                    <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                                    <Setter Property="Foreground" Value="{StaticResource Cyan Azure}"/>
+                                </Style>
+                            </ListView.Resources>
+                            <ListView.View >
+                                <GridView>
+                                    <GridViewColumn Header="Best Selling Product" DisplayMemberBinding="{Binding TEN}"></GridViewColumn>
+                                    <GridViewColumn Header="Class ID" DisplayMemberBinding="{Binding MADM}"></GridViewColumn>
+                                    <GridViewColumn Header="Product ID" DisplayMemberBinding="{Binding MASP}"></GridViewColumn>
+                                </GridView>
+                            </ListView.View>
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="SelectionChanged">
+                                    <i:InvokeCommandAction     Command="{Binding Detail}"
+                                                           CommandParameter="{Binding ElementName=homeWindow}"></i:InvokeCommandAction>
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </ListView>
+                    </ScrollViewer>
+                </Grid>
+            </Border>
+
+            <!-- CALENDAR - MAP -->
+            <Grid  Grid.Column="8"  Grid.ColumnSpan="2" Grid.RowSpan="8" Margin="10">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*"></RowDefinition>
+                        <RowDefinition Height="2*"></RowDefinition>
+                    </Grid.RowDefinitions>
+
+                    <Image Grid.Row="0" VerticalAlignment="Top"
+                        Source="../img/calendar.png" />
+                    <Image 
+                        Source="../img/map4.png" VerticalAlignment="Center" Grid.RowSpan="2" Margin="0 0 0 0">
+                        <Image.Effect>
+                            <DropShadowEffect Direction="0" Color="#FFB6C2CB" ShadowDepth="2" BlurRadius="3" />
+                        </Image.Effect>
+
+                    </Image>
+                </Grid>
+            </Grid>
+        </Grid>
+    </Grid>
+</UserControl>

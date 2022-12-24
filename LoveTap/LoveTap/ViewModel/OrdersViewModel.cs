@@ -1,4 +1,6 @@
-﻿using LoveTap.Model;
+﻿using LoveTap.Commands;
+using LoveTap.Model;
+using LoveTap.Stores;
 using LoveTap.UserControlCustom;
 using MaterialDesignThemes.Wpf;
 using System;
@@ -19,22 +21,19 @@ namespace LoveTap.ViewModel
     {
         public static HOADON OrderSelected { get; set; }
 
-        public ICommand GetIdButton { get; set; }
 
-        public ICommand SwitchTab { get; set; }
-        public ICommand Detail { get; set; }
-        string Name;
+        public ICommand navAddOrder { get; set; }
+
+        public ICommand navDetail { get; set; }
 
         private ObservableCollection<HOADON> _OrdersList;
         public ObservableCollection<HOADON> OrdersList { get => _OrdersList; set { _OrdersList = value; } }
-        public OrdersViewModel()
+        public OrdersViewModel(NavigationStore navigationStore)
         {
             OrdersList = new ObservableCollection<HOADON>(DataProvider.Ins.DB.HOADONs);
-            GetIdButton = new RelayCommand<Button>((p) => true, (p) => Name = p.Uid);
-            SwitchTab = new RelayCommand<OrdersWindow>((p) => true, (p) => switchtab(p));
-            Detail = new RelayCommand<OrdersWindow>((p) => { return p.OrderList.SelectedItem == null ? false : true; }, (p) => _DetailCs(p));
+            navAddOrder = new NavigationCommand<AddOrdersViewModel>(navigationStore, () => new AddOrdersViewModel(navigationStore));
+            navDetail = new NavigationCommand<OrderDetailViewModel>(navigationStore, () => new OrderDetailViewModel(navigationStore));
         }
-
         void switchtab(OrdersWindow p)
         {
             int index = int.Parse(Name);
@@ -80,6 +79,5 @@ namespace LoveTap.ViewModel
             //paramater.ListViewKH.SelectedItem = null;
             OrderSelected = (HOADON)p.OrderList.SelectedItem;
         }
-
     }
 }

@@ -8,9 +8,13 @@
              mc:Ignorable="d" 
              Name="ucEditGoods"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-             DataContext="{StaticResource EditGoodVM}">
+            >
 
-        <Grid Background="White">
+    <Border>
+        <Border.Effect>
+            <DropShadowEffect BlurRadius="10" Opacity="0.3"></DropShadowEffect>
+        </Border.Effect>
+        <Grid Background="White" Margin="10">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1.5*"></ColumnDefinition>
                 <ColumnDefinition Width="3*"></ColumnDefinition>
@@ -87,17 +91,7 @@
 
                 <!--Back Button-->
                 <Button DockPanel.Dock="Right" Style="{StaticResource OrangeButton}"
-                    HorizontalAlignment="Right" Uid="2" Name="backBt" Content="Back">
-                    <i:Interaction.Triggers>
-                        <i:EventTrigger EventName="Click">
-                            <i:InvokeCommandAction Command="{Binding SwitchTab}"
-                                                           CommandParameter="{Binding ElementName=ucEditGoods}"></i:InvokeCommandAction>
-                        </i:EventTrigger>
-                        <i:EventTrigger EventName="MouseMove">
-                            <i:InvokeCommandAction Command="{Binding GetIdButton}"
-                                                           CommandParameter="{Binding ElementName=backBt}"></i:InvokeCommandAction>
-                        </i:EventTrigger>
-                    </i:Interaction.Triggers>
+                    HorizontalAlignment="Right" Uid="2" Name="backBt" Content="Back" Command="{Binding navBack}">
                 </Button>
 
                 <!--Done Button-->
@@ -105,12 +99,7 @@
                     HorizontalAlignment="Right" Width="90">
                     <i:Interaction.Triggers>
                         <i:EventTrigger EventName="Click">
-                            <i:InvokeCommandAction Command="{Binding SwitchTab}"
-                                                           CommandParameter="{Binding ElementName=ucEditGoods}"></i:InvokeCommandAction>
-                        </i:EventTrigger>
-                        <i:EventTrigger EventName="MouseMove">
-                            <i:InvokeCommandAction Command="{Binding GetIdButton}"
-                                                           CommandParameter="{Binding ElementName=doneBt}"></i:InvokeCommandAction>
+                            <i:InvokeCommandAction Command="{Binding navDone}"></i:InvokeCommandAction>
                         </i:EventTrigger>
                     </i:Interaction.Triggers>
                 </Button>
@@ -211,5 +200,7 @@
                 </StackPanel>
             </Border>
         </Grid>
+
+    </Border>
 
 </UserControl>

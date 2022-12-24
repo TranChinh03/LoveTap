@@ -1,4 +1,6 @@
-﻿using LoveTap.Model;
+﻿using LoveTap.Commands;
+using LoveTap.Model;
+using LoveTap.Stores;
 using LoveTap.UserControlCustom;
 using MaterialDesignThemes.Wpf;
 using System;
@@ -18,12 +20,10 @@ namespace LoveTap.ViewModel
     public class ProfileUsrViewModel : BaseViewModel
     {
         public string UserID { get; set; }
-        public ICommand GetIdTab { get; set; }
+        public ICommand NavChangePw { get; set; }
+        public ICommand NavEditUsr { get;}
         public ICommand LoadedProfileUsr { get; set; }
-        public ICommand HiddenBG { get; set; }
 
-
-        public ICommand SwitchTab { get; set; }
         private ObservableCollection<NHANVIEN> _User;
         public ObservableCollection<NHANVIEN> User { get => _User; set { _User = value; OnPropertyChanged(); } }
 
@@ -58,7 +58,7 @@ namespace LoveTap.ViewModel
         public string Role { get => _Role; set { _Role = value; OnPropertyChanged(); } }
 
         string Name;
-        public ProfileUsrViewModel()
+        public ProfileUsrViewModel(NavigationStore navigationStore)
         {
             LoadedProfileUsr = new RelayCommand<Page>((p) => { return true; }, (p) =>
             {
@@ -83,33 +83,10 @@ namespace LoveTap.ViewModel
                 }
             });
 
-            GetIdTab = new RelayCommand<Button>((p) => true, (p) => Name = p.Uid);
-            SwitchTab = new RelayCommand<HomePersonal>((p) => true, (p) => switchtab(p));
-            HiddenBG = new RelayCommand<Grid>((p) => true, (p) => hiddenBG(p));
+            NavEditUsr = new NavigationCommand<UsrPro5EditViewModel>(navigationStore, () => new UsrPro5EditViewModel(navigationStore));
+            NavChangePw = new NavigationCommand<CreatePwViewModel>(navigationStore, () => new CreatePwViewModel(navigationStore));
         }
-        void switchtab(HomePersonal p)
-        {
-            int index = int.Parse(Name);
-            switch (index)
-            {
-                case 1:
-                    {
-                        p.changePW.Visibility=Visibility.Visible;
-                        break;
-                    }
-                case 2:
-                    {
-                        HomeProfileEdit hpEditWd = new HomeProfileEdit();
-                        hpEditWd.ShowDialog();
-                        break;
-                    }
+        
 
-            }
-        }
-
-        void hiddenBG(Grid p)
-        {
-            p.Visibility= Visibility.Collapsed;
-        }
     }
 }

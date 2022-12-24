@@ -1,0 +1,288 @@
+﻿<Window x:Class="LoveTap.MainWd"
+         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:uc="clr-namespace:LoveTap.UserControlCustom"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        xmlns:local="clr-namespace:LoveTap" 
+        xmlns:viewmodel="clr-namespace:LoveTap.ViewModel" 
+        mc:Ignorable="d"
+        
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="14"
+        TextOptions.TextFormattingMode="Ideal"
+        TextOptions.TextRenderingMode="Auto"
+        Background="{DynamicResource MaterialDesignPaper}"
+        ResizeMode="NoResize"
+        FontFamily="{DynamicResource MaterialDesignFont}"
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="None"
+        Title="EmployeeWindow" Height="550" Width="800"
+        Name="mainWindow"
+>
+
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding LoadedMainWd}"
+                                                       CommandParameter="{Binding ElementName=mainWindow}"></i:InvokeCommandAction>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+
+    <Grid Background="WhiteSmoke">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto">
+            </RowDefinition>
+            <RowDefinition ></RowDefinition>
+            <RowDefinition ></RowDefinition>
+            <RowDefinition ></RowDefinition>
+            <RowDefinition ></RowDefinition>
+            <RowDefinition ></RowDefinition>
+            <RowDefinition ></RowDefinition>
+            <RowDefinition ></RowDefinition>
+            <RowDefinition ></RowDefinition>
+            <RowDefinition ></RowDefinition>
+            <RowDefinition ></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition ></ColumnDefinition>
+            <ColumnDefinition ></ColumnDefinition>
+            <ColumnDefinition ></ColumnDefinition>
+            <ColumnDefinition ></ColumnDefinition>
+            <ColumnDefinition ></ColumnDefinition>
+            <ColumnDefinition ></ColumnDefinition>
+            <ColumnDefinition ></ColumnDefinition>
+            <ColumnDefinition ></ColumnDefinition>
+            <ColumnDefinition ></ColumnDefinition>
+            <ColumnDefinition ></ColumnDefinition>
+            <ColumnDefinition ></ColumnDefinition>
+            <ColumnDefinition ></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <!--Control Bar-->
+        <uc:ControlBarUC Grid.Row="0" Grid.ColumnSpan="12"/>
+
+        <!--Status Bar -->
+        <Grid Background= "White" Grid.Row="1" Grid.ColumnSpan="10" Grid.Column="2">
+            <DockPanel>
+                <DockPanel DockPanel.Dock="Left">
+                    <TextBlock  x:Name="Tabtxbl" Width="100" DockPanel.Dock="Left" Text="{Binding TabName}" Foreground="#033270" FontSize="20" FontWeight="Bold" Margin="10 0 0 0" VerticalAlignment="Center"
+                           HorizontalAlignment="Center">Home</TextBlock>
+                    <Image Source="/img/horizontalLine.png" Height ="40" Margin="10 0 0 0"></Image>
+                </DockPanel>
+                <DockPanel DockPanel.Dock="Left" Margin="0 5 0 0">
+                    <TextBlock DockPanel.Dock="Top" Text="Have a good day, Xuân Thảo!" FontSize="15" Foreground="#033270" FontWeight="Bold" Margin="10 0 0 0"></TextBlock>
+                    <TextBlock DockPanel.Dock="Bottom" Text="Here's what's happening with your store today"  Margin="10 0 0 0" Foreground ="#033270" FontSize="15" FontWeight="Light"></TextBlock>
+                </DockPanel>
+
+                <DockPanel DockPanel.Dock="Right">
+                    <Button  Margin="55 0 0 0" Height="50" Width="180" Command="{Binding navProfile}" Background="White" BorderThickness="0">
+                        <Grid Height="50" Margin="-10">
+                            <Ellipse Height="45" Width="45" HorizontalAlignment="Left">
+                                <Ellipse.Fill>
+                                    <ImageBrush ImageSource="/img/avatar.png" ></ImageBrush>
+                                </Ellipse.Fill>
+                            </Ellipse>
+                            <TextBlock Text="Xuân Thảo" HorizontalAlignment="Left"  Margin="50 10 0 0" Foreground="#033270" FontWeight="Bold"></TextBlock>
+                            <TextBlock Text="Staff"  HorizontalAlignment="Left"  Margin="50 25 0 0" Foreground="#033270" FontWeight="Light"></TextBlock>
+                        </Grid>
+                    </Button>
+                </DockPanel>
+
+            </DockPanel>
+        </Grid>
+
+        <!--Menu Bar-->
+        <Grid Background="{StaticResource Catalina Blue}" Grid.RowSpan="11"  Grid.ColumnSpan="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+
+            <!--Logo Lovetap-->
+            <Image
+            Margin="10 40 10 20"
+            Grid.Row="0" Source="/img/LoveTap.png" RenderTransformOrigin="0.5,0.5" >
+                <Image.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform ScaleX="0.85" ScaleY="0.85"/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Image.RenderTransform>
+            </Image>
+
+            <!--Menu Tab-->
+            <!--Home-->
+            <StackPanel Grid.Row="1"  
+            IsEnabled="{Binding IsChecked, ElementName=EnableListBox}" >
+                <RadioButton Style="{StaticResource BtnStyle}"
+                              Command="{Binding navHome}"
+                              IsChecked="True">
+
+                    <StackPanel Orientation="Horizontal">
+
+                        <Image Source="/img/home.png" Style="{StaticResource Img_Style}" />
+
+                        <TextBlock Text="Home"
+                                       Style="{StaticResource Text_Style}" />
+                    </StackPanel>
+                </RadioButton>
+                
+                <!--Good-->
+                <RadioButton Style="{StaticResource BtnStyle}"
+                              Command="{Binding navGood}"
+                              >
+
+                    <StackPanel Orientation="Horizontal">
+
+                        <Image Source="/img/goods.png" Style="{StaticResource Img_Style}" />
+
+                        <TextBlock Text="Goods"
+                                       Style="{StaticResource Text_Style}" />
+                    </StackPanel>
+                </RadioButton>
+
+                <!--Order-->
+                <RadioButton Style="{StaticResource BtnStyle}"
+                              Command="{Binding navOrder}"
+                              >
+
+                    <StackPanel Orientation="Horizontal">
+
+                        <Image Source="/img/orders.png" Style="{StaticResource Img_Style}" />
+
+                        <TextBlock Text="Orders"
+                                       Style="{StaticResource Text_Style}" />
+                    </StackPanel>
+                </RadioButton>
+
+                <!--Customer-->
+                <RadioButton Style="{StaticResource BtnStyle}"
+                              Command="{Binding navCustomer}"
+                              >
+
+                    <StackPanel Orientation="Horizontal">
+
+                        <Image Source="/img/customer.png" Style="{StaticResource Img_Style}" />
+
+                        <TextBlock Text="Customer"
+                                       Style="{StaticResource Text_Style}" />
+                    </StackPanel>
+                </RadioButton>
+                
+                <!--Statistic-->
+                <RadioButton Style="{StaticResource BtnStyle}"
+                              Command="{Binding navStatistic}"
+                              >
+
+                    <StackPanel Orientation="Horizontal">
+
+                        <Image Source="/img/statistic.png" Style="{StaticResource Img_Style}" />
+
+                        <TextBlock Text="Statistic"
+                                       Style="{StaticResource Text_Style}" />
+                    </StackPanel>
+                </RadioButton>
+                
+                <!--Employee-->
+                <RadioButton Style="{StaticResource BtnStyle}"
+                              Command="{Binding navEmployee}"
+                              >
+
+                    <StackPanel Orientation="Horizontal">
+
+                        <Image Source="/img/employee.png" Style="{StaticResource Img_Style}" />
+
+                        <TextBlock Text="Employee"
+                                       Style="{StaticResource Text_Style}" />
+                    </StackPanel>
+                </RadioButton>
+            </StackPanel>
+        </Grid>
+
+        <!--Log out-->
+        <RadioButton Style="{StaticResource BtnStyle}"
+                              Command="{Binding HomeCommand}" Grid.Row="10" Grid.ColumnSpan="2"
+                              >
+
+            <StackPanel Orientation="Horizontal">
+
+                <materialDesign:PackIcon Kind="Logout" Foreground="#79A7CB" Height="18" Width="18" VerticalAlignment="Center" Margin="15 0 5 0"/>
+                <TextBlock Text="Log out"
+                                       Style="{StaticResource Text_Style}" />
+            </StackPanel>
+        </RadioButton>
+
+        <!--Frame for Main Screens-->
+        <ContentControl Content="{Binding CurrentViewModel}" Grid.Row="2" Grid.Column="2" Grid.RowSpan="9" Grid.ColumnSpan="10" Background="Transparent">
+            <ContentControl.Resources>
+                <DataTemplate DataType="{x:Type viewmodel:HomeViewModel}">
+                    <uc:HomeViewUC></uc:HomeViewUC>
+                </DataTemplate>
+                <DataTemplate DataType="{x:Type viewmodel:GoodsViewModel}">
+                    <uc:GoodViewUC></uc:GoodViewUC>
+                </DataTemplate>
+                <DataTemplate DataType="{x:Type viewmodel:OrdersViewModel}">
+                    <uc:OrderViewUC></uc:OrderViewUC>
+                </DataTemplate>
+                <DataTemplate DataType="{x:Type viewmodel:CustomerViewModel}">
+                    <uc:CustomerViewUC></uc:CustomerViewUC>
+                </DataTemplate>
+                <DataTemplate DataType="{x:Type viewmodel:StatisticViewModel}">
+                    <uc:StatisticViewUC></uc:StatisticViewUC>
+                </DataTemplate>
+                <DataTemplate DataType="{x:Type viewmodel:EmployeeViewModel}">
+                    <uc:EmployeeViewUC></uc:EmployeeViewUC>
+                </DataTemplate>
+                <DataTemplate DataType="{x:Type viewmodel:ProfileUsrViewModel}">
+                    <uc:ProfileViewUC></uc:ProfileViewUC>
+                </DataTemplate>
+                <DataTemplate DataType="{x:Type viewmodel:UsrPro5EditViewModel}">
+                    <uc:EditUsrUC></uc:EditUsrUC>
+                </DataTemplate>
+                <DataTemplate DataType="{x:Type viewmodel:CreatePwViewModel}">
+                    <uc:CreatePasswordUC></uc:CreatePasswordUC>
+                </DataTemplate>
+                <DataTemplate DataType="{x:Type viewmodel:AddGoodViewModel}">
+                    <uc:AddGoods></uc:AddGoods>
+                </DataTemplate>
+                <DataTemplate DataType="{x:Type viewmodel:GoodDetailViewModel}">
+                    <uc:GoodsDetailUC></uc:GoodsDetailUC>
+                </DataTemplate>
+                <DataTemplate DataType="{x:Type viewmodel:EditGoodViewModel}">
+                    <uc:EditGoodsUC></uc:EditGoodsUC>
+                </DataTemplate>
+                <DataTemplate DataType="{x:Type viewmodel:AddOrdersViewModel}">
+                    <uc:CreateOrderUC></uc:CreateOrderUC>
+                </DataTemplate>
+                <DataTemplate DataType="{x:Type viewmodel:OrderDetailViewModel}">
+                    <uc:OrdersDetailUC></uc:OrdersDetailUC>
+                </DataTemplate>
+                <DataTemplate DataType="{x:Type viewmodel:CustomerDetailViewModel}">
+                    <uc:CustomerDetailUC></uc:CustomerDetailUC>
+                </DataTemplate>
+                <DataTemplate DataType="{x:Type viewmodel:EditCustomerViewModel}">
+                    <uc:EditCustomerUC></uc:EditCustomerUC>
+                </DataTemplate>
+                <DataTemplate DataType="{x:Type viewmodel:AddCustomerViewModel}">
+                    <uc:AddCustomerUC></uc:AddCustomerUC>
+                </DataTemplate>
+                <DataTemplate DataType="{x:Type viewmodel:EmployeeDetailViewModel}">
+                    <uc:EmployeeDetailUC></uc:EmployeeDetailUC>
+                </DataTemplate>
+                <DataTemplate DataType="{x:Type viewmodel:EditEmployeeViewModel}">
+                    <uc:EditEmployeeUC></uc:EditEmployeeUC>
+                </DataTemplate>
+                <DataTemplate DataType="{x:Type viewmodel:AddEmployeeViewModel}">
+                    <uc:AddEmployee></uc:AddEmployee>
+                </DataTemplate>
+            </ContentControl.Resources>
+        </ContentControl>
+
+
+    </Grid>
+</Window>

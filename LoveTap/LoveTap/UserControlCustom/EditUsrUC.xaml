@@ -1,0 +1,263 @@
+﻿<UserControl x:Class="LoveTap.UserControlCustom.EditUsrUC"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:LoveTap"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        mc:Ignorable="d"
+       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:uc="clr-namespace:LoveTap.UserControlCustom"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="14"
+        TextOptions.TextFormattingMode="Ideal"
+        TextOptions.TextRenderingMode="Auto"
+        Background="{DynamicResource MaterialDesignPaper}"
+        FontFamily="{DynamicResource MaterialDesignFont}"
+      
+        Height="466.2" Width="666.666666666667">
+    <Border>
+        <Border.Effect>
+            <DropShadowEffect BlurRadius="10" Opacity="0.3"></DropShadowEffect>
+        </Border.Effect>
+        <Grid Margin="10">
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="Loaded">
+                    <i:InvokeCommandAction Command="{Binding LoadedHomeProfileEdit}"
+                                                       CommandParameter="{Binding ElementName=ProfileEdit}"></i:InvokeCommandAction>
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+
+
+            <Grid Background="WhiteSmoke" >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+
+
+                <!--MAIN FORM-->
+                <Grid Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="9" Grid.RowSpan="7" Margin="0 10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="2.5*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <!--PROFILE-->
+                    <StackPanel>
+                        <TextBlock Padding="7"
+                                        FontSize="18"
+                                        Foreground="#033270"
+                                        FontWeight="Bold"
+                                        >Profile:</TextBlock>
+                        <TextBlock Padding="7"
+                                        FontSize="14"
+                                        Foreground="#033270"
+                                        >Full name:</TextBlock>
+
+                        <TextBlock Padding="7"
+
+                                        FontSize="14"
+                                        Foreground="#033270"
+                                        >Birthday:</TextBlock>
+                        <TextBlock Padding="7"
+                                        FontSize="14"
+
+                                        Foreground="#033270"
+                                        >Mobile:</TextBlock>
+                        <TextBlock Padding="7" 
+                                        FontSize="14"
+                                        Foreground="#033270"
+                                        >Email:</TextBlock>
+
+                        <TextBlock Padding="7"
+                                        FontSize="14"
+                                        Foreground="#033270"
+                                        >Address:</TextBlock>
+
+                        <!--JOB-->
+                        <TextBlock Padding="7"
+                                            FontSize="18"
+                                            Foreground="#033270"
+                                            FontWeight="Bold"
+                                            >Job:</TextBlock>
+                        <TextBlock Padding="7"
+                                            FontSize="14"
+                                            Foreground="#033270"
+                                            >ID:</TextBlock>
+                        <TextBlock Padding="7"
+                                            FontSize="14"
+                                            Foreground="#033270"
+                                            >Branch:</TextBlock>
+                        <TextBlock Padding="7"
+                                            FontSize="14"
+
+                                            Foreground="#033270"
+                                            >Coefficients pay:</TextBlock>
+                        <TextBlock Padding="7"
+                                            FontSize="14"
+                                            Foreground="#033270"
+                                            >Basic pay:</TextBlock>
+                        <TextBlock Padding="7"
+                                            FontSize="14"
+                                            Foreground="#033270"
+                                            >Position:</TextBlock>
+
+                    </StackPanel>
+
+                    <!--VALUE-->
+                    <StackPanel Grid.Column="1" Margin="0 35 0 0 ">
+                        <TextBox Padding="5"
+                                        FontSize="14"
+                                        Foreground="#79A7CB" 
+                                        BorderThickness="2"
+                                        BorderBrush="#79A7CB"
+                                        MinWidth="200"
+                                        Grid.ColumnSpan="2" Width="279"
+                                        Text="{Binding FullName}"
+                                        ></TextBox>
+                        <TextBox Padding="5"
+                                        FontSize="14"
+                                        Foreground="#79A7CB" 
+                                        BorderThickness="2"
+                                        BorderBrush="#79A7CB"
+                                        MinWidth="200"
+                                        Grid.ColumnSpan="2" Width="279"
+                                        Text="{Binding Birthday}"
+                                        ></TextBox>
+                        <TextBox Padding="5"
+                                        FontSize="14"
+                                        Foreground="#79A7CB" 
+                                        BorderThickness="2"
+                                        BorderBrush="#79A7CB"
+                                        MinWidth="200"
+                                        Grid.ColumnSpan="2" Width="279"
+                                        Text="{Binding PhoneNumber}"
+                                        ></TextBox>
+                        <TextBox Padding="5"
+                                        FontSize="14"
+                                        Foreground="#79A7CB" 
+                                        BorderThickness="2"
+                                        BorderBrush="#79A7CB"
+                                        MinWidth="200"
+                                        Grid.ColumnSpan="2" Width="279"
+                                        Text="{Binding Email}"
+                                        ></TextBox>
+                        <TextBox Padding="5"
+                                        FontSize="14"
+                                        Foreground="#79A7CB" 
+                                        BorderThickness="2"
+                                        BorderBrush="#79A7CB"
+                                        MinWidth="200"
+                                        Grid.ColumnSpan="2" Width="279"
+                                        Text="{Binding Address}"
+                                        ></TextBox>
+                        <TextBox Padding="5" Margin="0 35 0 0 "
+                                        FontSize="14"
+                                        Foreground="#79A7CB" 
+                                        BorderThickness="2"
+                                        BorderBrush="#79A7CB"
+                                        MinWidth="200"
+                                        Grid.ColumnSpan="2" Width="279"
+                                        Text="{Binding ID}"
+                                        ></TextBox>
+                        <TextBox Padding="5" 
+                                        FontSize="14"
+                                        Foreground="#79A7CB" 
+                                        BorderThickness="2"
+                                        BorderBrush="#79A7CB"
+                                        MinWidth="200"
+                                        Grid.ColumnSpan="2" Width="279"
+                                        Text="{Binding Branch}"
+                                        ></TextBox>
+                        <TextBox Padding="5" 
+                                        FontSize="14"
+                                        Foreground="#79A7CB" 
+                                        BorderThickness="2"
+                                        BorderBrush="#79A7CB"
+                                        MinWidth="200"
+                                        Grid.ColumnSpan="2" Width="279"
+                                        Text="{Binding CoefficientsSalary}"
+                                        ></TextBox>
+                        <TextBox Padding="5" 
+                                        FontSize="14"
+                                        Foreground="#79A7CB" 
+                                        BorderThickness="2"
+                                        BorderBrush="#79A7CB"
+                                        MinWidth="200"
+                                        Grid.ColumnSpan="2" Width="279"
+                                        Text="{Binding BasicPay}"
+                                        ></TextBox>
+                        <TextBox Padding="5" 
+                                        FontSize="14"
+                                        Foreground="#79A7CB" 
+                                        BorderThickness="2"
+                                        BorderBrush="#79A7CB"
+                                        MinWidth="200"
+                                        Grid.ColumnSpan="2" Width="279"
+                                        Text="{Binding Role}"
+                                        ></TextBox>
+                    </StackPanel>
+
+                </Grid>
+
+                <Button Grid.Column="6" Grid.ColumnSpan="2" VerticalAlignment="Bottom" Uid="1" Name="doneBt"
+                    Style="{StaticResource MaterialDesignRaisedSecondaryLightButton}"
+                    Width="86"
+                    Height="30"
+                    Background="#26B69F"
+                    ToolTip="Resource name: MaterialDesignRaisedSecondaryLightButton"
+                    Content="Done"
+                    FontSize="15"
+                    Command="{Binding EditCommand}"
+                >
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="Click">
+                            <i:InvokeCommandAction Command="{Binding NavBack2Pro5}"
+                                                       CommandParameter="{Binding ElementName=ProfileEdit}"></i:InvokeCommandAction>
+                        </i:EventTrigger>
+                        <!--<i:EventTrigger EventName="MouseMove">
+                        <i:InvokeCommandAction Command="{Binding GetIdButton}"
+                                                       CommandParameter="{Binding ElementName=doneBt}"></i:InvokeCommandAction>
+                    </i:EventTrigger>-->
+                    </i:Interaction.Triggers>
+
+                </Button>
+                <Button Grid.Column="8" Grid.ColumnSpan="2" VerticalAlignment="Bottom" Uid="2" Name="backBt"
+                    Style="{StaticResource MaterialDesignRaisedSecondaryLightButton}"
+                    Width="86"
+                    Height="30"
+                    Background="#F26A4F"
+                    ToolTip="Resource name: MaterialDesignRaisedSecondaryLightButton"
+                    Content="Back"
+                    FontSize="15" Command="{Binding NavBack2Pro5}"
+                >
+                </Button>
+            </Grid>
+
+
+
+        </Grid>
+
+    </Border>
+</UserControl>

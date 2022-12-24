@@ -8,79 +8,69 @@
         mc:Ignorable="d"
         Name="ucEditCustomer"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-        DataContext="{StaticResource EditCustomerVM}">
+        >
 
-    <Grid Background="White">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="2.5*"/>
-            <RowDefinition Height="7.5*"/>
-        </Grid.RowDefinitions>
-        
-        <!--Top Button-->
-        <DockPanel Margin="15,0,15,0">
-            <TextBlock FontSize="20"
+    <Border>
+        <Border.Effect>
+            <DropShadowEffect Opacity="0.3" BlurRadius="10" Direction="315"></DropShadowEffect>
+        </Border.Effect>
+        <Grid Background="White" Margin="10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="2.5*"/>
+                <RowDefinition Height="7.5*"/>
+            </Grid.RowDefinitions>
+
+            <!--Top Button-->
+            <DockPanel Margin="15,0,15,0">
+                <TextBlock FontSize="20"
                        FontWeight="Black"
                        Foreground="{StaticResource Catalina Blue}"
                        VerticalAlignment="Center"
                        >#KH001</TextBlock>
-            
-            <!--Back Button-->
-            <Button DockPanel.Dock="Right" Style="{StaticResource OrangeButton}"
-                    HorizontalAlignment="Right" Uid="2" Name="backBt" Content="Back">
-                <i:Interaction.Triggers>
-                    <i:EventTrigger EventName="Click">
-                        <i:InvokeCommandAction Command="{Binding SwitchTab}"
-                                                           CommandParameter="{Binding ElementName=ucEditCustomer}"></i:InvokeCommandAction>
-                    </i:EventTrigger>
-                    <i:EventTrigger EventName="MouseMove">
-                        <i:InvokeCommandAction Command="{Binding GetIdButton}"
-                                                           CommandParameter="{Binding ElementName=backBt}"></i:InvokeCommandAction>
-                    </i:EventTrigger>
-                </i:Interaction.Triggers>
-            </Button>
 
-            <!--Done Button-->
-            <Button Uid="1" Name="doneBt" Content="Done" DockPanel.Dock="Right" Style="{StaticResource greenButton}" 
+                <!--Back Button-->
+                <Button DockPanel.Dock="Right" Style="{StaticResource OrangeButton}"
+                    HorizontalAlignment="Right" Uid="2" Name="backBt" Content="Back" Command="{Binding navBack}">
+                </Button>
+
+                <!--Done Button-->
+                <Button Uid="1" Name="doneBt" Content="Done" DockPanel.Dock="Right" Style="{StaticResource greenButton}" 
                     HorizontalAlignment="Right" Width="90">
-                <i:Interaction.Triggers>
-                    <i:EventTrigger EventName="Click">
-                        <i:InvokeCommandAction Command="{Binding SwitchTab}"
-                                                           CommandParameter="{Binding ElementName=ucEditCustomer}"></i:InvokeCommandAction>
-                    </i:EventTrigger>
-                    <i:EventTrigger EventName="MouseMove">
-                        <i:InvokeCommandAction Command="{Binding GetIdButton}"
-                                                           CommandParameter="{Binding ElementName=doneBt}"></i:InvokeCommandAction>
-                    </i:EventTrigger>
-                </i:Interaction.Triggers>
-            </Button>
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="Click">
+                            <i:InvokeCommandAction Command="{Binding navDone}"></i:InvokeCommandAction>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </Button>
 
-        </DockPanel>
+            </DockPanel>
 
-        <!--Detail Info-->
-        <Grid Grid.Row="1">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="2*"/>
-                <ColumnDefinition Width="3*"/>
-            </Grid.ColumnDefinitions>
+            <!--Detail Info-->
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="3*"/>
+                </Grid.ColumnDefinitions>
 
-            <StackPanel HorizontalAlignment="Left" Margin="10 0 0 0" >
-                <TextBlock Style="{StaticResource detailText}" Padding="3">Phone:</TextBlock>
-                <TextBlock Style="{StaticResource detailText}" Padding="3">Name:</TextBlock>
-                <TextBlock Style="{StaticResource detailText}" Padding="3">Date of Birth:</TextBlock>
-                <TextBlock Style="{StaticResource detailText}" Padding="3">Address:</TextBlock>
-                <TextBlock Style="{StaticResource detailText}" Padding="3">Registation Date:</TextBlock>
-                <TextBlock Style="{StaticResource detailText}" Padding="3">Sale:</TextBlock>
-            </StackPanel>
+                <StackPanel HorizontalAlignment="Left" Margin="10 0 0 0" >
+                    <TextBlock Style="{StaticResource detailText}" Padding="3">Phone:</TextBlock>
+                    <TextBlock Style="{StaticResource detailText}" Padding="3">Name:</TextBlock>
+                    <TextBlock Style="{StaticResource detailText}" Padding="3">Date of Birth:</TextBlock>
+                    <TextBlock Style="{StaticResource detailText}" Padding="3">Address:</TextBlock>
+                    <TextBlock Style="{StaticResource detailText}" Padding="3">Registation Date:</TextBlock>
+                    <TextBlock Style="{StaticResource detailText}" Padding="3">Sale:</TextBlock>
+                </StackPanel>
 
-            <StackPanel Margin="10 0 0 0" Grid.Column="1" HorizontalAlignment="Center">
-                <TextBox  Style="{StaticResource editTextValue}">0908200585</TextBox>
-                <TextBox  Style="{StaticResource editTextValue}">Nguyễn Hoàng Duy</TextBox>
-                <TextBox  Style="{StaticResource editTextValue}">01/01/2001</TextBox>
-                <TextBox  Style="{StaticResource editTextValue}">Hẻm 133 Hòa Hưng, phường 12,quận 10</TextBox>
-                <TextBox  Style="{StaticResource editTextValue}">20/11/2021</TextBox>
-                <TextBox  Style="{StaticResource editTextValue}">3</TextBox>
-            </StackPanel>
+                <StackPanel Margin="10 0 0 0" Grid.Column="1" HorizontalAlignment="Center">
+                    <TextBox  Style="{StaticResource editTextValue}">0908200585</TextBox>
+                    <TextBox  Style="{StaticResource editTextValue}">Nguyễn Hoàng Duy</TextBox>
+                    <TextBox  Style="{StaticResource editTextValue}">01/01/2001</TextBox>
+                    <TextBox  Style="{StaticResource editTextValue}">Hẻm 133 Hòa Hưng, phường 12,quận 10</TextBox>
+                    <TextBox  Style="{StaticResource editTextValue}">20/11/2021</TextBox>
+                    <TextBox  Style="{StaticResource editTextValue}">3</TextBox>
+                </StackPanel>
+            </Grid>
         </Grid>
-    </Grid>
+    </Border>
 
 </UserControl>

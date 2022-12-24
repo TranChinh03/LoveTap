@@ -17,7 +17,7 @@
         FontFamily="{DynamicResource MaterialDesignFont}"
         Name="homeWindow"
         Title="homePage" Height="466.2" Width="666.666666666667"
-        DataContext="{StaticResource HomeVM}">
+        >
 
     <i:Interaction.Triggers>
         <i:EventTrigger EventName="Loaded">

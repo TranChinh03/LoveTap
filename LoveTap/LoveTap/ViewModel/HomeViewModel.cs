@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using System.Windows.Controls;
 using System.Windows;
 using System.Windows.Input;
+using LoveTap.Stores;
 
 namespace LoveTap.ViewModel
 {
@@ -54,8 +55,9 @@ namespace LoveTap.ViewModel
 
         private List<BestSelling> _BestSellingList = new List<BestSelling>();
         public List<BestSelling> BestSellingList { get => _BestSellingList ; set { _BestSellingList = value; } }
-        public HomeViewModel()
+        public HomeViewModel(NavigationStore navigationStore)
         {
+            
             LoadHome = new RelayCommand<Page>((p) => true, (p) =>
             {
                 ProductList = new ObservableCollection<SANPHAM>(DataProvider.Ins.DB.SANPHAMs);

@@ -15,11 +15,12 @@
     <viewmodel:EditGoodViewModel x:Key="EditGoodVM"></viewmodel:EditGoodViewModel>
     <viewmodel:OrderDetailViewModel x:Key="OrderDetailVM"></viewmodel:OrderDetailViewModel>
     <viewmodel:OrdersViewModel x:Key="OrdersVM"></viewmodel:OrdersViewModel>
-    <viewmodel:CreateOrdersViewModel x:Key="CreOdVM"></viewmodel:CreateOrdersViewModel>
+    <viewmodel:AddOrdersViewModel x:Key="CreOdVM"></viewmodel:AddOrdersViewModel>
     <viewmodel:CustomerViewModel x:Key="CustomerVM"></viewmodel:CustomerViewModel>
     <viewmodel:AddCustomerViewModel x:Key="AddCustomerVM"></viewmodel:AddCustomerViewModel>
     <viewmodel:CustomerDetailViewModel x:Key="DetailCustomerVM"></viewmodel:CustomerDetailViewModel>
     <viewmodel:EditCustomerViewModel x:Key="EditCustomerVM"></viewmodel:EditCustomerViewModel>
+    <viewmodel:StatisticViewModel x:Key="StatisticVM"></viewmodel:StatisticViewModel>
     <viewmodel:EmployeeViewModel x:Key="EmployeeVM"></viewmodel:EmployeeViewModel>
     <viewmodel:EmployeeDetailViewModel x:Key="EmployeeDetailVM"></viewmodel:EmployeeDetailViewModel>
     <viewmodel:EditEmployeeViewModel x:Key="EditEmployeeVM"></viewmodel:EditEmployeeViewModel>

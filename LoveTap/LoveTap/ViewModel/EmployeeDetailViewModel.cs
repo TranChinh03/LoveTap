@@ -8,6 +8,8 @@ using System.Windows.Controls;
 using System.Windows;
 using System.Windows.Input;
 using LoveTap.Model;
+using LoveTap.Stores;
+using LoveTap.Commands;
 
 namespace LoveTap.ViewModel
 {
@@ -41,14 +43,13 @@ namespace LoveTap.ViewModel
         public string Branch { get => _Branch; set { _Branch = value; OnPropertyChanged(); } }
 
         public ICommand LoadedEmployeeDetailUC { get; set; }
-        public ICommand GetIdButton { get; set; }
-        string Name;
-        public ICommand SwitchTab { get; set; }
-        public EmployeeDetailViewModel()
+        public ICommand navEdit { get; set; }
+        public ICommand navBack { get; set; }
+        public EmployeeDetailViewModel(NavigationStore navigationStore)
         {
             LoadedEmployeeDetailUC = new RelayCommand<UserControl>((p) => true, (p) =>
             {
-                NHANVIEN temp = EmployeeViewModel.EmployeeSelected;
+                NHANVIEN temp = EmployeeViewModel.CurrentSelected;
 
                 ID = temp.MANV;
                 EmployeeName = temp.HOTEN;
@@ -64,31 +65,8 @@ namespace LoveTap.ViewModel
                 Branch = temp.MACN;
             });
 
-            GetIdButton = new RelayCommand<Button>((p) => true, (p) => Name = p.Uid);
-            SwitchTab = new RelayCommand<EmployeeDetailUC>((p) => true, (p) => switchtab(p));
+            navBack = new NavigationCommand<EmployeeViewModel>(navigationStore, () => new EmployeeViewModel(navigationStore));
+            navEdit = new NavigationCommand<EditEmployeeViewModel>(navigationStore, () => new EditEmployeeViewModel(navigationStore));
         }
-        void switchtab(EmployeeDetailUC p)
-        {
-            int index = int.Parse(Name);
-            switch (index)
-            {
-                case 1:
-                    {
-                        p.EditEmployee.Visibility=Visibility.Visible;
-                        break;
-                    }
-                case 2:
-                    {
-                        p.Visibility=Visibility.Collapsed;
-                        break;
-                    }
-                case 3:
-                    {
-                        p.Visibility=Visibility.Collapsed;
-                        break;
-                    }
-            }
-        }
-
     }
 }

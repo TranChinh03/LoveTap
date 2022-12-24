@@ -1,4 +1,6 @@
-﻿using LoveTap.UserControlCustom;
+﻿using LoveTap.Commands;
+using LoveTap.Stores;
+using LoveTap.UserControlCustom;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,30 +15,12 @@ namespace LoveTap.ViewModel
 {
     internal class AddCustomerViewModel:BaseViewModel
     {
-        public ICommand GetIdButton { get; set; }
-        string Name;
-        public ICommand SwitchTab { get; set; }
-        public AddCustomerViewModel() {
-            GetIdButton = new RelayCommand<Button>((p) => true, (p) => Name = p.Uid);
-            SwitchTab = new RelayCommand<AddCustomerUC>((p) => true, (p) => switchtab(p));
+        public ICommand navDone { get; set; }
+        public ICommand navBack { get; set; }
+        public AddCustomerViewModel(NavigationStore navigationStore) {
+            navDone = new NavigationCommand<CustomerViewModel>(navigationStore, () => new CustomerViewModel(navigationStore));
+            navBack = new NavigationCommand<CustomerViewModel>(navigationStore, () => new CustomerViewModel(navigationStore));
 
-        }
-        void switchtab(AddCustomerUC p)
-        {
-            int index = int.Parse(Name);
-            switch (index)
-            {
-                case 1:
-                    {
-                        p.Visibility=Visibility.Collapsed;
-                        break;
-                    }
-                case 2:
-                    {
-                        p.Visibility=Visibility.Collapsed;
-                        break;
-                    }
-            }
         }
 
     }

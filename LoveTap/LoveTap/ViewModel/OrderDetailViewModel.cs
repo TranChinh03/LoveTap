@@ -9,11 +9,14 @@ using System.Windows;
 using System.Windows.Input;
 using LoveTap.Model;
 using System.Collections.ObjectModel;
+using LoveTap.Stores;
+using LoveTap.Commands;
 
 namespace LoveTap.ViewModel
 {
     public class OrderDetailViewModel:BaseViewModel
     {
+        public ICommand navBack { get; set; }
         private string _ID;
         public string ID { get => _ID; set { _ID = value; OnPropertyChanged(); } }
 
@@ -74,14 +77,16 @@ namespace LoveTap.ViewModel
         public ICommand LoadedOrderDetail { get; set; }
         string Name;
         public ICommand SwitchTab { get; set; }
-        public OrderDetailViewModel()
+        public OrderDetailViewModel(NavigationStore navigationStore)
         {
+            navBack = new NavigationCommand<OrdersViewModel>(navigationStore, () => new OrdersViewModel(navigationStore));
             LoadedOrderDetail = new RelayCommand<UserControl>((p) => true, (p) =>
             {
                 ProductList = new ObservableCollection<SANPHAM>(DataProvider.Ins.DB.SANPHAMs);
                 OrderDetailList = new ObservableCollection<CTHD>(DataProvider.Ins.DB.CTHDs);
                 CustomerList = new ObservableCollection<KHACHHANG>(DataProvider.Ins.DB.KHACHHANGs);
                 EmployeeList = new ObservableCollection<NHANVIEN>(DataProvider.Ins.DB.NHANVIENs);
+
 
                 HOADON temp = OrdersViewModel.OrderSelected;
 

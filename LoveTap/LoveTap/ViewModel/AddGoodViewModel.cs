@@ -7,35 +7,20 @@ using System.Threading.Tasks;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows;
+using LoveTap.Stores;
+using LoveTap.Commands;
 
 namespace LoveTap.ViewModel
 {
     internal class AddGoodViewModel:BaseViewModel
     {
-        public ICommand GetIdButton { get; set; }
-        string Name;
-        public ICommand SwitchTab { get; set; }
-        public AddGoodViewModel()
+        public ICommand navDone { get; set; }
+        public ICommand navBack { get; set; }
+        public AddGoodViewModel(NavigationStore navigationStore)
         {
-            GetIdButton = new RelayCommand<Button>((p) => true, (p) => Name = p.Uid);
-            SwitchTab = new RelayCommand<AddGoods>((p) => true, (p) => switchtab(p));
-        }
-        void switchtab(AddGoods p)
-        {
-            int index = int.Parse(Name);
-            switch (index)
-            {
-                case 1:
-                    {
-                        p.Visibility=Visibility.Collapsed;
-                        break;
-                    }
-                case 2:
-                    {
-                        p.Visibility=Visibility.Collapsed;
-                        break;
-                    }
-            }
+            navDone = new NavigationCommand<GoodsViewModel>(navigationStore, () => new GoodsViewModel(navigationStore));
+            navBack = new NavigationCommand<GoodsViewModel>(navigationStore, () => new GoodsViewModel(navigationStore));
+
         }
 
     }
