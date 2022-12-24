@@ -7,36 +7,19 @@ using System.Threading.Tasks;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows;
+using LoveTap.Stores;
+using LoveTap.Commands;
 
 namespace LoveTap.ViewModel
 {
     internal class EditCustomerViewModel:BaseViewModel
     {
-        public ICommand GetIdButton { get; set; }
-        string Name;
-        public ICommand SwitchTab { get; set; }
-        public EditCustomerViewModel()
+        public ICommand navDone { get; set; }
+        public ICommand navBack { get; set; }
+        public EditCustomerViewModel(NavigationStore navigationStore)
         {
-            GetIdButton = new RelayCommand<Button>((p) => true, (p) => Name = p.Uid);
-            SwitchTab = new RelayCommand<EditCustomerUC>((p) => true, (p) => switchtab(p));
+            navDone = new NavigationCommand<CustomerDetailViewModel>(navigationStore, () => new CustomerDetailViewModel(navigationStore));
+            navBack = new NavigationCommand<CustomerDetailViewModel>(navigationStore, () => new CustomerDetailViewModel(navigationStore));
         }
-        void switchtab(EditCustomerUC p)
-        {
-            int index = int.Parse(Name);
-            switch (index)
-            {
-                case 1:
-                    {
-                        p.Visibility=Visibility.Collapsed;
-                        break;
-                    }
-                case 2:
-                    {
-                        p.Visibility=Visibility.Collapsed;
-                        break;
-                    }
-            }
-        }
-
     }
 }

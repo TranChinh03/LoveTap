@@ -8,6 +8,8 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows;
 using LoveTap.Model;
+using LoveTap.Stores;
+using LoveTap.Commands;
 
 namespace LoveTap.ViewModel
 {
@@ -42,14 +44,13 @@ namespace LoveTap.ViewModel
 
         public ICommand LoadedEditEmployeeUC { get; set; }
         public ICommand EditCommand { get; set; }
-        public ICommand GetIdButton { get; set; }
-        string Name;
-        public ICommand SwitchTab { get; set; }
-        public EditEmployeeViewModel()
+        public ICommand navBack { get; set; }
+        public ICommand navDone { get; set; }
+        public EditEmployeeViewModel(NavigationStore navigationStore)
         {
             LoadedEditEmployeeUC = new RelayCommand<UserControl>((p) => true, (p) =>
             {
-                NHANVIEN temp = EmployeeViewModel.EmployeeSelected;
+                NHANVIEN temp = EmployeeViewModel.CurrentSelected;
 
                 ID = temp.MANV;
                 EmployeeName = temp.HOTEN;
@@ -66,8 +67,8 @@ namespace LoveTap.ViewModel
                 Branch = temp.MACN;
                 Branch = temp.MACN;
             });
-            GetIdButton = new RelayCommand<Button>((p) => true, (p) => Name = p.Uid);
-            SwitchTab = new RelayCommand<EditEmployeeUC>((p) => true, (p) => switchtab(p));
+            navDone = new NavigationCommand<CustomerDetailViewModel>(navigationStore, () => new CustomerDetailViewModel(navigationStore));
+            navBack = new NavigationCommand<CustomerDetailViewModel>(navigationStore, () => new CustomerDetailViewModel(navigationStore));
 
             EditCommand = new RelayCommand<object>((p) => {
                 if (string.IsNullOrEmpty(EmployeeName) || string.IsNullOrEmpty(PhoneNumber) || string.IsNullOrEmpty(Birthday) || string.IsNullOrEmpty(Address) || string.IsNullOrEmpty(ID) || string.IsNullOrEmpty(Branch) || string.IsNullOrEmpty(CoefficientSalary) || string.IsNullOrEmpty(BasicPay) || string.IsNullOrEmpty(Position))
@@ -94,23 +95,6 @@ namespace LoveTap.ViewModel
         }
 
        
-        void switchtab(EditEmployeeUC p)
-        {
-            int index = int.Parse(Name);
-            switch (index)
-            {
-                case 1:
-                    {
-                        p.Visibility=Visibility.Collapsed;
-                        break;
-                    }
-                case 2:
-                    {
-                        p.Visibility=Visibility.Collapsed;
-                        break;
-                    }
-            }
-        }
 
     }
 }

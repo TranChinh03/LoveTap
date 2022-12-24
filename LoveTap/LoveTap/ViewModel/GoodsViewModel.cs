@@ -19,7 +19,6 @@ namespace LoveTap.ViewModel
     {
         public ICommand navDetail { get; set; }
         public ICommand navAddGood { get; set; }
-        string Name;
 
         private ObservableCollection<SANPHAM> _ProductList;
         public ObservableCollection<SANPHAM> ProductList { get => _ProductList; set { _ProductList = value; OnPropertyChanged(); } }

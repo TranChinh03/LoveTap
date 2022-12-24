@@ -14,7 +14,8 @@
         TextOptions.TextFormattingMode="Ideal"
         TextOptions.TextRenderingMode="Auto"
         Background="{DynamicResource MaterialDesignPaper}"
-        FontFamily="{DynamicResource MaterialDesignFont}" 
+        FontFamily="{DynamicResource MaterialDesignFont}"
+        Name="EmployeeView"
         Height="466.2" Width="666.666666666667">
     <i:Interaction.Triggers>
         <i:EventTrigger EventName="Loaded">
@@ -93,19 +94,8 @@
                                 Content="+Add Employee" 
                                 DockPanel.Dock="Right"
                                 Background="{StaticResource Light Sea Green}"
-                                Margin="10" Uid="1" Name="AddEmployeeBt"
+                                Margin="10" Uid="1" Name="AddEmployeeBt" Command="{Binding navAddEmployee}"
                             >
-                                <i:Interaction.Triggers>
-                                    <i:EventTrigger EventName="Click">
-                                        <i:InvokeCommandAction Command="{Binding SwitchTab}"
-                                                       CommandParameter="{Binding ElementName=EmployeePage}"></i:InvokeCommandAction>
-                                    </i:EventTrigger>
-                                    <i:EventTrigger EventName="MouseMove">
-                                        <i:InvokeCommandAction Command="{Binding GetIdButton}"
-                                                       CommandParameter="{Binding ElementName=AddEmployeeBt}"></i:InvokeCommandAction>
-                                    </i:EventTrigger>
-                                </i:Interaction.Triggers>
-
                             </Button>
 
                             <Grid DockPanel.Dock="Left">
@@ -182,22 +172,6 @@
                 </Border.Effect>
                 <Grid>
                     <TextBlock VerticalAlignment="Bottom" Margin="10" FontSize="12" Foreground="{StaticResource Cyan Azure}" HorizontalAlignment="Left">Showing 5 of 25 Results</TextBlock>
-
-                    <!--Page-->
-                    <!--<StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Bottom">
-                        <Button Style="{StaticResource tabButton}">
-                            <materialDesign:PackIcon Kind="ArrowLeftBold"/>
-                        </Button>
-                        <Button Style="{StaticResource tabButton}" BorderBrush="Red" >1</Button>
-                        <Button Style="{StaticResource tabButton}" BorderBrush="Red" >2</Button>
-                        <Button Style="{StaticResource tabButton}" BorderBrush="Red" >3</Button>
-
-                        <Button Style="{StaticResource tabButton}">
-                            <materialDesign:PackIcon Kind="ArrowRightBold"/>
-                        </Button>
-                    </StackPanel>-->
-
-
                 </Grid>
 
 
@@ -231,7 +205,8 @@
                             <i:Interaction.Triggers>
                                 <i:EventTrigger EventName="SelectionChanged">
                                     <i:InvokeCommandAction     Command="{Binding Detail}"
-                                                           CommandParameter="{Binding ElementName=EmployeePage}"></i:InvokeCommandAction>
+                                                           CommandParameter="{Binding ElementName=EmployeeView}"></i:InvokeCommandAction>
+                                    <i:InvokeCommandAction     Command="{Binding navDetail}"></i:InvokeCommandAction>
                                 </i:EventTrigger>
                             </i:Interaction.Triggers>
                         </ListView>

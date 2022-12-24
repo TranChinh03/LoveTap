@@ -1,4 +1,6 @@
-﻿using LoveTap.UserControlCustom;
+﻿using LoveTap.Commands;
+using LoveTap.Stores;
+using LoveTap.UserControlCustom;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,17 +13,13 @@ namespace LoveTap.ViewModel
 {
     internal class CreatePwViewModel:BaseViewModel
     {
-        public ICommand changePw { get; set; }
-        public ICommand HiddenBG { get; set; }
+        public ICommand navDone { get; set; }
+        public ICommand navCancel { get; set; }
 
-        public CreatePwViewModel()
+        public CreatePwViewModel(NavigationStore navigationStore)
         {
-            changePw = new RelayCommand<CreatePasswordUC>((p) => true, (p) => changePass(p));
+            navCancel = new NavigationCommand<ProfileUsrViewModel>(navigationStore, () => new ProfileUsrViewModel(navigationStore));
+            navDone = new NavigationCommand<ProfileUsrViewModel>(navigationStore, () => new ProfileUsrViewModel(navigationStore));
         }
-        void changePass(CreatePasswordUC p)
-        {
-            p.Visibility = Visibility.Collapsed;
-        }
-
     }
 }

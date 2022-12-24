@@ -16,7 +16,7 @@
         TextOptions.TextRenderingMode="Auto"
         Background="{DynamicResource MaterialDesignPaper}"
         FontFamily="{DynamicResource MaterialDesignFont}"
-        Height="466.2" Width="666.666666666667"
+        Height="466.2" Width="666.666666666667" Name="GoodsView"
              >
     <Grid>
         <Grid.ColumnDefinitions>

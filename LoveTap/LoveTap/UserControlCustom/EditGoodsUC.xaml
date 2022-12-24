@@ -10,7 +10,11 @@
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
             >
 
-        <Grid Background="White">
+    <Border>
+        <Border.Effect>
+            <DropShadowEffect BlurRadius="10" Opacity="0.3"></DropShadowEffect>
+        </Border.Effect>
+        <Grid Background="White" Margin="10">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1.5*"></ColumnDefinition>
                 <ColumnDefinition Width="3*"></ColumnDefinition>
@@ -196,5 +200,7 @@
                 </StackPanel>
             </Border>
         </Grid>
+
+    </Border>
 
 </UserControl>

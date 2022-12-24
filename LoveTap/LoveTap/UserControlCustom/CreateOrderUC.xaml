@@ -9,153 +9,142 @@
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              Name="ucCreateOrder"
              Height="456.2" Width="656.666666666667"
-             DataContext="{StaticResource CreOdVM}" >
-    
-    <Grid Background="White">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="2*"/>
-            <RowDefinition Height="1*"/>
-        </Grid.RowDefinitions>
+             >
+    <Border>
+        <Border.Effect>
+            <DropShadowEffect BlurRadius="10" Opacity="0.3"></DropShadowEffect>
+        </Border.Effect>
+        <Grid Background="White" Margin="10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height="1*"/>
+            </Grid.RowDefinitions>
 
-        <StackPanel Orientation="Vertical" Margin="10">
-            <DockPanel>
-                <!--Back Button-->
-                <Button DockPanel.Dock="Right" Style="{StaticResource OrangeButton}"
-                    HorizontalAlignment="Right" Uid="2" Name="backBt" Content="Back">
-                    <i:Interaction.Triggers>
-                        <i:EventTrigger EventName="Click">
-                            <i:InvokeCommandAction Command="{Binding SwitchTab}"
-                                                           CommandParameter="{Binding ElementName=ucCreateOrder}"></i:InvokeCommandAction>
-                        </i:EventTrigger>
-                        <i:EventTrigger EventName="MouseMove">
-                            <i:InvokeCommandAction Command="{Binding GetIdButton}"
-                                                           CommandParameter="{Binding ElementName=backBt}"></i:InvokeCommandAction>
-                        </i:EventTrigger>
-                    </i:Interaction.Triggers>
-                </Button>
+            <StackPanel Orientation="Vertical" Margin="10">
+                <DockPanel>
+                    <!--Back Button-->
+                    <Button DockPanel.Dock="Right" Style="{StaticResource OrangeButton}"
+                    HorizontalAlignment="Right" Uid="2" Name="backBt" Content="Back" Command="{Binding navBack}">
+                    </Button>
 
-                <!--Done Button-->
-                <Button Uid="1" Name="doneBt" Content="Done" DockPanel.Dock="Right" Style="{StaticResource greenButton}" 
+                    <!--Done Button-->
+                    <Button Uid="1" Name="doneBt" Content="Done" DockPanel.Dock="Right" Style="{StaticResource greenButton}" 
                     HorizontalAlignment="Right" Width="90">
-                    <i:Interaction.Triggers>
-                        <i:EventTrigger EventName="Click">
-                            <i:InvokeCommandAction Command="{Binding SwitchTab}"
-                                                           CommandParameter="{Binding ElementName=ucCreateOrder}"></i:InvokeCommandAction>
-                        </i:EventTrigger>
-                        <i:EventTrigger EventName="MouseMove">
-                            <i:InvokeCommandAction Command="{Binding GetIdButton}"
-                                                           CommandParameter="{Binding ElementName=doneBt}"></i:InvokeCommandAction>
-                        </i:EventTrigger>
-                    </i:Interaction.Triggers>
-                </Button>
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="Click">
+                                <i:InvokeCommandAction Command="{Binding navDone}"></i:InvokeCommandAction>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </Button>
 
-            </DockPanel>
-            <StackPanel Orientation="Horizontal">
-                <!--Code Order-->
-                <TextBlock Padding="5"
+                </DockPanel>
+                <StackPanel Orientation="Horizontal">
+                    <!--Code Order-->
+                    <TextBlock Padding="5"
                        FontSize="20"
                        FontWeight="Black"
                        Foreground="{StaticResource Catalina Blue}"
                        VerticalAlignment="Top"
                        >CODE ORDER:</TextBlock>
-                <TextBlock  FontSize="20" Padding="5"
+                    <TextBlock  FontSize="20" Padding="5"
                      VerticalAlignment="Top" FontWeight="Black"
                      Style="{StaticResource detailTextValue}"> #HD0011
-                </TextBlock>
-                <!--Date-->
-                <TextBlock  Padding="7" Margin="50 0 0 0"
+                    </TextBlock>
+                    <!--Date-->
+                    <TextBlock  Padding="7" Margin="50 0 0 0"
                        FontSize="18"
                        FontWeight="Bold" 
                        Foreground="{StaticResource Catalina Blue}"
                        VerticalAlignment="Top">
                 Date:</TextBlock>
-                <TextBlock  FontSize="18" Padding="7"
+                    <TextBlock  FontSize="18" Padding="7"
                      VerticalAlignment="Top" FontWeight="Bold"
                      Style="{StaticResource detailTextValue}">
                 21/10/2022</TextBlock>
-                <!--Type-->
-                <TextBlock  Padding="7"  Margin="50 0 0 0"
+                    <!--Type-->
+                    <TextBlock  Padding="7"  Margin="50 0 0 0"
                        FontSize="18"
                        FontWeight="Bold" 
                        Foreground="{StaticResource Catalina Blue}"
                        VerticalAlignment="Top">
                 Type:</TextBlock>
-                <TextBlock  FontSize="18" Padding="7"
+                    <TextBlock  FontSize="18" Padding="7"
                      VerticalAlignment="Top" FontWeight="Bold"
                      Style="{StaticResource detailTextValue}">
                Sale</TextBlock>
+                </StackPanel>
+
+                <!--Information-->
+                <StackPanel Orientation="Horizontal" >
+                    <TextBlock Style="{StaticResource detailText}" Margin="0" Padding="5">Name of Good:</TextBlock>
+                    <TextBox  Style="{StaticResource editTextValue}" Margin="20 0" Width="500"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" >
+                    <TextBlock Style="{StaticResource detailText}" Padding="5">Amount:</TextBlock>
+                    <TextBox  Style="{StaticResource editTextValue}" Margin="65 0" Width="100"/>
+                    <Button BorderBrush="{StaticResource Cyan Azure}" Padding="5" HorizontalAlignment="Right" Width="100" Margin="220 10"
+                    Background="{StaticResource Cyan Azure}" Content="+ Add" Foreground="White">
+                    </Button>
+                </StackPanel>
+
+                <ScrollViewer>
+                    <ListView>
+                        <ListView.Resources>
+                            <Style TargetType="{x:Type GridViewColumnHeader}">
+                                <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                                <Setter Property="Foreground" Value="{StaticResource Cyan Azure}"/>
+                            </Style>
+                        </ListView.Resources>
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Header="Name" DisplayMemberBinding="{Binding MASP}"></GridViewColumn>
+                                <GridViewColumn Header="Amount" DisplayMemberBinding="{Binding MASP}"></GridViewColumn>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+
+                </ScrollViewer>
+
             </StackPanel>
 
-            <!--Information-->
-            <StackPanel Orientation="Horizontal" >
-                <TextBlock Style="{StaticResource detailText}" Margin="0" Padding="5">Name of Good:</TextBlock>
-                <TextBox  Style="{StaticResource editTextValue}" Margin="20 0" Width="500"/>
-            </StackPanel> 
-            <StackPanel Orientation="Horizontal" >
-                <TextBlock Style="{StaticResource detailText}" Padding="5">Amount:</TextBlock>
-                <TextBox  Style="{StaticResource editTextValue}" Margin="65 0" Width="100"/>
-                <Button BorderBrush="{StaticResource Cyan Azure}" Padding="5" HorizontalAlignment="Right" Width="100" Margin="220 10"
-                    Background="{StaticResource Cyan Azure}" Content="+ Add" Foreground="White"> 
-                </Button>
-            </StackPanel>
+            <!--Detail Info-->
+            <Grid Grid.Row="1" Margin="10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
 
-            <ScrollViewer>
-                <ListView>
-                    <ListView.Resources>
-                        <Style TargetType="{x:Type GridViewColumnHeader}">
-                            <Setter Property="HorizontalContentAlignment" Value="Center"/>
-                            <Setter Property="Foreground" Value="{StaticResource Cyan Azure}"/>
-                        </Style>
-                    </ListView.Resources>
-                    <ListView.View>
-                        <GridView>
-                            <GridViewColumn Header="Name" DisplayMemberBinding="{Binding MASP}"></GridViewColumn>
-                            <GridViewColumn Header="Amount" DisplayMemberBinding="{Binding MASP}"></GridViewColumn>
-                        </GridView>
-                    </ListView.View>
-                </ListView>
+                <!--Infor Customer-->
+                <DockPanel Grid.Row="1">
+                    <StackPanel HorizontalAlignment="Left">
+                        <TextBlock Style="{StaticResource detailText}">Sub Total:</TextBlock>
+                        <TextBlock Style="{StaticResource detailText}">Khách hàng:</TextBlock>
+                        <TextBlock Style="{StaticResource detailText}">Phone:</TextBlock>
+                        <TextBlock Style="{StaticResource detailText}">Address:</TextBlock>
+                    </StackPanel>
+                    <StackPanel HorizontalAlignment="Right" >
+                        <TextBox  Style="{StaticResource editTextValue}" Width="220" Margin="1" />
+                        <TextBox  Style="{StaticResource editTextValue}" Width="220" Margin="1"/>
+                        <TextBox  Style="{StaticResource editTextValue}" Width="220" Margin="1"/>
+                        <TextBox  Style="{StaticResource editTextValue}" Width="220" Margin="1"/>
+                    </StackPanel>
+                </DockPanel>
 
-            </ScrollViewer>
+                <!--Infor Store-->
+                <DockPanel Grid.Column="1">
+                    <StackPanel  Margin="10 0">
+                        <TextBlock Style="{StaticResource detailText}">Note:</TextBlock>
+                        <TextBlock Style="{StaticResource detailText}">Nhân viên:</TextBlock>
+                        <TextBlock Style="{StaticResource detailText}">Chi nhánh:</TextBlock>
 
-        </StackPanel>
-
-        <!--Detail Info-->
-        <Grid Grid.Row="1" Margin="10">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-            </Grid.ColumnDefinitions>
-
-            <!--Infor Customer-->
-            <DockPanel Grid.Row="1">
-                <StackPanel HorizontalAlignment="Left">
-                    <TextBlock Style="{StaticResource detailText}">Sub Total:</TextBlock>
-                    <TextBlock Style="{StaticResource detailText}">Khách hàng:</TextBlock>
-                    <TextBlock Style="{StaticResource detailText}">Phone:</TextBlock>
-                    <TextBlock Style="{StaticResource detailText}">Address:</TextBlock>
-                </StackPanel>
-                <StackPanel HorizontalAlignment="Right" >
-                    <TextBox  Style="{StaticResource editTextValue}" Width="220" Margin="1" />
-                    <TextBox  Style="{StaticResource editTextValue}" Width="220" Margin="1"/>
-                    <TextBox  Style="{StaticResource editTextValue}" Width="220" Margin="1"/>
-                    <TextBox  Style="{StaticResource editTextValue}" Width="220" Margin="1"/>
-                </StackPanel>
-            </DockPanel>
-
-            <!--Infor Store-->
-            <DockPanel Grid.Column="1">
-                <StackPanel  Margin="10 0">
-                    <TextBlock Style="{StaticResource detailText}">Note:</TextBlock>
-                    <TextBlock Style="{StaticResource detailText}">Nhân viên:</TextBlock>
-                    <TextBlock Style="{StaticResource detailText}">Chi nhánh:</TextBlock>
-
-                </StackPanel>
-                <StackPanel HorizontalAlignment="Right" >
-                    <TextBox  Style="{StaticResource editTextValue}" Width="220" Margin="2" />
-                    <TextBox  Style="{StaticResource editTextValue}" Width="220" Margin="2" />
-                    <TextBox Style="{StaticResource editTextValue}"  Width="220" Margin="2"/>
-                </StackPanel>
-            </DockPanel>
+                    </StackPanel>
+                    <StackPanel HorizontalAlignment="Right" >
+                        <TextBox  Style="{StaticResource editTextValue}" Width="220" Margin="2" />
+                        <TextBox  Style="{StaticResource editTextValue}" Width="220" Margin="2" />
+                        <TextBox Style="{StaticResource editTextValue}"  Width="220" Margin="2"/>
+                    </StackPanel>
+                </DockPanel>
+            </Grid>
         </Grid>
-    </Grid>
+    </Border>
 </UserControl>

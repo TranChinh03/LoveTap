@@ -129,7 +129,7 @@
                 Value="Left" />
                 <Setter Property="VerticalAlignment"
                 Value="Center" />
-                
+
 
                 <Setter Property="Template">
                     <Setter.Value>

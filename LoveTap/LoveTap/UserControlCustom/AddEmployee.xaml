@@ -9,113 +9,100 @@
         Name="ucAddEmployee"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              Height="456.2" Width="656.666666666667"
-             DataContext="{StaticResource AddEmployeeVM}">
+            >
 
-    <Grid Background="Transparent">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="1.5*"/>
-            <RowDefinition Height="3*"/>
-            <RowDefinition Height="6*"/>
-        </Grid.RowDefinitions>
+    <Border>
+        <Border.Effect>
+            <DropShadowEffect Opacity="0.3" BlurRadius="10" Direction="315"></DropShadowEffect>
+        </Border.Effect>
+        <Grid Background="White" Margin="10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1.5*"/>
+                <RowDefinition Height="3*"/>
+                <RowDefinition Height="6*"/>
+            </Grid.RowDefinitions>
 
-        <!--Top Button-->
-        <DockPanel Margin="15,0,15,0">
-            <Border BorderBrush="{StaticResource Cyan Azure}"  BorderThickness="0.5" CornerRadius="5" VerticalAlignment="Center">
-                <TextBox FontSize="20"
+            <!--Top Button-->
+            <DockPanel Margin="15,0,15,0">
+                <Border BorderBrush="{StaticResource Cyan Azure}"  BorderThickness="0.5" CornerRadius="5" VerticalAlignment="Center">
+                    <TextBox FontSize="20"
                        FontWeight="Black"
                        Foreground="{StaticResource Catalina Blue}"
                        VerticalAlignment="Center" Width="150" materialDesign:HintAssist.Hint="#ID"
                        ></TextBox>
-            </Border>
+                </Border>
 
 
-            <!--Back Button-->
-            <Button DockPanel.Dock="Right" Style="{StaticResource OrangeButton}"
-                    HorizontalAlignment="Right" Content="Back" Uid="1" x:Name="backBt" >
-                <i:Interaction.Triggers>
-                    <i:EventTrigger EventName="Click">
-                        <i:InvokeCommandAction Command="{Binding SwitchTab}"
-                                                           CommandParameter="{Binding ElementName=ucAddEmployee}"></i:InvokeCommandAction>
-                    </i:EventTrigger>
-                    <i:EventTrigger EventName="MouseMove">
-                        <i:InvokeCommandAction Command="{Binding GetIdButton}"
-                                                           CommandParameter="{Binding ElementName=backBt}"></i:InvokeCommandAction>
-                    </i:EventTrigger>
-                </i:Interaction.Triggers>
-            </Button>
-            
-            <!--Done Button-->
-            <Button DockPanel.Dock="Right" Style="{StaticResource greenButton}" 
+                <!--Back Button-->
+                <Button DockPanel.Dock="Right" Style="{StaticResource OrangeButton}"
+                    HorizontalAlignment="Right" Content="Back" Uid="1" x:Name="backBt" Command="{Binding navBack}">
+                </Button>
+
+                <!--Done Button-->
+                <Button DockPanel.Dock="Right" Style="{StaticResource greenButton}" 
                     HorizontalAlignment="Right" Width="90" Content="Done" Uid="2" x:Name="doneBt">
-                <i:Interaction.Triggers>
-                    <i:EventTrigger EventName="Click">
-                        <i:InvokeCommandAction Command="{Binding SwitchTab}"
-                                                           CommandParameter="{Binding ElementName=ucAddEmployee}"></i:InvokeCommandAction>
-                    </i:EventTrigger>
-                    <i:EventTrigger EventName="MouseMove">
-                        <i:InvokeCommandAction Command="{Binding GetIdButton}"
-                                                           CommandParameter="{Binding ElementName=doneBt}"></i:InvokeCommandAction>
-                    </i:EventTrigger>
-                </i:Interaction.Triggers>
-            </Button>
-        </DockPanel>
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="Click">
+                            <i:InvokeCommandAction Command="{Binding navDone}"></i:InvokeCommandAction>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </Button>
+            </DockPanel>
 
-        <!--Image and Name-->
-        <StackPanel Margin="15,0,15,0"
+            <!--Image and Name-->
+            <StackPanel Margin="15,0,15,0"
                     Grid.Row="1" Orientation="Horizontal">
 
-            <Border CornerRadius="15" BorderBrush="#5684B0" BorderThickness="0.5" Background="Transparent" Height="110"  >
-                <Button Grid.RowSpan="3"  Padding="0" Height="100"  Width="100" BorderBrush="Transparent"  Background="Transparent">
-                    <StackPanel>
-                        <TextBlock Foreground="#79A7CB" FontSize="10" VerticalAlignment="Center" HorizontalAlignment="Center"> Drop file here or <LineBreak/> click to upload</TextBlock>
-                        <Image Source="/img/upload.png" Height="15" Width="15"  HorizontalAlignment="Center"></Image>
-                    </StackPanel>
-                </Button>
-            </Border>
-
-            <Grid Margin="20,0,0,0">
-                <Grid.RowDefinitions>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                </Grid.RowDefinitions>
-
-                <Border BorderThickness="0.5" BorderBrush="{StaticResource Cyan Azure}" CornerRadius="5">
-                    <TextBox  materialDesign:HintAssist.Hint="Full name"  FontSize="45" FontWeight="DemiBold" Width="500" Height="55" BorderThickness="0" Padding="0" Foreground="{StaticResource Catalina Blue}"/>
+                <Border CornerRadius="15" BorderBrush="#5684B0" BorderThickness="0.5" Background="Transparent" Height="110"  >
+                    <Button Grid.RowSpan="3"  Padding="0" Height="100"  Width="100" BorderBrush="Transparent"  Background="Transparent">
+                        <StackPanel>
+                            <TextBlock Foreground="#79A7CB" FontSize="10" VerticalAlignment="Center" HorizontalAlignment="Center"> Drop file here or <LineBreak/> click to upload</TextBlock>
+                            <Image Source="/img/upload.png" Height="15" Width="15"  HorizontalAlignment="Center"></Image>
+                        </StackPanel>
+                    </Button>
                 </Border>
 
-                <Border Grid.Row="1" BorderThickness="0.5" BorderBrush="{StaticResource Cyan Azure}" Width="500" Height="35" CornerRadius="5">
-                    <TextBox VerticalAlignment="Center"  materialDesign:HintAssist.Hint="Position"  FontSize="20" FontWeight="DemiBold"  BorderThickness="0" Padding="0" Foreground="{StaticResource Catalina Blue}"/>
-                </Border>
+                <Grid Margin="20,0,0,0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+
+                    <Border BorderThickness="0.5" BorderBrush="{StaticResource Cyan Azure}" CornerRadius="5">
+                        <TextBox  materialDesign:HintAssist.Hint="Full name"  FontSize="45" FontWeight="DemiBold" Width="500" Height="55" BorderThickness="0" Padding="0" Foreground="{StaticResource Catalina Blue}"/>
+                    </Border>
+
+                    <Border Grid.Row="1" BorderThickness="0.5" BorderBrush="{StaticResource Cyan Azure}" Width="500" Height="35" CornerRadius="5">
+                        <TextBox VerticalAlignment="Center"  materialDesign:HintAssist.Hint="Position"  FontSize="20" FontWeight="DemiBold"  BorderThickness="0" Padding="0" Foreground="{StaticResource Catalina Blue}"/>
+                    </Border>
+                </Grid>
+            </StackPanel>
+
+            <!--Detail Info-->
+            <Grid Grid.Row="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+                <StackPanel HorizontalAlignment="Center" >
+                    <TextBlock Style="{StaticResource detailText}">Ngày sinh:</TextBlock>
+                    <TextBlock Style="{StaticResource detailText}">Số điện thoại:</TextBlock>
+                    <TextBlock Style="{StaticResource detailText}">Địa chỉ:</TextBlock>
+                    <TextBlock Style="{StaticResource detailText}">Hệ số lương:</TextBlock>
+                    <TextBlock Style="{StaticResource detailText}">Lương cơ bản:</TextBlock>
+                    <TextBlock Style="{StaticResource detailText}">Chi nhánh:</TextBlock>
+                </StackPanel>
+
+                <StackPanel Grid.Column="1" HorizontalAlignment="Left">
+                    <TextBox Style="{StaticResource editTextValue}" Width="300" ></TextBox>
+                    <TextBox Style="{StaticResource editTextValue}" Width="300" ></TextBox>
+                    <TextBox Style="{StaticResource editTextValue}" Width="300" ></TextBox>
+                    <TextBox Style="{StaticResource editTextValue}" Width="300" ></TextBox>
+                    <TextBox Style="{StaticResource editTextValue}" Width="300" ></TextBox>
+                    <TextBox Style="{StaticResource editTextValue}" Width="300" ></TextBox>
+                </StackPanel>
             </Grid>
-        </StackPanel>
-
-        <!--Detail Info-->
-        <Grid Grid.Row="2">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-            </Grid.ColumnDefinitions>
-
-            <StackPanel HorizontalAlignment="Center" >
-                <TextBlock Style="{StaticResource detailText}">Ngày sinh:</TextBlock>
-                <TextBlock Style="{StaticResource detailText}">Số điện thoại:</TextBlock>
-                <TextBlock Style="{StaticResource detailText}">Địa chỉ:</TextBlock>
-                <TextBlock Style="{StaticResource detailText}">Hệ số lương:</TextBlock>
-                <TextBlock Style="{StaticResource detailText}">Lương cơ bản:</TextBlock>
-                <TextBlock Style="{StaticResource detailText}">Chi nhánh:</TextBlock>
-            </StackPanel>
-
-            <StackPanel Grid.Column="1" HorizontalAlignment="Left">
-                <TextBox Style="{StaticResource editTextValue}" Width="300" ></TextBox>
-                <TextBox Style="{StaticResource editTextValue}" Width="300" ></TextBox>
-                <TextBox Style="{StaticResource editTextValue}" Width="300" ></TextBox>
-                <TextBox Style="{StaticResource editTextValue}" Width="300" ></TextBox>
-                <TextBox Style="{StaticResource editTextValue}" Width="300" ></TextBox>
-                <TextBox Style="{StaticResource editTextValue}" Width="300" ></TextBox>
-            </StackPanel>
         </Grid>
-
-
-
-    </Grid>
+    </Border>
 </UserControl>

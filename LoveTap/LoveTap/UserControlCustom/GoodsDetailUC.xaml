@@ -8,72 +8,73 @@
              mc:Ignorable="d" 
              Name="ucGoodsDetail"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-             xmlns:uc="clr-namespace:LoveTap.UserControlCustom" 
-            
-             >
+             xmlns:uc="clr-namespace:LoveTap.UserControlCustom" >
 
+    <Border>
+        <Border.Effect>
+            <DropShadowEffect BlurRadius="10" Opacity="0.3"></DropShadowEffect>
+        </Border.Effect>
+        <Grid Margin="10" >
+            <Grid Background="White">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1.5*"></ColumnDefinition>
+                    <ColumnDefinition Width="3*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition Height="1.5*"></RowDefinition>
+                </Grid.RowDefinitions>
 
-    <Grid>
-        <Grid Background="White">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="1.5*"></ColumnDefinition>
-                <ColumnDefinition Width="3*"></ColumnDefinition>
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition></RowDefinition>
-                <RowDefinition Height="1.5*"></RowDefinition>
-            </Grid.RowDefinitions>
-            
-            <!--Edit Good-->
-            <uc:EditGoodsUC x:Name="EditGood" Grid.RowSpan="2" Grid.ColumnSpan="2" Visibility="Hidden" Panel.ZIndex="2" ></uc:EditGoodsUC>
+                <!--Edit Good-->
+                <uc:EditGoodsUC x:Name="EditGood" Grid.RowSpan="2" Grid.ColumnSpan="2" Visibility="Hidden" Panel.ZIndex="2" ></uc:EditGoodsUC>
 
-            <!--Image of Good-->
-            <Button Padding="0" Height="170" Width="200"  BorderBrush="Transparent" Background="Transparent">
-                <Border CornerRadius="30" BorderBrush="#5684B0" BorderThickness="0.5" Background="White" >
-                    <Grid HorizontalAlignment="Left" >
-                        <Image x:Name="picHolder" Source="/img/laptopModel0.png" Stretch="Fill"></Image>
-                        <Button Width="20" Height="20" Background="White" Padding="0" HorizontalAlignment="Left" Margin="3 0 0 0" BorderBrush="White">
-                            <Image Source="/img/previousButton.png"></Image>
+                <!--Image of Good-->
+                <Button Padding="0" Height="170" Width="200"  BorderBrush="Transparent" Background="Transparent">
+                    <Border CornerRadius="30" BorderBrush="#5684B0" BorderThickness="0.5" Background="White" >
+                        <Grid HorizontalAlignment="Left" >
+                            <Image x:Name="picHolder" Source="/img/laptopModel0.png" Stretch="Fill"></Image>
+                            <Button Width="20" Height="20" Background="White" Padding="0" HorizontalAlignment="Left" Margin="3 0 0 0" BorderBrush="White">
+                                <Image Source="/img/previousButton.png"></Image>
+                            </Button>
+                            <Button Height="20" Background="White" Padding="0" HorizontalAlignment="Right" Margin="0 0 3 0" BorderBrush="White">
+                                <Image Source="/img/nextButton.png"></Image>
+                            </Button>
+                        </Grid>
+                    </Border>
+                </Button>
+
+                <!--Discription-->
+                <StackPanel  Grid.Row="1" Orientation="Vertical" >
+                    <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0 20">
+                        <Button Height="40" Width="40" BorderBrush="#5684B0" BorderThickness="0.5" HorizontalAlignment="Left" Margin="5 0" Background="White" Padding="0" >
+                            <Image Source="/img/laptopModel1.png" Stretch="Fill" ></Image>
                         </Button>
-                        <Button Height="20" Background="White" Padding="0" HorizontalAlignment="Right" Margin="0 0 3 0" BorderBrush="White">
-                            <Image Source="/img/nextButton.png"></Image>
+                        <Button Height="40" Width="40" BorderBrush="#5684B0" BorderThickness="0.5" HorizontalAlignment="Left" Margin="5 0" Background="White" Padding="0" >
+                            <Image Source="/img/laptopModel2.png" Stretch="Fill" ></Image>
                         </Button>
-                    </Grid>
-                </Border>
-            </Button>
+                        <Button Height="40" Width="40" BorderBrush="#5684B0" BorderThickness="0.5" HorizontalAlignment="Left" Margin="5 0" Background="White" Padding="0" >
+                            <Image Source="/img/laptopModel3.png" Stretch="Fill" ></Image>
+                        </Button>
+                        <Button Height="40" Width="40" BorderBrush="#5684B0" BorderThickness="0.5" HorizontalAlignment="Left" Margin="5 0" Background="White" Padding="0" >
+                            <Image Source="/img/laptopModel4.png" Stretch="Fill" ></Image>
+                        </Button>
+                    </StackPanel>
 
-            <!--Discription-->
-            <StackPanel  Grid.Row="1" Orientation="Vertical" >
-                <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0 20">
-                    <Button Height="40" Width="40" BorderBrush="#5684B0" BorderThickness="0.5" HorizontalAlignment="Left" Margin="5 0" Background="White" Padding="0" >
-                        <Image Source="/img/laptopModel1.png" Stretch="Fill" ></Image>
-                    </Button>
-                    <Button Height="40" Width="40" BorderBrush="#5684B0" BorderThickness="0.5" HorizontalAlignment="Left" Margin="5 0" Background="White" Padding="0" >
-                        <Image Source="/img/laptopModel2.png" Stretch="Fill" ></Image>
-                    </Button>
-                    <Button Height="40" Width="40" BorderBrush="#5684B0" BorderThickness="0.5" HorizontalAlignment="Left" Margin="5 0" Background="White" Padding="0" >
-                        <Image Source="/img/laptopModel3.png" Stretch="Fill" ></Image>
-                    </Button>
-                    <Button Height="40" Width="40" BorderBrush="#5684B0" BorderThickness="0.5" HorizontalAlignment="Left" Margin="5 0" Background="White" Padding="0" >
-                        <Image Source="/img/laptopModel4.png" Stretch="Fill" ></Image>
-                    </Button>
-                </StackPanel>
-
-                <ListBox >
-                    <ListBoxItem Padding="10" Height="45" Width="45" HorizontalAlignment="Left">
-                        <Image Source="/img/checkCircle.jpg"></Image>
-                    </ListBoxItem>
-                    <ListBoxItem Padding="10" Height="45" Width="45"   HorizontalAlignment="Left">
-                        <Image Source="/img/checkCircle.jpg"></Image>
-                    </ListBoxItem>
-                    <ListBoxItem Padding="10" Height="45" Width="45" HorizontalAlignment="Left" >
-                        <Image Source="/img/checkCircle.jpg"></Image>
-                    </ListBoxItem>
-                    <ListBoxItem Padding="10" Height="45" Width="45" HorizontalAlignment="Left">
-                        <Image Source="/img/checkCircle.jpg"></Image>
-                    </ListBoxItem>
-                </ListBox>
-                <!--<ListBox>
+                    <ListBox >
+                        <ListBoxItem Padding="10" Height="45" Width="45" HorizontalAlignment="Left">
+                            <Image Source="/img/checkCircle.jpg"></Image>
+                        </ListBoxItem>
+                        <ListBoxItem Padding="10" Height="45" Width="45"   HorizontalAlignment="Left">
+                            <Image Source="/img/checkCircle.jpg"></Image>
+                        </ListBoxItem>
+                        <ListBoxItem Padding="10" Height="45" Width="45" HorizontalAlignment="Left" >
+                            <Image Source="/img/checkCircle.jpg"></Image>
+                        </ListBoxItem>
+                        <ListBoxItem Padding="10" Height="45" Width="45" HorizontalAlignment="Left">
+                            <Image Source="/img/checkCircle.jpg"></Image>
+                        </ListBoxItem>
+                    </ListBox>
+                    <!--<ListBox>
                     <ListBoxItem Height ="32" Width="185" Padding="0">
                         <TextBox Foreground="#033270" FontSize="12" Height ="32" Width="185" BorderBrush="Transparent" SelectionBrush="Transparent"  />
                     </ListBoxItem>
@@ -87,118 +88,119 @@
                         <TextBox Foreground="#033270" FontSize="12" Height ="32" Width="185" BorderBrush="Transparent" SelectionBrush="Transparent" ></TextBox>
                     </ListBoxItem>
                 </ListBox>-->
-            </StackPanel>
+                </StackPanel>
 
-            <!--Top Button-->
-            <DockPanel  Grid.Column="1" VerticalAlignment="top">
-                <Button DockPanel.Dock="Right" Style="{StaticResource OrangeButton}" Command="{Binding navBack}"
+                <!--Top Button-->
+                <DockPanel  Grid.Column="1" VerticalAlignment="top">
+                    <Button DockPanel.Dock="Right" Style="{StaticResource OrangeButton}" Command="{Binding navBack}"
                     HorizontalAlignment="Right" Uid="3" Name="backBt" Content="Back">
-                </Button>
+                    </Button>
 
-                <!--Invoice Button-->
-                <Button Name="invoiceBt" Uid="2" DockPanel.Dock="Right" Style="{StaticResource greenButton}" 
+                    <!--Invoice Button-->
+                    <Button Name="invoiceBt" Uid="2" DockPanel.Dock="Right" Style="{StaticResource greenButton}" 
                     HorizontalAlignment="Right" Width="90" >
-                    <StackPanel Orientation="Horizontal">
-                        <materialDesign:PackIcon Kind="Download" />
-                        <TextBlock Margin="8,0,0,0">Invoice</TextBlock>
-                    </StackPanel>
-                </Button>
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="Download" />
+                            <TextBlock Margin="8,0,0,0">Invoice</TextBlock>
+                        </StackPanel>
+                    </Button>
 
-                <!--Edit Button-->
-                <Button x:Name="editBt" Uid="1" DockPanel.Dock="Right" Style="{StaticResource greenButton}" Command="{Binding navEdit}"
+                    <!--Edit Button-->
+                    <Button x:Name="editBt" Uid="1" DockPanel.Dock="Right" Style="{StaticResource greenButton}" Command="{Binding navEdit}"
                     HorizontalAlignment="Right" Width="90" >
-                    <StackPanel Orientation="Horizontal">
-                        <materialDesign:PackIcon Kind="Pencil" />
-                        <TextBlock Margin="7,0,0,0">Edit</TextBlock>
-                    </StackPanel>
-                </Button>
-            </DockPanel>
-
-            <!--Information 1-->
-            <StackPanel Grid.Column="1" Margin="10 50 10 0">
-                <DockPanel>
-                    <TextBlock Text="Product Title: " Foreground="#1368AA" FontSize="15" VerticalAlignment="Center"></TextBlock>
-                    <TextBox FontSize="15" Foreground="#033270" BorderBrush="Transparent" SelectionBrush="Transparent" >abcde</TextBox>
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="Pencil" />
+                            <TextBlock Margin="7,0,0,0">Edit</TextBlock>
+                        </StackPanel>
+                    </Button>
                 </DockPanel>
-                <StackPanel Orientation="Horizontal" Margin="0 10 0 0">
-                    <TextBlock Text="Brand: " Foreground="#1368AA" FontSize="15" VerticalAlignment="Center" ></TextBlock>
+
+                <!--Information 1-->
+                <StackPanel Grid.Column="1" Margin="10 50 10 0">
+                    <DockPanel>
+                        <TextBlock Text="Product Title: " Foreground="#1368AA" FontSize="15" VerticalAlignment="Center"></TextBlock>
+                        <TextBox FontSize="15" Foreground="#033270" BorderBrush="Transparent" SelectionBrush="Transparent" >abcde</TextBox>
+                    </DockPanel>
+                    <StackPanel Orientation="Horizontal" Margin="0 10 0 0">
+                        <TextBlock Text="Brand: " Foreground="#1368AA" FontSize="15" VerticalAlignment="Center" ></TextBlock>
                         <TextBox FontSize="15" Foreground="#033270" BorderBrush="Transparent" SelectionBrush="Transparent" Width="98">abcd</TextBox>
-                    <TextBlock Text="Publish day: " Foreground="#1368AA" FontSize="15" VerticalAlignment="Center" Margin="10 0 0 0"></TextBlock>
-                    <TextBox FontSize="15" Foreground="#033270" BorderBrush="Transparent" SelectionBrush="Transparent" Width="98">dd/mm/yyyy</TextBox>
-                </StackPanel >
-                <StackPanel Orientation="Horizontal" Margin="0 10 0 0" >
-                    <TextBlock Text="Price: " Foreground="#1368AA" FontSize="15" VerticalAlignment="Center" ></TextBlock>
+                        <TextBlock Text="Publish day: " Foreground="#1368AA" FontSize="15" VerticalAlignment="Center" Margin="10 0 0 0"></TextBlock>
+                        <TextBox FontSize="15" Foreground="#033270" BorderBrush="Transparent" SelectionBrush="Transparent" Width="98">dd/mm/yyyy</TextBox>
+                    </StackPanel >
+                    <StackPanel Orientation="Horizontal" Margin="0 10 0 0" >
+                        <TextBlock Text="Price: " Foreground="#1368AA" FontSize="15" VerticalAlignment="Center" ></TextBlock>
                         <TextBox FontSize="15" Foreground="#033270" BorderBrush="Transparent" SelectionBrush="Transparent" Width="98">xxxxxx</TextBox>
-                    <TextBlock Text="Available: " Foreground="#1368AA" FontSize="15" VerticalAlignment="Center" Margin="5 0 0 0"></TextBlock>
+                        <TextBlock Text="Available: " Foreground="#1368AA" FontSize="15" VerticalAlignment="Center" Margin="5 0 0 0"></TextBlock>
                         <TextBox FontSize="15" Foreground="#033270" BorderBrush="Transparent" SelectionBrush="Transparent" Width="98">Out of Stock</TextBox>
+                    </StackPanel>
                 </StackPanel>
-            </StackPanel>
 
-            <!--THÔNG SỐ KỸ THUẬT-->
-            <TextBlock Grid.Column="1" Grid.Row="1"  Margin="10 0"  Text="Thông số kỹ thuật: " Foreground="#1368AA" FontSize="18"  FontWeight="SemiBold"></TextBlock>
+                <!--THÔNG SỐ KỸ THUẬT-->
+                <TextBlock Grid.Column="1" Grid.Row="1"  Margin="10 0"  Text="Thông số kỹ thuật: " Foreground="#1368AA" FontSize="18"  FontWeight="SemiBold"></TextBlock>
 
-            <Border Grid.Row="1" Grid.Column="1"  Margin="10 30 10 10" BorderBrush="#79A7CB" BorderThickness="0.5">
-                <StackPanel >
-                    <DockPanel DockPanel.Dock="Top">
-                        <Border BorderBrush="#79A7CB" BorderThickness="0.5" DockPanel.Dock="Left">
-                            <TextBlock Text="CPU" Foreground="#033270" FontSize="14" Width="100" VerticalAlignment="Center" Padding="7" ></TextBlock>
-                        </Border>
-                        <Border  BorderBrush="#79A7CB" BorderThickness="0.5" DockPanel.Dock="Left">
-                            <TextBox  Foreground="#033270" Opacity="0.8" FontSize="14" TextWrapping="WrapWithOverflow" Padding="7" VerticalAlignment="Center" BorderBrush="Transparent"></TextBox>
-                        </Border>
-                    </DockPanel>
-                    <DockPanel DockPanel.Dock="Top" >
-                        <Border BorderBrush="#79A7CB" BorderThickness="0.5" DockPanel.Dock="Left">
-                            <TextBlock Text="RAM" Foreground="#033270" FontSize="14" Width="100" VerticalAlignment="Center" Padding="7"></TextBlock>
-                        </Border>
-                        <Border  BorderBrush="#79A7CB" BorderThickness="0.5" DockPanel.Dock="Left">
-                            <TextBox  Foreground="#033270" Opacity="0.8" FontSize="14" TextWrapping="WrapWithOverflow" Padding="7" VerticalAlignment="Center" BorderBrush="Transparent"></TextBox>
-                        </Border>
-                    </DockPanel>
-                    <DockPanel DockPanel.Dock="Top" >
-                        <Border BorderBrush="#79A7CB" BorderThickness="0.5" DockPanel.Dock="Left">
-                            <TextBlock Text="Hard Disk" Foreground="#033270" FontSize="14" Width="100" VerticalAlignment="Center" Padding="7"></TextBlock>
-                        </Border>
-                        <Border  BorderBrush="#79A7CB" BorderThickness="0.5" DockPanel.Dock="Left">
-                            <TextBox  Foreground="#033270" Opacity="0.8" FontSize="14" TextWrapping="WrapWithOverflow" Padding="7" VerticalAlignment="Center" BorderBrush="Transparent"></TextBox>
-                        </Border>
-                    </DockPanel>
-                    <DockPanel DockPanel.Dock="Top" Height="30">
-                        <Border BorderBrush="#79A7CB" BorderThickness="0.5" DockPanel.Dock="Left">
-                            <TextBlock Text="VGA" Foreground="#033270" FontSize="14" Width="100" VerticalAlignment="Center" Padding="7"></TextBlock>
-                        </Border>
-                        <Border  BorderBrush="#79A7CB" BorderThickness="0.5" DockPanel.Dock="Left">
-                            <TextBox  Foreground="#033270" Opacity="0.8" FontSize="14" TextWrapping="WrapWithOverflow" Padding="7" VerticalAlignment="Center" BorderBrush="Transparent"></TextBox>
-                        </Border>
-                    </DockPanel>
-                    <DockPanel DockPanel.Dock="Top" Height="30">
-                        <Border BorderBrush="#79A7CB" BorderThickness="0.5" DockPanel.Dock="Left">
-                            <TextBlock Text="Screen Size" Foreground="#033270" FontSize="14" Width="100" VerticalAlignment="Center" Padding="7"></TextBlock>
-                        </Border>
-                        <Border  BorderBrush="#79A7CB" BorderThickness="0.5" DockPanel.Dock="Left">
-                            <TextBox  Foreground="#033270" Opacity="0.8" FontSize="14" TextWrapping="WrapWithOverflow" Padding="7" VerticalAlignment="Center" BorderBrush="Transparent"></TextBox>
-                        </Border>
-                    </DockPanel>
-                    <DockPanel DockPanel.Dock="Top" >
-                        <Border BorderBrush="#79A7CB" BorderThickness="0.5" DockPanel.Dock="Left">
-                            <TextBlock Text="OS" Foreground="#033270" FontSize="14" Width="100" VerticalAlignment="Center" Padding="7"></TextBlock>
-                        </Border>
-                        <Border  BorderBrush="#79A7CB" BorderThickness="0.5" DockPanel.Dock="Left">
-                            <TextBox  Foreground="#033270" Opacity="0.8" FontSize="14" TextWrapping="WrapWithOverflow" Padding="7" BorderBrush="Transparent"></TextBox>
-                        </Border>
-                    </DockPanel>
-                    <DockPanel DockPanel.Dock="Top">
-                        <Border BorderBrush="#79A7CB" BorderThickness="0.5" DockPanel.Dock="Left">
-                            <TextBlock Text="Color" Foreground="#033270" FontSize="14" Width="100" VerticalAlignment="Center" Padding="7"></TextBlock>
-                        </Border>
-                        <Border  BorderBrush="#79A7CB" BorderThickness="0.5" DockPanel.Dock="Left">
-                            <TextBox  Foreground="#033270" Opacity="0.8" FontSize="14" TextWrapping="WrapWithOverflow" Padding="7" BorderBrush="Transparent"></TextBox>
-                        </Border>
+                <Border Grid.Row="1" Grid.Column="1"  Margin="10 30 10 10" BorderBrush="#79A7CB" BorderThickness="0.5">
+                    <StackPanel >
+                        <DockPanel DockPanel.Dock="Top">
+                            <Border BorderBrush="#79A7CB" BorderThickness="0.5" DockPanel.Dock="Left">
+                                <TextBlock Text="CPU" Foreground="#033270" FontSize="14" Width="100" VerticalAlignment="Center" Padding="7" ></TextBlock>
+                            </Border>
+                            <Border  BorderBrush="#79A7CB" BorderThickness="0.5" DockPanel.Dock="Left">
+                                <TextBox  Foreground="#033270" Opacity="0.8" FontSize="14" TextWrapping="WrapWithOverflow" Padding="7" VerticalAlignment="Center" BorderBrush="Transparent"></TextBox>
+                            </Border>
+                        </DockPanel>
+                        <DockPanel DockPanel.Dock="Top" >
+                            <Border BorderBrush="#79A7CB" BorderThickness="0.5" DockPanel.Dock="Left">
+                                <TextBlock Text="RAM" Foreground="#033270" FontSize="14" Width="100" VerticalAlignment="Center" Padding="7"></TextBlock>
+                            </Border>
+                            <Border  BorderBrush="#79A7CB" BorderThickness="0.5" DockPanel.Dock="Left">
+                                <TextBox  Foreground="#033270" Opacity="0.8" FontSize="14" TextWrapping="WrapWithOverflow" Padding="7" VerticalAlignment="Center" BorderBrush="Transparent"></TextBox>
+                            </Border>
+                        </DockPanel>
+                        <DockPanel DockPanel.Dock="Top" >
+                            <Border BorderBrush="#79A7CB" BorderThickness="0.5" DockPanel.Dock="Left">
+                                <TextBlock Text="Hard Disk" Foreground="#033270" FontSize="14" Width="100" VerticalAlignment="Center" Padding="7"></TextBlock>
+                            </Border>
+                            <Border  BorderBrush="#79A7CB" BorderThickness="0.5" DockPanel.Dock="Left">
+                                <TextBox  Foreground="#033270" Opacity="0.8" FontSize="14" TextWrapping="WrapWithOverflow" Padding="7" VerticalAlignment="Center" BorderBrush="Transparent"></TextBox>
+                            </Border>
+                        </DockPanel>
+                        <DockPanel DockPanel.Dock="Top" Height="30">
+                            <Border BorderBrush="#79A7CB" BorderThickness="0.5" DockPanel.Dock="Left">
+                                <TextBlock Text="VGA" Foreground="#033270" FontSize="14" Width="100" VerticalAlignment="Center" Padding="7"></TextBlock>
+                            </Border>
+                            <Border  BorderBrush="#79A7CB" BorderThickness="0.5" DockPanel.Dock="Left">
+                                <TextBox  Foreground="#033270" Opacity="0.8" FontSize="14" TextWrapping="WrapWithOverflow" Padding="7" VerticalAlignment="Center" BorderBrush="Transparent"></TextBox>
+                            </Border>
+                        </DockPanel>
+                        <DockPanel DockPanel.Dock="Top" Height="30">
+                            <Border BorderBrush="#79A7CB" BorderThickness="0.5" DockPanel.Dock="Left">
+                                <TextBlock Text="Screen Size" Foreground="#033270" FontSize="14" Width="100" VerticalAlignment="Center" Padding="7"></TextBlock>
+                            </Border>
+                            <Border  BorderBrush="#79A7CB" BorderThickness="0.5" DockPanel.Dock="Left">
+                                <TextBox  Foreground="#033270" Opacity="0.8" FontSize="14" TextWrapping="WrapWithOverflow" Padding="7" VerticalAlignment="Center" BorderBrush="Transparent"></TextBox>
+                            </Border>
+                        </DockPanel>
+                        <DockPanel DockPanel.Dock="Top" >
+                            <Border BorderBrush="#79A7CB" BorderThickness="0.5" DockPanel.Dock="Left">
+                                <TextBlock Text="OS" Foreground="#033270" FontSize="14" Width="100" VerticalAlignment="Center" Padding="7"></TextBlock>
+                            </Border>
+                            <Border  BorderBrush="#79A7CB" BorderThickness="0.5" DockPanel.Dock="Left">
+                                <TextBox  Foreground="#033270" Opacity="0.8" FontSize="14" TextWrapping="WrapWithOverflow" Padding="7" BorderBrush="Transparent"></TextBox>
+                            </Border>
+                        </DockPanel>
+                        <DockPanel DockPanel.Dock="Top">
+                            <Border BorderBrush="#79A7CB" BorderThickness="0.5" DockPanel.Dock="Left">
+                                <TextBlock Text="Color" Foreground="#033270" FontSize="14" Width="100" VerticalAlignment="Center" Padding="7"></TextBlock>
+                            </Border>
+                            <Border  BorderBrush="#79A7CB" BorderThickness="0.5" DockPanel.Dock="Left">
+                                <TextBox  Foreground="#033270" Opacity="0.8" FontSize="14" TextWrapping="WrapWithOverflow" Padding="7" BorderBrush="Transparent"></TextBox>
+                            </Border>
 
-                    </DockPanel>
-                </StackPanel>
-            </Border>
+                        </DockPanel>
+                    </StackPanel>
+                </Border>
+            </Grid>
+
         </Grid>
-
-    </Grid>
+    </Border>
 </UserControl>

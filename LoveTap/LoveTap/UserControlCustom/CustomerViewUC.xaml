@@ -14,7 +14,7 @@
         TextOptions.TextFormattingMode="Ideal"
         TextOptions.TextRenderingMode="Auto"
         Background="{DynamicResource MaterialDesignPaper}"
-        FontFamily="{DynamicResource MaterialDesignFont}" 
+        FontFamily="{DynamicResource MaterialDesignFont}"  Name="CustomerView"
         Height="466.2" Width="666.666666666667">
     <Grid Background="#EEEEFC">
         <Grid.RowDefinitions>
@@ -82,18 +82,8 @@
                             </Button>
                             <Button Style="{StaticResource greenButton}"
                                 Content="+Add Customer" Uid="1"
-                                DockPanel.Dock="Right" Name="addCustomerBt"
+                                DockPanel.Dock="Right" Name="addCustomerBt" Command="{Binding navAddCustomer}"
                             >
-                                <i:Interaction.Triggers>
-                                    <i:EventTrigger EventName="Click">
-                                        <i:InvokeCommandAction Command="{Binding SwitchTab}"
-                                                           CommandParameter="{Binding ElementName=CustomerPage}"></i:InvokeCommandAction>
-                                    </i:EventTrigger>
-                                    <i:EventTrigger EventName="MouseMove">
-                                        <i:InvokeCommandAction Command="{Binding GetIdButton}"
-                                                           CommandParameter="{Binding ElementName=addCustomerBt}"></i:InvokeCommandAction>
-                                    </i:EventTrigger>
-                                </i:Interaction.Triggers>
                             </Button>
 
                             <Grid DockPanel.Dock="Left">
@@ -181,8 +171,8 @@
                             </ListView.View>
                             <i:Interaction.Triggers>
                                 <i:EventTrigger EventName="SelectionChanged">
-                                    <i:InvokeCommandAction     Command="{Binding Detail}"
-                                                           CommandParameter="{Binding ElementName=CustomerPage}"></i:InvokeCommandAction>
+                                    <i:InvokeCommandAction     Command="{Binding navDetail}"></i:InvokeCommandAction>
+                                    <i:InvokeCommandAction     Command="{Binding Detail}" CommandParameter="{Binding ElementName=CustomerView}"></i:InvokeCommandAction>
                                 </i:EventTrigger>
                             </i:Interaction.Triggers>
                         </ListView>
