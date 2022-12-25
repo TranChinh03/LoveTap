@@ -15,7 +15,7 @@
         TextOptions.TextRenderingMode="Auto"
         Background="{DynamicResource MaterialDesignPaper}"
         FontFamily="{DynamicResource MaterialDesignFont}"
-        Name="HomeView"
+        Name="HomeView" Height="456.2" Width="656.666666666667"
              
 >
     <i:Interaction.Triggers>
@@ -242,22 +242,17 @@
             </Border>
 
             <!-- CALENDAR - MAP -->
-            <Grid  Grid.Column="8"  Grid.ColumnSpan="2" Grid.RowSpan="8" Margin="10">
+            <Grid  Grid.Column="8"  Grid.ColumnSpan="2" Grid.RowSpan="8" Margin="0 5 5 0">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="1*"></RowDefinition>
                         <RowDefinition Height="2*"></RowDefinition>
                     </Grid.RowDefinitions>
 
-                    <Image Grid.Row="0" VerticalAlignment="Top"
-                        Source="../img/calendar.png" />
-                    <Image 
-                        Source="../img/map4.png" VerticalAlignment="Center" Grid.RowSpan="2" Margin="0 0 0 0">
-                        <Image.Effect>
-                            <DropShadowEffect Direction="0" Color="#FFB6C2CB" ShadowDepth="2" BlurRadius="3" />
-                        </Image.Effect>
-
-                    </Image>
+                    <materialDesign:Card  VerticalAlignment="Top" Grid.Row="0">
+                        <Calendar Style="{StaticResource styleCalendar}"  HorizontalAlignment="Center"  Name="Calendar" SelectionMode="None" />
+                    </materialDesign:Card>
+                   
                 </Grid>
             </Grid>
         </Grid>
