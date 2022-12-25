@@ -27,7 +27,7 @@
                     <TextBox FontSize="20"
                        FontWeight="Black"
                        Foreground="{StaticResource Catalina Blue}"
-                       VerticalAlignment="Center" Width="150" materialDesign:HintAssist.Hint="#ID" BorderThickness="0"
+                       VerticalAlignment="Center" Width="150" materialDesign:HintAssist.Hint="Add new Cus" BorderThickness="0"
                        ></TextBox>
                 </Border>
 
@@ -39,7 +39,7 @@
 
                 <!--Done Button-->
                 <Button DockPanel.Dock="Right" Style="{StaticResource greenButton}" 
-                    HorizontalAlignment="Right" Width="90" Content="Done" Uid="2" x:Name="doneBt">
+                    HorizontalAlignment="Right" Width="90" Content="Done" Uid="2" x:Name="doneBt" Command="{Binding AddCommand}">
                     <i:Interaction.Triggers>
                         <i:EventTrigger EventName="Click">
                             <i:InvokeCommandAction Command="{Binding navDone}"></i:InvokeCommandAction>
@@ -65,12 +65,12 @@
                 </StackPanel>
 
                 <StackPanel Margin="10 0 0 0" Grid.Column="1" HorizontalAlignment="Center" >
-                    <TextBox  Style="{StaticResource editTextValue}"></TextBox>
-                    <TextBox  Style="{StaticResource editTextValue}"></TextBox>
-                    <TextBox  Style="{StaticResource editTextValue}"></TextBox>
-                    <TextBox  Style="{StaticResource editTextValue}"></TextBox>
-                    <TextBox  Style="{StaticResource editTextValue}"></TextBox>
-                    <TextBox  Style="{StaticResource editTextValue}"></TextBox>
+                    <TextBox  Style="{StaticResource editTextValue}" Text="{Binding Phone}"></TextBox>
+                    <TextBox  Style="{StaticResource editTextValue}" Text="{Binding CusName}"></TextBox>
+                    <TextBox  Style="{StaticResource editTextValue}" Text="{Binding DOB}"></TextBox>
+                    <TextBox  Style="{StaticResource editTextValue}" Text="{Binding Address}"></TextBox>
+                    <TextBox  Style="{StaticResource editTextValue}" Text="{Binding RegistDate}"></TextBox>
+                    <TextBox  Style="{StaticResource editTextValue}" Text="{Binding Sale}"></TextBox>
                 </StackPanel>
             </Grid>
         </Grid>

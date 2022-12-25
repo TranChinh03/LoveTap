@@ -10,6 +10,12 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         >
 
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding LoadedEditCustomerDetail}"
+                                                       CommandParameter="{Binding ElementName=ucEditCustomer}"></i:InvokeCommandAction>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
     <Border>
         <Border.Effect>
             <DropShadowEffect Opacity="0.3" BlurRadius="10" Direction="315"></DropShadowEffect>
@@ -26,7 +32,8 @@
                        FontWeight="Black"
                        Foreground="{StaticResource Catalina Blue}"
                        VerticalAlignment="Center"
-                       >#KH001</TextBlock>
+                       Text="{Binding Phone}"
+                       ></TextBlock>
 
                 <!--Back Button-->
                 <Button DockPanel.Dock="Right" Style="{StaticResource OrangeButton}"
@@ -35,7 +42,7 @@
 
                 <!--Done Button-->
                 <Button Uid="1" Name="doneBt" Content="Done" DockPanel.Dock="Right" Style="{StaticResource greenButton}" 
-                    HorizontalAlignment="Right" Width="90">
+                    HorizontalAlignment="Right" Width="90" Command="{Binding EditCommand}">
                     <i:Interaction.Triggers>
                         <i:EventTrigger EventName="Click">
                             <i:InvokeCommandAction Command="{Binding navDone}"></i:InvokeCommandAction>
@@ -61,13 +68,13 @@
                     <TextBlock Style="{StaticResource detailText}" Padding="3">Sale:</TextBlock>
                 </StackPanel>
 
-                <StackPanel Margin="10 0 0 0" Grid.Column="1" HorizontalAlignment="Center">
-                    <TextBox  Style="{StaticResource editTextValue}">0908200585</TextBox>
-                    <TextBox  Style="{StaticResource editTextValue}">Nguyễn Hoàng Duy</TextBox>
-                    <TextBox  Style="{StaticResource editTextValue}">01/01/2001</TextBox>
-                    <TextBox  Style="{StaticResource editTextValue}">Hẻm 133 Hòa Hưng, phường 12,quận 10</TextBox>
-                    <TextBox  Style="{StaticResource editTextValue}">20/11/2021</TextBox>
-                    <TextBox  Style="{StaticResource editTextValue}">3</TextBox>
+                <StackPanel Margin="10 0 0 0" Grid.Column="1" HorizontalAlignment="Center" >
+                    <TextBox  Style="{StaticResource editTextValue}" Text="{Binding Phone}"></TextBox>
+                    <TextBox  Style="{StaticResource editTextValue}" Text="{Binding CusName}"></TextBox>
+                    <TextBox  Style="{StaticResource editTextValue}" Text="{Binding DOB}"></TextBox>
+                    <TextBox  Style="{StaticResource editTextValue}" Text="{Binding Address}"></TextBox>
+                    <TextBox  Style="{StaticResource editTextValue}" Text="{Binding RegistDate}"></TextBox>
+                    <TextBox  Style="{StaticResource editTextValue}" Text="{Binding Type}"></TextBox>
                 </StackPanel>
             </Grid>
         </Grid>
