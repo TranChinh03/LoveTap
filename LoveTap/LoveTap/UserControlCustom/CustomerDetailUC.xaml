@@ -35,7 +35,8 @@
                        FontWeight="Black"
                        Foreground="{StaticResource Catalina Blue}"
                        VerticalAlignment="Center"
-                       >#KH001</TextBlock>
+                       Text="{Binding Phone}"
+                       ></TextBlock>
 
                 <!--Back Button-->
                 <Button DockPanel.Dock="Right" Style="{StaticResource OrangeButton}"

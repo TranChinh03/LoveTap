@@ -22,7 +22,21 @@ namespace LoveTap.ViewModel
 
         private ObservableCollection<SANPHAM> _ProductList;
         public ObservableCollection<SANPHAM> ProductList { get => _ProductList; set { _ProductList = value; OnPropertyChanged(); } }
-        
+        private string _CusName;
+        public string CusName { get => _CusName; set { _CusName = value; OnPropertyChanged(); } }
+        private string _Phone;
+        public string Phone { get => _Phone; set { _Phone = value; OnPropertyChanged(); } }
+        private Nullable<System.DateTime> _DOB;
+        public Nullable<System.DateTime> DOB { get => _DOB; set { _DOB = value; OnPropertyChanged(); } }
+        private string _Address;
+        public string Address { get => _Address; set { _Address = value; OnPropertyChanged(); } }
+        private Nullable<System.DateTime> _RegistDate;
+        public Nullable<System.DateTime> RegistDate { get => _RegistDate; set { _RegistDate = value; OnPropertyChanged(); } }
+        private Nullable<double> _Sale;
+        public Nullable<double> Sale { get => _Sale; set { _Sale = value; OnPropertyChanged(); } }
+        private string _Type;
+        public string Type { get => _Type; set { _Type = value; OnPropertyChanged(); } }
+
         //private List<SANPHAM> _MyFilteredList = new List<SANPHAM>();
         //public List<SANPHAM> MyFilterList { get => _MyFilteredList; set { _MyFilteredList = value; } }
         public IEnumerable<SANPHAM> MyFilterList
