@@ -10,239 +10,246 @@
              Name="ucOrdersDetail" 
              Height="456.2" Width="656.666666666667"
 >
-    <Border>
-    <Border.Effect>
-        <DropShadowEffect BlurRadius="10" Opacity="0.3"></DropShadowEffect>
-    </Border.Effect>
-    <Grid Background="White" Margin="10">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="1*"/>
-            <RowDefinition Height="0.5*"/>
-            <RowDefinition Height="5*"/>
-            <RowDefinition Height="2.5*"/>
-        </Grid.RowDefinitions>
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding LoadedOrderDetail}"
+                                                       CommandParameter="{Binding ElementName=ucOrdersDetail}"></i:InvokeCommandAction>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
 
-        <!--TOP BAR-->
-        <Grid Grid.Row="0">
-            <DockPanel Margin="10 0">
-                <TextBlock Padding="10"
-                       FontSize="20"
+    <Border>
+        <Border.Effect>
+            <DropShadowEffect BlurRadius="10" Opacity="0.3"></DropShadowEffect>
+        </Border.Effect>
+        <Grid Background="White" Margin="10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1.25*"/>
+                <RowDefinition Height="0.5*"/>
+                <RowDefinition Height="5*"/>
+                <RowDefinition Height="2.5*"/>
+            </Grid.RowDefinitions>
+
+            <!--TOP BAR-->
+            <Grid Grid.Row="0">
+                <DockPanel Margin="10 0">
+                    <TextBlock Padding="10" Width="100"
+                       FontSize="18"
                        FontWeight="Black"
                        Foreground="{StaticResource Catalina Blue}"
-                       VerticalAlignment="Top"
-                       >#HD0001</TextBlock>
+                       VerticalAlignment="Center" Text="{Binding ID}"
+                       ></TextBlock>
 
-                <TextBlock Style="{StaticResource detailTextValue}"
-                       VerticalAlignment="Top" Padding="0 15">
+                    <TextBlock Style="{StaticResource detailTextValue}"
+                       VerticalAlignment="Center" Padding="0 15">
                 (mua hàng)</TextBlock>
 
-                <TextBlock Margin="40 0 0 0" Padding="10"
+                    <TextBlock Margin="40 0 0 0" Padding="10"
                        FontSize="20"
                        FontWeight="Black"
                        Foreground="{StaticResource Catalina Blue}"
-                       VerticalAlignment="Top"
+                       VerticalAlignment="Center"
                        >Date :</TextBlock>
 
-                <TextBlock Style="{StaticResource detailTextValue}"
+                    <TextBlock Style="{StaticResource detailTextValue}"
                        Padding=" 0 15" 
-                       VerticalAlignment="Top">
+                       VerticalAlignment="Center">
                 21/10/2022</TextBlock>
 
 
-                <!--Back Button-->
-                <Button DockPanel.Dock="Right" Style="{StaticResource OrangeButton}"
+                    <!--Back Button-->
+                    <Button DockPanel.Dock="Right" Style="{StaticResource OrangeButton}"
                     HorizontalAlignment="Right" Uid="2" Name="backBt" Content="Back" Margin="10" Command="{Binding navBack}">
-                </Button>
+                    </Button>
 
-                <!--Invoice Button-->
-                <Button Name="invoiceBt" Uid="1" DockPanel.Dock="Right" Style="{StaticResource greenButton}" Margin="10"
+                    <!--Invoice Button-->
+                    <Button Name="invoiceBt" Uid="1" DockPanel.Dock="Right" Style="{StaticResource greenButton}" Margin="10"
                     HorizontalAlignment="Right" Width="90" >
-                    <StackPanel Orientation="Horizontal">
-                        <materialDesign:PackIcon Kind="Download" />
-                        <TextBlock Margin="8,0,0,0">Invoice</TextBlock>
-                    </StackPanel>
-                </Button>
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="Download" />
+                            <TextBlock Margin="8,0,0,0">Invoice</TextBlock>
+                        </StackPanel>
+                    </Button>
 
-            </DockPanel>
-        </Grid>
+                </DockPanel>
+            </Grid>
 
-        <!--2ND BAR-->
-        <Grid  Grid.Row="1" Background="{StaticResource Cyan Azure 0.5}" >
-            <Grid  Margin="10 0 25 0">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="5*"/>
-                    <ColumnDefinition Width="2*"/>
-                    <ColumnDefinition/>
-                    <ColumnDefinition Width="2*"/>
-                </Grid.ColumnDefinitions>
-                <TextBlock Foreground="{StaticResource Catalina Blue}" 
+            <!--2ND BAR-->
+            <Grid  Grid.Row="1" Background="{StaticResource Cyan Azure 0.5}" >
+                <Grid  Margin="10 0 25 0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="5*"/>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="2*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Foreground="{StaticResource Catalina Blue}" 
                        FontSize="13"
                        VerticalAlignment="Center"
                        HorizontalAlignment="Center" Padding="5 0 0 0"
                        FontWeight="Medium">
                 Product Detail</TextBlock>
-                <TextBlock Foreground="{StaticResource Catalina Blue}"  Grid.Column="1"
+                    <TextBlock Foreground="{StaticResource Catalina Blue}"  Grid.Column="1"
                        FontSize="13" 
                        VerticalAlignment="Center"
                        HorizontalAlignment="Center" Padding="5 0 0 0"
                        FontWeight="Medium">
                 Item Price</TextBlock>
-                <TextBlock  Foreground="{StaticResource Catalina Blue}" Grid.Column="2"
+                    <TextBlock  Foreground="{StaticResource Catalina Blue}" Grid.Column="2"
                        FontSize="13" 
                        VerticalAlignment="Center"
                        HorizontalAlignment="Center" 
                        FontWeight="Medium">
                 Quantity</TextBlock>
-                <TextBlock  Foreground="{StaticResource Catalina Blue}" Grid.Column="3"
+                    <TextBlock  Foreground="{StaticResource Catalina Blue}" Grid.Column="3"
                        FontSize="13"
                        VerticalAlignment="Center"
                        HorizontalAlignment="Center" Padding="5 0 0 0"
                        FontWeight="Medium">
                        
                 Total Amount</TextBlock>
+                </Grid>
+
             </Grid>
 
-        </Grid>
+            <!--3RD BAR-->
+            <ScrollViewer Grid.Row="2" >
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="5*"/>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="2*"/>
+                    </Grid.ColumnDefinitions>
 
-        <!--3RD BAR-->
-        <ScrollViewer Grid.Row="2" >
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="5*"/>
-                    <ColumnDefinition Width="2*"/>
-                    <ColumnDefinition Width="1*"/>
-                    <ColumnDefinition Width="2*"/>
-                </Grid.ColumnDefinitions>
-
-                <!--PRODUCT DETAIL-->
-                <StackPanel Grid.Column="0"  HorizontalAlignment="Center">
-                    <StackPanel Orientation="Horizontal">
-                        <Image Source="/img/laptopModel1.png" Height="50" Panel.ZIndex="0" Width="49" ></Image>
-                        <TextBlock FontSize="15" TextWrapping="Wrap" VerticalAlignment="Center" Padding="5" Width="250" Height="60">
+                    <!--PRODUCT DETAIL-->
+                    <StackPanel Grid.Column="0"  HorizontalAlignment="Center">
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="/img/laptopModel1.png" Height="50" Panel.ZIndex="0" Width="49" ></Image>
+                            <TextBlock FontSize="15" TextWrapping="Wrap" VerticalAlignment="Center" Padding="5" Width="250" Height="60">
                             Laptop Lenovo IdeaPad Gaming 3 15IHU6 82K101B5VN</TextBlock>
+                        </StackPanel>
+
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="/img/laptopModel1.png" Height="50" Panel.ZIndex="0" Width="49" ></Image>
+                            <TextBlock FontSize="15" TextWrapping="Wrap" VerticalAlignment="Center" Padding="5" Width="250" Height="60">
+                            Laptop Lenovo IdeaPad Gaming 3 15IHU6 82K101B5VN</TextBlock>
+                        </StackPanel>
+
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="/img/laptopModel1.png" Height="50" Panel.ZIndex="0" Width="49" ></Image>
+                            <TextBlock FontSize="15" TextWrapping="Wrap" VerticalAlignment="Center" Padding="5" Width="250" Height="60">
+                            Laptop Lenovo IdeaPad Gaming 3 15IHU6 82K101B5VN</TextBlock>
+                        </StackPanel>
                     </StackPanel>
 
-                    <StackPanel Orientation="Horizontal">
-                        <Image Source="/img/laptopModel1.png" Height="50" Panel.ZIndex="0" Width="49" ></Image>
-                        <TextBlock FontSize="15" TextWrapping="Wrap" VerticalAlignment="Center" Padding="5" Width="250" Height="60">
-                            Laptop Lenovo IdeaPad Gaming 3 15IHU6 82K101B5VN</TextBlock>
+                    <!--ITEM PRICE-->
+                    <StackPanel Grid.Column="1" Orientation="Vertical" HorizontalAlignment="Center" >
+                        <Grid Width="120" Height="60">
+                            <TextBlock FontSize="15" TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Center"  >
+                        17,990,000</TextBlock>
+                        </Grid>
+
+                        <Grid Width="120" Height="60">
+                            <TextBlock FontSize="15" TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Center"  >
+                        17,990,000</TextBlock>
+                        </Grid>
+
+                        <Grid Width="120" Height="60">
+                            <TextBlock FontSize="15" TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Center"  >
+                        17,990,000</TextBlock>
+                        </Grid>
                     </StackPanel>
 
-                    <StackPanel Orientation="Horizontal">
-                        <Image Source="/img/laptopModel1.png" Height="50" Panel.ZIndex="0" Width="49" ></Image>
-                        <TextBlock FontSize="15" TextWrapping="Wrap" VerticalAlignment="Center" Padding="5" Width="250" Height="60">
-                            Laptop Lenovo IdeaPad Gaming 3 15IHU6 82K101B5VN</TextBlock>
-                    </StackPanel>
-                </StackPanel>
-
-                <!--ITEM PRICE-->
-                <StackPanel Grid.Column="1" Orientation="Vertical" HorizontalAlignment="Center" >
-                    <Grid Width="120" Height="60">
-                        <TextBlock FontSize="15" TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Center"  >
-                        17,990,000</TextBlock>
-                    </Grid>
-
-                    <Grid Width="120" Height="60">
-                        <TextBlock FontSize="15" TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Center"  >
-                        17,990,000</TextBlock>
-                    </Grid>
-
-                    <Grid Width="120" Height="60">
-                        <TextBlock FontSize="15" TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Center"  >
-                        17,990,000</TextBlock>
-                    </Grid>
-                </StackPanel>
-
-                <!--QUANTITY-->
-                <StackPanel Grid.Column="2" HorizontalAlignment="Center">
-                    <Grid Width="60" Height="60">
-                        <TextBlock FontSize="15" TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Center"  >
+                    <!--QUANTITY-->
+                    <StackPanel Grid.Column="2" HorizontalAlignment="Center">
+                        <Grid Width="60" Height="60">
+                            <TextBlock FontSize="15" TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Center"  >
                         01</TextBlock>
-                    </Grid>
+                        </Grid>
 
-                    <Grid Width="60" Height="60">
-                        <TextBlock FontSize="15" TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Center"  >
+                        <Grid Width="60" Height="60">
+                            <TextBlock FontSize="15" TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Center"  >
                         02</TextBlock>
-                    </Grid>
+                        </Grid>
 
-                    <Grid Width="60" Height="60">
-                        <TextBlock FontSize="15" TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Center"  >
+                        <Grid Width="60" Height="60">
+                            <TextBlock FontSize="15" TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Center"  >
                         03</TextBlock>
-                    </Grid>
-                </StackPanel>
+                        </Grid>
+                    </StackPanel>
 
-                <!--TOTAL AMOUNT-->
-                <StackPanel Grid.Column="3" HorizontalAlignment="Center">
-                    <Grid Width="120" Height="60">
-                        <TextBlock FontSize="15" TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Center" >
+                    <!--TOTAL AMOUNT-->
+                    <StackPanel Grid.Column="3" HorizontalAlignment="Center">
+                        <Grid Width="120" Height="60">
+                            <TextBlock FontSize="15" TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Center" >
                         17,990,000</TextBlock>
-                    </Grid>
+                        </Grid>
 
-                    <Grid Width="120" Height="60">
-                        <TextBlock FontSize="15" TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Center"  >
+                        <Grid Width="120" Height="60">
+                            <TextBlock FontSize="15" TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Center"  >
                         17,990,000</TextBlock>
-                    </Grid>
+                        </Grid>
 
-                    <Grid Width="120" Height="60">
-                        <TextBlock FontSize="15" TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Center"  >
+                        <Grid Width="120" Height="60">
+                            <TextBlock FontSize="15" TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Center"  >
                         17,990,000</TextBlock>
-                    </Grid>
-                </StackPanel>
-            </Grid>
-        </ScrollViewer>
+                        </Grid>
+                    </StackPanel>
+                </Grid>
+            </ScrollViewer>
 
-        <!--BOTTOM BAR-->
-        <Grid Grid.Row="3">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-            </Grid.ColumnDefinitions>
-            <Border BorderBrush="#FF79A7CB" BorderThickness="1">
-                <StackPanel Orientation="Horizontal">
+            <!--BOTTOM BAR-->
+            <Grid Grid.Row="3">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Border BorderBrush="#FF79A7CB" BorderThickness="1">
+                    <StackPanel Orientation="Horizontal">
+                        <StackPanel Margin="10">
+                            <TextBlock 
+                           Foreground="#FF5684B0"  FontWeight="DemiBold"
+                          Padding="2">Sub Total:</TextBlock>
+                            <TextBlock 
+                           Foreground="#FF5684B0"  FontWeight="DemiBold" 
+                          Padding="2">Payment method:</TextBlock>
+                            <TextBlock 
+                           Foreground="#FF5684B0"  FontWeight="DemiBold"
+                          Padding="2">Note:</TextBlock>
+                        </StackPanel>
+                    </StackPanel>
+                </Border>
+
+                <Border Grid.Column="1" BorderBrush="#FF79A7CB" BorderThickness="1">
                     <StackPanel Margin="10">
                         <TextBlock 
                            Foreground="#FF5684B0"  FontWeight="DemiBold"
-                          Padding="2">Sub Total:</TextBlock>
-                        <TextBlock 
-                           Foreground="#FF5684B0"  FontWeight="DemiBold" 
-                          Padding="2">Payment method:</TextBlock>
-                        <TextBlock 
-                           Foreground="#FF5684B0"  FontWeight="DemiBold"
-                          Padding="2">Note:</TextBlock>
-                    </StackPanel>
-                </StackPanel>
-            </Border>
-
-            <Border Grid.Column="1" BorderBrush="#FF79A7CB" BorderThickness="1">
-                <StackPanel Margin="10">
-                    <TextBlock 
-                           Foreground="#FF5684B0"  FontWeight="DemiBold"
                            Width="200" Height="20">Customer:</TextBlock>
-                    <TextBlock 
+                        <TextBlock 
                            Foreground="#FF5684B0"  FontWeight="DemiBold"
                            Width="200" Height="20">Phone:</TextBlock>
-                    <TextBlock 
+                        <TextBlock 
                            Foreground="#FF5684B0"  FontWeight="DemiBold"
                            Width="200" Height="20">Address:</TextBlock>
-                </StackPanel>
-            </Border>
+                    </StackPanel>
+                </Border>
 
-            <Border Grid.Column="2" BorderBrush="#FF79A7CB" BorderThickness="1">
-                <StackPanel Margin="10">
-                    <TextBlock 
+                <Border Grid.Column="2" BorderBrush="#FF79A7CB" BorderThickness="1">
+                    <StackPanel Margin="10">
+                        <TextBlock 
                            Foreground="#FF5684B0"  FontWeight="DemiBold"
                            Width="200" Height="20">Employee:</TextBlock>
-                    <TextBlock 
+                        <TextBlock 
                            Foreground="#FF5684B0"  FontWeight="DemiBold"
                            Width="200" Height="20">Employee ID:</TextBlock>
-                    <TextBlock 
+                        <TextBlock 
                            Foreground="#FF5684B0"  FontWeight="DemiBold"
                            Width="200" Height="20">Branch:</TextBlock>
-                </StackPanel>
-            </Border>
+                    </StackPanel>
+                </Border>
+            </Grid>
         </Grid>
-    </Grid>
     </Border>
 </UserControl>
 
@@ -316,4 +323,4 @@
                             <TextBlock FontSize="15" TextWrapping="Wrap" VerticalAlignment="Center" Padding="5" Width="250" Height="60">
                             Laptop Lenovo IdeaPad Gaming 3 15IHU6 82K101B5VN</TextBlock>
                         </StackPanel>
-                    </StackPanel>
+                    </StackPanel> -->

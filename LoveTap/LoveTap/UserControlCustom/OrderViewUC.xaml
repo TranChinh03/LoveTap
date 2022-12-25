@@ -160,6 +160,7 @@
                         <i:Interaction.Triggers>
                             <i:EventTrigger EventName="SelectionChanged">
                                 <i:InvokeCommandAction     Command="{Binding navDetail}"></i:InvokeCommandAction>
+                                <i:InvokeCommandAction     Command="{Binding Detail}" CommandParameter="{Binding ElementName=OrderView}"></i:InvokeCommandAction>
                             </i:EventTrigger>
                         </i:Interaction.Triggers>
                     </ListView>
