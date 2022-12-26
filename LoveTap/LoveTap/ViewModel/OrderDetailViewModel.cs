@@ -17,11 +17,15 @@ namespace LoveTap.ViewModel
     public class OrderDetailViewModel:BaseViewModel
     {
         public ICommand navBack { get; set; }
+
+        private string _TypeOrder;
+        public string TypeOrder { get => _TypeOrder; set { _TypeOrder = value; OnPropertyChanged(); } }
+
         private string _ID;
         public string ID { get => _ID; set { _ID = value; OnPropertyChanged(); } }
 
-        private string _Date;
-        public string Date { get => _Date; set { _Date = value; OnPropertyChanged(); } }
+        private DateTime _Date;
+        public DateTime Date { get => _Date; set { _Date = value; OnPropertyChanged(); } }
 
         private double _SubTotal;
         public double SubTotal { get => _SubTotal; set { _SubTotal = value; OnPropertyChanged(); } }
@@ -91,8 +95,13 @@ namespace LoveTap.ViewModel
                 HOADON temp = OrdersViewModel.OrderSelected;
 
                 ID = temp.MAHD;
-                Date = temp.NGMUA.ToString();
+                Date = (DateTime)temp.NGMUA;
                 SubTotal = 0;
+                if (temp.LOAIHD == true)
+                    TypeOrder = "mua hàng";
+                else
+                    TypeOrder = "nhập hàng";
+
 
                 for (int i = 0; i < DataProvider.Ins.DB.CTHDs.Count(); i++)
                 {

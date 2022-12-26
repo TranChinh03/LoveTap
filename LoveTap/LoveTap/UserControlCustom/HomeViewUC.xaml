@@ -216,7 +216,7 @@
                 </Border.Effect>
                 <Grid>
                     <ScrollViewer VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Visible">
-                        <ListView x:Name="BestSellingList" ItemsSource="{Binding ProductList}" SelectedItem="{Binding SelectedItem, Mode=TwoWay}" HorizontalContentAlignment="Center">
+                        <ListView x:Name="BestSellingList" ItemsSource="{Binding BestSellingList}" SelectedItem="{Binding SelectedItem, Mode=TwoWay}" HorizontalContentAlignment="Center">
                             <ListView.Resources>
                                 <Style TargetType="{x:Type GridViewColumnHeader}">
                                     <Setter Property="HorizontalContentAlignment" Value="Center"/>
@@ -225,9 +225,9 @@
                             </ListView.Resources>
                             <ListView.View >
                                 <GridView>
-                                    <GridViewColumn Header="Best Selling Product" DisplayMemberBinding="{Binding TEN}"></GridViewColumn>
-                                    <GridViewColumn Header="Class ID" DisplayMemberBinding="{Binding MADM}"></GridViewColumn>
-                                    <GridViewColumn Header="Product ID" DisplayMemberBinding="{Binding MASP}"></GridViewColumn>
+                                    <GridViewColumn Header="Best Selling Product" DisplayMemberBinding="{Binding Ten}"></GridViewColumn>
+                                    <GridViewColumn Header="Orders" DisplayMemberBinding="{Binding SoLuong}"></GridViewColumn>
+                                    <GridViewColumn Header="Stocks" DisplayMemberBinding="{Binding SoLuongTon}"></GridViewColumn>
                                 </GridView>
                             </ListView.View>
                             <i:Interaction.Triggers>

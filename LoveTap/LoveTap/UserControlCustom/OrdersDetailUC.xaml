@@ -40,8 +40,9 @@
                        ></TextBlock>
 
                     <TextBlock Style="{StaticResource detailTextValue}"
-                       VerticalAlignment="Center" Padding="0 15">
-                (mua hàng)</TextBlock>
+                       VerticalAlignment="Center" Padding="0 15"
+                       Text="{Binding TypeOrder}">
+                </TextBlock>
 
                     <TextBlock Margin="40 0 0 0" Padding="10"
                        FontSize="20"
@@ -52,8 +53,9 @@
 
                     <TextBlock Style="{StaticResource detailTextValue}"
                        Padding=" 0 15" 
-                       VerticalAlignment="Center">
-                21/10/2022</TextBlock>
+                       VerticalAlignment="Center"
+                       Text="{Binding Date, StringFormat='dd/MM/yyyy'}">
+                </TextBlock>
 
 
                     <!--Back Button-->
@@ -74,7 +76,7 @@
             </Grid>
 
             <!--2ND BAR-->
-            <Grid  Grid.Row="1" Background="{StaticResource Cyan Azure 0.5}" >
+            <!--<Grid  Grid.Row="1" Background="{StaticResource Cyan Azure 0.5}" >
                 <Grid  Margin="10 0 25 0">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="5*"/>
@@ -109,10 +111,10 @@
                 Total Amount</TextBlock>
                 </Grid>
 
-            </Grid>
+            </Grid>-->
 
             <!--3RD BAR-->
-            <ScrollViewer Grid.Row="2" >
+            <!--<ScrollViewer Grid.Row="2" >
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="5*"/>
@@ -121,7 +123,7 @@
                         <ColumnDefinition Width="2*"/>
                     </Grid.ColumnDefinitions>
 
-                    <!--PRODUCT DETAIL-->
+                    --><!--PRODUCT DETAIL--><!--
                     <StackPanel Grid.Column="0"  HorizontalAlignment="Center">
                         <StackPanel Orientation="Horizontal">
                             <Image Source="/img/laptopModel1.png" Height="50" Panel.ZIndex="0" Width="49" ></Image>
@@ -142,7 +144,7 @@
                         </StackPanel>
                     </StackPanel>
 
-                    <!--ITEM PRICE-->
+                    --><!--ITEM PRICE--><!--
                     <StackPanel Grid.Column="1" Orientation="Vertical" HorizontalAlignment="Center" >
                         <Grid Width="120" Height="60">
                             <TextBlock FontSize="15" TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Center"  >
@@ -160,7 +162,7 @@
                         </Grid>
                     </StackPanel>
 
-                    <!--QUANTITY-->
+                    --><!--QUANTITY--><!--
                     <StackPanel Grid.Column="2" HorizontalAlignment="Center">
                         <Grid Width="60" Height="60">
                             <TextBlock FontSize="15" TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Center"  >
@@ -178,7 +180,7 @@
                         </Grid>
                     </StackPanel>
 
-                    <!--TOTAL AMOUNT-->
+                    --><!--TOTAL AMOUNT--><!--
                     <StackPanel Grid.Column="3" HorizontalAlignment="Center">
                         <Grid Width="120" Height="60">
                             <TextBlock FontSize="15" TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Center" >
@@ -196,6 +198,27 @@
                         </Grid>
                     </StackPanel>
                 </Grid>
+            </ScrollViewer>-->
+
+
+
+            <ScrollViewer VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Visible" Grid.Row="1" Grid.RowSpan="2">
+                <ListView Name="OrderDetailList" ItemsSource="{Binding MyOrderList}" HorizontalContentAlignment="Center">
+                    <ListView.Resources>
+                        <Style TargetType="{x:Type GridViewColumnHeader}">
+                            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                            <Setter Property="Foreground" Value="{StaticResource Cyan Azure}"/>
+                        </Style>
+                    </ListView.Resources>
+                    <ListView.View >
+                        <GridView>
+                            <GridViewColumn Header="Product Detail" DisplayMemberBinding="{Binding Ten}"></GridViewColumn>
+                            <GridViewColumn Header="Item Price" DisplayMemberBinding="{Binding Gia}"></GridViewColumn>
+                            <GridViewColumn Header="Quantity" DisplayMemberBinding="{Binding SoLuong}"></GridViewColumn>
+                            <GridViewColumn Header="Total Amount" DisplayMemberBinding="{Binding TongTien}"></GridViewColumn>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
             </ScrollViewer>
 
             <!--BOTTOM BAR-->
@@ -206,46 +229,83 @@
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
                 <Border BorderBrush="#FF79A7CB" BorderThickness="1">
-                    <StackPanel Orientation="Horizontal">
-                        <StackPanel Margin="10">
+                    <StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="5">
                             <TextBlock 
                            Foreground="#FF5684B0"  FontWeight="DemiBold"
-                          Padding="2">Sub Total:</TextBlock>
-                            <TextBlock 
-                           Foreground="#FF5684B0"  FontWeight="DemiBold" 
-                          Padding="2">Payment method:</TextBlock>
+                          >Sub Total:</TextBlock>
                             <TextBlock 
                            Foreground="#FF5684B0"  FontWeight="DemiBold"
-                          Padding="2">Note:</TextBlock>
+                          Margin="5 0 0 0" Text="{Binding SubTotal}" TextWrapping ="Wrap" Width="140"></TextBlock>
                         </StackPanel>
                     </StackPanel>
                 </Border>
 
                 <Border Grid.Column="1" BorderBrush="#FF79A7CB" BorderThickness="1">
-                    <StackPanel Margin="10">
-                        <TextBlock 
+                    <StackPanel Margin="5">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock 
                            Foreground="#FF5684B0"  FontWeight="DemiBold"
-                           Width="200" Height="20">Customer:</TextBlock>
-                        <TextBlock 
+                         >Customer:</TextBlock>
+                            <TextBlock 
                            Foreground="#FF5684B0"  FontWeight="DemiBold"
-                           Width="200" Height="20">Phone:</TextBlock>
-                        <TextBlock 
+                         Text="{Binding CustomerName}" TextWrapping ="Wrap" Width="140"></TextBlock>
+                        </StackPanel>
+
+                        <StackPanel  Orientation="Horizontal" Margin="0 5 0 0">
+                            <TextBlock 
                            Foreground="#FF5684B0"  FontWeight="DemiBold"
-                           Width="200" Height="20">Address:</TextBlock>
+                          >Phone:</TextBlock>
+                            <TextBlock 
+                           Foreground="#FF5684B0"  FontWeight="DemiBold"
+                          Text="{Binding Phone}" TextWrapping ="Wrap" Width="150" ></TextBlock>
+                        </StackPanel>
+
+
+                        <StackPanel  Orientation="Horizontal" Margin="0 5 0 0">
+                            <TextBlock 
+                           Foreground="#FF5684B0"  FontWeight="DemiBold"
+                         >Address:</TextBlock>
+                            <TextBlock 
+                           Foreground="#FF5684B0"  FontWeight="DemiBold"
+                         Text="{Binding Address}" TextWrapping ="Wrap" Width="150"></TextBlock>
+                        </StackPanel>
+                        
+                        
                     </StackPanel>
                 </Border>
 
                 <Border Grid.Column="2" BorderBrush="#FF79A7CB" BorderThickness="1">
-                    <StackPanel Margin="10">
-                        <TextBlock 
+                    <StackPanel Margin="5">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock 
                            Foreground="#FF5684B0"  FontWeight="DemiBold"
-                           Width="200" Height="20">Employee:</TextBlock>
-                        <TextBlock 
+                         >Employee:</TextBlock>
+                            <TextBlock 
                            Foreground="#FF5684B0"  FontWeight="DemiBold"
-                           Width="200" Height="20">Employee ID:</TextBlock>
-                        <TextBlock 
+                         Text="{Binding EmployeeName}" TextWrapping ="Wrap" Width="140"></TextBlock>
+                        </StackPanel>
+
+                        <StackPanel  Orientation="Horizontal" Margin="0 5 0 0">
+                            <TextBlock 
                            Foreground="#FF5684B0"  FontWeight="DemiBold"
-                           Width="200" Height="20">Branch:</TextBlock>
+                          >Employee ID:</TextBlock>
+                            <TextBlock 
+                           Foreground="#FF5684B0"  FontWeight="DemiBold"
+                          Text="{Binding EmployeeID}" TextWrapping ="Wrap" Width="125" ></TextBlock>
+                        </StackPanel>
+
+
+                        <StackPanel  Orientation="Horizontal" Margin="0 5 0 0">
+                            <TextBlock 
+                           Foreground="#FF5684B0"  FontWeight="DemiBold"
+                         >Branch ID:</TextBlock>
+                            <TextBlock 
+                           Foreground="#FF5684B0"  FontWeight="DemiBold"
+                         Text="{Binding Branch}" TextWrapping ="Wrap" Width="150"></TextBlock>
+                        </StackPanel>
+
+
                     </StackPanel>
                 </Border>
             </Grid>

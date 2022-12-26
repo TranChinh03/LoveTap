@@ -124,6 +124,7 @@
                     ToolTip="MaterialDesignFlatButton"
                     IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" />
                     <ComboBox
+                    Text="{Binding sortText, UpdateSourceTrigger=PropertyChanged}"
                     VerticalAlignment="Bottom"
                     Grid.Row="1"
                     Grid.RowSpan="2"
@@ -137,7 +138,9 @@
                     Width="200"
                     Padding="10 0 0 0">
                         <ComboBoxItem
-                        Content="Nổi bật" />
+                        Content="Orders" />
+                        <ComboBoxItem
+                        Content="Stocks" />
                     </ComboBox>
                     <materialDesign:Card Grid.Row="0"  Width="300"  BorderThickness="2" HorizontalAlignment="Right" Margin="25 0" VerticalAlignment="Center">
                         <Grid>
@@ -170,6 +173,7 @@
                         MinWidth="200"
                         FontSize="16"
                         VerticalAlignment="Center" Grid.RowSpan="2" 
+                        Text="{Binding searchText, UpdateSourceTrigger=PropertyChanged}"
                         />
                             <Button
                         Style="{StaticResource MaterialDesignToolButton}"
@@ -347,7 +351,7 @@
             Margin=" 10"
              Grid.Column="1">
                 <ScrollViewer VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Visible">
-                    <ListView x:Name="GoodList" ItemsSource="{Binding ProductList}" SelectedItem="{Binding SelectedItem, Mode=OneWayToSource}">
+                    <ListView x:Name="GoodList" ItemsSource="{Binding MyFilterList}" SelectedItem="{Binding SelectedItem, Mode=OneWayToSource}">
                         <ListView.Resources>
                             <Style TargetType="{x:Type GridViewColumnHeader}">
                                 <Setter Property="HorizontalContentAlignment" Value="Center"/>
@@ -356,11 +360,9 @@
                         </ListView.Resources>
                         <ListView.View>
                             <GridView>
-                                <GridViewColumn Header="ProductID" DisplayMemberBinding="{Binding MASP}"></GridViewColumn>
-                                <GridViewColumn Header="Name" DisplayMemberBinding="{Binding TEN}"></GridViewColumn>
-                                <GridViewColumn Header="Price" DisplayMemberBinding="{Binding GIA}"></GridViewColumn>
-                                <GridViewColumn Header="Desc" DisplayMemberBinding="{Binding CHITIET}"></GridViewColumn>
-                                <GridViewColumn Header="Type" DisplayMemberBinding="{Binding MADM}"></GridViewColumn>
+                                <GridViewColumn Header="Product Name" DisplayMemberBinding="{Binding Ten}"></GridViewColumn>
+                                <GridViewColumn Header="Orders" DisplayMemberBinding="{Binding SoLuong}"></GridViewColumn>
+                                <GridViewColumn Header="Stocks" DisplayMemberBinding="{Binding SoLuongTon}"></GridViewColumn>
                             </GridView>
                         </ListView.View>
                         <i:Interaction.Triggers>
