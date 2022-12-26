@@ -22,30 +22,51 @@ namespace LoveTap.ViewModel
 
         private ObservableCollection<SANPHAM> _ProductList;
         public ObservableCollection<SANPHAM> ProductList { get => _ProductList; set { _ProductList = value; OnPropertyChanged(); } }
-        
+
+        private ObservableCollection<CTHD> _OrderDetailList;
+        public ObservableCollection<CTHD> OrderDetailList { get => _OrderDetailList; set { _OrderDetailList = value; OnPropertyChanged(); } }
+
+        private ObservableCollection<TONKHO> _StockList;
+        public ObservableCollection<TONKHO> StockList { get => _StockList; set { _StockList = value; OnPropertyChanged(); } }
+
+        public struct Product
+        {
+            public string Ten { get; set; }
+            public int SoLuong { get; set; }
+            public int SoLuongTon { get; set; }
+        }
+
+        private List<Product> _MyProductList = new List<Product>();
+        public List<Product> MyProductList { get => _MyProductList; set { _MyProductList = value; } }
+
+
+        private List<Product> _MyProductOrdersList = new List<Product>();
+        public List<Product> MyProductOrdersList { get => _MyProductOrdersList; set { _MyProductOrdersList = value; } }
+
+
+        private List<Product> _MyProductStocksList = new List<Product>();
+        public List<Product> MyProductStocksList { get => _MyProductStocksList; set { _MyProductStocksList = value; } }
+
+
+
         //private List<SANPHAM> _MyFilteredList = new List<SANPHAM>();
         //public List<SANPHAM> MyFilterList { get => _MyFilteredList; set { _MyFilteredList = value; } }
-        public IEnumerable<SANPHAM> MyFilterList
+        public IEnumerable<Product> MyFilterList
         {
             get
             {
-                if (searchText == null)
-                    return ProductList;
+                if (searchText == null && sortText == null)
+                    return MyProductList;
+                else if (searchText == null && sortText == "Orders")
+                    return MyProductOrdersList;
+                else if (searchText == null && sortText == "Stocks")
+                    return MyProductStocksList;
+                else if (searchText != null && sortText == "Orders")
+                    return MyProductOrdersList.Where(x => (x.Ten.ToUpper().Contains(searchText.ToUpper())));
                 else
-                {
-                    if(sortText == "Product Name")
-                        return ProductList.Where(x => (x.TEN.ToUpper().Contains(searchText.ToUpper())));
-                    else if(sortText == "Product ID")
-                        return ProductList.Where(x => (x.MASP.ToUpper().Contains(searchText.ToUpper())));
-                    else if (sortText == "Category")
-                        return ProductList.Where(x => (x.MADM.ToUpper().Contains(searchText.ToUpper())));
-                    else if (sortText == "Details")
-                        return ProductList.Where(x => (x.CHITIET.ToUpper().Contains(searchText.ToUpper())));
-                    else
-                        return ProductList.Where(x => x.GIA >= double.Parse(searchText));
-                }
-                    //return ProductList.Where(x => ((x.TEN.ToUpper().Contains(searchText.ToUpper()))|| (x.MASP.ToUpper().Contains(searchText.ToUpper()))|| (x.GIA >= double.Parse(searchText))|| (x.MADM.ToUpper().Contains(searchText.ToUpper()))|| (x.CHITIET.ToUpper().Contains(searchText.ToUpper()))));
-                    
+                    return MyProductStocksList.Where(x => (x.Ten.ToUpper().Contains(searchText.ToUpper())));
+                //return ProductList.Where(x => ((x.TEN.ToUpper().Contains(searchText.ToUpper()))|| (x.MASP.ToUpper().Contains(searchText.ToUpper()))|| (x.GIA >= double.Parse(searchText))|| (x.MADM.ToUpper().Contains(searchText.ToUpper()))|| (x.CHITIET.ToUpper().Contains(searchText.ToUpper()))));
+
             }
         }
         private string _searchText;
@@ -72,10 +93,119 @@ namespace LoveTap.ViewModel
             }
         }
 
+        void SwapString(ref string a, ref string b)
+        {
+            string temp = a;
+            a = b;
+            b = temp;
+        }
+
+        void SwapInt( ref int a, ref int b)
+        {
+            int temp = a;
+            a = b;
+            b = temp;
+        }
+
+        void Swap( ref Product a, ref Product b)
+        {
+            int sli, slj, slti, sltj;
+            string teni, tenj;
+            teni = a.Ten;
+            tenj = b.Ten;
+            sli = a.SoLuong;
+            slj = b.SoLuong;
+            slti = a.SoLuongTon;
+            sltj = b.SoLuongTon;
+            SwapInt(ref sli, ref slj);
+            SwapInt(ref slti, ref sltj);
+            SwapString(ref teni, ref tenj);
+            a.Ten = teni;
+            a.SoLuong = sli;
+            a.SoLuongTon = slti;
+            b.Ten = tenj;
+            b.SoLuong = slj;
+            b.SoLuongTon = sltj;
+        }
+        public List<Product> SapGiamOrders(List<Product> list)
+        {
+            Product a, b;
+            List<Product> list1 = new List<Product>();
+            foreach (Product product in list)
+            {
+                list1.Add(product);
+            }
+            for (int i=0;i<list1.Count()-1;i++)
+                for(int j = i+1; j< list1.Count();j++)
+                {
+                    if (list1[i].SoLuong < list1[j].SoLuong)
+                    {
+                        a = list1[i];
+                        b = list1[j];
+                        Swap( ref a, ref b);
+                        list1[i] = a;
+                        list1[j] = b;
+                    }
+                }
+            return list1;
+        }
+
+        public List<Product> SapGiamStock(List<Product> list)
+        {
+            Product a, b;
+            List<Product> list1 = new List<Product>();
+            foreach (Product product in list)
+            {
+                list1.Add(product);
+            }
+            for (int i = 0; i < list1.Count() - 1; i++)
+                for (int j = i + 1; j < list1.Count(); j++)
+                {
+                    if (list1[i].SoLuongTon < list1[j].SoLuongTon)
+                    {
+                        a = list1[i];
+                        b = list1[j];
+                        Swap(ref a, ref b);
+                        list1[i] = a;
+                        list1[j] = b;
+                    }
+                }
+            return list1;
+        }
+
+
         public GoodsViewModel(NavigationStore navigationStore)
 
         {
+
             ProductList = new ObservableCollection<SANPHAM>(DataProvider.Ins.DB.SANPHAMs);
+            OrderDetailList = new ObservableCollection<CTHD>(DataProvider.Ins.DB.CTHDs);
+            StockList = new ObservableCollection<TONKHO>(DataProvider.Ins.DB.TONKHOes);
+
+            foreach (SANPHAM sp in ProductList)
+            {
+                Product product = new Product();
+                int soluong = 0;
+                int soluongton = 0;
+                foreach (CTHD cthd in OrderDetailList.Where(x => x.MASP == sp.MASP))
+                {
+                    soluong += (int)cthd.SOLUONG;
+                }
+
+                foreach(TONKHO tk in StockList.Where(x => x.MASP == sp.MASP))
+                {
+                    soluongton += (int)tk.SOLUONG;
+                }
+
+                product.SoLuongTon = soluongton;
+                product.SoLuong = soluong;
+                product.Ten = sp.TEN;
+                MyProductList.Add(product);
+            }
+            MyProductOrdersList = SapGiamOrders(MyProductList);
+            MyProductStocksList = SapGiamStock(MyProductList);
+            
+
             navAddGood = new NavigationCommand<AddGoodViewModel>(navigationStore, () => new AddGoodViewModel(navigationStore));
             navDetail = new NavigationCommand<GoodDetailViewModel>(navigationStore, () => new GoodDetailViewModel(navigationStore));
         }

@@ -107,10 +107,15 @@
                                       Width="150"
                                     Height="30"
                                   BorderBrush="{StaticResource Cyan Azure}"
-                                   materialDesign:HintAssist.Hint="Id , Name, ..."
+                                   materialDesign:HintAssist.Hint="Phone, Name,..."
                                   Style="{StaticResource MaterialDesignOutlinedComboBox}" 
-                                Padding="5,0,5,0" VerticalContentAlignment="Center">
+                                Padding="5,0,5,0" VerticalContentAlignment="Center"
+                                Text="{Binding findText, UpdateSourceTrigger=PropertyChanged}">
+                                <ComboBoxItem Content="Phone"/>
+                                <ComboBoxItem Content="Name"/>
+                                <ComboBoxItem Content="Address"/>
                             </ComboBox>
+                           
                         </DockPanel>
                     </Grid>
 
@@ -122,18 +127,48 @@
                             <ColumnDefinition  />
                         </Grid.ColumnDefinitions>
 
-                        <TextBox Grid.Column="0" Template="{StaticResource searchBox}"/>
+                        <TextBox
+                        Grid.Column="0"
+                        Margin="50,0,20,0" 
+                                 Width="200" Foreground="{StaticResource Cyan Azure}"
+                                VerticalAlignment="Center" BorderBrush="{StaticResource Cyan Azure}"
+                                materialDesign:HintAssist.Hint="Search"
+                                Style="{StaticResource MaterialDesignFloatingHintTextBox}" 
+                                VerticalContentAlignment="Center" 
+                                HorizontalContentAlignment="Left"
+                                HorizontalAlignment="Left"
+                        Text="{Binding searchText, UpdateSourceTrigger=PropertyChanged}"
+                        />
 
-                        <materialDesign:PackIcon Kind="Magnify" HorizontalAlignment="Right" Margin="0,16,24,0" Foreground="{StaticResource Cyan Azure}"/>
+                        <materialDesign:PackIcon Kind="Magnify" HorizontalAlignment="Right" Margin="0,16,24,0" Foreground="{StaticResource Cyan Azure}" VerticalAlignment="Center"/>
 
-                        <ComboBox  Grid.Column="1" Template="{StaticResource Combobox}"
-                                    materialDesign:HintAssist.Hint="Chi nhánh" 
+                        <!--<ComboBox  Grid.Column="1" 
+                                   materialDesign:HintAssist.Hint="Chi nhánh"
+                                   ItemsSource="{Binding BranchIDList}"
+                                   Style="{StaticResource MaterialDesignOutlinedComboBox}"
+                                    Width="150"
+                                   Height="30"
+                                    BorderBrush="{StaticResource Cyan Azure}"
+                                   Padding="16,0,16,0"
+                                   VerticalContentAlignment="Center"
+                                   HorizontalContentAlignment="Left"
+                                   
+                                   >    
+                                    
+                        </ComboBox>-->
+
+                        <ComboBox  Grid.Column="1" Grid.ColumnSpan="2"
+                                   Width="200"
+                                    Height="30"
+                                  BorderBrush="{StaticResource Cyan Azure}"
+                                   materialDesign:HintAssist.Hint="Sort by"
+                                  Style="{StaticResource MaterialDesignOutlinedComboBox}" 
+                                Padding="5,0,5,0" VerticalContentAlignment="Center"
+                                   Text="{Binding sortText, UpdateSourceTrigger=PropertyChanged}"
                                   >
-                        </ComboBox>
-
-                        <ComboBox  Grid.Column="2" Template="{StaticResource Combobox}"
-                                    materialDesign:HintAssist.Hint="Sort by Name" 
-                                  >
+                            <ComboBoxItem Content="Date of Birth"/>
+                            <ComboBoxItem Content="Registation Date"/>
+                            <ComboBoxItem Content="Sale"/>
                         </ComboBox>
 
                     </Grid>
@@ -152,7 +187,7 @@
                 </Border.Effect>
                 <Grid>
                     <ScrollViewer VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Visible">
-                        <ListView Name="CustomerList" ItemsSource="{Binding CustomerList}" SelectedItem="{Binding SelectedItem, Mode=OneWayToSource}" HorizontalContentAlignment="Center">
+                        <ListView Name="CustomerList" ItemsSource="{Binding MyFilterList}" SelectedItem="{Binding SelectedItem, Mode=OneWayToSource}" HorizontalContentAlignment="Center">
                             <ListView.Resources>
                                 <Style TargetType="{x:Type GridViewColumnHeader}">
                                     <Setter Property="HorizontalContentAlignment" Value="Center"/>
@@ -161,12 +196,12 @@
                             </ListView.Resources>
                             <ListView.View >
                                 <GridView>
-                                    <GridViewColumn Header="Phone" DisplayMemberBinding="{Binding SDT}"></GridViewColumn>
-                                    <GridViewColumn Header="Name" DisplayMemberBinding="{Binding HOTEN}"></GridViewColumn>
-                                    <GridViewColumn Header="Date of Birth" DisplayMemberBinding="{Binding NGSINH}"></GridViewColumn>
-                                    <GridViewColumn Header="Adress" DisplayMemberBinding="{Binding DIACHI}"></GridViewColumn>
-                                    <GridViewColumn Header="Registation Date" DisplayMemberBinding="{Binding NGDK}"></GridViewColumn>
-                                    <GridViewColumn Header="Sale" DisplayMemberBinding="{Binding DOANHSO}"></GridViewColumn>
+                                    <GridViewColumn Header="Phone" DisplayMemberBinding="{Binding sdt}"></GridViewColumn>
+                                    <GridViewColumn Header="Name" DisplayMemberBinding="{Binding ten}"></GridViewColumn>
+                                    <GridViewColumn Header="Date of Birth" DisplayMemberBinding="{Binding dob, StringFormat='dd/MM//yyyy'}"></GridViewColumn>
+                                    <GridViewColumn Header="Address" DisplayMemberBinding="{Binding dchi}"></GridViewColumn>
+                                    <GridViewColumn Header="Registation Date" DisplayMemberBinding="{Binding rd, StringFormat='dd/MM/yyyy'}"></GridViewColumn>
+                                    <GridViewColumn Header="Sale" DisplayMemberBinding="{Binding sale}"></GridViewColumn>
                                 </GridView>
                             </ListView.View>
                             <i:Interaction.Triggers>
