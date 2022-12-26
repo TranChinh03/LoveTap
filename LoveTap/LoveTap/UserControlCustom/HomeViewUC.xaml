@@ -252,9 +252,10 @@
                     <materialDesign:Card  VerticalAlignment="Top" Grid.Row="0">
                         <Calendar Style="{StaticResource styleCalendar}"  HorizontalAlignment="Center"  Name="Calendar" SelectionMode="None" />
                     </materialDesign:Card>
-                   
+
                 </Grid>
             </Grid>
         </Grid>
     </Grid>
 </UserControl>
+   

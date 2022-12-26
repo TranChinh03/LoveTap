@@ -206,7 +206,7 @@
 
         <!--Log out-->
         <RadioButton Style="{StaticResource BtnStyle}"
-                              Command="{Binding HomeCommand}" Grid.Row="10" Grid.ColumnSpan="2"
+                     x:Name="LogOutButton"  Grid.Row="10" Grid.ColumnSpan="2"
                               >
 
             <StackPanel Orientation="Horizontal">
@@ -215,6 +215,13 @@
                 <TextBlock Text="Log out"
                                        Style="{StaticResource Text_Style}" />
             </StackPanel>
+
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="Click">
+                    <i:InvokeCommandAction Command="{Binding LogOut}"
+                                                       CommandParameter="{Binding ElementName=mainWindow}"></i:InvokeCommandAction>
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
         </RadioButton>
 
         <!--Frame for Main Screens-->

@@ -1,4 +1,4 @@
-﻿using LoveTap.Commands;
+using LoveTap.Commands;
 using LoveTap.Model;
 using LoveTap.Stores;
 using LoveTap.ViewModel;
@@ -46,8 +46,6 @@ namespace LoveTap.ViewModel
 
         private List<Product> _MyProductStocksList = new List<Product>();
         public List<Product> MyProductStocksList { get => _MyProductStocksList; set { _MyProductStocksList = value; } }
-
-
 
         //private List<SANPHAM> _MyFilteredList = new List<SANPHAM>();
         //public List<SANPHAM> MyFilterList { get => _MyFilteredList; set { _MyFilteredList = value; } }

@@ -9,7 +9,6 @@
         xmlns:local="clr-namespace:LoveTap" 
         xmlns:viewmodel="clr-namespace:LoveTap.ViewModel" 
         mc:Ignorable="d"
-        
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
         TextElement.FontWeight="Regular"
         TextElement.FontSize="14"
@@ -252,14 +251,13 @@
 
                 </Button>
 
-                <Button Padding="0" Background="Transparent" BorderBrush="Transparent" 
+                <Button x:Name="LogOutButton" Padding="0" Background="Transparent" BorderBrush="Transparent" 
                         HorizontalContentAlignment="Left" Uid="6" Margin="10 80 0 0">
                     <Grid VerticalAlignment="Center">
                         <TextBlock x:Name="logoutTbl" Text="Log out" Margin="17 0 0 0" FontSize="13" Foreground="#79A7CB" HorizontalAlignment="Left"></TextBlock>
                         <Image x:Name="logoutImg1" Source="/img/employee.png" Width="13" Height="13" HorizontalAlignment="Left"/>
                         <Image x:Name="logoutImg2" Visibility="Collapsed" Source="/img/employeeClick.png" Width="13" Height="13" HorizontalAlignment="Left" />
                     </Grid>
-
                 </Button>
 
             </StackPanel>

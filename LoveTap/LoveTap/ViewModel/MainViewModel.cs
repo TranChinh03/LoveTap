@@ -24,6 +24,7 @@ namespace LoveTap.ViewModel
 
         public bool IsLoaded { get; set; } = false;
         public ICommand LoadedMainWd { get; set; }
+        public ICommand LogOut { get; set; }
         public ICommand navProfile { get;  }
         public ICommand navHome { get;  }
         public ICommand navGood { get;  }
@@ -59,7 +60,8 @@ namespace LoveTap.ViewModel
                     p.Close();
                 }
 
-            });
+            }
+            );
 
             navProfile = new NavigationCommand<ProfileUsrViewModel>(navigationStore, () => new ProfileUsrViewModel(navigationStore));
             navHome = new NavigationCommand<HomeViewModel>(navigationStore, () => new HomeViewModel(navigationStore));
@@ -68,7 +70,30 @@ namespace LoveTap.ViewModel
             navCustomer = new NavigationCommand<CustomerViewModel>(navigationStore, () => new CustomerViewModel(navigationStore));
             navStatistic = new NavigationCommand<StatisticViewModel>(navigationStore, () => new StatisticViewModel(navigationStore));
             navEmployee = new NavigationCommand<EmployeeViewModel>(navigationStore, () => new EmployeeViewModel(navigationStore));
+            LogOut = new RelayCommand<Window>((p) => { return true; }, (p) =>
+            {
+                if (MessageBox.Show("Do you want to LogOut?", "Log Out", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+                {
+                    p.Hide();
+                    LoginWindow loginWindow = new LoginWindow();
+                    loginWindow.ShowDialog();
 
+                    if (loginWindow.DataContext == null)
+                        return;
+                    var loginVM = loginWindow.DataContext as LoginViewModel;
+                    if (loginVM.IsLogin)
+                    {
+                        ID = loginVM.ID;
+                        if ((DataProvider.Ins.DB.NHANVIENs.Where(x => x.NVID == ID).ToList())[0].VAITRO == true)
+                            IsAdmin = true;
+                        p.Show();
+                    }
+                    else
+                    {
+                        p.Close();
+                    }
+                }
+            });
 
             _navigationStore = navigationStore;
             _navigationStore.CurrentViewModelChanged += OnCurrentViewModelChanged;
