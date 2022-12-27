@@ -9,12 +9,14 @@ using System.Windows.Controls;
 using System.Windows;
 using System.Windows.Input;
 using LoveTap.Stores;
+using LoveTap.Commands;
+using LoveTap.UserControlCustom;
 
 namespace LoveTap.ViewModel
 {
     public class HomeViewModel: BaseViewModel
     {
-
+        public static SANPHAM CurrentSelected { get; set; }
         private ObservableCollection<SANPHAM> _ProductList;
         public ObservableCollection<SANPHAM> ProductList { get => _ProductList; set { _ProductList = value; OnPropertyChanged(); } }
 
@@ -42,9 +44,9 @@ namespace LoveTap.ViewModel
 
         public ICommand SwitchTab { get; set; }
         public ICommand Detail { get; set; }
+        public ICommand navDetail { get; set; }
 
         public ICommand LoadHome { get; set; }
-        string Name;
 
         public struct BestSelling
         {
@@ -125,32 +127,13 @@ namespace LoveTap.ViewModel
                 b = temp;
             }
 
-            GetIdButton = new RelayCommand<Button>((p) => true, (p) => Name = p.Uid);
-            SwitchTab = new RelayCommand<HomeScreen>((p) => true, (p) => switchtab(p));
-            Detail = new RelayCommand<HomeScreen>((p) => { return p.BestSellingList.SelectedItem == null ? false : true; }, (p) => _DetailCs(p));
+            Detail = new RelayCommand<HomeViewUC>((p) => { return p.BestSellingList.SelectedItem == null ? false : true; }, (p) => _DetailCs(p));
+            navDetail = new NavigationCommand<GoodDetailViewModel>(navigationStore, () => new GoodDetailViewModel(navigationStore));
 
         }
 
-        
-
-        void switchtab(HomeScreen p)
+        void _DetailCs(HomeViewUC p)
         {
-            int index = int.Parse(Name);
-            switch (index)
-            {
-                case 1:
-                    {
-                        //p.AddCustomer.Visibility=Visibility.Visible;
-                        break;
-                    }
-            }
-        }
-
-        void _DetailCs(HomeScreen p)
-        {
-           
-            p.DetailBestSl.Visibility= Visibility.Visible;
-            
         }
 
     }
