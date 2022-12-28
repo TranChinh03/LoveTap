@@ -78,9 +78,14 @@ namespace LoveTap.ViewModel
 
             }, (p) =>
             {
-                var customer = DataProvider.Ins.DB.KHACHHANGs.Where(x => x.SDT == Phone).SingleOrDefault();
+                KHACHHANG customer = DataProvider.Ins.DB.KHACHHANGs.Where(x => x.SDT == Phone).SingleOrDefault();
                 customer.HOTEN = CusName;
                 customer.SDT = Phone;
+                //foreach (KHACHHANG kh in CustomerList)
+                //{
+                //    if (kh.SDT == Phone)
+                //        customer.SDT = kh.SDT;
+                //}
                 customer.NGSINH = DOB;
                 customer.DIACHI = Address;
                 customer.NGDK = RegistDate;
@@ -93,7 +98,7 @@ namespace LoveTap.ViewModel
                 else if (Sale > 10000000)
                     Type = "Kim cương";
 
-
+                //DataProvider.Ins.DB.Entry(customer).State = System.Data.Entity.EntityState.Detached;
                 DataProvider.Ins.DB.SaveChanges();
 
             });

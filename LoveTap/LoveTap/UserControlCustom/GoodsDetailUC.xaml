@@ -117,6 +117,10 @@
 
                 <!--Information 1-->
                 <StackPanel Grid.Column="1" Margin="10 50 10 0">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Foreground="#1368AA" FontSize="15" VerticalAlignment="Center">Product ID:</TextBlock>
+                        <TextBox FontSize="15" Foreground="#033270" BorderBrush="Transparent" SelectionBrush="Transparent" Margin="5 0 0 0"></TextBox>
+                    </StackPanel>
                     <DockPanel>
                         <TextBlock Text="Product Title: " Foreground="#1368AA" FontSize="15" VerticalAlignment="Center"></TextBlock>
                         <TextBox FontSize="15" Foreground="#033270" BorderBrush="Transparent" SelectionBrush="Transparent" >abcde</TextBox>
@@ -124,14 +128,14 @@
                     <StackPanel Orientation="Horizontal" Margin="0 10 0 0">
                         <TextBlock Text="Brand: " Foreground="#1368AA" FontSize="15" VerticalAlignment="Center" ></TextBlock>
                         <TextBox FontSize="15" Foreground="#033270" BorderBrush="Transparent" SelectionBrush="Transparent" Width="98">abcd</TextBox>
-                        <TextBlock Text="Publish day: " Foreground="#1368AA" FontSize="15" VerticalAlignment="Center" Margin="10 0 0 0"></TextBlock>
-                        <TextBox FontSize="15" Foreground="#033270" BorderBrush="Transparent" SelectionBrush="Transparent" Width="98">dd/mm/yyyy</TextBox>
+                        <!--<TextBlock Text="Publish day: " Foreground="#1368AA" FontSize="15" VerticalAlignment="Center" Margin="10 0 0 0"></TextBlock>
+                        <TextBox FontSize="15" Foreground="#033270" BorderBrush="Transparent" SelectionBrush="Transparent" Width="98">dd/mm/yyyy</TextBox>-->
                     </StackPanel >
                     <StackPanel Orientation="Horizontal" Margin="0 10 0 0" >
                         <TextBlock Text="Price: " Foreground="#1368AA" FontSize="15" VerticalAlignment="Center" ></TextBlock>
                         <TextBox FontSize="15" Foreground="#033270" BorderBrush="Transparent" SelectionBrush="Transparent" Width="98">xxxxxx</TextBox>
-                        <TextBlock Text="Available: " Foreground="#1368AA" FontSize="15" VerticalAlignment="Center" Margin="5 0 0 0"></TextBlock>
-                        <TextBox FontSize="15" Foreground="#033270" BorderBrush="Transparent" SelectionBrush="Transparent" Width="98">Out of Stock</TextBox>
+                        <!--<TextBlock Text="Available: " Foreground="#1368AA" FontSize="15" VerticalAlignment="Center" Margin="5 0 0 0"></TextBlock>
+                        <TextBox FontSize="15" Foreground="#033270" BorderBrush="Transparent" SelectionBrush="Transparent" Width="98">Out of Stock</TextBox>-->
                     </StackPanel>
                 </StackPanel>
 
