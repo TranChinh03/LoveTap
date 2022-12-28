@@ -29,7 +29,7 @@
 
                     <!--Done Button-->
                     <Button Uid="1" Name="doneBt" Content="Done" DockPanel.Dock="Right" Style="{StaticResource greenButton}" 
-                    HorizontalAlignment="Right" Width="90">
+                    HorizontalAlignment="Right" Width="90" Command="{Binding DoneCommand}">
                         <i:Interaction.Triggers>
                             <i:EventTrigger EventName="Click">
                                 <i:InvokeCommandAction Command="{Binding navDone}"></i:InvokeCommandAction>
@@ -46,59 +46,50 @@
                        Foreground="{StaticResource Catalina Blue}"
                        VerticalAlignment="Top"
                        >CODE ORDER:</TextBlock>
-                    <TextBlock  FontSize="20" Padding="5"
-                     VerticalAlignment="Top" FontWeight="Black"
-                     Style="{StaticResource detailTextValue}"> #HD0011
-                    </TextBlock>
+                    <TextBox  Style="{StaticResource editTextValue}" Margin="5 0 0 0" Width="100" Text="{Binding OrderID}"/>
                     <!--Date-->
-                    <TextBlock  Padding="7" Margin="50 0 0 0"
+                    <TextBlock  Padding="7" Margin="5 0 0 0"
                        FontSize="18"
                        FontWeight="Bold" 
                        Foreground="{StaticResource Catalina Blue}"
                        VerticalAlignment="Top">
                 Date:</TextBlock>
-                    <TextBlock  FontSize="18" Padding="7"
-                     VerticalAlignment="Top" FontWeight="Bold"
-                     Style="{StaticResource detailTextValue}">
-                21/10/2022</TextBlock>
+                    <TextBox  Style="{StaticResource editTextValue}" Margin="5 0 0 0" Width="130" Text="{Binding Date, StringFormat='dd/MM/yyyy'}"/>
                     <!--Type-->
-                    <TextBlock  Padding="7"  Margin="50 0 0 0"
+                    <TextBlock  Padding="7"  Margin="20 0 0 0"
                        FontSize="18"
                        FontWeight="Bold" 
                        Foreground="{StaticResource Catalina Blue}"
                        VerticalAlignment="Top">
                 Type:</TextBlock>
-                    <TextBlock  FontSize="18" Padding="7"
-                     VerticalAlignment="Top" FontWeight="Bold"
-                     Style="{StaticResource detailTextValue}">
-               Sale</TextBlock>
+                    <TextBox  Style="{StaticResource editTextValue}" Margin="5 0 0 0" Width="70" Text="{Binding Type}"/>
                 </StackPanel>
 
                 <!--Information-->
                 <StackPanel Orientation="Horizontal" >
-                    <TextBlock Style="{StaticResource detailText}" Margin="0" Padding="5">Name of Good:</TextBlock>
-                    <TextBox  Style="{StaticResource editTextValue}" Margin="20 0" Width="500"/>
+                    <TextBlock Style="{StaticResource detailText}" Margin="0" Padding="5">ID of Good:</TextBlock>
+                    <TextBox  Style="{StaticResource editTextValue}" Margin="20 0" Width="200" Text="{Binding GoodID}"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" >
                     <TextBlock Style="{StaticResource detailText}" Padding="5">Amount:</TextBlock>
-                    <TextBox  Style="{StaticResource editTextValue}" Margin="65 0" Width="100"/>
+                    <TextBox  Style="{StaticResource editTextValue}" Margin="65 0" Width="100" Text="{Binding Amount}"/>
                     <Button BorderBrush="{StaticResource Cyan Azure}" Padding="5" HorizontalAlignment="Right" Width="100" Margin="220 10"
-                    Background="{StaticResource Cyan Azure}" Content="+ Add" Foreground="White">
+                    Background="{StaticResource Cyan Azure}" Content="+ Add" Foreground="White" Command="{Binding AddCommand}">
                     </Button>
                 </StackPanel>
 
                 <ScrollViewer>
-                    <ListView>
+                    <ListView ItemsSource="{Binding MyOrderDetailList}">
                         <ListView.Resources>
                             <Style TargetType="{x:Type GridViewColumnHeader}">
                                 <Setter Property="HorizontalContentAlignment" Value="Center"/>
                                 <Setter Property="Foreground" Value="{StaticResource Cyan Azure}"/>
                             </Style>
                         </ListView.Resources>
-                        <ListView.View>
+                        <ListView.View >
                             <GridView>
-                                <GridViewColumn Header="Name" DisplayMemberBinding="{Binding MASP}"></GridViewColumn>
-                                <GridViewColumn Header="Amount" DisplayMemberBinding="{Binding MASP}"></GridViewColumn>
+                                <GridViewColumn Header="ID" DisplayMemberBinding="{Binding MASP}"></GridViewColumn>
+                                <GridViewColumn Header="Amount" DisplayMemberBinding="{Binding SOLUONG}"></GridViewColumn>
                             </GridView>
                         </ListView.View>
                     </ListView>
@@ -120,28 +111,28 @@
                         <TextBlock Style="{StaticResource detailText}">Sub Total:</TextBlock>
                         <TextBlock Style="{StaticResource detailText}">Khách hàng:</TextBlock>
                         <TextBlock Style="{StaticResource detailText}">Phone:</TextBlock>
-                        <TextBlock Style="{StaticResource detailText}">Address:</TextBlock>
+                        <!--<TextBlock Style="{StaticResource detailText}">Address:</TextBlock>-->
                     </StackPanel>
                     <StackPanel HorizontalAlignment="Right" >
-                        <TextBox  Style="{StaticResource editTextValue}" Width="220" Margin="1" />
-                        <TextBox  Style="{StaticResource editTextValue}" Width="220" Margin="1"/>
-                        <TextBox  Style="{StaticResource editTextValue}" Width="220" Margin="1"/>
-                        <TextBox  Style="{StaticResource editTextValue}" Width="220" Margin="1"/>
+                        <TextBox  Style="{StaticResource editTextValue}" Width="220" Margin="1" Text="{Binding SubTotal}" />
+                        <TextBox  Style="{StaticResource editTextValue}" Width="220" Margin="1" Text="{Binding CustomerName}"/>
+                        <TextBox  Style="{StaticResource editTextValue}" Width="220" Margin="1" Text="{Binding Phone}"/>
+                        <!--<TextBox  Style="{StaticResource editTextValue}" Width="220" Margin="1" Text="{Binding Address}"/>-->
                     </StackPanel>
                 </DockPanel>
 
                 <!--Infor Store-->
                 <DockPanel Grid.Column="1">
                     <StackPanel  Margin="10 0">
-                        <TextBlock Style="{StaticResource detailText}">Note:</TextBlock>
+                        <!--<TextBlock Style="{StaticResource detailText}">Note:</TextBlock>-->
                         <TextBlock Style="{StaticResource detailText}">Nhân viên:</TextBlock>
-                        <TextBlock Style="{StaticResource detailText}">Chi nhánh:</TextBlock>
+                        <!--<TextBlock Style="{StaticResource detailText}">Chi nhánh:</TextBlock>-->
 
                     </StackPanel>
                     <StackPanel HorizontalAlignment="Right" >
-                        <TextBox  Style="{StaticResource editTextValue}" Width="220" Margin="2" />
-                        <TextBox  Style="{StaticResource editTextValue}" Width="220" Margin="2" />
-                        <TextBox Style="{StaticResource editTextValue}"  Width="220" Margin="2"/>
+                        <!--<TextBox  Style="{StaticResource editTextValue}" Width="220" Margin="2" />-->
+                        <TextBox  Style="{StaticResource editTextValue}" Width="220" Margin="2" Text="{Binding EmployeeName}" />
+                        <!--<TextBox Style="{StaticResource editTextValue}"  Width="220" Margin="2" Text="{Binding Branch}"/>-->
                     </StackPanel>
                 </DockPanel>
             </Grid>

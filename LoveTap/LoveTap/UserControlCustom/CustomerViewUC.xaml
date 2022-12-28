@@ -196,12 +196,12 @@
                             </ListView.Resources>
                             <ListView.View >
                                 <GridView>
-                                    <GridViewColumn Header="Phone" DisplayMemberBinding="{Binding sdt}"></GridViewColumn>
-                                    <GridViewColumn Header="Name" DisplayMemberBinding="{Binding ten}"></GridViewColumn>
-                                    <GridViewColumn Header="Date of Birth" DisplayMemberBinding="{Binding dob, StringFormat='dd/MM//yyyy'}"></GridViewColumn>
-                                    <GridViewColumn Header="Address" DisplayMemberBinding="{Binding dchi}"></GridViewColumn>
-                                    <GridViewColumn Header="Registation Date" DisplayMemberBinding="{Binding rd, StringFormat='dd/MM/yyyy'}"></GridViewColumn>
-                                    <GridViewColumn Header="Sale" DisplayMemberBinding="{Binding sale}"></GridViewColumn>
+                                    <GridViewColumn Header="Phone" DisplayMemberBinding="{Binding SDT}"></GridViewColumn>
+                                    <GridViewColumn Header="Name" DisplayMemberBinding="{Binding HOTEN}"></GridViewColumn>
+                                    <GridViewColumn Header="Date of Birth" DisplayMemberBinding="{Binding NGSINH, StringFormat='dd/MM//yyyy'}"></GridViewColumn>
+                                    <GridViewColumn Header="Address" DisplayMemberBinding="{Binding DIACHI}"></GridViewColumn>
+                                    <GridViewColumn Header="Registation Date" DisplayMemberBinding="{Binding NGDK, StringFormat='dd/MM/yyyy'}"></GridViewColumn>
+                                    <GridViewColumn Header="Sale" DisplayMemberBinding="{Binding DOANHSO}"></GridViewColumn>
                                 </GridView>
                             </ListView.View>
                             <i:Interaction.Triggers>
