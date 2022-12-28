@@ -21,7 +21,7 @@
     <i:Interaction.Triggers>
         <i:EventTrigger EventName="Loaded">
             <i:InvokeCommandAction Command="{Binding LoadHome}"
-                                                       CommandParameter="{Binding ElementName=homeWindow}"></i:InvokeCommandAction>
+                                                       CommandParameter="{Binding ElementName=HomeView}"></i:InvokeCommandAction>
         </i:EventTrigger>
     </i:Interaction.Triggers>
 
@@ -59,90 +59,106 @@
             <Grid Grid.ColumnSpan="8" Grid.RowSpan="2" >
                 <StackPanel Orientation="Horizontal">
                     <!-- REVENUE -->
-                    <materialDesign:Card 
-                            Margin="10, 0, 20, 0" 
+                    <Button BorderBrush="Transparent" Margin="10, 0, 20, 0" Padding="0"
+                            Height="100" 
+                            Width="142">
+                        <materialDesign:Card 
                             Height="100" 
                             Width="142"
                             >
-                        <Grid >
-                            <TextBlock Margin="10, 10, 10, 10" 
+                            <Grid >
+                                <TextBlock Margin="10, 10, 10, 10" 
                                         FontSize="10"
                                         HorizontalAlignment="Left"
                                         VerticalAlignment="Top"
                                         Foreground="#5684B0"
                                         >REVENUE/DAY</TextBlock>
-                            <TextBlock Margin="10, 10, 10, 10" 
+                                <TextBlock Margin="10, 10, 10, 10" 
                                         FontSize="10"
                                         HorizontalAlignment="Right"
                                         VerticalAlignment="Top"
                                        Foreground="#59B39C"
                                         >+16.24%</TextBlock>
-                            <TextBlock Margin="0, 10, 10, 10" 
+                                <StackPanel Orientation="Horizontal"                                         
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Center"
+>
+                                    <TextBlock Margin="0, 10, 10, 10" 
                                         FontSize="16"
                                         HorizontalAlignment="Center"
                                         VerticalAlignment="Center"
-                                        Foreground="#000"
+                                        Foreground="{StaticResource Catalina Blue}"
+                                       Text="{Binding Doanhthu}"
                                         >
-                                <Bold>999.99M VND</Bold>
-                            </TextBlock>
-                            <TextBlock Margin="10, 10, 10, 10" 
+                                    </TextBlock>
+                                    <TextBlock Margin="0, 10, 10, 10" 
+                                        FontSize="13"
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Bottom"
+                                        Foreground="{StaticResource Catalina Blue}"
+                                       Text="VND"
+                                        >
+                                    </TextBlock>
+                                </StackPanel>
+                                <TextBlock Margin="10, 10, 10, 10" 
                                         FontSize="10"
                                         HorizontalAlignment="Left"
                                         VerticalAlignment="Bottom"
                                         Foreground="#5684B0"
                                         TextDecorations="Underline"
                                         >See details</TextBlock>
-                            <Image 
+                                <Image 
                                 Width="15" 
                                 Source="../img/dollar.jpg"
                                 HorizontalAlignment="Right"
                                 VerticalAlignment="Bottom"
                                 Margin="10, 10, 10, 10" 
                                 ></Image>
+                            </Grid>
 
+                        </materialDesign:Card>
 
-
-                        </Grid>
-
-                    </materialDesign:Card>
+                    </Button>
 
 
                     <!--ORDERS -->
-                    <materialDesign:Card 
-                            Margin="20, 0, 20, 0" 
+                    <Button Margin="20, 0, 20, 0" Padding="0" BorderBrush="Transparent"
+                            Height="100" 
+                            Width="142">
+                        <materialDesign:Card 
                             Height="100" 
                             Width="142"
                             >
-                        <Grid>
-                            <TextBlock Margin="10, 10, 10, 10" 
+                            <Grid>
+                                <TextBlock Margin="10, 10, 10, 10" 
                                         FontSize="10"
                                         HorizontalAlignment="Left"
                                         VerticalAlignment="Top"
                                        Foreground="#5684B0"
                                         >ORDERS/DAY</TextBlock>
-                            <TextBlock Margin="10, 10, 10, 10" 
+                                <TextBlock Margin="10, 10, 10, 10" 
                                         FontSize="10"
                                         HorizontalAlignment="Right"
                                         VerticalAlignment="Top"
                                        Foreground="#F26A4F
 "
                                         >-16.24%</TextBlock>
-                            <TextBlock Margin="0, 10, 10, 10" 
+                                <TextBlock Margin="0, 10, 10, 10" 
                                         FontSize="16"
                                         HorizontalAlignment="Center"
                                         VerticalAlignment="Center"
                                         Foreground="#000"
-                                        >
-                                <Bold>999.99M VND</Bold>
-                            </TextBlock>
-                            <TextBlock Margin="10, 10, 10, 10" 
+                                       Text="{Binding slOrders}">
+
+                                </TextBlock>
+                                <TextBlock Margin="10, 10, 10, 10" 
                                         FontSize="10"
                                         HorizontalAlignment="Left"
                                         VerticalAlignment="Bottom"
                                         Foreground="#5684B0"
                                         TextDecorations="Underline"
                                         >See details</TextBlock>
-                            <Image 
+                                <Image 
                                 Width="22" 
                                 Source="../img/bag.jpg"
                                 HorizontalAlignment="Right"
@@ -150,46 +166,51 @@
                                 Margin="10, 10, 10, 10" 
                                 ></Image>
 
-                        </Grid>
+                            </Grid>
 
-                    </materialDesign:Card>
+                        </materialDesign:Card>
+                    </Button>
 
                     <!-- CUSTOMER -->
-                    <materialDesign:Card 
-                            Margin="20, 0, 20, 0" 
+                    <Button  Margin="20, 0, 20, 0" 
+                            Height="100" 
+                            Width="142"
+                             BorderBrush="Transparent"
+                             Padding="0">
+                        <materialDesign:Card 
                             Height="100" 
                             Width="142"
                             >
-                        <Grid>
-                            <TextBlock Margin="10, 10, 10, 10" 
+                            <Grid>
+                                <TextBlock Margin="10, 10, 10, 10" 
                                         FontSize="10"
                                         HorizontalAlignment="Left"
                                         VerticalAlignment="Top"
                                        Foreground="#5684B0"
                                         >CUSTOMERS/DAY</TextBlock>
-                            <TextBlock Margin="10, 10, 10, 10" 
+                                <TextBlock Margin="10, 10, 10, 10" 
                                         FontSize="10"
                                         HorizontalAlignment="Right"
                                         VerticalAlignment="Top"
                                        Foreground="#F26A4F
 "
                                         >-16.24%</TextBlock>
-                            <TextBlock Margin="0, 10, 10, 10" 
+                                <TextBlock Margin="0, 10, 10, 10" 
                                         FontSize="16"
                                         HorizontalAlignment="Center"
                                         VerticalAlignment="Center"
-                                        Foreground="#000"
+                                        Foreground="{StaticResource Catalina Blue}"
+                                       Text="{Binding slKhachHang}"
                                         >
-                                <Bold>999.99M VND</Bold>
-                            </TextBlock>
-                            <TextBlock Margin="10, 10, 10, 10" 
+                                </TextBlock>
+                                <TextBlock Margin="10, 10, 10, 10" 
                                         FontSize="10"
                                         HorizontalAlignment="Left"
                                         VerticalAlignment="Bottom"
                                         Foreground="#5684B0"
                                         TextDecorations="Underline"
                                         >See details</TextBlock>
-                            <Image 
+                                <Image 
                                 Width="15" 
                                 Source="../img/person.jpg"
                                 HorizontalAlignment="Right"
@@ -197,9 +218,10 @@
                                 Margin="10, 10, 10, 10" 
                                 ></Image>
 
-                        </Grid>
+                            </Grid>
 
-                    </materialDesign:Card>
+                        </materialDesign:Card>
+                    </Button>
 
                 </StackPanel>
 
@@ -209,7 +231,7 @@
 
             <!-- BEST SELLING -->
 
-            <Border Grid.Row="2" Grid.RowSpan="6" Grid.ColumnSpan="8" Background="White"
+            <Border Grid.Row="2" Grid.RowSpan="6" Grid.ColumnSpan="10" Background="White"
                     CornerRadius="5" Margin="10" >
                 <Border.Effect>
                     <DropShadowEffect BlurRadius="10" Color="Gray"/>
@@ -220,14 +242,15 @@
                             <ListView.Resources>
                                 <Style TargetType="{x:Type GridViewColumnHeader}">
                                     <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                                    <Setter Property="HorizontalAlignment" Value="Center"/>
                                     <Setter Property="Foreground" Value="{StaticResource Cyan Azure}"/>
                                 </Style>
                             </ListView.Resources>
                             <ListView.View >
                                 <GridView>
-                                    <GridViewColumn Header="Best Selling Product" DisplayMemberBinding="{Binding Ten}"></GridViewColumn>
-                                    <GridViewColumn Header="Orders" DisplayMemberBinding="{Binding SoLuong}"></GridViewColumn>
-                                    <GridViewColumn Header="Stocks" DisplayMemberBinding="{Binding SoLuongTon}"></GridViewColumn>
+                                    <GridViewColumn Header="Best Selling Product" DisplayMemberBinding="{Binding Ten}" Width="300" HeaderContainerStyle="{StaticResource myHeaderStyle}"></GridViewColumn>
+                                    <GridViewColumn Header="Orders" DisplayMemberBinding="{Binding SoLuong}" Width="100"></GridViewColumn>
+                                    <GridViewColumn Header="Stocks" DisplayMemberBinding="{Binding SoLuongTon}" Width="100"></GridViewColumn>
                                 </GridView>
                             </ListView.View>
                             <i:Interaction.Triggers>
@@ -242,15 +265,23 @@
             </Border>
 
             <!-- CALENDAR - MAP -->
-            <Grid  Grid.Column="8"  Grid.ColumnSpan="2" Grid.RowSpan="8" Margin="0 5 5 0">
+            <Grid  Grid.Column="8"  Grid.ColumnSpan="2" Grid.RowSpan="8" Margin="0 0 5 0">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="1*"></RowDefinition>
                         <RowDefinition Height="2*"></RowDefinition>
                     </Grid.RowDefinitions>
 
-                    <materialDesign:Card  VerticalAlignment="Top" Grid.Row="0">
-                        <Calendar Style="{StaticResource styleCalendar}"  HorizontalAlignment="Center"  Name="Calendar" SelectionMode="None" />
+                    <materialDesign:Card  VerticalAlignment="Top" Grid.Row="0" Margin="10 7 0 0" Width="110" Height="100">
+                        <Calendar Style="{StaticResource styleCalendar}"  HorizontalAlignment="Center"  
+                                  Name="calendar" >
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="SelectedDatesChanged">
+                                    <i:InvokeCommandAction     Command="{Binding ChangeDate}"
+                                                               CommandParameter="{Binding ElementName=calendar}"></i:InvokeCommandAction>
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </Calendar>
                     </materialDesign:Card>
 
                 </Grid>
