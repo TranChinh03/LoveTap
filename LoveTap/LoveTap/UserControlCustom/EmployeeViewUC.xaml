@@ -127,7 +127,6 @@
                                 <ComboBoxItem Content="Name"/>
                                 <ComboBoxItem Content="Phone"/>
                                 <ComboBoxItem Content="Email"/>
-                                <ComboBoxItem Content="Branch"/>
                                 <ComboBoxItem Content="Position"/>
                             </ComboBox>
                         </DockPanel>
@@ -221,12 +220,12 @@
                             </ListView.Resources>
                             <ListView.View >
                                 <GridView>
-                                    <GridViewColumn Header="Employee ID" DisplayMemberBinding="{Binding id}"></GridViewColumn>
-                                    <GridViewColumn Header="Name" DisplayMemberBinding="{Binding ten}"></GridViewColumn>
-                                    <GridViewColumn Header="Phone" DisplayMemberBinding="{Binding sdt}"></GridViewColumn>
-                                    <GridViewColumn Header="Email" DisplayMemberBinding="{Binding email}"></GridViewColumn>
-                                    <GridViewColumn Header="Branch" DisplayMemberBinding="{Binding chinhanh}"></GridViewColumn>
-                                    <GridViewColumn Header="Position" DisplayMemberBinding="{Binding vitri}"></GridViewColumn>
+                                    <GridViewColumn Header="Employee ID" DisplayMemberBinding="{Binding MANV}"></GridViewColumn>
+                                    <GridViewColumn Header="Name" DisplayMemberBinding="{Binding HOTEN}"></GridViewColumn>
+                                    <GridViewColumn Header="Phone" DisplayMemberBinding="{Binding SDT}"></GridViewColumn>
+                                    <GridViewColumn Header="Email" DisplayMemberBinding="{Binding EMAIL}"></GridViewColumn>
+                                    <GridViewColumn Header="Branch" DisplayMemberBinding="{Binding MACN}"></GridViewColumn>
+                                    <GridViewColumn Header="Position" DisplayMemberBinding="{Binding VAITRO}"></GridViewColumn>
                                 </GridView>
                             </ListView.View>
                             <i:Interaction.Triggers>

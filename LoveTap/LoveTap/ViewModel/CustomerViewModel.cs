@@ -35,30 +35,30 @@ namespace LoveTap.ViewModel
         private ObservableCollection<CHINHANH> _BranchList;
         public ObservableCollection<CHINHANH> BranchList { get => _BranchList; set { _BranchList = value; OnPropertyChanged(); } }
 
-        public struct Customer
-        {
-            public string ten { get; set;}
-            public string sdt { get; set; }
-            public string dchi { get; set; }
-            public DateTime dob { get; set; }
-            public DateTime rd { get; set; }
-            public double sale { get; set; }
-        }
+        //public struct Customer
+        //{
+        //    public string ten { get; set;}
+        //    public string sdt { get; set; }
+        //    public string dchi { get; set; }
+        //    public DateTime dob { get; set; }
+        //    public DateTime rd { get; set; }
+        //    public double sale { get; set; }
+        //}
 
-        private List<Customer> _MyCustomerList = new List<Customer>();
-        public List<Customer> MyCustomerList { get => _MyCustomerList; set { _MyCustomerList = value; OnPropertyChanged(); } }
+        private List<KHACHHANG> _MyCustomerList = new List<KHACHHANG>();
+        public List<KHACHHANG> MyCustomerList { get => _MyCustomerList; set { _MyCustomerList = value; OnPropertyChanged(); } }
 
-        private List<Customer> _CustomerDOBList = new List<Customer>();
-        public List<Customer> CustomerDOBList { get => _CustomerDOBList; set { _CustomerDOBList = value; OnPropertyChanged(); } }
+        private List<KHACHHANG> _CustomerDOBList = new List<KHACHHANG>();
+        public List<KHACHHANG> CustomerDOBList { get => _CustomerDOBList; set { _CustomerDOBList = value; OnPropertyChanged(); } }
 
 
-        private List<Customer> _CustomerRDList = new List<Customer>();
-        public List<Customer> CustomerRDList { get => _CustomerRDList; set { _CustomerRDList = value; OnPropertyChanged(); } }
+        private List<KHACHHANG> _CustomerRDList = new List<KHACHHANG>();
+        public List<KHACHHANG> CustomerRDList { get => _CustomerRDList; set { _CustomerRDList = value; OnPropertyChanged(); } }
 
-        private List<Customer> _CustomerSaleList = new List<Customer>();
-        public List<Customer> CustomerSaleList { get => _CustomerSaleList; set { _CustomerSaleList = value; OnPropertyChanged(); } }
+        private List<KHACHHANG> _CustomerSaleList = new List<KHACHHANG>();
+        public List<KHACHHANG> CustomerSaleList { get => _CustomerSaleList; set { _CustomerSaleList = value; OnPropertyChanged(); } }
 
-        public IEnumerable<Customer> MyFilterList
+        public IEnumerable<KHACHHANG> MyFilterList
         {
             get
             {
@@ -67,29 +67,29 @@ namespace LoveTap.ViewModel
                 else if (sortText != null && findText == "Name")
                 {
                     if (sortText == "Date of Birth")
-                        return CustomerDOBList.Where(x => (x.ten.ToUpper().Contains(searchText.ToUpper())));
+                        return CustomerDOBList.Where(x => (x.HOTEN.ToUpper().Contains(searchText.ToUpper())));
                     else if (sortText == "Registation Date")
-                        return CustomerRDList.Where(x => (x.ten.ToUpper().Contains(searchText.ToUpper())));
+                        return CustomerRDList.Where(x => (x.HOTEN.ToUpper().Contains(searchText.ToUpper())));
                     else if (sortText == "Sale")
-                        return CustomerSaleList.Where(x => (x.ten.ToUpper().Contains(searchText.ToUpper())));
+                        return CustomerSaleList.Where(x => (x.HOTEN.ToUpper().Contains(searchText.ToUpper())));
                 }
                 else if (sortText != null && findText == "Phone")
                 {
                     if (sortText == "Date of Birth")
-                        return CustomerDOBList.Where(x => (x.sdt.ToUpper().Contains(searchText.ToUpper())));
+                        return CustomerDOBList.Where(x => (x.SDT.ToUpper().Contains(searchText.ToUpper())));
                     else if (sortText == "Registation Date")
-                        return CustomerRDList.Where(x => (x.sdt.ToUpper().Contains(searchText.ToUpper())));
+                        return CustomerRDList.Where(x => (x.SDT.ToUpper().Contains(searchText.ToUpper())));
                     else if (sortText == "Sale")
-                        return CustomerSaleList.Where(x => (x.sdt.ToUpper().Contains(searchText.ToUpper())));
+                        return CustomerSaleList.Where(x => (x.SDT.ToUpper().Contains(searchText.ToUpper())));
                 }
                 else if (sortText != null && findText == "Address")
                 {
                     if (sortText == "Date of Birth")
-                        return CustomerDOBList.Where(x => (x.dchi.ToUpper().Contains(searchText.ToUpper())));
+                        return CustomerDOBList.Where(x => (x.DIACHI.ToUpper().Contains(searchText.ToUpper())));
                     else if (sortText == "Registation Date")
-                        return CustomerRDList.Where(x => (x.dchi.ToUpper().Contains(searchText.ToUpper())));
+                        return CustomerRDList.Where(x => (x.DIACHI.ToUpper().Contains(searchText.ToUpper())));
                     else if (sortText == "Sale")
-                        return CustomerSaleList.Where(x => (x.dchi.ToUpper().Contains(searchText.ToUpper())));
+                        return CustomerSaleList.Where(x => (x.DIACHI.ToUpper().Contains(searchText.ToUpper())));
                 }
                 else if(sortText != null && findText==null)
                 {
@@ -103,11 +103,11 @@ namespace LoveTap.ViewModel
                 else if(sortText == null && findText != null)
                 {
                     if (findText == "Name")
-                        return MyCustomerList.Where(x => (x.ten.ToUpper().Contains(searchText.ToUpper())));
+                        return MyCustomerList.Where(x => (x.HOTEN.ToUpper().Contains(searchText.ToUpper())));
                     else if (findText == "Phone")
-                        return MyCustomerList.Where(x => (x.sdt.ToUpper().Contains(searchText.ToUpper())));
+                        return MyCustomerList.Where(x => (x.SDT.ToUpper().Contains(searchText.ToUpper())));
                     else if (findText == "Address")
-                        return MyCustomerList.Where(x => (x.dchi.ToUpper().Contains(searchText.ToUpper())));
+                        return MyCustomerList.Where(x => (x.DIACHI.ToUpper().Contains(searchText.ToUpper())));
                 }    
                 return MyCustomerList;
                 //return ProductList.Where(x => ((x.TEN.ToUpper().Contains(searchText.ToUpper()))|| (x.MASP.ToUpper().Contains(searchText.ToUpper()))|| (x.GIA >= double.Parse(searchText))|| (x.MADM.ToUpper().Contains(searchText.ToUpper()))|| (x.CHITIET.ToUpper().Contains(searchText.ToUpper()))));
@@ -135,45 +135,50 @@ namespace LoveTap.ViewModel
             a = b;
             b = temp;
         }
-        void Swap(ref Customer a, ref Customer b)
+        void Swap(ref KHACHHANG a, ref KHACHHANG b)
         {
-            string sdta = a.sdt;
-            string sdtb = b.sdt;
-            string tena = a.ten;
-            string tenb = b.ten;
-            string dchia = a.dchi;
-            string dchib = b.dchi;
-            DateTime doba = (DateTime)a.dob;
-            DateTime dobb = (DateTime)b.dob;
-            DateTime rda = (DateTime)a.rd;
-            DateTime rdb = (DateTime)b.rd;
-            double salea = (double)a.sale;
-            double saleb = (double)b.sale;
+            string sdta = a.SDT;
+            string sdtb = b.SDT;
+            string tena = a.HOTEN;
+            string tenb = b.HOTEN;
+            string dchia = a.DIACHI;
+            string dchib = b.DIACHI;
+            DateTime doba = (DateTime)a.NGSINH;
+            DateTime dobb = (DateTime)b.NGSINH;
+            DateTime rda = (DateTime)a.NGDK;
+            DateTime rdb = (DateTime)b.NGDK;
+            double salea = (double)a.DOANHSO;
+            double saleb = (double)b.DOANHSO;
+            string manva = a.MANV;
+            string manvb = b.MANV;
             SwapString(ref sdta, ref sdtb);
             SwapString(ref tena, ref tenb);
             SwapString(ref dchia, ref dchib);
             SwapDateTime(ref doba, ref dobb);
             SwapDateTime(ref rda, ref rdb);
             SwapDouble(ref salea, ref saleb);
-            a.sdt = sdta;
-            a.ten = tena;
-            a.dchi = dchia;
-            a.dob = doba;
-            a.rd = rda;
-            a.sale = salea;
-            b.sdt = sdtb;
-            b.ten = tenb;
-            b.dchi = dchib;
-            b.dob = dobb;
-            b.rd = rdb;
-            b.sale = saleb;
+            SwapString(ref manva, ref manvb);
+            a.SDT = sdta;
+            a.HOTEN = tena;
+            a.DIACHI = dchia;
+            a.NGSINH = doba;
+            a.NGDK = rda;
+            a.DOANHSO = salea;
+            a.MANV = manva;
+            b.SDT = sdtb;
+            b.HOTEN = tenb;
+            b.DIACHI = dchib;
+            b.NGSINH = dobb;
+            b.NGDK = rdb;
+            b.DOANHSO = saleb;
+            b.MANV = manvb;
         }
 
-        public List<Customer> SapGiamDOB(List<Customer> list)
+        public List<KHACHHANG> SapGiamDOB(List<KHACHHANG> list)
         {
-            Customer a, b;
-            List<Customer> list1 = new List<Customer>();
-            foreach(Customer kh in list)
+            KHACHHANG a, b;
+            List<KHACHHANG> list1 = new List<KHACHHANG>();
+            foreach(KHACHHANG kh in list)
             {
                 list1.Add(kh);
             }
@@ -181,7 +186,7 @@ namespace LoveTap.ViewModel
             for(int i = 0; i < list1.Count()-1;i++)
                 for(int j=i+1; j < list1.Count();j++)
                 {
-                    if (list1[i].dob < list[j].dob)
+                    if (list1[i].NGSINH < list[j].NGSINH)
                     {
                         a = list1[i];
                         b = list1[j];
@@ -194,11 +199,11 @@ namespace LoveTap.ViewModel
             return list1;
         }
 
-        public List<Customer> SapGiamRD(List<Customer> list)
+        public List<KHACHHANG> SapGiamRD(List<KHACHHANG> list)
         {
-            Customer a, b;
-            List<Customer> list1 = new List<Customer>();
-            foreach (Customer kh in list)
+            KHACHHANG a, b;
+            List<KHACHHANG> list1 = new List<KHACHHANG>();
+            foreach (KHACHHANG kh in list)
             {
                 list1.Add(kh);
             }
@@ -206,7 +211,7 @@ namespace LoveTap.ViewModel
             for (int i = 0; i < list1.Count() - 1; i++)
                 for (int j = i + 1; j < list1.Count(); j++)
                 {
-                    if (list1[i].rd < list[j].rd)
+                    if (list1[i].NGDK < list[j].NGDK)
                     {
                         a = list1[i];
                         b = list1[j];
@@ -219,11 +224,11 @@ namespace LoveTap.ViewModel
             return list1;
         }
 
-        public List<Customer> SapGiamSale(List<Customer> list)
+        public List<KHACHHANG> SapGiamSale(List<KHACHHANG> list)
         {
-            Customer a, b;
-            List<Customer> list1 = new List<Customer>();
-            foreach (Customer kh in list)
+            KHACHHANG a, b;
+            List<KHACHHANG> list1 = new List<KHACHHANG>();
+            foreach (KHACHHANG kh in list)
             {
                 list1.Add(kh);
             }
@@ -231,7 +236,7 @@ namespace LoveTap.ViewModel
             for (int i = 0; i < list1.Count() - 1; i++)
                 for (int j = i + 1; j < list1.Count(); j++)
                 {
-                    if (list1[i].sale < list[j].sale)
+                    if (list1[i].DOANHSO < list[j].DOANHSO)
                     {
                         a = list1[i];
                         b = list1[j];
@@ -311,14 +316,14 @@ namespace LoveTap.ViewModel
 
             foreach(KHACHHANG kh in CustomerList)
             {
-                Customer temp = new Customer();
-                temp.ten = kh.HOTEN;
-                temp.dchi = kh.DIACHI;
-                temp.sdt = kh.SDT;
-                temp.rd = (DateTime)kh.NGDK;
-                temp.dob = (DateTime)kh.NGSINH;
-                temp.sale = (double)kh.DOANHSO;
-                MyCustomerList.Add(temp);
+                //Customer temp = new Customer();
+                //temp.ten = kh.HOTEN;
+                //temp.dchi = kh.DIACHI;
+                //temp.sdt = kh.SDT;
+                //temp.rd = (DateTime)kh.NGDK;
+                //temp.dob = (DateTime)kh.NGSINH;
+                //temp.sale = (double)kh.DOANHSO;
+                MyCustomerList.Add(kh);
             }
 
             CustomerDOBList = SapGiamDOB(MyCustomerList);
