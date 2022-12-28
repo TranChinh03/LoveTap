@@ -35,7 +35,6 @@ namespace LoveTap.Model
         public virtual DbSet<LOGIN> LOGINs { get; set; }
         public virtual DbSet<NHANVIEN> NHANVIENs { get; set; }
         public virtual DbSet<SANPHAM> SANPHAMs { get; set; }
-        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<TONKHO> TONKHOes { get; set; }
     }
 }

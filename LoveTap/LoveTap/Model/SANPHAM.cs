@@ -9,11 +9,10 @@
 
 namespace LoveTap.Model
 {
-    using LoveTap.ViewModel;
     using System;
     using System.Collections.Generic;
     
-    public partial class SANPHAM : BaseViewModel
+    public partial class SANPHAM
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public SANPHAM()
