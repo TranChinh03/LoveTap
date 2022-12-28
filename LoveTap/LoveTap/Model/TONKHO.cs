@@ -9,11 +9,10 @@
 
 namespace LoveTap.Model
 {
-    using LoveTap.ViewModel;
     using System;
     using System.Collections.Generic;
     
-    public partial class TONKHO : BaseViewModel
+    public partial class TONKHO
     {
         public string MAKHO { get; set; }
         public string MASP { get; set; }

@@ -9,11 +9,10 @@
 
 namespace LoveTap.Model
 {
-    using LoveTap.ViewModel;
     using System;
     using System.Collections.Generic;
     
-    public partial class CTHD : BaseViewModel
+    public partial class CTHD
     {
         public string MAHD { get; set; }
         public string MASP { get; set; }

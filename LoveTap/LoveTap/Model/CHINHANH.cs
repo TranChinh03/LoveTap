@@ -14,11 +14,19 @@ namespace LoveTap.Model
     
     public partial class CHINHANH
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public CHINHANH()
+        {
+            this.NHANVIENs = new HashSet<NHANVIEN>();
+        }
+    
         public string MACN { get; set; }
         public string TENCN { get; set; }
         public string DIACHI { get; set; }
         public string MAADMIN { get; set; }
     
         public virtual NHANVIEN NHANVIEN { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<NHANVIEN> NHANVIENs { get; set; }
     }
 }
