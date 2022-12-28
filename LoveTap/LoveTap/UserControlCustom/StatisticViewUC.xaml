@@ -121,14 +121,27 @@
                                         VerticalAlignment="Top"
                                         Foreground="#5684B0"
                                         >TỔNG DOANH THU</TextBlock>
-                        <TextBlock Margin="0, 10, 10, 10" 
+                        <StackPanel Orientation="Horizontal"                                         
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Center"
+>
+                            <TextBlock Margin="0, 10, 10, 10" 
                                         FontSize="16"
                                         HorizontalAlignment="Center"
                                         VerticalAlignment="Center"
-                                        Foreground="#033270"
+                                        Foreground="{StaticResource Catalina Blue}"
+                                       Text="{Binding Doanhthu}"
                                         >
-                                <Bold>999.99M</Bold>
-                        </TextBlock>
+                            </TextBlock>
+                            <TextBlock Margin="0, 10, 10, 10" 
+                                        FontSize="13"
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Bottom"
+                                        Foreground="{StaticResource Catalina Blue}"
+                                       Text="VND"
+                                        >
+                            </TextBlock>
+                        </StackPanel>
                         <Image 
                                 Width="15" 
                                 Source="../img/dollar.jpg"
@@ -217,8 +230,8 @@
                                         HorizontalAlignment="Center"
                                         VerticalAlignment="Center"
                                         Foreground="#EF3C2D"
+                                        
                                         >
-                                <Bold>THÁNG 1</Bold>
                         </TextBlock>
                         <TextBlock Margin="6, 32, 10, 10" 
                                         FontSize="11"
@@ -243,7 +256,7 @@
                                        Background="#D3FFF4"
                                        Padding="4, 2, 4, 2"
                                         >
-                                <Bold>VND</Bold>
+                                <Bold ></Bold>
                         </TextBlock>
 
                     </Grid>
