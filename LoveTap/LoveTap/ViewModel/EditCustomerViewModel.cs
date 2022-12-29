@@ -78,9 +78,9 @@ namespace LoveTap.ViewModel
 
             }, (p) =>
             {
-                KHACHHANG customer = DataProvider.Ins.DB.KHACHHANGs.Where(x => x.SDT == Phone).SingleOrDefault();
+                var customer = DataProvider.Ins.DB.KHACHHANGs.Where(x => x.SDT == Phone).SingleOrDefault();
                 customer.HOTEN = CusName;
-                customer.SDT = Phone;
+                //customer.SDT = Phone;
                 //foreach (KHACHHANG kh in CustomerList)
                 //{
                 //    if (kh.SDT == Phone)

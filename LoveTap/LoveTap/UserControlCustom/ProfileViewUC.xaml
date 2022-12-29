@@ -232,7 +232,7 @@
                             <TextBlock Padding="6"
                                         FontSize="14"
                                         Foreground="#79A7CB"
-                                        Text="{Binding Birthday}"
+                                        Text="{Binding Birthday,StringFormat='dd/MM/yyyy'}"
                                         ></TextBlock>
                             <TextBlock Padding="6"
                                         FontSize="14"

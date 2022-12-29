@@ -75,8 +75,8 @@ namespace LoveTap.ViewModel
                 return true;
             }, (p) =>
             {
-                var employee = DataProvider.Ins.DB.NHANVIENs.Where(x => x.NVID == ID).SingleOrDefault();
-                employee.NVID = ID;
+                var employee = DataProvider.Ins.DB.NHANVIENs.Where(x => x.MANV == ID).SingleOrDefault();
+                //employee.MANV = ID;
                 employee.HOTEN = EmployeeName;
                 employee.SDT = PhoneNumber;
                 employee.NTNS = DateTime.Parse(Birthday);
