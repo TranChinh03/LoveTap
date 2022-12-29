@@ -74,6 +74,9 @@ namespace LoveTap.ViewModel
         private ObservableCollection<LOIICH> _BenefitList;
         public ObservableCollection<LOIICH> BenefitList { get => _BenefitList; set { _BenefitList = value; OnPropertyChanged(); } }
 
+        private List<string> _MyBenefitList = new List<string>();
+        public List<string> MyBenefitList { get => _MyBenefitList; set { _MyBenefitList = value; OnPropertyChanged(); } }
+
         public GoodDetailViewModel(NavigationStore navigationStore)
         {
             ProductList = new ObservableCollection<SANPHAM>(DataProvider.Ins.DB.SANPHAMs.Where(x => x.DELETED == false));
@@ -81,36 +84,42 @@ namespace LoveTap.ViewModel
             BenefitList = new ObservableCollection<LOIICH>(DataProvider.Ins.DB.LOIICHes);
             LoadedGoodDetail = new RelayCommand<UserControl>((p) => true, (p) =>
             {
-                SANPHAM product = GoodsViewModel.CurrentSelected;
-
-                if (product != null)
+                GoodsViewModel.Product temp = GoodsViewModel.CurrentSelected;
+                SANPHAM product = new SANPHAM();
+                foreach(SANPHAM sp in ProductList)
                 {
-                    ID = product.MASP;
-                    Name = product.TEN;
-                    Price = (double)product.GIA;
-                    foreach (CTSP ctsp in ProductDetailList)
+                    if(sp.TEN == temp.Ten)
+                        product= sp;
+                }
+                ID = product.MASP;
+                Name = product.TEN;
+                Price = (double)product.GIA;
+                foreach (CTSP ctsp in ProductDetailList)
+                {
+                    if (ctsp.MASP == product.MASP)
                     {
-                        if (ctsp.MASP == product.MASP)
-                        {
-                            RAM = ctsp.RAM;
-                            CPU = ctsp.CPU;
-                            HD = ctsp.HD;
-                            VGA = ctsp.VGA;
-                            Size = ctsp.SCREENSIZE;
-                            Color = ctsp.COLOR;
-                            OS = ctsp.OS;
-                        }
+                        RAM = ctsp.RAM;
+                        CPU = ctsp.CPU;
+                        HD = ctsp.HD;
+                        VGA = ctsp.VGA;
+                        Size = ctsp.SCREENSIZE;
+                        Color = ctsp.COLOR;
+                        OS = ctsp.OS;
                     }
+                }
 
-                    foreach (LOIICH li in BenefitList)
+                foreach (LOIICH li in BenefitList)
+                {
+                    if (li.MASP == product.MASP)
                     {
-                        if (li.MASP == product.MASP)
-                        {
-                            LI1 = li.LI1;
-                            LI2 = li.LI2;
-                            LI3 = li.LI3;
-                            LI4 = li.LI4;
-                        }
+                        LI1 = li.LI1;
+                        MyBenefitList.Add(LI1);
+                        LI2 = li.LI2;
+                        MyBenefitList.Add(LI2);
+                        LI3 = li.LI3;
+                        MyBenefitList.Add(LI3);
+                        LI4 = li.LI4;
+                        MyBenefitList.Add(LI4);
                     }
                 }
 
