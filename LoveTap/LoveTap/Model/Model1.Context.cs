@@ -28,11 +28,13 @@ namespace LoveTap.Model
         public virtual DbSet<BAOHANH> BAOHANHs { get; set; }
         public virtual DbSet<CHINHANH> CHINHANHs { get; set; }
         public virtual DbSet<CTHD> CTHDs { get; set; }
+        public virtual DbSet<CTSP> CTSPs { get; set; }
         public virtual DbSet<DANHMUC> DANHMUCs { get; set; }
         public virtual DbSet<HOADON> HOADONs { get; set; }
         public virtual DbSet<KHACHHANG> KHACHHANGs { get; set; }
         public virtual DbSet<KHO> KHOes { get; set; }
         public virtual DbSet<LOGIN> LOGINs { get; set; }
+        public virtual DbSet<LOIICH> LOIICHes { get; set; }
         public virtual DbSet<NHANVIEN> NHANVIENs { get; set; }
         public virtual DbSet<SANPHAM> SANPHAMs { get; set; }
         public virtual DbSet<TONKHO> TONKHOes { get; set; }

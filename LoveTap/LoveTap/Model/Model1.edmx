@@ -10,34 +10,47 @@
             <PropertyRef Name="SDT" />
             <PropertyRef Name="MASP" />
           </Key>
-          <Property Name="SDT" Type="char" MaxLength="30" Nullable="false" />
-          <Property Name="MASP" Type="char" MaxLength="65" Nullable="false" />
+          <Property Name="SDT" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="MASP" Type="varchar" MaxLength="65" Nullable="false" />
           <Property Name="DELETED" Type="bit" />
         </EntityType>
         <EntityType Name="CHINHANH">
           <Key>
             <PropertyRef Name="MACN" />
           </Key>
-          <Property Name="MACN" Type="char" MaxLength="65" Nullable="false" />
+          <Property Name="MACN" Type="varchar" MaxLength="65" Nullable="false" />
           <Property Name="TENCN" Type="nvarchar" MaxLength="255" />
           <Property Name="DIACHI" Type="nvarchar" MaxLength="255" />
-          <Property Name="MAADMIN" Type="char" MaxLength="65" />
+          <Property Name="MAADMIN" Type="varchar" MaxLength="65" />
         </EntityType>
         <EntityType Name="CTHD">
           <Key>
             <PropertyRef Name="MAHD" />
             <PropertyRef Name="MASP" />
           </Key>
-          <Property Name="MAHD" Type="char" MaxLength="65" Nullable="false" />
-          <Property Name="MASP" Type="char" MaxLength="65" Nullable="false" />
+          <Property Name="MAHD" Type="varchar" MaxLength="65" Nullable="false" />
+          <Property Name="MASP" Type="varchar" MaxLength="65" Nullable="false" />
           <Property Name="SOLUONG" Type="int" />
           <Property Name="DELETED" Type="bit" />
+        </EntityType>
+        <EntityType Name="CTSP">
+          <Key>
+            <PropertyRef Name="MASP" />
+          </Key>
+          <Property Name="MASP" Type="varchar" MaxLength="65" Nullable="false" />
+          <Property Name="CPU" Type="varchar" MaxLength="500" />
+          <Property Name="RAM" Type="varchar" MaxLength="500" />
+          <Property Name="HD" Type="varchar" MaxLength="500" />
+          <Property Name="VGA" Type="varchar" MaxLength="500" />
+          <Property Name="SCREENSIZE" Type="varchar" MaxLength="500" />
+          <Property Name="OS" Type="varchar" MaxLength="500" />
+          <Property Name="COLOR" Type="varchar" MaxLength="500" />
         </EntityType>
         <EntityType Name="DANHMUC">
           <Key>
             <PropertyRef Name="MADM" />
           </Key>
-          <Property Name="MADM" Type="char" MaxLength="65" Nullable="false" />
+          <Property Name="MADM" Type="varchar" MaxLength="65" Nullable="false" />
           <Property Name="TENDM" Type="nvarchar" MaxLength="255" />
           <Property Name="DELETED" Type="bit" />
         </EntityType>
@@ -45,12 +58,12 @@
           <Key>
             <PropertyRef Name="MAHD" />
           </Key>
-          <Property Name="MAHD" Type="char" MaxLength="65" Nullable="false" />
+          <Property Name="MAHD" Type="varchar" MaxLength="65" Nullable="false" />
           <Property Name="NGMUA" Type="smalldatetime" />
           <Property Name="TONGTIEN" Type="float" />
           <Property Name="LOAIHD" Type="bit" />
-          <Property Name="MANV" Type="char" MaxLength="65" />
-          <Property Name="SDT" Type="char" MaxLength="30" />
+          <Property Name="MANV" Type="varchar" MaxLength="65" />
+          <Property Name="SDT" Type="varchar" MaxLength="30" />
           <Property Name="DELETED" Type="bit" />
         </EntityType>
         <EntityType Name="KHACHHANG">
@@ -58,11 +71,11 @@
             <PropertyRef Name="SDT" />
           </Key>
           <Property Name="HOTEN" Type="nvarchar" MaxLength="255" />
-          <Property Name="SDT" Type="char" MaxLength="30" Nullable="false" />
+          <Property Name="SDT" Type="varchar" MaxLength="30" Nullable="false" />
           <Property Name="DIACHI" Type="nvarchar" MaxLength="255" />
           <Property Name="NGDK" Type="date" />
           <Property Name="DOANHSO" Type="float" />
-          <Property Name="MANV" Type="char" MaxLength="65" />
+          <Property Name="MANV" Type="varchar" MaxLength="65" />
           <Property Name="NGSINH" Type="smalldatetime" />
           <Property Name="DELETED" Type="bit" />
         </EntityType>
@@ -70,48 +83,58 @@
           <Key>
             <PropertyRef Name="MAKHO" />
           </Key>
-          <Property Name="MAKHO" Type="char" MaxLength="65" Nullable="false" />
+          <Property Name="MAKHO" Type="varchar" MaxLength="65" Nullable="false" />
           <Property Name="TENKHO" Type="nvarchar" MaxLength="255" />
           <Property Name="DIACHI" Type="nvarchar" MaxLength="255" />
           <Property Name="DIENTICH" Type="float" />
-          <Property Name="MANQL" Type="char" MaxLength="65" />
+          <Property Name="MANQL" Type="varchar" MaxLength="65" />
           <Property Name="DELETED" Type="bit" />
         </EntityType>
         <EntityType Name="LOGIN">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="char" MaxLength="255" Nullable="false" />
+          <Property Name="ID" Type="varchar" MaxLength="255" Nullable="false" />
           <Property Name="USERNAME" Type="varchar" MaxLength="255" />
           <Property Name="USERPASS" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="LOIICH">
+          <Key>
+            <PropertyRef Name="MASP" />
+          </Key>
+          <Property Name="MASP" Type="varchar" MaxLength="65" Nullable="false" />
+          <Property Name="LI1" Type="varchar" MaxLength="255" />
+          <Property Name="LI2" Type="varchar" MaxLength="255" />
+          <Property Name="LI3" Type="varchar" MaxLength="255" />
+          <Property Name="LI4" Type="varchar" MaxLength="255" />
         </EntityType>
         <EntityType Name="NHANVIEN">
           <Key>
             <PropertyRef Name="MANV" />
           </Key>
-          <Property Name="MANV" Type="char" MaxLength="65" Nullable="false" />
+          <Property Name="MANV" Type="varchar" MaxLength="65" Nullable="false" />
           <Property Name="HOTEN" Type="nvarchar" MaxLength="255" />
           <Property Name="NTNS" Type="smalldatetime" />
           <Property Name="SDT" Type="varchar" MaxLength="30" />
           <Property Name="DIACHI" Type="nvarchar" MaxLength="255" />
           <Property Name="HESOLUONG" Type="float" />
           <Property Name="LUONGCB" Type="float" />
-          <Property Name="MACN" Type="char" MaxLength="65" />
+          <Property Name="MACN" Type="varchar" MaxLength="65" />
           <Property Name="VAITRO" Type="bit" />
           <Property Name="EMAIL" Type="nvarchar" MaxLength="255" />
-          <Property Name="NVID" Type="char" MaxLength="255" />
+          <Property Name="NVID" Type="varchar" MaxLength="255" />
           <Property Name="DELETED" Type="bit" />
         </EntityType>
         <EntityType Name="SANPHAM">
           <Key>
             <PropertyRef Name="MASP" />
           </Key>
-          <Property Name="MASP" Type="char" MaxLength="65" Nullable="false" />
+          <Property Name="MASP" Type="varchar" MaxLength="65" Nullable="false" />
           <Property Name="TEN" Type="nvarchar" MaxLength="255" />
           <Property Name="GIA" Type="float" />
           <Property Name="NUOCSX" Type="nvarchar" MaxLength="255" />
           <Property Name="CHITIET" Type="nvarchar" MaxLength="255" />
-          <Property Name="MADM" Type="char" MaxLength="65" />
+          <Property Name="MADM" Type="varchar" MaxLength="65" />
           <Property Name="DELETED" Type="bit" />
         </EntityType>
         <EntityType Name="TONKHO">
@@ -119,8 +142,8 @@
             <PropertyRef Name="MAKHO" />
             <PropertyRef Name="MASP" />
           </Key>
-          <Property Name="MAKHO" Type="char" MaxLength="65" Nullable="false" />
-          <Property Name="MASP" Type="char" MaxLength="65" Nullable="false" />
+          <Property Name="MAKHO" Type="varchar" MaxLength="65" Nullable="false" />
+          <Property Name="MASP" Type="varchar" MaxLength="65" Nullable="false" />
           <Property Name="SOLUONG" Type="int" />
           <Property Name="DELETED" Type="bit" />
         </EntityType>
@@ -184,6 +207,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__CTSP__MASP__52593CB8">
+          <End Role="SANPHAM" Type="Self.SANPHAM" Multiplicity="1" />
+          <End Role="CTSP" Type="Self.CTSP" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="SANPHAM">
+              <PropertyRef Name="MASP" />
+            </Principal>
+            <Dependent Role="CTSP">
+              <PropertyRef Name="MASP" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__HOADON__MANV__2C3393D0">
           <End Role="NHANVIEN" Type="Self.NHANVIEN" Multiplicity="0..1" />
           <End Role="HOADON" Type="Self.HOADON" Multiplicity="*" />
@@ -229,6 +264,18 @@
             </Principal>
             <Dependent Role="KHO">
               <PropertyRef Name="MANQL" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__LOIICH__MASP__5535A963">
+          <End Role="SANPHAM" Type="Self.SANPHAM" Multiplicity="1" />
+          <End Role="LOIICH" Type="Self.LOIICH" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="SANPHAM">
+              <PropertyRef Name="MASP" />
+            </Principal>
+            <Dependent Role="LOIICH">
+              <PropertyRef Name="MASP" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -296,11 +343,13 @@
           <EntitySet Name="BAOHANH" EntityType="Self.BAOHANH" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CHINHANH" EntityType="Self.CHINHANH" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CTHD" EntityType="Self.CTHD" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CTSP" EntityType="Self.CTSP" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DANHMUC" EntityType="Self.DANHMUC" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="HOADON" EntityType="Self.HOADON" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="KHACHHANG" EntityType="Self.KHACHHANG" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="KHO" EntityType="Self.KHO" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="LOGIN" EntityType="Self.LOGIN" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LOIICH" EntityType="Self.LOIICH" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="NHANVIEN" EntityType="Self.NHANVIEN" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SANPHAM" EntityType="Self.SANPHAM" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TONKHO" EntityType="Self.TONKHO" Schema="dbo" store:Type="Tables" />
@@ -324,6 +373,10 @@
             <End Role="SANPHAM" EntitySet="SANPHAM" />
             <End Role="CTHD" EntitySet="CTHD" />
           </AssociationSet>
+          <AssociationSet Name="FK__CTSP__MASP__52593CB8" Association="Self.FK__CTSP__MASP__52593CB8">
+            <End Role="SANPHAM" EntitySet="SANPHAM" />
+            <End Role="CTSP" EntitySet="CTSP" />
+          </AssociationSet>
           <AssociationSet Name="FK__HOADON__MANV__2C3393D0" Association="Self.FK__HOADON__MANV__2C3393D0">
             <End Role="NHANVIEN" EntitySet="NHANVIEN" />
             <End Role="HOADON" EntitySet="HOADON" />
@@ -339,6 +392,10 @@
           <AssociationSet Name="FK__KHO__MANQL__38996AB5" Association="Self.FK__KHO__MANQL__38996AB5">
             <End Role="NHANVIEN" EntitySet="NHANVIEN" />
             <End Role="KHO" EntitySet="KHO" />
+          </AssociationSet>
+          <AssociationSet Name="FK__LOIICH__MASP__5535A963" Association="Self.FK__LOIICH__MASP__5535A963">
+            <End Role="SANPHAM" EntitySet="SANPHAM" />
+            <End Role="LOIICH" EntitySet="LOIICH" />
           </AssociationSet>
           <AssociationSet Name="FK__SANPHAM__MADM__31EC6D26" Association="Self.FK__SANPHAM__MADM__31EC6D26">
             <End Role="DANHMUC" EntitySet="DANHMUC" />
@@ -371,8 +428,8 @@
             <PropertyRef Name="SDT" />
             <PropertyRef Name="MASP" />
           </Key>
-          <Property Name="SDT" Type="String" MaxLength="30" FixedLength="true" Unicode="false" Nullable="false" />
-          <Property Name="MASP" Type="String" MaxLength="65" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="SDT" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MASP" Type="String" MaxLength="65" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="DELETED" Type="Boolean" />
           <NavigationProperty Name="SANPHAM" Relationship="Self.FK__BAOHANH__MASP__403A8C7D" FromRole="BAOHANH" ToRole="SANPHAM" />
           <NavigationProperty Name="KHACHHANG" Relationship="Self.FK__BAOHANH__SDT__3F466844" FromRole="BAOHANH" ToRole="KHACHHANG" />
@@ -381,10 +438,10 @@
           <Key>
             <PropertyRef Name="MACN" />
           </Key>
-          <Property Name="MACN" Type="String" MaxLength="65" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="MACN" Type="String" MaxLength="65" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="TENCN" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="DIACHI" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="MAADMIN" Type="String" MaxLength="65" FixedLength="true" Unicode="false" />
+          <Property Name="MAADMIN" Type="String" MaxLength="65" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="NHANVIEN" Relationship="Self.FK__CHINHANH__MAADMI__267ABA7A" FromRole="CHINHANH" ToRole="NHANVIEN" />
           <NavigationProperty Name="NHANVIENs" Relationship="Self.FK_NHANVIEN1" FromRole="CHINHANH" ToRole="NHANVIEN" />
         </EntityType>
@@ -393,18 +450,32 @@
             <PropertyRef Name="MAHD" />
             <PropertyRef Name="MASP" />
           </Key>
-          <Property Name="MAHD" Type="String" MaxLength="65" FixedLength="true" Unicode="false" Nullable="false" />
-          <Property Name="MASP" Type="String" MaxLength="65" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="MAHD" Type="String" MaxLength="65" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MASP" Type="String" MaxLength="65" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="SOLUONG" Type="Int32" />
           <Property Name="DELETED" Type="Boolean" />
           <NavigationProperty Name="HOADON" Relationship="Self.FK__CTHD__MAHD__34C8D9D1" FromRole="CTHD" ToRole="HOADON" />
           <NavigationProperty Name="SANPHAM" Relationship="Self.FK__CTHD__MASP__35BCFE0A" FromRole="CTHD" ToRole="SANPHAM" />
         </EntityType>
+        <EntityType Name="CTSP">
+          <Key>
+            <PropertyRef Name="MASP" />
+          </Key>
+          <Property Name="MASP" Type="String" MaxLength="65" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CPU" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="RAM" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="HD" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="VGA" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="SCREENSIZE" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="OS" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="COLOR" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="SANPHAM" Relationship="Self.FK__CTSP__MASP__52593CB8" FromRole="CTSP" ToRole="SANPHAM" />
+        </EntityType>
         <EntityType Name="DANHMUC">
           <Key>
             <PropertyRef Name="MADM" />
           </Key>
-          <Property Name="MADM" Type="String" MaxLength="65" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="MADM" Type="String" MaxLength="65" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="TENDM" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="DELETED" Type="Boolean" />
           <NavigationProperty Name="SANPHAMs" Relationship="Self.FK__SANPHAM__MADM__31EC6D26" FromRole="DANHMUC" ToRole="SANPHAM" />
@@ -413,12 +484,12 @@
           <Key>
             <PropertyRef Name="MAHD" />
           </Key>
-          <Property Name="MAHD" Type="String" MaxLength="65" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="MAHD" Type="String" MaxLength="65" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="NGMUA" Type="DateTime" Precision="0" />
           <Property Name="TONGTIEN" Type="Double" />
           <Property Name="LOAIHD" Type="Boolean" />
-          <Property Name="MANV" Type="String" MaxLength="65" FixedLength="true" Unicode="false" />
-          <Property Name="SDT" Type="String" MaxLength="30" FixedLength="true" Unicode="false" />
+          <Property Name="MANV" Type="String" MaxLength="65" FixedLength="false" Unicode="false" />
+          <Property Name="SDT" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
           <Property Name="DELETED" Type="Boolean" />
           <NavigationProperty Name="CTHDs" Relationship="Self.FK__CTHD__MAHD__34C8D9D1" FromRole="HOADON" ToRole="CTHD" />
           <NavigationProperty Name="NHANVIEN" Relationship="Self.FK__HOADON__MANV__2C3393D0" FromRole="HOADON" ToRole="NHANVIEN" />
@@ -429,11 +500,11 @@
             <PropertyRef Name="SDT" />
           </Key>
           <Property Name="HOTEN" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="SDT" Type="String" MaxLength="30" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="SDT" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="DIACHI" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="NGDK" Type="DateTime" Precision="0" />
           <Property Name="DOANHSO" Type="Double" />
-          <Property Name="MANV" Type="String" MaxLength="65" FixedLength="true" Unicode="false" />
+          <Property Name="MANV" Type="String" MaxLength="65" FixedLength="false" Unicode="false" />
           <Property Name="NGSINH" Type="DateTime" Precision="0" />
           <Property Name="DELETED" Type="Boolean" />
           <NavigationProperty Name="BAOHANHs" Relationship="Self.FK__BAOHANH__SDT__3F466844" FromRole="KHACHHANG" ToRole="BAOHANH" />
@@ -444,11 +515,11 @@
           <Key>
             <PropertyRef Name="MAKHO" />
           </Key>
-          <Property Name="MAKHO" Type="String" MaxLength="65" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="MAKHO" Type="String" MaxLength="65" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="TENKHO" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="DIACHI" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="DIENTICH" Type="Double" />
-          <Property Name="MANQL" Type="String" MaxLength="65" FixedLength="true" Unicode="false" />
+          <Property Name="MANQL" Type="String" MaxLength="65" FixedLength="false" Unicode="false" />
           <Property Name="DELETED" Type="Boolean" />
           <NavigationProperty Name="NHANVIEN" Relationship="Self.FK__KHO__MANQL__38996AB5" FromRole="KHO" ToRole="NHANVIEN" />
           <NavigationProperty Name="TONKHOes" Relationship="Self.FK__TONKHO__MAKHO__3B75D760" FromRole="KHO" ToRole="TONKHO" />
@@ -457,26 +528,37 @@
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="String" MaxLength="255" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="ID" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="USERNAME" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="USERPASS" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="NHANVIENs" Relationship="Self.FK_NHANVIEN" FromRole="LOGIN" ToRole="NHANVIEN" />
+        </EntityType>
+        <EntityType Name="LOIICH">
+          <Key>
+            <PropertyRef Name="MASP" />
+          </Key>
+          <Property Name="MASP" Type="String" MaxLength="65" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="LI1" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="LI2" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="LI3" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="LI4" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="SANPHAM" Relationship="Self.FK__LOIICH__MASP__5535A963" FromRole="LOIICH" ToRole="SANPHAM" />
         </EntityType>
         <EntityType Name="NHANVIEN">
           <Key>
             <PropertyRef Name="MANV" />
           </Key>
-          <Property Name="MANV" Type="String" MaxLength="65" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="MANV" Type="String" MaxLength="65" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="HOTEN" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="NTNS" Type="DateTime" Precision="0" />
           <Property Name="SDT" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
           <Property Name="DIACHI" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="HESOLUONG" Type="Double" />
           <Property Name="LUONGCB" Type="Double" />
-          <Property Name="MACN" Type="String" MaxLength="65" FixedLength="true" Unicode="false" />
+          <Property Name="MACN" Type="String" MaxLength="65" FixedLength="false" Unicode="false" />
           <Property Name="VAITRO" Type="Boolean" />
           <Property Name="EMAIL" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="NVID" Type="String" MaxLength="255" FixedLength="true" Unicode="false" />
+          <Property Name="NVID" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="DELETED" Type="Boolean" />
           <NavigationProperty Name="CHINHANHs" Relationship="Self.FK__CHINHANH__MAADMI__267ABA7A" FromRole="NHANVIEN" ToRole="CHINHANH" />
           <NavigationProperty Name="CHINHANH" Relationship="Self.FK_NHANVIEN1" FromRole="NHANVIEN" ToRole="CHINHANH" />
@@ -489,16 +571,18 @@
           <Key>
             <PropertyRef Name="MASP" />
           </Key>
-          <Property Name="MASP" Type="String" MaxLength="65" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="MASP" Type="String" MaxLength="65" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="TEN" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="GIA" Type="Double" />
           <Property Name="NUOCSX" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="CHITIET" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="MADM" Type="String" MaxLength="65" FixedLength="true" Unicode="false" />
+          <Property Name="MADM" Type="String" MaxLength="65" FixedLength="false" Unicode="false" />
           <Property Name="DELETED" Type="Boolean" />
           <NavigationProperty Name="BAOHANHs" Relationship="Self.FK__BAOHANH__MASP__403A8C7D" FromRole="SANPHAM" ToRole="BAOHANH" />
           <NavigationProperty Name="CTHDs" Relationship="Self.FK__CTHD__MASP__35BCFE0A" FromRole="SANPHAM" ToRole="CTHD" />
+          <NavigationProperty Name="CTSP" Relationship="Self.FK__CTSP__MASP__52593CB8" FromRole="SANPHAM" ToRole="CTSP" />
           <NavigationProperty Name="DANHMUC" Relationship="Self.FK__SANPHAM__MADM__31EC6D26" FromRole="SANPHAM" ToRole="DANHMUC" />
+          <NavigationProperty Name="LOIICH" Relationship="Self.FK__LOIICH__MASP__5535A963" FromRole="SANPHAM" ToRole="LOIICH" />
           <NavigationProperty Name="TONKHOes" Relationship="Self.FK__TONKHO__MASP__3C69FB99" FromRole="SANPHAM" ToRole="TONKHO" />
         </EntityType>
         <EntityType Name="TONKHO">
@@ -506,8 +590,8 @@
             <PropertyRef Name="MAKHO" />
             <PropertyRef Name="MASP" />
           </Key>
-          <Property Name="MAKHO" Type="String" MaxLength="65" FixedLength="true" Unicode="false" Nullable="false" />
-          <Property Name="MASP" Type="String" MaxLength="65" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="MAKHO" Type="String" MaxLength="65" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MASP" Type="String" MaxLength="65" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="SOLUONG" Type="Int32" />
           <Property Name="DELETED" Type="Boolean" />
           <NavigationProperty Name="KHO" Relationship="Self.FK__TONKHO__MAKHO__3B75D760" FromRole="TONKHO" ToRole="KHO" />
@@ -585,6 +669,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__CTSP__MASP__52593CB8">
+          <End Role="SANPHAM" Type="Self.SANPHAM" Multiplicity="1" />
+          <End Role="CTSP" Type="Self.CTSP" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="SANPHAM">
+              <PropertyRef Name="MASP" />
+            </Principal>
+            <Dependent Role="CTSP">
+              <PropertyRef Name="MASP" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__SANPHAM__MADM__31EC6D26">
           <End Role="DANHMUC" Type="Self.DANHMUC" Multiplicity="0..1" />
           <End Role="SANPHAM" Type="Self.SANPHAM" Multiplicity="*" />
@@ -669,6 +765,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__LOIICH__MASP__5535A963">
+          <End Role="SANPHAM" Type="Self.SANPHAM" Multiplicity="1" />
+          <End Role="LOIICH" Type="Self.LOIICH" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="SANPHAM">
+              <PropertyRef Name="MASP" />
+            </Principal>
+            <Dependent Role="LOIICH">
+              <PropertyRef Name="MASP" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__TONKHO__MASP__3C69FB99">
           <End Role="SANPHAM" Type="Self.SANPHAM" Multiplicity="1" />
           <End Role="TONKHO" Type="Self.TONKHO" Multiplicity="*" />
@@ -685,11 +793,13 @@
           <EntitySet Name="BAOHANHs" EntityType="Self.BAOHANH" />
           <EntitySet Name="CHINHANHs" EntityType="Self.CHINHANH" />
           <EntitySet Name="CTHDs" EntityType="Self.CTHD" />
+          <EntitySet Name="CTSPs" EntityType="Self.CTSP" />
           <EntitySet Name="DANHMUCs" EntityType="Self.DANHMUC" />
           <EntitySet Name="HOADONs" EntityType="Self.HOADON" />
           <EntitySet Name="KHACHHANGs" EntityType="Self.KHACHHANG" />
           <EntitySet Name="KHOes" EntityType="Self.KHO" />
           <EntitySet Name="LOGINs" EntityType="Self.LOGIN" />
+          <EntitySet Name="LOIICHes" EntityType="Self.LOIICH" />
           <EntitySet Name="NHANVIENs" EntityType="Self.NHANVIEN" />
           <EntitySet Name="SANPHAMs" EntityType="Self.SANPHAM" />
           <EntitySet Name="TONKHOes" EntityType="Self.TONKHO" />
@@ -716,6 +826,10 @@
           <AssociationSet Name="FK__CTHD__MASP__35BCFE0A" Association="Self.FK__CTHD__MASP__35BCFE0A">
             <End Role="SANPHAM" EntitySet="SANPHAMs" />
             <End Role="CTHD" EntitySet="CTHDs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CTSP__MASP__52593CB8" Association="Self.FK__CTSP__MASP__52593CB8">
+            <End Role="SANPHAM" EntitySet="SANPHAMs" />
+            <End Role="CTSP" EntitySet="CTSPs" />
           </AssociationSet>
           <AssociationSet Name="FK__SANPHAM__MADM__31EC6D26" Association="Self.FK__SANPHAM__MADM__31EC6D26">
             <End Role="DANHMUC" EntitySet="DANHMUCs" />
@@ -744,6 +858,10 @@
           <AssociationSet Name="FK_NHANVIEN" Association="Self.FK_NHANVIEN">
             <End Role="LOGIN" EntitySet="LOGINs" />
             <End Role="NHANVIEN" EntitySet="NHANVIENs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__LOIICH__MASP__5535A963" Association="Self.FK__LOIICH__MASP__5535A963">
+            <End Role="SANPHAM" EntitySet="SANPHAMs" />
+            <End Role="LOIICH" EntitySet="LOIICHes" />
           </AssociationSet>
           <AssociationSet Name="FK__TONKHO__MASP__3C69FB99" Association="Self.FK__TONKHO__MASP__3C69FB99">
             <End Role="SANPHAM" EntitySet="SANPHAMs" />
@@ -782,6 +900,20 @@
                 <ScalarProperty Name="MASP" ColumnName="MASP" />
                 <ScalarProperty Name="SOLUONG" ColumnName="SOLUONG" />
                 <ScalarProperty Name="DELETED" ColumnName="DELETED" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CTSPs">
+            <EntityTypeMapping TypeName="LOVETAPModel.CTSP">
+              <MappingFragment StoreEntitySet="CTSP">
+                <ScalarProperty Name="MASP" ColumnName="MASP" />
+                <ScalarProperty Name="CPU" ColumnName="CPU" />
+                <ScalarProperty Name="RAM" ColumnName="RAM" />
+                <ScalarProperty Name="HD" ColumnName="HD" />
+                <ScalarProperty Name="VGA" ColumnName="VGA" />
+                <ScalarProperty Name="SCREENSIZE" ColumnName="SCREENSIZE" />
+                <ScalarProperty Name="OS" ColumnName="OS" />
+                <ScalarProperty Name="COLOR" ColumnName="COLOR" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -839,6 +971,17 @@
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="USERNAME" ColumnName="USERNAME" />
                 <ScalarProperty Name="USERPASS" ColumnName="USERPASS" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LOIICHes">
+            <EntityTypeMapping TypeName="LOVETAPModel.LOIICH">
+              <MappingFragment StoreEntitySet="LOIICH">
+                <ScalarProperty Name="MASP" ColumnName="MASP" />
+                <ScalarProperty Name="LI1" ColumnName="LI1" />
+                <ScalarProperty Name="LI2" ColumnName="LI2" />
+                <ScalarProperty Name="LI3" ColumnName="LI3" />
+                <ScalarProperty Name="LI4" ColumnName="LI4" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
