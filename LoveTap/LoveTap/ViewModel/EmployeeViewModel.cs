@@ -166,8 +166,6 @@ namespace LoveTap.ViewModel
 
         public EmployeeViewModel(NavigationStore navigationStore)
         {
-            
-
             navAddEmployee = new NavigationCommand<AddEmployeeViewModel>(navigationStore, () => new AddEmployeeViewModel(navigationStore));
             navDetail = new NavigationCommand<EmployeeDetailViewModel>(navigationStore, () => new EmployeeDetailViewModel(navigationStore));
             Detail = new RelayCommand<EmployeeViewUC>((p) => { return p.EmployeeList.SelectedItem == null ? false : true; }, (p) => _DetailCs(p));
@@ -205,7 +203,6 @@ namespace LoveTap.ViewModel
                 MyEmployeeList.Add(nv);
             }
         }
-
 
     }
 }
