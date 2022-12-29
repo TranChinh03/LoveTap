@@ -23,7 +23,7 @@ namespace LoveTap.ViewModel
 
         public ICommand Detail { get; set; }
 
-        public static SANPHAM CurrentSelected { get; set; }
+        public static Product CurrentSelected { get; set; }
 
         private ObservableCollection<SANPHAM> _ProductList;
         public ObservableCollection<SANPHAM> ProductList { get => _ProductList; set { _ProductList = value; OnPropertyChanged(); } }
@@ -216,7 +216,9 @@ namespace LoveTap.ViewModel
         }
         void _DetailCs(GoodViewUC p)
         {
-            CurrentSelected = (SANPHAM)p.GoodList.SelectedItem;
+            CurrentSelected = (Product)p.GoodList.SelectedItem;
+           
+
         }
 
     }

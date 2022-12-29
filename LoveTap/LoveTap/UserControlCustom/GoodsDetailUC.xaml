@@ -66,20 +66,31 @@
                         </Button>
                     </StackPanel>
 
-                    <ListBox >
-                        <ListBoxItem Padding="10" Height="45" Width="45" HorizontalAlignment="Left">
-                            <Image Source="/img/checkCircle.jpg"></Image>
-                        </ListBoxItem>
-                        <ListBoxItem Padding="10" Height="45" Width="45"   HorizontalAlignment="Left">
-                            <Image Source="/img/checkCircle.jpg"></Image>
-                        </ListBoxItem>
-                        <ListBoxItem Padding="10" Height="45" Width="45" HorizontalAlignment="Left" >
-                            <Image Source="/img/checkCircle.jpg"></Image>
-                        </ListBoxItem>
-                        <ListBoxItem Padding="10" Height="45" Width="45" HorizontalAlignment="Left">
-                            <Image Source="/img/checkCircle.jpg"></Image>
-                        </ListBoxItem>
-                    </ListBox>
+                    <StackPanel Orientation="Horizontal">
+                        <ListBox >
+                            <ListBoxItem Padding="10" Height="45" Width="45" HorizontalAlignment="Left">
+                                <Image Source="/img/checkCircle.jpg"></Image>
+                            </ListBoxItem>
+                            <ListBoxItem Padding="10" Height="45" Width="45"   HorizontalAlignment="Left">
+                                <Image Source="/img/checkCircle.jpg"></Image>
+                            </ListBoxItem>
+                            <ListBoxItem Padding="10" Height="45" Width="45" HorizontalAlignment="Left" >
+                                <Image Source="/img/checkCircle.jpg"></Image>
+                            </ListBoxItem>
+                            <ListBoxItem Padding="10" Height="45" Width="45" HorizontalAlignment="Left">
+                                <Image Source="/img/checkCircle.jpg"></Image>
+                            </ListBoxItem>
+                        </ListBox>
+
+                        <StackPanel>
+                            <TextBlock Height="45" Width="250" FontSize="15" Foreground="#033270" Text="{Binding LI1}" TextWrapping="Wrap" VerticalAlignment="Center"></TextBlock>
+                            <TextBlock Height="45" Width="250" FontSize="15" Foreground="#033270" Text="{Binding LI2}" TextWrapping="Wrap" VerticalAlignment="Center"></TextBlock>
+                            <TextBlock Height="45" Width="250" FontSize="15" Foreground="#033270" Text="{Binding LI3}" TextWrapping="Wrap" VerticalAlignment="Center"></TextBlock>
+                            <TextBlock Height="45" Width="250" FontSize="15" Foreground="#033270" Text="{Binding LI4}" TextWrapping="Wrap" VerticalAlignment="Center"></TextBlock>
+                        </StackPanel>
+                    </StackPanel>
+                    
+                    
                     <!--<ListBox>
                     <ListBoxItem Height ="32" Width="185" Padding="0">
                         <TextBox Foreground="#033270" FontSize="12" Height ="32" Width="185" BorderBrush="Transparent" SelectionBrush="Transparent"  />
@@ -122,7 +133,7 @@
                 </DockPanel>
 
                 <!--Information 1-->
-                <StackPanel Grid.Column="1" Margin="10 50 10 0">
+                <StackPanel Grid.Column="1" Margin="10 40 10 0">
                     <StackPanel Orientation="Horizontal">
                         <TextBlock Foreground="#1368AA" FontSize="15" VerticalAlignment="Center">Product ID:</TextBlock>
                         <TextBox FontSize="15" Foreground="#033270" BorderBrush="Transparent" SelectionBrush="Transparent" Margin="5 0 0 0" Text="{Binding ID}"></TextBox>
@@ -146,16 +157,16 @@
                 </StackPanel>
 
                 <!--THÔNG SỐ KỸ THUẬT-->
-                <TextBlock Grid.Column="1" Grid.Row="1"  Margin="10 0"  Text="Thông số kỹ thuật: " Foreground="#1368AA" FontSize="18"  FontWeight="SemiBold"></TextBlock>
+                <TextBlock Grid.Column="1" Grid.Row="1"  Margin="15 -30 0 0"  Text="Thông số kỹ thuật: " Foreground="#1368AA" FontSize="18"  FontWeight="SemiBold"></TextBlock>
 
-                <Border Grid.Row="1" Grid.Column="1"  Margin="10 30 10 10" BorderBrush="#79A7CB" BorderThickness="0.5">
+                <Border Grid.Row="1" Grid.Column="1"  Margin="15 0 10 10" BorderBrush="#79A7CB" BorderThickness="0.5">
                     <StackPanel >
                         <DockPanel DockPanel.Dock="Top">
                             <Border BorderBrush="#79A7CB" BorderThickness="0.5" DockPanel.Dock="Left">
                                 <TextBlock Text="CPU" Foreground="#033270" FontSize="14" Width="100" VerticalAlignment="Center" Padding="7" ></TextBlock>
                             </Border>
                             <Border  BorderBrush="#79A7CB" BorderThickness="0.5" DockPanel.Dock="Left">
-                                <TextBox  Foreground="#033270" Opacity="0.8" FontSize="14" TextWrapping="WrapWithOverflow" Padding="7" VerticalAlignment="Center" BorderBrush="Transparent"></TextBox>
+                                <TextBox  Foreground="#033270" Opacity="0.8" FontSize="14" TextWrapping="WrapWithOverflow" Padding="7" VerticalAlignment="Center" BorderBrush="Transparent" Text="{Binding CPU}"></TextBox>
                             </Border>
                         </DockPanel>
                         <DockPanel DockPanel.Dock="Top" >
@@ -163,7 +174,7 @@
                                 <TextBlock Text="RAM" Foreground="#033270" FontSize="14" Width="100" VerticalAlignment="Center" Padding="7"></TextBlock>
                             </Border>
                             <Border  BorderBrush="#79A7CB" BorderThickness="0.5" DockPanel.Dock="Left">
-                                <TextBox  Foreground="#033270" Opacity="0.8" FontSize="14" TextWrapping="WrapWithOverflow" Padding="7" VerticalAlignment="Center" BorderBrush="Transparent"></TextBox>
+                                <TextBox  Foreground="#033270" Opacity="0.8" FontSize="14" TextWrapping="WrapWithOverflow" Padding="7" VerticalAlignment="Center" BorderBrush="Transparent" Text="{Binding RAM}"></TextBox>
                             </Border>
                         </DockPanel>
                         <DockPanel DockPanel.Dock="Top" >
@@ -171,7 +182,7 @@
                                 <TextBlock Text="Hard Disk" Foreground="#033270" FontSize="14" Width="100" VerticalAlignment="Center" Padding="7"></TextBlock>
                             </Border>
                             <Border  BorderBrush="#79A7CB" BorderThickness="0.5" DockPanel.Dock="Left">
-                                <TextBox  Foreground="#033270" Opacity="0.8" FontSize="14" TextWrapping="WrapWithOverflow" Padding="7" VerticalAlignment="Center" BorderBrush="Transparent"></TextBox>
+                                <TextBox  Foreground="#033270" Opacity="0.8" FontSize="14" TextWrapping="WrapWithOverflow" Padding="7" VerticalAlignment="Center" BorderBrush="Transparent" Text="{Binding HD}"></TextBox>
                             </Border>
                         </DockPanel>
                         <DockPanel DockPanel.Dock="Top" Height="30">
@@ -179,7 +190,7 @@
                                 <TextBlock Text="VGA" Foreground="#033270" FontSize="14" Width="100" VerticalAlignment="Center" Padding="7"></TextBlock>
                             </Border>
                             <Border  BorderBrush="#79A7CB" BorderThickness="0.5" DockPanel.Dock="Left">
-                                <TextBox  Foreground="#033270" Opacity="0.8" FontSize="14" TextWrapping="WrapWithOverflow" Padding="7" VerticalAlignment="Center" BorderBrush="Transparent"></TextBox>
+                                <TextBox  Foreground="#033270" Opacity="0.8" FontSize="14" TextWrapping="WrapWithOverflow" Padding="7" VerticalAlignment="Center" BorderBrush="Transparent" Text="{Binding VGA}"></TextBox>
                             </Border>
                         </DockPanel>
                         <DockPanel DockPanel.Dock="Top" Height="30">
@@ -187,7 +198,7 @@
                                 <TextBlock Text="Screen Size" Foreground="#033270" FontSize="14" Width="100" VerticalAlignment="Center" Padding="7"></TextBlock>
                             </Border>
                             <Border  BorderBrush="#79A7CB" BorderThickness="0.5" DockPanel.Dock="Left">
-                                <TextBox  Foreground="#033270" Opacity="0.8" FontSize="14" TextWrapping="WrapWithOverflow" Padding="7" VerticalAlignment="Center" BorderBrush="Transparent"></TextBox>
+                                <TextBox  Foreground="#033270" Opacity="0.8" FontSize="14" TextWrapping="WrapWithOverflow" Padding="7" VerticalAlignment="Center" BorderBrush="Transparent" Text="{Binding Size}"></TextBox>
                             </Border>
                         </DockPanel>
                         <DockPanel DockPanel.Dock="Top" >
@@ -195,7 +206,7 @@
                                 <TextBlock Text="OS" Foreground="#033270" FontSize="14" Width="100" VerticalAlignment="Center" Padding="7"></TextBlock>
                             </Border>
                             <Border  BorderBrush="#79A7CB" BorderThickness="0.5" DockPanel.Dock="Left">
-                                <TextBox  Foreground="#033270" Opacity="0.8" FontSize="14" TextWrapping="WrapWithOverflow" Padding="7" BorderBrush="Transparent"></TextBox>
+                                <TextBox  Foreground="#033270" Opacity="0.8" FontSize="14" TextWrapping="WrapWithOverflow" Padding="7" BorderBrush="Transparent" Text="{Binding OS}"></TextBox>
                             </Border>
                         </DockPanel>
                         <DockPanel DockPanel.Dock="Top">
@@ -203,7 +214,7 @@
                                 <TextBlock Text="Color" Foreground="#033270" FontSize="14" Width="100" VerticalAlignment="Center" Padding="7"></TextBlock>
                             </Border>
                             <Border  BorderBrush="#79A7CB" BorderThickness="0.5" DockPanel.Dock="Left">
-                                <TextBox  Foreground="#033270" Opacity="0.8" FontSize="14" TextWrapping="WrapWithOverflow" Padding="7" BorderBrush="Transparent"></TextBox>
+                                <TextBox  Foreground="#033270" Opacity="0.8" FontSize="14" TextWrapping="WrapWithOverflow" Padding="7" BorderBrush="Transparent" Text="{Binding Color}"></TextBox>
                             </Border>
 
                         </DockPanel>
