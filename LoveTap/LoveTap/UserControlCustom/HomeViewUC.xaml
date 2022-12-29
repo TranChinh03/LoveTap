@@ -272,7 +272,7 @@
                         <RowDefinition Height="2*"></RowDefinition>
                     </Grid.RowDefinitions>
 
-                    <materialDesign:Card  VerticalAlignment="Top" Grid.Row="0" Margin="10 7 0 0" Width="110" Height="100">
+                    <materialDesign:Card  VerticalAlignment="Top" Grid.Row="0" Margin="10 8 0 0" Width="110" Height="100" >
                         <Calendar Style="{StaticResource styleCalendar}"  HorizontalAlignment="Center"  
                                   Name="calendar" >
                             <i:Interaction.Triggers>

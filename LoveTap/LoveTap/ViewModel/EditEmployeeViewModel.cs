@@ -65,8 +65,8 @@ namespace LoveTap.ViewModel
                 BasicPay = temp.LUONGCB.ToString();
                 Branch = temp.MACN;
             });
-            navDone = new NavigationCommand<CustomerDetailViewModel>(navigationStore, () => new CustomerDetailViewModel(navigationStore));
-            navBack = new NavigationCommand<CustomerDetailViewModel>(navigationStore, () => new CustomerDetailViewModel(navigationStore));
+            navDone = new NavigationCommand<EmployeeDetailViewModel>(navigationStore, () => new EmployeeDetailViewModel(navigationStore));
+            navBack = new NavigationCommand<EmployeeDetailViewModel>(navigationStore, () => new EmployeeDetailViewModel(navigationStore));
 
             EditCommand = new RelayCommand<object>((p) => {
                 if (string.IsNullOrEmpty(EmployeeName) || string.IsNullOrEmpty(PhoneNumber) || string.IsNullOrEmpty(Birthday) || string.IsNullOrEmpty(Address) || string.IsNullOrEmpty(ID) || string.IsNullOrEmpty(Branch) || string.IsNullOrEmpty(CoefficientSalary) || string.IsNullOrEmpty(BasicPay) || string.IsNullOrEmpty(Position))

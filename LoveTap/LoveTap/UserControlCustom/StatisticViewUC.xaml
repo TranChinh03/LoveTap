@@ -14,8 +14,16 @@
         TextOptions.TextFormattingMode="Ideal"
         TextOptions.TextRenderingMode="Auto"
         Background="{DynamicResource MaterialDesignPaper}"
-        FontFamily="{DynamicResource MaterialDesignFont}" 
+        FontFamily="{DynamicResource MaterialDesignFont}" Name="StatisticView"
         Height="466.2" Width="666.666666666667">
+
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding LoadedStatisticView}"
+                                                       CommandParameter="{Binding ElementName=StatisticView}"></i:InvokeCommandAction>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+
     <Grid Background="WhiteSmoke">
         <Grid>
             <Grid.ColumnDefinitions>
@@ -47,54 +55,60 @@
                 <Border.Effect>
                     <DropShadowEffect Opacity="0.3" BlurRadius="10"></DropShadowEffect>
                 </Border.Effect>
+                
+                <!--Type-->
                 <DockPanel Margin="20 0">
-                    <ComboBox
-                    VerticalAlignment="Center"
-                    Grid.Row="1"
-                    Grid.RowSpan="2"
-                    Style="{StaticResource MaterialDesignOutlinedComboBox}"
-                    materialDesign:HintAssist.Hint="Select: Sale"
-                    VerticalContentAlignment="Center"
-                    Height="25"
-                    FontSize="13"
-                    Foreground="#034270"
-                    Width="140"
-                    Padding="10 0 0 0">
-                        <ComboBoxItem
-                        Content="Nổi bật" />
+                    <ComboBox  Grid.Column="1" Name="cbbType"
+                                   Grid.ColumnSpan="2"
+                                   Margin="0 0 10 0"
+                                   Style="{StaticResource MaterialDesignOutlinedComboBox}"
+                                    Width="180"
+                                   Height="30"
+                                    BorderBrush="{StaticResource Cyan Azure}"
+                                   Padding="16,0,16,0"
+                                   VerticalContentAlignment="Center"
+                                   HorizontalContentAlignment="Left"
+                                   >
+                        <ComboBoxItem Content="Good"/>
+                        <ComboBoxItem Content="Order"/>
+                        <ComboBoxItem Content="Customer"/>
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="SelectionChanged">
+                                <i:InvokeCommandAction Command="{Binding selectionChaged}"
+                                                      ></i:InvokeCommandAction>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
                     </ComboBox>
 
-                    <ComboBox DockPanel.Dock="Right"
-                    VerticalAlignment="Center"
-                    Grid.Row="1"
-                    Grid.RowSpan="2"
-                        Margin="10 0 0 0"
-                    Style="{StaticResource MaterialDesignOutlinedComboBox}"
-                    materialDesign:HintAssist.Hint="Select: Năm"
-                    VerticalContentAlignment="Center"
-                    Height="25"
-                    FontSize="13"
-                    Foreground="#034270"
-                    Width="140"
-                    Padding="15 0 0 0">
-                        <ComboBoxItem
-                        Content="Nổi bật" />
+                    <!--Branch-->
+                    <ComboBox  Grid.Column="1" Name="cbbBranch"
+                                   Grid.ColumnSpan="2"
+                                   Margin="10 0 0 0"
+                                   ItemsSource="{Binding BranchIDList}"
+                                   Style="{StaticResource MaterialDesignOutlinedComboBox}"
+                                    Width="180"
+                                   Height="30"
+                                    BorderBrush="{StaticResource Cyan Azure}"
+                                   Padding="16,0,16,0"
+                                   VerticalContentAlignment="Center"
+                                   HorizontalContentAlignment="Left" 
+                                   Text="{Binding branchText, UpdateSourceTrigger=PropertyChanged}"
+                                   >
                     </ComboBox>
-
-                    <ComboBox DockPanel.Dock="Right"
-                    VerticalAlignment="Center"
-                    Grid.Row="1"
-                    Grid.RowSpan="2"
-                    Style="{StaticResource MaterialDesignOutlinedComboBox}"
-                    materialDesign:HintAssist.Hint="Select: Chi nhánh"
-                    VerticalContentAlignment="Center"
-                    Height="25"
-                    FontSize="13"
-                    Foreground="#034270"
-                    Width="140"
-                    Padding="10 0 0 0">
-                        <ComboBoxItem
-                        Content="Nổi bật" />
+                    
+                    <!--Year-->
+                    <ComboBox  Grid.Column="1" Name="cbbYear"
+                                   Grid.ColumnSpan="2"
+                                   Margin="10 0 0 0"
+                                   ItemsSource="{Binding YearList}"
+                                   Style="{StaticResource MaterialDesignOutlinedComboBox}"
+                                    Width="180"
+                                   Height="30"
+                                    BorderBrush="{StaticResource Cyan Azure}"
+                                   Padding="16,0,16,0"
+                                   VerticalContentAlignment="Center"
+                                   HorizontalContentAlignment="Left" 
+                                   >
                     </ComboBox>
 
                 </DockPanel>
