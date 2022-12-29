@@ -19,14 +19,16 @@ namespace LoveTap.ViewModel
         public ICommand navEdit { get; set; }
         public ICommand navBack { get; set; }
 
+        public ICommand LoadedGoodDetail { get; set; }
+
         private string _ID { get; set; }
         public string ID { get => _ID; set { _ID = value; OnPropertyChanged(); } }
 
         private string _Name { get; set; }
         public string Name { get => _Name; set { _Name = value; OnPropertyChanged(); } }
 
-        private string _ProductID { get; set; }
-        public string ProductID { get => _ProductID; set { _ProductID = value; OnPropertyChanged(); } }
+        //private string _ProductID { get; set; }
+        //public string ProductID { get => _ProductID; set { _ProductID = value; OnPropertyChanged(); } }
 
         private string _Brand { get; set; }
         public string Brand { get => _Brand; set { _Brand = value; OnPropertyChanged(); } }
@@ -65,15 +67,55 @@ namespace LoveTap.ViewModel
         private ObservableCollection<SANPHAM> _ProductList;
         public ObservableCollection<SANPHAM> ProductList { get => _ProductList; set { _ProductList = value; OnPropertyChanged(); } }
 
-        //private ObservableCollection<CTSP> _ProductDetailList;
-        //public ObservableCollection<CTSP> ProductDetailList { get => _ProductDetailList; set { _ProductDetailList = value; OnPropertyChanged(); } }
 
+        private ObservableCollection<CTSP> _ProductDetailList;
+        public ObservableCollection<CTSP> ProductDetailList { get => _ProductDetailList; set { _ProductDetailList = value; OnPropertyChanged(); } }
 
-
+        private ObservableCollection<LOIICH> _BenefitList;
+        public ObservableCollection<LOIICH> BenefitList { get => _BenefitList; set { _BenefitList = value; OnPropertyChanged(); } }
 
         public GoodDetailViewModel(NavigationStore navigationStore)
         {
-            ProductList = new ObservableCollection<SANPHAM>(DataProvider.Ins.DB.SANPHAMs);
+            ProductList = new ObservableCollection<SANPHAM>(DataProvider.Ins.DB.SANPHAMs.Where(x => x.DELETED == false));
+            ProductDetailList = new ObservableCollection<CTSP>(DataProvider.Ins.DB.CTSPs);
+            BenefitList = new ObservableCollection<LOIICH>(DataProvider.Ins.DB.LOIICHes);
+            LoadedGoodDetail = new RelayCommand<UserControl>((p) => true, (p) =>
+            {
+                SANPHAM product = GoodsViewModel.CurrentSelected;
+
+                if (product != null)
+                {
+                    ID = product.MASP;
+                    Name = product.TEN;
+                    Price = (double)product.GIA;
+                    foreach (CTSP ctsp in ProductDetailList)
+                    {
+                        if (ctsp.MASP == product.MASP)
+                        {
+                            RAM = ctsp.RAM;
+                            CPU = ctsp.CPU;
+                            HD = ctsp.HD;
+                            VGA = ctsp.VGA;
+                            Size = ctsp.SCREENSIZE;
+                            Color = ctsp.COLOR;
+                            OS = ctsp.OS;
+                        }
+                    }
+
+                    foreach (LOIICH li in BenefitList)
+                    {
+                        if (li.MASP == product.MASP)
+                        {
+                            LI1 = li.LI1;
+                            LI2 = li.LI2;
+                            LI3 = li.LI3;
+                            LI4 = li.LI4;
+                        }
+                    }
+                }
+
+            });
+            
             navEdit = new NavigationCommand<EditGoodViewModel>(navigationStore, () => new EditGoodViewModel(navigationStore));
             navBack = new NavigationCommand<GoodsViewModel>(navigationStore, () => new GoodsViewModel(navigationStore));
         }

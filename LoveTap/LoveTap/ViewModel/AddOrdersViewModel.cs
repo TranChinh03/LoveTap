@@ -86,7 +86,7 @@ namespace LoveTap.ViewModel
         //}
 
         private List<CTHD> _MyOrderDetailList = new List<CTHD>();
-        public List<CTHD> MyOrderDetailList { get => _MyOrderDetailList; set { _MyOrderDetailList = value; } }
+        public List<CTHD> MyOrderDetailList { get { return _MyOrderDetailList; } set { _MyOrderDetailList = value; OnPropertyChanged(); } }
         public AddOrdersViewModel(NavigationStore navigationStore)
         {
 

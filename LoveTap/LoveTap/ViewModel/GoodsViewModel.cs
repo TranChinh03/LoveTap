@@ -1,6 +1,7 @@
 using LoveTap.Commands;
 using LoveTap.Model;
 using LoveTap.Stores;
+using LoveTap.UserControlCustom;
 using LoveTap.ViewModel;
 using System;
 using System.Collections.Generic;
@@ -19,6 +20,10 @@ namespace LoveTap.ViewModel
     {
         public ICommand navDetail { get; set; }
         public ICommand navAddGood { get; set; }
+
+        public ICommand Detail { get; set; }
+
+        public static SANPHAM CurrentSelected { get; set; }
 
         private ObservableCollection<SANPHAM> _ProductList;
         public ObservableCollection<SANPHAM> ProductList { get => _ProductList; set { _ProductList = value; OnPropertyChanged(); } }
@@ -206,6 +211,12 @@ namespace LoveTap.ViewModel
 
             navAddGood = new NavigationCommand<AddGoodViewModel>(navigationStore, () => new AddGoodViewModel(navigationStore));
             navDetail = new NavigationCommand<GoodDetailViewModel>(navigationStore, () => new GoodDetailViewModel(navigationStore));
+
+            Detail = new RelayCommand<GoodViewUC>((p) => { return p.GoodList.SelectedItem == null ? false : true; }, (p) => _DetailCs(p));
+        }
+        void _DetailCs(GoodViewUC p)
+        {
+            CurrentSelected = (SANPHAM)p.GoodList.SelectedItem;
         }
 
     }

@@ -79,7 +79,7 @@
                 </StackPanel>
 
                 <ScrollViewer>
-                    <ListView ItemsSource="{Binding MyOrderDetailList}">
+                    <ListView ItemsSource="{Binding MyOrderDetailList}" SelectedItem="{Binding SelectedItem, Mode=OneWayToSource}">
                         <ListView.Resources>
                             <Style TargetType="{x:Type GridViewColumnHeader}">
                                 <Setter Property="HorizontalContentAlignment" Value="Center"/>
