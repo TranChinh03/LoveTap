@@ -36,15 +36,23 @@ namespace LoveTap.ViewModel
         public AddCustomerViewModel(NavigationStore navigationStore) {
             navDone = new NavigationCommand<CustomerViewModel>(navigationStore, () => new CustomerViewModel(navigationStore));
             navBack = new NavigationCommand<CustomerViewModel>(navigationStore, () => new CustomerViewModel(navigationStore));
-
+            RegistDate = DateTime.Now;
             AddCommand = new RelayCommand<object>((p) =>
             {
-                if (string.IsNullOrEmpty(CusName) || string.IsNullOrEmpty(Phone) || DOB == null || string.IsNullOrEmpty(Address) || RegistDate == null)
+                if (string.IsNullOrEmpty(CusName) || string.IsNullOrEmpty(Phone) || DOB == null || string.IsNullOrEmpty(Address))
                     return false;
                 return true;
             }, (p) =>
             {
-                var customer = new KHACHHANG() { HOTEN = CusName, SDT = Phone, NGSINH = DOB, DIACHI = Address, NGDK = RegistDate, DOANHSO = Sale, DELETED = false};
+                var customer = new KHACHHANG();
+                customer.HOTEN = CusName;
+                customer.SDT = Phone;
+                customer.NGSINH = DOB;
+                customer.DIACHI= Address;
+                customer.NGDK = RegistDate;
+                customer.DOANHSO = 0;
+                customer.DELETED = false;
+
                 DataProvider.Ins.DB.KHACHHANGs.Add(customer);
                 DataProvider.Ins.DB.SaveChanges();
             });

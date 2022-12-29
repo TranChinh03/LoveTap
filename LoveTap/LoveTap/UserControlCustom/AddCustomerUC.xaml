@@ -55,22 +55,20 @@
                     <ColumnDefinition Width="4*" />
                 </Grid.ColumnDefinitions>
 
-                <StackPanel HorizontalAlignment="Left" Margin="20 0 0 0">
+                <StackPanel HorizontalAlignment="Left" Margin="10 0 0 0" Width="140">
                     <TextBlock Style="{StaticResource detailText}" Padding="3">Phone:</TextBlock>
                     <TextBlock Style="{StaticResource detailText}" Padding="3">Name:</TextBlock>
                     <TextBlock Style="{StaticResource detailText}" Padding="3">Date of Birth:</TextBlock>
                     <TextBlock Style="{StaticResource detailText}" Padding="3">Address:</TextBlock>
                     <TextBlock Style="{StaticResource detailText}" Padding="3">Registation Date:</TextBlock>
-                    <TextBlock Style="{StaticResource detailText}" Padding="3">Sale:</TextBlock>
                 </StackPanel>
 
                 <StackPanel Margin="10 0 0 0" Grid.Column="1" HorizontalAlignment="Center" >
                     <TextBox  Style="{StaticResource editTextValue}" Text="{Binding Phone}"></TextBox>
                     <TextBox  Style="{StaticResource editTextValue}" Text="{Binding CusName}"></TextBox>
-                    <TextBox  Style="{StaticResource editTextValue}" Text="{Binding DOB}"></TextBox>
+                    <TextBox  Style="{StaticResource editTextValue}" Text="{Binding DOB, StringFormat='dd/MM/yyyy'}"></TextBox>
                     <TextBox  Style="{StaticResource editTextValue}" Text="{Binding Address}"></TextBox>
-                    <TextBox  Style="{StaticResource editTextValue}" Text="{Binding RegistDate}"></TextBox>
-                    <TextBox  Style="{StaticResource editTextValue}" Text="{Binding Sale}"></TextBox>
+                    <TextBox  Style="{StaticResource editTextValue}" Text="{Binding RegistDate, StringFormat='dd/MM/yyyy'}"></TextBox>
                 </StackPanel>
             </Grid>
         </Grid>

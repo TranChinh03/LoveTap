@@ -11,7 +11,7 @@
        >
 
     <i:Interaction.Triggers>
-        <i:EventTrigger EventName="MouseMove">
+        <i:EventTrigger EventName="Loaded">
             <i:InvokeCommandAction Command="{Binding LoadedEditEmployeeUC}"
                                                        CommandParameter="{Binding ElementName=ucEditEmployee}"></i:InvokeCommandAction>
         </i:EventTrigger>

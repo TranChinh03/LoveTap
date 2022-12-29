@@ -64,8 +64,6 @@ namespace LoveTap.ViewModel
                 CoefficientSalary = temp.HESOLUONG.ToString();
                 BasicPay = temp.LUONGCB.ToString();
                 Branch = temp.MACN;
-                Branch = temp.MACN;
-                Branch = temp.MACN;
             });
             navDone = new NavigationCommand<CustomerDetailViewModel>(navigationStore, () => new CustomerDetailViewModel(navigationStore));
             navBack = new NavigationCommand<CustomerDetailViewModel>(navigationStore, () => new CustomerDetailViewModel(navigationStore));

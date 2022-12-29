@@ -29,7 +29,7 @@
                        FontWeight="Black"
                        Foreground="{StaticResource Catalina Blue}"
                        VerticalAlignment="Center" Width="150" materialDesign:HintAssist.Hint="#ID"
-                       ></TextBox>
+                       Text="{Binding ID}"></TextBox>
                 </Border>
 
 
@@ -40,7 +40,7 @@
 
                 <!--Done Button-->
                 <Button DockPanel.Dock="Right" Style="{StaticResource greenButton}" 
-                    HorizontalAlignment="Right" Width="90" Content="Done" Uid="2" x:Name="doneBt">
+                    HorizontalAlignment="Right" Width="90" Content="Done" Uid="2" x:Name="doneBt" Command="{Binding AddCommand}">
                     <i:Interaction.Triggers>
                         <i:EventTrigger EventName="Click">
                             <i:InvokeCommandAction Command="{Binding navDone}"></i:InvokeCommandAction>
@@ -68,12 +68,12 @@
                         <RowDefinition/>
                     </Grid.RowDefinitions>
 
-                    <Border BorderThickness="0.5" BorderBrush="{StaticResource Cyan Azure}" CornerRadius="5">
-                        <TextBox  materialDesign:HintAssist.Hint="Full name"  FontSize="45" FontWeight="DemiBold" Width="500" Height="55" BorderThickness="0" Padding="0" Foreground="{StaticResource Catalina Blue}"/>
+                    <Border BorderThickness="0.5" BorderBrush="{StaticResource Cyan Azure}" CornerRadius="5" Height="40" HorizontalAlignment="Left"  Width="450">
+                        <TextBox  materialDesign:HintAssist.Hint="Full name"  FontSize="30" FontWeight="DemiBold" Height="35" BorderThickness="0" Padding="0" Foreground="{StaticResource Catalina Blue}" Text="{Binding EmployeeName}" VerticalAlignment="Top" VerticalContentAlignment="Center"/>
                     </Border>
 
-                    <Border Grid.Row="1" BorderThickness="0.5" BorderBrush="{StaticResource Cyan Azure}" Width="500" Height="35" CornerRadius="5">
-                        <TextBox VerticalAlignment="Center"  materialDesign:HintAssist.Hint="Position"  FontSize="20" FontWeight="DemiBold"  BorderThickness="0" Padding="0" Foreground="{StaticResource Catalina Blue}"/>
+                    <Border Grid.Row="1" BorderThickness="0.5" BorderBrush="{StaticResource Cyan Azure}" Width="350" Height="35" CornerRadius="5" HorizontalAlignment="Left" VerticalAlignment="Top">
+                        <TextBox VerticalAlignment="Center"  materialDesign:HintAssist.Hint="Position"  FontSize="20" FontWeight="DemiBold"  BorderThickness="0" Padding="0" Foreground="{StaticResource Catalina Blue}" Text="{Binding Position}" />
                     </Border>
                 </Grid>
             </StackPanel>
@@ -85,22 +85,24 @@
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
 
-                <StackPanel HorizontalAlignment="Center" >
+                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0 -15 0 0">
                     <TextBlock Style="{StaticResource detailText}">Ngày sinh:</TextBlock>
-                    <TextBlock Style="{StaticResource detailText}">Số điện thoại:</TextBlock>
-                    <TextBlock Style="{StaticResource detailText}">Địa chỉ:</TextBlock>
-                    <TextBlock Style="{StaticResource detailText}">Hệ số lương:</TextBlock>
-                    <TextBlock Style="{StaticResource detailText}">Lương cơ bản:</TextBlock>
-                    <TextBlock Style="{StaticResource detailText}">Chi nhánh:</TextBlock>
+                    <TextBlock Style="{StaticResource detailText}" Margin="0 17 0 0">Số điện thoại:</TextBlock>
+                    <TextBlock Style="{StaticResource detailText}" Margin="0 17 0 0">Email:</TextBlock>
+                    <TextBlock Style="{StaticResource detailText}" Margin="0 17 0 0">Địa chỉ:</TextBlock>
+                    <TextBlock Style="{StaticResource detailText}" Margin="0 17 0 0">Hệ số lương:</TextBlock>
+                    <TextBlock Style="{StaticResource detailText}" Margin="0 17 0 0">Lương cơ bản:</TextBlock>
+                    <TextBlock Style="{StaticResource detailText}" Margin="0 17 0 0">Chi nhánh:</TextBlock>
                 </StackPanel>
 
-                <StackPanel Grid.Column="1" HorizontalAlignment="Left">
-                    <TextBox Style="{StaticResource editTextValue}" Width="300" ></TextBox>
-                    <TextBox Style="{StaticResource editTextValue}" Width="300" ></TextBox>
-                    <TextBox Style="{StaticResource editTextValue}" Width="300" ></TextBox>
-                    <TextBox Style="{StaticResource editTextValue}" Width="300" ></TextBox>
-                    <TextBox Style="{StaticResource editTextValue}" Width="300" ></TextBox>
-                    <TextBox Style="{StaticResource editTextValue}" Width="300" ></TextBox>
+                <StackPanel HorizontalAlignment="Left" Margin="318,-15,0,0" Grid.ColumnSpan="2" Height="264" VerticalAlignment="Bottom">
+                    <TextBox Style="{StaticResource editTextValue}" Width="300" Text="{Binding Birthday, StringFormat='dd/MM/yyyy'}"></TextBox>
+                    <TextBox Style="{StaticResource editTextValue}" Width="300" Text="{Binding PhoneNumber}"></TextBox>
+                    <TextBox Style="{StaticResource editTextValue}" Width="300" Text="{Binding Email}"></TextBox>
+                    <TextBox Style="{StaticResource editTextValue}" Width="300" Text="{Binding Address}"></TextBox>
+                    <TextBox Style="{StaticResource editTextValue}" Width="300" Text="{Binding CoefficientSalary}"></TextBox>
+                    <TextBox Style="{StaticResource editTextValue}" Width="300" Text="{Binding BasicPay}"></TextBox>
+                    <TextBox Style="{StaticResource editTextValue}" Width="300" Text="{Binding Branch}"></TextBox>
                 </StackPanel>
             </Grid>
         </Grid>
