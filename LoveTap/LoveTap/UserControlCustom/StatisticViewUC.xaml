@@ -74,7 +74,7 @@
                         <ComboBoxItem Content="Customer"/>
                         <i:Interaction.Triggers>
                             <i:EventTrigger EventName="SelectionChanged">
-                                <i:InvokeCommandAction Command="{Binding selectionChaged}"
+                                <i:InvokeCommandAction Command="{Binding selectionChaged}" CommandParameter="{Binding ElementName=cbbType}"
                                                       ></i:InvokeCommandAction>
                             </i:EventTrigger>
                         </i:Interaction.Triggers>
@@ -94,6 +94,12 @@
                                    HorizontalContentAlignment="Left" 
                                    Text="{Binding branchText, UpdateSourceTrigger=PropertyChanged}"
                                    >
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="SelectionChanged">
+                                <i:InvokeCommandAction Command="{Binding selectionChaged}" CommandParameter="{Binding ElementName=cbbBranch}"
+                                                      ></i:InvokeCommandAction>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
                     </ComboBox>
                     
                     <!--Year-->
@@ -109,6 +115,12 @@
                                    VerticalContentAlignment="Center"
                                    HorizontalContentAlignment="Left" 
                                    >
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="SelectionChanged">
+                                <i:InvokeCommandAction Command="{Binding selectionChaged}" CommandParameter="{Binding ElementName=cbbYear}"
+                                                      ></i:InvokeCommandAction>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
                     </ComboBox>
 
                 </DockPanel>
@@ -129,12 +141,13 @@
                             Width="140" 
                             >
                     <Grid>
-                        <TextBlock Margin="10, 6, 10, 10" 
+                        <TextBlock TextAlignment="Center" Margin="0 6"  Width="110" TextWrapping="WrapWithOverflow"
                                         FontSize="10"
                                         HorizontalAlignment="Center"
                                         VerticalAlignment="Top"
                                         Foreground="#5684B0"
-                                        >TỔNG DOANH THU</TextBlock>
+                                   Text="{Binding NameofCard1}"
+                                        ></TextBlock>
                         <StackPanel Orientation="Horizontal"                                         
                                         HorizontalAlignment="Center"
                                         VerticalAlignment="Center"
@@ -188,12 +201,13 @@
                         Grid.Column="1"
                             >
                     <Grid>
-                        <TextBlock Margin="10, 6, 10, 10" 
-                                        FontSize="10"
+                        <TextBlock Width="110" TextWrapping="WrapWithOverflow" Margin="0 6"
+                                        FontSize="10" TextAlignment="Center"
                                         HorizontalAlignment="Center"
                                         VerticalAlignment="Top"
-                                       Foreground="#5684B0"
-                                        >TỈ LỆ DOANH THU</TextBlock>
+                                        Foreground="#5684B0"
+                                        Text="{Binding NameofCard2}"                                        
+                                   ></TextBlock>
                         <TextBlock Margin="0, 10, 10, 10" 
                                         FontSize="16"
                                         HorizontalAlignment="Center"
@@ -233,12 +247,13 @@
                         Grid.Column="2"
                             >
                     <Grid>
-                        <TextBlock Margin="10, 6, 10, 10" 
-                                        FontSize="10"
-                                        HorizontalAlignment="Left"
+                        <TextBlock Margin="0 6" Width="110" TextWrapping="WrapWithOverflow"
+                                        FontSize="10" TextAlignment="Center"
+                                        HorizontalAlignment="Center"
                                         VerticalAlignment="Top"
                                        Foreground="#5684B0"
-                                        >DOANH THU CAO NHẤT</TextBlock>
+                                   Text="{Binding NameofCard3}"
+                                        ></TextBlock>
                         <TextBlock Margin="6, -2, 10, 10" 
                                         FontSize="15"
                                         HorizontalAlignment="Center"
@@ -283,16 +298,16 @@
                             Width="140" Grid.Column="3"
                             >
                     <Grid>
-                        <TextBlock Margin="10, 6, 10, 10" 
+                        <TextBlock Margin="10, 6, 10, 10"  Width="110" TextWrapping="WrapWithOverflow"
                                         FontSize="10"
-                                        HorizontalAlignment="Left"
+                                        HorizontalAlignment="Center"
                                         VerticalAlignment="Top"
                                        Foreground="#5684B0"
-                                       TextWrapping="Wrap"
-                                       TextAlignment="Center"
-                                        >CHI NHÁNH CÓ DOANH THU CAO NHẤT</TextBlock>
-                        <TextBlock Margin="6, -2, 10, 10" 
-                                        FontSize="15"
+                                       TextAlignment="Center" 
+                                   Text="{Binding NameofCard4}"
+                                        />
+                        <TextBlock  Width="110" TextWrapping="WrapWithOverflow"
+                                        FontSize="15" TextAlignment="Center"
                                         HorizontalAlignment="Center"
                                         VerticalAlignment="Center"
                                         Foreground="#EF3C2D"

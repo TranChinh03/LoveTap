@@ -36,6 +36,10 @@ namespace LoveTap.ViewModel
 
         public StatisticViewModel(NavigationStore navigationStore)
         {
+            NameofCard1 = "TỔNG SẢN PHẨM BÁN RA";
+            NameofCard2 = "TỔNG SẢN PHẨM NHẬP KHO";
+            NameofCard3 = "SẢN PHẨM BÁN RA NHIỀU NHẤT";
+            NameofCard4 = "THÁNG CÓ SẢN PHẨM BÁN RA NHIỀU NHẤT";
             BranchList = new ObservableCollection<CHINHANH>(DataProvider.Ins.DB.CHINHANHs);
             OrderList = new ObservableCollection<HOADON>(DataProvider.Ins.DB.HOADONs);
 
@@ -85,6 +89,18 @@ namespace LoveTap.ViewModel
                     NameofCard2 = "TỔNG SẢN PHẨM NHẬP KHO";
                     NameofCard3 = "SẢN PHẨM BÁN RA NHIỀU NHẤT";
                     NameofCard4 = "THÁNG CÓ SẢN PHẨM BÁN RA NHIỀU NHẤT";
+                    break;
+                case 1:
+                    NameofCard1 = "TỔNG ĐƠN HÀNG BÁN RA";
+                    NameofCard2 = "TỔNG ĐƠN HÀNG NHẬP VÀO";
+                    NameofCard3 = "ĐƠN HÀNG CÓ TRI GIÁ NHIỀU NHẤT";
+                    NameofCard4 = "THÁNG CÓ SỐ LƯỢNG ĐƠN HÀNG NHIỀU NHẤT";
+                    break;
+                    case 2:
+                    NameofCard1 = "TỔNG SỐ LƯỢNG KHÁCH HÀNG";
+                    NameofCard2 = "SỐ LƯỢNG KHÁCH HÀNG MỚI";
+                    NameofCard3 = "KHÁCH HÀNG CÓ DOANH SỐ CAO NHẤT";
+                    NameofCard4 = "THÁNG CÓ NHIỀU KHÁCH HÀNG NHẤT";
                     break;
             }
         }

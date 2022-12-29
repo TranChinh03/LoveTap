@@ -367,6 +367,8 @@
                         </ListView.View>
                         <i:Interaction.Triggers>
                             <i:EventTrigger EventName="SelectionChanged">
+                                <i:InvokeCommandAction     Command="{Binding Detail}"
+                                                           CommandParameter="{Binding ElementName=GoodsView}"></i:InvokeCommandAction>
                                 <i:InvokeCommandAction     Command="{Binding navDetail}"></i:InvokeCommandAction>
                             </i:EventTrigger>
                         </i:Interaction.Triggers>
