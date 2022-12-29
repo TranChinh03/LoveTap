@@ -83,7 +83,7 @@
                 <StackPanel Margin="10 0 0 0" Grid.Column="1" HorizontalAlignment="Center" >
                     <TextBlock Style="{StaticResource detailTextValue}" Text="{Binding Phone}"></TextBlock>
                     <TextBlock Style="{StaticResource detailTextValue}" Text="{Binding CusName}"></TextBlock>
-                    <TextBlock Style="{StaticResource detailTextValue}" Text="{Binding DOB}"></TextBlock>
+                    <TextBlock Style="{StaticResource detailTextValue}" Text="{Binding DOB, StringFormat='dd/MM/yyyy'}"></TextBlock>
                     <TextBlock Style="{StaticResource detailTextValue}" Text="{Binding Address}"></TextBlock>
                     <TextBlock Style="{StaticResource detailTextValue}" Text="{Binding RegistDate}"></TextBlock>
                     <TextBlock Style="{StaticResource detailTextValue}" Text="{Binding Sale}"></TextBlock>

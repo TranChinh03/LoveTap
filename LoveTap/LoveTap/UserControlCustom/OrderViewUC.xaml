@@ -152,7 +152,7 @@
                             <GridView>
                                 <GridViewColumn Header="Order  Code" DisplayMemberBinding="{Binding MAHD}"></GridViewColumn>
                                 <GridViewColumn Header="Phone" DisplayMemberBinding="{Binding SDT}"></GridViewColumn>
-                                <GridViewColumn Header="Date" DisplayMemberBinding="{Binding NGMUA}"></GridViewColumn>
+                                <GridViewColumn Header="Date" DisplayMemberBinding="{Binding NGMUA, StringFormat='dd/MM/yyyy'}"></GridViewColumn>
                                 <GridViewColumn Header="Total" DisplayMemberBinding="{Binding TONGTIEN}"></GridViewColumn>
                                 <GridViewColumn Header="Type" DisplayMemberBinding="{Binding LOAIHD}"></GridViewColumn>
                             </GridView>

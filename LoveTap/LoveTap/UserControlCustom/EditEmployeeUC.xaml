@@ -97,7 +97,7 @@
                 </StackPanel>
 
                 <StackPanel Grid.Column="1" HorizontalAlignment="Center" >
-                    <TextBox Style="{StaticResource editTextValue}" Height="35" Text="{Binding Birthday}"></TextBox>
+                    <TextBox Style="{StaticResource editTextValue}" Height="35" Text="{Binding Birthday, StringFormat='dd/MM/yyyy'}"></TextBox>
                     <TextBox Style="{StaticResource editTextValue}" Height="35" Text="{Binding PhoneNumber}"></TextBox>
                     <TextBox Style="{StaticResource editTextValue}" Height="35" Text="{Binding Address}"></TextBox>
                     <TextBox Style="{StaticResource editTextValue}" Height="35" Text="{Binding CoefficientSalary}"></TextBox>

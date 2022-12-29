@@ -95,7 +95,7 @@
                 </StackPanel>
 
                 <StackPanel Grid.Column="1" HorizontalAlignment="Center" >
-                    <TextBlock Style="{StaticResource detailTextValue}" Text="{Binding Birthday}"></TextBlock>
+                    <TextBlock Style="{StaticResource detailTextValue}" Text="{Binding Birthday, StringFormat='dd/MM/yyyy'}"></TextBlock>
                     <TextBlock Style="{StaticResource detailTextValue}" Text="{Binding PhoneNumber}"></TextBlock>
                     <TextBlock Style="{StaticResource detailTextValue}" Text="{Binding Address}"></TextBlock>
                     <TextBlock Style="{StaticResource detailTextValue}" Text="{Binding CoefficientSalary}"></TextBlock>
