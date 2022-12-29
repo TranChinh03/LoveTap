@@ -61,7 +61,9 @@ namespace LoveTap.ViewModel
 
             AddCommand = new RelayCommand<object>((p) =>
             {
-                if (string.IsNullOrEmpty(ID) || string.IsNullOrEmpty(EmployeeName) || string.IsNullOrEmpty(Position) || string.IsNullOrEmpty(PhoneNumber) || string.IsNullOrEmpty(Address) || string.IsNullOrEmpty(CoefficientSalary) || string.IsNullOrEmpty(BasicPay) || string.IsNullOrEmpty(Branch)||Birthday == null)
+                if (string.IsNullOrEmpty(ID) || string.IsNullOrEmpty(EmployeeName) || string.IsNullOrEmpty(Position) ||
+                string.IsNullOrEmpty(PhoneNumber) || string.IsNullOrEmpty(Address) || string.IsNullOrEmpty(CoefficientSalary) || 
+                string.IsNullOrEmpty(BasicPay) || string.IsNullOrEmpty(Branch)||Birthday == null)
                     return false;
                 var employee = DataProvider.Ins.DB.NHANVIENs.Where(x => x.MANV == ID);
                 if (employee == null || employee.Count() != 0)
@@ -89,7 +91,6 @@ namespace LoveTap.ViewModel
                 DataProvider.Ins.DB.SaveChanges();
 
                 EmployeeList.Add(nhanvien);
-
             });
 
             navDone = new NavigationCommand<EmployeeViewModel>(navigationStore, () => new EmployeeViewModel(navigationStore));

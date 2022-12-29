@@ -23,6 +23,7 @@ namespace LoveTap.ViewModel
     {
 
         public static NHANVIEN EmployeeSelected { get; set; }
+        public ICommand LoadEmployeeCm { get; set; }
         public ICommand navAddEmployee { get; set; }
 
         public ICommand navDetail { get; set; }
@@ -163,15 +164,28 @@ namespace LoveTap.ViewModel
 
         public EmployeeViewModel(NavigationStore navigationStore)
         {
+            
+
+            navAddEmployee = new NavigationCommand<AddEmployeeViewModel>(navigationStore, () => new AddEmployeeViewModel(navigationStore));
+            navDetail = new NavigationCommand<EmployeeDetailViewModel>(navigationStore, () => new EmployeeDetailViewModel(navigationStore));
+            Detail = new RelayCommand<EmployeeViewUC>((p) => { return p.EmployeeList.SelectedItem == null ? false : true; }, (p) => _DetailCs(p));
+            LoadEmployeeCm = new RelayCommand<EmployeeViewUC>((p) => { return true; }, (p) => _Loaded(p));
+        }
+        void _DetailCs(EmployeeViewUC p)
+        {
+            CurrentSelected =(NHANVIEN)p.EmployeeList.SelectedItem;
+        }
+        void _Loaded(EmployeeViewUC p)
+        {
             EmployeeList = new ObservableCollection<NHANVIEN>(DataProvider.Ins.DB.NHANVIENs);
             BranchList = new ObservableCollection<CHINHANH>(DataProvider.Ins.DB.CHINHANHs);
 
-            for(int i =0; i<DataProvider.Ins.DB.CHINHANHs.Count(); i++)
+            for (int i = 0; i<DataProvider.Ins.DB.CHINHANHs.Count(); i++)
             {
                 BranchIDList[i] = BranchList[i].MACN;
             }
 
-            foreach(NHANVIEN nv in EmployeeList)
+            foreach (NHANVIEN nv in EmployeeList)
             {
                 //Employee temp = new Employee();
                 //temp.ten = nv.HOTEN;
@@ -186,14 +200,6 @@ namespace LoveTap.ViewModel
                 //MyEmployeeList.Add(temp);
                 MyEmployeeList.Add(nv);
             }
-
-            navAddEmployee = new NavigationCommand<AddEmployeeViewModel>(navigationStore, () => new AddEmployeeViewModel(navigationStore));
-            navDetail = new NavigationCommand<EmployeeDetailViewModel>(navigationStore, () => new EmployeeDetailViewModel(navigationStore));
-            Detail = new RelayCommand<EmployeeViewUC>((p) => { return p.EmployeeList.SelectedItem == null ? false : true; }, (p) => _DetailCs(p));
-        }
-        void _DetailCs(EmployeeViewUC p)
-        {
-            CurrentSelected =(NHANVIEN)p.EmployeeList.SelectedItem;
         }
 
     }
