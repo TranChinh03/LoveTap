@@ -261,7 +261,7 @@
                     <Setter.Value>
                         <ControlTemplate TargetType="{x:Type Calendar}">
                             <!-- Wrapping in ViewBox will enlarge calendar of that size.-->
-                            <Viewbox Width="90">
+                            <Viewbox Width="120">
                                 <CalendarItem x:Name="PART_CalendarItem"
                               Background="White"
                               BorderBrush="{TemplateBinding BorderBrush}"
