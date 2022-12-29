@@ -78,14 +78,16 @@ namespace LoveTap.ViewModel
         }
         public void _selectedChaged(ComboBox p)
         {
-           switch(p.SelectedIndex)
+            switch (p.SelectedIndex)
             {
                 case 0:
                     NameofCard1 = "TỔNG SẢN PHẨM BÁN RA";
                     NameofCard2 = "TỔNG SẢN PHẨM NHẬP KHO";
-                    NameofCard2 = "TỔNG SẢN PHẨM NHẬP KHO";
+                    NameofCard3 = "SẢN PHẨM BÁN RA NHIỀU NHẤT";
+                    NameofCard4 = "THÁNG CÓ SẢN PHẨM BÁN RA NHIỀU NHẤT";
                     break;
             }
+        }
     }
 
 
