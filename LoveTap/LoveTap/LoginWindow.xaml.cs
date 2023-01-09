@@ -37,12 +37,12 @@ namespace LoveTap
             CreatePasswordModel.Visibility = Visibility.Collapsed;
             CreatePasswordText.Visibility = Visibility.Collapsed;
             LoginModel.Visibility = Visibility.Visible;
-            LoginText.Visibility = Visibility.Visible;
+            //LoginText.Visibility = Visibility.Visible;
         }
         private void RenderSignUp(object sender, RoutedEventArgs e)
         {
             LoginModel.Visibility = Visibility.Collapsed;
-            LoginText.Visibility = Visibility.Collapsed;
+            //LoginText.Visibility = Visibility.Collapsed;
             CreatePasswordModel.Visibility = Visibility.Collapsed;
             CreatePasswordText.Visibility = Visibility.Collapsed;
             SignUpModel.Visibility = Visibility.Visible;
@@ -53,7 +53,7 @@ namespace LoveTap
             SignUpModel.Visibility = Visibility.Collapsed;
             SignUpText.Visibility = Visibility.Collapsed;
             LoginModel.Visibility = Visibility.Collapsed;
-            LoginText.Visibility = Visibility.Collapsed;
+            //LoginText.Visibility = Visibility.Collapsed;
             CreatePasswordModel.Visibility = Visibility.Visible;
             CreatePasswordText.Visibility = Visibility.Visible;
         }
