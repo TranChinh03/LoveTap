@@ -171,12 +171,12 @@ namespace LoveTap.ViewModel
 
         
 
-        void _DetailCs(HomeScreen p)
-        {
+        //void _DetailCs(HomeScreen p)
+        //{
 
-            p.DetailBestSl.Visibility= Visibility.Visible;
+        //    p.DetailBestSl.Visibility= Visibility.Visible;
 
-        }
+        //}
 
     }
 }

@@ -92,7 +92,7 @@ namespace LoveTap.ViewModel
 
 
             GetIdButton = new RelayCommand<Button>((p) => true, (p) => Name = p.Uid);
-            Todo = new RelayCommand<HomeProfileEdit>((p) => true, (p) => ToDo(p));
+            //Todo = new RelayCommand<HomeProfileEdit>((p) => true, (p) => ToDo(p));
             
 
 
@@ -128,22 +128,22 @@ namespace LoveTap.ViewModel
             });
         }
 
-        void ToDo(HomeProfileEdit p)
-        {
-            int index = int.Parse(Name);
-            switch (index)
-            {
-                case 1:
-                    {
-                        p.Close();
-                        break;
-                    }
-                case 2:
-                    {
-                        p.Close();
-                        break;
-                    }
-            }
-        }
+        //void ToDo(HomeProfileEdit p)
+        //{
+        //    int index = int.Parse(Name);
+        //    switch (index)
+        //    {
+        //        case 1:
+        //            {
+        //                p.Close();
+        //                break;
+        //            }
+        //        case 2:
+        //            {
+        //                p.Close();
+        //                break;
+        //            }
+        //    }
+        //}
     }
 }
