@@ -79,7 +79,7 @@
 
 
 
-        <TextBlock
+        <!--<TextBlock
             x:Name="LoginText"
             Grid.Row="7"
             Grid.Column="1"
@@ -106,7 +106,7 @@
                     </TransformGroup>
                 </Button.RenderTransform>
             </Button>
-        </TextBlock>
+        </TextBlock>-->
 
         <!--Sign Up-->
         <uc:SignUpModelUC

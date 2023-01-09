@@ -94,12 +94,12 @@
                                    HorizontalContentAlignment="Left" 
                                    Text="{Binding branchText, UpdateSourceTrigger=PropertyChanged}"
                                    >
-                        <i:Interaction.Triggers>
+                        <!--<i:Interaction.Triggers>
                             <i:EventTrigger EventName="SelectionChanged">
                                 <i:InvokeCommandAction Command="{Binding selectionChaged}" CommandParameter="{Binding ElementName=cbbBranch}"
                                                       ></i:InvokeCommandAction>
                             </i:EventTrigger>
-                        </i:Interaction.Triggers>
+                        </i:Interaction.Triggers>-->
                     </ComboBox>
                     
                     <!--Year-->
