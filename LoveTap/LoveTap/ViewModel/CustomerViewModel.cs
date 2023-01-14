@@ -115,6 +115,13 @@ namespace LoveTap.ViewModel
             }
         }
 
+        void SwapInt(ref int a, ref int b)
+        {
+            int temp = a;
+            a = b;
+            b = temp;
+        }
+
         void SwapDouble (ref double a, ref double b)
         {
             double temp = a;
@@ -149,15 +156,15 @@ namespace LoveTap.ViewModel
             DateTime rdb = (DateTime)b.NGDK;
             double salea = (double)a.DOANHSO;
             double saleb = (double)b.DOANHSO;
-            string manva = a.MANV;
-            string manvb = b.MANV;
+            int manva = (int)a.MANV;
+            int manvb = (int)b.MANV;
             SwapString(ref sdta, ref sdtb);
             SwapString(ref tena, ref tenb);
             SwapString(ref dchia, ref dchib);
             SwapDateTime(ref doba, ref dobb);
             SwapDateTime(ref rda, ref rdb);
             SwapDouble(ref salea, ref saleb);
-            SwapString(ref manva, ref manvb);
+            SwapInt(ref manva, ref manvb);
             a.SDT = sdta;
             a.HOTEN = tena;
             a.DIACHI = dchia;
@@ -300,7 +307,7 @@ namespace LoveTap.ViewModel
         }
 
 
-        public string[] BranchIDList { get; set; } = new string[DataProvider.Ins.DB.CHINHANHs.Count()];
+        public int[] BranchIDList { get; set; } = new int[DataProvider.Ins.DB.CHINHANHs.Count()];
         
 
 

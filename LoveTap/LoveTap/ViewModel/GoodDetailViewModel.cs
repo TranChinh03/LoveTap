@@ -21,8 +21,8 @@ namespace LoveTap.ViewModel
 
         public ICommand LoadedGoodDetail { get; set; }
 
-        private string _ID { get; set; }
-        public string ID { get => _ID; set { _ID = value; OnPropertyChanged(); } }
+        private int _ID { get; set; }
+        public int ID { get => _ID; set { _ID = value; OnPropertyChanged(); } }
 
         private string _Name { get; set; }
         public string Name { get => _Name; set { _Name = value; OnPropertyChanged(); } }

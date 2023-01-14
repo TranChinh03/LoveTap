@@ -7,29 +7,40 @@
       <Schema Namespace="LOVETAPModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="BAOHANH">
           <Key>
-            <PropertyRef Name="SDT" />
+            <PropertyRef Name="MAKH" />
             <PropertyRef Name="MASP" />
           </Key>
-          <Property Name="SDT" Type="varchar" MaxLength="30" Nullable="false" />
-          <Property Name="MASP" Type="varchar" MaxLength="65" Nullable="false" />
+          <Property Name="MAKH" Type="int" Nullable="false" />
+          <Property Name="MASP" Type="int" Nullable="false" />
           <Property Name="DELETED" Type="bit" />
         </EntityType>
         <EntityType Name="CHINHANH">
           <Key>
             <PropertyRef Name="MACN" />
           </Key>
-          <Property Name="MACN" Type="varchar" MaxLength="65" Nullable="false" />
+          <Property Name="MACN" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="TENCN" Type="nvarchar" MaxLength="255" />
           <Property Name="DIACHI" Type="nvarchar" MaxLength="255" />
-          <Property Name="MAADMIN" Type="varchar" MaxLength="65" />
+          <Property Name="MAADMIN" Type="int" />
+          <Property Name="DELETED" Type="bit" />
         </EntityType>
         <EntityType Name="CTHD">
           <Key>
             <PropertyRef Name="MAHD" />
             <PropertyRef Name="MASP" />
           </Key>
-          <Property Name="MAHD" Type="varchar" MaxLength="65" Nullable="false" />
-          <Property Name="MASP" Type="varchar" MaxLength="65" Nullable="false" />
+          <Property Name="MAHD" Type="int" Nullable="false" />
+          <Property Name="MASP" Type="int" Nullable="false" />
+          <Property Name="SOLUONG" Type="int" />
+          <Property Name="DELETED" Type="bit" />
+        </EntityType>
+        <EntityType Name="CTPN">
+          <Key>
+            <PropertyRef Name="MAPN" />
+            <PropertyRef Name="MASP" />
+          </Key>
+          <Property Name="MAPN" Type="int" Nullable="false" />
+          <Property Name="MASP" Type="int" Nullable="false" />
           <Property Name="SOLUONG" Type="int" />
           <Property Name="DELETED" Type="bit" />
         </EntityType>
@@ -37,7 +48,7 @@
           <Key>
             <PropertyRef Name="MASP" />
           </Key>
-          <Property Name="MASP" Type="varchar" MaxLength="65" Nullable="false" />
+          <Property Name="MASP" Type="int" Nullable="false" />
           <Property Name="CPU" Type="varchar" MaxLength="500" />
           <Property Name="RAM" Type="varchar" MaxLength="500" />
           <Property Name="HD" Type="varchar" MaxLength="500" />
@@ -45,12 +56,13 @@
           <Property Name="SCREENSIZE" Type="varchar" MaxLength="500" />
           <Property Name="OS" Type="varchar" MaxLength="500" />
           <Property Name="COLOR" Type="varchar" MaxLength="500" />
+          <Property Name="DELETED" Type="bit" />
         </EntityType>
         <EntityType Name="DANHMUC">
           <Key>
             <PropertyRef Name="MADM" />
           </Key>
-          <Property Name="MADM" Type="varchar" MaxLength="65" Nullable="false" />
+          <Property Name="MADM" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="TENDM" Type="nvarchar" MaxLength="255" />
           <Property Name="DELETED" Type="bit" />
         </EntityType>
@@ -58,83 +70,109 @@
           <Key>
             <PropertyRef Name="MAHD" />
           </Key>
-          <Property Name="MAHD" Type="varchar" MaxLength="65" Nullable="false" />
+          <Property Name="MAHD" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="NGMUA" Type="smalldatetime" />
           <Property Name="TONGTIEN" Type="float" />
-          <Property Name="LOAIHD" Type="bit" />
-          <Property Name="MANV" Type="varchar" MaxLength="65" />
-          <Property Name="SDT" Type="varchar" MaxLength="30" />
+          <Property Name="MANV" Type="int" />
+          <Property Name="MAKH" Type="int" />
+          <Property Name="MACN" Type="int" />
           <Property Name="DELETED" Type="bit" />
         </EntityType>
         <EntityType Name="KHACHHANG">
           <Key>
-            <PropertyRef Name="SDT" />
+            <PropertyRef Name="MAKH" />
           </Key>
+          <Property Name="MAKH" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="HOTEN" Type="nvarchar" MaxLength="255" />
-          <Property Name="SDT" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="SDT" Type="varchar" MaxLength="30" />
           <Property Name="DIACHI" Type="nvarchar" MaxLength="255" />
-          <Property Name="NGDK" Type="date" />
+          <Property Name="NGDK" Type="smalldatetime" />
           <Property Name="DOANHSO" Type="float" />
-          <Property Name="MANV" Type="varchar" MaxLength="65" />
+          <Property Name="MANV" Type="int" />
           <Property Name="NGSINH" Type="smalldatetime" />
+          <Property Name="MACN" Type="int" />
           <Property Name="DELETED" Type="bit" />
         </EntityType>
         <EntityType Name="KHO">
           <Key>
             <PropertyRef Name="MAKHO" />
           </Key>
-          <Property Name="MAKHO" Type="varchar" MaxLength="65" Nullable="false" />
+          <Property Name="MAKHO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="TENKHO" Type="nvarchar" MaxLength="255" />
           <Property Name="DIACHI" Type="nvarchar" MaxLength="255" />
           <Property Name="DIENTICH" Type="float" />
-          <Property Name="MANQL" Type="varchar" MaxLength="65" />
+          <Property Name="MANQL" Type="int" />
           <Property Name="DELETED" Type="bit" />
         </EntityType>
         <EntityType Name="LOGIN">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="USERNAME" Type="varchar" MaxLength="255" />
           <Property Name="USERPASS" Type="varchar" MaxLength="255" />
+          <Property Name="DELETED" Type="bit" />
         </EntityType>
         <EntityType Name="LOIICH">
           <Key>
             <PropertyRef Name="MASP" />
           </Key>
-          <Property Name="MASP" Type="varchar" MaxLength="65" Nullable="false" />
+          <Property Name="MASP" Type="int" Nullable="false" />
           <Property Name="LI1" Type="varchar" MaxLength="255" />
           <Property Name="LI2" Type="varchar" MaxLength="255" />
           <Property Name="LI3" Type="varchar" MaxLength="255" />
           <Property Name="LI4" Type="varchar" MaxLength="255" />
+          <Property Name="DELETED" Type="bit" />
+        </EntityType>
+        <EntityType Name="NHACUNGCAP">
+          <Key>
+            <PropertyRef Name="MANCC" />
+          </Key>
+          <Property Name="MANCC" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TEN" Type="nvarchar" MaxLength="255" />
+          <Property Name="SDT" Type="nvarchar" MaxLength="30" />
+          <Property Name="DIACHI" Type="nvarchar" MaxLength="255" />
+          <Property Name="EMAIL" Type="nvarchar" MaxLength="255" />
+          <Property Name="DELETED" Type="bit" />
         </EntityType>
         <EntityType Name="NHANVIEN">
           <Key>
             <PropertyRef Name="MANV" />
           </Key>
-          <Property Name="MANV" Type="varchar" MaxLength="65" Nullable="false" />
+          <Property Name="MANV" Type="int" Nullable="false" />
           <Property Name="HOTEN" Type="nvarchar" MaxLength="255" />
           <Property Name="NTNS" Type="smalldatetime" />
           <Property Name="SDT" Type="varchar" MaxLength="30" />
           <Property Name="DIACHI" Type="nvarchar" MaxLength="255" />
           <Property Name="HESOLUONG" Type="float" />
           <Property Name="LUONGCB" Type="float" />
-          <Property Name="MACN" Type="varchar" MaxLength="65" />
+          <Property Name="MACN" Type="int" />
           <Property Name="VAITRO" Type="bit" />
           <Property Name="EMAIL" Type="nvarchar" MaxLength="255" />
-          <Property Name="NVID" Type="varchar" MaxLength="255" />
+          <Property Name="DELETED" Type="bit" />
+        </EntityType>
+        <EntityType Name="PHIEUNHAP">
+          <Key>
+            <PropertyRef Name="MAPN" />
+          </Key>
+          <Property Name="MAPN" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NGNHAP" Type="smalldatetime" />
+          <Property Name="TONGTIEN" Type="float" />
+          <Property Name="MANV" Type="int" />
+          <Property Name="MANCC" Type="int" />
+          <Property Name="MACN" Type="int" />
           <Property Name="DELETED" Type="bit" />
         </EntityType>
         <EntityType Name="SANPHAM">
           <Key>
             <PropertyRef Name="MASP" />
           </Key>
-          <Property Name="MASP" Type="varchar" MaxLength="65" Nullable="false" />
+          <Property Name="MASP" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="TEN" Type="nvarchar" MaxLength="255" />
           <Property Name="GIA" Type="float" />
           <Property Name="NUOCSX" Type="nvarchar" MaxLength="255" />
           <Property Name="CHITIET" Type="nvarchar" MaxLength="255" />
-          <Property Name="MADM" Type="varchar" MaxLength="65" />
+          <Property Name="MADM" Type="int" />
           <Property Name="DELETED" Type="bit" />
         </EntityType>
         <EntityType Name="TONKHO">
@@ -142,12 +180,24 @@
             <PropertyRef Name="MAKHO" />
             <PropertyRef Name="MASP" />
           </Key>
-          <Property Name="MAKHO" Type="varchar" MaxLength="65" Nullable="false" />
-          <Property Name="MASP" Type="varchar" MaxLength="65" Nullable="false" />
+          <Property Name="MAKHO" Type="int" Nullable="false" />
+          <Property Name="MASP" Type="int" Nullable="false" />
           <Property Name="SOLUONG" Type="int" />
           <Property Name="DELETED" Type="bit" />
         </EntityType>
-        <Association Name="FK__BAOHANH__MASP__403A8C7D">
+        <Association Name="FK__BAOHANH__MAKH__4BAC3F29">
+          <End Role="KHACHHANG" Type="Self.KHACHHANG" Multiplicity="1" />
+          <End Role="BAOHANH" Type="Self.BAOHANH" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KHACHHANG">
+              <PropertyRef Name="MAKH" />
+            </Principal>
+            <Dependent Role="BAOHANH">
+              <PropertyRef Name="MAKH" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__BAOHANH__MASP__4CA06362">
           <End Role="SANPHAM" Type="Self.SANPHAM" Multiplicity="1" />
           <End Role="BAOHANH" Type="Self.BAOHANH" Multiplicity="*" />
           <ReferentialConstraint>
@@ -156,18 +206,6 @@
             </Principal>
             <Dependent Role="BAOHANH">
               <PropertyRef Name="MASP" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__BAOHANH__SDT__3F466844">
-          <End Role="KHACHHANG" Type="Self.KHACHHANG" Multiplicity="1" />
-          <End Role="BAOHANH" Type="Self.BAOHANH" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="KHACHHANG">
-              <PropertyRef Name="SDT" />
-            </Principal>
-            <Dependent Role="BAOHANH">
-              <PropertyRef Name="SDT" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -183,7 +221,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__CTHD__MAHD__34C8D9D1">
+        <Association Name="FK__CTHD__MAHD__3D5E1FD2">
           <End Role="HOADON" Type="Self.HOADON" Multiplicity="1" />
           <End Role="CTHD" Type="Self.CTHD" Multiplicity="*" />
           <ReferentialConstraint>
@@ -195,7 +233,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__CTHD__MASP__35BCFE0A">
+        <Association Name="FK__CTHD__MASP__3E52440B">
           <End Role="SANPHAM" Type="Self.SANPHAM" Multiplicity="1" />
           <End Role="CTHD" Type="Self.CTHD" Multiplicity="*" />
           <ReferentialConstraint>
@@ -207,7 +245,31 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__CTSP__MASP__52593CB8">
+        <Association Name="FK__CTPN__MAPN__412EB0B6">
+          <End Role="PHIEUNHAP" Type="Self.PHIEUNHAP" Multiplicity="1" />
+          <End Role="CTPN" Type="Self.CTPN" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PHIEUNHAP">
+              <PropertyRef Name="MAPN" />
+            </Principal>
+            <Dependent Role="CTPN">
+              <PropertyRef Name="MAPN" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CTPN__MASP__4222D4EF">
+          <End Role="SANPHAM" Type="Self.SANPHAM" Multiplicity="1" />
+          <End Role="CTPN" Type="Self.CTPN" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SANPHAM">
+              <PropertyRef Name="MASP" />
+            </Principal>
+            <Dependent Role="CTPN">
+              <PropertyRef Name="MASP" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CTSP__MASP__5441852A">
           <End Role="SANPHAM" Type="Self.SANPHAM" Multiplicity="1" />
           <End Role="CTSP" Type="Self.CTSP" Multiplicity="0..1" />
           <ReferentialConstraint>
@@ -219,7 +281,31 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__HOADON__MANV__2C3393D0">
+        <Association Name="FK__HOADON__MACN__30F848ED">
+          <End Role="CHINHANH" Type="Self.CHINHANH" Multiplicity="0..1" />
+          <End Role="HOADON" Type="Self.HOADON" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CHINHANH">
+              <PropertyRef Name="MACN" />
+            </Principal>
+            <Dependent Role="HOADON">
+              <PropertyRef Name="MACN" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__HOADON__MAKH__300424B4">
+          <End Role="KHACHHANG" Type="Self.KHACHHANG" Multiplicity="0..1" />
+          <End Role="HOADON" Type="Self.HOADON" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KHACHHANG">
+              <PropertyRef Name="MAKH" />
+            </Principal>
+            <Dependent Role="HOADON">
+              <PropertyRef Name="MAKH" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__HOADON__MANV__2F10007B">
           <End Role="NHANVIEN" Type="Self.NHANVIEN" Multiplicity="0..1" />
           <End Role="HOADON" Type="Self.HOADON" Multiplicity="*" />
           <ReferentialConstraint>
@@ -231,15 +317,15 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__HOADON__SDT__2D27B809">
-          <End Role="KHACHHANG" Type="Self.KHACHHANG" Multiplicity="0..1" />
-          <End Role="HOADON" Type="Self.HOADON" Multiplicity="*" />
+        <Association Name="FK__KHACHHANG__MACN__2A4B4B5E">
+          <End Role="CHINHANH" Type="Self.CHINHANH" Multiplicity="0..1" />
+          <End Role="KHACHHANG" Type="Self.KHACHHANG" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="KHACHHANG">
-              <PropertyRef Name="SDT" />
+            <Principal Role="CHINHANH">
+              <PropertyRef Name="MACN" />
             </Principal>
-            <Dependent Role="HOADON">
-              <PropertyRef Name="SDT" />
+            <Dependent Role="KHACHHANG">
+              <PropertyRef Name="MACN" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -255,7 +341,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__KHO__MANQL__38996AB5">
+        <Association Name="FK__KHO__MANQL__44FF419A">
           <End Role="NHANVIEN" Type="Self.NHANVIEN" Multiplicity="0..1" />
           <End Role="KHO" Type="Self.KHO" Multiplicity="*" />
           <ReferentialConstraint>
@@ -267,7 +353,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__LOIICH__MASP__5535A963">
+        <Association Name="FK__LOIICH__MASP__571DF1D5">
           <End Role="SANPHAM" Type="Self.SANPHAM" Multiplicity="1" />
           <End Role="LOIICH" Type="Self.LOIICH" Multiplicity="0..1" />
           <ReferentialConstraint>
@@ -279,7 +365,43 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__SANPHAM__MADM__31EC6D26">
+        <Association Name="FK__PHIEUNHAP__MACN__35BCFE0A">
+          <End Role="CHINHANH" Type="Self.CHINHANH" Multiplicity="0..1" />
+          <End Role="PHIEUNHAP" Type="Self.PHIEUNHAP" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CHINHANH">
+              <PropertyRef Name="MACN" />
+            </Principal>
+            <Dependent Role="PHIEUNHAP">
+              <PropertyRef Name="MACN" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PHIEUNHAP__MANCC__34C8D9D1">
+          <End Role="NHACUNGCAP" Type="Self.NHACUNGCAP" Multiplicity="0..1" />
+          <End Role="PHIEUNHAP" Type="Self.PHIEUNHAP" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NHACUNGCAP">
+              <PropertyRef Name="MANCC" />
+            </Principal>
+            <Dependent Role="PHIEUNHAP">
+              <PropertyRef Name="MANCC" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PHIEUNHAP__MANV__33D4B598">
+          <End Role="NHANVIEN" Type="Self.NHANVIEN" Multiplicity="0..1" />
+          <End Role="PHIEUNHAP" Type="Self.PHIEUNHAP" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NHANVIEN">
+              <PropertyRef Name="MANV" />
+            </Principal>
+            <Dependent Role="PHIEUNHAP">
+              <PropertyRef Name="MANV" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__SANPHAM__MADM__3A81B327">
           <End Role="DANHMUC" Type="Self.DANHMUC" Multiplicity="0..1" />
           <End Role="SANPHAM" Type="Self.SANPHAM" Multiplicity="*" />
           <ReferentialConstraint>
@@ -291,7 +413,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__TONKHO__MAKHO__3B75D760">
+        <Association Name="FK__TONKHO__MAKHO__47DBAE45">
           <End Role="KHO" Type="Self.KHO" Multiplicity="1" />
           <End Role="TONKHO" Type="Self.TONKHO" Multiplicity="*" />
           <ReferentialConstraint>
@@ -303,7 +425,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__TONKHO__MASP__3C69FB99">
+        <Association Name="FK__TONKHO__MASP__48CFD27E">
           <End Role="SANPHAM" Type="Self.SANPHAM" Multiplicity="1" />
           <End Role="TONKHO" Type="Self.TONKHO" Multiplicity="*" />
           <ReferentialConstraint>
@@ -316,18 +438,6 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_NHANVIEN">
-          <End Role="LOGIN" Type="Self.LOGIN" Multiplicity="0..1" />
-          <End Role="NHANVIEN" Type="Self.NHANVIEN" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="LOGIN">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="NHANVIEN">
-              <PropertyRef Name="NVID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_NHANVIEN1">
           <End Role="CHINHANH" Type="Self.CHINHANH" Multiplicity="0..1" />
           <End Role="NHANVIEN" Type="Self.NHANVIEN" Multiplicity="*" />
           <ReferentialConstraint>
@@ -339,10 +449,23 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_NHANVIEN1">
+          <End Role="LOGIN" Type="Self.LOGIN" Multiplicity="1" />
+          <End Role="NHANVIEN" Type="Self.NHANVIEN" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="LOGIN">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="NHANVIEN">
+              <PropertyRef Name="MANV" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="LOVETAPModelStoreContainer">
           <EntitySet Name="BAOHANH" EntityType="Self.BAOHANH" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CHINHANH" EntityType="Self.CHINHANH" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CTHD" EntityType="Self.CTHD" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CTPN" EntityType="Self.CTPN" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CTSP" EntityType="Self.CTSP" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DANHMUC" EntityType="Self.DANHMUC" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="HOADON" EntityType="Self.HOADON" Schema="dbo" store:Type="Tables" />
@@ -350,71 +473,101 @@
           <EntitySet Name="KHO" EntityType="Self.KHO" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="LOGIN" EntityType="Self.LOGIN" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="LOIICH" EntityType="Self.LOIICH" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NHACUNGCAP" EntityType="Self.NHACUNGCAP" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="NHANVIEN" EntityType="Self.NHANVIEN" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PHIEUNHAP" EntityType="Self.PHIEUNHAP" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SANPHAM" EntityType="Self.SANPHAM" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TONKHO" EntityType="Self.TONKHO" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__BAOHANH__MASP__403A8C7D" Association="Self.FK__BAOHANH__MASP__403A8C7D">
-            <End Role="SANPHAM" EntitySet="SANPHAM" />
+          <AssociationSet Name="FK__BAOHANH__MAKH__4BAC3F29" Association="Self.FK__BAOHANH__MAKH__4BAC3F29">
+            <End Role="KHACHHANG" EntitySet="KHACHHANG" />
             <End Role="BAOHANH" EntitySet="BAOHANH" />
           </AssociationSet>
-          <AssociationSet Name="FK__BAOHANH__SDT__3F466844" Association="Self.FK__BAOHANH__SDT__3F466844">
-            <End Role="KHACHHANG" EntitySet="KHACHHANG" />
+          <AssociationSet Name="FK__BAOHANH__MASP__4CA06362" Association="Self.FK__BAOHANH__MASP__4CA06362">
+            <End Role="SANPHAM" EntitySet="SANPHAM" />
             <End Role="BAOHANH" EntitySet="BAOHANH" />
           </AssociationSet>
           <AssociationSet Name="FK__CHINHANH__MAADMI__267ABA7A" Association="Self.FK__CHINHANH__MAADMI__267ABA7A">
             <End Role="NHANVIEN" EntitySet="NHANVIEN" />
             <End Role="CHINHANH" EntitySet="CHINHANH" />
           </AssociationSet>
-          <AssociationSet Name="FK__CTHD__MAHD__34C8D9D1" Association="Self.FK__CTHD__MAHD__34C8D9D1">
+          <AssociationSet Name="FK__CTHD__MAHD__3D5E1FD2" Association="Self.FK__CTHD__MAHD__3D5E1FD2">
             <End Role="HOADON" EntitySet="HOADON" />
             <End Role="CTHD" EntitySet="CTHD" />
           </AssociationSet>
-          <AssociationSet Name="FK__CTHD__MASP__35BCFE0A" Association="Self.FK__CTHD__MASP__35BCFE0A">
+          <AssociationSet Name="FK__CTHD__MASP__3E52440B" Association="Self.FK__CTHD__MASP__3E52440B">
             <End Role="SANPHAM" EntitySet="SANPHAM" />
             <End Role="CTHD" EntitySet="CTHD" />
           </AssociationSet>
-          <AssociationSet Name="FK__CTSP__MASP__52593CB8" Association="Self.FK__CTSP__MASP__52593CB8">
+          <AssociationSet Name="FK__CTPN__MAPN__412EB0B6" Association="Self.FK__CTPN__MAPN__412EB0B6">
+            <End Role="PHIEUNHAP" EntitySet="PHIEUNHAP" />
+            <End Role="CTPN" EntitySet="CTPN" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CTPN__MASP__4222D4EF" Association="Self.FK__CTPN__MASP__4222D4EF">
+            <End Role="SANPHAM" EntitySet="SANPHAM" />
+            <End Role="CTPN" EntitySet="CTPN" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CTSP__MASP__5441852A" Association="Self.FK__CTSP__MASP__5441852A">
             <End Role="SANPHAM" EntitySet="SANPHAM" />
             <End Role="CTSP" EntitySet="CTSP" />
           </AssociationSet>
-          <AssociationSet Name="FK__HOADON__MANV__2C3393D0" Association="Self.FK__HOADON__MANV__2C3393D0">
+          <AssociationSet Name="FK__HOADON__MACN__30F848ED" Association="Self.FK__HOADON__MACN__30F848ED">
+            <End Role="CHINHANH" EntitySet="CHINHANH" />
+            <End Role="HOADON" EntitySet="HOADON" />
+          </AssociationSet>
+          <AssociationSet Name="FK__HOADON__MAKH__300424B4" Association="Self.FK__HOADON__MAKH__300424B4">
+            <End Role="KHACHHANG" EntitySet="KHACHHANG" />
+            <End Role="HOADON" EntitySet="HOADON" />
+          </AssociationSet>
+          <AssociationSet Name="FK__HOADON__MANV__2F10007B" Association="Self.FK__HOADON__MANV__2F10007B">
             <End Role="NHANVIEN" EntitySet="NHANVIEN" />
             <End Role="HOADON" EntitySet="HOADON" />
           </AssociationSet>
-          <AssociationSet Name="FK__HOADON__SDT__2D27B809" Association="Self.FK__HOADON__SDT__2D27B809">
+          <AssociationSet Name="FK__KHACHHANG__MACN__2A4B4B5E" Association="Self.FK__KHACHHANG__MACN__2A4B4B5E">
+            <End Role="CHINHANH" EntitySet="CHINHANH" />
             <End Role="KHACHHANG" EntitySet="KHACHHANG" />
-            <End Role="HOADON" EntitySet="HOADON" />
           </AssociationSet>
           <AssociationSet Name="FK__KHACHHANG__MANV__29572725" Association="Self.FK__KHACHHANG__MANV__29572725">
             <End Role="NHANVIEN" EntitySet="NHANVIEN" />
             <End Role="KHACHHANG" EntitySet="KHACHHANG" />
           </AssociationSet>
-          <AssociationSet Name="FK__KHO__MANQL__38996AB5" Association="Self.FK__KHO__MANQL__38996AB5">
+          <AssociationSet Name="FK__KHO__MANQL__44FF419A" Association="Self.FK__KHO__MANQL__44FF419A">
             <End Role="NHANVIEN" EntitySet="NHANVIEN" />
             <End Role="KHO" EntitySet="KHO" />
           </AssociationSet>
-          <AssociationSet Name="FK__LOIICH__MASP__5535A963" Association="Self.FK__LOIICH__MASP__5535A963">
+          <AssociationSet Name="FK__LOIICH__MASP__571DF1D5" Association="Self.FK__LOIICH__MASP__571DF1D5">
             <End Role="SANPHAM" EntitySet="SANPHAM" />
             <End Role="LOIICH" EntitySet="LOIICH" />
           </AssociationSet>
-          <AssociationSet Name="FK__SANPHAM__MADM__31EC6D26" Association="Self.FK__SANPHAM__MADM__31EC6D26">
+          <AssociationSet Name="FK__PHIEUNHAP__MACN__35BCFE0A" Association="Self.FK__PHIEUNHAP__MACN__35BCFE0A">
+            <End Role="CHINHANH" EntitySet="CHINHANH" />
+            <End Role="PHIEUNHAP" EntitySet="PHIEUNHAP" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PHIEUNHAP__MANCC__34C8D9D1" Association="Self.FK__PHIEUNHAP__MANCC__34C8D9D1">
+            <End Role="NHACUNGCAP" EntitySet="NHACUNGCAP" />
+            <End Role="PHIEUNHAP" EntitySet="PHIEUNHAP" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PHIEUNHAP__MANV__33D4B598" Association="Self.FK__PHIEUNHAP__MANV__33D4B598">
+            <End Role="NHANVIEN" EntitySet="NHANVIEN" />
+            <End Role="PHIEUNHAP" EntitySet="PHIEUNHAP" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SANPHAM__MADM__3A81B327" Association="Self.FK__SANPHAM__MADM__3A81B327">
             <End Role="DANHMUC" EntitySet="DANHMUC" />
             <End Role="SANPHAM" EntitySet="SANPHAM" />
           </AssociationSet>
-          <AssociationSet Name="FK__TONKHO__MAKHO__3B75D760" Association="Self.FK__TONKHO__MAKHO__3B75D760">
+          <AssociationSet Name="FK__TONKHO__MAKHO__47DBAE45" Association="Self.FK__TONKHO__MAKHO__47DBAE45">
             <End Role="KHO" EntitySet="KHO" />
             <End Role="TONKHO" EntitySet="TONKHO" />
           </AssociationSet>
-          <AssociationSet Name="FK__TONKHO__MASP__3C69FB99" Association="Self.FK__TONKHO__MASP__3C69FB99">
+          <AssociationSet Name="FK__TONKHO__MASP__48CFD27E" Association="Self.FK__TONKHO__MASP__48CFD27E">
             <End Role="SANPHAM" EntitySet="SANPHAM" />
             <End Role="TONKHO" EntitySet="TONKHO" />
           </AssociationSet>
           <AssociationSet Name="FK_NHANVIEN" Association="Self.FK_NHANVIEN">
-            <End Role="LOGIN" EntitySet="LOGIN" />
+            <End Role="CHINHANH" EntitySet="CHINHANH" />
             <End Role="NHANVIEN" EntitySet="NHANVIEN" />
           </AssociationSet>
           <AssociationSet Name="FK_NHANVIEN1" Association="Self.FK_NHANVIEN1">
-            <End Role="CHINHANH" EntitySet="CHINHANH" />
+            <End Role="LOGIN" EntitySet="LOGIN" />
             <End Role="NHANVIEN" EntitySet="NHANVIEN" />
           </AssociationSet>
         </EntityContainer>
@@ -425,43 +578,59 @@
       <Schema Namespace="LOVETAPModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="BAOHANH">
           <Key>
-            <PropertyRef Name="SDT" />
+            <PropertyRef Name="MAKH" />
             <PropertyRef Name="MASP" />
           </Key>
-          <Property Name="SDT" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="MASP" Type="String" MaxLength="65" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MAKH" Type="Int32" Nullable="false" />
+          <Property Name="MASP" Type="Int32" Nullable="false" />
           <Property Name="DELETED" Type="Boolean" />
-          <NavigationProperty Name="SANPHAM" Relationship="Self.FK__BAOHANH__MASP__403A8C7D" FromRole="BAOHANH" ToRole="SANPHAM" />
-          <NavigationProperty Name="KHACHHANG" Relationship="Self.FK__BAOHANH__SDT__3F466844" FromRole="BAOHANH" ToRole="KHACHHANG" />
+          <NavigationProperty Name="KHACHHANG" Relationship="Self.FK__BAOHANH__MAKH__4BAC3F29" FromRole="BAOHANH" ToRole="KHACHHANG" />
+          <NavigationProperty Name="SANPHAM" Relationship="Self.FK__BAOHANH__MASP__4CA06362" FromRole="BAOHANH" ToRole="SANPHAM" />
         </EntityType>
         <EntityType Name="CHINHANH">
           <Key>
             <PropertyRef Name="MACN" />
           </Key>
-          <Property Name="MACN" Type="String" MaxLength="65" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MACN" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="TENCN" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="DIACHI" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="MAADMIN" Type="String" MaxLength="65" FixedLength="false" Unicode="false" />
+          <Property Name="MAADMIN" Type="Int32" />
+          <Property Name="DELETED" Type="Boolean" />
           <NavigationProperty Name="NHANVIEN" Relationship="Self.FK__CHINHANH__MAADMI__267ABA7A" FromRole="CHINHANH" ToRole="NHANVIEN" />
-          <NavigationProperty Name="NHANVIENs" Relationship="Self.FK_NHANVIEN1" FromRole="CHINHANH" ToRole="NHANVIEN" />
+          <NavigationProperty Name="HOADONs" Relationship="Self.FK__HOADON__MACN__30F848ED" FromRole="CHINHANH" ToRole="HOADON" />
+          <NavigationProperty Name="KHACHHANGs" Relationship="Self.FK__KHACHHANG__MACN__2A4B4B5E" FromRole="CHINHANH" ToRole="KHACHHANG" />
+          <NavigationProperty Name="PHIEUNHAPs" Relationship="Self.FK__PHIEUNHAP__MACN__35BCFE0A" FromRole="CHINHANH" ToRole="PHIEUNHAP" />
+          <NavigationProperty Name="NHANVIENs" Relationship="Self.FK_NHANVIEN" FromRole="CHINHANH" ToRole="NHANVIEN" />
         </EntityType>
         <EntityType Name="CTHD">
           <Key>
             <PropertyRef Name="MAHD" />
             <PropertyRef Name="MASP" />
           </Key>
-          <Property Name="MAHD" Type="String" MaxLength="65" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="MASP" Type="String" MaxLength="65" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MAHD" Type="Int32" Nullable="false" />
+          <Property Name="MASP" Type="Int32" Nullable="false" />
           <Property Name="SOLUONG" Type="Int32" />
           <Property Name="DELETED" Type="Boolean" />
-          <NavigationProperty Name="HOADON" Relationship="Self.FK__CTHD__MAHD__34C8D9D1" FromRole="CTHD" ToRole="HOADON" />
-          <NavigationProperty Name="SANPHAM" Relationship="Self.FK__CTHD__MASP__35BCFE0A" FromRole="CTHD" ToRole="SANPHAM" />
+          <NavigationProperty Name="HOADON" Relationship="Self.FK__CTHD__MAHD__3D5E1FD2" FromRole="CTHD" ToRole="HOADON" />
+          <NavigationProperty Name="SANPHAM" Relationship="Self.FK__CTHD__MASP__3E52440B" FromRole="CTHD" ToRole="SANPHAM" />
+        </EntityType>
+        <EntityType Name="CTPN">
+          <Key>
+            <PropertyRef Name="MAPN" />
+            <PropertyRef Name="MASP" />
+          </Key>
+          <Property Name="MAPN" Type="Int32" Nullable="false" />
+          <Property Name="MASP" Type="Int32" Nullable="false" />
+          <Property Name="SOLUONG" Type="Int32" />
+          <Property Name="DELETED" Type="Boolean" />
+          <NavigationProperty Name="PHIEUNHAP" Relationship="Self.FK__CTPN__MAPN__412EB0B6" FromRole="CTPN" ToRole="PHIEUNHAP" />
+          <NavigationProperty Name="SANPHAM" Relationship="Self.FK__CTPN__MASP__4222D4EF" FromRole="CTPN" ToRole="SANPHAM" />
         </EntityType>
         <EntityType Name="CTSP">
           <Key>
             <PropertyRef Name="MASP" />
           </Key>
-          <Property Name="MASP" Type="String" MaxLength="65" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MASP" Type="Int32" Nullable="false" />
           <Property Name="CPU" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
           <Property Name="RAM" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
           <Property Name="HD" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
@@ -469,135 +638,183 @@
           <Property Name="SCREENSIZE" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
           <Property Name="OS" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
           <Property Name="COLOR" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="SANPHAM" Relationship="Self.FK__CTSP__MASP__52593CB8" FromRole="CTSP" ToRole="SANPHAM" />
+          <Property Name="DELETED" Type="Boolean" />
+          <NavigationProperty Name="SANPHAM" Relationship="Self.FK__CTSP__MASP__5441852A" FromRole="CTSP" ToRole="SANPHAM" />
         </EntityType>
         <EntityType Name="DANHMUC">
           <Key>
             <PropertyRef Name="MADM" />
           </Key>
-          <Property Name="MADM" Type="String" MaxLength="65" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MADM" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="TENDM" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="DELETED" Type="Boolean" />
-          <NavigationProperty Name="SANPHAMs" Relationship="Self.FK__SANPHAM__MADM__31EC6D26" FromRole="DANHMUC" ToRole="SANPHAM" />
+          <NavigationProperty Name="SANPHAMs" Relationship="Self.FK__SANPHAM__MADM__3A81B327" FromRole="DANHMUC" ToRole="SANPHAM" />
         </EntityType>
         <EntityType Name="HOADON">
           <Key>
             <PropertyRef Name="MAHD" />
           </Key>
-          <Property Name="MAHD" Type="String" MaxLength="65" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MAHD" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="NGMUA" Type="DateTime" Precision="0" />
           <Property Name="TONGTIEN" Type="Double" />
-          <Property Name="LOAIHD" Type="Boolean" />
-          <Property Name="MANV" Type="String" MaxLength="65" FixedLength="false" Unicode="false" />
-          <Property Name="SDT" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="MANV" Type="Int32" />
+          <Property Name="MAKH" Type="Int32" />
+          <Property Name="MACN" Type="Int32" />
           <Property Name="DELETED" Type="Boolean" />
-          <NavigationProperty Name="CTHDs" Relationship="Self.FK__CTHD__MAHD__34C8D9D1" FromRole="HOADON" ToRole="CTHD" />
-          <NavigationProperty Name="NHANVIEN" Relationship="Self.FK__HOADON__MANV__2C3393D0" FromRole="HOADON" ToRole="NHANVIEN" />
-          <NavigationProperty Name="KHACHHANG" Relationship="Self.FK__HOADON__SDT__2D27B809" FromRole="HOADON" ToRole="KHACHHANG" />
+          <NavigationProperty Name="CHINHANH" Relationship="Self.FK__HOADON__MACN__30F848ED" FromRole="HOADON" ToRole="CHINHANH" />
+          <NavigationProperty Name="CTHDs" Relationship="Self.FK__CTHD__MAHD__3D5E1FD2" FromRole="HOADON" ToRole="CTHD" />
+          <NavigationProperty Name="KHACHHANG" Relationship="Self.FK__HOADON__MAKH__300424B4" FromRole="HOADON" ToRole="KHACHHANG" />
+          <NavigationProperty Name="NHANVIEN" Relationship="Self.FK__HOADON__MANV__2F10007B" FromRole="HOADON" ToRole="NHANVIEN" />
         </EntityType>
         <EntityType Name="KHACHHANG">
           <Key>
-            <PropertyRef Name="SDT" />
+            <PropertyRef Name="MAKH" />
           </Key>
+          <Property Name="MAKH" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="HOTEN" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="SDT" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="SDT" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
           <Property Name="DIACHI" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="NGDK" Type="DateTime" Precision="0" />
           <Property Name="DOANHSO" Type="Double" />
-          <Property Name="MANV" Type="String" MaxLength="65" FixedLength="false" Unicode="false" />
+          <Property Name="MANV" Type="Int32" />
           <Property Name="NGSINH" Type="DateTime" Precision="0" />
+          <Property Name="MACN" Type="Int32" />
           <Property Name="DELETED" Type="Boolean" />
-          <NavigationProperty Name="BAOHANHs" Relationship="Self.FK__BAOHANH__SDT__3F466844" FromRole="KHACHHANG" ToRole="BAOHANH" />
-          <NavigationProperty Name="HOADONs" Relationship="Self.FK__HOADON__SDT__2D27B809" FromRole="KHACHHANG" ToRole="HOADON" />
+          <NavigationProperty Name="BAOHANHs" Relationship="Self.FK__BAOHANH__MAKH__4BAC3F29" FromRole="KHACHHANG" ToRole="BAOHANH" />
+          <NavigationProperty Name="CHINHANH" Relationship="Self.FK__KHACHHANG__MACN__2A4B4B5E" FromRole="KHACHHANG" ToRole="CHINHANH" />
+          <NavigationProperty Name="HOADONs" Relationship="Self.FK__HOADON__MAKH__300424B4" FromRole="KHACHHANG" ToRole="HOADON" />
           <NavigationProperty Name="NHANVIEN" Relationship="Self.FK__KHACHHANG__MANV__29572725" FromRole="KHACHHANG" ToRole="NHANVIEN" />
         </EntityType>
         <EntityType Name="KHO">
           <Key>
             <PropertyRef Name="MAKHO" />
           </Key>
-          <Property Name="MAKHO" Type="String" MaxLength="65" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MAKHO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="TENKHO" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="DIACHI" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="DIENTICH" Type="Double" />
-          <Property Name="MANQL" Type="String" MaxLength="65" FixedLength="false" Unicode="false" />
+          <Property Name="MANQL" Type="Int32" />
           <Property Name="DELETED" Type="Boolean" />
-          <NavigationProperty Name="NHANVIEN" Relationship="Self.FK__KHO__MANQL__38996AB5" FromRole="KHO" ToRole="NHANVIEN" />
-          <NavigationProperty Name="TONKHOes" Relationship="Self.FK__TONKHO__MAKHO__3B75D760" FromRole="KHO" ToRole="TONKHO" />
+          <NavigationProperty Name="NHANVIEN" Relationship="Self.FK__KHO__MANQL__44FF419A" FromRole="KHO" ToRole="NHANVIEN" />
+          <NavigationProperty Name="TONKHOes" Relationship="Self.FK__TONKHO__MAKHO__47DBAE45" FromRole="KHO" ToRole="TONKHO" />
         </EntityType>
         <EntityType Name="LOGIN">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="USERNAME" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="USERPASS" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="NHANVIENs" Relationship="Self.FK_NHANVIEN" FromRole="LOGIN" ToRole="NHANVIEN" />
+          <Property Name="DELETED" Type="Boolean" />
+          <NavigationProperty Name="NHANVIEN" Relationship="Self.FK_NHANVIEN1" FromRole="LOGIN" ToRole="NHANVIEN" />
         </EntityType>
         <EntityType Name="LOIICH">
           <Key>
             <PropertyRef Name="MASP" />
           </Key>
-          <Property Name="MASP" Type="String" MaxLength="65" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MASP" Type="Int32" Nullable="false" />
           <Property Name="LI1" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="LI2" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="LI3" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="LI4" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="SANPHAM" Relationship="Self.FK__LOIICH__MASP__5535A963" FromRole="LOIICH" ToRole="SANPHAM" />
+          <Property Name="DELETED" Type="Boolean" />
+          <NavigationProperty Name="SANPHAM" Relationship="Self.FK__LOIICH__MASP__571DF1D5" FromRole="LOIICH" ToRole="SANPHAM" />
+        </EntityType>
+        <EntityType Name="NHACUNGCAP">
+          <Key>
+            <PropertyRef Name="MANCC" />
+          </Key>
+          <Property Name="MANCC" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TEN" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="SDT" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="DIACHI" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="EMAIL" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="DELETED" Type="Boolean" />
+          <NavigationProperty Name="PHIEUNHAPs" Relationship="Self.FK__PHIEUNHAP__MANCC__34C8D9D1" FromRole="NHACUNGCAP" ToRole="PHIEUNHAP" />
         </EntityType>
         <EntityType Name="NHANVIEN">
           <Key>
             <PropertyRef Name="MANV" />
           </Key>
-          <Property Name="MANV" Type="String" MaxLength="65" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MANV" Type="Int32" Nullable="false" />
           <Property Name="HOTEN" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="NTNS" Type="DateTime" Precision="0" />
           <Property Name="SDT" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
           <Property Name="DIACHI" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="HESOLUONG" Type="Double" />
           <Property Name="LUONGCB" Type="Double" />
-          <Property Name="MACN" Type="String" MaxLength="65" FixedLength="false" Unicode="false" />
+          <Property Name="MACN" Type="Int32" />
           <Property Name="VAITRO" Type="Boolean" />
           <Property Name="EMAIL" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="NVID" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="DELETED" Type="Boolean" />
           <NavigationProperty Name="CHINHANHs" Relationship="Self.FK__CHINHANH__MAADMI__267ABA7A" FromRole="NHANVIEN" ToRole="CHINHANH" />
-          <NavigationProperty Name="CHINHANH" Relationship="Self.FK_NHANVIEN1" FromRole="NHANVIEN" ToRole="CHINHANH" />
-          <NavigationProperty Name="HOADONs" Relationship="Self.FK__HOADON__MANV__2C3393D0" FromRole="NHANVIEN" ToRole="HOADON" />
+          <NavigationProperty Name="CHINHANH" Relationship="Self.FK_NHANVIEN" FromRole="NHANVIEN" ToRole="CHINHANH" />
+          <NavigationProperty Name="HOADONs" Relationship="Self.FK__HOADON__MANV__2F10007B" FromRole="NHANVIEN" ToRole="HOADON" />
           <NavigationProperty Name="KHACHHANGs" Relationship="Self.FK__KHACHHANG__MANV__29572725" FromRole="NHANVIEN" ToRole="KHACHHANG" />
-          <NavigationProperty Name="KHOes" Relationship="Self.FK__KHO__MANQL__38996AB5" FromRole="NHANVIEN" ToRole="KHO" />
-          <NavigationProperty Name="LOGIN" Relationship="Self.FK_NHANVIEN" FromRole="NHANVIEN" ToRole="LOGIN" />
+          <NavigationProperty Name="KHOes" Relationship="Self.FK__KHO__MANQL__44FF419A" FromRole="NHANVIEN" ToRole="KHO" />
+          <NavigationProperty Name="LOGIN" Relationship="Self.FK_NHANVIEN1" FromRole="NHANVIEN" ToRole="LOGIN" />
+          <NavigationProperty Name="PHIEUNHAPs" Relationship="Self.FK__PHIEUNHAP__MANV__33D4B598" FromRole="NHANVIEN" ToRole="PHIEUNHAP" />
+        </EntityType>
+        <EntityType Name="PHIEUNHAP">
+          <Key>
+            <PropertyRef Name="MAPN" />
+          </Key>
+          <Property Name="MAPN" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NGNHAP" Type="DateTime" Precision="0" />
+          <Property Name="TONGTIEN" Type="Double" />
+          <Property Name="MANV" Type="Int32" />
+          <Property Name="MANCC" Type="Int32" />
+          <Property Name="MACN" Type="Int32" />
+          <Property Name="DELETED" Type="Boolean" />
+          <NavigationProperty Name="CHINHANH" Relationship="Self.FK__PHIEUNHAP__MACN__35BCFE0A" FromRole="PHIEUNHAP" ToRole="CHINHANH" />
+          <NavigationProperty Name="CTPNs" Relationship="Self.FK__CTPN__MAPN__412EB0B6" FromRole="PHIEUNHAP" ToRole="CTPN" />
+          <NavigationProperty Name="NHACUNGCAP" Relationship="Self.FK__PHIEUNHAP__MANCC__34C8D9D1" FromRole="PHIEUNHAP" ToRole="NHACUNGCAP" />
+          <NavigationProperty Name="NHANVIEN" Relationship="Self.FK__PHIEUNHAP__MANV__33D4B598" FromRole="PHIEUNHAP" ToRole="NHANVIEN" />
         </EntityType>
         <EntityType Name="SANPHAM">
           <Key>
             <PropertyRef Name="MASP" />
           </Key>
-          <Property Name="MASP" Type="String" MaxLength="65" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MASP" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="TEN" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="GIA" Type="Double" />
           <Property Name="NUOCSX" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="CHITIET" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="MADM" Type="String" MaxLength="65" FixedLength="false" Unicode="false" />
+          <Property Name="MADM" Type="Int32" />
           <Property Name="DELETED" Type="Boolean" />
-          <NavigationProperty Name="BAOHANHs" Relationship="Self.FK__BAOHANH__MASP__403A8C7D" FromRole="SANPHAM" ToRole="BAOHANH" />
-          <NavigationProperty Name="CTHDs" Relationship="Self.FK__CTHD__MASP__35BCFE0A" FromRole="SANPHAM" ToRole="CTHD" />
-          <NavigationProperty Name="CTSP" Relationship="Self.FK__CTSP__MASP__52593CB8" FromRole="SANPHAM" ToRole="CTSP" />
-          <NavigationProperty Name="DANHMUC" Relationship="Self.FK__SANPHAM__MADM__31EC6D26" FromRole="SANPHAM" ToRole="DANHMUC" />
-          <NavigationProperty Name="LOIICH" Relationship="Self.FK__LOIICH__MASP__5535A963" FromRole="SANPHAM" ToRole="LOIICH" />
-          <NavigationProperty Name="TONKHOes" Relationship="Self.FK__TONKHO__MASP__3C69FB99" FromRole="SANPHAM" ToRole="TONKHO" />
+          <NavigationProperty Name="BAOHANHs" Relationship="Self.FK__BAOHANH__MASP__4CA06362" FromRole="SANPHAM" ToRole="BAOHANH" />
+          <NavigationProperty Name="CTHDs" Relationship="Self.FK__CTHD__MASP__3E52440B" FromRole="SANPHAM" ToRole="CTHD" />
+          <NavigationProperty Name="CTPNs" Relationship="Self.FK__CTPN__MASP__4222D4EF" FromRole="SANPHAM" ToRole="CTPN" />
+          <NavigationProperty Name="CTSP" Relationship="Self.FK__CTSP__MASP__5441852A" FromRole="SANPHAM" ToRole="CTSP" />
+          <NavigationProperty Name="DANHMUC" Relationship="Self.FK__SANPHAM__MADM__3A81B327" FromRole="SANPHAM" ToRole="DANHMUC" />
+          <NavigationProperty Name="LOIICH" Relationship="Self.FK__LOIICH__MASP__571DF1D5" FromRole="SANPHAM" ToRole="LOIICH" />
+          <NavigationProperty Name="TONKHOes" Relationship="Self.FK__TONKHO__MASP__48CFD27E" FromRole="SANPHAM" ToRole="TONKHO" />
         </EntityType>
         <EntityType Name="TONKHO">
           <Key>
             <PropertyRef Name="MAKHO" />
             <PropertyRef Name="MASP" />
           </Key>
-          <Property Name="MAKHO" Type="String" MaxLength="65" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="MASP" Type="String" MaxLength="65" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MAKHO" Type="Int32" Nullable="false" />
+          <Property Name="MASP" Type="Int32" Nullable="false" />
           <Property Name="SOLUONG" Type="Int32" />
           <Property Name="DELETED" Type="Boolean" />
-          <NavigationProperty Name="KHO" Relationship="Self.FK__TONKHO__MAKHO__3B75D760" FromRole="TONKHO" ToRole="KHO" />
-          <NavigationProperty Name="SANPHAM" Relationship="Self.FK__TONKHO__MASP__3C69FB99" FromRole="TONKHO" ToRole="SANPHAM" />
+          <NavigationProperty Name="KHO" Relationship="Self.FK__TONKHO__MAKHO__47DBAE45" FromRole="TONKHO" ToRole="KHO" />
+          <NavigationProperty Name="SANPHAM" Relationship="Self.FK__TONKHO__MASP__48CFD27E" FromRole="TONKHO" ToRole="SANPHAM" />
         </EntityType>
-        <Association Name="FK__BAOHANH__MASP__403A8C7D">
+        <Association Name="FK__BAOHANH__MAKH__4BAC3F29">
+          <End Role="KHACHHANG" Type="Self.KHACHHANG" Multiplicity="1" />
+          <End Role="BAOHANH" Type="Self.BAOHANH" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KHACHHANG">
+              <PropertyRef Name="MAKH" />
+            </Principal>
+            <Dependent Role="BAOHANH">
+              <PropertyRef Name="MAKH" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__BAOHANH__MASP__4CA06362">
           <End Role="SANPHAM" Type="Self.SANPHAM" Multiplicity="1" />
           <End Role="BAOHANH" Type="Self.BAOHANH" Multiplicity="*" />
           <ReferentialConstraint>
@@ -606,18 +823,6 @@
             </Principal>
             <Dependent Role="BAOHANH">
               <PropertyRef Name="MASP" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__BAOHANH__SDT__3F466844">
-          <End Role="KHACHHANG" Type="Self.KHACHHANG" Multiplicity="1" />
-          <End Role="BAOHANH" Type="Self.BAOHANH" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="KHACHHANG">
-              <PropertyRef Name="SDT" />
-            </Principal>
-            <Dependent Role="BAOHANH">
-              <PropertyRef Name="SDT" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -633,7 +838,43 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_NHANVIEN1">
+        <Association Name="FK__HOADON__MACN__30F848ED">
+          <End Role="CHINHANH" Type="Self.CHINHANH" Multiplicity="0..1" />
+          <End Role="HOADON" Type="Self.HOADON" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CHINHANH">
+              <PropertyRef Name="MACN" />
+            </Principal>
+            <Dependent Role="HOADON">
+              <PropertyRef Name="MACN" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__KHACHHANG__MACN__2A4B4B5E">
+          <End Role="CHINHANH" Type="Self.CHINHANH" Multiplicity="0..1" />
+          <End Role="KHACHHANG" Type="Self.KHACHHANG" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CHINHANH">
+              <PropertyRef Name="MACN" />
+            </Principal>
+            <Dependent Role="KHACHHANG">
+              <PropertyRef Name="MACN" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PHIEUNHAP__MACN__35BCFE0A">
+          <End Role="CHINHANH" Type="Self.CHINHANH" Multiplicity="0..1" />
+          <End Role="PHIEUNHAP" Type="Self.PHIEUNHAP" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CHINHANH">
+              <PropertyRef Name="MACN" />
+            </Principal>
+            <Dependent Role="PHIEUNHAP">
+              <PropertyRef Name="MACN" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NHANVIEN">
           <End Role="CHINHANH" Type="Self.CHINHANH" Multiplicity="0..1" />
           <End Role="NHANVIEN" Type="Self.NHANVIEN" Multiplicity="*" />
           <ReferentialConstraint>
@@ -645,7 +886,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__CTHD__MAHD__34C8D9D1">
+        <Association Name="FK__CTHD__MAHD__3D5E1FD2">
           <End Role="HOADON" Type="Self.HOADON" Multiplicity="1" />
           <End Role="CTHD" Type="Self.CTHD" Multiplicity="*" />
           <ReferentialConstraint>
@@ -657,7 +898,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__CTHD__MASP__35BCFE0A">
+        <Association Name="FK__CTHD__MASP__3E52440B">
           <End Role="SANPHAM" Type="Self.SANPHAM" Multiplicity="1" />
           <End Role="CTHD" Type="Self.CTHD" Multiplicity="*" />
           <ReferentialConstraint>
@@ -669,7 +910,31 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__CTSP__MASP__52593CB8">
+        <Association Name="FK__CTPN__MAPN__412EB0B6">
+          <End Role="PHIEUNHAP" Type="Self.PHIEUNHAP" Multiplicity="1" />
+          <End Role="CTPN" Type="Self.CTPN" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PHIEUNHAP">
+              <PropertyRef Name="MAPN" />
+            </Principal>
+            <Dependent Role="CTPN">
+              <PropertyRef Name="MAPN" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CTPN__MASP__4222D4EF">
+          <End Role="SANPHAM" Type="Self.SANPHAM" Multiplicity="1" />
+          <End Role="CTPN" Type="Self.CTPN" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SANPHAM">
+              <PropertyRef Name="MASP" />
+            </Principal>
+            <Dependent Role="CTPN">
+              <PropertyRef Name="MASP" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CTSP__MASP__5441852A">
           <End Role="SANPHAM" Type="Self.SANPHAM" Multiplicity="1" />
           <End Role="CTSP" Type="Self.CTSP" Multiplicity="0..1" />
           <ReferentialConstraint>
@@ -681,7 +946,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__SANPHAM__MADM__31EC6D26">
+        <Association Name="FK__SANPHAM__MADM__3A81B327">
           <End Role="DANHMUC" Type="Self.DANHMUC" Multiplicity="0..1" />
           <End Role="SANPHAM" Type="Self.SANPHAM" Multiplicity="*" />
           <ReferentialConstraint>
@@ -693,7 +958,19 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__HOADON__MANV__2C3393D0">
+        <Association Name="FK__HOADON__MAKH__300424B4">
+          <End Role="KHACHHANG" Type="Self.KHACHHANG" Multiplicity="0..1" />
+          <End Role="HOADON" Type="Self.HOADON" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KHACHHANG">
+              <PropertyRef Name="MAKH" />
+            </Principal>
+            <Dependent Role="HOADON">
+              <PropertyRef Name="MAKH" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__HOADON__MANV__2F10007B">
           <End Role="NHANVIEN" Type="Self.NHANVIEN" Multiplicity="0..1" />
           <End Role="HOADON" Type="Self.HOADON" Multiplicity="*" />
           <ReferentialConstraint>
@@ -702,18 +979,6 @@
             </Principal>
             <Dependent Role="HOADON">
               <PropertyRef Name="MANV" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__HOADON__SDT__2D27B809">
-          <End Role="KHACHHANG" Type="Self.KHACHHANG" Multiplicity="0..1" />
-          <End Role="HOADON" Type="Self.HOADON" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="KHACHHANG">
-              <PropertyRef Name="SDT" />
-            </Principal>
-            <Dependent Role="HOADON">
-              <PropertyRef Name="SDT" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -729,7 +994,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__KHO__MANQL__38996AB5">
+        <Association Name="FK__KHO__MANQL__44FF419A">
           <End Role="NHANVIEN" Type="Self.NHANVIEN" Multiplicity="0..1" />
           <End Role="KHO" Type="Self.KHO" Multiplicity="*" />
           <ReferentialConstraint>
@@ -741,7 +1006,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__TONKHO__MAKHO__3B75D760">
+        <Association Name="FK__TONKHO__MAKHO__47DBAE45">
           <End Role="KHO" Type="Self.KHO" Multiplicity="1" />
           <End Role="TONKHO" Type="Self.TONKHO" Multiplicity="*" />
           <ReferentialConstraint>
@@ -753,19 +1018,19 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_NHANVIEN">
-          <End Role="LOGIN" Type="Self.LOGIN" Multiplicity="0..1" />
-          <End Role="NHANVIEN" Type="Self.NHANVIEN" Multiplicity="*" />
+        <Association Name="FK_NHANVIEN1">
+          <End Role="LOGIN" Type="Self.LOGIN" Multiplicity="1" />
+          <End Role="NHANVIEN" Type="Self.NHANVIEN" Multiplicity="0..1" />
           <ReferentialConstraint>
             <Principal Role="LOGIN">
               <PropertyRef Name="ID" />
             </Principal>
             <Dependent Role="NHANVIEN">
-              <PropertyRef Name="NVID" />
+              <PropertyRef Name="MANV" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__LOIICH__MASP__5535A963">
+        <Association Name="FK__LOIICH__MASP__571DF1D5">
           <End Role="SANPHAM" Type="Self.SANPHAM" Multiplicity="1" />
           <End Role="LOIICH" Type="Self.LOIICH" Multiplicity="0..1" />
           <ReferentialConstraint>
@@ -777,7 +1042,31 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__TONKHO__MASP__3C69FB99">
+        <Association Name="FK__PHIEUNHAP__MANCC__34C8D9D1">
+          <End Role="NHACUNGCAP" Type="Self.NHACUNGCAP" Multiplicity="0..1" />
+          <End Role="PHIEUNHAP" Type="Self.PHIEUNHAP" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NHACUNGCAP">
+              <PropertyRef Name="MANCC" />
+            </Principal>
+            <Dependent Role="PHIEUNHAP">
+              <PropertyRef Name="MANCC" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PHIEUNHAP__MANV__33D4B598">
+          <End Role="NHANVIEN" Type="Self.NHANVIEN" Multiplicity="0..1" />
+          <End Role="PHIEUNHAP" Type="Self.PHIEUNHAP" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NHANVIEN">
+              <PropertyRef Name="MANV" />
+            </Principal>
+            <Dependent Role="PHIEUNHAP">
+              <PropertyRef Name="MANV" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TONKHO__MASP__48CFD27E">
           <End Role="SANPHAM" Type="Self.SANPHAM" Multiplicity="1" />
           <End Role="TONKHO" Type="Self.TONKHO" Multiplicity="*" />
           <ReferentialConstraint>
@@ -793,6 +1082,7 @@
           <EntitySet Name="BAOHANHs" EntityType="Self.BAOHANH" />
           <EntitySet Name="CHINHANHs" EntityType="Self.CHINHANH" />
           <EntitySet Name="CTHDs" EntityType="Self.CTHD" />
+          <EntitySet Name="CTPNs" EntityType="Self.CTPN" />
           <EntitySet Name="CTSPs" EntityType="Self.CTSP" />
           <EntitySet Name="DANHMUCs" EntityType="Self.DANHMUC" />
           <EntitySet Name="HOADONs" EntityType="Self.HOADON" />
@@ -800,70 +1090,100 @@
           <EntitySet Name="KHOes" EntityType="Self.KHO" />
           <EntitySet Name="LOGINs" EntityType="Self.LOGIN" />
           <EntitySet Name="LOIICHes" EntityType="Self.LOIICH" />
+          <EntitySet Name="NHACUNGCAPs" EntityType="Self.NHACUNGCAP" />
           <EntitySet Name="NHANVIENs" EntityType="Self.NHANVIEN" />
+          <EntitySet Name="PHIEUNHAPs" EntityType="Self.PHIEUNHAP" />
           <EntitySet Name="SANPHAMs" EntityType="Self.SANPHAM" />
           <EntitySet Name="TONKHOes" EntityType="Self.TONKHO" />
-          <AssociationSet Name="FK__BAOHANH__MASP__403A8C7D" Association="Self.FK__BAOHANH__MASP__403A8C7D">
-            <End Role="SANPHAM" EntitySet="SANPHAMs" />
+          <AssociationSet Name="FK__BAOHANH__MAKH__4BAC3F29" Association="Self.FK__BAOHANH__MAKH__4BAC3F29">
+            <End Role="KHACHHANG" EntitySet="KHACHHANGs" />
             <End Role="BAOHANH" EntitySet="BAOHANHs" />
           </AssociationSet>
-          <AssociationSet Name="FK__BAOHANH__SDT__3F466844" Association="Self.FK__BAOHANH__SDT__3F466844">
-            <End Role="KHACHHANG" EntitySet="KHACHHANGs" />
+          <AssociationSet Name="FK__BAOHANH__MASP__4CA06362" Association="Self.FK__BAOHANH__MASP__4CA06362">
+            <End Role="SANPHAM" EntitySet="SANPHAMs" />
             <End Role="BAOHANH" EntitySet="BAOHANHs" />
           </AssociationSet>
           <AssociationSet Name="FK__CHINHANH__MAADMI__267ABA7A" Association="Self.FK__CHINHANH__MAADMI__267ABA7A">
             <End Role="NHANVIEN" EntitySet="NHANVIENs" />
             <End Role="CHINHANH" EntitySet="CHINHANHs" />
           </AssociationSet>
-          <AssociationSet Name="FK_NHANVIEN1" Association="Self.FK_NHANVIEN1">
+          <AssociationSet Name="FK__HOADON__MACN__30F848ED" Association="Self.FK__HOADON__MACN__30F848ED">
+            <End Role="CHINHANH" EntitySet="CHINHANHs" />
+            <End Role="HOADON" EntitySet="HOADONs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__KHACHHANG__MACN__2A4B4B5E" Association="Self.FK__KHACHHANG__MACN__2A4B4B5E">
+            <End Role="CHINHANH" EntitySet="CHINHANHs" />
+            <End Role="KHACHHANG" EntitySet="KHACHHANGs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PHIEUNHAP__MACN__35BCFE0A" Association="Self.FK__PHIEUNHAP__MACN__35BCFE0A">
+            <End Role="CHINHANH" EntitySet="CHINHANHs" />
+            <End Role="PHIEUNHAP" EntitySet="PHIEUNHAPs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NHANVIEN" Association="Self.FK_NHANVIEN">
             <End Role="CHINHANH" EntitySet="CHINHANHs" />
             <End Role="NHANVIEN" EntitySet="NHANVIENs" />
           </AssociationSet>
-          <AssociationSet Name="FK__CTHD__MAHD__34C8D9D1" Association="Self.FK__CTHD__MAHD__34C8D9D1">
+          <AssociationSet Name="FK__CTHD__MAHD__3D5E1FD2" Association="Self.FK__CTHD__MAHD__3D5E1FD2">
             <End Role="HOADON" EntitySet="HOADONs" />
             <End Role="CTHD" EntitySet="CTHDs" />
           </AssociationSet>
-          <AssociationSet Name="FK__CTHD__MASP__35BCFE0A" Association="Self.FK__CTHD__MASP__35BCFE0A">
+          <AssociationSet Name="FK__CTHD__MASP__3E52440B" Association="Self.FK__CTHD__MASP__3E52440B">
             <End Role="SANPHAM" EntitySet="SANPHAMs" />
             <End Role="CTHD" EntitySet="CTHDs" />
           </AssociationSet>
-          <AssociationSet Name="FK__CTSP__MASP__52593CB8" Association="Self.FK__CTSP__MASP__52593CB8">
+          <AssociationSet Name="FK__CTPN__MAPN__412EB0B6" Association="Self.FK__CTPN__MAPN__412EB0B6">
+            <End Role="PHIEUNHAP" EntitySet="PHIEUNHAPs" />
+            <End Role="CTPN" EntitySet="CTPNs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CTPN__MASP__4222D4EF" Association="Self.FK__CTPN__MASP__4222D4EF">
+            <End Role="SANPHAM" EntitySet="SANPHAMs" />
+            <End Role="CTPN" EntitySet="CTPNs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CTSP__MASP__5441852A" Association="Self.FK__CTSP__MASP__5441852A">
             <End Role="SANPHAM" EntitySet="SANPHAMs" />
             <End Role="CTSP" EntitySet="CTSPs" />
           </AssociationSet>
-          <AssociationSet Name="FK__SANPHAM__MADM__31EC6D26" Association="Self.FK__SANPHAM__MADM__31EC6D26">
+          <AssociationSet Name="FK__SANPHAM__MADM__3A81B327" Association="Self.FK__SANPHAM__MADM__3A81B327">
             <End Role="DANHMUC" EntitySet="DANHMUCs" />
             <End Role="SANPHAM" EntitySet="SANPHAMs" />
           </AssociationSet>
-          <AssociationSet Name="FK__HOADON__MANV__2C3393D0" Association="Self.FK__HOADON__MANV__2C3393D0">
-            <End Role="NHANVIEN" EntitySet="NHANVIENs" />
+          <AssociationSet Name="FK__HOADON__MAKH__300424B4" Association="Self.FK__HOADON__MAKH__300424B4">
+            <End Role="KHACHHANG" EntitySet="KHACHHANGs" />
             <End Role="HOADON" EntitySet="HOADONs" />
           </AssociationSet>
-          <AssociationSet Name="FK__HOADON__SDT__2D27B809" Association="Self.FK__HOADON__SDT__2D27B809">
-            <End Role="KHACHHANG" EntitySet="KHACHHANGs" />
+          <AssociationSet Name="FK__HOADON__MANV__2F10007B" Association="Self.FK__HOADON__MANV__2F10007B">
+            <End Role="NHANVIEN" EntitySet="NHANVIENs" />
             <End Role="HOADON" EntitySet="HOADONs" />
           </AssociationSet>
           <AssociationSet Name="FK__KHACHHANG__MANV__29572725" Association="Self.FK__KHACHHANG__MANV__29572725">
             <End Role="NHANVIEN" EntitySet="NHANVIENs" />
             <End Role="KHACHHANG" EntitySet="KHACHHANGs" />
           </AssociationSet>
-          <AssociationSet Name="FK__KHO__MANQL__38996AB5" Association="Self.FK__KHO__MANQL__38996AB5">
+          <AssociationSet Name="FK__KHO__MANQL__44FF419A" Association="Self.FK__KHO__MANQL__44FF419A">
             <End Role="NHANVIEN" EntitySet="NHANVIENs" />
             <End Role="KHO" EntitySet="KHOes" />
           </AssociationSet>
-          <AssociationSet Name="FK__TONKHO__MAKHO__3B75D760" Association="Self.FK__TONKHO__MAKHO__3B75D760">
+          <AssociationSet Name="FK__TONKHO__MAKHO__47DBAE45" Association="Self.FK__TONKHO__MAKHO__47DBAE45">
             <End Role="KHO" EntitySet="KHOes" />
             <End Role="TONKHO" EntitySet="TONKHOes" />
           </AssociationSet>
-          <AssociationSet Name="FK_NHANVIEN" Association="Self.FK_NHANVIEN">
+          <AssociationSet Name="FK_NHANVIEN1" Association="Self.FK_NHANVIEN1">
             <End Role="LOGIN" EntitySet="LOGINs" />
             <End Role="NHANVIEN" EntitySet="NHANVIENs" />
           </AssociationSet>
-          <AssociationSet Name="FK__LOIICH__MASP__5535A963" Association="Self.FK__LOIICH__MASP__5535A963">
+          <AssociationSet Name="FK__LOIICH__MASP__571DF1D5" Association="Self.FK__LOIICH__MASP__571DF1D5">
             <End Role="SANPHAM" EntitySet="SANPHAMs" />
             <End Role="LOIICH" EntitySet="LOIICHes" />
           </AssociationSet>
-          <AssociationSet Name="FK__TONKHO__MASP__3C69FB99" Association="Self.FK__TONKHO__MASP__3C69FB99">
+          <AssociationSet Name="FK__PHIEUNHAP__MANCC__34C8D9D1" Association="Self.FK__PHIEUNHAP__MANCC__34C8D9D1">
+            <End Role="NHACUNGCAP" EntitySet="NHACUNGCAPs" />
+            <End Role="PHIEUNHAP" EntitySet="PHIEUNHAPs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PHIEUNHAP__MANV__33D4B598" Association="Self.FK__PHIEUNHAP__MANV__33D4B598">
+            <End Role="NHANVIEN" EntitySet="NHANVIENs" />
+            <End Role="PHIEUNHAP" EntitySet="PHIEUNHAPs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TONKHO__MASP__48CFD27E" Association="Self.FK__TONKHO__MASP__48CFD27E">
             <End Role="SANPHAM" EntitySet="SANPHAMs" />
             <End Role="TONKHO" EntitySet="TONKHOes" />
           </AssociationSet>
@@ -877,7 +1197,7 @@
           <EntitySetMapping Name="BAOHANHs">
             <EntityTypeMapping TypeName="LOVETAPModel.BAOHANH">
               <MappingFragment StoreEntitySet="BAOHANH">
-                <ScalarProperty Name="SDT" ColumnName="SDT" />
+                <ScalarProperty Name="MAKH" ColumnName="MAKH" />
                 <ScalarProperty Name="MASP" ColumnName="MASP" />
                 <ScalarProperty Name="DELETED" ColumnName="DELETED" />
               </MappingFragment>
@@ -890,6 +1210,7 @@
                 <ScalarProperty Name="TENCN" ColumnName="TENCN" />
                 <ScalarProperty Name="DIACHI" ColumnName="DIACHI" />
                 <ScalarProperty Name="MAADMIN" ColumnName="MAADMIN" />
+                <ScalarProperty Name="DELETED" ColumnName="DELETED" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -897,6 +1218,16 @@
             <EntityTypeMapping TypeName="LOVETAPModel.CTHD">
               <MappingFragment StoreEntitySet="CTHD">
                 <ScalarProperty Name="MAHD" ColumnName="MAHD" />
+                <ScalarProperty Name="MASP" ColumnName="MASP" />
+                <ScalarProperty Name="SOLUONG" ColumnName="SOLUONG" />
+                <ScalarProperty Name="DELETED" ColumnName="DELETED" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CTPNs">
+            <EntityTypeMapping TypeName="LOVETAPModel.CTPN">
+              <MappingFragment StoreEntitySet="CTPN">
+                <ScalarProperty Name="MAPN" ColumnName="MAPN" />
                 <ScalarProperty Name="MASP" ColumnName="MASP" />
                 <ScalarProperty Name="SOLUONG" ColumnName="SOLUONG" />
                 <ScalarProperty Name="DELETED" ColumnName="DELETED" />
@@ -914,6 +1245,7 @@
                 <ScalarProperty Name="SCREENSIZE" ColumnName="SCREENSIZE" />
                 <ScalarProperty Name="OS" ColumnName="OS" />
                 <ScalarProperty Name="COLOR" ColumnName="COLOR" />
+                <ScalarProperty Name="DELETED" ColumnName="DELETED" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -932,9 +1264,9 @@
                 <ScalarProperty Name="MAHD" ColumnName="MAHD" />
                 <ScalarProperty Name="NGMUA" ColumnName="NGMUA" />
                 <ScalarProperty Name="TONGTIEN" ColumnName="TONGTIEN" />
-                <ScalarProperty Name="LOAIHD" ColumnName="LOAIHD" />
                 <ScalarProperty Name="MANV" ColumnName="MANV" />
-                <ScalarProperty Name="SDT" ColumnName="SDT" />
+                <ScalarProperty Name="MAKH" ColumnName="MAKH" />
+                <ScalarProperty Name="MACN" ColumnName="MACN" />
                 <ScalarProperty Name="DELETED" ColumnName="DELETED" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -942,6 +1274,7 @@
           <EntitySetMapping Name="KHACHHANGs">
             <EntityTypeMapping TypeName="LOVETAPModel.KHACHHANG">
               <MappingFragment StoreEntitySet="KHACHHANG">
+                <ScalarProperty Name="MAKH" ColumnName="MAKH" />
                 <ScalarProperty Name="HOTEN" ColumnName="HOTEN" />
                 <ScalarProperty Name="SDT" ColumnName="SDT" />
                 <ScalarProperty Name="DIACHI" ColumnName="DIACHI" />
@@ -949,6 +1282,7 @@
                 <ScalarProperty Name="DOANHSO" ColumnName="DOANHSO" />
                 <ScalarProperty Name="MANV" ColumnName="MANV" />
                 <ScalarProperty Name="NGSINH" ColumnName="NGSINH" />
+                <ScalarProperty Name="MACN" ColumnName="MACN" />
                 <ScalarProperty Name="DELETED" ColumnName="DELETED" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -971,6 +1305,7 @@
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="USERNAME" ColumnName="USERNAME" />
                 <ScalarProperty Name="USERPASS" ColumnName="USERPASS" />
+                <ScalarProperty Name="DELETED" ColumnName="DELETED" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -982,6 +1317,19 @@
                 <ScalarProperty Name="LI2" ColumnName="LI2" />
                 <ScalarProperty Name="LI3" ColumnName="LI3" />
                 <ScalarProperty Name="LI4" ColumnName="LI4" />
+                <ScalarProperty Name="DELETED" ColumnName="DELETED" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NHACUNGCAPs">
+            <EntityTypeMapping TypeName="LOVETAPModel.NHACUNGCAP">
+              <MappingFragment StoreEntitySet="NHACUNGCAP">
+                <ScalarProperty Name="MANCC" ColumnName="MANCC" />
+                <ScalarProperty Name="TEN" ColumnName="TEN" />
+                <ScalarProperty Name="SDT" ColumnName="SDT" />
+                <ScalarProperty Name="DIACHI" ColumnName="DIACHI" />
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+                <ScalarProperty Name="DELETED" ColumnName="DELETED" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -998,7 +1346,19 @@
                 <ScalarProperty Name="MACN" ColumnName="MACN" />
                 <ScalarProperty Name="VAITRO" ColumnName="VAITRO" />
                 <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
-                <ScalarProperty Name="NVID" ColumnName="NVID" />
+                <ScalarProperty Name="DELETED" ColumnName="DELETED" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PHIEUNHAPs">
+            <EntityTypeMapping TypeName="LOVETAPModel.PHIEUNHAP">
+              <MappingFragment StoreEntitySet="PHIEUNHAP">
+                <ScalarProperty Name="MAPN" ColumnName="MAPN" />
+                <ScalarProperty Name="NGNHAP" ColumnName="NGNHAP" />
+                <ScalarProperty Name="TONGTIEN" ColumnName="TONGTIEN" />
+                <ScalarProperty Name="MANV" ColumnName="MANV" />
+                <ScalarProperty Name="MANCC" ColumnName="MANCC" />
+                <ScalarProperty Name="MACN" ColumnName="MACN" />
                 <ScalarProperty Name="DELETED" ColumnName="DELETED" />
               </MappingFragment>
             </EntityTypeMapping>

@@ -20,17 +20,18 @@ namespace LoveTap.Model
             this.CTHDs = new HashSet<CTHD>();
         }
     
-        public string MAHD { get; set; }
+        public int MAHD { get; set; }
         public Nullable<System.DateTime> NGMUA { get; set; }
         public Nullable<double> TONGTIEN { get; set; }
-        public Nullable<bool> LOAIHD { get; set; }
-        public string MANV { get; set; }
-        public string SDT { get; set; }
+        public Nullable<int> MANV { get; set; }
+        public Nullable<int> MAKH { get; set; }
+        public Nullable<int> MACN { get; set; }
         public Nullable<bool> DELETED { get; set; }
     
+        public virtual CHINHANH CHINHANH { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CTHD> CTHDs { get; set; }
-        public virtual NHANVIEN NHANVIEN { get; set; }
         public virtual KHACHHANG KHACHHANG { get; set; }
+        public virtual NHANVIEN NHANVIEN { get; set; }
     }
 }

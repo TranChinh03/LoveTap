@@ -21,17 +21,20 @@ namespace LoveTap.Model
             this.HOADONs = new HashSet<HOADON>();
         }
     
+        public int MAKH { get; set; }
         public string HOTEN { get; set; }
         public string SDT { get; set; }
         public string DIACHI { get; set; }
         public Nullable<System.DateTime> NGDK { get; set; }
         public Nullable<double> DOANHSO { get; set; }
-        public string MANV { get; set; }
+        public Nullable<int> MANV { get; set; }
         public Nullable<System.DateTime> NGSINH { get; set; }
+        public Nullable<int> MACN { get; set; }
         public Nullable<bool> DELETED { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<BAOHANH> BAOHANHs { get; set; }
+        public virtual CHINHANH CHINHANH { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<HOADON> HOADONs { get; set; }
         public virtual NHANVIEN NHANVIEN { get; set; }

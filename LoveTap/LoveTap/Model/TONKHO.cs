@@ -14,8 +14,8 @@ namespace LoveTap.Model
     
     public partial class TONKHO
     {
-        public string MAKHO { get; set; }
-        public string MASP { get; set; }
+        public int MAKHO { get; set; }
+        public int MASP { get; set; }
         public Nullable<int> SOLUONG { get; set; }
         public Nullable<bool> DELETED { get; set; }
     

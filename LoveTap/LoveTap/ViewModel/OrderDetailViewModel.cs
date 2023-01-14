@@ -23,8 +23,8 @@ namespace LoveTap.ViewModel
         private string _TextTest;
         public string TextTest { get => _TextTest; set { _TextTest = value; OnPropertyChanged(); } }
 
-        private string _ID;
-        public string ID { get => _ID; set { _ID = value; OnPropertyChanged(); } }
+        private int _ID;
+        public int ID { get => _ID; set { _ID = value; OnPropertyChanged(); } }
 
         private DateTime _Date;
         public DateTime Date { get => _Date; set { _Date = value; OnPropertyChanged(); } }
@@ -94,13 +94,10 @@ namespace LoveTap.ViewModel
 
                 HOADON temp = OrdersViewModel.OrderSelected;
 
-                ID = temp.MAHD;
+                ID = (int)temp.MAHD;
                 Date = (DateTime)temp.NGMUA;
                 SubTotal = 0;
-                if (temp.LOAIHD == true)
-                    TypeOrder = "mua hàng";
-                else
-                    TypeOrder = "nhập hàng";
+               
 
 
                 for (int i = 0; i < DataProvider.Ins.DB.CTHDs.Count(); i++)
@@ -132,7 +129,7 @@ namespace LoveTap.ViewModel
                     Branch = nv.MACN.ToString();
                 }
 
-                foreach (KHACHHANG kh in DataProvider.Ins.DB.KHACHHANGs.Where(x => x.SDT == temp.SDT))
+                foreach (KHACHHANG kh in DataProvider.Ins.DB.KHACHHANGs.Where(x => x.MAKH == temp.MAKH))
                 {
                     CustomerName = kh.HOTEN.ToString();
                     Phone = kh.SDT.ToString();

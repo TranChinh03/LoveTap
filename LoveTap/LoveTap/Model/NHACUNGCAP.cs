@@ -12,19 +12,22 @@ namespace LoveTap.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class DANHMUC
+    public partial class NHACUNGCAP
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public DANHMUC()
+        public NHACUNGCAP()
         {
-            this.SANPHAMs = new HashSet<SANPHAM>();
+            this.PHIEUNHAPs = new HashSet<PHIEUNHAP>();
         }
     
-        public int MADM { get; set; }
-        public string TENDM { get; set; }
+        public int MANCC { get; set; }
+        public string TEN { get; set; }
+        public string SDT { get; set; }
+        public string DIACHI { get; set; }
+        public string EMAIL { get; set; }
         public Nullable<bool> DELETED { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<SANPHAM> SANPHAMs { get; set; }
+        public virtual ICollection<PHIEUNHAP> PHIEUNHAPs { get; set; }
     }
 }

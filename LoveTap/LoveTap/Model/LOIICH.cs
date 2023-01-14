@@ -14,11 +14,12 @@ namespace LoveTap.Model
     
     public partial class LOIICH
     {
-        public string MASP { get; set; }
+        public int MASP { get; set; }
         public string LI1 { get; set; }
         public string LI2 { get; set; }
         public string LI3 { get; set; }
         public string LI4 { get; set; }
+        public Nullable<bool> DELETED { get; set; }
     
         public virtual SANPHAM SANPHAM { get; set; }
     }

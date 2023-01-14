@@ -20,8 +20,8 @@ namespace LoveTap.ViewModel
 
         public ICommand DoneCommand { get; set; }
 
-        private string _OrderID;
-        public string OrderID { get => _OrderID; set { _OrderID = value; OnPropertyChanged(); } }
+        private int _OrderID;
+        public int OrderID { get => _OrderID; set { _OrderID = value; OnPropertyChanged(); } }
 
         private DateTime _Date;
         public DateTime Date { get => _Date; set { _Date = value; OnPropertyChanged(); } }
@@ -29,8 +29,8 @@ namespace LoveTap.ViewModel
         private string _Type;
         public string Type { get => _Type; set { _Type = value; OnPropertyChanged(); } }
 
-        private string _GoodID;
-        public string GoodID { get => _GoodID; set { _GoodID = value; OnPropertyChanged(); } }
+        private int _GoodID;
+        public int GoodID { get => _GoodID; set { _GoodID = value; OnPropertyChanged(); } }
 
 
         private string _Amount;
@@ -55,8 +55,8 @@ namespace LoveTap.ViewModel
         private string _EmployeeName;
         public string EmployeeName { get => _EmployeeName; set { _EmployeeName = value; OnPropertyChanged(); } }
 
-        private string _Branch;
-        public string Branch { get => _Branch; set { _Branch = value; OnPropertyChanged(); } }
+        private int _Branch;
+        public int Branch { get => _Branch; set { _Branch = value; OnPropertyChanged(); } }
 
         private ObservableCollection<HOADON> _OrdersList;
         public ObservableCollection<HOADON> OrdersList { get => _OrdersList; set { _OrdersList = value; OnPropertyChanged(); } }
@@ -96,7 +96,7 @@ namespace LoveTap.ViewModel
 
             AddCommand = new RelayCommand<object>((p) =>
             {
-                if (string.IsNullOrEmpty(OrderID) || string.IsNullOrEmpty(GoodID) || string.IsNullOrEmpty(Amount))
+                if (string.IsNullOrEmpty(GoodID.ToString()) || string.IsNullOrEmpty(Amount))
                     return false;
                 var orderDetailList = DataProvider.Ins.DB.CTHDs.Where(x => x.MAHD == OrderID && x.MASP == GoodID);
                 if (orderDetailList == null || orderDetailList.Count() != 0)
@@ -119,7 +119,7 @@ namespace LoveTap.ViewModel
 
             DoneCommand = new RelayCommand<object>((p) =>
             {
-                if (string.IsNullOrEmpty(OrderID) || string.IsNullOrEmpty(Type)|| string.IsNullOrEmpty(Phone) || string.IsNullOrEmpty(EmployeeName))
+                if (string.IsNullOrEmpty(Phone) || string.IsNullOrEmpty(EmployeeName))
                     return false;
                 var orderList = DataProvider.Ins.DB.HOADONs.Where(x => x.MAHD == OrderID);
                 if (orderList == null || orderList.Count() != 0)
@@ -131,10 +131,7 @@ namespace LoveTap.ViewModel
                 hd.MAHD = OrderID;
                 hd.NGMUA = Date;
                 hd.TONGTIEN = 0;
-                if (Type == "Sale")
-                    hd.LOAIHD = true;
-                else
-                    hd.LOAIHD = false;
+                
 
                 foreach (NHANVIEN nv in EmployeeList)
                     if (nv.HOTEN == EmployeeName)
@@ -145,7 +142,7 @@ namespace LoveTap.ViewModel
                 foreach (KHACHHANG kh in CustomerList)
                     if (kh.SDT == Phone)
                     {
-                        hd.SDT = kh.SDT;
+                        hd.MAKH = kh.MAKH;
                         kh.DOANHSO += SubTotal;
                     }
                 hd.DELETED = false;

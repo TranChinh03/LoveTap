@@ -17,15 +17,25 @@ namespace LoveTap.Model
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public CHINHANH()
         {
+            this.HOADONs = new HashSet<HOADON>();
+            this.KHACHHANGs = new HashSet<KHACHHANG>();
+            this.PHIEUNHAPs = new HashSet<PHIEUNHAP>();
             this.NHANVIENs = new HashSet<NHANVIEN>();
         }
     
-        public string MACN { get; set; }
+        public int MACN { get; set; }
         public string TENCN { get; set; }
         public string DIACHI { get; set; }
-        public string MAADMIN { get; set; }
+        public Nullable<int> MAADMIN { get; set; }
+        public Nullable<bool> DELETED { get; set; }
     
         public virtual NHANVIEN NHANVIEN { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<HOADON> HOADONs { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<KHACHHANG> KHACHHANGs { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<PHIEUNHAP> PHIEUNHAPs { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<NHANVIEN> NHANVIENs { get; set; }
     }

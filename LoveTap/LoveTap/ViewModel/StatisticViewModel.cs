@@ -50,7 +50,7 @@ namespace LoveTap.ViewModel
         private ObservableCollection<SANPHAM> _GoodList;
         public ObservableCollection<SANPHAM> GoodList { get => _GoodList; set { _GoodList = value; OnPropertyChanged(); } }
 
-        public string[] BranchIDList { get; set; } = new string[DataProvider.Ins.DB.CHINHANHs.Count()];
+        public int[] BranchIDList { get; set; } = new int[DataProvider.Ins.DB.CHINHANHs.Count()];
         public string[] YearList { get; set; } = new string[DataProvider.Ins.DB.HOADONs.Count()];
 
         public StatisticViewModel(NavigationStore navigationStore)
@@ -134,105 +134,105 @@ namespace LoveTap.ViewModel
 
         void changeValue(int n)
         {
-            int card1 = 0, card2 = 0, card32 = 0, card41 = 0, card42 = 0; string card31 = "";
-            int[] maxMonth = new int[14]; maxMonth[12] = 0; maxMonth[13]= 0;
-            int[] maxGood = new int[DataProvider.Ins.DB.SANPHAMs.Count()+2]; maxGood[DataProvider.Ins.DB.SANPHAMs.Count()] = 0;
+            //int card1 = 0, card2 = 0, card32 = 0, card41 = 0, card42 = 0; string card31 = "";
+            //int[] maxMonth = new int[14]; maxMonth[12] = 0; maxMonth[13]= 0;
+            //int[] maxGood = new int[DataProvider.Ins.DB.SANPHAMs.Count()+2]; maxGood[DataProvider.Ins.DB.SANPHAMs.Count()] = 0;
 
-            switch (n)
-            {
-                case 0:
-                    for (int i = 0; i<DataProvider.Ins.DB.HOADONs.Count(); i++)
-                    {
-                        if (OrderList[i].LOAIHD == true)
-                        {
-                            for (int j = 0; j<DataProvider.Ins.DB.CTHDs.Count(); j++)
-                                if (OrderDetailList[j].MAHD == OrderList[i].MAHD)
-                                    card1+= (int)OrderDetailList[i].SOLUONG;
-                        }
-                        else for (int j = 0; j<DataProvider.Ins.DB.CTHDs.Count(); j++)
-                                if (OrderDetailList[j].MAHD == OrderList[i].MAHD)
-                                    card2+= (int)OrderDetailList[i].SOLUONG;
-                    }
+            //switch (n)
+            //{
+            //    case 0:
+            //        for (int i = 0; i<DataProvider.Ins.DB.HOADONs.Count(); i++)
+            //        {
+            //            if (OrderList[i].LOAIHD == true)
+            //            {
+            //                for (int j = 0; j<DataProvider.Ins.DB.CTHDs.Count(); j++)
+            //                    if (OrderDetailList[j].MAHD == OrderList[i].MAHD)
+            //                        card1+= (int)OrderDetailList[i].SOLUONG;
+            //            }
+            //            else for (int j = 0; j<DataProvider.Ins.DB.CTHDs.Count(); j++)
+            //                    if (OrderDetailList[j].MAHD == OrderList[i].MAHD)
+            //                        card2+= (int)OrderDetailList[i].SOLUONG;
+            //        }
 
-                    for (int i = 0; i<DataProvider.Ins.DB.SANPHAMs.Count(); i++)
-                    {
-                        int tong = 0;
-                        for (int j = 0; j<DataProvider.Ins.DB.HOADONs.Count(); j++)
-                            if (OrderList[j].LOAIHD == true)
-                                for (int k = 0; k<DataProvider.Ins.DB.CTHDs.Count(); k++)
-                                    if (GoodList[i].MASP == OrderDetailList[k].MASP && OrderDetailList[k].MAHD == OrderList[j].MAHD)
-                                        tong++;
-                        maxGood[i] = tong;
-                    }
-
-
-                    for (int i = 0; i<DataProvider.Ins.DB.SANPHAMs.Count(); i++)
-                    {
-                        if (maxGood[i] > maxGood[DataProvider.Ins.DB.SANPHAMs.Count()])
-                        {
-                            maxGood[DataProvider.Ins.DB.SANPHAMs.Count()] = maxGood[i];
-                            maxGood[DataProvider.Ins.DB.SANPHAMs.Count()+1] = i;
-                        }
-                    }
-
-                    for (int i = 0; i<DataProvider.Ins.DB.SANPHAMs.Count(); i++)
-                    {
-                        if (i == maxGood[DataProvider.Ins.DB.SANPHAMs.Count()+1])
-                        {
-                            card31 = GoodList[i].TEN;
-                            break;
-                        }
-                    }
-
-                    card32 = maxGood[DataProvider.Ins.DB.SANPHAMs.Count()];
-
-                    for (int i = 0; i < 12; i++)
-                    {
-                        int tong = 0;
-                        for (int j = 0; j<DataProvider.Ins.DB.HOADONs.Count(); j++)
-                            if (i== (int)OrderList[j].NGMUA.Value.Month)
-                                tong++;
-                        maxMonth[i] = tong;
-                    }
+            //        for (int i = 0; i<DataProvider.Ins.DB.SANPHAMs.Count(); i++)
+            //        {
+            //            int tong = 0;
+            //            for (int j = 0; j<DataProvider.Ins.DB.HOADONs.Count(); j++)
+            //                if (OrderList[j].LOAIHD == true)
+            //                    for (int k = 0; k<DataProvider.Ins.DB.CTHDs.Count(); k++)
+            //                        if (GoodList[i].MASP == OrderDetailList[k].MASP && OrderDetailList[k].MAHD == OrderList[j].MAHD)
+            //                            tong++;
+            //            maxGood[i] = tong;
+            //        }
 
 
-                    for (int i = 0; i < 12; i++)
-                        if (maxMonth[i] > maxMonth[12])
-                        {
-                            maxMonth[12] = maxMonth[i];
-                            maxMonth[13] = i;
-                        }
-                    card41 = maxMonth[13];
-                    card42 = maxMonth[12];
-                    break;
-                case 1:
-                    for (int i = 0; i<DataProvider.Ins.DB.HOADONs.Count(); i++)
-                    {
-                        if (OrderList[i].LOAIHD != true)
-                        {
+            //        for (int i = 0; i<DataProvider.Ins.DB.SANPHAMs.Count(); i++)
+            //        {
+            //            if (maxGood[i] > maxGood[DataProvider.Ins.DB.SANPHAMs.Count()])
+            //            {
+            //                maxGood[DataProvider.Ins.DB.SANPHAMs.Count()] = maxGood[i];
+            //                maxGood[DataProvider.Ins.DB.SANPHAMs.Count()+1] = i;
+            //            }
+            //        }
 
-                        }
-                    }
-                    break;
-                case 2:
-                    for (int i = 0; i<DataProvider.Ins.DB.HOADONs.Count(); i++)
-                    {
-                        if (OrderList[i].LOAIHD == true)
-                        {
-                            for (int j = 0; j<DataProvider.Ins.DB.CTHDs.Count(); j++)
-                                if (OrderDetailList[j].MAHD == OrderList[i].MAHD)
-                                    card1+= (int)OrderDetailList[i].SOLUONG;
-                        }
-                    }
-                    break;
+            //        for (int i = 0; i<DataProvider.Ins.DB.SANPHAMs.Count(); i++)
+            //        {
+            //            if (i == maxGood[DataProvider.Ins.DB.SANPHAMs.Count()+1])
+            //            {
+            //                card31 = GoodList[i].TEN;
+            //                break;
+            //            }
+            //        }
 
-            }
-            TextOfCard1 = card1.ToString();
-            TextOfCard2 = card2.ToString();
-            TextOfCard31 = card31;
-            TextOfCard32 = card32.ToString();
-            TextOfCard41 = "THÁNG " +  card41.ToString();
-            TextOfCard42 = card42.ToString();
+            //        card32 = maxGood[DataProvider.Ins.DB.SANPHAMs.Count()];
+
+            //        for (int i = 0; i < 12; i++)
+            //        {
+            //            int tong = 0;
+            //            for (int j = 0; j<DataProvider.Ins.DB.HOADONs.Count(); j++)
+            //                if (i== (int)OrderList[j].NGMUA.Value.Month)
+            //                    tong++;
+            //            maxMonth[i] = tong;
+            //        }
+
+
+            //        for (int i = 0; i < 12; i++)
+            //            if (maxMonth[i] > maxMonth[12])
+            //            {
+            //                maxMonth[12] = maxMonth[i];
+            //                maxMonth[13] = i;
+            //            }
+            //        card41 = maxMonth[13];
+            //        card42 = maxMonth[12];
+            //        break;
+            //    case 1:
+            //        for (int i = 0; i<DataProvider.Ins.DB.HOADONs.Count(); i++)
+            //        {
+            //            if (OrderList[i].LOAIHD != true)
+            //            {
+
+            //            }
+            //        }
+            //        break;
+            //    case 2:
+            //        for (int i = 0; i<DataProvider.Ins.DB.HOADONs.Count(); i++)
+            //        {
+            //            if (OrderList[i].LOAIHD == true)
+            //            {
+            //                for (int j = 0; j<DataProvider.Ins.DB.CTHDs.Count(); j++)
+            //                    if (OrderDetailList[j].MAHD == OrderList[i].MAHD)
+            //                        card1+= (int)OrderDetailList[i].SOLUONG;
+            //            }
+            //        }
+            //        break;
+
+            //}
+            //TextOfCard1 = card1.ToString();
+            //TextOfCard2 = card2.ToString();
+            //TextOfCard31 = card31;
+            //TextOfCard32 = card32.ToString();
+            //TextOfCard41 = "THÁNG " +  card41.ToString();
+            //TextOfCard42 = card42.ToString();
         }
     }
 
