@@ -14,8 +14,11 @@
     <viewmodel:AddGoodViewModel x:Key="AddGoodVM"></viewmodel:AddGoodViewModel>
     <viewmodel:EditGoodViewModel x:Key="EditGoodVM"></viewmodel:EditGoodViewModel>
     <viewmodel:OrderDetailViewModel x:Key="OrderDetailVM"></viewmodel:OrderDetailViewModel>
+    <viewmodel:ReceiveDetailViewModel x:Key="ReceiveDetailVM"></viewmodel:ReceiveDetailViewModel>
     <viewmodel:OrdersViewModel x:Key="OrdersVM"></viewmodel:OrdersViewModel>
+    <viewmodel:ReceiveOrderViewModel x:Key="ReceiveVM"></viewmodel:ReceiveOrderViewModel>
     <viewmodel:AddOrdersViewModel x:Key="CreOdVM"></viewmodel:AddOrdersViewModel>
+    <viewmodel:AddReceiveViewModel x:Key="AddReceiveVM"></viewmodel:AddReceiveViewModel>
     <viewmodel:CustomerViewModel x:Key="CustomerVM"></viewmodel:CustomerViewModel>
     <viewmodel:AddCustomerViewModel x:Key="AddCustomerVM"></viewmodel:AddCustomerViewModel>
     <viewmodel:CustomerDetailViewModel x:Key="DetailCustomerVM"></viewmodel:CustomerDetailViewModel>

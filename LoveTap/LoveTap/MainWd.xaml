@@ -125,7 +125,7 @@
 
                     <StackPanel Orientation="Horizontal">
 
-                        <Image Source="/img/home.png" Style="{StaticResource Img_Style}" />
+                        <materialDesign:PackIcon Kind="Home"  Style="{StaticResource menuIc_Style}"/>
 
                         <TextBlock Text="Home"
                                        Style="{StaticResource Text_Style}" />
@@ -139,7 +139,7 @@
 
                     <StackPanel Orientation="Horizontal">
 
-                        <Image Source="/img/goods.png" Style="{StaticResource Img_Style}" />
+                        <materialDesign:PackIcon Kind="Store"  Style="{StaticResource menuIc_Style}"/>
 
                         <TextBlock Text="Goods"
                                        Style="{StaticResource Text_Style}" />
@@ -148,14 +148,28 @@
 
                 <!--Order-->
                 <RadioButton Style="{StaticResource BtnStyle}"
-                              Command="{Binding navOrder}"
+                              Command="{Binding navDelivery}"
                               >
 
                     <StackPanel Orientation="Horizontal">
 
-                        <Image Source="/img/orders.png" Style="{StaticResource Img_Style}" />
+                        <materialDesign:PackIcon Kind="TruckDelivery"  Style="{StaticResource menuIc_Style}"/>
 
-                        <TextBlock Text="Orders"
+                        <TextBlock Text="Delivery"
+                                       Style="{StaticResource Text_Style}" />
+                    </StackPanel>
+                </RadioButton>
+                
+                <!--Order-->
+                <RadioButton Style="{StaticResource BtnStyle}"
+                              Command="{Binding navReceive}"
+                              >
+
+                    <StackPanel Orientation="Horizontal">
+
+                        <materialDesign:PackIcon Kind="StorePlus"  Style="{StaticResource menuIc_Style}"/>
+
+                        <TextBlock Text="Receive"
                                        Style="{StaticResource Text_Style}" />
                     </StackPanel>
                 </RadioButton>
@@ -167,7 +181,7 @@
 
                     <StackPanel Orientation="Horizontal">
 
-                        <Image Source="/img/customer.png" Style="{StaticResource Img_Style}" />
+                        <materialDesign:PackIcon Kind="AccountSupervisor"  Style="{StaticResource menuIc_Style}"/>
 
                         <TextBlock Text="Customer"
                                        Style="{StaticResource Text_Style}" />
@@ -181,7 +195,7 @@
 
                     <StackPanel Orientation="Horizontal">
 
-                        <Image Source="/img/statistic.png" Style="{StaticResource Img_Style}" />
+                        <materialDesign:PackIcon Kind="Finance"  Style="{StaticResource menuIc_Style}"/>
 
                         <TextBlock Text="Statistic"
                                        Style="{StaticResource Text_Style}" />
@@ -195,7 +209,7 @@
 
                     <StackPanel Orientation="Horizontal">
 
-                        <Image Source="/img/employee.png" Style="{StaticResource Img_Style}" />
+                        <materialDesign:PackIcon Kind="ClipboardAccount"  Style="{StaticResource menuIc_Style}"/>
 
                         <TextBlock Text="Employee"
                                        Style="{StaticResource Text_Style}" />
@@ -205,7 +219,7 @@
         </Grid>
 
         <!--Log out-->
-        <RadioButton Style="{StaticResource BtnStyle}"
+        <RadioButton Style="{StaticResource BtnStyle}" 
                      x:Name="LogOutButton"  Grid.Row="10" Grid.ColumnSpan="2"
                               >
 
@@ -235,6 +249,9 @@
                 </DataTemplate>
                 <DataTemplate DataType="{x:Type viewmodel:OrdersViewModel}">
                     <uc:OrderViewUC></uc:OrderViewUC>
+                </DataTemplate>
+                <DataTemplate DataType="{x:Type viewmodel:ReceiveOrderViewModel}">
+                    <uc:ReceiveOrdViewUC></uc:ReceiveOrdViewUC>
                 </DataTemplate>
                 <DataTemplate DataType="{x:Type viewmodel:CustomerViewModel}">
                     <uc:CustomerViewUC></uc:CustomerViewUC>
@@ -266,8 +283,14 @@
                 <DataTemplate DataType="{x:Type viewmodel:AddOrdersViewModel}">
                     <uc:CreateOrderUC></uc:CreateOrderUC>
                 </DataTemplate>
+                <DataTemplate DataType="{x:Type viewmodel:AddReceiveViewModel}">
+                    <uc:AddReceiveViewUC></uc:AddReceiveViewUC>
+                </DataTemplate>
                 <DataTemplate DataType="{x:Type viewmodel:OrderDetailViewModel}">
                     <uc:OrdersDetailUC></uc:OrdersDetailUC>
+                </DataTemplate>
+                <DataTemplate DataType="{x:Type viewmodel:ReceiveDetailViewModel}">
+                    <uc:ReceiveOderDetail></uc:ReceiveOderDetail>
                 </DataTemplate>
                 <DataTemplate DataType="{x:Type viewmodel:CustomerDetailViewModel}">
                     <uc:CustomerDetailUC></uc:CustomerDetailUC>

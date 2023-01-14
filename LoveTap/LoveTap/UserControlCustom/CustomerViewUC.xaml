@@ -198,9 +198,9 @@
                                 <GridView>
                                     <GridViewColumn Header="Phone" DisplayMemberBinding="{Binding SDT}"></GridViewColumn>
                                     <GridViewColumn Header="Name" DisplayMemberBinding="{Binding HOTEN}"></GridViewColumn>
-                                    <GridViewColumn Header="Date of Birth" DisplayMemberBinding="{Binding NGSINH, StringFormat='dd/MM//yyyy'}"></GridViewColumn>
+                                    <GridViewColumn Header="Date of Birth" DisplayMemberBinding="{Binding NGSINH}"></GridViewColumn>
                                     <GridViewColumn Header="Address" DisplayMemberBinding="{Binding DIACHI}"></GridViewColumn>
-                                    <GridViewColumn Header="Registation Date" DisplayMemberBinding="{Binding NGDK, StringFormat='dd/MM/yyyy'}"></GridViewColumn>
+                                    <GridViewColumn Header="Registation Date" DisplayMemberBinding="{Binding NGDK}"></GridViewColumn>
                                     <GridViewColumn Header="Sale" DisplayMemberBinding="{Binding DOANHSO}"></GridViewColumn>
                                 </GridView>
                             </ListView.View>

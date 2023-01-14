@@ -1,5 +1,6 @@
 ﻿using LoveTap.Commands;
 using LoveTap.Model;
+using LoveTap.Service;
 using LoveTap.Stores;
 using LoveTap.UserControlCustom;
 using MaterialDesignThemes.Wpf;
@@ -27,13 +28,20 @@ namespace LoveTap.ViewModel
         public ICommand navDetail { get; set; }
         public ICommand Detail { get; set; }
 
+        private string _TextTest;
+        public string TextTest { get => _TextTest; set { _TextTest = value; OnPropertyChanged(); } }
+
         private ObservableCollection<HOADON> _OrdersList;
         public ObservableCollection<HOADON> OrdersList { get => _OrdersList; set { _OrdersList = value; } }
         public OrdersViewModel(NavigationStore navigationStore)
         {
+            TextTest = "mot";
             OrdersList = new ObservableCollection<HOADON>(DataProvider.Ins.DB.HOADONs);
             navAddOrder = new NavigationCommand<AddOrdersViewModel>(navigationStore, () => new AddOrdersViewModel(navigationStore));
-            navDetail = new NavigationCommand<OrderDetailViewModel>(navigationStore, () => new OrderDetailViewModel(navigationStore));
+            //navDetail = new ParameterNavigationService<string, OrderDetailViewModel>(navigationStore, (TextTest) => new OrderDetailViewModel(( TextTest), navigationStore));
+            ParameterNavigationService<string, OrderDetailViewModel> navigationService = new ParameterNavigationService<string, OrderDetailViewModel>(navigationStore,
+                (parameter) => new OrderDetailViewModel(parameter, navigationStore));
+            navDetail = new ChangeOrdCommand(this,TextTest, navigationService);
             Detail = new RelayCommand<OrderViewUC>((p) => { return p.OrderList.SelectedItem == null ? false : true; }, (p) => _DetailCs(p));
         }
         void _DetailCs(OrderViewUC p)

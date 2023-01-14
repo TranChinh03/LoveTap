@@ -48,6 +48,8 @@ namespace LoveTap.ViewModel
 
         private string _Branch;
         public string Branch { get => _Branch; set { _Branch = value; OnPropertyChanged(); } }
+        private ObservableCollection<CHINHANH> _BranchList;
+        public ObservableCollection<CHINHANH> BranchList { get => _BranchList; set { _BranchList = value; OnPropertyChanged(); } }
 
         private string _CoefficientsSalary;
         public string CoefficientsSalary { get => _CoefficientsSalary; set { _CoefficientsSalary = value; OnPropertyChanged(); } }
@@ -60,9 +62,17 @@ namespace LoveTap.ViewModel
 
 
         public ICommand EditCommand { get; set; }
+        public string[] BranchIDList { get; set; } = new string[DataProvider.Ins.DB.CHINHANHs.Count()];
 
 
         public UsrPro5EditViewModel(NavigationStore navigationStore) {
+            BranchList = new ObservableCollection<CHINHANH>(DataProvider.Ins.DB.CHINHANHs);
+            for (int i = 0; i < DataProvider.Ins.DB.CHINHANHs.Count(); i++)
+
+            {
+                BranchIDList[i] = BranchList[i].MACN;
+            }
+
 
             LoadedHomeProfileEdit = new RelayCommand<Window>((p) => { return true; }, (p) =>
             {
@@ -98,7 +108,10 @@ namespace LoveTap.ViewModel
 
             EditCommand = new RelayCommand<object>((p) =>
             {
-                if (string.IsNullOrEmpty(FullName) || string.IsNullOrEmpty(PhoneNumber) || string.IsNullOrEmpty(Birthday) || string.IsNullOrEmpty(Email) || string.IsNullOrEmpty(Address) || string.IsNullOrEmpty(ID) || string.IsNullOrEmpty(Branch) || string.IsNullOrEmpty(CoefficientsSalary) || string.IsNullOrEmpty(BasicPay) || string.IsNullOrEmpty(Role))
+                if (string.IsNullOrEmpty(FullName) || string.IsNullOrEmpty(PhoneNumber) || 
+                string.IsNullOrEmpty(Birthday) || string.IsNullOrEmpty(Email) || string.IsNullOrEmpty(Address) || 
+                string.IsNullOrEmpty(ID) || string.IsNullOrEmpty(Branch) || string.IsNullOrEmpty(CoefficientsSalary) || 
+                string.IsNullOrEmpty(BasicPay) || string.IsNullOrEmpty(Role))
                     return false;
 
                 //var displayList = DataProvider.Ins.DB.Units.Where(x => x.DisplayName == DisplayName);
@@ -115,6 +128,8 @@ namespace LoveTap.ViewModel
                 employee.SDT = PhoneNumber;
                 employee.EMAIL = Email;
                 employee.NTNS = DateTime.Parse(Birthday);
+                employee.DIACHI = Address;
+                employee.MACN = Branch;
                 employee.HESOLUONG = float.Parse(CoefficientsSalary);
                 employee.LUONGCB = float.Parse(BasicPay);
                 if (Role == "Staff" || Role == "staff")
