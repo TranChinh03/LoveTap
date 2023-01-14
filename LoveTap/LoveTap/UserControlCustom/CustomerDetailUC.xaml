@@ -6,7 +6,7 @@
         xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LoveTap.UserControlCustom"
-        mc:Ignorable="d"
+        mc:Ignorable="d" Height="456.2" Width="656.666666666667"
         Name="ucCustomerDetail"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
        >
@@ -25,7 +25,7 @@
         </Border.Effect>
         <Grid Background="White" Margin="10">
             <Grid.RowDefinitions>
-                <RowDefinition Height="2.5*"/>
+                <RowDefinition Height="2*"/>
                 <RowDefinition Height="7.5*"/>
             </Grid.RowDefinitions>
 
@@ -74,8 +74,9 @@
                     <TextBlock Style="{StaticResource detailText}" Padding="3">Phone:</TextBlock>
                     <TextBlock Style="{StaticResource detailText}" Padding="3">Name:</TextBlock>
                     <TextBlock Style="{StaticResource detailText}" Padding="3">Date of Birth:</TextBlock>
-                    <TextBlock Style="{StaticResource detailText}" Padding="3">Address:</TextBlock>
+                    <TextBlock Style="{StaticResource detailText}" Padding="3" Height="50">Address:</TextBlock>
                     <TextBlock Style="{StaticResource detailText}" Padding="3">Registation Date:</TextBlock>
+                    <TextBlock Style="{StaticResource detailText}" Padding="3">Branch:</TextBlock>
                     <TextBlock Style="{StaticResource detailText}" Padding="3">Sale:</TextBlock>
                     <TextBlock Style="{StaticResource detailText}" Padding="3">Type:</TextBlock>
                 </StackPanel>
@@ -84,11 +85,12 @@
                     <TextBlock Style="{StaticResource detailTextValue}" Text="{Binding Phone}"></TextBlock>
                     <TextBlock Style="{StaticResource detailTextValue}" Text="{Binding CusName}"></TextBlock>
                     <TextBlock Style="{StaticResource detailTextValue}" Text="{Binding DOB, StringFormat='dd/MM/yyyy'}"></TextBlock>
-                    <TextBlock Style="{StaticResource detailTextValue}" Text="{Binding Address}"></TextBlock>
-                    <TextBlock Style="{StaticResource detailTextValue}" Text="{Binding RegistDate}"></TextBlock>
+                    <TextBlock Style="{StaticResource detailTextValue}" TextWrapping="WrapWithOverflow" Height="50" Text="{Binding Address}"></TextBlock>
+                    <TextBlock Style="{StaticResource detailTextValue}" Text="{Binding RegistDate,  StringFormat='dd/MM/yyyy'}"></TextBlock>
+                    <TextBlock Style="{StaticResource detailTextValue}" Text="{Binding Branch}"></TextBlock>
                     <TextBlock Style="{StaticResource detailTextValue}" Text="{Binding Sale}"></TextBlock>
-                    <TextBlock Background="{StaticResource Light Red 62}" Text="{Binding Type}" Foreground="{StaticResource Burnt Sienna}"
-                           HorizontalAlignment="Left" Padding="7"></TextBlock>
+                    <TextBlock Background="{Binding bgType}" Foreground="{Binding textType}" Text="{Binding Type}"
+                           HorizontalAlignment="Left" Padding="10"></TextBlock>
                 </StackPanel>
             </Grid>
 

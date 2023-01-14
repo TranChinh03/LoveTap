@@ -24,8 +24,8 @@ namespace LoveTap.ViewModel
         private string _Position;
         public string Position { get => _Position; set { _Position = value; OnPropertyChanged(); } }
 
-        private string _Birthday;
-        public string Birthday { get => _Birthday; set { _Birthday = value; OnPropertyChanged(); } }
+        private Nullable<System.DateTime> _DOB;
+        public Nullable<System.DateTime> DOB { get => _DOB; set { _DOB = value; OnPropertyChanged(); } }
 
         private string _PhoneNumber;
         public string PhoneNumber { get => _PhoneNumber; set { _PhoneNumber = value; OnPropertyChanged(); } }
@@ -57,7 +57,7 @@ namespace LoveTap.ViewModel
                     Position = "Admin";
                 else
                     Position = "Staff";
-                Birthday = temp.NTNS.ToString();
+                DOB = temp.NTNS;
                 PhoneNumber = temp.SDT;
                 Address = temp.DIACHI;
                 CoefficientSalary = temp.HESOLUONG.ToString();

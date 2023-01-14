@@ -14,14 +14,19 @@ using System.Collections.ObjectModel;
 using System.Net;
 using System.Security.Policy;
 using System.Data;
+using System.Windows.Media;
 
 namespace LoveTap.ViewModel
 {
-    internal class EditCustomerViewModel:BaseViewModel
+    internal class EditCustomerViewModel : BaseViewModel
     {
         public ICommand navDone { get; set; }
         public ICommand navBack { get; set; }
         public ICommand EditCommand { get; set; }
+        private string _textType;
+        public string textType { get => _textType; set { _textType = value; OnPropertyChanged(); } }
+        private string _bgType;
+        public string bgType { get => _bgType; set { _bgType = value; OnPropertyChanged(); } }
         private string _CusName;
         public string CusName { get => _CusName; set { _CusName = value; OnPropertyChanged(); } }
         private string _Phone;
@@ -39,8 +44,20 @@ namespace LoveTap.ViewModel
         public ICommand LoadedEditCustomerDetail { get; set; }
         private ObservableCollection<KHACHHANG> _CustomerList;
         public ObservableCollection<KHACHHANG> CustomerList { get => _CustomerList; set { _CustomerList = value; OnPropertyChanged(); } }
+        private ObservableCollection<CHINHANH> _BranchList;
+        public ObservableCollection<CHINHANH> BranchList { get => _BranchList; set { _BranchList = value; OnPropertyChanged(); } }
+        public string[] BranchIDList { get; set; } = new string[DataProvider.Ins.DB.CHINHANHs.Count()];
+
+
         public EditCustomerViewModel(NavigationStore navigationStore)
         {
+            BranchList = new ObservableCollection<CHINHANH>(DataProvider.Ins.DB.CHINHANHs);
+            for (int i = 0; i < DataProvider.Ins.DB.CHINHANHs.Count(); i++)
+
+            {
+                BranchIDList[i] = BranchList[i].MACN;
+            }
+
             CustomerList = new ObservableCollection<KHACHHANG>(DataProvider.Ins.DB.KHACHHANGs.Where(x => x.DELETED == false));
             LoadedEditCustomerDetail = new RelayCommand<UserControl>((p) => { return true; }, (p) =>
             {
@@ -55,16 +72,31 @@ namespace LoveTap.ViewModel
                     Sale = x.DOANHSO;
                     Type = "Đồng";
                     if (Sale > 2000000 && Sale <= 5000000)
-                        Type = "Bạc";
+                    {
+                        Type = "Bronz";
+                        bgType = "#eec170";
+                        textType = "#E2711D";
+                    }
+
                     else if (Sale <= 10000000)
-                        Type = "Vàng";
+                    {
+                        Type = "Silver";
+                        bgType = "#dee2e6";
+                        textType = "#4f5d75";
+                    }
+
                     else if (Sale > 10000000)
-                        Type = "Kim cương";
+                    {
+                        Type = "Gold";
+                        bgType = "#fff2b2";
+                        textType = "#ffaa00";
+                    }
                 }
 
-            });
+            })
+            {
 
-
+            };
             EditCommand = new RelayCommand<object>((p) =>
             {
                 if (string.IsNullOrEmpty(CusName) || string.IsNullOrEmpty(Phone) || DOB==null  || string.IsNullOrEmpty(Address) || RegistDate==null)

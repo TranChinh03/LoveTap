@@ -1,20 +1,20 @@
-﻿using LoveTap.UserControlCustom;
+﻿using LoveTap.Commands;
+using LoveTap.Model;
+using LoveTap.Stores;
+using LoveTap.UserControlCustom;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
-using System.Windows;
 using System.Windows.Input;
-using LoveTap.Model;
-using System.Collections.ObjectModel;
-using LoveTap.Stores;
-using LoveTap.Commands;
+using System.Windows;
 
 namespace LoveTap.ViewModel
 {
-    public class OrderDetailViewModel:BaseViewModel
+    public class ReceiveDetailViewModel:BaseViewModel
     {
         public ICommand navBack { get; set; }
 
@@ -80,66 +80,9 @@ namespace LoveTap.ViewModel
         public List<Order> MyOrderList { get => _MyOrderList; set { _MyOrderList = value; } }
         public ICommand LoadedOrderDetail { get; set; }
         string Name;
-        public OrderDetailViewModel(string para, NavigationStore navigationStore)
+        public ReceiveDetailViewModel( NavigationStore navigationStore)
         {
-            TextTest = para;
             navBack = new NavigationCommand<OrdersViewModel>(navigationStore, () => new OrdersViewModel(navigationStore));
-            LoadedOrderDetail = new RelayCommand<UserControl>((p) => true, (p) =>
-            {
-                ProductList = new ObservableCollection<SANPHAM>(DataProvider.Ins.DB.SANPHAMs);
-                OrderDetailList = new ObservableCollection<CTHD>(DataProvider.Ins.DB.CTHDs);
-                CustomerList = new ObservableCollection<KHACHHANG>(DataProvider.Ins.DB.KHACHHANGs);
-                EmployeeList = new ObservableCollection<NHANVIEN>(DataProvider.Ins.DB.NHANVIENs);
-
-
-                HOADON temp = OrdersViewModel.OrderSelected;
-
-                ID = temp.MAHD;
-                Date = (DateTime)temp.NGMUA;
-                SubTotal = 0;
-                if (temp.LOAIHD == true)
-                    TypeOrder = "mua hàng";
-                else
-                    TypeOrder = "nhập hàng";
-
-
-                for (int i = 0; i < DataProvider.Ins.DB.CTHDs.Count(); i++)
-                {
-                    if (OrderDetailList[i].MAHD == ID)
-                    {
-                        Order order = new Order();
-                        for (int j = 0; j < DataProvider.Ins.DB.SANPHAMs.Count(); j++)
-                        {
-                            if (ProductList[j].MASP == OrderDetailList[i].MASP)
-                            {
-                                order.Ten = ProductList[j].TEN;
-                                order.Gia = (double)ProductList[j].GIA;
-                                order.SoLuong = (int)OrderDetailList[i].SOLUONG;
-                                order.TongTien = order.SoLuong * order.Gia;
-                                SubTotal += order.TongTien;
-                                MyOrderList.Add(order);
-                            }
-
-                        }
-
-                    }
-                }
-
-                foreach(NHANVIEN nv in DataProvider.Ins.DB.NHANVIENs.Where(x => x.MANV == temp.MANV))
-                {
-                    EmployeeName = nv.HOTEN.ToString();
-                    EmployeeID = nv.MANV.ToString();
-                    Branch = nv.MACN.ToString();
-                }
-
-                foreach (KHACHHANG kh in DataProvider.Ins.DB.KHACHHANGs.Where(x => x.SDT == temp.SDT))
-                {
-                    CustomerName = kh.HOTEN.ToString();
-                    Phone = kh.SDT.ToString();
-                    Address = kh.DIACHI.ToString();
-                }
-
-            });
         }
     }
 }

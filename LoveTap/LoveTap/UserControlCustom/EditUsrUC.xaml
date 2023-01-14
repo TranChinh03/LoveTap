@@ -30,7 +30,7 @@
             </i:Interaction.Triggers>
 
 
-            <Grid Background="WhiteSmoke" >
+            <Grid Background="White" >
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition></ColumnDefinition>
                     <ColumnDefinition></ColumnDefinition>
@@ -55,7 +55,7 @@
                     <RowDefinition></RowDefinition>
                 </Grid.RowDefinitions>
 
-                <TextBlock Padding="7" Grid.Column="1" VerticalAlignment="Bottom"
+                <TextBlock Padding="8" Grid.Column="1" VerticalAlignment="Bottom"
                                         FontSize="18"
                                         Foreground="#033270"
                                         FontWeight="Bold"
@@ -69,56 +69,56 @@
 
                     <!--PROFILE-->
                     <StackPanel>
-                        
-                        <TextBlock Padding="7"
+
+                        <TextBlock Padding="8"
                                         FontSize="14"
                                         Foreground="#033270"
                                         >Full name:</TextBlock>
 
-                        <TextBlock Padding="7"
+                        <TextBlock Padding="8"
 
                                         FontSize="14"
                                         Foreground="#033270"
                                         >Birthday:</TextBlock>
-                        <TextBlock Padding="7"
+                        <TextBlock Padding="8"
                                         FontSize="14"
 
                                         Foreground="#033270"
                                         >Mobile:</TextBlock>
-                        <TextBlock Padding="7" 
+                        <TextBlock Padding="8" 
                                         FontSize="14"
                                         Foreground="#033270"
                                         >Email:</TextBlock>
 
-                        <TextBlock Padding="7"
+                        <TextBlock Padding="8"
                                         FontSize="14"
                                         Foreground="#033270"
                                         >Address:</TextBlock>
 
                         <!--JOB-->
-                        <TextBlock Padding="7"
+                        <TextBlock Padding="8"
                                             FontSize="18"
                                             Foreground="#033270"
                                             FontWeight="Bold"
                                             >Job:</TextBlock>
-                        <TextBlock Padding="7"
+                        <TextBlock Padding="8"
                                             FontSize="14"
                                             Foreground="#033270"
                                             >ID:</TextBlock>
-                        <TextBlock Padding="7"
+                        <TextBlock Padding="8"
                                             FontSize="14"
                                             Foreground="#033270"
                                             >Branch:</TextBlock>
-                        <TextBlock Padding="7"
+                        <TextBlock Padding="8"
                                             FontSize="14"
 
                                             Foreground="#033270"
                                             >Coefficients pay:</TextBlock>
-                        <TextBlock Padding="7"
+                        <TextBlock Padding="8"
                                             FontSize="14"
                                             Foreground="#033270"
                                             >Basic pay:</TextBlock>
-                        <TextBlock Padding="7"
+                        <TextBlock Padding="8"
                                             FontSize="14"
                                             Foreground="#033270"
                                             >Position:</TextBlock>
@@ -127,100 +127,43 @@
 
                     <!--VALUE-->
                     <StackPanel Grid.Column="1" >
-                        <TextBox Padding="5"
-                                        FontSize="14"
-                                        Foreground="#79A7CB" 
-                                        BorderThickness="2"
-                                        BorderBrush="#79A7CB"
-                                        MinWidth="200"
-                                        Grid.ColumnSpan="2" Width="279"
+                        <TextBox Style="{StaticResource editTextValue}" Margin="0 2" HorizontalAlignment="Left" Padding="3"
                                         Text="{Binding FullName}"
                                         ></TextBox>
-                        <TextBox Padding="5"
-                                        FontSize="14"
-                                        Foreground="#79A7CB" 
-                                        BorderThickness="2"
-                                        BorderBrush="#79A7CB"
-                                        MinWidth="200"
-                                        Grid.ColumnSpan="2" Width="279"
-                                        Text="{Binding Birthday}"
-                                        ></TextBox>
-                        <TextBox Padding="5"
-                                        FontSize="14"
-                                        Foreground="#79A7CB" 
-                                        BorderThickness="2"
-                                        BorderBrush="#79A7CB"
-                                        MinWidth="200"
-                                        Grid.ColumnSpan="2" Width="279"
+                        <DatePicker
+                                        Width="150" Height="30" Padding="5" FontSize="13" Margin="0 2" HorizontalAlignment="Left" SelectedDateFormat="Short" 
+                                        materialDesign:HintAssist.Hint="Pick Date" BorderBrush="#79A7CB" Foreground="{StaticResource Catalina Blue}" 
+                                        Style="{StaticResource MaterialDesignOutlinedDatePicker}" Text="{Binding Birthday, StringFormat='dd/MM/yyyy', Mode=TwoWay}"/>
+                        <TextBox  Style="{StaticResource editTextValue}" Margin="0 2" HorizontalAlignment="Left"
                                         Text="{Binding PhoneNumber}"
                                         ></TextBox>
-                        <TextBox Padding="5"
-                                        FontSize="14"
-                                        Foreground="#79A7CB" 
-                                        BorderThickness="2"
-                                        BorderBrush="#79A7CB"
-                                        MinWidth="200"
-                                        Grid.ColumnSpan="2" Width="279"
+                        <TextBox  Style="{StaticResource editTextValue}" Margin="0 2" HorizontalAlignment="Left"
                                         Text="{Binding Email}"
                                         ></TextBox>
-                        <TextBox Padding="5"
-                                        FontSize="14"
-                                        Foreground="#79A7CB" 
-                                        BorderThickness="2"
-                                        BorderBrush="#79A7CB"
-                                        MinWidth="200"
-                                        Grid.ColumnSpan="2" Width="279"
+                        <TextBox Style="{StaticResource editTextValue}" Margin="0 2" HorizontalAlignment="Left" 
                                         Text="{Binding Address}"
                                         ></TextBox>
-                        <TextBox Padding="5" Margin="0 35 0 0 "
-                                        FontSize="14"
-                                        Foreground="#79A7CB" 
-                                        BorderThickness="2"
-                                        BorderBrush="#79A7CB"
-                                        MinWidth="200"
-                                        Grid.ColumnSpan="2" Width="279"
-                                        Text="{Binding ID}"
+                        <TextBox Style="{StaticResource editTextValue}" Margin="0 35 0 2" HorizontalAlignment="Left" Background="{StaticResource Cyan Azure 0.5}"
+                                        Text="{Binding ID}" IsEnabled="False" IsReadOnlyCaretVisible="True" Foreground="{StaticResource Catalina Blue}"
                                         ></TextBox>
-                        <TextBox Padding="5" 
-                                        FontSize="14"
-                                        Foreground="#79A7CB" 
-                                        BorderThickness="2"
-                                        BorderBrush="#79A7CB"
-                                        MinWidth="200"
-                                        Grid.ColumnSpan="2" Width="279"
-                                        Text="{Binding Branch}"
-                                        ></TextBox>
-                        <TextBox Padding="5" 
-                                        FontSize="14"
-                                        Foreground="#79A7CB" 
-                                        BorderThickness="2"
-                                        BorderBrush="#79A7CB"
-                                        MinWidth="200"
-                                        Grid.ColumnSpan="2" Width="279"
+                        <ComboBox
+                                Width="150" Height="30" HorizontalAlignment="Left" BorderBrush="#79A7CB" Margin="0 2" Padding="5"
+                                Style="{StaticResource MaterialDesignOutlinedComboBox}" FontSize="13" 
+                                ItemsSource="{Binding BranchIDList, Mode=TwoWay}" SelectedItem="{Binding Branch}" />
+
+                        <TextBox Style="{StaticResource editTextValue}" Margin="0 2" HorizontalAlignment="Left"
                                         Text="{Binding CoefficientsSalary}"
                                         ></TextBox>
-                        <TextBox Padding="5" 
-                                        FontSize="14"
-                                        Foreground="#79A7CB" 
-                                        BorderThickness="2"
-                                        BorderBrush="#79A7CB"
-                                        MinWidth="200"
-                                        Grid.ColumnSpan="2" Width="279"
+                        <TextBox Style="{StaticResource editTextValue}" Margin="0 2" HorizontalAlignment="Left"
                                         Text="{Binding BasicPay}"
                                         ></TextBox>
-                        <TextBox Padding="5" 
-                                        FontSize="14"
-                                        Foreground="#79A7CB" 
-                                        BorderThickness="2"
-                                        BorderBrush="#79A7CB"
-                                        MinWidth="200"
-                                        Grid.ColumnSpan="2" Width="279"
+                        <TextBox Style="{StaticResource editTextValue}" Margin="0 2" HorizontalAlignment="Left"
                                         Text="{Binding Role}"
                                         ></TextBox>
                     </StackPanel>
 
                 </Grid>
-                
+
 
                 <Button Grid.Column="6" Grid.ColumnSpan="2"  Uid="1" Name="doneBt"
                     Style="{StaticResource MaterialDesignRaisedSecondaryLightButton}"

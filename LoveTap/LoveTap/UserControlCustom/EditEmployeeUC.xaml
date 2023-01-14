@@ -31,12 +31,12 @@
             <!--Top Button-->
             <DockPanel Margin="15,0,15,0">
                 <Border BorderBrush="{StaticResource Cyan Azure}"  BorderThickness="0.5" CornerRadius="5" VerticalAlignment="Center">
-                    <TextBox FontSize="20"
+                    <TextBlock FontSize="20"
                        FontWeight="Black"
                        Foreground="{StaticResource Catalina Blue}"
-                       VerticalAlignment="Center" Width="150"  BorderThickness="0"
+                       VerticalAlignment="Center" Width="150"
                        Text="{Binding ID}"
-                       ></TextBox>
+                       ></TextBlock>
                 </Border>
                 <!--Back Button-->
                 <Button DockPanel.Dock="Right" Style="{StaticResource OrangeButton}"
@@ -70,13 +70,17 @@
                         <ColumnDefinition Width="117*"/>
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
-                        <RowDefinition/>
+                        <RowDefinition Height="1.5*"/>
                         <RowDefinition/>
                     </Grid.RowDefinitions>
 
-                    <TextBox Style="{StaticResource editTextValue}" Text="{Binding EmployeeName}" FontSize="45" FontWeight="DemiBold" Width="480" Height="55" Grid.ColumnSpan="2" />
+                    <TextBox Style="{StaticResource editTextValue}" Text="{Binding EmployeeName}" 
+                             FontSize="35" FontWeight="DemiBold" Width="480" TextWrapping="WrapWithOverflow" 
+                             Height="55" Grid.ColumnSpan="2" />
 
-                    <TextBox Grid.Row="1" Style="{StaticResource editTextValue}" Text="{Binding Position}" FontSize="20" FontWeight="DemiBold" Width="350" Height="30" Grid.ColumnSpan="2" Margin="0,8,0,0"/>
+                    <TextBox Grid.Row="1" Style="{StaticResource editTextValue}" 
+                             Text="{Binding Position}" FontSize="20" FontWeight="DemiBold" VerticalAlignment="Top"
+                             Width="350" Height="30" Grid.ColumnSpan="2" HorizontalAlignment="Left"/>
                 </Grid>
             </StackPanel>
 
@@ -84,7 +88,7 @@
             <Grid Grid.Row="2">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
-                    <ColumnDefinition/>
+                    <ColumnDefinition Width="2*"/>
                 </Grid.ColumnDefinitions>
 
                 <StackPanel HorizontalAlignment="Center" >
@@ -97,12 +101,18 @@
                 </StackPanel>
 
                 <StackPanel Grid.Column="1" HorizontalAlignment="Center" >
-                    <TextBox Style="{StaticResource editTextValue}" Height="35" Text="{Binding Birthday, StringFormat='dd/MM/yyyy'}"></TextBox>
-                    <TextBox Style="{StaticResource editTextValue}" Height="35" Text="{Binding PhoneNumber}"></TextBox>
-                    <TextBox Style="{StaticResource editTextValue}" Height="35" Text="{Binding Address}"></TextBox>
-                    <TextBox Style="{StaticResource editTextValue}" Height="35" Text="{Binding CoefficientSalary}"></TextBox>
-                    <TextBox Style="{StaticResource editTextValue}" Height="35" Text="{Binding BasicPay}"></TextBox>
-                    <TextBox Style="{StaticResource editTextValue}" Height="35" Text="{Binding Branch}"></TextBox>
+                    <DatePicker
+                                        Width="150" Height="30" Padding="5" FontSize="13" Margin="0 8 0 0" HorizontalAlignment="Left" SelectedDateFormat="Short" 
+                                        materialDesign:HintAssist.Hint="Pick Date" BorderBrush="#79A7CB" Foreground="{StaticResource Catalina Blue}" 
+                                        Style="{StaticResource MaterialDesignOutlinedDatePicker}" SelectedDate="{Binding Birthday, StringFormat='dd/MM/yyyy', Mode=TwoWay}"/>
+                    <TextBox Style="{StaticResource editTextValue}"  Text="{Binding PhoneNumber}"></TextBox>
+                    <TextBox Style="{StaticResource editTextValue}"  Text="{Binding Address}"></TextBox>
+                    <TextBox Style="{StaticResource editTextValue}"  Text="{Binding CoefficientSalary}"></TextBox>
+                    <TextBox Style="{StaticResource editTextValue}"  Text="{Binding BasicPay}"></TextBox>
+                    <ComboBox
+                                Width="150" Height="30" HorizontalAlignment="Left" BorderBrush="#79A7CB"  Margin="0 8 0 0" Padding="5"
+                                Style="{StaticResource MaterialDesignOutlinedComboBox}" FontSize="13" 
+                                ItemsSource="{Binding BranchIDList, Mode=TwoWay}" SelectedItem="{Binding Branch}" />
                 </StackPanel>
             </Grid>
 

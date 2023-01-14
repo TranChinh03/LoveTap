@@ -28,7 +28,8 @@ namespace LoveTap.ViewModel
         public ICommand navProfile { get;  }
         public ICommand navHome { get;  }
         public ICommand navGood { get;  }
-        public ICommand navOrder { get;  }
+        public ICommand navDelivery { get;  }
+        public ICommand navReceive { get;  }
         public ICommand navCustomer { get;  }
         public ICommand navStatistic { get;  }
         public ICommand navEmployee { get;  }
@@ -66,7 +67,8 @@ namespace LoveTap.ViewModel
             navProfile = new NavigationCommand<ProfileUsrViewModel>(navigationStore, () => new ProfileUsrViewModel(navigationStore));
             navHome = new NavigationCommand<HomeViewModel>(navigationStore, () => new HomeViewModel(navigationStore));
             navGood = new NavigationCommand<GoodsViewModel>(navigationStore, () => new GoodsViewModel(navigationStore));
-            navOrder = new NavigationCommand<OrdersViewModel>(navigationStore, () => new OrdersViewModel(navigationStore));
+            navDelivery = new NavigationCommand<OrdersViewModel>(navigationStore, () => new OrdersViewModel(navigationStore));
+            navReceive = new NavigationCommand<ReceiveOrderViewModel>(navigationStore, () => new ReceiveOrderViewModel(navigationStore));
             navCustomer = new NavigationCommand<CustomerViewModel>(navigationStore, () => new CustomerViewModel(navigationStore));
             navStatistic = new NavigationCommand<StatisticViewModel>(navigationStore, () => new StatisticViewModel(navigationStore));
             navEmployee = new NavigationCommand<EmployeeViewModel>(navigationStore, () => new EmployeeViewModel(navigationStore));

@@ -10,6 +10,7 @@ using System.Windows;
 using LoveTap.Model;
 using LoveTap.Stores;
 using LoveTap.Commands;
+using System.Collections.ObjectModel;
 
 namespace LoveTap.ViewModel
 {
@@ -46,8 +47,19 @@ namespace LoveTap.ViewModel
         public ICommand EditCommand { get; set; }
         public ICommand navBack { get; set; }
         public ICommand navDone { get; set; }
+        private ObservableCollection<CHINHANH> _BranchList;
+        public ObservableCollection<CHINHANH> BranchList { get => _BranchList; set { _BranchList = value; OnPropertyChanged(); } }
+        public string[] BranchIDList { get; set; } = new string[DataProvider.Ins.DB.CHINHANHs.Count()];
+
         public EditEmployeeViewModel(NavigationStore navigationStore)
         {
+            BranchList = new ObservableCollection<CHINHANH>(DataProvider.Ins.DB.CHINHANHs);
+            for (int i = 0; i < DataProvider.Ins.DB.CHINHANHs.Count(); i++)
+
+            {
+                BranchIDList[i] = BranchList[i].MACN;
+            }
+
             LoadedEditEmployeeUC = new RelayCommand<UserControl>((p) => true, (p) =>
             {
                 NHANVIEN temp = EmployeeViewModel.CurrentSelected;

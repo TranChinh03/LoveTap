@@ -274,7 +274,7 @@
 
                     <materialDesign:Card  VerticalAlignment="Top" Grid.Row="0" Margin="10 8 0 0" Width="110" Height="100" >
                         <Calendar Style="{StaticResource styleCalendar}"  HorizontalAlignment="Center"  
-                                  Name="calendar" >
+                                  Name="calendar" BorderThickness="0">
                             <i:Interaction.Triggers>
                                 <i:EventTrigger EventName="SelectedDatesChanged">
                                     <i:InvokeCommandAction     Command="{Binding ChangeDate}"

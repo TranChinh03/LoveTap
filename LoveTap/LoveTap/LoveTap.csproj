@@ -80,6 +80,7 @@
     </ApplicationDefinition>
     <Compile Include="Commands\CommandBase.cs" />
     <Compile Include="Commands\NavigationCommand.cs" />
+    <Compile Include="Commands\ChangeOrdCommand.cs" />
     <Compile Include="ErrorWindow.xaml.cs">
       <DependentUpon>ErrorWindow.xaml</DependentUpon>
     </Compile>
@@ -144,7 +145,10 @@
     <Compile Include="Model\TONKHO.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Service\NavigationService.cs" />
+    <Compile Include="Service\ParameterNavigationService.cs" />
     <Compile Include="Stores\NavigationStore.cs" />
+    <Compile Include="Stores\ViewStore.cs" />
     <Compile Include="UserControlCustom\AddCustomerUC.xaml.cs">
       <DependentUpon>AddCustomerUC.xaml</DependentUpon>
     </Compile>
@@ -153,6 +157,9 @@
     </Compile>
     <Compile Include="UserControlCustom\AddGoods.xaml.cs">
       <DependentUpon>AddGoods.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControlCustom\AddReceiveViewUC.xaml.cs">
+      <DependentUpon>AddReceiveViewUC.xaml</DependentUpon>
     </Compile>
     <Compile Include="UserControlCustom\CreateOrderUC.xaml.cs">
       <DependentUpon>CreateOrderUC.xaml</DependentUpon>
@@ -208,6 +215,12 @@
     <Compile Include="UserControlCustom\ProfileViewUC.xaml.cs">
       <DependentUpon>ProfileViewUC.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UserControlCustom\ReceiveOderDetail.xaml.cs">
+      <DependentUpon>ReceiveOderDetail.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControlCustom\ReceiveOrdViewUC.xaml.cs">
+      <DependentUpon>ReceiveOrdViewUC.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserControlCustom\SignUpModelUC.xaml.cs">
       <DependentUpon>SignUpModelUC.xaml</DependentUpon>
     </Compile>
@@ -223,6 +236,7 @@
     <Compile Include="ViewModel\AddCustomerViewModel.cs" />
     <Compile Include="ViewModel\AddEmployeeViewModel.cs" />
     <Compile Include="ViewModel\AddGoodViewModel.cs" />
+    <Compile Include="ViewModel\AddReceiveViewModel.cs" />
     <Compile Include="ViewModel\CreatePwViewModel.cs" />
     <Compile Include="ViewModel\CustomerDetailViewModel.cs" />
     <Compile Include="ViewModel\AddOrdersViewModel.cs" />
@@ -250,6 +264,8 @@
     <Compile Include="ViewModel\OrdersViewModel.cs" />
     <Compile Include="ViewModel\MenuBarUC.cs" />
     <Compile Include="ViewModel\ProfileUsrViewModel.cs" />
+    <Compile Include="ViewModel\ReceiveDetailViewModel.cs" />
+    <Compile Include="ViewModel\ReceiveOrderViewModel.cs" />
     <Compile Include="ViewModel\StatisticViewModel.cs" />
     <Compile Include="ViewModel\UsrPro5EditViewModel.cs" />
     <Page Include="ErrorWindow.xaml">
@@ -285,6 +301,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UserControlCustom\AddGoods.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControlCustom\AddReceiveViewUC.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -361,6 +381,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UserControlCustom\ProfileViewUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControlCustom\ReceiveOderDetail.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControlCustom\ReceiveOrdViewUC.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

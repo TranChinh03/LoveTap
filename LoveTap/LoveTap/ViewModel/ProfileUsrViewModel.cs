@@ -29,9 +29,8 @@ namespace LoveTap.ViewModel
 
         private string _FullName;
         public string FullName { get => _FullName; set { _FullName = value; OnPropertyChanged(); } }
-
-        private string _Birthday;
-        public string Birthday { get => _Birthday; set { _Birthday = value; OnPropertyChanged(); } }
+        private Nullable<System.DateTime> _DOB;
+        public Nullable<System.DateTime> DOB { get => _DOB; set { _DOB = value; OnPropertyChanged(); } }
 
         private string _PhoneNumber;
         public string PhoneNumber { get => _PhoneNumber; set { _PhoneNumber = value; OnPropertyChanged(); } }
@@ -67,7 +66,7 @@ namespace LoveTap.ViewModel
                 if (User != null && User.Count > 0)
                 {
                     FullName = User[0].HOTEN;
-                    Birthday = User[0].NTNS.ToString();
+                    DOB = User[0].NTNS;
                     PhoneNumber = User[0].SDT;
                     Email = User[0].EMAIL;
                     Address = User[0].DIACHI;

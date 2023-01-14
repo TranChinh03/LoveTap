@@ -15,6 +15,11 @@ namespace LoveTap.ViewModel
 {
     public class CustomerDetailViewModel : BaseViewModel
     {
+        private string _textType;
+        public string textType { get => _textType; set { _textType = value; OnPropertyChanged(); } }
+        private string _bgType;
+        public string bgType { get => _bgType; set { _bgType = value; OnPropertyChanged(); } }
+
         private string _CusName;
         public string CusName { get => _CusName; set { _CusName = value; OnPropertyChanged(); } }
         private string _Phone;
@@ -46,11 +51,25 @@ namespace LoveTap.ViewModel
                     Sale = x.DOANHSO;
                     Type = "Đồng";
                     if (Sale > 2000000 && Sale <= 5000000)
-                        Type = "Bạc";
+                    {
+                        Type = "Bronz";
+                        bgType = "#eec170";
+                        textType = "#E2711D";
+                    }
+
                     else if (Sale <= 10000000)
-                        Type = "Vàng";
+                    {
+                        Type = "Silver";
+                        bgType = "#dee2e6";
+                        textType = "#4f5d75";
+                    }
+
                     else if (Sale > 10000000)
-                        Type = "Kim cương";
+                    {
+                        Type = "Gold";
+                        bgType = "#fff2b2";
+                        textType = "#ffaa00";
+                    }
                 }
 
             });
