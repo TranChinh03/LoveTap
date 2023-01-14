@@ -15,8 +15,8 @@ namespace LoveTap.ViewModel
 {
     public class EmployeeDetailViewModel:BaseViewModel
     {
-        private string _ID;
-        public string ID { get => _ID; set { _ID = value; OnPropertyChanged(); } }
+        private int _ID;
+        public int ID { get => _ID; set { _ID = value; OnPropertyChanged(); } }
 
         private string _EmployeeName;
         public string EmployeeName { get => _EmployeeName; set { _EmployeeName = value; OnPropertyChanged(); } }
@@ -39,8 +39,8 @@ namespace LoveTap.ViewModel
         private string _BasicPay;
         public string BasicPay { get => _BasicPay; set { _BasicPay = value; OnPropertyChanged(); } }
 
-        private string _Branch;
-        public string Branch { get => _Branch; set { _Branch = value; OnPropertyChanged(); } }
+        private int _Branch;
+        public int Branch { get => _Branch; set { _Branch = value; OnPropertyChanged(); } }
 
         public ICommand LoadedEmployeeDetailUC { get; set; }
         public ICommand navEdit { get; set; }
@@ -62,7 +62,7 @@ namespace LoveTap.ViewModel
                 Address = temp.DIACHI;
                 CoefficientSalary = temp.HESOLUONG.ToString();
                 BasicPay = temp.LUONGCB.ToString();
-                Branch = temp.MACN;
+                Branch = (int)temp.MACN;
             });
 
             navBack = new NavigationCommand<EmployeeViewModel>(navigationStore, () => new EmployeeViewModel(navigationStore));

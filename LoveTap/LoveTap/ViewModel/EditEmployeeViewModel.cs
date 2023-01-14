@@ -16,8 +16,8 @@ namespace LoveTap.ViewModel
 {
     internal class EditEmployeeViewModel:BaseViewModel
     {
-        private string _ID;
-        public string ID { get => _ID; set { _ID = value; OnPropertyChanged(); } }
+        private int _ID;
+        public int ID { get => _ID; set { _ID = value; OnPropertyChanged(); } }
 
         private string _EmployeeName;
         public string EmployeeName { get => _EmployeeName; set { _EmployeeName = value; OnPropertyChanged(); } }
@@ -40,8 +40,8 @@ namespace LoveTap.ViewModel
         private string _BasicPay;
         public string BasicPay { get => _BasicPay; set { _BasicPay = value; OnPropertyChanged(); } }
 
-        private string _Branch;
-        public string Branch { get => _Branch; set { _Branch = value; OnPropertyChanged(); } }
+        private int _Branch;
+        public int Branch { get => _Branch; set { _Branch = value; OnPropertyChanged(); } }
 
         public ICommand LoadedEditEmployeeUC { get; set; }
         public ICommand EditCommand { get; set; }
@@ -49,7 +49,7 @@ namespace LoveTap.ViewModel
         public ICommand navDone { get; set; }
         private ObservableCollection<CHINHANH> _BranchList;
         public ObservableCollection<CHINHANH> BranchList { get => _BranchList; set { _BranchList = value; OnPropertyChanged(); } }
-        public string[] BranchIDList { get; set; } = new string[DataProvider.Ins.DB.CHINHANHs.Count()];
+        public int[] BranchIDList { get; set; } = new int[DataProvider.Ins.DB.CHINHANHs.Count()];
 
         public EditEmployeeViewModel(NavigationStore navigationStore)
         {
@@ -75,13 +75,13 @@ namespace LoveTap.ViewModel
                 Address = temp.DIACHI;
                 CoefficientSalary = temp.HESOLUONG.ToString();
                 BasicPay = temp.LUONGCB.ToString();
-                Branch = temp.MACN;
+                Branch = (int)temp.MACN;
             });
             navDone = new NavigationCommand<EmployeeDetailViewModel>(navigationStore, () => new EmployeeDetailViewModel(navigationStore));
             navBack = new NavigationCommand<EmployeeDetailViewModel>(navigationStore, () => new EmployeeDetailViewModel(navigationStore));
 
             EditCommand = new RelayCommand<object>((p) => {
-                if (string.IsNullOrEmpty(EmployeeName) || string.IsNullOrEmpty(PhoneNumber) || string.IsNullOrEmpty(Birthday) || string.IsNullOrEmpty(Address) || string.IsNullOrEmpty(ID) || string.IsNullOrEmpty(Branch) || string.IsNullOrEmpty(CoefficientSalary) || string.IsNullOrEmpty(BasicPay) || string.IsNullOrEmpty(Position))
+                if (string.IsNullOrEmpty(EmployeeName) || string.IsNullOrEmpty(PhoneNumber) || string.IsNullOrEmpty(Birthday) || string.IsNullOrEmpty(Address)  || string.IsNullOrEmpty(Branch.ToString()) || string.IsNullOrEmpty(CoefficientSalary) || string.IsNullOrEmpty(BasicPay) || string.IsNullOrEmpty(Position))
                     return false;
 
                 return true;

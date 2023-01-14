@@ -19,7 +19,7 @@ namespace LoveTap.ViewModel
         public string UserName { get { return _UserName; } set { _UserName = value; OnPropertyChanged(); }}
         private string _Password;
         public string Password { get { return _Password; } set { _Password = value; OnPropertyChanged(); } }
-        public string ID { get; set; }
+        public int ID { get; set; }
         public ICommand LoginCommand { get; set; }
         public ICommand PasswordChangedCommand { get; set; }
         public LoginViewModel()

@@ -21,19 +21,19 @@ namespace LoveTap.Model
             this.HOADONs = new HashSet<HOADON>();
             this.KHACHHANGs = new HashSet<KHACHHANG>();
             this.KHOes = new HashSet<KHO>();
+            this.PHIEUNHAPs = new HashSet<PHIEUNHAP>();
         }
     
-        public string MANV { get; set; }
+        public int MANV { get; set; }
         public string HOTEN { get; set; }
         public Nullable<System.DateTime> NTNS { get; set; }
         public string SDT { get; set; }
         public string DIACHI { get; set; }
         public Nullable<double> HESOLUONG { get; set; }
         public Nullable<double> LUONGCB { get; set; }
-        public string MACN { get; set; }
+        public Nullable<int> MACN { get; set; }
         public Nullable<bool> VAITRO { get; set; }
         public string EMAIL { get; set; }
-        public string NVID { get; set; }
         public Nullable<bool> DELETED { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
@@ -46,5 +46,7 @@ namespace LoveTap.Model
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<KHO> KHOes { get; set; }
         public virtual LOGIN LOGIN { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<PHIEUNHAP> PHIEUNHAPs { get; set; }
     }
 }

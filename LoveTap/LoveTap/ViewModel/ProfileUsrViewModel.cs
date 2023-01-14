@@ -19,7 +19,7 @@ namespace LoveTap.ViewModel
 {
     public class ProfileUsrViewModel : BaseViewModel
     {
-        public string UserID { get; set; }
+        public int UserID { get; set; }
         public ICommand NavChangePw { get; set; }
         public ICommand NavEditUsr { get;}
         public ICommand LoadedProfileUsr { get; set; }
@@ -41,11 +41,11 @@ namespace LoveTap.ViewModel
         private string _Address;
         public string Address { get => _Address; set { _Address = value; OnPropertyChanged(); } }
 
-        private string _ID;
-        public string ID { get => _ID; set { _ID = value; OnPropertyChanged(); } }
+        private int _ID;
+        public int ID { get => _ID; set { _ID = value; OnPropertyChanged(); } }
 
-        private string _Branch;
-        public string Branch { get => _Branch; set { _Branch = value; OnPropertyChanged(); } }
+        private int _Branch;
+        public int Branch { get => _Branch; set { _Branch = value; OnPropertyChanged(); } }
 
         private string _CoefficientsSalary;
         public string CoefficientsSalary { get => _CoefficientsSalary; set { _CoefficientsSalary = value; OnPropertyChanged(); } }
@@ -62,7 +62,7 @@ namespace LoveTap.ViewModel
             LoadedProfileUsr = new RelayCommand<Page>((p) => { return true; }, (p) =>
             {
                 UserID = MainViewModel.ID;
-                User = new ObservableCollection<NHANVIEN>(DataProvider.Ins.DB.NHANVIENs.Where(x => x.NVID == UserID));
+                User = new ObservableCollection<NHANVIEN>(DataProvider.Ins.DB.NHANVIENs.Where(x => x.MANV == UserID));
                 if (User != null && User.Count > 0)
                 {
                     FullName = User[0].HOTEN;
@@ -71,7 +71,7 @@ namespace LoveTap.ViewModel
                     Email = User[0].EMAIL;
                     Address = User[0].DIACHI;
                     ID = User[0].MANV;
-                    Branch = User[0].MACN;
+                    Branch = (int)User[0].MACN;
                     CoefficientsSalary = User[0].HESOLUONG.ToString();
                     BasicPay = User[0].LUONGCB.ToString();
                     string role = User[0].VAITRO.ToString();

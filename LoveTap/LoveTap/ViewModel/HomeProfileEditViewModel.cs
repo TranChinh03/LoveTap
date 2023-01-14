@@ -30,11 +30,11 @@ namespace LoveTap.ViewModel
         private string _Address;
         public string Address { get => _Address; set { _Address = value; OnPropertyChanged(); } }
 
-        private string _ID;
-        public string ID { get => _ID; set { _ID = value; OnPropertyChanged(); } }
+        private int _ID;
+        public int ID { get => _ID; set { _ID = value; OnPropertyChanged(); } }
 
-        private string _Branch;
-        public string Branch { get => _Branch; set { _Branch = value; OnPropertyChanged(); } }
+        private int _Branch;
+        public int Branch { get => _Branch; set { _Branch = value; OnPropertyChanged(); } }
 
         private string _CoefficientsSalary;
         public string CoefficientsSalary { get => _CoefficientsSalary; set { _CoefficientsSalary = value; OnPropertyChanged(); } }
@@ -55,7 +55,7 @@ namespace LoveTap.ViewModel
 
             EditCommand = new RelayCommand<object>((p) =>
             {
-                if (string.IsNullOrEmpty(FullName)|| string.IsNullOrEmpty(PhoneNumber) || string.IsNullOrEmpty(Birthday) || string.IsNullOrEmpty(Email) || string.IsNullOrEmpty(Address) || string.IsNullOrEmpty(ID) || string.IsNullOrEmpty(Branch) || string.IsNullOrEmpty(CoefficientsSalary) || string.IsNullOrEmpty(BasicPay) || string.IsNullOrEmpty(Role))
+                if (string.IsNullOrEmpty(FullName)|| string.IsNullOrEmpty(PhoneNumber) || string.IsNullOrEmpty(Birthday) || string.IsNullOrEmpty(Email) || string.IsNullOrEmpty(Address) ||  string.IsNullOrEmpty(Branch.ToString()) || string.IsNullOrEmpty(CoefficientsSalary) || string.IsNullOrEmpty(BasicPay) || string.IsNullOrEmpty(Role))
                     return false;
 
                 //var displayList = DataProvider.Ins.DB.Units.Where(x => x.DisplayName == DisplayName);

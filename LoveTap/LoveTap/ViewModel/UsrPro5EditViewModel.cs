@@ -16,7 +16,7 @@ namespace LoveTap.ViewModel
 {
     public class UsrPro5EditViewModel:BaseViewModel
     {
-        public string UserID { get; set; }
+        public int UserID { get; set; }
 
         public ICommand LoadedHomeProfileEdit { get; set; }
         public ICommand NavBack2Pro5 { get; set; }
@@ -43,11 +43,11 @@ namespace LoveTap.ViewModel
         private string _Address;
         public string Address { get => _Address; set { _Address = value; OnPropertyChanged(); } }
 
-        private string _ID;
-        public string ID { get => _ID; set { _ID = value; OnPropertyChanged(); } }
+        private int _ID;
+        public int ID { get => _ID; set { _ID = value; OnPropertyChanged(); } }
 
-        private string _Branch;
-        public string Branch { get => _Branch; set { _Branch = value; OnPropertyChanged(); } }
+        private int _Branch;
+        public int Branch { get => _Branch; set { _Branch = value; OnPropertyChanged(); } }
         private ObservableCollection<CHINHANH> _BranchList;
         public ObservableCollection<CHINHANH> BranchList { get => _BranchList; set { _BranchList = value; OnPropertyChanged(); } }
 
@@ -62,7 +62,7 @@ namespace LoveTap.ViewModel
 
 
         public ICommand EditCommand { get; set; }
-        public string[] BranchIDList { get; set; } = new string[DataProvider.Ins.DB.CHINHANHs.Count()];
+        public int[] BranchIDList { get; set; } = new int[DataProvider.Ins.DB.CHINHANHs.Count()];
 
 
         public UsrPro5EditViewModel(NavigationStore navigationStore) {
@@ -77,7 +77,7 @@ namespace LoveTap.ViewModel
             LoadedHomeProfileEdit = new RelayCommand<Window>((p) => { return true; }, (p) =>
             {
                 UserID = MainViewModel.ID;
-                User = new ObservableCollection<NHANVIEN>(DataProvider.Ins.DB.NHANVIENs.Where(x => x.NVID == UserID));
+                User = new ObservableCollection<NHANVIEN>(DataProvider.Ins.DB.NHANVIENs.Where(x => x.MANV == UserID));
                 if (User != null && User.Count > 0)
                 {
                     FullName = User[0].HOTEN;
@@ -86,7 +86,7 @@ namespace LoveTap.ViewModel
                     Email = User[0].EMAIL;
                     Address = User[0].DIACHI;
                     ID = User[0].MANV;
-                    Branch = User[0].MACN;
+                    Branch = (int)User[0].MACN;
                     CoefficientsSalary = User[0].HESOLUONG.ToString();
                     BasicPay = User[0].LUONGCB.ToString();
                     string role = User[0].VAITRO.ToString();
@@ -110,7 +110,7 @@ namespace LoveTap.ViewModel
             {
                 if (string.IsNullOrEmpty(FullName) || string.IsNullOrEmpty(PhoneNumber) || 
                 string.IsNullOrEmpty(Birthday) || string.IsNullOrEmpty(Email) || string.IsNullOrEmpty(Address) || 
-                string.IsNullOrEmpty(ID) || string.IsNullOrEmpty(Branch) || string.IsNullOrEmpty(CoefficientsSalary) || 
+                string.IsNullOrEmpty(Branch.ToString()) || string.IsNullOrEmpty(CoefficientsSalary) || 
                 string.IsNullOrEmpty(BasicPay) || string.IsNullOrEmpty(Role))
                     return false;
 

@@ -14,8 +14,8 @@ namespace LoveTap.Model
     
     public partial class CTHD
     {
-        public string MAHD { get; set; }
-        public string MASP { get; set; }
+        public int MAHD { get; set; }
+        public int MASP { get; set; }
         public Nullable<int> SOLUONG { get; set; }
         public Nullable<bool> DELETED { get; set; }
     

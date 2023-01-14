@@ -20,11 +20,11 @@ namespace LoveTap.Model
             this.TONKHOes = new HashSet<TONKHO>();
         }
     
-        public string MAKHO { get; set; }
+        public int MAKHO { get; set; }
         public string TENKHO { get; set; }
         public string DIACHI { get; set; }
         public Nullable<double> DIENTICH { get; set; }
-        public string MANQL { get; set; }
+        public Nullable<int> MANQL { get; set; }
         public Nullable<bool> DELETED { get; set; }
     
         public virtual NHANVIEN NHANVIEN { get; set; }

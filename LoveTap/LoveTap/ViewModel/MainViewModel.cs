@@ -33,7 +33,7 @@ namespace LoveTap.ViewModel
         public ICommand navCustomer { get;  }
         public ICommand navStatistic { get;  }
         public ICommand navEmployee { get;  }
-        public static string ID { get; set; }
+        public static int ID { get; set; }
         public static bool IsAdmin { get; set; } = false;
         public MainViewModel(NavigationStore navigationStore)
         {
@@ -52,7 +52,7 @@ namespace LoveTap.ViewModel
                 if (loginVM.IsLogin)
                 {
                     ID = loginVM.ID;
-                    if ((DataProvider.Ins.DB.NHANVIENs.Where(x => x.NVID == ID).ToList())[0].VAITRO == true)
+                    if ((DataProvider.Ins.DB.NHANVIENs.Where(x => x.MANV == ID).ToList())[0].VAITRO == true)
                         IsAdmin = true;
                     p.Show();
                 }
@@ -86,7 +86,7 @@ namespace LoveTap.ViewModel
                     if (loginVM.IsLogin)
                     {
                         ID = loginVM.ID;
-                        if ((DataProvider.Ins.DB.NHANVIENs.Where(x => x.NVID == ID).ToList())[0].VAITRO == true)
+                        if ((DataProvider.Ins.DB.NHANVIENs.Where(x => x.MANV == ID).ToList())[0].VAITRO == true)
                             IsAdmin = true;
                         p.Show();
                     }

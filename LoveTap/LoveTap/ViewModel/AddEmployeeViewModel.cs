@@ -22,8 +22,8 @@ namespace LoveTap.ViewModel
 
         public ICommand AddCommand { get; set; }
 
-        private string _ID;
-        public string ID { get => _ID; set { _ID = value; OnPropertyChanged(); } }
+        private int _ID;
+        public int ID { get => _ID; set { _ID = value; OnPropertyChanged(); } }
 
         private string _EmployeeName;
         public string EmployeeName { get => _EmployeeName; set { _EmployeeName = value; OnPropertyChanged(); } }
@@ -46,8 +46,8 @@ namespace LoveTap.ViewModel
         private string _BasicPay;
         public string BasicPay { get => _BasicPay; set { _BasicPay = value; OnPropertyChanged(); } }
 
-        private string _Branch;
-        public string Branch { get => _Branch; set { _Branch = value; OnPropertyChanged(); } }
+        private int _Branch;
+        public int Branch { get => _Branch; set { _Branch = value; OnPropertyChanged(); } }
 
         private string _Email;
         public string Email { get => _Email; set { _Email = value; OnPropertyChanged(); } }
@@ -61,9 +61,9 @@ namespace LoveTap.ViewModel
 
             AddCommand = new RelayCommand<object>((p) =>
             {
-                if (string.IsNullOrEmpty(ID) || string.IsNullOrEmpty(EmployeeName) || string.IsNullOrEmpty(Position) ||
+                if ( string.IsNullOrEmpty(EmployeeName) || string.IsNullOrEmpty(Position) ||
                 string.IsNullOrEmpty(PhoneNumber) || string.IsNullOrEmpty(Address) || string.IsNullOrEmpty(CoefficientSalary) || 
-                string.IsNullOrEmpty(BasicPay) || string.IsNullOrEmpty(Branch)||Birthday == null)
+                string.IsNullOrEmpty(BasicPay) || string.IsNullOrEmpty(Branch.ToString())||Birthday == null)
                     return false;
                 var employee = DataProvider.Ins.DB.NHANVIENs.Where(x => x.MANV == ID);
                 if (employee == null || employee.Count() != 0)

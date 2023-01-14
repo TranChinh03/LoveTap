@@ -46,7 +46,7 @@ namespace LoveTap.ViewModel
         public ObservableCollection<KHACHHANG> CustomerList { get => _CustomerList; set { _CustomerList = value; OnPropertyChanged(); } }
         private ObservableCollection<CHINHANH> _BranchList;
         public ObservableCollection<CHINHANH> BranchList { get => _BranchList; set { _BranchList = value; OnPropertyChanged(); } }
-        public string[] BranchIDList { get; set; } = new string[DataProvider.Ins.DB.CHINHANHs.Count()];
+        public int[] BranchIDList { get; set; } = new int[DataProvider.Ins.DB.CHINHANHs.Count()];
 
 
         public EditCustomerViewModel(NavigationStore navigationStore)

@@ -19,21 +19,24 @@ namespace LoveTap.Model
         {
             this.BAOHANHs = new HashSet<BAOHANH>();
             this.CTHDs = new HashSet<CTHD>();
+            this.CTPNs = new HashSet<CTPN>();
             this.TONKHOes = new HashSet<TONKHO>();
         }
     
-        public string MASP { get; set; }
+        public int MASP { get; set; }
         public string TEN { get; set; }
         public Nullable<double> GIA { get; set; }
         public string NUOCSX { get; set; }
         public string CHITIET { get; set; }
-        public string MADM { get; set; }
+        public Nullable<int> MADM { get; set; }
         public Nullable<bool> DELETED { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<BAOHANH> BAOHANHs { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CTHD> CTHDs { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CTPN> CTPNs { get; set; }
         public virtual CTSP CTSP { get; set; }
         public virtual DANHMUC DANHMUC { get; set; }
         public virtual LOIICH LOIICH { get; set; }

@@ -83,10 +83,10 @@
                         </ListBox>
 
                         <StackPanel>
-                            <TextBlock Height="45" Width="250" FontSize="15" Foreground="#033270" Text="{Binding LI1}" TextWrapping="Wrap" VerticalAlignment="Center"></TextBlock>
-                            <TextBlock Height="45" Width="250" FontSize="15" Foreground="#033270" Text="{Binding LI2}" TextWrapping="Wrap" VerticalAlignment="Center"></TextBlock>
-                            <TextBlock Height="45" Width="250" FontSize="15" Foreground="#033270" Text="{Binding LI3}" TextWrapping="Wrap" VerticalAlignment="Center"></TextBlock>
-                            <TextBlock Height="45" Width="250" FontSize="15" Foreground="#033270" Text="{Binding LI4}" TextWrapping="Wrap" VerticalAlignment="Center"></TextBlock>
+                            <TextBlock Height="45" Width="250" FontSize="10" Foreground="#033270" Text="{Binding LI1}" TextWrapping="Wrap" VerticalAlignment="Center"></TextBlock>
+                            <TextBlock Height="45" Width="250" FontSize="10" Foreground="#033270" Text="{Binding LI2}" TextWrapping="Wrap" VerticalAlignment="Center"></TextBlock>
+                            <TextBlock Height="45" Width="250" FontSize="10" Foreground="#033270" Text="{Binding LI3}" TextWrapping="Wrap" VerticalAlignment="Center"></TextBlock>
+                            <TextBlock Height="45" Width="250" FontSize="10" Foreground="#033270" Text="{Binding LI4}" TextWrapping="Wrap" VerticalAlignment="Center"></TextBlock>
                         </StackPanel>
                     </StackPanel>
                     
@@ -136,11 +136,11 @@
                 <StackPanel Grid.Column="1" Margin="10 40 10 0">
                     <StackPanel Orientation="Horizontal">
                         <TextBlock Foreground="#1368AA" FontSize="15" VerticalAlignment="Center">Product ID:</TextBlock>
-                        <TextBox FontSize="15" Foreground="#033270" BorderBrush="Transparent" SelectionBrush="Transparent" Margin="5 0 0 0" Text="{Binding ID}"></TextBox>
+                        <TextBox FontSize="15" Foreground="#033270" BorderBrush="Transparent" SelectionBrush="Transparent" Margin="5 0 0 0" Text="{Binding ID}" IsEnabled="False"></TextBox>
                     </StackPanel>
                     <DockPanel>
                         <TextBlock Text="Product Title: " Foreground="#1368AA" FontSize="15" VerticalAlignment="Center"></TextBlock>
-                        <TextBox FontSize="15" Foreground="#033270" BorderBrush="Transparent" SelectionBrush="Transparent" Text="{Binding Name}"></TextBox>
+                        <TextBox FontSize="15" Foreground="#033270" BorderBrush="Transparent" SelectionBrush="Transparent" Text="{Binding Name}" IsEnabled="False"></TextBox>
                     </DockPanel>
                     <StackPanel Orientation="Horizontal" Margin="0 10 0 0">
                         <!--<TextBlock Text="Brand: " Foreground="#1368AA" FontSize="15" VerticalAlignment="Center" ></TextBlock>
@@ -150,7 +150,7 @@
                     </StackPanel >
                     <StackPanel Orientation="Horizontal" Margin="0 10 0 0" >
                         <TextBlock Text="Price: " Foreground="#1368AA" FontSize="15" VerticalAlignment="Center" ></TextBlock>
-                        <TextBox FontSize="15" Foreground="#033270" BorderBrush="Transparent" SelectionBrush="Transparent" Width="98" Text="{Binding Price}"></TextBox>
+                        <TextBox FontSize="15" Foreground="#033270" BorderBrush="Transparent" SelectionBrush="Transparent" Width="98" Text="{Binding Price}" IsEnabled="False"></TextBox>
                         <!--<TextBlock Text="Available: " Foreground="#1368AA" FontSize="15" VerticalAlignment="Center" Margin="5 0 0 0"></TextBlock>
                         <TextBox FontSize="15" Foreground="#033270" BorderBrush="Transparent" SelectionBrush="Transparent" Width="98">Out of Stock</TextBox>-->
                     </StackPanel>
@@ -166,7 +166,7 @@
                                 <TextBlock Text="CPU" Foreground="#033270" FontSize="14" Width="100" VerticalAlignment="Center" Padding="7" ></TextBlock>
                             </Border>
                             <Border  BorderBrush="#79A7CB" BorderThickness="0.5" DockPanel.Dock="Left">
-                                <TextBox  Foreground="#033270" Opacity="0.8" FontSize="14" TextWrapping="WrapWithOverflow" Padding="7" VerticalAlignment="Center" BorderBrush="Transparent" Text="{Binding CPU}"></TextBox>
+                                <TextBox  Foreground="#033270" Opacity="0.8" FontSize="14" TextWrapping="WrapWithOverflow" Padding="7" VerticalAlignment="Center" BorderBrush="Transparent" Text="{Binding CPU}" IsEnabled="False"></TextBox>
                             </Border>
                         </DockPanel>
                         <DockPanel DockPanel.Dock="Top" >
@@ -174,7 +174,7 @@
                                 <TextBlock Text="RAM" Foreground="#033270" FontSize="14" Width="100" VerticalAlignment="Center" Padding="7"></TextBlock>
                             </Border>
                             <Border  BorderBrush="#79A7CB" BorderThickness="0.5" DockPanel.Dock="Left">
-                                <TextBox  Foreground="#033270" Opacity="0.8" FontSize="14" TextWrapping="WrapWithOverflow" Padding="7" VerticalAlignment="Center" BorderBrush="Transparent" Text="{Binding RAM}"></TextBox>
+                                <TextBox  Foreground="#033270" Opacity="0.8" FontSize="14" TextWrapping="WrapWithOverflow" Padding="7" VerticalAlignment="Center" BorderBrush="Transparent" Text="{Binding RAM}"  IsEnabled="False"></TextBox>
                             </Border>
                         </DockPanel>
                         <DockPanel DockPanel.Dock="Top" >
@@ -182,7 +182,7 @@
                                 <TextBlock Text="Hard Disk" Foreground="#033270" FontSize="14" Width="100" VerticalAlignment="Center" Padding="7"></TextBlock>
                             </Border>
                             <Border  BorderBrush="#79A7CB" BorderThickness="0.5" DockPanel.Dock="Left">
-                                <TextBox  Foreground="#033270" Opacity="0.8" FontSize="14" TextWrapping="WrapWithOverflow" Padding="7" VerticalAlignment="Center" BorderBrush="Transparent" Text="{Binding HD}"></TextBox>
+                                <TextBox  Foreground="#033270" Opacity="0.8" FontSize="14" TextWrapping="WrapWithOverflow" Padding="7" VerticalAlignment="Center" BorderBrush="Transparent" Text="{Binding HD}"  IsEnabled="False"></TextBox>
                             </Border>
                         </DockPanel>
                         <DockPanel DockPanel.Dock="Top" Height="30">
@@ -190,7 +190,7 @@
                                 <TextBlock Text="VGA" Foreground="#033270" FontSize="14" Width="100" VerticalAlignment="Center" Padding="7"></TextBlock>
                             </Border>
                             <Border  BorderBrush="#79A7CB" BorderThickness="0.5" DockPanel.Dock="Left">
-                                <TextBox  Foreground="#033270" Opacity="0.8" FontSize="14" TextWrapping="WrapWithOverflow" Padding="7" VerticalAlignment="Center" BorderBrush="Transparent" Text="{Binding VGA}"></TextBox>
+                                <TextBox  Foreground="#033270" Opacity="0.8" FontSize="14" TextWrapping="WrapWithOverflow" Padding="7" VerticalAlignment="Center" BorderBrush="Transparent" Text="{Binding VGA}"  IsEnabled="False"></TextBox>
                             </Border>
                         </DockPanel>
                         <DockPanel DockPanel.Dock="Top" Height="30">
@@ -198,7 +198,7 @@
                                 <TextBlock Text="Screen Size" Foreground="#033270" FontSize="14" Width="100" VerticalAlignment="Center" Padding="7"></TextBlock>
                             </Border>
                             <Border  BorderBrush="#79A7CB" BorderThickness="0.5" DockPanel.Dock="Left">
-                                <TextBox  Foreground="#033270" Opacity="0.8" FontSize="14" TextWrapping="WrapWithOverflow" Padding="7" VerticalAlignment="Center" BorderBrush="Transparent" Text="{Binding Size}"></TextBox>
+                                <TextBox  Foreground="#033270" Opacity="0.8" FontSize="14" TextWrapping="WrapWithOverflow" Padding="7" VerticalAlignment="Center" BorderBrush="Transparent" Text="{Binding Size}"  IsEnabled="False"></TextBox>
                             </Border>
                         </DockPanel>
                         <DockPanel DockPanel.Dock="Top" >
@@ -206,7 +206,7 @@
                                 <TextBlock Text="OS" Foreground="#033270" FontSize="14" Width="100" VerticalAlignment="Center" Padding="7"></TextBlock>
                             </Border>
                             <Border  BorderBrush="#79A7CB" BorderThickness="0.5" DockPanel.Dock="Left">
-                                <TextBox  Foreground="#033270" Opacity="0.8" FontSize="14" TextWrapping="WrapWithOverflow" Padding="7" BorderBrush="Transparent" Text="{Binding OS}"></TextBox>
+                                <TextBox  Foreground="#033270" Opacity="0.8" FontSize="14" TextWrapping="WrapWithOverflow" Padding="7" BorderBrush="Transparent" Text="{Binding OS}"  IsEnabled="False"></TextBox>
                             </Border>
                         </DockPanel>
                         <DockPanel DockPanel.Dock="Top">
@@ -214,7 +214,7 @@
                                 <TextBlock Text="Color" Foreground="#033270" FontSize="14" Width="100" VerticalAlignment="Center" Padding="7"></TextBlock>
                             </Border>
                             <Border  BorderBrush="#79A7CB" BorderThickness="0.5" DockPanel.Dock="Left">
-                                <TextBox  Foreground="#033270" Opacity="0.8" FontSize="14" TextWrapping="WrapWithOverflow" Padding="7" BorderBrush="Transparent" Text="{Binding Color}"></TextBox>
+                                <TextBox  Foreground="#033270" Opacity="0.8" FontSize="14" TextWrapping="WrapWithOverflow" Padding="7" BorderBrush="Transparent" Text="{Binding Color}"  IsEnabled="False"></TextBox>
                             </Border>
 
                         </DockPanel>

@@ -14,7 +14,7 @@ namespace LoveTap.Model
     
     public partial class CTSP
     {
-        public string MASP { get; set; }
+        public int MASP { get; set; }
         public string CPU { get; set; }
         public string RAM { get; set; }
         public string HD { get; set; }
@@ -22,6 +22,7 @@ namespace LoveTap.Model
         public string SCREENSIZE { get; set; }
         public string OS { get; set; }
         public string COLOR { get; set; }
+        public Nullable<bool> DELETED { get; set; }
     
         public virtual SANPHAM SANPHAM { get; set; }
     }
