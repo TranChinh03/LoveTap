@@ -166,20 +166,11 @@ namespace LoveTap.ViewModel
 
         public EmployeeViewModel(NavigationStore navigationStore)
         {
+            EmployeeList = new ObservableCollection<NHANVIEN>(DataProvider.Ins.DB.NHANVIENs);
+            BranchList = new ObservableCollection<CHINHANH>(DataProvider.Ins.DB.CHINHANHs);
             navAddEmployee = new NavigationCommand<AddEmployeeViewModel>(navigationStore, () => new AddEmployeeViewModel(navigationStore));
             navDetail = new NavigationCommand<EmployeeDetailViewModel>(navigationStore, () => new EmployeeDetailViewModel(navigationStore));
             Detail = new RelayCommand<EmployeeViewUC>((p) => { return p.EmployeeList.SelectedItem == null ? false : true; }, (p) => _DetailCs(p));
-            LoadEmployeeCm = new RelayCommand<EmployeeViewUC>((p) => { return true; }, (p) => _Loaded(p));
-        }
-        void _DetailCs(EmployeeViewUC p)
-        {
-            CurrentSelected =(NHANVIEN)p.EmployeeList.SelectedItem;
-        }
-        void _Loaded(EmployeeViewUC p)
-        {
-            EmployeeList = new ObservableCollection<NHANVIEN>(DataProvider.Ins.DB.NHANVIENs);
-            BranchList = new ObservableCollection<CHINHANH>(DataProvider.Ins.DB.CHINHANHs);
-
 
             for (int i = 0; i < DataProvider.Ins.DB.CHINHANHs.Count(); i++)
 
@@ -202,6 +193,17 @@ namespace LoveTap.ViewModel
                 //MyEmployeeList.Add(temp);
                 MyEmployeeList.Add(nv);
             }
+        }
+        void _DetailCs(EmployeeViewUC p)
+        {
+            CurrentSelected =(NHANVIEN)p.EmployeeList.SelectedItem;
+        }
+        void _Loaded(EmployeeViewUC p)
+        {
+          
+
+
+           
         }
 
     }

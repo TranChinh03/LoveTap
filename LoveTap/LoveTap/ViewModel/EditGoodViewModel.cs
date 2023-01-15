@@ -17,7 +17,6 @@ namespace LoveTap.ViewModel
 {
     internal class EditGoodViewModel:BaseViewModel
     {
-        public ICommand navDone { get; set; }
         public ICommand navBack { get; set; }
 
         public ICommand LoadedEditGood { get; set; }
@@ -77,7 +76,6 @@ namespace LoveTap.ViewModel
         public ObservableCollection<LOIICH> BenefitList { get => _BenefitList; set { _BenefitList = value; OnPropertyChanged(); } }
         public EditGoodViewModel(NavigationStore navigationStore)
         {
-            navDone = new NavigationCommand<GoodDetailViewModel>(navigationStore, () => new GoodDetailViewModel(navigationStore));
             navBack = new NavigationCommand<GoodDetailViewModel>(navigationStore, () => new GoodDetailViewModel(navigationStore));
 
             ProductList = new ObservableCollection<SANPHAM>(DataProvider.Ins.DB.SANPHAMs.Where(x => x.DELETED == false));

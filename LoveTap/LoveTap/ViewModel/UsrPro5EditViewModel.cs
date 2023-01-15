@@ -14,15 +14,12 @@ using System.Xml.Linq;
 
 namespace LoveTap.ViewModel
 {
-    public class UsrPro5EditViewModel:BaseViewModel
+    public class UsrPro5EditViewModel : BaseViewModel
     {
         public int UserID { get; set; }
 
-        public ICommand LoadedHomeProfileEdit { get; set; }
         public ICommand NavBack2Pro5 { get; set; }
-        public ICommand GetIdButton { get; set; }
 
-        public ICommand Todo { get; set; }
 
         string Name;
         private ObservableCollection<NHANVIEN> _User;
@@ -65,7 +62,8 @@ namespace LoveTap.ViewModel
         public int[] BranchIDList { get; set; } = new int[DataProvider.Ins.DB.CHINHANHs.Count()];
 
 
-        public UsrPro5EditViewModel(NavigationStore navigationStore) {
+        public UsrPro5EditViewModel(NavigationStore navigationStore)
+        {
             BranchList = new ObservableCollection<CHINHANH>(DataProvider.Ins.DB.CHINHANHs);
             for (int i = 0; i < DataProvider.Ins.DB.CHINHANHs.Count(); i++)
 
@@ -74,43 +72,36 @@ namespace LoveTap.ViewModel
             }
 
 
-            LoadedHomeProfileEdit = new RelayCommand<Window>((p) => { return true; }, (p) =>
+
+            UserID = MainViewModel.ID;
+            User = new ObservableCollection<NHANVIEN>(DataProvider.Ins.DB.NHANVIENs.Where(x => x.MANV == UserID));
+            if (User != null && User.Count > 0)
             {
-                UserID = MainViewModel.ID;
-                User = new ObservableCollection<NHANVIEN>(DataProvider.Ins.DB.NHANVIENs.Where(x => x.MANV == UserID));
-                if (User != null && User.Count > 0)
-                {
-                    FullName = User[0].HOTEN;
-                    Birthday = User[0].NTNS.ToString();
-                    PhoneNumber = User[0].SDT;
-                    Email = User[0].EMAIL;
-                    Address = User[0].DIACHI;
-                    ID = User[0].MANV;
-                    Branch = (int)User[0].MACN;
-                    CoefficientsSalary = User[0].HESOLUONG.ToString();
-                    BasicPay = User[0].LUONGCB.ToString();
-                    string role = User[0].VAITRO.ToString();
-                    if (role == "1")
-                        Role = "Admin";
-                    else
-                        Role = "Staff";
-                }
-                
-            });
+                FullName = User[0].HOTEN;
+                Birthday = User[0].NTNS.ToString();
+                PhoneNumber = User[0].SDT;
+                Email = User[0].EMAIL;
+                Address = User[0].DIACHI;
+                ID = User[0].MANV;
+                Branch = (int)User[0].MACN;
+                CoefficientsSalary = User[0].HESOLUONG.ToString();
+                BasicPay = User[0].LUONGCB.ToString();
+                string role = User[0].VAITRO.ToString();
+                if (role == "1")
+                    Role = "Admin";
+                else
+                    Role = "Staff";
+            }
 
-            NavBack2Pro5 = new NavigationCommand<ProfileUsrViewModel>(navigationStore, () => new ProfileUsrViewModel(navigationStore));
+            ;
 
-
-            GetIdButton = new RelayCommand<Button>((p) => true, (p) => Name = p.Uid);
-            //Todo = new RelayCommand<HomeProfileEdit>((p) => true, (p) => ToDo(p));
-            
 
 
             EditCommand = new RelayCommand<object>((p) =>
             {
-                if (string.IsNullOrEmpty(FullName) || string.IsNullOrEmpty(PhoneNumber) || 
-                string.IsNullOrEmpty(Birthday) || string.IsNullOrEmpty(Email) || string.IsNullOrEmpty(Address) || 
-                string.IsNullOrEmpty(Branch.ToString()) || string.IsNullOrEmpty(CoefficientsSalary) || 
+                if (string.IsNullOrEmpty(FullName) || string.IsNullOrEmpty(PhoneNumber) ||
+                string.IsNullOrEmpty(Birthday) || string.IsNullOrEmpty(Email) || string.IsNullOrEmpty(Address) ||
+                string.IsNullOrEmpty(Branch.ToString()) || string.IsNullOrEmpty(CoefficientsSalary) ||
                 string.IsNullOrEmpty(BasicPay) || string.IsNullOrEmpty(Role))
                     return false;
 
@@ -141,24 +132,9 @@ namespace LoveTap.ViewModel
                 DataProvider.Ins.DB.SaveChanges();
 
             });
-        }
 
-        //void ToDo(HomeProfileEdit p)
-        //{
-        //    int index = int.Parse(Name);
-        //    switch (index)
-        //    {
-        //        case 1:
-        //            {
-        //                p.Close();
-        //                break;
-        //            }
-        //        case 2:
-        //            {
-        //                p.Close();
-        //                break;
-        //            }
-        //    }
-        //}
+            NavBack2Pro5 = new NavigationCommand<ProfileUsrViewModel>(navigationStore, () => new ProfileUsrViewModel(navigationStore));
+
+        }
     }
 }

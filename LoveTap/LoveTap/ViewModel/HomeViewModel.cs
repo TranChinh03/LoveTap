@@ -56,7 +56,7 @@ namespace LoveTap.ViewModel
         public Nullable<double> _Doanhthu { get; set; }
         public Nullable<double> Doanhthu { get => _Doanhthu; set { _Doanhthu = value; OnPropertyChanged(); } }
         public DateTime _selectedDate { get; set; }
-        public DateTime selectedDate { get => _selectedDate; set {_selectedDate = value; OnPropertyChanged(); } }
+        public DateTime selectedDate { get => _selectedDate; set { _selectedDate = value; OnPropertyChanged(); } }
         public int _slOrders { get; set; }
         public int slOrders { get => _slOrders; set { _slOrders = value; OnPropertyChanged(); } }
         public int _slKhachHang { get; set; }
@@ -71,88 +71,86 @@ namespace LoveTap.ViewModel
 
         private List<BestSelling> _BestSellingList = new List<BestSelling>();
         public List<BestSelling> BestSellingList { get => _BestSellingList; set { _BestSellingList = value; } }
+
         public HomeViewModel(NavigationStore navigationStore)
         {
-            //Load Home
-            LoadHome = new RelayCommand<HomeViewUC>((p) => true, (p) =>
-            {
-                ProductList = new ObservableCollection<SANPHAM>(DataProvider.Ins.DB.SANPHAMs);
-                OrderList = new ObservableCollection<HOADON>(DataProvider.Ins.DB.HOADONs);
-                CustomerList = new ObservableCollection<KHACHHANG>(DataProvider.Ins.DB.KHACHHANGs);
-                OrdersDetailList = new ObservableCollection<CTHD>(DataProvider.Ins.DB.CTHDs);
-                StockList = new ObservableCollection<TONKHO>(DataProvider.Ins.DB.TONKHOes);
 
-                int[] sum = new int[DataProvider.Ins.DB.SANPHAMs.Count()];
-                string[] name = new string[DataProvider.Ins.DB.SANPHAMs.Count()];
-                int[] stock = new int[DataProvider.Ins.DB.SANPHAMs.Count()];
-
-
-                for (int i = 0; i < DataProvider.Ins.DB.SANPHAMs.Count(); i++)
-                {
-                    int tong = 0;
-                    for (int j = 0; j < DataProvider.Ins.DB.CTHDs.Count(); j++)
-                    {
-                        if (ProductList[i].MASP == OrdersDetailList[j].MASP)
-                            tong += (int)OrdersDetailList[j].SOLUONG;
-                    }
-                    sum[i] = tong;
-                    name[i] = ProductList[i].TEN.ToString();
-                    for (int k = 0; k < DataProvider.Ins.DB.TONKHOes.Count(); k++)
-                    {
-                        if (ProductList[i].MASP.ToString()==StockList[k].MASP.ToString())
-                            stock[i] = int.Parse(StockList[k].SOLUONG.ToString());
-                    }
-                }
-
-                for (int i = 0; i<sum.Length -1; i++)
-                {
-                    for (int j = i + 1; j<sum.Length; j++)
-                    {
-                        if (sum[j] > sum[i])
-                        {
-                            Swap1(ref sum[j], ref sum[i]);
-                            Swap2(ref name[j], ref name[i]);
-                            Swap1(ref stock[j], ref stock[i]);
-                        }
-                    }
-                }
-
-                for (int i = 0; i<sum.Length; i++)
-                {
-                    BestSelling best = new BestSelling();
-                    best.Ten = name[i];
-                    best.SoLuong = sum[i];
-                    best.SoLuongTon = stock[i];
-                    BestSellingList.Add(best);
-                }
-                Statistic();
-            });
-
-            //SelectedDay
-            void _SelectedDate(Calendar p)
-            {
-                selectedDate= p.SelectedDate.Value;
-                Statistic();
-            }
-
-            void Swap1(ref int a, ref int b)
-            {
-                int temp = a;
-                a = b;
-                b = temp;
-            }
-
-            void Swap2(ref string a, ref string b)
-            {
-                string temp = a;
-                a = b;
-                b = temp;
-            }
+            ProductList = new ObservableCollection<SANPHAM>(DataProvider.Ins.DB.SANPHAMs);
+            OrderList = new ObservableCollection<HOADON>(DataProvider.Ins.DB.HOADONs);
+            CustomerList = new ObservableCollection<KHACHHANG>(DataProvider.Ins.DB.KHACHHANGs);
+            OrdersDetailList = new ObservableCollection<CTHD>(DataProvider.Ins.DB.CTHDs);
+            StockList = new ObservableCollection<TONKHO>(DataProvider.Ins.DB.TONKHOes);
 
             ChangeDate = new RelayCommand<Calendar>((p) => { return p.SelectedDates == null ? false : true; }, (p) => _SelectedDate(p));
             //Detail = new RelayCommand<HomeViewUC>((p) => { return p.cale.SelectedItem == null ? false : true; }, (p) => _DetailCs(p));
             selectedDate= DateTime.Now.Date;
 
+            int[] sum = new int[DataProvider.Ins.DB.SANPHAMs.Count()];
+            string[] name = new string[DataProvider.Ins.DB.SANPHAMs.Count()];
+            int[] stock = new int[DataProvider.Ins.DB.SANPHAMs.Count()];
+
+
+            for (int i = 0; i < DataProvider.Ins.DB.SANPHAMs.Count(); i++)
+            {
+                int tong = 0;
+                for (int j = 0; j < DataProvider.Ins.DB.CTHDs.Count(); j++)
+                {
+                    if (ProductList[i].MASP == OrdersDetailList[j].MASP)
+                        tong += (int)OrdersDetailList[j].SOLUONG;
+                }
+                sum[i] = tong;
+                name[i] = ProductList[i].TEN.ToString();
+                for (int k = 0; k < DataProvider.Ins.DB.TONKHOes.Count(); k++)
+                {
+                    if (ProductList[i].MASP.ToString()==StockList[k].MASP.ToString())
+                        stock[i] = int.Parse(StockList[k].SOLUONG.ToString());
+                }
+            }
+
+            for (int i = 0; i<sum.Length -1; i++)
+            {
+                for (int j = i + 1; j<sum.Length; j++)
+                {
+                    if (sum[j] > sum[i])
+                    {
+                        Swap1(ref sum[j], ref sum[i]);
+                        Swap2(ref name[j], ref name[i]);
+                        Swap1(ref stock[j], ref stock[i]);
+                    }
+                }
+            }
+
+            for (int i = 0; i<sum.Length; i++)
+            {
+                BestSelling best = new BestSelling();
+                best.Ten = name[i];
+                best.SoLuong = sum[i];
+                best.SoLuongTon = stock[i];
+                BestSellingList.Add(best);
+            }
+            Statistic();
+        }
+
+
+        //SelectedDay
+        void _SelectedDate(Calendar p)
+        {
+            selectedDate= p.SelectedDate.Value;
+            Statistic();
+        }
+
+        void Swap1(ref int a, ref int b)
+        {
+            int temp = a;
+            a = b;
+            b = temp;
+        }
+
+        void Swap2(ref string a, ref string b)
+        {
+            string temp = a;
+            a = b;
+            b = temp;
         }
 
         void Statistic()
@@ -169,7 +167,7 @@ namespace LoveTap.ViewModel
                     slKhachHang++;
         }
 
-        
+
 
         //void _DetailCs(HomeScreen p)
         //{
