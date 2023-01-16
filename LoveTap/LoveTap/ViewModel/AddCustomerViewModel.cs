@@ -39,6 +39,7 @@ namespace LoveTap.ViewModel
             RegistDate = DateTime.Now;
             AddCommand = new RelayCommand<object>((p) =>
             {
+                RegistDate = DateTime.Now;
                 if (string.IsNullOrEmpty(CusName) || string.IsNullOrEmpty(Phone) || DOB == null || string.IsNullOrEmpty(Address))
                     return false;
                 return true;

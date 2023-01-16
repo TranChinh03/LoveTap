@@ -26,8 +26,9 @@
                 <Border BorderBrush="{StaticResource Cyan Azure}"  BorderThickness="0.5" CornerRadius="5" VerticalAlignment="Center">
                     <TextBox FontSize="20"
                        FontWeight="Black"
+                       IsEnabled="False"
                        Foreground="{StaticResource Catalina Blue}"
-                       VerticalAlignment="Center" Width="150" materialDesign:HintAssist.Hint="Add new Cus" BorderThickness="0"
+                       VerticalAlignment="Center" Width="196" materialDesign:HintAssist.Hint="Add new Customer" BorderThickness="0"
                        ></TextBox>
                 </Border>
 
@@ -66,9 +67,15 @@
                 <StackPanel Margin="10 0 0 0" Grid.Column="1" HorizontalAlignment="Center" >
                     <TextBox  Style="{StaticResource editTextValue}" Text="{Binding Phone}"></TextBox>
                     <TextBox  Style="{StaticResource editTextValue}" Text="{Binding CusName}"></TextBox>
-                    <TextBox  Style="{StaticResource editTextValue}" Text="{Binding DOB, StringFormat='dd/MM/yyyy'}"></TextBox>
+                    <DatePicker
+                                        Width="150" Height="30" Padding="5" FontSize="13" Margin="0 8 0 0" HorizontalAlignment="Left" SelectedDateFormat="Short" 
+                                        materialDesign:HintAssist.Hint="Pick Date" BorderBrush="#79A7CB" Foreground="{StaticResource Catalina Blue}" 
+                                        Style="{StaticResource MaterialDesignOutlinedDatePicker}" SelectedDate="{Binding DOB, StringFormat='dd/MM/yyyy', Mode=TwoWay}"/>
                     <TextBox  Style="{StaticResource editTextValue}" Text="{Binding Address}"></TextBox>
-                    <TextBox  Style="{StaticResource editTextValue}" Text="{Binding RegistDate, StringFormat='dd/MM/yyyy'}"></TextBox>
+                    <DatePicker
+                                        Width="150" Height="30" Padding="5" FontSize="13" Margin="0 8 0 0" HorizontalAlignment="Left" SelectedDateFormat="Short" 
+                                        materialDesign:HintAssist.Hint="Pick Date" BorderBrush="#79A7CB" Foreground="{StaticResource Catalina Blue}" 
+                                        Style="{StaticResource MaterialDesignOutlinedDatePicker}" SelectedDate="{Binding RegistDate, StringFormat='dd/MM/yyyy', Mode=TwoWay}"/>
                 </StackPanel>
             </Grid>
         </Grid>
