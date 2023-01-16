@@ -316,13 +316,16 @@ namespace LoveTap.ViewModel
         {
             CustomerList = new ObservableCollection<KHACHHANG>(DataProvider.Ins.DB.KHACHHANGs.Where(x => x.DELETED == false));
             BranchList = new ObservableCollection<CHINHANH>(DataProvider.Ins.DB.CHINHANHs);
+
             for(int i =0; i<BranchIDList.Count(); i++)
             {
                 BranchIDList[i] = BranchList[i].MACN;
             }
-
+            
             foreach(KHACHHANG kh in CustomerList)
             {
+                if (kh.DOANHSO == null)
+                    kh.DOANHSO = 0;
                 //Customer temp = new Customer();
                 //temp.ten = kh.HOTEN;
                 //temp.dchi = kh.DIACHI;

@@ -24,17 +24,22 @@ namespace LoveTap.ViewModel
 
         public ICommand DoneCommand { get; set; }
 
+        public ICommand LoadedAddOrder { get; set; }
+
         private int _OrderID;
         public int OrderID { get => _OrderID; set { _OrderID = value; OnPropertyChanged(); } }
 
-        private DateTime _Date;
-        public DateTime Date { get => _Date; set { _Date = value; OnPropertyChanged(); } }
+        private string _Date;
+        public string Date { get => _Date; set { _Date = value; OnPropertyChanged(); } }
 
         private string _Type;
         public string Type { get => _Type; set { _Type = value; OnPropertyChanged(); } }
 
         private int _GoodID;
         public int GoodID { get => _GoodID; set { _GoodID = value; OnPropertyChanged(); } }
+
+        private string _GoodName;
+        public string GoodName { get => _GoodName; set { _GoodName = value; OnPropertyChanged(); } }
 
 
         private string _Amount;
@@ -62,6 +67,9 @@ namespace LoveTap.ViewModel
         private int _Branch;
         public int Branch { get => _Branch; set { _Branch = value; OnPropertyChanged(); } }
 
+        //private DateTime _Now;
+        //public DateTime Now { get => _Now; set { _Now = value; OnPropertyChanged(); } }
+
         private ObservableCollection<HOADON> _OrdersList;
         public ObservableCollection<HOADON> OrdersList { get => _OrdersList; set { _OrdersList = value; OnPropertyChanged(); } }
 
@@ -77,7 +85,13 @@ namespace LoveTap.ViewModel
         private ObservableCollection<KHACHHANG> _CustomerList;
         public ObservableCollection<KHACHHANG> CustomerList { get => _CustomerList; set { _CustomerList = value; OnPropertyChanged(); } }
 
+        private ObservableCollection<CHINHANH> _BranchList;
+        public ObservableCollection<CHINHANH> BranchList { get => _BranchList; set { _BranchList = value; OnPropertyChanged(); } }
 
+        public int[] GoodIDList { get; set; } = new int[DataProvider.Ins.DB.SANPHAMs.Count()];
+        public int[] BranchIDList { get; set; } = new int[DataProvider.Ins.DB.SANPHAMs.Count()];
+
+        public string[] GoodNameList { get; set; } = new string[DataProvider.Ins.DB.SANPHAMs.Count()];
 
         //public struct Detail
         //{
@@ -89,18 +103,41 @@ namespace LoveTap.ViewModel
         public List<CTHD> MyOrderDetailList { get { return _MyOrderDetailList; } set { _MyOrderDetailList = value; OnPropertyChanged(); } }
         public AddOrdersViewModel(NavigationStore navigationStore)
         {
+            LoadedAddOrder = new RelayCommand<UserControl>((p) => true, (p) =>
+            {
+                OrdersList = new ObservableCollection<HOADON>(DataProvider.Ins.DB.HOADONs);
+                OrderDetailList = new ObservableCollection<CTHD>(DataProvider.Ins.DB.CTHDs);
+                ProductList = new ObservableCollection<SANPHAM>(DataProvider.Ins.DB.SANPHAMs);
+                CustomerList = new ObservableCollection<KHACHHANG>(DataProvider.Ins.DB.KHACHHANGs);
+                EmployeeList = new ObservableCollection<NHANVIEN>(DataProvider.Ins.DB.NHANVIENs);
+                BranchList = new ObservableCollection<CHINHANH>(DataProvider.Ins.DB.CHINHANHs);
+                SubTotal = 0;
+                Date = DateTime.Now.ToString();
+                for (int i = 0; i < ProductList.Count; i++)
+                {
+                    GoodIDList[i] = ProductList[i].MASP;
+                    GoodNameList[i] = ProductList[i].TEN;
+                }
 
-            OrdersList = new ObservableCollection<HOADON>(DataProvider.Ins.DB.HOADONs);
-            OrderDetailList = new ObservableCollection<CTHD>(DataProvider.Ins.DB.CTHDs);
-            ProductList = new ObservableCollection<SANPHAM>(DataProvider.Ins.DB.SANPHAMs);
-            CustomerList = new ObservableCollection<KHACHHANG>(DataProvider.Ins.DB.KHACHHANGs);
-            EmployeeList = new ObservableCollection<NHANVIEN>(DataProvider.Ins.DB.NHANVIENs);
-            SubTotal = 0;
-            Date = DateTime.Now;
+                for (int i = 0; i < BranchList.Count; i++)
+                {
+                    BranchIDList[i] = BranchList[i].MACN;
+                }
+
+                if (GoodID.ToString() != "")
+                {
+                    foreach (SANPHAM sp in ProductList)
+                    {
+                        if (sp.MASP == GoodID)
+                            GoodName = sp.TEN;
+                    }
+                }
+            });
+            
 
             AddCommand = new RelayCommand<object>((p) =>
             {
-                if (  string.IsNullOrEmpty(GoodID.ToString()) || string.IsNullOrEmpty(Amount))
+                if ( (string.IsNullOrEmpty(GoodID.ToString())&& string.IsNullOrEmpty(GoodName)) || string.IsNullOrEmpty(Amount))
                     return false;
                 var orderDetailList = DataProvider.Ins.DB.CTHDs.Where(x => x.MAHD == OrderID && x.MASP == GoodID);
                 if (orderDetailList == null || orderDetailList.Count() != 0)
@@ -108,16 +145,52 @@ namespace LoveTap.ViewModel
                 return true;
             }, (p) =>
             {
+                //foreach(CTHD ct in MyOrderDetailList)
+                //{
+                //    if (ct.MASP == GoodID)
+                //    {
+                //        ct.SOLUONG += int.Parse(Amount);
+                //        foreach (SANPHAM sp in ProductList)
+                //        {
+                //            if (sp.MASP == GoodID)
+                //                SubTotal += (double)(int.Parse(Amount) * sp.GIA);
+                //        }
+                //    }
+                //    else
+                //    {
+                //        var cthd = new CTHD();
+                //        cthd.MASP = GoodID;
+                //        cthd.SOLUONG = int.Parse(Amount);
+                //        MyOrderDetailList.Add(cthd);
+                //        foreach (SANPHAM sp in ProductList)
+                //        {
+                //            if (sp.MASP == GoodID)
+                //                SubTotal += (double)(cthd.SOLUONG * sp.GIA);
+                //        }
+                //    }
+                //}    
                 var cthd = new CTHD();
-                cthd.MAHD = OrderID;
                 cthd.MASP = GoodID;
                 cthd.SOLUONG = int.Parse(Amount);
-                MyOrderDetailList.Add(cthd);
-                foreach(SANPHAM sp in ProductList)
+                bool flag = false;
+                foreach(CTHD ct in MyOrderDetailList)
                 {
-                    if (sp.MASP == cthd.MASP)
+                    if (ct.MASP == cthd.MASP)
+                    {
+                        ct.SOLUONG += cthd.SOLUONG;
+                        flag = true;
+                    }
+                }
+                if (flag == false)
+                    MyOrderDetailList.Add(cthd);
+                foreach (SANPHAM sp in ProductList)
+                {
+                    if (sp.MASP == GoodID)
                         SubTotal += (double)(cthd.SOLUONG * sp.GIA);
-                }    
+                }
+
+
+
             });
 
 
@@ -132,8 +205,8 @@ namespace LoveTap.ViewModel
             }, (p) =>
             {
                 var hd = new HOADON();
-                hd.MAHD = OrderID;
-                hd.NGMUA = Date;
+                //hd.MAHD = OrderID;
+                hd.NGMUA = DateTime.Parse(Date);
                 hd.TONGTIEN = 0;
 
                 foreach (NHANVIEN nv in EmployeeList)
@@ -146,14 +219,14 @@ namespace LoveTap.ViewModel
                     if (kh.SDT == Phone)
                     {
                         hd.MAKH = kh.MAKH;
-                        kh.DOANHSO += SubTotal;
+                        //kh.DOANHSO += SubTotal;
                     }
                 hd.DELETED = false;
                 DataProvider.Ins.DB.HOADONs.Add(hd);
                 DataProvider.Ins.DB.SaveChanges();
                 foreach (CTHD cthd in MyOrderDetailList)
                 {
-
+                    cthd.MAHD = DataProvider.Ins.DB.HOADONs.Count();
                     DataProvider.Ins.DB.CTHDs.Add(cthd);
                     DataProvider.Ins.DB.SaveChanges();
                 }

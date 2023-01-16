@@ -17,6 +17,9 @@ namespace LoveTap.ViewModel
     public class OrderDetailViewModel:BaseViewModel
     {
         public ICommand navBack { get; set; }
+        public ICommand navDone { get; set; }
+
+        public ICommand DeleteCommand { get; set; }
 
         private string _TypeOrder;
         public string TypeOrder { get => _TypeOrder; set { _TypeOrder = value; OnPropertyChanged(); } }
@@ -84,6 +87,7 @@ namespace LoveTap.ViewModel
         {
             TextTest = para;
             navBack = new NavigationCommand<OrdersViewModel>(navigationStore, () => new OrdersViewModel(navigationStore));
+            navDone = new NavigationCommand<OrdersViewModel>(navigationStore, () => new OrdersViewModel(navigationStore));
             LoadedOrderDetail = new RelayCommand<UserControl>((p) => true, (p) =>
             {
                 ProductList = new ObservableCollection<SANPHAM>(DataProvider.Ins.DB.SANPHAMs);
@@ -92,10 +96,10 @@ namespace LoveTap.ViewModel
                 EmployeeList = new ObservableCollection<NHANVIEN>(DataProvider.Ins.DB.NHANVIENs);
 
 
-                HOADON temp = OrdersViewModel.OrderSelected;
+                OrdersViewModel.Order temp = OrdersViewModel.OrderSelected;
 
-                ID = (int)temp.MAHD;
-                Date = (DateTime)temp.NGMUA;
+                ID = (int)temp.ID;
+                Date = (DateTime)temp.Date;
                 SubTotal = 0;
                
 
@@ -136,6 +140,13 @@ namespace LoveTap.ViewModel
                     Address = kh.DIACHI.ToString();
                 }
 
+            });
+
+            DeleteCommand = new RelayCommand<UserControl>((p) => true, (p) =>
+            {
+                var hoadon = DataProvider.Ins.DB.HOADONs.Where(x => x.MAHD == ID).SingleOrDefault();
+                hoadon.DELETED = true;
+                DataProvider.Ins.DB.SaveChanges();
             });
         }
     }

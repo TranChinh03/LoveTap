@@ -59,7 +59,7 @@
 
                 <!--BUTTONS-->
 
-                <Button Padding="0"  Width="85" HorizontalAlignment="Left" Background="{x:Null}" BorderBrush="{x:Null}" VerticalAlignment="Bottom" Margin="5 0">
+                <!--<Button Padding="0"  Width="85" HorizontalAlignment="Left" Background="{x:Null}" BorderBrush="{x:Null}" VerticalAlignment="Bottom" Margin="5 0">
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
                         <Image Source="/img/all_orders.png" Height="15" Panel.ZIndex="0" ></Image>
                         <TextBlock Margin="5,0,0,0" Foreground="#26B69F" Width="60" Height="15" FontSize="10" >All Orders</TextBlock>
@@ -93,7 +93,7 @@
                         <Image Source="/img/cancelled.png" Height="15" Panel.ZIndex="0" ></Image>
                         <TextBlock Margin="5,0,0,0" Foreground="#FF033270" Width="65" Height="15" FontSize="10" >Cancelled</TextBlock>
                     </StackPanel>
-                </Button>
+                </Button>-->
 
                 <Button
                     Style="{StaticResource MaterialDesignRaisedSecondaryLightButton}"
@@ -102,11 +102,11 @@
                     ToolTip="Resource name: MaterialDesignRaisedSecondaryLightButton"
                     Content="+ Add Order"
                     FontSize="13"
-                    VerticalAlignment="Bottom" Margin="5 0" Command="{Binding navAddOrder}">
+                    VerticalAlignment="Bottom" Margin="400 0 0 0" Command="{Binding navAddOrder}">
                 </Button>
 
                 <Button Background="{StaticResource Linen}"
-                BorderBrush="Transparent"  VerticalAlignment="Bottom" Margin="5 0"
+                BorderBrush="Transparent"  VerticalAlignment="Bottom" Margin="30 0 0 0"
 >
                     <Image Source="/img/trash.png" Width="13" Height="13" HorizontalAlignment="Center" VerticalAlignment="Center">
                     </Image>
@@ -141,7 +141,7 @@
                 </StackPanel>-->
 
                 <ScrollViewer VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Visible">
-                    <ListView Name="OrderList" ItemsSource="{Binding OrdersList}" SelectedItem="{Binding SelectedItem, Mode=OneWayToSource}" HorizontalContentAlignment="Center">
+                    <ListView Name="OrderList" ItemsSource="{Binding MyOrdersList}" SelectedItem="{Binding SelectedItem, Mode=OneWayToSource}" HorizontalContentAlignment="Center">
                         <ListView.Resources>
                             <Style TargetType="{x:Type GridViewColumnHeader}">
                                 <Setter Property="HorizontalContentAlignment" Value="Center"/>
@@ -150,11 +150,12 @@
                         </ListView.Resources>
                         <ListView.View >
                             <GridView>
-                                <GridViewColumn Header="Order  Code" DisplayMemberBinding="{Binding MAHD}"></GridViewColumn>
-                                <GridViewColumn Header="Phone" DisplayMemberBinding="{Binding SDT}"></GridViewColumn>
-                                <GridViewColumn Header="Date" DisplayMemberBinding="{Binding NGMUA, StringFormat='dd/MM/yyyy'}"></GridViewColumn>
-                                <GridViewColumn Header="Total" DisplayMemberBinding="{Binding TONGTIEN}"></GridViewColumn>
-                                <GridViewColumn Header="Type" DisplayMemberBinding="{Binding LOAIHD}"></GridViewColumn>
+                                <GridViewColumn Header="Order ID" DisplayMemberBinding="{Binding ID}"></GridViewColumn>
+                                <GridViewColumn Header="Customer ID" DisplayMemberBinding="{Binding MAKH}"></GridViewColumn>
+                                <GridViewColumn Header="Phone" DisplayMemberBinding="{Binding Phone}"></GridViewColumn>
+                                <GridViewColumn Header="Date" DisplayMemberBinding="{Binding Date, StringFormat='dd/MM/yyyy'}"></GridViewColumn>
+                                <GridViewColumn Header="Total" DisplayMemberBinding="{Binding Total}"></GridViewColumn>
+                                <!--<GridViewColumn Header="Type" DisplayMemberBinding="{Binding LOAIHD}"></GridViewColumn>-->
                             </GridView>
                         </ListView.View>
                         <i:Interaction.Triggers>

@@ -10,6 +10,12 @@
              Name="ucCreateOrder"
              Height="456.2" Width="656.666666666667"
              >
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding LoadedAddOrder}"
+                                                       CommandParameter="{Binding ElementName=ucCreateOrder}"></i:InvokeCommandAction>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
     <Border>
         <Border.Effect>
             <DropShadowEffect BlurRadius="10" Opacity="0.3"></DropShadowEffect>
@@ -45,8 +51,7 @@
                        FontWeight="Black"
                        Foreground="{StaticResource Catalina Blue}"
                        VerticalAlignment="Top"
-                       >RECIEVE CODE:</TextBlock>
-                    <TextBox  Style="{StaticResource editTextValue}" Margin="5 0 0 0" Width="100" Text="{Binding OrderID}"/>
+                       >DELIVERY ORDER</TextBlock>
                     <!--Date-->
                     <TextBlock  Padding="160 7 7 7"
                        FontSize="18"
@@ -54,7 +59,11 @@
                        Foreground="{StaticResource Catalina Blue}"
                        VerticalAlignment="Top">
                 Date:</TextBlock>
-                    <TextBox  Style="{StaticResource editTextValue}" Margin="30 0 10 0" Width="145" Text="{Binding Date, StringFormat='dd/MM/yyyy'}"/>
+                    <!--<TextBox  Style="{StaticResource editTextValue}" Margin="30 0 10 0" Width="145" Text="{Binding Date, StringFormat='dd/MM/yyyy'}"/>-->
+                    <DatePicker
+                                        Width="150" Height="30" Padding="5" FontSize="13" Margin="0 2" HorizontalAlignment="Left" SelectedDateFormat="Short" 
+                                        materialDesign:HintAssist.Hint="Order Date" BorderBrush="#79A7CB" Foreground="{StaticResource Catalina Blue}" 
+                                        Style="{StaticResource MaterialDesignOutlinedDatePicker}" Text="{Binding Date, StringFormat='dd/MM/yyyy', Mode=TwoWay}"/>
                     <!--Type-->
                 </StackPanel>
 
@@ -64,15 +73,15 @@
                 <!--Information-->
                 <StackPanel Orientation="Horizontal" >
                     <TextBlock Style="{StaticResource detailText}" Margin="0" Padding="5">ID of Good:</TextBlock>
-                    <TextBox  Style="{StaticResource editTextValue}" Margin="10 0 0 0" Width="100" Text="{Binding GoodID}"/>
+                    <ComboBox   Margin="10 0 0 0" Width="100" Text="{Binding GoodID}" ItemsSource="{Binding GoodIDList}"  BorderBrush="{StaticResource Cyan Azure}" />
                     <TextBlock Style="{StaticResource detailText}" Margin="55 0 10 0" Padding="5">Name of Good:</TextBlock>
-                    <TextBox  Style="{StaticResource editTextValue}" Margin="10 0" Width="260" Text="{Binding GoodID}" TextWrapping="WrapWithOverflow"/>
+                    <ComboBox  Margin="10 0" Width="260" Text="{Binding GoodName}" ItemsSource="{Binding GoodNameList}"  BorderBrush="{StaticResource Cyan Azure}" />
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" >
                     <TextBlock Style="{StaticResource detailText}" Padding="5">Amount:</TextBlock>
                     <TextBox  Style="{StaticResource editTextValue}" Margin="30 0 0 0" Width="50" Text="{Binding Amount}"/>
-                    <TextBlock Style="{StaticResource detailText}" Padding="5" Margin="55 10 0 0">Price:</TextBlock>
-                    <TextBox  Style="{StaticResource editTextValue}" Margin="10 0" Width="100" Text="{Binding Amount}"/>
+                    <!--<TextBlock Style="{StaticResource detailText}" Padding="5" Margin="55 10 0 0">Price:</TextBlock>
+                    <TextBox  Style="{StaticResource editTextValue}" Margin="10 0" Width="100" Text="{Binding Amount}"/>-->
                     <Button BorderBrush="{StaticResource Cyan Azure}" Padding="5" HorizontalAlignment="Right" Width="100" Margin="180 10"
                     Background="{StaticResource Cyan Azure}" Content="+ Add" Foreground="White" Command="{Binding AddCommand}">
                     </Button>
@@ -124,7 +133,7 @@
                     <StackPanel HorizontalAlignment="Right" >
                         <TextBox  Style="{StaticResource editTextValue}" Width="190" Margin="3 3 0 2" Text="{Binding CustomerName}"/>
                         <TextBox  Style="{StaticResource editTextValue}" Width="190" Margin="3 3 0 2" Text="{Binding Phone}"/>
-                        <TextBox  Style="{StaticResource editTextValue}" Width="190" Margin="3 3 0 2" Text="{Binding SubTotal}" />
+                        <TextBox  Style="{StaticResource editTextValue}" Width="190" Margin="3 3 0 2" Text="{Binding Address}" />
                         <!--<TextBox  Style="{StaticResource editTextValue}" Width="220" Margin="1" Text="{Binding Address}"/>-->
                     </StackPanel>
                 </DockPanel>
@@ -142,8 +151,8 @@
                     <StackPanel HorizontalAlignment="Left" >
                         <!--<TextBox  Style="{StaticResource editTextValue}" Width="220" Margin="2" />-->
                         <TextBox  Style="{StaticResource editTextValue}" Width="190" Margin="3" Text="{Binding EmployeeName}" />
-                        <TextBox Style="{StaticResource editTextValue}"  Width="190" Margin="3" Text="{Binding Branch}"/>
-                        <TextBox Style="{StaticResource editTextValue}"  Width="190" Margin="3" Text="{Binding Branch}" Background="{StaticResource Cyan Azure 0.5}" IsEnabled="False"/>
+                        <ComboBox BorderBrush="{StaticResource Cyan Azure}"  Width="190" Margin="3" Text="{Binding Branch}" ItemsSource="{Binding BranchIDList}"/>
+                        <TextBox Style="{StaticResource editTextValue}"  Width="190" Margin="3" Text="{Binding SubTotal}" Background="{StaticResource Cyan Azure 0.5}" IsEnabled="False"/>
                     </StackPanel>
                 </DockPanel>
             </Grid>

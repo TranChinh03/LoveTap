@@ -85,7 +85,7 @@
             </Border.Effect>
             <Grid>
                 <ScrollViewer VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Visible">
-                    <ListView Name="ReceiveList" ItemsSource="{Binding OrdersList}" SelectedItem="{Binding SelectedItem, Mode=OneWayToSource}" HorizontalContentAlignment="Center">
+                    <ListView Name="ReceiveList" ItemsSource="{Binding MyReceiveList}" SelectedItem="{Binding SelectedItem, Mode=OneWayToSource}" HorizontalContentAlignment="Center">
                         <ListView.Resources>
                             <Style TargetType="{x:Type GridViewColumnHeader}">
                                 <Setter Property="HorizontalContentAlignment" Value="Center"/>
@@ -94,11 +94,12 @@
                         </ListView.Resources>
                         <ListView.View >
                             <GridView>
-                                <GridViewColumn Header="Receive Code" DisplayMemberBinding="{Binding MAHD}"></GridViewColumn>
-                                <GridViewColumn Header="Phone" DisplayMemberBinding="{Binding SDT}"></GridViewColumn>
-                                <GridViewColumn Header="Date" DisplayMemberBinding="{Binding NGMUA, StringFormat='dd/MM/yyyy'}"></GridViewColumn>
-                                <GridViewColumn Header="Total" DisplayMemberBinding="{Binding TONGTIEN}"></GridViewColumn>
-                                <GridViewColumn Header="Type" DisplayMemberBinding="{Binding LOAIHD}"></GridViewColumn>
+                                <GridViewColumn Header="Receive ID" DisplayMemberBinding="{Binding ID}"></GridViewColumn>
+                                <GridViewColumn Header="Supplier ID" DisplayMemberBinding="{Binding MANCC}"></GridViewColumn>
+                                <GridViewColumn Header="Supplier Name" DisplayMemberBinding="{Binding Name}"></GridViewColumn>
+                                <GridViewColumn Header="Email" DisplayMemberBinding="{Binding Email}"></GridViewColumn>
+                                <GridViewColumn Header="Date" DisplayMemberBinding="{Binding Date, StringFormat='dd/MM/yyyy'}"></GridViewColumn>
+                                <GridViewColumn Header="Total" DisplayMemberBinding="{Binding Total}"></GridViewColumn>
                             </GridView>
                         </ListView.View>
                         <i:Interaction.Triggers>
