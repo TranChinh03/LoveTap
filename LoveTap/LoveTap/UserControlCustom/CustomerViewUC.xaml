@@ -196,6 +196,7 @@
                             </ListView.Resources>
                             <ListView.View >
                                 <GridView>
+                                    <GridViewColumn Header="ID" DisplayMemberBinding="{Binding MAKH}"></GridViewColumn>
                                     <GridViewColumn Header="Phone" DisplayMemberBinding="{Binding SDT}"></GridViewColumn>
                                     <GridViewColumn Header="Name" DisplayMemberBinding="{Binding HOTEN}"></GridViewColumn>
                                     <GridViewColumn Header="Date of Birth" DisplayMemberBinding="{Binding NGSINH}"></GridViewColumn>

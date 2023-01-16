@@ -61,7 +61,11 @@ namespace LoveTap.ViewModel
                 if (searchText == null && branchText == null)
                     return MyEmployeeList;
                 else if ((searchText == null && branchText != null)||(searchText != null && branchText != null && findText == null))
+                {
+                    if (branchText == "All")
+                        return MyEmployeeList;
                     return MyEmployeeList.Where(x => x.MACN == int.Parse(branchText));
+                }
                 else if(searchText != null && branchText == null)
                 {
                     if(findText == "Employee ID")
@@ -84,7 +88,9 @@ namespace LoveTap.ViewModel
                 }
                 else if(searchText!= null && branchText != null)
                 {
-                    if (findText == "Employee ID")
+                    if (branchText == "All")
+                        return (MyEmployeeList.Where(x => (x.MANV.ToString().Contains(searchText.ToUpper()))));
+                    else if (findText == "Employee ID")
                         return (MyEmployeeList.Where(x => (x.MANV.ToString().Contains(searchText.ToUpper())))).Where(y => y.MACN == int.Parse(branchText.ToString()));
                     else if (findText == "Name")
                         return (MyEmployeeList.Where(x => (x.HOTEN.ToUpper().Contains(searchText.ToUpper())))).Where(y => y.MACN == int.Parse(branchText.ToString()));
@@ -162,7 +168,7 @@ namespace LoveTap.ViewModel
             }
         }
 
-        public int[] BranchIDList { get; set; } = new int[DataProvider.Ins.DB.CHINHANHs.Count()];
+        public string[] BranchIDList { get; set; } = new string[DataProvider.Ins.DB.CHINHANHs.Count() + 1];
 
         public EmployeeViewModel(NavigationStore navigationStore)
         {
@@ -172,11 +178,12 @@ namespace LoveTap.ViewModel
             navDetail = new NavigationCommand<EmployeeDetailViewModel>(navigationStore, () => new EmployeeDetailViewModel(navigationStore));
             Detail = new RelayCommand<EmployeeViewUC>((p) => { return p.EmployeeList.SelectedItem == null ? false : true; }, (p) => _DetailCs(p));
 
-            for (int i = 0; i < DataProvider.Ins.DB.CHINHANHs.Count(); i++)
 
+            for (int i = 0; i < DataProvider.Ins.DB.CHINHANHs.Count(); i++)
             {
-                BranchIDList[i] = BranchList[i].MACN;
+                BranchIDList[i] = BranchList[i].MACN.ToString();
             }
+            BranchIDList[DataProvider.Ins.DB.CHINHANHs.Count()] = "All";
 
             foreach (NHANVIEN nv in EmployeeList)
             {
