@@ -103,8 +103,5 @@ namespace LoveTap.ViewModel
                 DataProvider.Ins.DB.SaveChanges();
             });
         }
-
-       
-
     }
 }
