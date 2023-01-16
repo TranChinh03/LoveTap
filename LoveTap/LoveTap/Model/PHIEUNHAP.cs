@@ -33,5 +33,7 @@ namespace LoveTap.Model
         public virtual ICollection<CTPN> CTPNs { get; set; }
         public virtual NHACUNGCAP NHACUNGCAP { get; set; }
         public virtual NHANVIEN NHANVIEN { get; set; }
+
+       
     }
 }

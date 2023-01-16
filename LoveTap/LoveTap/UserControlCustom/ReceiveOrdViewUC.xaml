@@ -15,8 +15,8 @@
         TextOptions.TextRenderingMode="Auto"
         Background="{DynamicResource MaterialDesignPaper}"
         FontFamily="{DynamicResource MaterialDesignFont}" 
-              Height="466.2" Width="666.666666666667" Name="ReceiveOrderView"
-            >
+        Height="466.2" Width="666.666666666667" Name="ReceiveOrderView">
+    
     <Grid Background="WhiteSmoke">
         <Grid.ColumnDefinitions>
             <ColumnDefinition></ColumnDefinition>
@@ -85,7 +85,7 @@
             </Border.Effect>
             <Grid>
                 <ScrollViewer VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Visible">
-                    <ListView Name="ReceiveList" ItemsSource="{Binding OrdersList}" SelectedItem="{Binding SelectedItem, Mode=OneWayToSource}" HorizontalContentAlignment="Center">
+                    <ListView Name="ReceiveList" ItemsSource="{Binding ReceivesList}" SelectedItem="{Binding SelectedItem, Mode=OneWayToSource}" HorizontalContentAlignment="Center">
                         <ListView.Resources>
                             <Style TargetType="{x:Type GridViewColumnHeader}">
                                 <Setter Property="HorizontalContentAlignment" Value="Center"/>

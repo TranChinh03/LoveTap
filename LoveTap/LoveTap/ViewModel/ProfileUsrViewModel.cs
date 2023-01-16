@@ -21,8 +21,7 @@ namespace LoveTap.ViewModel
     {
         public int UserID { get; set; }
         public ICommand NavChangePw { get; set; }
-        public ICommand NavEditUsr { get;}
-        public ICommand LoadedProfileUsr { get; set; }
+        public ICommand NavEditUsr { get; }
 
         private ObservableCollection<NHANVIEN> _User;
         public ObservableCollection<NHANVIEN> User { get => _User; set { _User = value; OnPropertyChanged(); } }
@@ -59,33 +58,32 @@ namespace LoveTap.ViewModel
         string Name;
         public ProfileUsrViewModel(NavigationStore navigationStore)
         {
-            LoadedProfileUsr = new RelayCommand<Page>((p) => { return true; }, (p) =>
+
+            UserID = MainViewModel.ID;
+            User = new ObservableCollection<NHANVIEN>(DataProvider.Ins.DB.NHANVIENs.Where(x => x.MANV == UserID));
+            if (User != null && User.Count > 0)
             {
-                UserID = MainViewModel.ID;
-                User = new ObservableCollection<NHANVIEN>(DataProvider.Ins.DB.NHANVIENs.Where(x => x.MANV == UserID));
-                if (User != null && User.Count > 0)
-                {
-                    FullName = User[0].HOTEN;
-                    DOB = User[0].NTNS;
-                    PhoneNumber = User[0].SDT;
-                    Email = User[0].EMAIL;
-                    Address = User[0].DIACHI;
-                    ID = User[0].MANV;
-                    Branch = (int)User[0].MACN;
-                    CoefficientsSalary = User[0].HESOLUONG.ToString();
-                    BasicPay = User[0].LUONGCB.ToString();
-                    string role = User[0].VAITRO.ToString();
-                    if (role == "True")
-                        Role = "Admin";
-                    else
-                        Role = "Staff";
-                }
-            });
+                FullName = User[0].HOTEN;
+                DOB = User[0].NTNS;
+                PhoneNumber = User[0].SDT;
+                Email = User[0].EMAIL;
+                Address = User[0].DIACHI;
+                ID = User[0].MANV;
+                Branch = (int)User[0].MACN;
+                CoefficientsSalary = User[0].HESOLUONG.ToString();
+                BasicPay = User[0].LUONGCB.ToString();
+                string role = User[0].VAITRO.ToString();
+                if (role == "True")
+                    Role = "Admin";
+                else
+                    Role = "Staff";
+            }
+            ;
 
             NavEditUsr = new NavigationCommand<UsrPro5EditViewModel>(navigationStore, () => new UsrPro5EditViewModel(navigationStore));
             NavChangePw = new NavigationCommand<CreatePwViewModel>(navigationStore, () => new CreatePwViewModel(navigationStore));
         }
-        
+
 
     }
 }

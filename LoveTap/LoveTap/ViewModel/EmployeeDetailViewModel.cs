@@ -53,7 +53,7 @@ namespace LoveTap.ViewModel
 
                 ID = temp.MANV;
                 EmployeeName = temp.HOTEN;
-                if (MainViewModel.IsAdmin == true)
+                if (temp.VAITRO == true)
                     Position = "Admin";
                 else
                     Position = "Staff";
