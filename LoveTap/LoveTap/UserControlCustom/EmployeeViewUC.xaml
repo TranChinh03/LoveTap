@@ -225,7 +225,6 @@
                                     <GridViewColumn Header="Phone" DisplayMemberBinding="{Binding SDT}"></GridViewColumn>
                                     <GridViewColumn Header="Email" DisplayMemberBinding="{Binding EMAIL}"></GridViewColumn>
                                     <GridViewColumn Header="Branch" DisplayMemberBinding="{Binding MACN}"></GridViewColumn>
-                                    <GridViewColumn Header="Position" DisplayMemberBinding="{Binding VAITRO}"></GridViewColumn>
                                 </GridView>
                             </ListView.View>
                             <i:Interaction.Triggers>
