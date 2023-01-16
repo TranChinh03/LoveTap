@@ -6,7 +6,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LoveTap.UserControlCustom"
         mc:Ignorable="d"
-        Name="ucAddEmployee"
+        Name="ucAddEmployee" 
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              Height="456.2" Width="656.666666666667"
             >
@@ -64,17 +64,26 @@
 
                 <Grid Margin="20,0,0,0">
                     <Grid.RowDefinitions>
+                        <RowDefinition Height="1.5*"/>
                         <RowDefinition/>
                         <RowDefinition/>
                     </Grid.RowDefinitions>
 
-                    <Border BorderThickness="0.5" BorderBrush="{StaticResource Cyan Azure}" CornerRadius="5" Height="40" HorizontalAlignment="Left"  Width="450">
-                        <TextBox  materialDesign:HintAssist.Hint="Full name"  FontSize="30" FontWeight="DemiBold" Height="35" BorderThickness="0" Padding="0" Foreground="{StaticResource Catalina Blue}" Text="{Binding EmployeeName}" VerticalAlignment="Top" VerticalContentAlignment="Center"/>
-                    </Border>
+                    <TextBox BorderThickness="0.5" BorderBrush="{StaticResource Cyan Azure}" materialDesign:HintAssist.Hint="Name" Foreground="{StaticResource Catalina Blue}" Text="{Binding EmployeeName}" 
+                             FontSize="35" FontWeight="DemiBold" Width="480" TextWrapping="WrapWithOverflow" Padding="0"
+                             Height="50" Grid.ColumnSpan="2" Margin="0" />
 
-                    <Border Grid.Row="1" BorderThickness="0.5" BorderBrush="{StaticResource Cyan Azure}" Width="350" Height="35" CornerRadius="5" HorizontalAlignment="Left" VerticalAlignment="Top">
-                        <TextBox VerticalAlignment="Center"  materialDesign:HintAssist.Hint="Position"  FontSize="20" FontWeight="DemiBold"  BorderThickness="0" Padding="0" Foreground="{StaticResource Catalina Blue}" Text="{Binding Position}" />
-                    </Border>
+                    <ComboBox Grid.Row="1"
+                                Width="150" Height="30" HorizontalAlignment="Left" BorderBrush="#79A7CB"  Padding="4"
+                                Style="{StaticResource MaterialDesignOutlinedComboBox}" FontSize="13" materialDesign:HintAssist.Hint="Position"
+                                SelectedIndex="{Binding Position}">
+                        <ComboBoxItem>Staff</ComboBoxItem>
+                        <ComboBoxItem>Admin</ComboBoxItem>
+                    </ComboBox>
+                    <TextBox Grid.Row="2"  BorderThickness="0.5" BorderBrush="{StaticResource Cyan Azure}" Padding="2" Foreground="{StaticResource Catalina Blue}" Text="{Binding Email}" 
+                             FontSize="20" FontWeight="DemiBold" Width="480" TextWrapping="WrapWithOverflow" 
+                             Height="35
+                             " Grid.ColumnSpan="2" Margin="0" materialDesign:HintAssist.Hint="Email" />
                 </Grid>
             </StackPanel>
 
@@ -82,27 +91,31 @@
             <Grid Grid.Row="2">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
-                    <ColumnDefinition/>
+                    <ColumnDefinition Width="2*"/>
                 </Grid.ColumnDefinitions>
 
-                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0 -15 0 0">
-                    <TextBlock Style="{StaticResource detailText}">Ngày sinh:</TextBlock>
-                    <TextBlock Style="{StaticResource detailText}" Margin="0 17 0 0">Số điện thoại:</TextBlock>
-                    <TextBlock Style="{StaticResource detailText}" Margin="0 17 0 0">Email:</TextBlock>
-                    <TextBlock Style="{StaticResource detailText}" Margin="0 17 0 0">Địa chỉ:</TextBlock>
-                    <TextBlock Style="{StaticResource detailText}" Margin="0 17 0 0">Hệ số lương:</TextBlock>
-                    <TextBlock Style="{StaticResource detailText}" Margin="0 17 0 0">Lương cơ bản:</TextBlock>
-                    <TextBlock Style="{StaticResource detailText}" Margin="0 17 0 0">Chi nhánh:</TextBlock>
+                <StackPanel HorizontalAlignment="Center" >
+                    <TextBlock Style="{StaticResource detailText}" Margin="0,20,0,0">Ngày sinh:</TextBlock>
+                    <TextBlock Style="{StaticResource detailText}" Margin="0,20,0,0">Số điện thoại:</TextBlock>
+                    <TextBlock Style="{StaticResource detailText}" Margin="0,20,0,0">Địa chỉ:</TextBlock>
+                    <TextBlock Style="{StaticResource detailText}" Margin="0,20,0,0">Hệ số lương:</TextBlock>
+                    <TextBlock Style="{StaticResource detailText}" Margin="0,20,0,0">Lương cơ bản:</TextBlock>
+                    <TextBlock Style="{StaticResource detailText}" Margin="0,20,0,0">Chi nhánh:</TextBlock>
                 </StackPanel>
 
-                <StackPanel HorizontalAlignment="Left" Margin="318,-15,0,0" Grid.ColumnSpan="2" Height="264" VerticalAlignment="Bottom">
-                    <TextBox Style="{StaticResource editTextValue}" Width="300" Text="{Binding Birthday, StringFormat='dd/MM/yyyy'}"></TextBox>
-                    <TextBox Style="{StaticResource editTextValue}" Width="300" Text="{Binding PhoneNumber}"></TextBox>
-                    <TextBox Style="{StaticResource editTextValue}" Width="300" Text="{Binding Email}"></TextBox>
-                    <TextBox Style="{StaticResource editTextValue}" Width="300" Text="{Binding Address}"></TextBox>
-                    <TextBox Style="{StaticResource editTextValue}" Width="300" Text="{Binding CoefficientSalary}"></TextBox>
-                    <TextBox Style="{StaticResource editTextValue}" Width="300" Text="{Binding BasicPay}"></TextBox>
-                    <TextBox Style="{StaticResource editTextValue}" Width="300" Text="{Binding Branch}"></TextBox>
+                <StackPanel Grid.Column="1" HorizontalAlignment="Center" >
+                    <DatePicker
+                                        Width="150" Height="30" Padding="5" FontSize="13" Margin="0 8 0 0" HorizontalAlignment="Left" SelectedDateFormat="Short" 
+                                        materialDesign:HintAssist.Hint="Pick Date" BorderBrush="#79A7CB" Foreground="{StaticResource Catalina Blue}" 
+                                        Style="{StaticResource MaterialDesignOutlinedDatePicker}" SelectedDate="{Binding Birthday, StringFormat='dd/MM/yyyy', Mode=TwoWay}"/>
+                    <TextBox Style="{StaticResource editTextValue}"  Text="{Binding PhoneNumber}"></TextBox>
+                    <TextBox Style="{StaticResource editTextValue}"  Text="{Binding Address}"></TextBox>
+                    <TextBox Style="{StaticResource editTextValue}"  Text="{Binding CoefficientSalary}"></TextBox>
+                    <TextBox Style="{StaticResource editTextValue}"  Text="{Binding BasicPay}"></TextBox>
+                    <ComboBox
+                                Width="150" Height="30" HorizontalAlignment="Left" BorderBrush="#79A7CB"  Margin="0 8 0 0" Padding="5"
+                                Style="{StaticResource MaterialDesignOutlinedComboBox}" FontSize="13" 
+                                ItemsSource="{Binding BranchIDList, Mode=TwoWay}" SelectedItem="{Binding Branch}" />
                 </StackPanel>
             </Grid>
         </Grid>

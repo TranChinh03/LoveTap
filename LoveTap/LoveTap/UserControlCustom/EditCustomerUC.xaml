@@ -60,8 +60,8 @@
                 </Grid.ColumnDefinitions>
 
                 <StackPanel HorizontalAlignment="Left" Margin="10 0 0 0" >
-                    <TextBlock Style="{StaticResource detailText}" Padding="3">Phone:</TextBlock>
                     <TextBlock Style="{StaticResource detailText}" Padding="3">Name:</TextBlock>
+                    <TextBlock Style="{StaticResource detailText}" Padding="3">Phone:</TextBlock>
                     <TextBlock Style="{StaticResource detailText}" Padding="3">Date of Birth:</TextBlock>
                     <TextBlock Style="{StaticResource detailText}" Padding="3" Height="50">Address:</TextBlock>
                     <TextBlock Style="{StaticResource detailText}" Padding="3">Registation Date:</TextBlock>
@@ -70,8 +70,8 @@
                 </StackPanel>
 
                 <StackPanel Margin="10 0 0 0" Grid.Column="1" HorizontalAlignment="Center" >
-                    <TextBox  Style="{StaticResource editTextValue}" Text="{Binding Phone}"></TextBox>
                     <TextBox  Style="{StaticResource editTextValue}" Text="{Binding CusName}"></TextBox>
+                    <TextBox  Style="{StaticResource editTextValue}" Text="{Binding Phone}"></TextBox>
                     <DatePicker
                                         Width="150" Height="30" Padding="5" FontSize="13" Margin="0 8 0 0" HorizontalAlignment="Left" SelectedDateFormat="Short" 
                                         materialDesign:HintAssist.Hint="Pick Date" BorderBrush="#79A7CB" Foreground="{StaticResource Catalina Blue}" 

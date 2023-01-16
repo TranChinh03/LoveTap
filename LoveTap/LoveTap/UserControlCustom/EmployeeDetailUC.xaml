@@ -34,6 +34,13 @@
                        VerticalAlignment="Center"
                        >#KH001</TextBlock>
 
+                <!--Delete Button-->
+                <Button Background="{StaticResource Burnt Sienna}"
+                                BorderBrush="Transparent" Padding="0" HorizontalAlignment="Right" Command="{Binding navBack}"
+                                DockPanel.Dock="Right" Margin="0 5 5 0" Width="35">
+                    <materialDesign:PackIcon Kind="Delete"  Height="20" Width="20"/>
+                </Button>
+
                 <!--Back Button-->
                 <Button DockPanel.Dock="Right" Style="{StaticResource OrangeButton}"
                     HorizontalAlignment="Right" Uid="3" Name="backBt" Content="Back" Command="{Binding navBack}">
@@ -65,6 +72,7 @@
                 <Image Source="/img/ImageofEmployee.png"  Stretch="Uniform" Height="100" Width="100"/>
                 <Grid Margin="20,0,0,0">
                     <Grid.RowDefinitions>
+                        <RowDefinition Height="1.5*"/>
                         <RowDefinition/>
                         <RowDefinition/>
                     </Grid.RowDefinitions>
@@ -74,7 +82,8 @@
                        Foreground="{StaticResource Catalina Blue}"
                        Text="{Binding EmployeeName}" TextWrapping="Wrap" Width="480">
                     </TextBlock>
-                    <TextBlock Grid.Row="1" FontSize="30" VerticalAlignment="Top" FontWeight="DemiBold" Foreground="{StaticResource Cyan Azure}" Text="{Binding Position}"></TextBlock>
+                    <TextBlock Grid.Row="1"  FontSize="25" VerticalAlignment="Top" FontWeight="DemiBold" Foreground="{StaticResource Cyan Azure}" Text="{Binding Position}"></TextBlock>
+                    <TextBlock Grid.Row="2"  FontSize="25" VerticalAlignment="Top" FontWeight="DemiBold" Foreground="{StaticResource Cyan Azure}" Text="{Binding Email}"></TextBlock>
                 </Grid>
             </StackPanel>
 

@@ -29,7 +29,7 @@
                     <Border CornerRadius="30" BorderBrush="#5684B0" BorderThickness="0.5" Background="White" >
                         <Grid >
                             <TextBlock Height="170" Width="200" Text="Drop file here or click to upload" Foreground="#79A7CB" FontSize="10"  Margin="33 85 0 0 "></TextBlock>
-                            <Image Source="/img/upload.png" Height="20" Width="20" Margin="0 33 0 0"></Image>
+                            <Image Source="/img/upload.png" Height="20" Width="20" Margin="0 50 0 0"></Image>
                         </Grid>
                     </Border>
                 </Button>
