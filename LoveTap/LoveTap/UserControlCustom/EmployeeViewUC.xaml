@@ -121,7 +121,7 @@
                                 <ComboBoxItem Content="Name"/>
                                 <ComboBoxItem Content="Phone"/>
                                 <ComboBoxItem Content="Email"/>
-                                <ComboBoxItem Content="Position"/>
+                                <!--<ComboBoxItem Content="Position"/>-->
                             </ComboBox>
                         </DockPanel>
                     </Grid>

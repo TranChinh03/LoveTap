@@ -76,20 +76,29 @@ namespace LoveTap.ViewModel
                         return MyEmployeeList.Where(x => (x.SDT.ToUpper().Contains(searchText.ToUpper())));
                     else if (findText == "Email")
                         return MyEmployeeList.Where(x => (x.EMAIL.ToUpper().Contains(searchText.ToUpper())));
-                    else if (findText == "Position")
-                    {
-                        if (searchText.ToUpper() == "STAFF")
-                            return MyEmployeeList.Where(x => (x.VAITRO == false));
-                        else if (searchText.ToUpper() == "STAFF")
-                            return MyEmployeeList.Where(x => (x.VAITRO == true));
-                        else
-                            return MyEmployeeList;
-                    }
+                    //else if (findText == "Position")
+                    //{
+                    //    if (searchText.ToUpper() == "STAFF")
+                    //        return MyEmployeeList.Where(x => (x.VAITRO == false));
+                    //    else if (searchText.ToUpper() == "STAFF")
+                    //        return MyEmployeeList.Where(x => (x.VAITRO == true));
+                    //    else
+                    //        return MyEmployeeList;
+                    //}
                 }
                 else if(searchText!= null && branchText != null)
                 {
                     if (branchText == "All")
-                        return (MyEmployeeList.Where(x => (x.MANV.ToString().Contains(searchText.ToUpper()))));
+                    {
+                        if (findText == "Employee ID")
+                            return MyEmployeeList.Where(x => (x.MANV.ToString().Contains(searchText.ToUpper())));
+                        else if (findText == "Name")
+                            return MyEmployeeList.Where(x => (x.HOTEN.ToUpper().Contains(searchText.ToUpper())));
+                        else if (findText == "Phone")
+                            return MyEmployeeList.Where(x => (x.SDT.ToUpper().Contains(searchText.ToUpper())));
+                        else if (findText == "Email")
+                            return MyEmployeeList.Where(x => (x.EMAIL.ToUpper().Contains(searchText.ToUpper())));
+                    }
                     else if (findText == "Employee ID")
                         return (MyEmployeeList.Where(x => (x.MANV.ToString().Contains(searchText.ToUpper())))).Where(y => y.MACN == int.Parse(branchText.ToString()));
                     else if (findText == "Name")
@@ -98,15 +107,15 @@ namespace LoveTap.ViewModel
                         return (MyEmployeeList.Where(x => (x.SDT.ToUpper().Contains(searchText.ToUpper())))).Where(y => y.MACN == int.Parse(branchText.ToString()));
                     else if (findText == "Email")
                         return (MyEmployeeList.Where(x => (x.EMAIL.ToUpper().Contains(searchText.ToUpper())))).Where(y => y.MACN == int.Parse(branchText.ToString()));
-                    else if (findText == "Position")
-                    {
-                        if (searchText.ToUpper() == "STAFF")
-                            return MyEmployeeList.Where(x => (x.VAITRO == false)).Where(y => y.MACN == int.Parse(branchText.ToString()));
-                        else if (searchText.ToUpper() == "STAFF")
-                            return MyEmployeeList.Where(x => (x.VAITRO == true)).Where(y => y.MACN == int.Parse(branchText.ToString()));
-                        else
-                            return MyEmployeeList.Where(y => y.MACN == int.Parse(branchText.ToString()));
-                    }
+                    //else if (findText == "Position")
+                    //{
+                    //    if (searchText.ToUpper() == "STAFF")
+                    //        return MyEmployeeList.Where(x => (x.VAITRO == false)).Where(y => y.MACN == int.Parse(branchText.ToString()));
+                    //    else if (searchText.ToUpper() == "STAFF")
+                    //        return MyEmployeeList.Where(x => (x.VAITRO == true)).Where(y => y.MACN == int.Parse(branchText.ToString()));
+                    //    else
+                    //        return MyEmployeeList.Where(y => y.MACN == int.Parse(branchText.ToString()));
+                    //}
                 }
                 return MyEmployeeList;
                 //return ProductList.Where(x => ((x.TEN.ToUpper().Contains(searchText.ToUpper()))|| (x.MASP.ToUpper().Contains(searchText.ToUpper()))|| (x.GIA >= double.Parse(searchText))|| (x.MADM.ToUpper().Contains(searchText.ToUpper()))|| (x.CHITIET.ToUpper().Contains(searchText.ToUpper()))));
