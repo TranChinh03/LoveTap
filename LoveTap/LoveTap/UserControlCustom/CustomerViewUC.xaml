@@ -113,7 +113,7 @@
                                 Text="{Binding findText, UpdateSourceTrigger=PropertyChanged}">
                                 <ComboBoxItem Content="Phone"/>
                                 <ComboBoxItem Content="Name"/>
-                                <ComboBoxItem Content="Address"/>
+                                <!--<ComboBoxItem Content="Address"/-->>
                             </ComboBox>
                            
                         </DockPanel>

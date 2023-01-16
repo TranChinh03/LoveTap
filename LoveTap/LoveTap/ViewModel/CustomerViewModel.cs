@@ -82,15 +82,15 @@ namespace LoveTap.ViewModel
                     else if (sortText == "Sale")
                         return CustomerSaleList.Where(x => (x.SDT.ToUpper().Contains(searchText.ToUpper())));
                 }
-                else if (sortText != null && findText == "Address")
-                {
-                    if (sortText == "Date of Birth")
-                        return CustomerDOBList.Where(x => (x.DIACHI.ToUpper().Contains(searchText.ToUpper())));
-                    else if (sortText == "Registation Date")
-                        return CustomerRDList.Where(x => (x.DIACHI.ToUpper().Contains(searchText.ToUpper())));
-                    else if (sortText == "Sale")
-                        return CustomerSaleList.Where(x => (x.DIACHI.ToUpper().Contains(searchText.ToUpper())));
-                }
+                //else if (sortText != null && findText == "Address")
+                //{
+                //    if (sortText == "Date of Birth")
+                //        return CustomerDOBList.Where(x => (x.DIACHI.ToUpper().Contains(searchText.ToUpper())));
+                //    else if (sortText == "Registation Date")
+                //        return CustomerRDList.Where(x => (x.DIACHI.ToUpper().Contains(searchText.ToUpper())));
+                //    else if (sortText == "Sale")
+                //        return CustomerSaleList.Where(x => (x.DIACHI.ToUpper().Contains(searchText.ToUpper())));
+                //}
                 else if(sortText != null && findText==null)
                 {
                     if (sortText == "Date of Birth")
@@ -106,8 +106,8 @@ namespace LoveTap.ViewModel
                         return MyCustomerList.Where(x => (x.HOTEN.ToUpper().Contains(searchText.ToUpper())));
                     else if (findText == "Phone")
                         return MyCustomerList.Where(x => (x.SDT.ToUpper().Contains(searchText.ToUpper())));
-                    else if (findText == "Address")
-                        return MyCustomerList.Where(x => (x.DIACHI.ToUpper().Contains(searchText.ToUpper())));
+                    //else if (findText == "Address")
+                    //    return MyCustomerList.Where(x => (x.DIACHI.ToUpper().Contains(searchText.ToUpper())));
                 }    
                 return MyCustomerList;
                 //return ProductList.Where(x => ((x.TEN.ToUpper().Contains(searchText.ToUpper()))|| (x.MASP.ToUpper().Contains(searchText.ToUpper()))|| (x.GIA >= double.Parse(searchText))|| (x.MADM.ToUpper().Contains(searchText.ToUpper()))|| (x.CHITIET.ToUpper().Contains(searchText.ToUpper()))));
