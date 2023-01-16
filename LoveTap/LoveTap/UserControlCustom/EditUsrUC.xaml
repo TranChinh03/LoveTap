@@ -22,13 +22,7 @@
             <DropShadowEffect BlurRadius="10" Opacity="0.3"></DropShadowEffect>
         </Border.Effect>
         <Grid Margin="10">
-            <i:Interaction.Triggers>
-                <i:EventTrigger EventName="Loaded">
-                    <i:InvokeCommandAction Command="{Binding LoadedHomeProfileEdit}"
-                                                       CommandParameter="{Binding ElementName=ProfileEdit}"></i:InvokeCommandAction>
-                </i:EventTrigger>
-            </i:Interaction.Triggers>
-
+            
 
             <Grid Background="White" >
                 <Grid.ColumnDefinitions>
@@ -173,17 +167,16 @@
                     ToolTip="Resource name: MaterialDesignRaisedSecondaryLightButton"
                     Content="Done"
                     FontSize="15"
-                    Command="{Binding EditCommand}"
+                    
                 >
                     <i:Interaction.Triggers>
                         <i:EventTrigger EventName="Click">
+                            <i:InvokeCommandAction Command="{Binding EditCommand}"
+                                                       CommandParameter="{Binding ElementName=ProfileEdit}"></i:InvokeCommandAction>
+                        </i:EventTrigger> <i:EventTrigger EventName="Click">
                             <i:InvokeCommandAction Command="{Binding NavBack2Pro5}"
                                                        CommandParameter="{Binding ElementName=ProfileEdit}"></i:InvokeCommandAction>
                         </i:EventTrigger>
-                        <!--<i:EventTrigger EventName="MouseMove">
-                        <i:InvokeCommandAction Command="{Binding GetIdButton}"
-                                                       CommandParameter="{Binding ElementName=doneBt}"></i:InvokeCommandAction>
-                    </i:EventTrigger>-->
                     </i:Interaction.Triggers>
 
                 </Button>

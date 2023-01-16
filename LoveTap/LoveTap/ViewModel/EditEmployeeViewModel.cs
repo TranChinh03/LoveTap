@@ -22,8 +22,8 @@ namespace LoveTap.ViewModel
         private string _EmployeeName;
         public string EmployeeName { get => _EmployeeName; set { _EmployeeName = value; OnPropertyChanged(); } }
 
-        private string _Position;
-        public string Position { get => _Position; set { _Position = value; OnPropertyChanged(); } }
+        private int _Position;
+        public int Position { get => _Position; set { _Position = value; OnPropertyChanged(); } }
 
         private string _Birthday;
         public string Birthday { get => _Birthday; set { _Birthday = value; OnPropertyChanged(); } }
@@ -66,10 +66,10 @@ namespace LoveTap.ViewModel
 
                 ID = temp.MANV;
                 EmployeeName = temp.HOTEN;
-                if (MainViewModel.IsAdmin == true)
-                    Position = "Admin";
+                if (temp.VAITRO == true)
+                    Position = 1;
                 else
-                    Position = "Staff";
+                    Position = 0;
                 Birthday = temp.NTNS.ToString();
                 PhoneNumber = temp.SDT;
                 Address = temp.DIACHI;
@@ -81,7 +81,7 @@ namespace LoveTap.ViewModel
             navBack = new NavigationCommand<EmployeeDetailViewModel>(navigationStore, () => new EmployeeDetailViewModel(navigationStore));
 
             EditCommand = new RelayCommand<object>((p) => {
-                if (string.IsNullOrEmpty(EmployeeName) || string.IsNullOrEmpty(PhoneNumber) || string.IsNullOrEmpty(Birthday) || string.IsNullOrEmpty(Address)  || string.IsNullOrEmpty(Branch.ToString()) || string.IsNullOrEmpty(CoefficientSalary) || string.IsNullOrEmpty(BasicPay) || string.IsNullOrEmpty(Position))
+                if (string.IsNullOrEmpty(EmployeeName) || string.IsNullOrEmpty(PhoneNumber) || string.IsNullOrEmpty(Birthday) || string.IsNullOrEmpty(Address)  || string.IsNullOrEmpty(Branch.ToString()) || string.IsNullOrEmpty(CoefficientSalary) || string.IsNullOrEmpty(BasicPay) )
                     return false;
 
                 return true;
@@ -96,15 +96,12 @@ namespace LoveTap.ViewModel
                 employee.HESOLUONG = float.Parse(CoefficientSalary);
                 employee.LUONGCB = float.Parse(BasicPay);
                 employee.MACN = Branch;
-                if (Position == "Admin")
+                if (Position == 1)
                     employee.VAITRO = Convert.ToBoolean(1);
                 else
                     employee.VAITRO = Convert.ToBoolean(0);
                 DataProvider.Ins.DB.SaveChanges();
             });
         }
-
-       
-
     }
 }

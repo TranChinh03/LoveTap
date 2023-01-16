@@ -18,10 +18,12 @@ namespace LoveTap.ViewModel
         public static Receive ReceiveSelected { get; set; }
 
 
+
         public ICommand navAddReceive { get; set; }
 
         public ICommand navDetail { get; set; }
         public ICommand Detail { get; set; }
+
 
         private ObservableCollection<PHIEUNHAP> _ReceiveList;
         public ObservableCollection<PHIEUNHAP> ReceiveList { get => _ReceiveList; set { _ReceiveList = value; } }
@@ -49,8 +51,8 @@ namespace LoveTap.ViewModel
         {
             ReceiveList = new ObservableCollection<PHIEUNHAP>(DataProvider.Ins.DB.PHIEUNHAPs);
             SuplierList = new ObservableCollection<NHACUNGCAP>(DataProvider.Ins.DB.NHACUNGCAPs);
+
             navAddReceive = new NavigationCommand<AddReceiveViewModel>(navigationStore, () => new AddReceiveViewModel(navigationStore));
-            navDetail = new NavigationCommand<ReceiveDetailViewModel>(navigationStore, () => new ReceiveDetailViewModel(navigationStore));
             Detail = new RelayCommand<ReceiveOrdViewUC>((p) => { return p.ReceiveList.SelectedItem == null ? false : true; }, (p) => _DetailCs(p));
 
             Receive phieunhap = new Receive();
@@ -76,6 +78,7 @@ namespace LoveTap.ViewModel
         void _DetailCs(ReceiveOrdViewUC p)
         {
             ReceiveSelected = (Receive)p.ReceiveList.SelectedItem;
+
         }
     }
 }

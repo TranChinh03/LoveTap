@@ -99,6 +99,8 @@ namespace LoveTap.ViewModel
 
             _navigationStore = navigationStore;
             _navigationStore.CurrentViewModelChanged += OnCurrentViewModelChanged;
+
+            
         }
 
         private void OnCurrentViewModelChanged()

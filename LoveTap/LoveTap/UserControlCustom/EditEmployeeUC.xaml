@@ -78,9 +78,13 @@
                              FontSize="35" FontWeight="DemiBold" Width="480" TextWrapping="WrapWithOverflow" 
                              Height="55" Grid.ColumnSpan="2" />
 
-                    <TextBox Grid.Row="1" Style="{StaticResource editTextValue}" 
-                             Text="{Binding Position}" FontSize="20" FontWeight="DemiBold" VerticalAlignment="Top"
-                             Width="350" Height="30" Grid.ColumnSpan="2" HorizontalAlignment="Left"/>
+                    <ComboBox Grid.Row="1"
+                                Width="150" Height="30" HorizontalAlignment="Left" BorderBrush="#79A7CB"  Padding="4"
+                                Style="{StaticResource MaterialDesignOutlinedComboBox}" FontSize="13" 
+                                SelectedIndex="{Binding Position}">
+                        <ComboBoxItem>Staff</ComboBoxItem>
+                        <ComboBoxItem>Admin</ComboBoxItem>
+                    </ComboBox>
                 </Grid>
             </StackPanel>
 

@@ -17,12 +17,6 @@
         FontFamily="{DynamicResource MaterialDesignFont}"
         Name="EmployeeView"
         Height="466.2" Width="666.666666666667">
-    
-    <i:Interaction.Triggers>
-        <i:EventTrigger EventName="Loaded">
-            <i:InvokeCommandAction Command="{Binding LoadEmployeeCm}"></i:InvokeCommandAction>
-        </i:EventTrigger>
-    </i:Interaction.Triggers>
 
 
     <Grid Background="#EEEEFC">
@@ -225,7 +219,6 @@
                                     <GridViewColumn Header="Phone" DisplayMemberBinding="{Binding SDT}"></GridViewColumn>
                                     <GridViewColumn Header="Email" DisplayMemberBinding="{Binding EMAIL}"></GridViewColumn>
                                     <GridViewColumn Header="Branch" DisplayMemberBinding="{Binding MACN}"></GridViewColumn>
-                                    <GridViewColumn Header="Position" DisplayMemberBinding="{Binding VAITRO}"></GridViewColumn>
                                 </GridView>
                             </ListView.View>
                             <i:Interaction.Triggers>

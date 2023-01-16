@@ -17,13 +17,6 @@
         FontFamily="{DynamicResource MaterialDesignFont}"
         Height="466.2" Width="666.666666666667"
         >
-    <i:Interaction.Triggers>
-        <i:EventTrigger EventName="Loaded">
-            <i:InvokeCommandAction Command="{Binding LoadedProfileUsr}"
-                                                       CommandParameter="{Binding ElementName=profileUsr}"></i:InvokeCommandAction>
-        </i:EventTrigger>
-    </i:Interaction.Triggers>
-
 
     <Grid Background="WhiteSmoke">
         <Grid>
