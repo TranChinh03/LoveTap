@@ -83,9 +83,8 @@ namespace LoveTap.ViewModel
         public List<Order> MyOrderList { get => _MyOrderList; set { _MyOrderList = value; } }
         public ICommand LoadedOrderDetail { get; set; }
         string Name;
-        public OrderDetailViewModel(string para, NavigationStore navigationStore)
+        public OrderDetailViewModel( NavigationStore navigationStore)
         {
-            TextTest = para;
             navBack = new NavigationCommand<OrdersViewModel>(navigationStore, () => new OrdersViewModel(navigationStore));
             navDone = new NavigationCommand<OrdersViewModel>(navigationStore, () => new OrdersViewModel(navigationStore));
             LoadedOrderDetail = new RelayCommand<UserControl>((p) => true, (p) =>

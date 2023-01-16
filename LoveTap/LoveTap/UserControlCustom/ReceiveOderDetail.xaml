@@ -65,13 +65,24 @@
                        Text="{Binding Date, StringFormat='dd/MM/yyyy'}">
                     </TextBlock>
 
+                    <!--Delete Button-->
+                    <Button Background="{StaticResource Burnt Sienna}"
+                                BorderBrush="Transparent" Padding="0" HorizontalAlignment="Right" Command="{Binding DeleteCommand}"
+                                DockPanel.Dock="Right" Margin="5 10 5 10" Width="35">
+                        <materialDesign:PackIcon Kind="Delete"  Height="20" Width="20"/>
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="Click">
+                                <i:InvokeCommandAction Command="{Binding navDone}"></i:InvokeCommandAction>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </Button>
 
                     <!--Back Button-->
                     <Button DockPanel.Dock="Right" Style="{StaticResource OrangeButton}"
                     HorizontalAlignment="Right" Uid="2" Name="backBt" Content="Back" Margin="0 10 0 10" Command="{Binding navBack}">
                     </Button>
 
-                    <Button Background="{StaticResource Linen}" Command="{Binding DeleteCommand}"
+                    <!--<Button Background="{StaticResource Linen}" Command="{Binding DeleteCommand}"
                 BorderBrush="Transparent"  VerticalAlignment="Center" Margin="30 0 0 0"
 >
                         <Image Source="/img/trash.png" Width="13" Height="13" HorizontalAlignment="Center" VerticalAlignment="Center">
@@ -82,9 +93,9 @@
                                 <i:InvokeCommandAction Command="{Binding navDone}"></i:InvokeCommandAction>
                             </i:EventTrigger>
                         </i:Interaction.Triggers>
-                    </Button>
+                    </Button>-->
                     <!--Invoice Button-->
-                    <Button Name="invoiceBt" Uid="1" DockPanel.Dock="Right" Style="{StaticResource greenButton}" Margin="10"
+                    <Button Name="invoiceBt" Uid="1" DockPanel.Dock="Right" Style="{StaticResource greenButton}" Margin="5 10 "
                     HorizontalAlignment="Right" Width="90" >
                         <StackPanel Orientation="Horizontal">
                             <materialDesign:PackIcon Kind="Download" />
@@ -252,7 +263,7 @@
             <!--BOTTOM BAR-->
             <Grid Grid.Row="3">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition/>
+                    <ColumnDefinition Width="0.8*"/>
                     <ColumnDefinition/>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
@@ -277,7 +288,7 @@
                          ></TextBlock>
                             <TextBlock 
                            Foreground="#FF5684B0"  FontWeight="Normal" Padding="5 0"
-                         Text="{Binding SupplierName}" TextWrapping ="Wrap" Width="140"></TextBlock>
+                         Text="{Binding SupplierName}" TextWrapping ="Wrap" Width="165"></TextBlock>
                         </StackPanel>
 
                         <StackPanel  Orientation="Horizontal" Margin="0 5 0 0">
@@ -286,7 +297,7 @@
                           >Email:</TextBlock>
                             <TextBlock 
                            Foreground="#FF5684B0"   FontWeight="Normal" Padding="5 0"
-                          Text="{Binding Email}" TextWrapping ="Wrap" Width="150" ></TextBlock>
+                          Text="{Binding Email}" TextWrapping ="Wrap" Width="180" ></TextBlock>
                         </StackPanel>
 
 
@@ -296,7 +307,7 @@
                          >Address:</TextBlock>
                             <TextBlock 
                            Foreground="#FF5684B0"   FontWeight="Normal" Padding="5 0"
-                         Text="{Binding Address}" TextWrapping ="Wrap" Width="150"></TextBlock>
+                         Text="{Binding Address}" TextWrapping ="Wrap" Width="165"></TextBlock>
                         </StackPanel>
 
 

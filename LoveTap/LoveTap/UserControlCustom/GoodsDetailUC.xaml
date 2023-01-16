@@ -97,9 +97,17 @@
                     </ListBoxItem>
                 </ListBox>-->
                 </StackPanel>
-
+                
                 <!--Top Button-->
                 <DockPanel  Grid.Column="1" VerticalAlignment="top">
+                    <!--Delete Button-->
+                    <Button Background="{StaticResource Burnt Sienna}"
+                                BorderBrush="Transparent" Padding="0" HorizontalAlignment="Right" Command="{Binding navBack}"
+                                DockPanel.Dock="Right" Margin="0 5 5 0" Width="35">
+                        <materialDesign:PackIcon Kind="Delete"  Height="20" Width="20"/>
+                    </Button>
+                    
+                    <!--Back Button-->
                     <Button DockPanel.Dock="Right" Style="{StaticResource OrangeButton}" Command="{Binding navBack}"
                     HorizontalAlignment="Right" Uid="3" Name="backBt" Content="Back">
                     </Button>

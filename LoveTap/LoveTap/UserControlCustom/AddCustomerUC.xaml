@@ -6,7 +6,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
         xmlns:local="clr-namespace:LoveTap.UserControlCustom"
-        mc:Ignorable="d"
+        mc:Ignorable="d" Height="456.2" Width="656.666666666667"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         Name="ucAddCustomer"
        >
@@ -52,30 +52,36 @@
             <!--Detail Info-->
             <Grid Grid.Row="1">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition/>
-                    <ColumnDefinition Width="4*" />
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="4.5*"/>
                 </Grid.ColumnDefinitions>
 
-                <StackPanel HorizontalAlignment="Left" Margin="10 0 0 0" Width="140">
-                    <TextBlock Style="{StaticResource detailText}" Padding="3">Phone:</TextBlock>
+                <StackPanel HorizontalAlignment="Left" Margin="10 0 0 0" >
                     <TextBlock Style="{StaticResource detailText}" Padding="3">Name:</TextBlock>
+                    <TextBlock Style="{StaticResource detailText}" Padding="3">Phone:</TextBlock>
                     <TextBlock Style="{StaticResource detailText}" Padding="3">Date of Birth:</TextBlock>
-                    <TextBlock Style="{StaticResource detailText}" Padding="3">Address:</TextBlock>
+                    <TextBlock Style="{StaticResource detailText}" Padding="3" Height="50">Address:</TextBlock>
                     <TextBlock Style="{StaticResource detailText}" Padding="3">Registation Date:</TextBlock>
+                    <TextBlock Style="{StaticResource detailText}" Padding="3">Branch:</TextBlock>
                 </StackPanel>
 
                 <StackPanel Margin="10 0 0 0" Grid.Column="1" HorizontalAlignment="Center" >
-                    <TextBox  Style="{StaticResource editTextValue}" Text="{Binding Phone}"></TextBox>
                     <TextBox  Style="{StaticResource editTextValue}" Text="{Binding CusName}"></TextBox>
+                    <TextBox  Style="{StaticResource editTextValue}" Text="{Binding Phone}"></TextBox>
                     <DatePicker
                                         Width="150" Height="30" Padding="5" FontSize="13" Margin="0 8 0 0" HorizontalAlignment="Left" SelectedDateFormat="Short" 
                                         materialDesign:HintAssist.Hint="Pick Date" BorderBrush="#79A7CB" Foreground="{StaticResource Catalina Blue}" 
                                         Style="{StaticResource MaterialDesignOutlinedDatePicker}" SelectedDate="{Binding DOB, StringFormat='dd/MM/yyyy', Mode=TwoWay}"/>
-                    <TextBox  Style="{StaticResource editTextValue}" Text="{Binding Address}"></TextBox>
+                    <TextBox  Style="{StaticResource editTextValue}" TextWrapping="WrapWithOverflow" Height="50" Text="{Binding Address}" VerticalContentAlignment="Top"></TextBox>
                     <DatePicker
-                                        Width="150" Height="30" Padding="5" FontSize="13" Margin="0 8 0 0" HorizontalAlignment="Left" SelectedDateFormat="Short" 
+                                        Width="150" Height="30" Padding="5" FontSize="13" Margin="0 8 0 0"  HorizontalAlignment="Left" SelectedDateFormat="Short" 
                                         materialDesign:HintAssist.Hint="Pick Date" BorderBrush="#79A7CB" Foreground="{StaticResource Catalina Blue}" 
                                         Style="{StaticResource MaterialDesignOutlinedDatePicker}" SelectedDate="{Binding RegistDate, StringFormat='dd/MM/yyyy', Mode=TwoWay}"/>
+                    <ComboBox
+                                Width="150" Height="30" HorizontalAlignment="Left" BorderBrush="#79A7CB"  Margin="0 8 0 0" Padding="5"
+                                Style="{StaticResource MaterialDesignOutlinedComboBox}" FontSize="13" 
+                                ItemsSource="{Binding BranchIDList, Mode=TwoWay}" SelectedItem="{Binding Branch}" />
+
                 </StackPanel>
             </Grid>
         </Grid>

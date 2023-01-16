@@ -38,6 +38,13 @@
                        Text="{Binding Phone}"
                        ></TextBlock>
 
+                <!--Delete Button-->
+                <Button Background="{StaticResource Burnt Sienna}"
+                                BorderBrush="Transparent" Padding="0" HorizontalAlignment="Right" Command="{Binding navBack}"
+                                DockPanel.Dock="Right" Margin="0 5 5 0" Width="35">
+                    <materialDesign:PackIcon Kind="Delete"  Height="20" Width="20"/>
+                </Button>
+                
                 <!--Back Button-->
                 <Button DockPanel.Dock="Right" Style="{StaticResource OrangeButton}"
                     HorizontalAlignment="Right" Uid="3" Name="backBt" Content="Back" Command="{Binding navBack}">
@@ -71,8 +78,8 @@
 
 
                 <StackPanel Margin="20,0,0,0" Grid.Column="0" >
-                    <TextBlock Style="{StaticResource detailText}" Padding="3">Phone:</TextBlock>
                     <TextBlock Style="{StaticResource detailText}" Padding="3">Name:</TextBlock>
+                    <TextBlock Style="{StaticResource detailText}" Padding="3">Phone:</TextBlock>
                     <TextBlock Style="{StaticResource detailText}" Padding="3">Date of Birth:</TextBlock>
                     <TextBlock Style="{StaticResource detailText}" Padding="3" Height="50">Address:</TextBlock>
                     <TextBlock Style="{StaticResource detailText}" Padding="3">Registation Date:</TextBlock>
@@ -82,8 +89,8 @@
                 </StackPanel>
 
                 <StackPanel Margin="10 0 0 0" Grid.Column="1" HorizontalAlignment="Center" >
-                    <TextBlock Style="{StaticResource detailTextValue}" Text="{Binding Phone}"></TextBlock>
                     <TextBlock Style="{StaticResource detailTextValue}" Text="{Binding CusName}"></TextBlock>
+                    <TextBlock Style="{StaticResource detailTextValue}" Text="{Binding Phone}"></TextBlock>
                     <TextBlock Style="{StaticResource detailTextValue}" Text="{Binding DOB, StringFormat='dd/MM/yyyy'}"></TextBlock>
                     <TextBlock Style="{StaticResource detailTextValue}" TextWrapping="WrapWithOverflow" Height="50" Text="{Binding Address}"></TextBlock>
                     <TextBlock Style="{StaticResource detailTextValue}" Text="{Binding RegistDate,  StringFormat='dd/MM/yyyy'}"></TextBlock>

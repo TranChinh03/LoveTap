@@ -56,9 +56,10 @@ namespace LoveTap.ViewModel
             OrdersList = new ObservableCollection<HOADON>(DataProvider.Ins.DB.HOADONs);
             CustomerList = new ObservableCollection<KHACHHANG>(DataProvider.Ins.DB.KHACHHANGs);
             navAddOrder = new NavigationCommand<AddOrdersViewModel>(navigationStore, () => new AddOrdersViewModel(navigationStore));
+            navDetail = new NavigationCommand<OrderDetailViewModel>(navigationStore, () => new OrderDetailViewModel(navigationStore));
             //navDetail = new ParameterNavigationService<string, OrderDetailViewModel>(navigationStore, (TextTest) => new OrderDetailViewModel(( TextTest), navigationStore));
-            ParameterNavigationService<string, OrderDetailViewModel> navigationService = new ParameterNavigationService<string, OrderDetailViewModel>(navigationStore,
-                (parameter) => new OrderDetailViewModel(parameter, navigationStore));
+            //ParameterNavigationService<string, OrderDetailViewModel> navigationService = new ParameterNavigationService<string, OrderDetailViewModel>(navigationStore,
+            //    (parameter) => new OrderDetailViewModel(parameter, navigationStore));
             //navDetail = new ChangeOrdCommand(this,TextTest, navigationService);
             Detail = new RelayCommand<OrderViewUC>((p) => { return p.OrderList.SelectedItem == null ? false : true; }, (p) => _DetailCs(p));
 

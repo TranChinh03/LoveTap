@@ -41,81 +41,94 @@
             <RowDefinition></RowDefinition>
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
-
-        <!--Add Order-->
-        <uc:CreateOrderUC x:Name="AddOrder" Visibility="Hidden" Margin="10" Grid.RowSpan="8" Grid.ColumnSpan="11" Panel.ZIndex="2" Background="White"></uc:CreateOrderUC>
-        <uc:OrdersDetailUC x:Name="OrderDetail" Visibility="Hidden" Margin="10" Grid.RowSpan="8" Grid.ColumnSpan="11" Panel.ZIndex="2" Background="White"></uc:OrdersDetailUC>
-
-
-        <Border  Grid.ColumnSpan="10" Grid.RowSpan="2"
+        
+        <!--Top-->
+        <Border Grid.Row="0" Grid.ColumnSpan="10" Grid.RowSpan="2"
                     Background="White" 
                     CornerRadius="5" 
-                    Margin="10" Padding="0 0 0 10" >
+                    Margin="10">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition >
+                    </RowDefinition>
+                    <RowDefinition ></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid  Grid.Row="0" Margin="10,0,10,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition ></ColumnDefinition>
+                        <ColumnDefinition ></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+
+                    <Button Grid.Column="1" Style="{StaticResource greenButton}"
+                                Content="+Add Invoice" Uid="1"
+                                HorizontalAlignment="Right" Name="addCustomerBt" Command="{Binding navAddOrder}"
+                            >
+                    </Button>
+
+                    <DockPanel Grid.Column="0" HorizontalAlignment="Left">
+                        <TextBlock Margin="10" VerticalAlignment="Center"
+                                       FontSize="15" Foreground="{StaticResource Catalina Blue}" FontWeight="Bold"
+                                       >Find by:</TextBlock>
+
+                        <ComboBox 
+                                      Width="150"
+                                    Height="30"
+                                  BorderBrush="{StaticResource Cyan Azure}"
+                                   materialDesign:HintAssist.Hint="Phone, Name,..."
+                                  Style="{StaticResource MaterialDesignOutlinedComboBox}" 
+                                Padding="5,0,5,0" VerticalContentAlignment="Center"
+                                Text="{Binding findText, UpdateSourceTrigger=PropertyChanged}">
+                            <ComboBoxItem Content="Phone"/>
+                            <ComboBoxItem Content="Name"/>
+                            <ComboBoxItem Content="Address"/>
+                        </ComboBox>
+
+                    </DockPanel>
+                </Grid>
+
+                <Grid Grid.Row="1" Margin="10,0,10,5"
+                              VerticalAlignment="Center">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+
+                    <TextBox
+                        Grid.Column="0"
+                        Margin="10,0,0,0" 
+                                 Width="200" Foreground="{StaticResource Cyan Azure}"
+                                VerticalAlignment="Center" BorderBrush="{StaticResource Cyan Azure}"
+                                materialDesign:HintAssist.Hint="Search"
+                                Style="{StaticResource MaterialDesignFloatingHintTextBox}" 
+                                VerticalContentAlignment="Center" 
+                                HorizontalContentAlignment="Left"
+                                HorizontalAlignment="Left"
+                        Text="{Binding searchText, UpdateSourceTrigger=PropertyChanged}"
+                        />
+
+                    <materialDesign:PackIcon Kind="Magnify" HorizontalAlignment="Right" Margin="0,16,24,0" Foreground="{StaticResource Cyan Azure}" VerticalAlignment="Center"/>
+
+                    <ComboBox  Grid.Column="1" Grid.ColumnSpan="2"
+                                   Width="200" HorizontalAlignment="Right"
+                                    Height="30"
+                                  BorderBrush="{StaticResource Cyan Azure}"
+                                   materialDesign:HintAssist.Hint="Sort by"
+                                  Style="{StaticResource MaterialDesignOutlinedComboBox}" 
+                                Padding="5,0,5,0" VerticalContentAlignment="Center"
+                                   Text="{Binding sortText, UpdateSourceTrigger=PropertyChanged}"
+                                  >
+                        <ComboBoxItem Content="Date of Birth"/>
+                        <ComboBoxItem Content="Registation Date"/>
+                        <ComboBoxItem Content="Sale"/>
+                    </ComboBox>
+
+                </Grid>
+            </Grid>
             <Border.Effect>
-                <DropShadowEffect BlurRadius="10" Opacity="0.3"></DropShadowEffect>
+                <DropShadowEffect BlurRadius="10" 
+                                      Color="Gray" Opacity="0.3"/>
             </Border.Effect>
-            <StackPanel Orientation="Horizontal" >
-
-
-                <!--BUTTONS-->
-
-                <!--<Button Padding="0"  Width="85" HorizontalAlignment="Left" Background="{x:Null}" BorderBrush="{x:Null}" VerticalAlignment="Bottom" Margin="5 0">
-                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
-                        <Image Source="/img/all_orders.png" Height="15" Panel.ZIndex="0" ></Image>
-                        <TextBlock Margin="5,0,0,0" Foreground="#26B69F" Width="60" Height="15" FontSize="10" >All Orders</TextBlock>
-                    </StackPanel>
-                </Button>
-
-
-                <Button Padding="0"  Background="{x:Null}" BorderBrush="{x:Null}" VerticalAlignment="Bottom" Margin="5 0">
-                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
-                        <Image Source="/img/delivered.png" Height="15" Panel.ZIndex="0" ></Image>
-                        <TextBlock Margin="5,0,0,0" Foreground="#FF033270" Width="60" Height="15" FontSize="10" >Delivered</TextBlock>
-                    </StackPanel>
-                </Button>
-
-                <Button Padding="0" Width="80" Background="{x:Null}" BorderBrush="{x:Null}" VerticalAlignment="Bottom" Margin="5 0">
-                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
-                        <Image Source="/img/pickups.png" Height="15" Panel.ZIndex="0" ></Image>
-                        <TextBlock Margin="5,0,0,0" Foreground="#FF033270" Width="50" Height="15" FontSize="10" >Pickups</TextBlock>
-                    </StackPanel>
-                </Button>
-
-                <Button Padding="0"  Width="80" VerticalAlignment="Bottom" Margin="5 0" Background="{x:Null}" BorderBrush="{x:Null}">
-                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
-                        <Image Source="/img/returns.png" Height="15" Panel.ZIndex="0" ></Image>
-                        <TextBlock Margin="5,0,0,0" Foreground="#FF033270" Width="45" Height="15" FontSize="10" >Returns</TextBlock>
-                    </StackPanel>
-                </Button>
-
-                <Button Padding="0"  Width="80" VerticalAlignment="Bottom" Margin="5 0" Background="{x:Null}" BorderBrush="{x:Null}">
-                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
-                        <Image Source="/img/cancelled.png" Height="15" Panel.ZIndex="0" ></Image>
-                        <TextBlock Margin="5,0,0,0" Foreground="#FF033270" Width="65" Height="15" FontSize="10" >Cancelled</TextBlock>
-                    </StackPanel>
-                </Button>-->
-
-                <Button
-                    Style="{StaticResource MaterialDesignRaisedSecondaryLightButton}"
-                    Width="120" Name="addOrderBt" Uid="1"
-                    Background="#26B69F"
-                    ToolTip="Resource name: MaterialDesignRaisedSecondaryLightButton"
-                    Content="+ Add Order"
-                    FontSize="13"
-                    VerticalAlignment="Bottom" Margin="400 0 0 0" Command="{Binding navAddOrder}">
-                </Button>
-
-                <Button Background="{StaticResource Linen}"
-                BorderBrush="Transparent"  VerticalAlignment="Bottom" Margin="30 0 0 0"
->
-                    <Image Source="/img/trash.png" Width="13" Height="13" HorizontalAlignment="Center" VerticalAlignment="Center">
-                    </Image>
-                </Button>
-            </StackPanel>
-
         </Border>
-
-
 
         <Border Grid.Row="2"  Grid.ColumnSpan="10" Grid.RowSpan="7"  Background="White"
                     CornerRadius="5" 

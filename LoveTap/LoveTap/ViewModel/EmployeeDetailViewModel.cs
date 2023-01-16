@@ -38,6 +38,8 @@ namespace LoveTap.ViewModel
 
         private string _BasicPay;
         public string BasicPay { get => _BasicPay; set { _BasicPay = value; OnPropertyChanged(); } }
+        private string _Email;
+        public string Email { get => _Email; set { _Email = value; OnPropertyChanged(); } }
 
         private int _Branch;
         public int Branch { get => _Branch; set { _Branch = value; OnPropertyChanged(); } }
@@ -63,6 +65,7 @@ namespace LoveTap.ViewModel
                 CoefficientSalary = temp.HESOLUONG.ToString();
                 BasicPay = temp.LUONGCB.ToString();
                 Branch = (int)temp.MACN;
+                Email = temp.EMAIL;
             });
 
             navBack = new NavigationCommand<EmployeeViewModel>(navigationStore, () => new EmployeeViewModel(navigationStore));
