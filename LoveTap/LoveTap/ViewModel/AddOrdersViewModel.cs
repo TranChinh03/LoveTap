@@ -207,7 +207,7 @@ namespace LoveTap.ViewModel
                 var hd = new HOADON();
                 //hd.MAHD = OrderID;
                 hd.NGMUA = DateTime.Parse(Date);
-                hd.TONGTIEN = 0;
+                hd.TONGTIEN = SubTotal;
 
                 foreach (NHANVIEN nv in EmployeeList)
                     if (nv.HOTEN == EmployeeName)
@@ -221,6 +221,7 @@ namespace LoveTap.ViewModel
                         hd.MAKH = kh.MAKH;
                         //kh.DOANHSO += SubTotal;
                     }
+                hd.MACN = Branch;
                 hd.DELETED = false;
                 DataProvider.Ins.DB.HOADONs.Add(hd);
                 DataProvider.Ins.DB.SaveChanges();

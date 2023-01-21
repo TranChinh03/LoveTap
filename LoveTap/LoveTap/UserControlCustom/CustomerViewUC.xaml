@@ -95,7 +95,7 @@
                                 Text="{Binding findText, UpdateSourceTrigger=PropertyChanged}">
                                 <ComboBoxItem Content="Phone"/>
                                 <ComboBoxItem Content="Name"/>
-                                <!--<ComboBoxItem Content="Address"/-->>
+                                <!--<ComboBoxItem Content="Address"/-->
                             </ComboBox>
 
                         </DockPanel>
@@ -133,7 +133,7 @@
                                    Text="{Binding sortText, UpdateSourceTrigger=PropertyChanged}"
                                   >
                             <ComboBoxItem Content="Date of Birth"/>
-                            <ComboBoxItem Content="Registation Date"/>
+                            <!--<ComboBoxItem Content="Registation Date"/>-->
                             <ComboBoxItem Content="Sale"/>
                         </ComboBox>
 
@@ -162,10 +162,11 @@
                             </ListView.Resources>
                             <ListView.View >
                                 <GridView>
-                                    <GridViewColumn Header="ID" DisplayMemberBinding="{Binding MAKH}"></GridViewColumn>
-                                    <GridViewColumn Header="Phone" DisplayMemberBinding="{Binding SDT}"></GridViewColumn>
-                                    <GridViewColumn Header="Name" DisplayMemberBinding="{Binding HOTEN}"></GridViewColumn>
-                                    <GridViewColumn Header="Date of Birth" DisplayMemberBinding="{Binding NGSINH}"></GridViewColumn>
+                                    <GridViewColumn Header="ID" DisplayMemberBinding="{Binding CustomerID}"></GridViewColumn>
+                                    <GridViewColumn Header="Phone" DisplayMemberBinding="{Binding Phone}"></GridViewColumn>
+                                    <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Name}"></GridViewColumn>
+                                    <GridViewColumn Header="Date of Birth" DisplayMemberBinding="{Binding DOB, StringFormat='dd/MM/yyyy'}"></GridViewColumn>
+                                    <GridViewColumn Header="Sale" DisplayMemberBinding="{Binding Total}"></GridViewColumn>
                                 </GridView>
                             </ListView.View>
                             <i:Interaction.Triggers>

@@ -182,6 +182,9 @@
     <Compile Include="UserControlCustom\CustomerViewUC.xaml.cs">
       <DependentUpon>CustomerViewUC.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UserControlCustom\DeliveryInvoiceUC.xaml.cs">
+      <DependentUpon>DeliveryInvoiceUC.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserControlCustom\EditCustomerUC.xaml.cs">
       <DependentUpon>EditCustomerUC.xaml</DependentUpon>
     </Compile>
@@ -334,6 +337,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UserControlCustom\CustomerViewUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControlCustom\DeliveryInvoiceUC.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -545,6 +552,10 @@
     <Resource Include="img\checkCircle.jpg" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="img\address.png" />
+    <Resource Include="img\email.png" />
+    <Resource Include="img\LoveTapBackground1.png" />
+    <Resource Include="img\LoveTapBackground2.png" />
     <Content Include="Model\Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Model1.edmx</DependentUpon>
