@@ -61,38 +61,40 @@ namespace LoveTap.ViewModel
             CustomerList = new ObservableCollection<KHACHHANG>(DataProvider.Ins.DB.KHACHHANGs.Where(x => x.DELETED == false));
             LoadedEditCustomerDetail = new RelayCommand<UserControl>((p) => { return true; }, (p) =>
             {
-                KHACHHANG x = CustomerViewModel.CurrentSelected;
-                if (x != null)
+                CustomerViewModel.Customer temp = CustomerViewModel.CurrentSelected;
+                foreach (KHACHHANG kh in CustomerList)
                 {
-                    CusName = x.HOTEN;
-                    Phone = x.SDT;
-                    DOB = x.NGSINH;
-                    Address = x.DIACHI;
-                    RegistDate = x.NGDK;
-                    Sale = x.DOANHSO;
-                    Type = "Đồng";
-                    if (Sale > 2000000 && Sale <= 5000000)
+                    if (temp.CustomerID == kh.MAKH)
                     {
-                        Type = "Bronz";
-                        bgType = "#eec170";
-                        textType = "#E2711D";
-                    }
+                        CusName = kh.HOTEN;
+                        Phone = kh.SDT;
+                        DOB = kh.NGSINH;
+                        Address = kh.DIACHI;
+                        RegistDate = kh.NGDK;
+                        Sale = kh.DOANHSO;
+                        Type = "Đồng";
+                        if (Sale > 2000000 && Sale <= 5000000)
+                        {
+                            Type = "Bronz";
+                            bgType = "#eec170";
+                            textType = "#E2711D";
+                        }
 
-                    else if (Sale <= 10000000)
-                    {
-                        Type = "Silver";
-                        bgType = "#dee2e6";
-                        textType = "#4f5d75";
-                    }
+                        else if (Sale <= 10000000)
+                        {
+                            Type = "Silver";
+                            bgType = "#dee2e6";
+                            textType = "#4f5d75";
+                        }
 
-                    else if (Sale > 10000000)
-                    {
-                        Type = "Gold";
-                        bgType = "#fff2b2";
-                        textType = "#ffaa00";
+                        else if (Sale > 10000000)
+                        {
+                            Type = "Gold";
+                            bgType = "#fff2b2";
+                            textType = "#ffaa00";
+                        }
                     }
                 }
-
             })
             {
 

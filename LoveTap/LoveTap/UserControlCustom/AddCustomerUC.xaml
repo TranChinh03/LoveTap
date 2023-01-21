@@ -63,6 +63,7 @@
                     <TextBlock Style="{StaticResource detailText}" Padding="3" Height="50">Address:</TextBlock>
                     <TextBlock Style="{StaticResource detailText}" Padding="3">Registation Date:</TextBlock>
                     <TextBlock Style="{StaticResource detailText}" Padding="3">Branch:</TextBlock>
+                    <TextBlock Style="{StaticResource detailText}" Padding="3">Employee ID:</TextBlock>
                 </StackPanel>
 
                 <StackPanel Margin="10 0 0 0" Grid.Column="1" HorizontalAlignment="Center" >
@@ -81,6 +82,12 @@
                                 Width="150" Height="30" HorizontalAlignment="Left" BorderBrush="#79A7CB"  Margin="0 8 0 0" Padding="5"
                                 Style="{StaticResource MaterialDesignOutlinedComboBox}" FontSize="13" 
                                 ItemsSource="{Binding BranchIDList, Mode=TwoWay}" SelectedItem="{Binding Branch}" />
+
+                    <ComboBox
+                                Width="150" Height="30" HorizontalAlignment="Left" BorderBrush="#79A7CB"  Margin="0 8 0 0" Padding="5"
+                                Style="{StaticResource MaterialDesignOutlinedComboBox}" FontSize="13" 
+                                ItemsSource="{Binding EmployeeIDList, Mode=TwoWay}" SelectedItem="{Binding EmployeeID}" />
+
 
                 </StackPanel>
             </Grid>
