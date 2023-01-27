@@ -41,7 +41,7 @@
             <RowDefinition></RowDefinition>
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
-        
+
         <!--Top-->
         <Border Grid.Row="0" Grid.ColumnSpan="10" Grid.RowSpan="2"
                     Background="White" 
@@ -85,6 +85,7 @@
                     </DockPanel>
                 </Grid>
 
+                <!--SEARCH AND SORT-->
                 <Grid Grid.Row="1" Margin="10,0,10,5"
                               VerticalAlignment="Center">
                     <Grid.ColumnDefinitions>
@@ -129,29 +130,15 @@
             </Border.Effect>
         </Border>
 
+        <!--GRIDVIEW-->
         <Border Grid.Row="2"  Grid.ColumnSpan="10" Grid.RowSpan="7"  Background="White"
                     CornerRadius="5" 
                     Margin="10 0 10 10">
             <Border.Effect>
                 <DropShadowEffect BlurRadius="10" Color="Gray"/>
             </Border.Effect>
+            
             <Grid>
-                <!--<TextBlock VerticalAlignment="Bottom" Margin="10" FontSize="12" Foreground="{StaticResource Cyan Azure}" HorizontalAlignment="Left">Showing 5 of 25 Results</TextBlock>-->
-
-                <!--Page-->
-                <!--<StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Bottom">
-                    <Button Style="{StaticResource tabButton}">
-                        <materialDesign:PackIcon Kind="ArrowLeftBold"/>
-                    </Button>
-                    <Button Style="{StaticResource tabButton}" BorderBrush="Red" >1</Button>
-                    <Button Style="{StaticResource tabButton}" BorderBrush="Red" >2</Button>
-                    <Button Style="{StaticResource tabButton}" BorderBrush="Red" >3</Button>
-
-                    <Button Style="{StaticResource tabButton}">
-                        <materialDesign:PackIcon Kind="ArrowRightBold"/>
-                    </Button>
-                </StackPanel>-->
-
                 <ScrollViewer VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Visible">
                     <ListView Name="OrderList" ItemsSource="{Binding MyFilterList}" SelectedItem="{Binding SelectedItem, Mode=OneWayToSource}" HorizontalContentAlignment="Center">
                         <ListView.Resources>
@@ -172,8 +159,8 @@
                         </ListView.View>
                         <i:Interaction.Triggers>
                             <i:EventTrigger EventName="SelectionChanged">
-                                <i:InvokeCommandAction     Command="{Binding navDetail}"></i:InvokeCommandAction>
                                 <i:InvokeCommandAction     Command="{Binding Detail}" CommandParameter="{Binding ElementName=OrderView}"></i:InvokeCommandAction>
+                                <i:InvokeCommandAction     Command="{Binding navDetail}"></i:InvokeCommandAction>
                             </i:EventTrigger>
                         </i:Interaction.Triggers>
                     </ListView>

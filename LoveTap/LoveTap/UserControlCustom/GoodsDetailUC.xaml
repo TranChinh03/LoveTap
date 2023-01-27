@@ -31,9 +31,6 @@
                     <RowDefinition Height="1.5*"></RowDefinition>
                 </Grid.RowDefinitions>
 
-                <!--Edit Good-->
-                <uc:EditGoodsUC x:Name="EditGood" Grid.RowSpan="2" Grid.ColumnSpan="2" Visibility="Hidden" Panel.ZIndex="2" ></uc:EditGoodsUC>
-
                 <!--Image of Good-->
                 <Button Padding="0" Height="170" Width="200"  BorderBrush="Transparent" Background="Transparent">
                     <Border CornerRadius="30" BorderBrush="#5684B0" BorderThickness="0.5" Background="White" >
@@ -102,14 +99,26 @@
                 <DockPanel  Grid.Column="1" VerticalAlignment="top">
                     <!--Delete Button-->
                     <Button Background="{StaticResource Burnt Sienna}"
-                                BorderBrush="Transparent" Padding="0" HorizontalAlignment="Right" Command="{Binding navBack}"
+                                BorderBrush="Transparent" Padding="0" HorizontalAlignment="Right"
                                 DockPanel.Dock="Right" Margin="0 5 5 0" Width="35">
                         <materialDesign:PackIcon Kind="Delete"  Height="20" Width="20"/>
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="Click">
+                                <i:InvokeCommandAction Command="{Binding DeleteCommand}"></i:InvokeCommandAction>
+                                <i:InvokeCommandAction Command="{Binding navBack}"></i:InvokeCommandAction>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
                     </Button>
                     
                     <!--Back Button-->
-                    <Button DockPanel.Dock="Right" Style="{StaticResource OrangeButton}" Command="{Binding navBack}"
+                    <Button DockPanel.Dock="Right" Style="{StaticResource OrangeButton}"
                     HorizontalAlignment="Right" Uid="3" Name="backBt" Content="Back">
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="Click">
+                                <i:InvokeCommandAction Command="{Binding BackCmd}"></i:InvokeCommandAction>
+                                <i:InvokeCommandAction Command="{Binding navBack}"></i:InvokeCommandAction>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
                     </Button>
 
                     <!--Invoice Button-->

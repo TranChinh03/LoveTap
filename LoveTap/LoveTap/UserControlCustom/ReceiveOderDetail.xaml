@@ -67,11 +67,12 @@
 
                     <!--Delete Button-->
                     <Button Background="{StaticResource Burnt Sienna}"
-                                BorderBrush="Transparent" Padding="0" HorizontalAlignment="Right" Command="{Binding DeleteCommand}"
+                                BorderBrush="Transparent" Padding="0" HorizontalAlignment="Right" 
                                 DockPanel.Dock="Right" Margin="5 10 5 10" Width="35">
                         <materialDesign:PackIcon Kind="Delete"  Height="20" Width="20"/>
                         <i:Interaction.Triggers>
                             <i:EventTrigger EventName="Click">
+                                <i:InvokeCommandAction Command="{Binding DeleteCommand}"></i:InvokeCommandAction>
                                 <i:InvokeCommandAction Command="{Binding navDone}"></i:InvokeCommandAction>
                             </i:EventTrigger>
                         </i:Interaction.Triggers>

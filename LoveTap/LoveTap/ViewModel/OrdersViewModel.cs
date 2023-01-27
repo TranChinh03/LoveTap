@@ -298,11 +298,6 @@ namespace LoveTap.ViewModel
 
 
         public int[] BranchIDList { get; set; } = new int[DataProvider.Ins.DB.CHINHANHs.Count()];
-
-
-
-
-
         public OrdersViewModel(NavigationStore navigationStore)
         {
             
