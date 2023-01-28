@@ -18,12 +18,6 @@
         Name="HomeView" Height="456.2" Width="656.666666666667"
              
 >
-    <!--<i:Interaction.Triggers>
-        <i:EventTrigger EventName="Loaded">
-            <i:InvokeCommandAction Command="{Binding LoadHome}"
-                                                       CommandParameter="{Binding ElementName=HomeView}"></i:InvokeCommandAction>
-        </i:EventTrigger>
-    </i:Interaction.Triggers>-->
 
     <Grid Background="WhiteSmoke">
 
@@ -52,9 +46,6 @@
                 <RowDefinition></RowDefinition>
             </Grid.RowDefinitions>
 
-            <!--Detail BestSelling Product-->
-
-            <uc:GoodsDetailUC x:Name="DetailBestSl" Panel.ZIndex="2" Grid.RowSpan="8" Grid.ColumnSpan="10" Visibility="Hidden"></uc:GoodsDetailUC>
             <!-- REVENUE - ORDERS - CUSTOMER -->
             <Grid Grid.ColumnSpan="8" Grid.RowSpan="2" >
                 <StackPanel Orientation="Horizontal">
@@ -256,7 +247,8 @@
                             <i:Interaction.Triggers>
                                 <i:EventTrigger EventName="SelectionChanged">
                                     <i:InvokeCommandAction     Command="{Binding Detail}"
-                                                           CommandParameter="{Binding ElementName=homeWindow}"></i:InvokeCommandAction>
+                                                           CommandParameter="{Binding ElementName=HomeView}"></i:InvokeCommandAction>
+                                    <i:InvokeCommandAction     Command="{Binding navDetail}"></i:InvokeCommandAction>
                                 </i:EventTrigger>
                             </i:Interaction.Triggers>
                         </ListView>

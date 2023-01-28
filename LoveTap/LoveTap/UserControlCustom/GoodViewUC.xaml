@@ -219,8 +219,7 @@
                                 <i:InvokeCommandAction     Command="{Binding Detail}"
                                                            CommandParameter="{Binding ElementName=GoodsView}"></i:InvokeCommandAction>
                                 <i:InvokeCommandAction     Command="{Binding navDetail}"></i:InvokeCommandAction>
-                                <i:InvokeCommandAction     Command="{Binding Detail}"
-                                                           CommandParameter="{Binding ElementName=GoodsView}"></i:InvokeCommandAction>
+                                
                             </i:EventTrigger>
                         </i:Interaction.Triggers>
                     </ListView>

@@ -10,11 +10,14 @@ using System.Windows;
 using System.Windows.Input;
 using LoveTap.Stores;
 using LoveTap.UserControlCustom;
+using LoveTap.Commands;
 
 namespace LoveTap.ViewModel
 {
     public class HomeViewModel : BaseViewModel
     {
+        public static BestSelling BestslSelected { get; set; }
+        public static int flag { get; set; }
 
         private ObservableCollection<SANPHAM> _ProductList;
         public ObservableCollection<SANPHAM> ProductList { get => _ProductList; set { _ProductList = value; OnPropertyChanged(); } }
@@ -48,7 +51,7 @@ namespace LoveTap.ViewModel
         public string Stock { get => _Stock; set { _Stock = value; OnPropertyChanged(); } }
         public ICommand ChangeDate { get; set; }
 
-        public ICommand SwitchTab { get; set; }
+        public ICommand navDetail { get; set; }
         public ICommand Detail { get; set; }
 
         public ICommand LoadHome { get; set; }
@@ -82,7 +85,8 @@ namespace LoveTap.ViewModel
             StockList = new ObservableCollection<TONKHO>(DataProvider.Ins.DB.TONKHOes);
 
             ChangeDate = new RelayCommand<Calendar>((p) => { return p.SelectedDates == null ? false : true; }, (p) => _SelectedDate(p));
-            //Detail = new RelayCommand<HomeViewUC>((p) => { return p.cale.SelectedItem == null ? false : true; }, (p) => _DetailCs(p));
+            Detail = new RelayCommand<HomeViewUC>((p) => { return p.BestSellingList.SelectedItem == null ? false : true; }, (p) => _DetailCs(p));
+            navDetail = new NavigationCommand<GoodDetailViewModel>(navigationStore, () => new GoodDetailViewModel(navigationStore));
             selectedDate= DateTime.Now.Date;
 
             int[] sum = new int[DataProvider.Ins.DB.SANPHAMs.Count()];
@@ -169,12 +173,11 @@ namespace LoveTap.ViewModel
 
 
 
-        //void _DetailCs(HomeScreen p)
-        //{
-
-        //    p.DetailBestSl.Visibility= Visibility.Visible;
-
-        //}
+        void _DetailCs(HomeViewUC p)
+        {
+            BestslSelected = (BestSelling)p.BestSellingList.SelectedItem;
+            flag = 1;
+        }
 
     }
 }

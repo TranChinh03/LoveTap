@@ -217,7 +217,7 @@ namespace LoveTap.ViewModel
         void _DetailCs(GoodViewUC p)
         {
             CurrentSelected = (Product)p.GoodList.SelectedItem;
-           
+            HomeViewModel.flag = 0;
 
         }
 

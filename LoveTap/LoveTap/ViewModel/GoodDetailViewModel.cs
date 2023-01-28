@@ -18,6 +18,7 @@ namespace LoveTap.ViewModel
     {
         public ICommand navEdit { get; set; }
         public ICommand navBack { get; set; }
+        public ICommand BackCmd { get; set; }
 
         public ICommand LoadedGoodDetail { get; set; }
 
@@ -77,6 +78,7 @@ namespace LoveTap.ViewModel
         private List<string> _MyBenefitList = new List<string>();
         public List<string> MyBenefitList { get => _MyBenefitList; set { _MyBenefitList = value; OnPropertyChanged(); } }
 
+        
         public GoodDetailViewModel(NavigationStore navigationStore)
         {
             ProductList = new ObservableCollection<SANPHAM>(DataProvider.Ins.DB.SANPHAMs.Where(x => x.DELETED == false));
@@ -85,11 +87,24 @@ namespace LoveTap.ViewModel
             LoadedGoodDetail = new RelayCommand<UserControl>((p) => true, (p) =>
             {
                 GoodsViewModel.Product temp = GoodsViewModel.CurrentSelected;
+                HomeViewModel.BestSelling temp2 = HomeViewModel.BestslSelected;
+                
                 SANPHAM product = new SANPHAM();
-                foreach(SANPHAM sp in ProductList)
+                if (HomeViewModel.flag != 1)
                 {
-                    if(sp.TEN == temp.Ten)
-                        product= sp;
+                    foreach (SANPHAM sp in ProductList)
+                    {
+                        if (sp.TEN == temp.Ten)
+                            product= sp;
+                    }
+                }
+                else
+                {
+                    foreach (SANPHAM sp in ProductList)
+                    {
+                        if (sp.TEN == temp2.Ten)
+                            product= sp;
+                    }
                 }
                 ID = product.MASP;
                 Name = product.TEN;
@@ -124,10 +139,20 @@ namespace LoveTap.ViewModel
                 }
 
             });
-            
+
+            if (HomeViewModel.flag != 1)
+                BackCmd = new NavigationCommand<GoodsViewModel>(navigationStore, () => new GoodsViewModel(navigationStore));
+            else
+                BackCmd = new NavigationCommand<HomeViewModel>(navigationStore, () => new HomeViewModel(navigationStore));
             navEdit = new NavigationCommand<EditGoodViewModel>(navigationStore, () => new EditGoodViewModel(navigationStore));
-            navBack = new NavigationCommand<GoodsViewModel>(navigationStore, () => new GoodsViewModel(navigationStore));
+            navBack = new RelayCommand<GoodDetailViewModel>((p) => { return true; }, (p) => _Back(p));
+            
         }
 
+        void _Back(GoodDetailViewModel p)
+        {
+            
+            HomeViewModel.flag = 0;
+        }
     }
 }
