@@ -1,9 +1,9 @@
-﻿<UserControl x:Class="LoveTap.UserControlCustom.DeliveryInvoiceUC"
-     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:LoveTap"
+﻿<UserControl x:Class="LoveTap.UserControlCustom.ReceiveInvoice"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:LoveTap.UserControlCustom"
         xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
         mc:Ignorable="d"
        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
@@ -15,8 +15,7 @@
         TextOptions.TextRenderingMode="Auto"
         Background="{DynamicResource MaterialDesignPaper}"
         FontFamily="{DynamicResource MaterialDesignFont}" 
-        Height="456.2" Width="656.666666666667" Name="ReceiveOrderView">
-
+        Height="466.2" Width="666.666666666667" Name="ReceiveOrderView">
     <Border>
         <Border.Effect>
             <DropShadowEffect Opacity="0.3" BlurRadius="10" Direction="315"></DropShadowEffect>
@@ -83,9 +82,9 @@
                     <Image  Source="/img/LoveTapBackground2.png" Height="50" Width="150" HorizontalAlignment="Left" Margin="0 0 0 0" />
                     <Image Source="/img/LoveTap.png" Height="30" Width="100" HorizontalAlignment="Left" Margin="30 0 0 0"/>
                     <TextBlock Margin="170 0 0 0" FontWeight="Bold" FontSize="10">SPECIALIZING IN:</TextBlock>
-                    <TextBlock Width="1" Height="50" Background="#033270" Margin="269,-13,397,-12">
+                    <!--<TextBlock Width="1" Height="50" Background="#033270" Margin="269,-13,397,-12">
 
-                    </TextBlock>
+                    </TextBlock>-->
                     <WrapPanel Orientation="Vertical" Margin="170 15 0 0">
                         <TextBlock FontSize="10" Width="289"><Run Text="* HIGH QUALITY ITEMS"/></TextBlock>
                         <TextBlock FontSize="10" Width="289"><Run Text="* PURCHASE - REPAIR ELECTRONIC DEVICES"/></TextBlock>
@@ -94,7 +93,7 @@
 
 
                 <Grid Margin="0,5,0,0" Grid.Row="4" Grid.RowSpan="1">
-                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" FontSize="20">DELIVERY INVOICE</TextBlock>
+                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" FontSize="20">RECEIVE INVOICE</TextBlock>
                 </Grid>
 
 
@@ -105,8 +104,8 @@
                             <TextBlock Margin ="5 0 0 0" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10" Text="{Binding Date, StringFormat='dd/MM/yyyy'}"></TextBlock>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal" Margin="10 0 0 0">
-                            <TextBlock  HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10"><Bold>NAME: </Bold></TextBlock>
-                            <TextBlock Margin="5 0 0 0" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10" Text="{Binding CustomerName}"></TextBlock>
+                            <TextBlock  HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10"><Bold>SUPPLIER: </Bold></TextBlock>
+                            <TextBlock Margin="5 0 0 0" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10" Text="{Binding SupplierName}"></TextBlock>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal" Margin="10 5 0 0">
                             <TextBlock  HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10"><Bold>ADDRESS: </Bold></TextBlock>
@@ -127,7 +126,7 @@
                 </Grid>
 
 
-                <ListView ItemsSource="{Binding MyOrderList}" Grid.Row="9" Grid.RowSpan="2" FontSize="10" Margin="0 -10 0 0" Height="150">
+                <ListView ItemsSource="{Binding MyReceiveList}" Grid.Row="9" Grid.RowSpan="2" FontSize="10" Margin="0 -10 0 0" Height="150">
                     <ListView.View>
                         <GridView>
                             <GridViewColumn Width="90" Header="NO" DisplayMemberBinding="{Binding Stt}"></GridViewColumn>
@@ -173,7 +172,6 @@
             </Grid>
         </StackPanel>
     </Border>
-
 
 </UserControl>
 

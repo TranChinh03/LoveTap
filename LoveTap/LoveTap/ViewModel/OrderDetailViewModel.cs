@@ -11,6 +11,9 @@ using LoveTap.Model;
 using System.Collections.ObjectModel;
 using LoveTap.Stores;
 using LoveTap.Commands;
+using System.Windows.Media;
+using System.Windows.Documents;
+
 
 namespace LoveTap.ViewModel
 {
@@ -18,6 +21,7 @@ namespace LoveTap.ViewModel
     {
         public ICommand navBack { get; set; }
         public ICommand navDone { get; set; }
+        public ICommand navPrint { get; set; }
 
         public ICommand DeleteCommand { get; set; }
 
@@ -73,6 +77,7 @@ namespace LoveTap.ViewModel
 
         public struct Order
         {
+            public int Stt { get; set; }
             public string Ten { get; set; }
             public double Gia { get; set; }
             public int SoLuong { get; set; }
@@ -83,10 +88,21 @@ namespace LoveTap.ViewModel
         public List<Order> MyOrderList { get => _MyOrderList; set { _MyOrderList = value; } }
         public ICommand LoadedOrderDetail { get; set; }
         string Name;
+        private Visual print;
+
         public OrderDetailViewModel( NavigationStore navigationStore)
         {
             navBack = new NavigationCommand<OrdersViewModel>(navigationStore, () => new OrdersViewModel(navigationStore));
             navDone = new NavigationCommand<OrdersViewModel>(navigationStore, () => new OrdersViewModel(navigationStore));
+            navPrint = new NavigationCommand<DeliveryInvoiceViewModel>(navigationStore, () => new DeliveryInvoiceViewModel(navigationStore));
+            //navPrint = new RelayCommand<UserControl>((p) => true, (p) =>
+            //{
+            //    PrintDialog printDialog = new PrintDialog();
+            //    if (printDialog.ShowDialog() == true)
+            //    {
+            //        printDialog.PrintVisual(this, "invoice");
+            //    }
+            //});
             LoadedOrderDetail = new RelayCommand<UserControl>((p) => true, (p) =>
             {
                 ProductList = new ObservableCollection<SANPHAM>(DataProvider.Ins.DB.SANPHAMs);

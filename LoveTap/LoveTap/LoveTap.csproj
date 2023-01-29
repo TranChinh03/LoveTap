@@ -227,6 +227,9 @@
     <Compile Include="UserControlCustom\ProfileViewUC.xaml.cs">
       <DependentUpon>ProfileViewUC.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UserControlCustom\ReceiveInvoice.xaml.cs">
+      <DependentUpon>ReceiveInvoice.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserControlCustom\ReceiveOderDetail.xaml.cs">
       <DependentUpon>ReceiveOderDetail.xaml</DependentUpon>
     </Compile>
@@ -253,6 +256,7 @@
     <Compile Include="ViewModel\CustomerDetailViewModel.cs" />
     <Compile Include="ViewModel\AddOrdersViewModel.cs" />
     <Compile Include="ViewModel\CustomerViewModel.cs" />
+    <Compile Include="ViewModel\DeliveryInvoiceViewModel.cs" />
     <Compile Include="ViewModel\EditCustomerViewModel.cs" />
     <Compile Include="ViewModel\EditEmployeeViewModel.cs" />
     <Compile Include="ViewModel\EditGoodViewModel.cs" />
@@ -277,6 +281,7 @@
     <Compile Include="ViewModel\MenuBarUC.cs" />
     <Compile Include="ViewModel\ProfileUsrViewModel.cs" />
     <Compile Include="ViewModel\ReceiveDetailViewModel.cs" />
+    <Compile Include="ViewModel\ReceiveInvoiceViewModel.cs" />
     <Compile Include="ViewModel\ReceiveOrderViewModel.cs" />
     <Compile Include="ViewModel\StatisticViewModel.cs" />
     <Compile Include="ViewModel\UsrPro5EditViewModel.cs" />
@@ -397,6 +402,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UserControlCustom\ProfileViewUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControlCustom\ReceiveInvoice.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -556,6 +565,8 @@
     <Resource Include="img\email.png" />
     <Resource Include="img\LoveTapBackground1.png" />
     <Resource Include="img\LoveTapBackground2.png" />
+  </ItemGroup>
+  <ItemGroup>
     <Content Include="Model\Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Model1.edmx</DependentUpon>

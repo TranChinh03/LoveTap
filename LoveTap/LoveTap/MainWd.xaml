@@ -310,6 +310,12 @@
                 <DataTemplate DataType="{x:Type viewmodel:AddEmployeeViewModel}">
                     <uc:AddEmployee></uc:AddEmployee>
                 </DataTemplate>
+                <DataTemplate DataType="{x:Type viewmodel:DeliveryInvoiceViewModel}">
+                    <uc:DeliveryInvoiceUC></uc:DeliveryInvoiceUC>
+                </DataTemplate>
+                <DataTemplate DataType="{x:Type viewmodel:ReceiveInvoiceViewModel}">
+                    <uc:ReceiveInvoice></uc:ReceiveInvoice>
+                </DataTemplate>
             </ContentControl.Resources>
         </ContentControl>
 

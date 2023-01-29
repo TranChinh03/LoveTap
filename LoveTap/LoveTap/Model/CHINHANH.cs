@@ -27,6 +27,7 @@ namespace LoveTap.Model
         public string TENCN { get; set; }
         public string DIACHI { get; set; }
         public Nullable<int> MAADMIN { get; set; }
+        public string EMAIL { get; set; }
         public Nullable<bool> DELETED { get; set; }
     
         public virtual NHANVIEN NHANVIEN { get; set; }

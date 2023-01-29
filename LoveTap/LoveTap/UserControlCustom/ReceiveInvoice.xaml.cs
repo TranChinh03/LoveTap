@@ -16,21 +16,21 @@ using System.Windows.Shapes;
 namespace LoveTap.UserControlCustom
 {
     /// <summary>
-    /// Interaction logic for DeliveryInvoiceUC.xaml
+    /// Interaction logic for ReceiveInvoice.xaml
     /// </summary>
-    public partial class DeliveryInvoiceUC : UserControl
+    public partial class ReceiveInvoice : UserControl
     {
-        public DeliveryInvoiceUC()
+        public ReceiveInvoice()
         {
             InitializeComponent();
         }
 
         private void invoiceBt_Click(object sender, RoutedEventArgs e)
         {
-            PrintDialog printDialog= new PrintDialog();
-            if(printDialog.ShowDialog()==true)
+            PrintDialog printDialog = new PrintDialog();
+            if(printDialog.ShowDialog()== true)
             {
-                printDialog.PrintVisual(print, "Delivery Invoice");
+                printDialog.PrintVisual(print, "Receive Invoice");
             }
         }
     }

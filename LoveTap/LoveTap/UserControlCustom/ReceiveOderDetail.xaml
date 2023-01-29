@@ -102,6 +102,11 @@
                             <materialDesign:PackIcon Kind="Download" />
                             <TextBlock Margin="8,0,0,0">Invoice</TextBlock>
                         </StackPanel>
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="Click">
+                                <i:InvokeCommandAction Command="{Binding navPrint}"></i:InvokeCommandAction>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
                     </Button>
 
                 </DockPanel>

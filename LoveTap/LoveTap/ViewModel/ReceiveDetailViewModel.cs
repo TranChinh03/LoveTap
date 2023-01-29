@@ -19,6 +19,8 @@ namespace LoveTap.ViewModel
         public ICommand navBack { get; set; }
         public ICommand navDone { get; set; }
 
+        public ICommand navPrint { get; set; }
+
         public ICommand DeleteCommand { get; set; }
 
         private string _TypeOrder;
@@ -88,6 +90,9 @@ namespace LoveTap.ViewModel
             navBack = new NavigationCommand<ReceiveOrderViewModel>(navigationStore, () => new ReceiveOrderViewModel(navigationStore));
 
             navDone = new NavigationCommand<ReceiveOrderViewModel>(navigationStore, () => new ReceiveOrderViewModel(navigationStore));
+
+
+            navPrint = new NavigationCommand<ReceiveInvoiceViewModel>(navigationStore, () => new ReceiveInvoiceViewModel(navigationStore));
 
             LoadedReceiveDetail = new RelayCommand<UserControl>((p) => true, (p) =>
             {

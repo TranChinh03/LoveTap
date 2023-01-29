@@ -46,6 +46,8 @@ namespace LoveTap.ViewModel
             public double Total { get; set; }
 
             public int MANV { get; set; }
+
+            public int MACN { get; set; }
         }
 
         private List<Order> _MyOrderList = new List<Order>();
