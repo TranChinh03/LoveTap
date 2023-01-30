@@ -157,7 +157,6 @@
     <Compile Include="Service\NavigationService.cs" />
     <Compile Include="Service\ParameterNavigationService.cs" />
     <Compile Include="Stores\NavigationStore.cs" />
-    <Compile Include="Stores\ViewStore.cs" />
     <Compile Include="UserControlCustom\AddCustomerUC.xaml.cs">
       <DependentUpon>AddCustomerUC.xaml</DependentUpon>
     </Compile>

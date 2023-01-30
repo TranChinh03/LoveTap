@@ -1,6 +1,7 @@
 ﻿using LoveTap.Commands;
 using LoveTap.Model;
 using LoveTap.Stores;
+using LoveTap.UserControlCustom;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -17,8 +18,8 @@ namespace LoveTap.ViewModel
     public class UsrPro5EditViewModel : BaseViewModel
     {
         public int UserID { get; set; }
-
         public ICommand NavBack2Pro5 { get; set; }
+        public ICommand UpdateProfile { get; set; }
 
 
         string Name;
@@ -135,6 +136,23 @@ namespace LoveTap.ViewModel
 
             NavBack2Pro5 = new NavigationCommand<ProfileUsrViewModel>(navigationStore, () => new ProfileUsrViewModel(navigationStore));
 
+            UpdateProfile = new RelayCommand<MainWd>((p) => { return true; }, (p) => _Update(p));
+        }
+
+        void _Update(MainWd p)
+        {
+            int count = 0, i = FullName.Length;
+            string nametmp;
+            while (count < 2)
+            {
+                i--;
+                if (FullName[i] == ' ')
+                    count++;
+            }
+            nametmp = FullName.Substring(i, FullName.Length-i);
+            p.Ten.Text = nametmp;
+            p.Vaitro.Text = Role;
+            p.wishTxt.Text =  "Have a good day,"+ nametmp +"!";
         }
     }
 }

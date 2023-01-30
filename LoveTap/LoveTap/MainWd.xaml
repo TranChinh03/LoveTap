@@ -65,7 +65,7 @@
         <uc:ControlBarUC Grid.Row="0" Grid.ColumnSpan="12"/>
 
         <!--Status Bar -->
-        <Grid Background= "White" Grid.Row="1" Grid.ColumnSpan="10" Grid.Column="2">
+        <Grid Name="ProfileBar" Background= "White" Grid.Row="1" Grid.ColumnSpan="10" Grid.Column="2">
             <DockPanel>
                 <DockPanel DockPanel.Dock="Left">
                     <TextBlock  x:Name="Tabtxbl" Width="100" DockPanel.Dock="Left" Text="{Binding TabName}" Foreground="#033270" FontSize="20" FontWeight="Bold" Margin="10 0 0 0" VerticalAlignment="Center"
@@ -73,8 +73,8 @@
                     <Image Source="/img/horizontalLine.png" Height ="40" Margin="10 0 0 0"></Image>
                 </DockPanel>
                 <DockPanel DockPanel.Dock="Left" Margin="0 5 0 0">
-                    <TextBlock DockPanel.Dock="Top" Text="Have a good day, Xuân Thảo!" FontSize="15" Foreground="#033270" FontWeight="Bold" Margin="10 0 0 0"></TextBlock>
-                    <TextBlock DockPanel.Dock="Bottom" Text="Here's what's happening with your store today"  Margin="10 0 0 0" Foreground ="#033270" FontSize="15" FontWeight="Light"></TextBlock>
+                    <TextBlock Name="wishTxt" DockPanel.Dock="Top" FontSize="15" Foreground="#033270" FontWeight="Bold" Margin="10 0 0 0"></TextBlock>
+                    <TextBlock DockPanel.Dock="Bottom" Text="Here's what's happening with your store today."  Margin="10 0 0 0" Foreground ="#033270" FontSize="15" FontWeight="Light"></TextBlock>
                 </DockPanel>
 
                 <DockPanel DockPanel.Dock="Right">
@@ -85,8 +85,10 @@
                                     <ImageBrush ImageSource="/img/avatar.png" ></ImageBrush>
                                 </Ellipse.Fill>
                             </Ellipse>
-                            <TextBlock Text="{Binding Name}"  Margin="50,10,30,0" Foreground="#033270" FontWeight="Bold"/>
-                            <TextBlock Text="{Binding VaiTro}"  HorizontalAlignment="Left"  Margin="50 25 0 0" Foreground="#033270" FontWeight="Light"></TextBlock>
+                            <StackPanel>
+                                <TextBlock x:Name="Ten" Width="120" Text="{Binding NameUsr, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"  Margin="50 10 0 0" Foreground="#033270" FontWeight="Bold" TextWrapping="WrapWithOverflow"/>
+                                <TextBlock x:Name="Vaitro" Text="{Binding Position}"  HorizontalAlignment="Left"  Margin="55 0 0 0" Foreground="#033270" FontWeight="Light"></TextBlock>
+                            </StackPanel>
                         </Grid>
                     </Button>
                 </DockPanel>
