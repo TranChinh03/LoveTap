@@ -5,6 +5,7 @@ using LoveTap.UserControlCustom;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -13,6 +14,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Imaging;
 
 namespace LoveTap.ViewModel
 {
@@ -21,6 +23,8 @@ namespace LoveTap.ViewModel
         private readonly NavigationStore _navigationStore;
         public BaseViewModel CurrentViewModel => _navigationStore.CurrentViewModel;
         public string TabName;
+        public string Name;
+        public string VaiTro = "Staff";
 
         public bool IsLoaded { get; set; } = false;
         public ICommand LoadedMainWd { get; set; }
@@ -52,8 +56,18 @@ namespace LoveTap.ViewModel
                 if (loginVM.IsLogin)
                 {
                     ID = loginVM.ID;
-                    if ((DataProvider.Ins.DB.NHANVIENs.Where(x => x.MANV == ID).ToList())[0].VAITRO == true)
+                    NHANVIEN temp = (DataProvider.Ins.DB.NHANVIENs.Where(x => x.MANV == ID).ToList())[0];
+                    Name = temp.HOTEN;
+                    if (temp.VAITRO == true)
+                    {
                         IsAdmin = true;
+                        VaiTro = "Admin";
+                    }
+                    else
+                    {
+                        IsAdmin = false;
+                        VaiTro = "Staff";
+                    }
                     p.Show();
                 }
                 else
@@ -86,8 +100,18 @@ namespace LoveTap.ViewModel
                     if (loginVM.IsLogin)
                     {
                         ID = loginVM.ID;
-                        if ((DataProvider.Ins.DB.NHANVIENs.Where(x => x.MANV == ID).ToList())[0].VAITRO == true)
+                        NHANVIEN temp = (DataProvider.Ins.DB.NHANVIENs.Where(x => x.MANV == ID).ToList())[0];
+                        Name = temp.HOTEN;
+                        if (temp.VAITRO == true)
+                        {
                             IsAdmin = true;
+                            VaiTro = "Admin";
+                        }
+                        else
+                        {
+                            IsAdmin = false;
+                            VaiTro = "Staff";
+                        }
                         p.Show();
                     }
                     else
@@ -107,5 +131,18 @@ namespace LoveTap.ViewModel
         {
             OnPropertyChanged(nameof(CurrentViewModel));
         }
+
+
+        //M?y hàm này dùng ?? l?u ?nh, ??ng quan tâm nha
+        //public byte[] getJPGFromImageControl(BitmapImage imageC)
+        //{
+        //    MemoryStream memStream = new MemoryStream();
+        //    JpegBitmapEncoder encoder = new JpegBitmapEncoder();
+        //    encoder.Frames.Add(BitmapFrame.Create(imageC));
+        //    encoder.Save(memStream);
+        //    return memStream.ToArray();
+        //}
+
+        //getJPGFromImageControl(firmaUno.Source as BitmapImage);
     }
 }
