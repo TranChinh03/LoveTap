@@ -69,7 +69,7 @@
             <DockPanel>
                 <DockPanel DockPanel.Dock="Left">
                     <TextBlock  x:Name="Tabtxbl" Width="100" DockPanel.Dock="Left" Text="{Binding TabName}" Foreground="#033270" FontSize="20" FontWeight="Bold" Margin="10 0 0 0" VerticalAlignment="Center"
-                           HorizontalAlignment="Center">Home</TextBlock>
+                           HorizontalAlignment="Center"></TextBlock>
                     <Image Source="/img/horizontalLine.png" Height ="40" Margin="10 0 0 0"></Image>
                 </DockPanel>
                 <DockPanel DockPanel.Dock="Left" Margin="0 5 0 0">
@@ -85,8 +85,8 @@
                                     <ImageBrush ImageSource="/img/avatar.png" ></ImageBrush>
                                 </Ellipse.Fill>
                             </Ellipse>
-                            <TextBlock Text="Xuân Thảo" HorizontalAlignment="Left"  Margin="50 10 0 0" Foreground="#033270" FontWeight="Bold"></TextBlock>
-                            <TextBlock Text="Staff"  HorizontalAlignment="Left"  Margin="50 25 0 0" Foreground="#033270" FontWeight="Light"></TextBlock>
+                            <TextBlock Text="{Binding Name}"  Margin="50,10,30,0" Foreground="#033270" FontWeight="Bold"/>
+                            <TextBlock Text="{Binding VaiTro}"  HorizontalAlignment="Left"  Margin="50 25 0 0" Foreground="#033270" FontWeight="Light"></TextBlock>
                         </Grid>
                     </Button>
                 </DockPanel>
@@ -131,7 +131,7 @@
                                        Style="{StaticResource Text_Style}" />
                     </StackPanel>
                 </RadioButton>
-                
+
                 <!--Good-->
                 <RadioButton Style="{StaticResource BtnStyle}"
                               Command="{Binding navGood}"
@@ -159,7 +159,7 @@
                                        Style="{StaticResource Text_Style}" />
                     </StackPanel>
                 </RadioButton>
-                
+
                 <!--Order-->
                 <RadioButton Style="{StaticResource BtnStyle}"
                               Command="{Binding navReceive}"
@@ -187,7 +187,7 @@
                                        Style="{StaticResource Text_Style}" />
                     </StackPanel>
                 </RadioButton>
-                
+
                 <!--Statistic-->
                 <RadioButton Style="{StaticResource BtnStyle}"
                               Command="{Binding navStatistic}"
@@ -201,7 +201,7 @@
                                        Style="{StaticResource Text_Style}" />
                     </StackPanel>
                 </RadioButton>
-                
+
                 <!--Employee-->
                 <RadioButton Style="{StaticResource BtnStyle}"
                               Command="{Binding navEmployee}"
