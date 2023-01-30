@@ -45,6 +45,7 @@ namespace LoveTap.ViewModel
         public int Branch { get => _Branch; set { _Branch = value; OnPropertyChanged(); } }
 
         public ICommand LoadedEmployeeDetailUC { get; set; }
+        public ICommand DeleteCommand { get; set; }
         public ICommand navEdit { get; set; }
         public ICommand navBack { get; set; }
         public EmployeeDetailViewModel(NavigationStore navigationStore)
@@ -66,6 +67,13 @@ namespace LoveTap.ViewModel
                 BasicPay = temp.LUONGCB.ToString();
                 Branch = (int)temp.MACN;
                 Email = temp.EMAIL;
+            });
+
+            DeleteCommand = new RelayCommand<UserControl>((p) => true, (p) =>
+            {
+                var employee = DataProvider.Ins.DB.NHANVIENs.Where(x => x.MANV == ID).SingleOrDefault();
+                employee.DELETED = true;
+                DataProvider.Ins.DB.SaveChanges();
             });
 
             navBack = new NavigationCommand<EmployeeViewModel>(navigationStore, () => new EmployeeViewModel(navigationStore));
