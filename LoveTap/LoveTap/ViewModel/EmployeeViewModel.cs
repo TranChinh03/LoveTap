@@ -181,7 +181,7 @@ namespace LoveTap.ViewModel
 
         public EmployeeViewModel(NavigationStore navigationStore)
         {
-            EmployeeList = new ObservableCollection<NHANVIEN>(DataProvider.Ins.DB.NHANVIENs);
+            EmployeeList = new ObservableCollection<NHANVIEN>(DataProvider.Ins.DB.NHANVIENs.Where(x => x.DELETED == false));
             BranchList = new ObservableCollection<CHINHANH>(DataProvider.Ins.DB.CHINHANHs);
             navAddEmployee = new NavigationCommand<AddEmployeeViewModel>(navigationStore, () => new AddEmployeeViewModel(navigationStore));
             navDetail = new NavigationCommand<EmployeeDetailViewModel>(navigationStore, () => new EmployeeDetailViewModel(navigationStore));
