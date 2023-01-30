@@ -22,26 +22,28 @@ namespace LoveTap.ViewModel
     {
         private readonly NavigationStore _navigationStore;
         public BaseViewModel CurrentViewModel => _navigationStore.CurrentViewModel;
-        public string TabName;
-        public string Name;
-        public string VaiTro = "Staff";
+        public static string TabName;
+        public string _NameUsr;
+        public string NameUsr { get => _NameUsr; set { _NameUsr = value; OnPropertyChanged(); } }
+        public string _Position;
+        public string Position { get => _Position; set { _Position = value; OnPropertyChanged(); } }
 
         public bool IsLoaded { get; set; } = false;
         public ICommand LoadedMainWd { get; set; }
         public ICommand LogOut { get; set; }
-        public ICommand navProfile { get;  }
-        public ICommand navHome { get;  }
-        public ICommand navGood { get;  }
-        public ICommand navDelivery { get;  }
-        public ICommand navReceive { get;  }
-        public ICommand navCustomer { get;  }
-        public ICommand navStatistic { get;  }
-        public ICommand navEmployee { get;  }
+        public ICommand navProfile { get; }
+        public ICommand navHome { get; }
+        public ICommand navGood { get; }
+        public ICommand navDelivery { get; }
+        public ICommand navReceive { get; }
+        public ICommand navCustomer { get; }
+        public ICommand navStatistic { get; }
+        public ICommand navEmployee { get; }
         public static int ID { get; set; }
         public static bool IsAdmin { get; set; } = false;
         public MainViewModel(NavigationStore navigationStore)
         {
-            LoadedMainWd = new RelayCommand<Window>((p) => { return true; }, (p) =>
+            LoadedMainWd = new RelayCommand<MainWd>((p) => { return true; }, (p) =>
             {
                 IsLoaded = true;
                 if (p == null)
@@ -57,16 +59,29 @@ namespace LoveTap.ViewModel
                 {
                     ID = loginVM.ID;
                     NHANVIEN temp = (DataProvider.Ins.DB.NHANVIENs.Where(x => x.MANV == ID).ToList())[0];
-                    Name = temp.HOTEN;
+                    NameUsr = temp.HOTEN;
+                    int count = 0, i = NameUsr.Length;
+                    string nametmp;
+                    while (count < 2)
+                    {
+                        i--;
+                        if (NameUsr[i] == ' ')
+                            count++;
+                    }
+                    nametmp = NameUsr.Substring(i, NameUsr.Length-i);
+
+                    p.wishTxt.Text = "Have a good day,"+ nametmp +"!";
+
+                    NameUsr = nametmp;
                     if (temp.VAITRO == true)
                     {
                         IsAdmin = true;
-                        VaiTro = "Admin";
+                        Position = "Admin";
                     }
                     else
                     {
                         IsAdmin = false;
-                        VaiTro = "Staff";
+                        Position = "Staff";
                     }
                     p.Show();
                 }
@@ -86,7 +101,7 @@ namespace LoveTap.ViewModel
             navCustomer = new NavigationCommand<CustomerViewModel>(navigationStore, () => new CustomerViewModel(navigationStore));
             navStatistic = new NavigationCommand<StatisticViewModel>(navigationStore, () => new StatisticViewModel(navigationStore));
             navEmployee = new NavigationCommand<EmployeeViewModel>(navigationStore, () => new EmployeeViewModel(navigationStore));
-            LogOut = new RelayCommand<Window>((p) => { return true; }, (p) =>
+            LogOut = new RelayCommand<MainWd>((p) => { return true; }, (p) =>
             {
                 if (MessageBox.Show("Do you want to LogOut?", "Log Out", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
                 {
@@ -101,16 +116,17 @@ namespace LoveTap.ViewModel
                     {
                         ID = loginVM.ID;
                         NHANVIEN temp = (DataProvider.Ins.DB.NHANVIENs.Where(x => x.MANV == ID).ToList())[0];
-                        Name = temp.HOTEN;
+
+                        NameUsr = temp.HOTEN;
                         if (temp.VAITRO == true)
                         {
                             IsAdmin = true;
-                            VaiTro = "Admin";
+                            Position = "Admin";
                         }
                         else
                         {
                             IsAdmin = false;
-                            VaiTro = "Staff";
+                            Position = "Staff";
                         }
                         p.Show();
                     }
@@ -119,12 +135,11 @@ namespace LoveTap.ViewModel
                         p.Close();
                     }
                 }
+
             });
 
             _navigationStore = navigationStore;
             _navigationStore.CurrentViewModelChanged += OnCurrentViewModelChanged;
-
-            
         }
 
         private void OnCurrentViewModelChanged()
