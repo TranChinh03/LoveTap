@@ -87,8 +87,8 @@ namespace LoveTap.ViewModel
         private List<Order> _MyOrderList = new List<Order>();
         public List<Order> MyOrderList { get => _MyOrderList; set { _MyOrderList = value; } }
         public ICommand LoadedOrderDetail { get; set; }
-        string Name;
-        private Visual print;
+        //string Name;
+        //private Visual print;
 
         public OrderDetailViewModel( NavigationStore navigationStore)
         {
@@ -105,57 +105,59 @@ namespace LoveTap.ViewModel
             //});
             LoadedOrderDetail = new RelayCommand<UserControl>((p) => true, (p) =>
             {
-                ProductList = new ObservableCollection<SANPHAM>(DataProvider.Ins.DB.SANPHAMs);
-                OrderDetailList = new ObservableCollection<CTHD>(DataProvider.Ins.DB.CTHDs);
-                CustomerList = new ObservableCollection<KHACHHANG>(DataProvider.Ins.DB.KHACHHANGs);
-                EmployeeList = new ObservableCollection<NHANVIEN>(DataProvider.Ins.DB.NHANVIENs);
-
-
-                OrdersViewModel.Order temp = OrdersViewModel.OrderSelected;
-
-                ID = (int)temp.ID;
-                Date = (DateTime)temp.Date;
-                SubTotal = 0;
                
 
+            });
 
-                for (int i = 0; i < DataProvider.Ins.DB.CTHDs.Count(); i++)
+            ProductList = new ObservableCollection<SANPHAM>(DataProvider.Ins.DB.SANPHAMs);
+            OrderDetailList = new ObservableCollection<CTHD>(DataProvider.Ins.DB.CTHDs);
+            CustomerList = new ObservableCollection<KHACHHANG>(DataProvider.Ins.DB.KHACHHANGs);
+            EmployeeList = new ObservableCollection<NHANVIEN>(DataProvider.Ins.DB.NHANVIENs);
+
+
+            OrdersViewModel.Order temp = OrdersViewModel.OrderSelected;
+
+            ID = (int)temp.ID;
+            Date = (DateTime)temp.Date;
+            SubTotal = 0;
+
+
+
+            for (int i = 0; i < DataProvider.Ins.DB.CTHDs.Count(); i++)
+            {
+                if (OrderDetailList[i].MAHD == ID)
                 {
-                    if (OrderDetailList[i].MAHD == ID)
+                    Order order = new Order();
+                    for (int j = 0; j < DataProvider.Ins.DB.SANPHAMs.Count(); j++)
                     {
-                        Order order = new Order();
-                        for (int j = 0; j < DataProvider.Ins.DB.SANPHAMs.Count(); j++)
+                        if (ProductList[j].MASP == OrderDetailList[i].MASP)
                         {
-                            if (ProductList[j].MASP == OrderDetailList[i].MASP)
-                            {
-                                order.Ten = ProductList[j].TEN;
-                                order.Gia = (double)ProductList[j].GIA;
-                                order.SoLuong = (int)OrderDetailList[i].SOLUONG;
-                                order.TongTien = order.SoLuong * order.Gia;
-                                SubTotal += order.TongTien;
-                                MyOrderList.Add(order);
-                            }
-
+                            order.Ten = ProductList[j].TEN;
+                            order.Gia = (double)ProductList[j].GIA;
+                            order.SoLuong = (int)OrderDetailList[i].SOLUONG;
+                            order.TongTien = order.SoLuong * order.Gia;
+                            SubTotal += order.TongTien;
+                            MyOrderList.Add(order);
                         }
 
                     }
-                }
 
-                foreach(NHANVIEN nv in DataProvider.Ins.DB.NHANVIENs.Where(x => x.MANV == temp.MANV))
-                {
-                    EmployeeName = nv.HOTEN.ToString();
-                    EmployeeID = nv.MANV.ToString();
-                    Branch = nv.MACN.ToString();
                 }
+            }
 
-                foreach (KHACHHANG kh in DataProvider.Ins.DB.KHACHHANGs.Where(x => x.MAKH == temp.MAKH))
-                {
-                    CustomerName = kh.HOTEN.ToString();
-                    Phone = kh.SDT.ToString();
-                    Address = kh.DIACHI.ToString();
-                }
+            foreach (NHANVIEN nv in DataProvider.Ins.DB.NHANVIENs.Where(x => x.MANV == temp.MANV))
+            {
+                EmployeeName = nv.HOTEN.ToString();
+                EmployeeID = nv.MANV.ToString();
+                Branch = nv.MACN.ToString();
+            }
 
-            });
+            foreach (KHACHHANG kh in DataProvider.Ins.DB.KHACHHANGs.Where(x => x.MAKH == temp.MAKH))
+            {
+                CustomerName = kh.HOTEN.ToString();
+                Phone = kh.SDT.ToString();
+                Address = kh.DIACHI.ToString();
+            }
 
             DeleteCommand = new RelayCommand<UserControl>((p) => true, (p) =>
             {
