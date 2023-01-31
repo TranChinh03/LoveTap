@@ -566,6 +566,25 @@
     <Resource Include="img\LoveTapBackground2.png" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="img\ProductAvatar\ChuotKoDayLogitech.jpg" />
+    <Resource Include="img\ProductAvatar\LaptopAcer.jpg" />
+    <Resource Include="img\ProductAvatar\LaptopDell.jpg" />
+    <Resource Include="img\ProductAvatar\LaptopHP.jpg" />
+    <Resource Include="img\ProductAvatar\LaptopMacbook.jpg" />
+    <Resource Include="img\ProductAvatar\LaptopMSI.jpg" />
+    <Resource Include="img\ProductAvatar\LaptopSamsung.jpg" />
+    <Resource Include="img\ProductAvatar\LaptopVivobook.jpg" />
+    <Resource Include="img\ProductAvatar\LatopASUS.jpg" />
+    <Resource Include="img\ProductAvatar\LotChuotDen.jpg" />
+    <Resource Include="img\UserAvatar\admin1.png" />
+    <Resource Include="img\UserAvatar\admin2.png" />
+    <Resource Include="img\UserAvatar\admin3.png" />
+    <Resource Include="img\UserAvatar\admin4.png" />
+    <Resource Include="img\UserAvatar\admin5.png" />
+    <Resource Include="img\UserAvatar\customer_female.png" />
+    <Resource Include="img\UserAvatar\customer_male.png" />
+    <Resource Include="img\UserAvatar\staff1.png" />
+    <Resource Include="img\UserAvatar\staff2.png" />
     <Content Include="Model\Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Model1.edmx</DependentUpon>

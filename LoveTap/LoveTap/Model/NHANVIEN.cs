@@ -35,6 +35,7 @@ namespace LoveTap.Model
         public Nullable<bool> VAITRO { get; set; }
         public string EMAIL { get; set; }
         public Nullable<bool> DELETED { get; set; }
+        public string IMG_PATH { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CHINHANH> CHINHANHs { get; set; }
