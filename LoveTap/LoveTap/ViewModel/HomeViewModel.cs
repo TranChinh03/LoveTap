@@ -50,14 +50,19 @@ namespace LoveTap.ViewModel
         private string _Stock;
         public string Stock { get => _Stock; set { _Stock = value; OnPropertyChanged(); } }
         public ICommand ChangeDate { get; set; }
+        public ICommand navStatistic { get; set; }
+        public ICommand updateTabName { get; set; }
+        public ICommand updateCbb { get; set; }
+        public ICommand updateCbb2 { get; set; }
+        public ICommand updateCbb3 { get; set; }
 
         public ICommand navDetail { get; set; }
         public ICommand Detail { get; set; }
 
         public ICommand LoadHome { get; set; }
         string Name;
-        public Nullable<double> _Doanhthu { get; set; }
-        public Nullable<double> Doanhthu { get => _Doanhthu; set { _Doanhthu = value; OnPropertyChanged(); } }
+        public Nullable<double> _SanPham { get; set; }
+        public Nullable<double> SanPham { get => _SanPham; set { _SanPham = value; OnPropertyChanged(); } }
         public DateTime _selectedDate { get; set; }
         public DateTime selectedDate { get => _selectedDate; set { _selectedDate = value; OnPropertyChanged(); } }
         public int _slOrders { get; set; }
@@ -75,6 +80,18 @@ namespace LoveTap.ViewModel
         private List<BestSelling> _BestSellingList = new List<BestSelling>();
         public List<BestSelling> BestSellingList { get => _BestSellingList; set { _BestSellingList = value; } }
 
+        void _UpdateCbb(StatisticViewUC p)
+        {
+            StatisticViewModel.cbbTypeSlted=0;
+        }
+        void _UpdateCbb2(StatisticViewUC p)
+        {
+            StatisticViewModel.cbbTypeSlted=1;
+        }
+        void _UpdateCbb3(StatisticViewUC p)
+        {
+            StatisticViewModel.cbbTypeSlted=2;
+        }
         public HomeViewModel(NavigationStore navigationStore)
         {
 
@@ -85,9 +102,15 @@ namespace LoveTap.ViewModel
             StockList = new ObservableCollection<TONKHO>(DataProvider.Ins.DB.TONKHOes);
 
             ChangeDate = new RelayCommand<Calendar>((p) => { return p.SelectedDates == null ? false : true; }, (p) => _SelectedDate(p));
+            selectedDate= DateTime.Now.Date;
             Detail = new RelayCommand<HomeViewUC>((p) => { return p.BestSellingList.SelectedItem == null ? false : true; }, (p) => _DetailCs(p));
             navDetail = new NavigationCommand<GoodDetailViewModel>(navigationStore, () => new GoodDetailViewModel(navigationStore));
-            selectedDate= DateTime.Now.Date;
+            navStatistic = new NavigationCommand<StatisticViewModel>(navigationStore, () => new StatisticViewModel(navigationStore));
+            
+            updateTabName = new RelayCommand<MainWd>((p) => { return true; }, (p) => _UpdateTabName(p));
+            updateCbb = new RelayCommand<StatisticViewUC>((p) => { return true; }, (p) => _UpdateCbb(p));
+            updateCbb2 = new RelayCommand<StatisticViewUC>((p) => { return true; }, (p) => _UpdateCbb2(p));
+            updateCbb3 = new RelayCommand<StatisticViewUC>((p) => { return true; }, (p) => _UpdateCbb3(p));
 
             int[] sum = new int[DataProvider.Ins.DB.SANPHAMs.Count()];
             string[] name = new string[DataProvider.Ins.DB.SANPHAMs.Count()];
@@ -135,7 +158,11 @@ namespace LoveTap.ViewModel
             Statistic();
         }
 
-
+        void _UpdateTabName(MainWd  p)
+        {
+            p.Tabtxbl.Text="Statistic";
+        }
+        
         //SelectedDay
         void _SelectedDate(Calendar p)
         {
@@ -159,12 +186,14 @@ namespace LoveTap.ViewModel
 
         void Statistic()
         {
-            slKhachHang = 0; slOrders= 0; Doanhthu = 0;
+            slKhachHang = 0; slOrders= 0; SanPham = 0;
             for (int i = 0; i < DataProvider.Ins.DB.HOADONs.Count(); i++)
                 if (OrderList[i].NGMUA==selectedDate)
                 {
                     slOrders++;
-                    Doanhthu += OrderList[i].TONGTIEN;
+                    for (int j = 0; j < DataProvider.Ins.DB.CTHDs.Count(); j++)
+                        if (OrdersDetailList[j].MAHD == OrderList[i].MAHD)
+                            SanPham += OrdersDetailList[j].SOLUONG;
                 };
             for (int i = 0; i < DataProvider.Ins.DB.KHACHHANGs.Count(); i++)
                 if (CustomerList[i].NGDK==selectedDate)

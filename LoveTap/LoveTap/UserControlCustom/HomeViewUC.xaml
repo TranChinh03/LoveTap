@@ -15,7 +15,7 @@
         TextOptions.TextRenderingMode="Auto"
         Background="{DynamicResource MaterialDesignPaper}"
         FontFamily="{DynamicResource MaterialDesignFont}"
-        Name="HomeView" Height="456.2" Width="656.666666666667"
+        Name="HomeView" Height="466.2" Width="666.666666666667"
              
 >
 
@@ -63,7 +63,7 @@
                                         HorizontalAlignment="Left"
                                         VerticalAlignment="Top"
                                         Foreground="#5684B0"
-                                        >REVENUE/DAY</TextBlock>
+                                        >GOODS/DAY</TextBlock>
                                 <TextBlock Margin="10, 10, 10, 10" 
                                         FontSize="10"
                                         HorizontalAlignment="Right"
@@ -79,15 +79,7 @@
                                         HorizontalAlignment="Center"
                                         VerticalAlignment="Center"
                                         Foreground="{StaticResource Catalina Blue}"
-                                       Text="{Binding Doanhthu}"
-                                        >
-                                    </TextBlock>
-                                    <TextBlock Margin="0, 10, 10, 10" 
-                                        FontSize="13"
-                                        HorizontalAlignment="Center"
-                                        VerticalAlignment="Bottom"
-                                        Foreground="{StaticResource Catalina Blue}"
-                                       Text="VND"
+                                       Text="{Binding SanPham}"
                                         >
                                     </TextBlock>
                                 </StackPanel>
@@ -98,17 +90,18 @@
                                         Foreground="#5684B0"
                                         TextDecorations="Underline"
                                         >See details</TextBlock>
-                                <Image 
-                                Width="15" 
-                                Source="../img/dollar.jpg"
-                                HorizontalAlignment="Right"
+                                <materialDesign:PackIcon Kind="CartVariant" Width="20" HorizontalAlignment="Right"
                                 VerticalAlignment="Bottom"
-                                Margin="10, 10, 10, 10" 
-                                ></Image>
+                                Margin="10, 10, 10, 10" Foreground="Green" />
                             </Grid>
-
                         </materialDesign:Card>
-
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="Click">
+                                <i:InvokeCommandAction  Command="{Binding updateTabName}" CommandParameter="{Binding ElementName=mainWindow}"></i:InvokeCommandAction>
+                                <i:InvokeCommandAction  Command="{Binding updateCbb}" CommandParameter="{Binding ElementName=StatisticView}"></i:InvokeCommandAction>
+                                <i:InvokeCommandAction  Command="{Binding navStatistic}"></i:InvokeCommandAction>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
                     </Button>
 
 
@@ -156,10 +149,16 @@
                                 VerticalAlignment="Bottom"
                                 Margin="10, 10, 10, 10" 
                                 ></Image>
-
+                               
                             </Grid>
-
                         </materialDesign:Card>
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="Click">
+                                <i:InvokeCommandAction  Command="{Binding updateTabName}" CommandParameter="{Binding ElementName=mainWindow}"></i:InvokeCommandAction>
+                                <i:InvokeCommandAction  Command="{Binding updateCbb2}" CommandParameter="{Binding ElementName=StatisticView}"></i:InvokeCommandAction>
+                                <i:InvokeCommandAction  Command="{Binding navStatistic}"></i:InvokeCommandAction>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
                     </Button>
 
                     <!-- CUSTOMER -->
@@ -210,12 +209,16 @@
                                 ></Image>
 
                             </Grid>
-
                         </materialDesign:Card>
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="Click">
+                                <i:InvokeCommandAction  Command="{Binding updateTabName}" CommandParameter="{Binding ElementName=mainWindow}"></i:InvokeCommandAction>
+                                <i:InvokeCommandAction  Command="{Binding updateCbb3}" CommandParameter="{Binding ElementName=StatisticView}"></i:InvokeCommandAction>
+                                <i:InvokeCommandAction  Command="{Binding navStatistic}"></i:InvokeCommandAction>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
                     </Button>
-
                 </StackPanel>
-
             </Grid>
 
 

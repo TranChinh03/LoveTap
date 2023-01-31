@@ -58,7 +58,6 @@ namespace LoveTap.ViewModel
         string Name;
         public ProfileUsrViewModel(NavigationStore navigationStore)
         {
-
             UserID = MainViewModel.ID;
             User = new ObservableCollection<NHANVIEN>(DataProvider.Ins.DB.NHANVIENs.Where(x => x.MANV == UserID));
             if (User != null && User.Count > 0)
