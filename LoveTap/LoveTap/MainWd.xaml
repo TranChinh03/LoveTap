@@ -68,7 +68,7 @@
         <Grid Name="ProfileBar" Background= "White" Grid.Row="1" Grid.ColumnSpan="10" Grid.Column="2">
             <DockPanel>
                 <DockPanel DockPanel.Dock="Left">
-                    <TextBlock  x:Name="Tabtxbl" Width="100" DockPanel.Dock="Left" Text="{Binding TabName}" Foreground="#033270" FontSize="20" FontWeight="Bold" Margin="10 0 0 0" VerticalAlignment="Center"
+                    <TextBlock  x:Name="Tabtxbl" Width="100" Text="{Binding TabName}" DockPanel.Dock="Left"  Foreground="#033270" FontSize="20" FontWeight="Bold" Margin="12 0 0 0" VerticalAlignment="Center"
                            HorizontalAlignment="Center"></TextBlock>
                     <Image Source="/img/horizontalLine.png" Height ="40" Margin="10 0 0 0"></Image>
                 </DockPanel>
@@ -78,7 +78,7 @@
                 </DockPanel>
 
                 <DockPanel DockPanel.Dock="Right">
-                    <Button  Margin="55 0 0 0" Height="50" Width="180" Command="{Binding navProfile}" Background="White" BorderThickness="0">
+                    <Button x:Name="Profile"  Margin="55 0 0 0" Height="50" Width="180" Background="White" BorderThickness="0">
                         <Grid Height="50" Margin="-10">
                             <Ellipse Height="45" Width="45" HorizontalAlignment="Left">
                                 <Ellipse.Fill>
@@ -90,6 +90,12 @@
                                 <TextBlock x:Name="Vaitro" Text="{Binding Position}"  HorizontalAlignment="Left"  Margin="55 0 0 0" Foreground="#033270" FontWeight="Light"></TextBlock>
                             </StackPanel>
                         </Grid>
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="Click">
+                                <i:InvokeCommandAction Command="{Binding navProfile}"></i:InvokeCommandAction>
+                                <i:InvokeCommandAction Command="{Binding updateTabName}"></i:InvokeCommandAction>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
                     </Button>
                 </DockPanel>
 
@@ -119,10 +125,9 @@
 
             <!--Menu Tab-->
             <!--Home-->
-            <StackPanel Grid.Row="1"  
+            <StackPanel x:Name="menuStack" Grid.Row="1"  
             IsEnabled="{Binding IsChecked, ElementName=EnableListBox}" >
-                <RadioButton Style="{StaticResource BtnStyle}"
-                              Command="{Binding navHome}"
+                <RadioButton Name="Home" Style="{StaticResource BtnStyle}"
                               IsChecked="True">
 
                     <StackPanel Orientation="Horizontal">
@@ -132,12 +137,16 @@
                         <TextBlock Text="Home"
                                        Style="{StaticResource Text_Style}" />
                     </StackPanel>
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="Click">
+                            <i:InvokeCommandAction Command="{Binding navHome}"></i:InvokeCommandAction>
+                            <i:InvokeCommandAction Command="{Binding updateTabNameRd}" CommandParameter="{Binding ElementName=mainWindow}"></i:InvokeCommandAction>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
                 </RadioButton>
 
                 <!--Good-->
-                <RadioButton Style="{StaticResource BtnStyle}"
-                              Command="{Binding navGood}"
-                              >
+                <RadioButton Name="Goods" Style="{StaticResource BtnStyle}">
 
                     <StackPanel Orientation="Horizontal">
 
@@ -146,12 +155,16 @@
                         <TextBlock Text="Goods"
                                        Style="{StaticResource Text_Style}" />
                     </StackPanel>
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="Click">
+                            <i:InvokeCommandAction Command="{Binding navGood}"></i:InvokeCommandAction>
+                            <i:InvokeCommandAction Command="{Binding updateTabNameRd}" CommandParameter="{Binding ElementName=mainWindow}"></i:InvokeCommandAction>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
                 </RadioButton>
 
                 <!--Order-->
-                <RadioButton Style="{StaticResource BtnStyle}"
-                              Command="{Binding navDelivery}"
-                              >
+                <RadioButton Name="Delivery" Style="{StaticResource BtnStyle}">
 
                     <StackPanel Orientation="Horizontal">
 
@@ -160,12 +173,16 @@
                         <TextBlock Text="Delivery"
                                        Style="{StaticResource Text_Style}" />
                     </StackPanel>
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="Click">
+                            <i:InvokeCommandAction Command="{Binding navDelivery}"></i:InvokeCommandAction>
+                            <i:InvokeCommandAction Command="{Binding updateTabNameRd}" CommandParameter="{Binding ElementName=mainWindow}"></i:InvokeCommandAction>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
                 </RadioButton>
 
-                <!--Order-->
-                <RadioButton Style="{StaticResource BtnStyle}"
-                              Command="{Binding navReceive}"
-                              >
+                <!--Recieve-->
+                <RadioButton Name="Receive" Style="{StaticResource BtnStyle}">
 
                     <StackPanel Orientation="Horizontal">
 
@@ -174,12 +191,16 @@
                         <TextBlock Text="Receive"
                                        Style="{StaticResource Text_Style}" />
                     </StackPanel>
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="Click">
+                            <i:InvokeCommandAction Command="{Binding navReceive}"></i:InvokeCommandAction>
+                            <i:InvokeCommandAction Command="{Binding updateTabNameRd}" CommandParameter="{Binding ElementName=mainWindow}"></i:InvokeCommandAction>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
                 </RadioButton>
 
                 <!--Customer-->
-                <RadioButton Style="{StaticResource BtnStyle}"
-                              Command="{Binding navCustomer}"
-                              >
+                <RadioButton Name="Customer" Style="{StaticResource BtnStyle}">
 
                     <StackPanel Orientation="Horizontal">
 
@@ -188,12 +209,16 @@
                         <TextBlock Text="Customer"
                                        Style="{StaticResource Text_Style}" />
                     </StackPanel>
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="Click">
+                            <i:InvokeCommandAction Command="{Binding navCustomer}"></i:InvokeCommandAction>
+                            <i:InvokeCommandAction Command="{Binding updateTabNameRd}" CommandParameter="{Binding ElementName=mainWindow}"></i:InvokeCommandAction>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
                 </RadioButton>
 
                 <!--Statistic-->
-                <RadioButton Style="{StaticResource BtnStyle}"
-                              Command="{Binding navStatistic}"
-                              >
+                <RadioButton Name="Statistic" Style="{StaticResource BtnStyle}">
 
                     <StackPanel Orientation="Horizontal">
 
@@ -202,12 +227,16 @@
                         <TextBlock Text="Statistic"
                                        Style="{StaticResource Text_Style}" />
                     </StackPanel>
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="Click">
+                            <i:InvokeCommandAction Command="{Binding navStatistic}"></i:InvokeCommandAction>
+                            <i:InvokeCommandAction Command="{Binding updateTabNameRd}" CommandParameter="{Binding ElementName=mainWindow}"></i:InvokeCommandAction>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
                 </RadioButton>
 
                 <!--Employee-->
-                <RadioButton Style="{StaticResource BtnStyle}"
-                              Command="{Binding navEmployee}"
-                              >
+                <RadioButton Name="Employee" Style="{StaticResource BtnStyle}">
 
                     <StackPanel Orientation="Horizontal">
 
@@ -216,6 +245,12 @@
                         <TextBlock Text="Employee"
                                        Style="{StaticResource Text_Style}" />
                     </StackPanel>
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="Click">
+                            <i:InvokeCommandAction Command="{Binding navEmployee}"></i:InvokeCommandAction>
+                            <i:InvokeCommandAction Command="{Binding updateTabNameRd}" CommandParameter="{Binding ElementName=mainWindow}"></i:InvokeCommandAction>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
                 </RadioButton>
 
                 <RadioButton Style="{StaticResource BtnStyle}"

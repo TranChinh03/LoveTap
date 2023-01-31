@@ -22,7 +22,9 @@ namespace LoveTap.ViewModel
     {
         private readonly NavigationStore _navigationStore;
         public BaseViewModel CurrentViewModel => _navigationStore.CurrentViewModel;
-        public static string TabName;
+        
+        private string _TabName;
+        public string TabName { get => _TabName; set { _TabName = value; OnPropertyChanged(); } }
         private string _NameUsr;
         public string NameUsr { get => _NameUsr; set { _NameUsr = value; OnPropertyChanged(); } }
         private string _Position;
@@ -35,6 +37,8 @@ namespace LoveTap.ViewModel
         public ICommand LoadedMainWd { get; set; }
         public ICommand LogOut { get; set; }
         public ICommand navProfile { get; }
+        public ICommand updateTabName { get; }
+        public ICommand updateTabNameRd { get; }
         public ICommand navHome { get; }
         public ICommand navGood { get; }
         public ICommand navDelivery { get; }
@@ -46,6 +50,7 @@ namespace LoveTap.ViewModel
         public static bool IsAdmin { get; set; } = false;
         public MainViewModel(NavigationStore navigationStore)
         {
+            TabName = "Home";
             LoadedMainWd = new RelayCommand<MainWd>((p) => { return true; }, (p) =>
             {
                 IsLoaded = true;
@@ -97,6 +102,8 @@ namespace LoveTap.ViewModel
             }
             );
 
+            updateTabName = new RelayCommand<MainWd>((p) => { return  true; }, (p) => _Update(p));
+            updateTabNameRd = new RelayCommand<MainWd>((p) => { return  true; }, (p) => _Update2(p));
             navProfile = new NavigationCommand<ProfileUsrViewModel>(navigationStore, () => new ProfileUsrViewModel(navigationStore));
             navHome = new NavigationCommand<HomeViewModel>(navigationStore, () => new HomeViewModel(navigationStore));
             navGood = new NavigationCommand<GoodsViewModel>(navigationStore, () => new GoodsViewModel(navigationStore));
@@ -164,8 +171,22 @@ namespace LoveTap.ViewModel
             OnPropertyChanged(nameof(CurrentViewModel));
         }
 
+        void _Update(MainWd p)
+        {
+            p.Tabtxbl.Text = "Profile";
+        }
+        void _Update2(MainWd p)
+        {
+            if (p.Home.IsChecked== true) { p.Tabtxbl.Text = "Home"; }
+            if (p.Goods.IsChecked== true) { p.Tabtxbl.Text = "Goods"; }
+            if (p.Delivery.IsChecked== true) { p.Tabtxbl.Text = "Delivery"; }
+            if (p.Receive.IsChecked== true) { p.Tabtxbl.Text = "Receive"; }
+            if (p.Customer.IsChecked== true) { p.Tabtxbl.Text = "Customer"; }
+            if (p.Statistic.IsChecked== true) { p.Tabtxbl.Text = "Statistic"; }
+            if (p.Employee.IsChecked== true) { p.Tabtxbl.Text = "Employee"; }
+        }
 
-        //M?y h‡m n‡y d˘ng ?? l?u ?nh, ??ng quan t‚m nha
+        //M?y h√†m n√†y d√πng ?? l?u ?nh, ??ng quan t√¢m nha
         //public byte[] getJPGFromImageControl(BitmapImage imageC)
         //{
         //    MemoryStream memStream = new MemoryStream();
