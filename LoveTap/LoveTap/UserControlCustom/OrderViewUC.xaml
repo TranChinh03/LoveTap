@@ -154,7 +154,7 @@
                                 <GridViewColumn Header="Phone" DisplayMemberBinding="{Binding Phone}"></GridViewColumn>
                                 <GridViewColumn Header="Date" DisplayMemberBinding="{Binding Date, StringFormat='dd/MM/yyyy'}"></GridViewColumn>
                                 <GridViewColumn Header="Total" DisplayMemberBinding="{Binding Total}"></GridViewColumn>
-                                <!--<GridViewColumn Header="Type" DisplayMemberBinding="{Binding LOAIHD}"></GridViewColumn>-->
+                                <GridViewColumn Header="Type" DisplayMemberBinding="{Binding LOAIHD}"></GridViewColumn>
                             </GridView>
                         </ListView.View>
                         <i:Interaction.Triggers>
@@ -164,6 +164,24 @@
                             </i:EventTrigger>
                         </i:Interaction.Triggers>
                     </ListView>
+
+                    <!--<ListView Name ="OrderList"  ItemsSource="{Binding MyFilterList}"  SelectedItem="{Binding SelectedItem, Mode=OneWayToSource}" HorizontalContentAlignment="Center">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Header="Order ID" DisplayMemberBinding="{Binding ID}"></GridViewColumn>
+                                <GridViewColumn Header="Customer ID" DisplayMemberBinding="{Binding MAKH}"></GridViewColumn>
+                                <GridViewColumn Header="Phone" DisplayMemberBinding="{Binding Phone}"></GridViewColumn>
+                                <GridViewColumn Header="Date" DisplayMemberBinding="{Binding Date, StringFormat='dd/MM/yyyy'}"></GridViewColumn>
+                                <GridViewColumn Header="Total" DisplayMemberBinding="{Binding Total}"></GridViewColumn>
+                            </GridView>
+                        </ListView.View>
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="SelectionChanged">
+                                <i:InvokeCommandAction     Command="{Binding Detail}" CommandParameter="{Binding ElementName=OrderView}"></i:InvokeCommandAction>
+                                <i:InvokeCommandAction     Command="{Binding navDetail}"></i:InvokeCommandAction>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </ListView>-->
                 </ScrollViewer>
 
             </Grid>

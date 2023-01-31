@@ -169,6 +169,9 @@
     <Compile Include="UserControlCustom\AddReceiveViewUC.xaml.cs">
       <DependentUpon>AddReceiveViewUC.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UserControlCustom\AddSupplierUC.xaml.cs">
+      <DependentUpon>AddSupplierUC.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserControlCustom\CreateOrderUC.xaml.cs">
       <DependentUpon>CreateOrderUC.xaml</DependentUpon>
     </Compile>
@@ -192,6 +195,9 @@
     </Compile>
     <Compile Include="UserControlCustom\EditGoodsUC.xaml.cs">
       <DependentUpon>EditGoodsUC.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControlCustom\EditSupplierUC.xaml.cs">
+      <DependentUpon>EditSupplierUC.xaml</DependentUpon>
     </Compile>
     <Compile Include="UserControlCustom\EditUsrUC.xaml.cs">
       <DependentUpon>EditUsrUC.xaml</DependentUpon>
@@ -247,10 +253,17 @@
     <Compile Include="UserControlCustom\SuccessModelUC.xaml.cs">
       <DependentUpon>SuccessModelUC.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UserControlCustom\SupplierDetailUC.xaml.cs">
+      <DependentUpon>SupplierDetailUC.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControlCustom\SupplierViewUC.xaml.cs">
+      <DependentUpon>SupplierViewUC.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ViewModel\AddCustomerViewModel.cs" />
     <Compile Include="ViewModel\AddEmployeeViewModel.cs" />
     <Compile Include="ViewModel\AddGoodViewModel.cs" />
     <Compile Include="ViewModel\AddReceiveViewModel.cs" />
+    <Compile Include="ViewModel\AddSupplierViewModel.cs" />
     <Compile Include="ViewModel\CreatePwViewModel.cs" />
     <Compile Include="ViewModel\CustomerDetailViewModel.cs" />
     <Compile Include="ViewModel\AddOrdersViewModel.cs" />
@@ -259,6 +272,7 @@
     <Compile Include="ViewModel\EditCustomerViewModel.cs" />
     <Compile Include="ViewModel\EditEmployeeViewModel.cs" />
     <Compile Include="ViewModel\EditGoodViewModel.cs" />
+    <Compile Include="ViewModel\EditSupplierViewModel.cs" />
     <Compile Include="ViewModel\EmployeeDetailViewModel.cs" />
     <Compile Include="ViewModel\EmployeeViewModel.cs" />
     <Compile Include="ViewModel\GoodDetailViewModel.cs" />
@@ -283,6 +297,8 @@
     <Compile Include="ViewModel\ReceiveInvoiceViewModel.cs" />
     <Compile Include="ViewModel\ReceiveOrderViewModel.cs" />
     <Compile Include="ViewModel\StatisticViewModel.cs" />
+    <Compile Include="ViewModel\SupplierDetailViewModel.cs" />
+    <Compile Include="ViewModel\SupplierViewModel.cs" />
     <Compile Include="ViewModel\UsrPro5EditViewModel.cs" />
     <Page Include="ErrorWindow.xaml">
       <SubType>Designer</SubType>
@@ -324,6 +340,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="UserControlCustom\AddSupplierUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="UserControlCustom\ControlBarUC.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -357,6 +377,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UserControlCustom\EditGoodsUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControlCustom\EditSupplierUC.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -429,6 +453,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UserControlCustom\SuccessModelUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControlCustom\SupplierDetailUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControlCustom\SupplierViewUC.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -566,6 +598,25 @@
     <Resource Include="img\LoveTapBackground2.png" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="img\ProductAvatar\ChuotKoDayLogitech.jpg" />
+    <Resource Include="img\ProductAvatar\LaptopAcer.jpg" />
+    <Resource Include="img\ProductAvatar\LaptopDell.jpg" />
+    <Resource Include="img\ProductAvatar\LaptopHP.jpg" />
+    <Resource Include="img\ProductAvatar\LaptopMacbook.jpg" />
+    <Resource Include="img\ProductAvatar\LaptopMSI.jpg" />
+    <Resource Include="img\ProductAvatar\LaptopSamsung.jpg" />
+    <Resource Include="img\ProductAvatar\LaptopVivobook.jpg" />
+    <Resource Include="img\ProductAvatar\LatopASUS.jpg" />
+    <Resource Include="img\ProductAvatar\LotChuotDen.jpg" />
+    <Resource Include="img\UserAvatar\admin1.png" />
+    <Resource Include="img\UserAvatar\admin2.png" />
+    <Resource Include="img\UserAvatar\admin3.png" />
+    <Resource Include="img\UserAvatar\admin4.png" />
+    <Resource Include="img\UserAvatar\admin5.png" />
+    <Resource Include="img\UserAvatar\customer_female.png" />
+    <Resource Include="img\UserAvatar\customer_male.png" />
+    <Resource Include="img\UserAvatar\staff1.png" />
+    <Resource Include="img\UserAvatar\staff2.png" />
     <Content Include="Model\Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Model1.edmx</DependentUpon>
