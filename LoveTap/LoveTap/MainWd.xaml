@@ -217,6 +217,19 @@
                                        Style="{StaticResource Text_Style}" />
                     </StackPanel>
                 </RadioButton>
+
+                <RadioButton Style="{StaticResource BtnStyle}"
+                              Command="{Binding navSupplier}"
+                              >
+
+                    <StackPanel Orientation="Horizontal">
+
+                        <materialDesign:PackIcon Kind="AccountSupervisorCircle"  Style="{StaticResource menuIc_Style}"/>
+
+                        <TextBlock Text="Supplier"
+                                       Style="{StaticResource Text_Style}" />
+                    </StackPanel>
+                </RadioButton>
             </StackPanel>
         </Grid>
 
