@@ -96,57 +96,59 @@ namespace LoveTap.ViewModel
 
             LoadedReceiveDetail = new RelayCommand<UserControl>((p) => true, (p) =>
             {
-                ProductList = new ObservableCollection<SANPHAM>(DataProvider.Ins.DB.SANPHAMs);
-                ReceiveList = new ObservableCollection<PHIEUNHAP>(DataProvider.Ins.DB.PHIEUNHAPs);
-                ReceiveDetailList = new ObservableCollection<CTPN>(DataProvider.Ins.DB.CTPNs);
-                EmployeeList = new ObservableCollection<NHANVIEN>(DataProvider.Ins.DB.NHANVIENs);
-                SupplierList = new ObservableCollection<NHACUNGCAP>(DataProvider.Ins.DB.NHACUNGCAPs);
+                
 
-                ReceiveOrderViewModel.Receive temp = ReceiveOrderViewModel.ReceiveSelected;
+            });
 
-                ID = (int)temp.ID;
-                Date = (DateTime)temp.Date;
-                SubTotal = 0;
+            ProductList = new ObservableCollection<SANPHAM>(DataProvider.Ins.DB.SANPHAMs);
+            ReceiveList = new ObservableCollection<PHIEUNHAP>(DataProvider.Ins.DB.PHIEUNHAPs);
+            ReceiveDetailList = new ObservableCollection<CTPN>(DataProvider.Ins.DB.CTPNs);
+            EmployeeList = new ObservableCollection<NHANVIEN>(DataProvider.Ins.DB.NHANVIENs);
+            SupplierList = new ObservableCollection<NHACUNGCAP>(DataProvider.Ins.DB.NHACUNGCAPs);
+
+            ReceiveOrderViewModel.Receive temp = ReceiveOrderViewModel.ReceiveSelected;
+
+            ID = (int)temp.ID;
+            Date = (DateTime)temp.Date;
+            SubTotal = 0;
 
 
 
-                for (int i = 0; i < DataProvider.Ins.DB.CTPNs.Count(); i++)
+            for (int i = 0; i < DataProvider.Ins.DB.CTPNs.Count(); i++)
+            {
+                if (ReceiveDetailList[i].MAPN == ID)
                 {
-                    if (ReceiveDetailList[i].MAPN == ID)
+                    Receive receive = new Receive();
+                    for (int j = 0; j < DataProvider.Ins.DB.SANPHAMs.Count(); j++)
                     {
-                        Receive receive = new Receive();
-                        for (int j = 0; j < DataProvider.Ins.DB.SANPHAMs.Count(); j++)
+                        if (ProductList[j].MASP == ReceiveDetailList[i].MASP)
                         {
-                            if (ProductList[j].MASP == ReceiveDetailList[i].MASP)
-                            {
-                                receive.Ten = ProductList[j].TEN;
-                                receive.Gia = (double)ProductList[j].GIA;
-                                receive.SoLuong = (int)ReceiveDetailList[i].SOLUONG;
-                                receive.TongTien = receive.SoLuong * receive.Gia;
-                                SubTotal += receive.TongTien;
-                                MyReceiveList.Add(receive);
-                            }
-
+                            receive.Ten = ProductList[j].TEN;
+                            receive.Gia = (double)ProductList[j].GIA;
+                            receive.SoLuong = (int)ReceiveDetailList[i].SOLUONG;
+                            receive.TongTien = receive.SoLuong * receive.Gia;
+                            SubTotal += receive.TongTien;
+                            MyReceiveList.Add(receive);
                         }
 
                     }
-                }
 
-                foreach (NHANVIEN nv in DataProvider.Ins.DB.NHANVIENs.Where(x => x.MANV == temp.MANV))
-                {
-                    EmployeeName = nv.HOTEN.ToString();
-                    EmployeeID = nv.MANV;
-                    Branch = nv.MACN.ToString();
                 }
+            }
 
-                foreach (NHACUNGCAP ncc in DataProvider.Ins.DB.NHACUNGCAPs.Where(x => x.MANCC == temp.MANCC))
-                {
-                    SupplierName = ncc.TEN.ToString();
-                    Email = ncc.EMAIL.ToString();
-                    Address = ncc.DIACHI.ToString();
-                }
+            foreach (NHANVIEN nv in DataProvider.Ins.DB.NHANVIENs.Where(x => x.MANV == temp.MANV))
+            {
+                EmployeeName = nv.HOTEN.ToString();
+                EmployeeID = nv.MANV;
+                Branch = nv.MACN.ToString();
+            }
 
-            });
+            foreach (NHACUNGCAP ncc in DataProvider.Ins.DB.NHACUNGCAPs.Where(x => x.MANCC == temp.MANCC))
+            {
+                SupplierName = ncc.TEN.ToString();
+                Email = ncc.EMAIL.ToString();
+                Address = ncc.DIACHI.ToString();
+            }
 
             DeleteCommand = new RelayCommand<UserControl>((p) => true, (p) =>
             {

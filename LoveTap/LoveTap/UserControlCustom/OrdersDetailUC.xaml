@@ -10,12 +10,12 @@
              Name="ucOrdersDetail" 
              Height="456.2" Width="656.666666666667"
 >
-    <i:Interaction.Triggers>
+    <!--<i:Interaction.Triggers>
         <i:EventTrigger EventName="Loaded">
             <i:InvokeCommandAction Command="{Binding LoadedOrderDetail}"
                                                        CommandParameter="{Binding ElementName=ucOrdersDetail}"></i:InvokeCommandAction>
         </i:EventTrigger>
-    </i:Interaction.Triggers>
+    </i:Interaction.Triggers>-->
 
     <Border>
         <Border.Effect>
@@ -257,6 +257,17 @@
                     </ListView.View>
                 </ListView>
             </ScrollViewer>
+
+            <!--<ListView Name="OrderDetailList" ItemsSource="{Binding MyOrderList}"  HorizontalContentAlignment="Center" Grid.Row="1" Grid.RowSpan="2">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="Product ID" DisplayMemberBinding="{Binding Ten}"></GridViewColumn>
+                        <GridViewColumn Header="Item Price" DisplayMemberBinding="{Binding Gia}"></GridViewColumn>
+                        <GridViewColumn Header="Quantity" DisplayMemberBinding="{Binding SoLuong}"></GridViewColumn>
+                        <GridViewColumn Header="Total Amount" DisplayMemberBinding="{Binding TongTien}"></GridViewColumn>
+                    </GridView>
+                </ListView.View>
+            </ListView>-->
 
             <!--BOTTOM BAR-->
             <Grid Grid.Row="3">

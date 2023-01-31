@@ -10,12 +10,12 @@
              Name="ucReceiveDetail" 
              Height="456.2" Width="656.666666666667"
 >
-    <i:Interaction.Triggers>
+    <!--<i:Interaction.Triggers>
         <i:EventTrigger EventName="Loaded">
             <i:InvokeCommandAction Command="{Binding LoadedReceiveDetail}"
                                                        CommandParameter="{Binding ElementName=ucReceiveDetail}"></i:InvokeCommandAction>
         </i:EventTrigger>
-    </i:Interaction.Triggers>
+    </i:Interaction.Triggers>-->
 
     <Border>
         <Border.Effect>
