@@ -151,6 +151,7 @@
           <Property Name="VAITRO" Type="bit" />
           <Property Name="EMAIL" Type="nvarchar" MaxLength="255" />
           <Property Name="DELETED" Type="bit" />
+          <Property Name="IMG_PATH" Type="varchar" MaxLength="20" />
         </EntityType>
         <EntityType Name="PHIEUNHAP">
           <Key>
@@ -749,6 +750,7 @@
           <Property Name="VAITRO" Type="Boolean" />
           <Property Name="EMAIL" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="DELETED" Type="Boolean" />
+          <Property Name="IMG_PATH" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="CHINHANHs" Relationship="Self.FK__CHINHANH__MAADMI__267ABA7A" FromRole="NHANVIEN" ToRole="CHINHANH" />
           <NavigationProperty Name="CHINHANH" Relationship="Self.FK_NHANVIEN" FromRole="NHANVIEN" ToRole="CHINHANH" />
           <NavigationProperty Name="HOADONs" Relationship="Self.FK__HOADON__MANV__2F10007B" FromRole="NHANVIEN" ToRole="HOADON" />
@@ -1350,6 +1352,7 @@
                 <ScalarProperty Name="VAITRO" ColumnName="VAITRO" />
                 <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
                 <ScalarProperty Name="DELETED" ColumnName="DELETED" />
+                <ScalarProperty Name="IMG_PATH" ColumnName="IMG_PATH" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

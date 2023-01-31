@@ -23,10 +23,13 @@ namespace LoveTap.ViewModel
         private readonly NavigationStore _navigationStore;
         public BaseViewModel CurrentViewModel => _navigationStore.CurrentViewModel;
         public static string TabName;
-        public string _NameUsr;
+        private string _NameUsr;
         public string NameUsr { get => _NameUsr; set { _NameUsr = value; OnPropertyChanged(); } }
-        public string _Position;
+        private string _Position;
         public string Position { get => _Position; set { _Position = value; OnPropertyChanged(); } }
+
+        private string _ImgPath;
+        public string ImgPath { get => _ImgPath; set { _ImgPath = value; OnPropertyChanged(); } }
 
         public bool IsLoaded { get; set; } = false;
         public ICommand LoadedMainWd { get; set; }
@@ -60,6 +63,7 @@ namespace LoveTap.ViewModel
                     ID = loginVM.ID;
                     NHANVIEN temp = (DataProvider.Ins.DB.NHANVIENs.Where(x => x.MANV == ID).ToList())[0];
                     NameUsr = temp.HOTEN;
+                    ImgPath = temp.IMG_PATH;
                     int count = 0, i = NameUsr.Length;
                     string nametmp;
                     while (count < 2)
@@ -116,8 +120,21 @@ namespace LoveTap.ViewModel
                     {
                         ID = loginVM.ID;
                         NHANVIEN temp = (DataProvider.Ins.DB.NHANVIENs.Where(x => x.MANV == ID).ToList())[0];
-
                         NameUsr = temp.HOTEN;
+                        ImgPath = temp.IMG_PATH;
+                        int count = 0, i = NameUsr.Length;
+                        string nametmp;
+                        while (count < 2)
+                        {
+                            i--;
+                            if (NameUsr[i] == ' ')
+                                count++;
+                        }
+                        nametmp = NameUsr.Substring(i, NameUsr.Length - i);
+
+                        p.wishTxt.Text = "Have a good day," + nametmp + "!";
+
+                        NameUsr = nametmp;
                         if (temp.VAITRO == true)
                         {
                             IsAdmin = true;
