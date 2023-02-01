@@ -169,8 +169,8 @@
                             </ListView.View>
                             <i:Interaction.Triggers>
                                 <i:EventTrigger EventName="SelectionChanged">
+                                    <i:InvokeCommandAction     Command="{Binding Detail}" CommandParameter="{Binding ElementName=SupplierView}"></i:InvokeCommandAction>
                                     <i:InvokeCommandAction     Command="{Binding navDetail}"></i:InvokeCommandAction>
-                                    <i:InvokeCommandAction     Command="{Binding Detail}" CommandParameter="{Binding ElementName=CustomerView}"></i:InvokeCommandAction>
                                 </i:EventTrigger>
                             </i:Interaction.Triggers>
                         </ListView>
