@@ -23,12 +23,12 @@
 
             <!--3 Button-->
             <DockPanel Margin="15,0,15,0">
-                <TextBlock FontSize="20"
+                <!--<TextBlock FontSize="20"
                        FontWeight="Black"
                        Foreground="{StaticResource Catalina Blue}"
                        VerticalAlignment="Center"
                        Text="{Binding Phone}"
-                       ></TextBlock>
+                       ></TextBlock>-->
 
                 <!--Delete Button-->
                 <Button Background="{StaticResource Burnt Sienna}"
@@ -76,9 +76,9 @@
 
 
                 <StackPanel Margin="20,0,0,0" Grid.Column="0" >
+                    <TextBlock Style="{StaticResource detailText}" Padding="4">ID:</TextBlock>
                     <TextBlock Style="{StaticResource detailText}" Padding="4">Name:</TextBlock>
                     <TextBlock Style="{StaticResource detailText}" Padding="4">Phone:</TextBlock>
-                    <TextBlock Style="{StaticResource detailText}" Padding="4">ID:</TextBlock>
                     <TextBlock Style="{StaticResource detailText}" Padding="4">Email:</TextBlock>
                     <!--<TextBlock Style="{StaticResource detailText}" Padding="3">Date of Birth:</TextBlock>-->
                     <TextBlock Style="{StaticResource detailText}" Padding="4">Address:</TextBlock>

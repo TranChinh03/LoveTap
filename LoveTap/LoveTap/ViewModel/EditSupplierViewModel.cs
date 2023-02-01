@@ -88,7 +88,7 @@ namespace LoveTap.ViewModel
             };
             EditCommand = new RelayCommand<object>((p) =>
             {
-                if (string.IsNullOrEmpty(SupplierName) || string.IsNullOrEmpty(Phone) || string.IsNullOrEmpty(Email) || string.IsNullOrEmpty(Address) || RegistDate == null)
+                if (string.IsNullOrEmpty(SupplierName) || string.IsNullOrEmpty(Phone) || string.IsNullOrEmpty(Email) || string.IsNullOrEmpty(Address))
                     return false;
 
                 //var displayList = DataProvider.Ins.DB.Units.Where(x => x.DisplayName == DisplayName);
