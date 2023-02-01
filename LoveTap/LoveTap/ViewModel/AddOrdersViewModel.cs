@@ -29,7 +29,7 @@ namespace LoveTap.ViewModel
         public ICommand gNameChanged { get; set; }
         public ICommand phoneChanged { get; set; }
         public ICommand nameChanged { get; set; }
-        public ICommand updateListView { get; set; }
+        // public ICommand updateListView { get; set; }
 
         private int _OrderID;
         public int OrderID { get => _OrderID; set { _OrderID = value; OnPropertyChanged(); } }
@@ -251,7 +251,7 @@ namespace LoveTap.ViewModel
                     cthd.MAHD = hd.MAHD;
                     DataProvider.Ins.DB.CTHDs.Add(cthd);
                     DataProvider.Ins.DB.SaveChanges();
-                   //hd.TONGTIEN = SubTotal;
+                    hd.TONGTIEN = SubTotal;
                 }
 
             });
@@ -265,30 +265,42 @@ namespace LoveTap.ViewModel
 
             phoneChanged = new RelayCommand<TextBox>((p) => { return true; }, p => _changePhoneCustomer(p));
             nameChanged = new RelayCommand<TextBox>((p) => { return true; }, p => _changeNameCustomer(p));
-            updateListView = new RelayCommand<OrderViewUC>((p) => { return true; }, p => _updateListView(p));
+            //updateListView = new RelayCommand<OrderViewUC>((p) => { return true; }, p => _updateListView(p));
         }
 
-        void _updateListView (OrderViewUC p)
-        {
-            p.OrderList.Items.Refresh();
-        }
+        //void _updateListView (OrderViewUC p)
+        //{
+        //    p.OrderList.Items.Refresh();
+        //}
 
         void _addListView(CreateOrderUC p)
         {
-            DetailList dtl = new DetailList();
-            dtl.MASP = GoodID;
-            dtl.TENSP = GoodName;
-            dtl.SOLUONG = Int32.Parse(p.AmountTb.Text);
-            for (int i = 0; i < DataProvider.Ins.DB.SANPHAMs.Count(); i++)
-                if (GoodID == ProductList[i].MASP)
+            int flag1 = 0;
+            for (int i = 0; i < MyListView.Count(); i++)
+                if (GoodID == MyListView[i].MASP)
                 {
-                    dtl.GIA = (double)ProductList[i].GIA;
-                    for (int j = 0; j < DataProvider.Ins.DB.DANHMUCs.Count(); j++)
-                        if (ProductList[i].MADM == TypeList[j].MADM)
-                            dtl.DANHMUC = TypeList[j].TENDM;
+                    flag1 = 1;
+                    DetailList tmp = MyListView[i];
+                    tmp.SOLUONG += int.Parse(Amount);
+                    MyListView[i] = tmp;
                 }
+            if (flag1 == 0)
+            {
+                DetailList dtl = new DetailList();
+                dtl.MASP = GoodID;
+                dtl.TENSP = GoodName;
+                dtl.SOLUONG = Int32.Parse(p.AmountTb.Text);
+                for (int i = 0; i < DataProvider.Ins.DB.SANPHAMs.Count(); i++)
+                    if (GoodID == ProductList[i].MASP)
+                    {
+                        dtl.GIA = (double)ProductList[i].GIA;
+                        for (int j = 0; j < DataProvider.Ins.DB.DANHMUCs.Count(); j++)
+                            if (ProductList[i].MADM == TypeList[j].MADM)
+                                dtl.DANHMUC = TypeList[j].TENDM;
+                    }
 
-            MyListView.Add(dtl);
+                MyListView.Add(dtl);
+            }
             p.listGood.Items.Refresh();
             p.idGood.Text = string.Empty;
             p.goodName.Text = string.Empty;
