@@ -93,7 +93,7 @@
                         <i:Interaction.Triggers>
                             <i:EventTrigger EventName="Click">
                                 <i:InvokeCommandAction Command="{Binding navProfile}"></i:InvokeCommandAction>
-                                <i:InvokeCommandAction Command="{Binding updateTabName}"></i:InvokeCommandAction>
+                                <i:InvokeCommandAction Command="{Binding updateTabName}" CommandParameter="{Binding ElementName=mainWindow}"></i:InvokeCommandAction>
                             </i:EventTrigger>
                         </i:Interaction.Triggers>
                     </Button>

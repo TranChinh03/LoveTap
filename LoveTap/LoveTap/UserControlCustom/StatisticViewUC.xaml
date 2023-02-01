@@ -91,7 +91,6 @@
                                    Padding="16,0,16,0"
                                    VerticalContentAlignment="Center"
                                    HorizontalContentAlignment="Left" SelectedIndex="{Binding cbbBranchIndex}"
-                                   
                                    >
                         <i:Interaction.Triggers>
                             <i:EventTrigger EventName="SelectionChanged">

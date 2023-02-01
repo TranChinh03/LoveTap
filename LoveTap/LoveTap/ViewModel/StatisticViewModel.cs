@@ -102,15 +102,21 @@ namespace LoveTap.ViewModel
             {
                 if (OrderList[i].NGMUA.Value.Year.ToString() != YearList[j])
                 {
-                    YearList[i] = OrderList[i].NGMUA.Value.Year.ToString();
+                    YearList[j+1] = OrderList[i].NGMUA.Value.Year.ToString();
                     j++;
                 }
             }
-            for (int i = 1; i<DataProvider.Ins.DB.PHIEUNHAPs.Count(); i++)
+            int flag = 0;
+            for (int i = 0; i<DataProvider.Ins.DB.PHIEUNHAPs.Count(); i++)
             {
-                if (ReceiveList[i].NGNHAP.Value.Year.ToString() != YearList[j])
+                for (int k = 1; k<YearList.Count(); k++)
+                    if (ReceiveList[i].NGNHAP.Value.Year.ToString() == YearList[k])
+                    {
+                        flag = 1;
+                    }
+                if (flag == 0)
                 {
-                    YearList[i] = ReceiveList[i].NGNHAP.Value.Year.ToString();
+                    YearList[j+1] = ReceiveList[i].NGNHAP.Value.Year.ToString();
                     j++;
                 }
             }
@@ -150,6 +156,7 @@ namespace LoveTap.ViewModel
         //}
         public void _cbbTypeChanged(int i)
         {
+            cbbTypeIndex = i;
             switch (i)
             {
                 case 0:
@@ -178,12 +185,14 @@ namespace LoveTap.ViewModel
         }
         void _cbbBranchChanged(ComboBox p)
         {
+            if (p.SelectedIndex<0) return;
             cbbBranchIndex = p.SelectedIndex;
             cbbBranchValue = (int)p.SelectedValue;
             changeValue(cbbTypeIndex);
         }
         void _cbbYearChanged(ComboBox p)
         {
+            if (p.SelectedIndex<0) return;
             cbbYearIndex = p.SelectedIndex;
             cbbYearValue = p.SelectedValue.ToString();
             changeValue(cbbTypeIndex);
@@ -362,7 +371,7 @@ namespace LoveTap.ViewModel
                         }
                         maxMonth[i] = tong;
                     }
-                    
+
                     for (int i = 0; i < 12; i++)
                         if (maxMonth[i] > maxMonth[12])
                         {
