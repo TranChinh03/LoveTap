@@ -366,6 +366,18 @@
                 <DataTemplate DataType="{x:Type viewmodel:ReceiveInvoiceViewModel}">
                     <uc:ReceiveInvoice></uc:ReceiveInvoice>
                 </DataTemplate>
+                <DataTemplate DataType="{x:Type viewmodel:SupplierViewModel}">
+                    <uc:SupplierViewUC></uc:SupplierViewUC>
+                </DataTemplate>
+                <DataTemplate DataType="{x:Type viewmodel:SupplierDetailViewModel}">
+                    <uc:SupplierDetailUC></uc:SupplierDetailUC>
+                </DataTemplate>
+                <DataTemplate DataType="{x:Type viewmodel:AddSupplierViewModel}">
+                    <uc:AddSupplierUC></uc:AddSupplierUC>
+                </DataTemplate>
+                <DataTemplate DataType="{x:Type viewmodel:EditSupplierViewModel}">
+                    <uc:EditSupplierUC></uc:EditSupplierUC>
+                </DataTemplate>
             </ContentControl.Resources>
         </ContentControl>
 

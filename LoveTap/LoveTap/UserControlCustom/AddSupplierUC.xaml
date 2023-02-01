@@ -1,12 +1,98 @@
 ﻿<UserControl x:Class="LoveTap.UserControlCustom.AddSupplierUC"
-             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:LoveTap.UserControlCustom"
-             mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
-            
-    </Grid>
+             xmlns:uc="clr-namespace:LoveTap.UserControlCustom"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        xmlns:local="clr-namespace:LoveTap.UserControlCustom"
+        mc:Ignorable="d" Height="456.2" Width="656.666666666667"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        Name="ucAddSupplier"
+       >
+
+    <Border>
+        <Border.Effect>
+            <DropShadowEffect Opacity="0.3" BlurRadius="10" Direction="315"></DropShadowEffect>
+        </Border.Effect>
+        <Grid Background="White" Margin="10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="2.5*"/>
+                <RowDefinition Height="7.5*"/>
+            </Grid.RowDefinitions>
+
+            <!--Top Button-->
+            <DockPanel Margin="15,0,15,0">
+                <Border BorderBrush="{StaticResource Cyan Azure}"  BorderThickness="0.5" CornerRadius="5" VerticalAlignment="Center">
+                    <TextBox FontSize="20"
+                       FontWeight="Black"
+                       IsEnabled="False"
+                       Foreground="{StaticResource Catalina Blue}"
+                       VerticalAlignment="Center" Width="196" materialDesign:HintAssist.Hint="Add new Supplier" BorderThickness="0"
+                       ></TextBox>
+                </Border>
+
+
+                <!--Back Button-->
+                <Button DockPanel.Dock="Right" Style="{StaticResource OrangeButton}"
+                    HorizontalAlignment="Right" Content="Back" Uid="1" Command="{Binding navBack}">
+                </Button>
+
+                <!--Done Button-->
+                <Button DockPanel.Dock="Right" Style="{StaticResource greenButton}" 
+                    HorizontalAlignment="Right" Width="90" Content="Done" Uid="2" x:Name="doneBt" Command="{Binding AddCommand}">
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="Click">
+                            <i:InvokeCommandAction Command="{Binding navDone}"></i:InvokeCommandAction>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </Button>
+            </DockPanel>
+
+            <!--Detail Info-->
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="4.5*"/>
+                </Grid.ColumnDefinitions>
+
+                <StackPanel HorizontalAlignment="Left" Margin="10 0 0 0" >
+                    <TextBlock Style="{StaticResource detailText}" Padding="3">Name:</TextBlock>
+                    <TextBlock Style="{StaticResource detailText}" Padding="3">Phone:</TextBlock>
+                    <TextBlock Style="{StaticResource detailText}" Padding="3">Email:</TextBlock>
+                    <!--<TextBlock Style="{StaticResource detailText}" Padding="3">Date of Birth:</TextBlock>-->
+                    <TextBlock Style="{StaticResource detailText}" Padding="3" Height="50">Address:</TextBlock>
+                    <!--<TextBlock Style="{StaticResource detailText}" Padding="3">Registation Date:</TextBlock>
+                    <TextBlock Style="{StaticResource detailText}" Padding="3">Branch:</TextBlock>
+                    <TextBlock Style="{StaticResource detailText}" Padding="3">Employee ID:</TextBlock>-->
+                </StackPanel>
+
+                <StackPanel Margin="10 0 0 0" Grid.Column="1" HorizontalAlignment="Center" >
+                    <TextBox  Style="{StaticResource editTextValue}" Text="{Binding SupplierName}"></TextBox>
+                    <TextBox  Style="{StaticResource editTextValue}" Text="{Binding Phone}"></TextBox>
+                    <TextBox  Style="{StaticResource editTextValue}" Text="{Binding Email}"></TextBox>
+                    <!--<DatePicker
+                                        Width="150" Height="30" Padding="5" FontSize="13" Margin="0 8 0 0" HorizontalAlignment="Left" SelectedDateFormat="Short" 
+                                        materialDesign:HintAssist.Hint="Pick Date" BorderBrush="#79A7CB" Foreground="{StaticResource Catalina Blue}" 
+                                        Style="{StaticResource MaterialDesignOutlinedDatePicker}" SelectedDate="{Binding DOB, StringFormat='dd/MM/yyyy', Mode=TwoWay}"/>-->
+                    <TextBox  Style="{StaticResource editTextValue}" TextWrapping="WrapWithOverflow" Height="50" Text="{Binding Address}" VerticalContentAlignment="Top"></TextBox>
+                    <!--<DatePicker
+                                        Width="150" Height="30" Padding="5" FontSize="13" Margin="0 8 0 0"  HorizontalAlignment="Left" SelectedDateFormat="Short" 
+                                        materialDesign:HintAssist.Hint="Pick Date" BorderBrush="#79A7CB" Foreground="{StaticResource Catalina Blue}" 
+                                        Style="{StaticResource MaterialDesignOutlinedDatePicker}" SelectedDate="{Binding RegistDate, StringFormat='dd/MM/yyyy', Mode=TwoWay}"/>
+                    <ComboBox
+                                Width="150" Height="30" HorizontalAlignment="Left" BorderBrush="#79A7CB"  Margin="0 8 0 0" Padding="5"
+                                Style="{StaticResource MaterialDesignOutlinedComboBox}" FontSize="13" 
+                                ItemsSource="{Binding BranchIDList, Mode=TwoWay}" SelectedItem="{Binding Branch}" />
+
+                    <ComboBox
+                                Width="150" Height="30" HorizontalAlignment="Left" BorderBrush="#79A7CB"  Margin="0 8 0 0" Padding="5"
+                                Style="{StaticResource MaterialDesignOutlinedComboBox}" FontSize="13" 
+                                ItemsSource="{Binding EmployeeIDList, Mode=TwoWay}" SelectedItem="{Binding EmployeeID}" />-->
+
+
+                </StackPanel>
+            </Grid>
+        </Grid>
+    </Border>
 </UserControl>
