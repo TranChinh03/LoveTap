@@ -35,11 +35,12 @@
 
                     <!--Done Button-->
                     <Button Uid="1" Name="doneBt" Content="Done" DockPanel.Dock="Right" Style="{StaticResource greenButton}" 
-                    HorizontalAlignment="Right" Width="90" Command="{Binding DoneCommand}">
+                    HorizontalAlignment="Right" Width="90" >
                         <i:Interaction.Triggers>
                             <i:EventTrigger EventName="Click">
+                                <i:InvokeCommandAction Command="{Binding DoneCommand}" CommandParameter="{Binding ElementName=doneBt}"></i:InvokeCommandAction>
                                 <i:InvokeCommandAction Command="{Binding navDone}"></i:InvokeCommandAction>
-                                <i:InvokeCommandAction Command="{Binding updateListView}" CommandParameter="{Binding ElementName=OrderView}"></i:InvokeCommandAction>
+                                <!--<i:InvokeCommandAction Command="{Binding updateListView}" CommandParameter="{Binding ElementName=OrderView}"></i:InvokeCommandAction>-->
                             </i:EventTrigger>
                         </i:Interaction.Triggers>
                     </Button>
@@ -100,7 +101,6 @@
                     Background="{StaticResource Cyan Azure}" Content="+ Add" Foreground="White" 
                             Command="{Binding AddCommand}" CommandParameter="{Binding ElementName=ucCreateOrder}">
                     </Button>
-                    <TextBlock Text="{Binding Texttest}"> </TextBlock>
                 </StackPanel>
 
                 <!--Line-->
