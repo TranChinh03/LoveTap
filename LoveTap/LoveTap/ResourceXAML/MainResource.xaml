@@ -29,6 +29,8 @@
     <viewmodel:EditEmployeeViewModel x:Key="EditEmployeeVM"></viewmodel:EditEmployeeViewModel>
     <viewmodel:AddEmployeeViewModel x:Key="AddEmployeeVM"></viewmodel:AddEmployeeViewModel>
     <viewmodel:MenuBarUC x:Key="MenuBarVM"></viewmodel:MenuBarUC>
-
-
+    <viewmodel:SupplierViewModel x:Key="SupplierVM"></viewmodel:SupplierViewModel>
+    <viewmodel:AddSupplierViewModel x:Key="AddSupplierVM"></viewmodel:AddSupplierViewModel>
+    <viewmodel:EditSupplierViewModel x:Key="EditSupplierVM"></viewmodel:EditSupplierViewModel>
+    <viewmodel:SupplierDetailViewModel x:Key="SupplierDetailVM"></viewmodel:SupplierDetailViewModel>
 </ResourceDictionary>
