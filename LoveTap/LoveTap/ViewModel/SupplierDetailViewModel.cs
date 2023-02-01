@@ -26,6 +26,8 @@ namespace LoveTap.ViewModel
         public string SupplierName { get => _SupplierName; set { _SupplierName = value; OnPropertyChanged(); } }
         private string _Phone;
         public string Phone { get => _Phone; set { _Phone = value; OnPropertyChanged(); } }
+        private string _Email;
+        public string Email { get => _Email; set { _Email = value; OnPropertyChanged(); } }
         private Nullable<System.DateTime> _DOB;
         public Nullable<System.DateTime> DOB { get => _DOB; set { _DOB = value; OnPropertyChanged(); } }
         private string _Address;
@@ -49,8 +51,6 @@ namespace LoveTap.ViewModel
         public ObservableCollection<NHACUNGCAP> SupplierList { get => _SupplierList; set { _SupplierList = value; OnPropertyChanged(); } }
         public SupplierDetailViewModel(NavigationStore navigationStore)
         {
-            LoadedDetailSupplier = new RelayCommand<UserControl>((p) => { return true; }, (p) =>
-            {
                 SupplierViewModel.Supplier temp = SupplierViewModel.CurrentSelected;
                 SupplierList = new ObservableCollection<NHACUNGCAP>(DataProvider.Ins.DB.NHACUNGCAPs.Where(x => x.DELETED == false));
                 foreach (NHACUNGCAP ncc in SupplierList)
@@ -61,10 +61,11 @@ namespace LoveTap.ViewModel
                         SupplierName = ncc.TEN;
                         Phone = ncc.SDT;
                         Address = ncc.DIACHI;
+                        Email = ncc.EMAIL;
                     }
                 }
 
-            });
+            
 
 
             DeleteCommand = new RelayCommand<UserControl>((p) => true, (p) =>

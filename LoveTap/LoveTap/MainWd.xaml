@@ -253,10 +253,9 @@
                     </i:Interaction.Triggers>
                 </RadioButton>
 
-                <RadioButton Style="{StaticResource BtnStyle}"
+                <RadioButton Name="Supplier" Style="{StaticResource BtnStyle}"
                               Command="{Binding navSupplier}"
                               >
-
                     <StackPanel Orientation="Horizontal">
 
                         <materialDesign:PackIcon Kind="AccountSupervisorCircle"  Style="{StaticResource menuIc_Style}"/>
@@ -264,6 +263,12 @@
                         <TextBlock Text="Supplier"
                                        Style="{StaticResource Text_Style}" />
                     </StackPanel>
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="Click">
+                            <i:InvokeCommandAction Command="{Binding navSupplier}"></i:InvokeCommandAction>
+                            <i:InvokeCommandAction Command="{Binding updateTabNameRd}" CommandParameter="{Binding ElementName=mainWindow}"></i:InvokeCommandAction>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
                 </RadioButton>
             </StackPanel>
         </Grid>

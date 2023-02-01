@@ -46,6 +46,7 @@ namespace LoveTap.ViewModel
         public ICommand navCustomer { get; }
         public ICommand navStatistic { get; }
         public ICommand navEmployee { get; }
+        public ICommand navSupplier { get; }
         public static int ID { get; set; }
         public static bool IsAdmin { get; set; } = false;
         public MainViewModel(NavigationStore navigationStore)
@@ -112,6 +113,7 @@ namespace LoveTap.ViewModel
             navCustomer = new NavigationCommand<CustomerViewModel>(navigationStore, () => new CustomerViewModel(navigationStore));
             navStatistic = new NavigationCommand<StatisticViewModel>(navigationStore, () => new StatisticViewModel(navigationStore));
             navEmployee = new NavigationCommand<EmployeeViewModel>(navigationStore, () => new EmployeeViewModel(navigationStore));
+            navSupplier = new NavigationCommand<SupplierViewModel>(navigationStore, () => new SupplierViewModel(navigationStore));
             LogOut = new RelayCommand<MainWd>((p) => { return true; }, (p) =>
             {
                 if (MessageBox.Show("Do you want to LogOut?", "Log Out", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
@@ -184,6 +186,7 @@ namespace LoveTap.ViewModel
             if (p.Customer.IsChecked== true) { p.Tabtxbl.Text = "Customer"; }
             if (p.Statistic.IsChecked== true) { p.Tabtxbl.Text = "Statistic"; }
             if (p.Employee.IsChecked== true) { p.Tabtxbl.Text = "Employee"; }
+            if (p.Supplier.IsChecked== true) { p.Tabtxbl.Text = "Supplier"; }
         }
 
         //M?y hàm này dùng ?? l?u ?nh, ??ng quan tâm nha

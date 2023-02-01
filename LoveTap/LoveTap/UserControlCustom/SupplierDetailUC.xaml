@@ -11,14 +11,6 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
        >
 
-    <i:Interaction.Triggers>
-        <i:EventTrigger EventName="Loaded">
-            <i:InvokeCommandAction Command="{Binding LoadedSupplierDetail}"
-                                                       CommandParameter="{Binding ElementName=ucSupplierDetail}"></i:InvokeCommandAction>
-        </i:EventTrigger>
-    </i:Interaction.Triggers>
-
-
     <Border>
         <Border.Effect>
             <DropShadowEffect Opacity="0.3" BlurRadius="10" Direction="315"></DropShadowEffect>
@@ -78,29 +70,31 @@
             <!--Detail Info-->
             <Grid Grid.Row="1">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="1.5*"/>
                     <ColumnDefinition Width="3*"/>
                 </Grid.ColumnDefinitions>
 
 
                 <StackPanel Margin="20,0,0,0" Grid.Column="0" >
-                    <TextBlock Style="{StaticResource detailText}" Padding="3">Name:</TextBlock>
-                    <TextBlock Style="{StaticResource detailText}" Padding="3">Phone:</TextBlock>
-                    <TextBlock Style="{StaticResource detailText}" Padding="3">Email:</TextBlock>
+                    <TextBlock Style="{StaticResource detailText}" Padding="4">Name:</TextBlock>
+                    <TextBlock Style="{StaticResource detailText}" Padding="4">Phone:</TextBlock>
+                    <TextBlock Style="{StaticResource detailText}" Padding="4">ID:</TextBlock>
+                    <TextBlock Style="{StaticResource detailText}" Padding="4">Email:</TextBlock>
                     <!--<TextBlock Style="{StaticResource detailText}" Padding="3">Date of Birth:</TextBlock>-->
-                    <TextBlock Style="{StaticResource detailText}" Padding="3" Height="50">Address:</TextBlock>
+                    <TextBlock Style="{StaticResource detailText}" Padding="4">Address:</TextBlock>
                     <!--<TextBlock Style="{StaticResource detailText}" Padding="3">Registation Date:</TextBlock>
                     <TextBlock Style="{StaticResource detailText}" Padding="3">Branch:</TextBlock>
                     <TextBlock Style="{StaticResource detailText}" Padding="3">Sale:</TextBlock>
                     <TextBlock Style="{StaticResource detailText}" Padding="3">Type:</TextBlock>-->
                 </StackPanel>
 
-                <StackPanel Margin="10 0 0 0" Grid.Column="1" HorizontalAlignment="Center" >
-                    <TextBlock Style="{StaticResource detailTextValue}" Text="{Binding CusName}"></TextBlock>
+                <StackPanel Margin="20 0 0 0" Grid.Column="1" HorizontalAlignment="Left" >
+                    <TextBlock Style="{StaticResource detailTextValue}" Text="{Binding ID}"></TextBlock>
+                    <TextBlock Style="{StaticResource detailTextValue}" Text="{Binding SupplierName}"></TextBlock>
                     <TextBlock Style="{StaticResource detailTextValue}" Text="{Binding Phone}"></TextBlock>
                     <TextBlock Style="{StaticResource detailTextValue}" Text="{Binding Email}"></TextBlock>
                     <!--<TextBlock Style="{StaticResource detailTextValue}" Text="{Binding DOB, StringFormat='dd/MM/yyyy'}"></TextBlock>-->
-                    <TextBlock Style="{StaticResource detailTextValue}" TextWrapping="WrapWithOverflow" Height="50" Text="{Binding Address}"></TextBlock>
+                    <TextBlock Style="{StaticResource detailTextValue}" TextWrapping="WrapWithOverflow"  Text="{Binding Address}"></TextBlock>
                     <!--<TextBlock Style="{StaticResource detailTextValue}" Text="{Binding RegistDate,  StringFormat='dd/MM/yyyy'}"></TextBlock>
                     <TextBlock Style="{StaticResource detailTextValue}" Text="{Binding Branch}"></TextBlock>
                     <TextBlock Style="{StaticResource detailTextValue}" Text="{Binding Sale}"></TextBlock>

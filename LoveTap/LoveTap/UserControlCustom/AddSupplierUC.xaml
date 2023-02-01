@@ -40,9 +40,10 @@
 
                 <!--Done Button-->
                 <Button DockPanel.Dock="Right" Style="{StaticResource greenButton}" 
-                    HorizontalAlignment="Right" Width="90" Content="Done" Uid="2" x:Name="doneBt" Command="{Binding AddCommand}">
+                    HorizontalAlignment="Right" Width="90" Content="Done" Uid="2" x:Name="doneBt" >
                     <i:Interaction.Triggers>
                         <i:EventTrigger EventName="Click">
+                            <i:InvokeCommandAction Command="{Binding AddCommand}"></i:InvokeCommandAction>
                             <i:InvokeCommandAction Command="{Binding navDone}"></i:InvokeCommandAction>
                         </i:EventTrigger>
                     </i:Interaction.Triggers>
