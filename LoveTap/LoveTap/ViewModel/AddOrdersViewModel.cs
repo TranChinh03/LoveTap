@@ -25,9 +25,16 @@ namespace LoveTap.ViewModel
         public ICommand DoneCommand { get; set; }
 
         public ICommand LoadedAddOrder { get; set; }
+        public ICommand IdChanged { get; set; }
+        public ICommand gNameChanged { get; set; }
+        public ICommand phoneChanged { get; set; }
+        public ICommand nameChanged { get; set; }
+        public ICommand updateListView { get; set; }
 
         private int _OrderID;
         public int OrderID { get => _OrderID; set { _OrderID = value; OnPropertyChanged(); } }
+        private int _eID;
+        public int eID { get => _eID; set { _eID = value; OnPropertyChanged(); } }
 
         private string _Date;
         public string Date { get => _Date; set { _Date = value; OnPropertyChanged(); } }
@@ -87,111 +94,127 @@ namespace LoveTap.ViewModel
 
         private ObservableCollection<CHINHANH> _BranchList;
         public ObservableCollection<CHINHANH> BranchList { get => _BranchList; set { _BranchList = value; OnPropertyChanged(); } }
+        private ObservableCollection<DANHMUC> _TypeList;
+        public ObservableCollection<DANHMUC> TypeList { get => _TypeList; set { _TypeList = value; OnPropertyChanged(); } }
 
         public int[] GoodIDList { get; set; } = new int[DataProvider.Ins.DB.SANPHAMs.Count()];
         public int[] BranchIDList { get; set; } = new int[DataProvider.Ins.DB.SANPHAMs.Count()];
 
         public string[] GoodNameList { get; set; } = new string[DataProvider.Ins.DB.SANPHAMs.Count()];
 
-        //public struct Detail
-        //{
-        //    public string ten { get; set; }
-        //    public string sl { get; set; }
-        //}
+        public struct DetailList
+        {
+            public int MASP { get; set; }
+            public string TENSP { get; set; }
+            public string DANHMUC { get; set; }
+            public double GIA { get; set; }
+            public int SOLUONG { get; set; }
+        }
 
         private List<CTHD> _MyOrderDetailList = new List<CTHD>();
         public List<CTHD> MyOrderDetailList { get { return _MyOrderDetailList; } set { _MyOrderDetailList = value; OnPropertyChanged(); } }
+
+        private List<DetailList> _MyListView = new List<DetailList>();
+        public List<DetailList> MyListView { get => _MyListView; set { _MyListView = value; OnPropertyChanged(); } }
         public AddOrdersViewModel(NavigationStore navigationStore)
         {
-            LoadedAddOrder = new RelayCommand<UserControl>((p) => true, (p) =>
+            OrdersList = new ObservableCollection<HOADON>(DataProvider.Ins.DB.HOADONs);
+            OrderDetailList = new ObservableCollection<CTHD>(DataProvider.Ins.DB.CTHDs);
+            ProductList = new ObservableCollection<SANPHAM>(DataProvider.Ins.DB.SANPHAMs);
+            CustomerList = new ObservableCollection<KHACHHANG>(DataProvider.Ins.DB.KHACHHANGs);
+            EmployeeList = new ObservableCollection<NHANVIEN>(DataProvider.Ins.DB.NHANVIENs);
+            BranchList = new ObservableCollection<CHINHANH>(DataProvider.Ins.DB.CHINHANHs);
+            TypeList = new ObservableCollection<DANHMUC>(DataProvider.Ins.DB.DANHMUCs);
+
+            eID = MainViewModel.ID;
+            for (int i = 0; i < EmployeeList.Count; i++)
+                if (EmployeeList[i].MANV == eID)
+                {
+                    EmployeeName = EmployeeList[i].HOTEN;
+                    Branch = (int)EmployeeList[i].MACN;
+                }
+
+            Amount = "0";
+            SubTotal = 0;
+            Date = DateTime.Now.ToString();
+            for (int i = 0; i < ProductList.Count; i++)
             {
-                OrdersList = new ObservableCollection<HOADON>(DataProvider.Ins.DB.HOADONs);
-                OrderDetailList = new ObservableCollection<CTHD>(DataProvider.Ins.DB.CTHDs);
-                ProductList = new ObservableCollection<SANPHAM>(DataProvider.Ins.DB.SANPHAMs);
-                CustomerList = new ObservableCollection<KHACHHANG>(DataProvider.Ins.DB.KHACHHANGs);
-                EmployeeList = new ObservableCollection<NHANVIEN>(DataProvider.Ins.DB.NHANVIENs);
-                BranchList = new ObservableCollection<CHINHANH>(DataProvider.Ins.DB.CHINHANHs);
-                SubTotal = 0;
-                Date = DateTime.Now.ToString();
-                for (int i = 0; i < ProductList.Count; i++)
-                {
-                    GoodIDList[i] = ProductList[i].MASP;
-                    GoodNameList[i] = ProductList[i].TEN;
-                }
+                GoodIDList[i] = ProductList[i].MASP;
+                GoodNameList[i] = ProductList[i].TEN;
+            }
 
-                for (int i = 0; i < BranchList.Count; i++)
-                {
-                    BranchIDList[i] = BranchList[i].MACN;
-                }
-
-                if (GoodID.ToString() != "")
-                {
-                    foreach (SANPHAM sp in ProductList)
-                    {
-                        if (sp.MASP == GoodID)
-                            GoodName = sp.TEN;
-                    }
-                }
-            });
-            
-
-            AddCommand = new RelayCommand<object>((p) =>
+            for (int i = 0; i < BranchList.Count; i++)
             {
-                if ( (string.IsNullOrEmpty(GoodID.ToString())&& string.IsNullOrEmpty(GoodName)) || string.IsNullOrEmpty(Amount))
+                BranchIDList[i] = BranchList[i].MACN;
+            }
+
+            if (GoodID.ToString() != "")
+            {
+                foreach (SANPHAM sp in ProductList)
+                {
+                    if (sp.MASP == GoodID)
+                        GoodName = sp.TEN;
+                }
+            }
+
+            AddCommand = new RelayCommand<CreateOrderUC>((p) =>
+            {
+                if ((string.IsNullOrEmpty(GoodID.ToString())&& string.IsNullOrEmpty(GoodName)) || int.Parse(Amount) <= 0)
                     return false;
                 var orderDetailList = DataProvider.Ins.DB.CTHDs.Where(x => x.MAHD == OrderID && x.MASP == GoodID);
                 if (orderDetailList == null || orderDetailList.Count() != 0)
                     return false;
                 return true;
-            }, (p) =>
-            {
-                //foreach(CTHD ct in MyOrderDetailList)
-                //{
-                //    if (ct.MASP == GoodID)
-                //    {
-                //        ct.SOLUONG += int.Parse(Amount);
-                //        foreach (SANPHAM sp in ProductList)
-                //        {
-                //            if (sp.MASP == GoodID)
-                //                SubTotal += (double)(int.Parse(Amount) * sp.GIA);
-                //        }
-                //    }
-                //    else
-                //    {
-                //        var cthd = new CTHD();
-                //        cthd.MASP = GoodID;
-                //        cthd.SOLUONG = int.Parse(Amount);
-                //        MyOrderDetailList.Add(cthd);
-                //        foreach (SANPHAM sp in ProductList)
-                //        {
-                //            if (sp.MASP == GoodID)
-                //                SubTotal += (double)(cthd.SOLUONG * sp.GIA);
-                //        }
-                //    }
-                //}    
-                var cthd = new CTHD();
-                cthd.MASP = GoodID;
-                cthd.SOLUONG = int.Parse(Amount);
-                bool flag = false;
-                foreach(CTHD ct in MyOrderDetailList)
-                {
-                    if (ct.MASP == cthd.MASP)
-                    {
-                        ct.SOLUONG += cthd.SOLUONG;
-                        flag = true;
-                    }
-                }
-                if (flag == false)
-                    MyOrderDetailList.Add(cthd);
-                foreach (SANPHAM sp in ProductList)
-                {
-                    if (sp.MASP == GoodID)
-                        SubTotal += (double)(cthd.SOLUONG * sp.GIA);
-                }
+            }, (p) => _addListView(p)
+
+            //foreach(CTHD ct in MyOrderDetailList)
+            //{
+            //    if (ct.MASP == GoodID)
+            //    {
+            //        ct.SOLUONG += int.Parse(Amount);
+            //        foreach (SANPHAM sp in ProductList)
+            //        {
+            //            if (sp.MASP == GoodID)
+            //                SubTotal += (double)(int.Parse(Amount) * sp.GIA);
+            //        }
+            //    }
+            //    else
+            //    {
+            //        var cthd = new CTHD();
+            //        cthd.MASP = GoodID;
+            //        cthd.SOLUONG = int.Parse(Amount);
+            //        MyOrderDetailList.Add(cthd);
+            //        foreach (SANPHAM sp in ProductList)
+            //        {
+            //            if (sp.MASP == GoodID)
+            //                SubTotal += (double)(cthd.SOLUONG * sp.GIA);
+            //        }
+            //    }
+            //}    
+            //
+
+            //var cthd = new CTHD();
+            //cthd.MASP = GoodID;
+            //cthd.SOLUONG = int.Parse(Amount);
+            //bool flag = false;
+            //foreach (CTHD ct in MyOrderDetailList)
+            //{
+            //    if (ct.MASP == cthd.MASP)
+            //    {
+            //        ct.SOLUONG += cthd.SOLUONG;
+            //        flag = true;
+            //    }
+            //}
+            //if (flag == false)
+            //    MyOrderDetailList.Add(cthd);
+            //foreach (SANPHAM sp in ProductList)
+            //{
+            //    if (sp.MASP == GoodID)
+            //        SubTotal += (double)(cthd.SOLUONG * sp.GIA);
+            //}
 
 
-
-            });
+            );
 
 
             DoneCommand = new RelayCommand<object>((p) =>
@@ -207,11 +230,9 @@ namespace LoveTap.ViewModel
                 var hd = new HOADON();
                 //hd.MAHD = OrderID;
                 hd.NGMUA = DateTime.Parse(Date);
-                hd.TONGTIEN = SubTotal;
+                hd.TONGTIEN = 0;
 
-                foreach (NHANVIEN nv in EmployeeList)
-                    if (nv.HOTEN == EmployeeName)
-                        hd.MANV = nv.MANV;
+                hd.MANV = eID;
 
                 //hd.SDT = Phone;
 
@@ -227,9 +248,10 @@ namespace LoveTap.ViewModel
                 DataProvider.Ins.DB.SaveChanges();
                 foreach (CTHD cthd in MyOrderDetailList)
                 {
-                    cthd.MAHD = DataProvider.Ins.DB.HOADONs.Count();
+                    cthd.MAHD = hd.MAHD;
                     DataProvider.Ins.DB.CTHDs.Add(cthd);
                     DataProvider.Ins.DB.SaveChanges();
+                   //hd.TONGTIEN = SubTotal;
                 }
 
             });
@@ -238,6 +260,98 @@ namespace LoveTap.ViewModel
             navBack = new NavigationCommand<OrdersViewModel>(navigationStore, () => new OrdersViewModel(navigationStore));
             navDone = new NavigationCommand<OrdersViewModel>(navigationStore, () => new OrdersViewModel(navigationStore));
 
+            IdChanged = new RelayCommand<ComboBox>((p) => { return true; }, p => _changeIDValue(p));
+            gNameChanged = new RelayCommand<ComboBox>((p) => { return true; }, p => _changeNameGood(p));
+
+            phoneChanged = new RelayCommand<TextBox>((p) => { return true; }, p => _changePhoneCustomer(p));
+            nameChanged = new RelayCommand<TextBox>((p) => { return true; }, p => _changeNameCustomer(p));
+            updateListView = new RelayCommand<OrderViewUC>((p) => { return true; }, p => _updateListView(p));
+        }
+
+        void _updateListView (OrderViewUC p)
+        {
+            p.OrderList.Items.Refresh();
+        }
+
+        void _addListView(CreateOrderUC p)
+        {
+            DetailList dtl = new DetailList();
+            dtl.MASP = GoodID;
+            dtl.TENSP = GoodName;
+            dtl.SOLUONG = Int32.Parse(p.AmountTb.Text);
+            for (int i = 0; i < DataProvider.Ins.DB.SANPHAMs.Count(); i++)
+                if (GoodID == ProductList[i].MASP)
+                {
+                    dtl.GIA = (double)ProductList[i].GIA;
+                    for (int j = 0; j < DataProvider.Ins.DB.DANHMUCs.Count(); j++)
+                        if (ProductList[i].MADM == TypeList[j].MADM)
+                            dtl.DANHMUC = TypeList[j].TENDM;
+                }
+
+            MyListView.Add(dtl);
+            p.listGood.Items.Refresh();
+            p.idGood.Text = string.Empty;
+            p.goodName.Text = string.Empty;
+            p.AmountTb.Text = "0";
+
+            var cthd = new CTHD();
+            cthd.MASP = GoodID;
+            cthd.SOLUONG = int.Parse(Amount);
+            bool flag = false;
+            foreach (CTHD ct in MyOrderDetailList)
+            {
+                if (ct.MASP == cthd.MASP)
+                {
+                    ct.SOLUONG += cthd.SOLUONG;
+                    flag = true;
+                }
+            }
+            if (flag == false)
+                MyOrderDetailList.Add(cthd);
+            foreach (SANPHAM sp in ProductList)
+            {
+                if (sp.MASP == GoodID)
+                    SubTotal += (double)(cthd.SOLUONG * sp.GIA);
+            }
+
+        }
+        void _changeIDValue(ComboBox p)
+        {
+            if (p.SelectedIndex >= 0)
+                for (int i = 0; i< DataProvider.Ins.DB.SANPHAMs.Count(); i++)
+                    if (ProductList[i].MASP == (int)p.SelectedValue)
+                        GoodName = ProductList[i].TEN;
+        }
+        void _changeNameGood(ComboBox p)
+        {
+            if (p.SelectedIndex >= 0)
+                for (int i = 0; i< DataProvider.Ins.DB.SANPHAMs.Count(); i++)
+                    if (ProductList[i].TEN == (string)p.SelectedValue)
+                        GoodID = ProductList[i].MASP;
+        }
+        void _changePhoneCustomer(TextBox p)
+        {
+            for (int i = 0; i< DataProvider.Ins.DB.KHACHHANGs.Count(); i++)
+            {
+                if (CustomerList[i].SDT == p.Text)
+                {
+                    CustomerName = CustomerList[i].HOTEN;
+                    return;
+                }
+                else CustomerName = "";
+            }
+        }
+        void _changeNameCustomer(TextBox p)
+        {
+            for (int i = 0; i< DataProvider.Ins.DB.KHACHHANGs.Count(); i++)
+            {
+                if (CustomerList[i].HOTEN == p.Text)
+                {
+                    Phone = CustomerList[i].SDT;
+                    return;
+                }
+                //else Phone = "";
+            }
         }
     }
 }
