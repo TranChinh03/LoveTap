@@ -94,11 +94,11 @@ namespace LoveTap.ViewModel
 
             navPrint = new NavigationCommand<ReceiveInvoiceViewModel>(navigationStore, () => new ReceiveInvoiceViewModel(navigationStore));
 
-            LoadedReceiveDetail = new RelayCommand<UserControl>((p) => true, (p) =>
-            {
+            //LoadedReceiveDetail = new RelayCommand<UserControl>((p) => true, (p) =>
+            //{
                 
 
-            });
+            //});
 
             ProductList = new ObservableCollection<SANPHAM>(DataProvider.Ins.DB.SANPHAMs);
             ReceiveList = new ObservableCollection<PHIEUNHAP>(DataProvider.Ins.DB.PHIEUNHAPs);

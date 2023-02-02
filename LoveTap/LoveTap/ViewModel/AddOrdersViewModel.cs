@@ -24,7 +24,7 @@ namespace LoveTap.ViewModel
 
         public ICommand DoneCommand { get; set; }
 
-        public ICommand LoadedAddOrder { get; set; }
+        //public ICommand LoadedAddOrder { get; set; }
         public ICommand IdChanged { get; set; }
         public ICommand gNameChanged { get; set; }
         public ICommand phoneChanged { get; set; }
@@ -302,9 +302,8 @@ namespace LoveTap.ViewModel
                 MyListView.Add(dtl);
             }
             p.listGood.Items.Refresh();
-            p.idGood.Text = string.Empty;
-            p.goodName.Text = string.Empty;
-            p.AmountTb.Text = "0";
+            p.idGood.SelectedValue = "";
+            p.goodName.Text = "";
 
             var cthd = new CTHD();
             cthd.MASP = GoodID;
@@ -325,6 +324,7 @@ namespace LoveTap.ViewModel
                 if (sp.MASP == GoodID)
                     SubTotal += (double)(cthd.SOLUONG * sp.GIA);
             }
+            Amount = "0";
 
         }
         void _changeIDValue(ComboBox p)
