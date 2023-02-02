@@ -188,7 +188,7 @@ namespace LoveTap.ViewModel
         {
             slKhachHang = 0; slOrders= 0; SanPham = 0;
             for (int i = 0; i < DataProvider.Ins.DB.HOADONs.Count(); i++)
-                if (OrderList[i].NGMUA==selectedDate)
+                if (OrderList[i].NGMUA.Value.ToShortDateString()==selectedDate.ToShortDateString() && OrderList[i].DELETED == false)
                 {
                     slOrders++;
                     for (int j = 0; j < DataProvider.Ins.DB.CTHDs.Count(); j++)
@@ -196,7 +196,7 @@ namespace LoveTap.ViewModel
                             SanPham += OrdersDetailList[j].SOLUONG;
                 };
             for (int i = 0; i < DataProvider.Ins.DB.KHACHHANGs.Count(); i++)
-                if (CustomerList[i].NGDK==selectedDate)
+                if (CustomerList[i].NGDK==selectedDate && CustomerList[i].DELETED==false)
                     slKhachHang++;
         }
 

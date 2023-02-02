@@ -43,8 +43,8 @@
         </Grid.RowDefinitions>
 
         <!--Add Order-->
-        <uc:CreateOrderUC x:Name="AddOrder" Visibility="Hidden" Margin="10" Grid.RowSpan="8" Grid.ColumnSpan="11" Panel.ZIndex="2" Background="White"></uc:CreateOrderUC>
-        <uc:OrdersDetailUC x:Name="OrderDetail" Visibility="Hidden" Margin="10" Grid.RowSpan="8" Grid.ColumnSpan="11" Panel.ZIndex="2" Background="White"></uc:OrdersDetailUC>
+        <!--<uc:CreateOrderUC x:Name="AddOrder" Visibility="Hidden" Margin="10" Grid.RowSpan="8" Grid.ColumnSpan="11" Panel.ZIndex="2" Background="White"></uc:CreateOrderUC>
+        <uc:OrdersDetailUC x:Name="OrderDetail" Visibility="Hidden" Margin="10" Grid.RowSpan="8" Grid.ColumnSpan="11" Panel.ZIndex="2" Background="White"></uc:OrdersDetailUC>-->
 
 
         <Border Grid.Row="0" Grid.ColumnSpan="10" Grid.RowSpan="2"
@@ -65,7 +65,7 @@
 
                     <Button Grid.Column="1" Style="{StaticResource greenButton}"
                                 Content="+Add Invoice" Uid="1"
-                                HorizontalAlignment="Right" Name="addCustomerBt" Command="{Binding navAddOrder}"
+                                HorizontalAlignment="Right" Name="addCustomerBt" Command="{Binding navAddReceive}"
                             >
                     </Button>
 
