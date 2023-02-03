@@ -73,7 +73,7 @@
                         Height="115"
                         >
                     <Ellipse.Fill>
-                        <ImageBrush ImageSource="../img/avatar.png"/>
+                        <ImageBrush ImageSource="{Binding ImgPath}"/>
                     </Ellipse.Fill>
 
 
@@ -158,8 +158,9 @@
                                         FontSize="25"
                                         HorizontalAlignment="Center"
                                         Foreground="#fff"
+                           Text="{Binding OrdersCount}"
                            FontWeight="Bold">
-                    </TextBlock>
+                </TextBlock>
 
                     <TextBlock Padding="5"
                                         FontSize="12"

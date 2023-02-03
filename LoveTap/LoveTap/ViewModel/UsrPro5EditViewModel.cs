@@ -129,7 +129,6 @@ namespace LoveTap.ViewModel
                 else
                     employee.VAITRO = Convert.ToBoolean(1);
 
-
                 DataProvider.Ins.DB.SaveChanges();
 
             });

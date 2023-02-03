@@ -233,7 +233,13 @@
                             </ListView.Resources>
                             <ListView.View >
                                 <GridView>
-                                    <GridViewColumn Header="Best Selling Product" DisplayMemberBinding="{Binding Ten}" Width="300" HeaderContainerStyle="{StaticResource myHeaderStyle}"></GridViewColumn>
+                                    <GridViewColumn Header="Best Selling Product" DisplayMemberBinding="{Binding Ten}" Width="300" HeaderContainerStyle="{StaticResource myHeaderStyle}">
+                                        <!--<i:Interaction.Triggers>
+                                            <i:EventTrigger EventName="Click">
+                                                <i:InvokeCommandAction  Command="{Binding updateTabName}" CommandParameter="{Binding ElementName=mainWindow}"></i:InvokeCommandAction>
+                                            </i:EventTrigger>
+                                        </i:Interaction.Triggers>-->
+                                    </GridViewColumn>
                                     <GridViewColumn Header="Orders" DisplayMemberBinding="{Binding SoLuong}" Width="100"></GridViewColumn>
                                     <GridViewColumn Header="Stocks" DisplayMemberBinding="{Binding SoLuongTon}" Width="100"></GridViewColumn>
                                 </GridView>
