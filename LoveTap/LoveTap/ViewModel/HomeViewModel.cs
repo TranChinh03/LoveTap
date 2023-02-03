@@ -49,6 +49,7 @@ namespace LoveTap.ViewModel
 
         private string _Stock;
         public string Stock { get => _Stock; set { _Stock = value; OnPropertyChanged(); } }
+        public ICommand Sort { get; set; }
         public ICommand ChangeDate { get; set; }
         public ICommand navStatistic { get; set; }
         public ICommand updateTabName { get; set; }
@@ -111,6 +112,8 @@ namespace LoveTap.ViewModel
             updateCbb = new RelayCommand<StatisticViewUC>((p) => { return true; }, (p) => _UpdateCbb(p));
             updateCbb2 = new RelayCommand<StatisticViewUC>((p) => { return true; }, (p) => _UpdateCbb2(p));
             updateCbb3 = new RelayCommand<StatisticViewUC>((p) => { return true; }, (p) => _UpdateCbb3(p));
+            
+
 
             int[] sum = new int[DataProvider.Ins.DB.SANPHAMs.Count()];
             string[] name = new string[DataProvider.Ins.DB.SANPHAMs.Count()];

@@ -54,6 +54,11 @@ namespace LoveTap.ViewModel
 
         private string _Role;
         public string Role { get => _Role; set { _Role = value; OnPropertyChanged(); } }
+        private string _ImgPath;
+        public string ImgPath { get => _ImgPath; set { _ImgPath = value; OnPropertyChanged(); } }
+
+        private string _NumberOfOrder;
+        public string OrdersCount { get => _NumberOfOrder; set { _NumberOfOrder = value; OnPropertyChanged(); } }
 
         string Name;
         public ProfileUsrViewModel(NavigationStore navigationStore)
@@ -76,6 +81,8 @@ namespace LoveTap.ViewModel
                     Role = "Admin";
                 else
                     Role = "Staff";
+                ImgPath = User[0].IMG_PATH;
+                OrdersCount = DataProvider.Ins.DB.HOADONs.Where(x => x.MANV == UserID).Count().ToString();
             }
             ;
 
