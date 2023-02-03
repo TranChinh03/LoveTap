@@ -102,7 +102,7 @@
                     <TextBlock Style="{StaticResource detailTextValue}" Text="{Binding RegistDate,  StringFormat='dd/MM/yyyy'}"></TextBlock>
                     <TextBlock Style="{StaticResource detailTextValue}" Text="{Binding Branch}"></TextBlock>
                     <TextBlock Style="{StaticResource detailTextValue}" Text="{Binding Sale}"></TextBlock>
-                    <TextBlock Background="{Binding bgType}" Foreground="{Binding textType}" Text="{Binding Type}"
+                    <TextBlock Background="{Binding bgType}" Foreground="{Binding textType}" Text="{Binding Type}" FontWeight="Bold"
                            HorizontalAlignment="Left" Padding="10"></TextBlock>
                 </StackPanel>
             </Grid>
