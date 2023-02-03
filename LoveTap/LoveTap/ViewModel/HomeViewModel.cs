@@ -70,6 +70,12 @@ namespace LoveTap.ViewModel
         public int slOrders { get => _slOrders; set { _slOrders = value; OnPropertyChanged(); } }
         public int _slKhachHang { get; set; }
         public int slKhachHang { get => _slKhachHang; set { _slKhachHang = value; OnPropertyChanged(); } }
+        public string _percent1 { get; set; }
+        public string percent1 { get => _percent1; set { _percent1 = value; OnPropertyChanged(); } }
+        public string _percent2 { get; set; }
+        public string percent2 { get => _percent2; set { _percent2 = value; OnPropertyChanged(); } }
+        public string _percent3 { get; set; }
+        public string percent3 { get => _percent3; set { _percent3 = value; OnPropertyChanged(); } }
         public int SoLuongTon { get; set; }
         public struct BestSelling
         {
@@ -107,7 +113,7 @@ namespace LoveTap.ViewModel
             Detail = new RelayCommand<HomeViewUC>((p) => { return p.BestSellingList.SelectedItem == null ? false : true; }, (p) => _DetailCs(p));
             navDetail = new NavigationCommand<GoodDetailViewModel>(navigationStore, () => new GoodDetailViewModel(navigationStore));
             navStatistic = new NavigationCommand<StatisticViewModel>(navigationStore, () => new StatisticViewModel(navigationStore));
-            
+
             updateTabName = new RelayCommand<MainWd>((p) => { return true; }, (p) => _UpdateTabName(p));
             updateCbb = new RelayCommand<StatisticViewUC>((p) => { return true; }, (p) => _UpdateCbb(p));
             updateCbb2 = new RelayCommand<StatisticViewUC>((p) => { return true; }, (p) => _UpdateCbb2(p));
@@ -161,11 +167,11 @@ namespace LoveTap.ViewModel
             Statistic();
         }
 
-        void _UpdateTabName(MainWd  p)
+        void _UpdateTabName(MainWd p)
         {
             p.Tabtxbl.Text="Statistic";
         }
-        
+
         //SelectedDay
         void _SelectedDate(Calendar p)
         {
@@ -190,17 +196,44 @@ namespace LoveTap.ViewModel
         void Statistic()
         {
             slKhachHang = 0; slOrders= 0; SanPham = 0;
-            for (int i = 0; i < DataProvider.Ins.DB.HOADONs.Count(); i++)
+            for (int i = 0; i < OrderList.Count(); i++)
                 if (OrderList[i].NGMUA.Value.ToShortDateString()==selectedDate.ToShortDateString() && OrderList[i].DELETED == false)
                 {
                     slOrders++;
-                    for (int j = 0; j < DataProvider.Ins.DB.CTHDs.Count(); j++)
+                    for (int j = 0; j < OrdersDetailList.Count(); j++)
                         if (OrdersDetailList[j].MAHD == OrderList[i].MAHD)
                             SanPham += OrdersDetailList[j].SOLUONG;
                 };
-            for (int i = 0; i < DataProvider.Ins.DB.KHACHHANGs.Count(); i++)
-                if (CustomerList[i].NGDK==selectedDate && CustomerList[i].DELETED==false)
+            for (int i = 0; i < CustomerList.Count(); i++)
+                if (CustomerList[i].NGDK.Value.ToShortDateString()==selectedDate.ToShortDateString() && CustomerList[i].DELETED==false)
                     slKhachHang++;
+
+            //Percent
+            int tmpsp = 0, tmphd = 0, tmpkh = 0;
+            for (int i = 0; i < OrderList.Count(); i++)
+                if (OrderList[i].NGMUA.Value.ToShortDateString() == (selectedDate.AddTicks(-1).ToShortDateString()) && OrderList[i].DELETED == false)
+                {
+                    tmphd++;
+                    for (int j = 0; j < OrdersDetailList.Count(); j++)
+                        if (OrdersDetailList[j].MAHD == OrderList[i].MAHD)
+                            tmpsp += (int)OrdersDetailList[j].SOLUONG;
+                };
+            for (int i = 0; i < CustomerList.Count(); i++)
+                if (CustomerList[i].NGDK.Value.ToShortDateString()==(selectedDate.AddTicks(-1).ToShortDateString()) && CustomerList[i].DELETED==false)
+                    tmpkh++;
+            if (tmpsp == 0)
+                percent1 = "100%";
+            else
+                percent1 = (((double)(SanPham - tmpsp)/tmpsp)*100).ToString()+ "%";
+            if (tmphd == 0)
+                percent2 = "100%";
+            else
+                percent2 = (((double)(slOrders-tmphd)/tmphd)*100).ToString()+ "%";
+            if (tmpkh == 0)
+                percent3 = "100%";
+            else
+                percent3 = (((double)(slKhachHang-tmpkh)/tmpkh)*100).ToString()+ "%";
+
         }
 
 

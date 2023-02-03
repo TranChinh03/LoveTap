@@ -65,11 +65,11 @@
                                         Foreground="#5684B0"
                                         >GOODS/DAY</TextBlock>
                                 <TextBlock Margin="10, 10, 10, 10" 
-                                        FontSize="10"
+                                        FontSize="10" Text="{Binding percent1}"
                                         HorizontalAlignment="Right"
                                         VerticalAlignment="Top"
                                        Foreground="#59B39C"
-                                        >+16.24%</TextBlock>
+                                        />
                                 <StackPanel Orientation="Horizontal"                                         
                                         HorizontalAlignment="Center"
                                         VerticalAlignment="Center"
@@ -87,12 +87,13 @@
                                         FontSize="10"
                                         HorizontalAlignment="Left"
                                         VerticalAlignment="Bottom"
-                                        Foreground="#5684B0"
-                                        TextDecorations="Underline"
-                                        >See details</TextBlock>
-                                <materialDesign:PackIcon Kind="CartVariant" Width="20" HorizontalAlignment="Right"
+                                        Foreground="#5684B0" Text="See detail"
+                                        TextDecorations="Underline"  
+                                        >
+                                </TextBlock>
+                                <materialDesign:PackIcon Kind="CartCheck" Width="20" HorizontalAlignment="Right"
                                 VerticalAlignment="Bottom"
-                                Margin="10, 10, 10, 10" Foreground="Green" />
+                                Margin="10, 10, 10, 10" Foreground="LightGreen" />
                             </Grid>
                         </materialDesign:Card>
                         <i:Interaction.Triggers>
@@ -121,12 +122,10 @@
                                        Foreground="#5684B0"
                                         >ORDERS/DAY</TextBlock>
                                 <TextBlock Margin="10, 10, 10, 10" 
-                                        FontSize="10"
+                                        FontSize="10" Text="{Binding percent2}"
                                         HorizontalAlignment="Right"
                                         VerticalAlignment="Top"
-                                       Foreground="#F26A4F
-"
-                                        >-16.24%</TextBlock>
+                                       Foreground="#F26A4F"/>
                                 <TextBlock Margin="0, 10, 10, 10" 
                                         FontSize="16"
                                         HorizontalAlignment="Center"
@@ -142,14 +141,10 @@
                                         Foreground="#5684B0"
                                         TextDecorations="Underline"
                                         >See details</TextBlock>
-                                <Image 
-                                Width="22" 
-                                Source="../img/bag.jpg"
-                                HorizontalAlignment="Right"
+                                <materialDesign:PackIcon Kind="ReceiptTextCheck" Width="20" HorizontalAlignment="Right"
                                 VerticalAlignment="Bottom"
-                                Margin="10, 10, 10, 10" 
-                                ></Image>
-                               
+                                Margin="10, 10, 10, 10" Foreground="CornflowerBlue" />
+
                             </Grid>
                         </materialDesign:Card>
                         <i:Interaction.Triggers>
@@ -179,12 +174,12 @@
                                        Foreground="#5684B0"
                                         >CUSTOMERS/DAY</TextBlock>
                                 <TextBlock Margin="10, 10, 10, 10" 
-                                        FontSize="10"
+                                        FontSize="10" Text="{Binding percent3}"
                                         HorizontalAlignment="Right"
                                         VerticalAlignment="Top"
                                        Foreground="#F26A4F
 "
-                                        >-16.24%</TextBlock>
+                                        />
                                 <TextBlock Margin="0, 10, 10, 10" 
                                         FontSize="16"
                                         HorizontalAlignment="Center"
@@ -200,13 +195,9 @@
                                         Foreground="#5684B0"
                                         TextDecorations="Underline"
                                         >See details</TextBlock>
-                                <Image 
-                                Width="15" 
-                                Source="../img/person.jpg"
-                                HorizontalAlignment="Right"
+                                <materialDesign:PackIcon Kind="AccountMultiple" Width="20" HorizontalAlignment="Right"
                                 VerticalAlignment="Bottom"
-                                Margin="10, 10, 10, 10" 
-                                ></Image>
+                                Margin="10, 10, 10, 10" Foreground="Orange" />
 
                             </Grid>
                         </materialDesign:Card>
@@ -291,3 +282,4 @@
     </Grid>
 </UserControl>
    
+    

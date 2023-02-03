@@ -25,6 +25,10 @@ namespace LoveTap.ViewModel
 
         private ObservableCollection<NHANVIEN> _User;
         public ObservableCollection<NHANVIEN> User { get => _User; set { _User = value; OnPropertyChanged(); } }
+        private ObservableCollection<HOADON> _DeliveryList;
+        public ObservableCollection<HOADON> DeliveryList { get => _DeliveryList; set { _DeliveryList = value; OnPropertyChanged(); } }
+        private ObservableCollection<PHIEUNHAP> _ReceiveList;
+        public ObservableCollection<PHIEUNHAP> ReceiveList { get => _ReceiveList; set { _ReceiveList = value; OnPropertyChanged(); } }
 
         private string _FullName;
         public string FullName { get => _FullName; set { _FullName = value; OnPropertyChanged(); } }
@@ -54,6 +58,7 @@ namespace LoveTap.ViewModel
 
         private string _Role;
         public string Role { get => _Role; set { _Role = value; OnPropertyChanged(); } }
+
         private string _ImgPath;
         public string ImgPath { get => _ImgPath; set { _ImgPath = value; OnPropertyChanged(); } }
 
@@ -63,8 +68,12 @@ namespace LoveTap.ViewModel
         string Name;
         public ProfileUsrViewModel(NavigationStore navigationStore)
         {
+            Orders = 0;
             UserID = MainViewModel.ID;
             User = new ObservableCollection<NHANVIEN>(DataProvider.Ins.DB.NHANVIENs.Where(x => x.MANV == UserID));
+
+            DeliveryList = new ObservableCollection<HOADON>(DataProvider.Ins.DB.HOADONs);
+            ReceiveList = new ObservableCollection<PHIEUNHAP>(DataProvider.Ins.DB.PHIEUNHAPs);
             if (User != null && User.Count > 0)
             {
                 FullName = User[0].HOTEN;
@@ -85,6 +94,16 @@ namespace LoveTap.ViewModel
                 OrdersCount = DataProvider.Ins.DB.HOADONs.Where(x => x.MANV == UserID).Count().ToString();
             }
             ;
+
+            for (int i = 0; i < DeliveryList.Count; i++)
+            {
+                if (DeliveryList[i].MANV == ID) { Orders++; }
+            }
+
+            for (int i = 0; i < ReceiveList.Count; i++)
+            {
+                if (ReceiveList[i].MANV == ID) { Orders++; }
+            }
 
             NavEditUsr = new NavigationCommand<UsrPro5EditViewModel>(navigationStore, () => new UsrPro5EditViewModel(navigationStore));
             NavChangePw = new NavigationCommand<CreatePwViewModel>(navigationStore, () => new CreatePwViewModel(navigationStore));
