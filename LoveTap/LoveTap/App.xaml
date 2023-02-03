@@ -63,7 +63,7 @@
                 <Setter Property="IsEnabled" Value="True"/>
                 <Setter Property="FontWeight" Value="DemiBold"/>
                 <Setter Property="ToolTip" Value="Resource name: MaterialDesignRaisedSecondaryLightButton"/>
-
+                <Setter Property="Cursor" Value="Hand" />
                 <Setter Property="Template">
                     <Setter.Value>
                         <ControlTemplate TargetType="Button">

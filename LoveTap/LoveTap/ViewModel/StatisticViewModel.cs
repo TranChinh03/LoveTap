@@ -53,6 +53,16 @@ namespace LoveTap.ViewModel
         public string TextOfCard41 { get => _TextOfCard41; set { _TextOfCard41 = value; OnPropertyChanged(); } }
         public string _TextOfCard42;
         public string TextOfCard42 { get => _TextOfCard42; set { _TextOfCard42 = value; OnPropertyChanged(); } }
+        public string _iconType1;
+        public string iconType1 { get => _iconType1; set { _iconType1 = value; OnPropertyChanged(); } }
+        public string _iconType2;
+        public string iconType2 { get => _iconType2; set { _iconType2 = value; OnPropertyChanged(); } }
+        public string _typeText;
+        public string typeText { get => _typeText; set { _typeText = value; OnPropertyChanged(); } }
+        public string _typeText2;
+        public string typeText2 { get => _typeText2; set { _typeText2 = value; OnPropertyChanged(); } }
+        public string _colorType;
+        public string colorType { get => _colorType; set { _colorType = value; OnPropertyChanged(); } }
 
         private ObservableCollection<CHINHANH> _BranchList;
         public ObservableCollection<CHINHANH> BranchList { get => _BranchList; set { _BranchList = value; OnPropertyChanged(); } }
@@ -76,11 +86,12 @@ namespace LoveTap.ViewModel
 
         public StatisticViewModel(NavigationStore navigationStore)
         {
-
             //NameofCard1 = "TỔNG SẢN PHẨM BÁN RA";
             //NameofCard2 = "TỔNG SẢN PHẨM NHẬP KHO";
             //NameofCard3 = "SẢN PHẨM BÁN RA NHIỀU NHẤT";
             //NameofCard4 = "THÁNG CÓ SẢN PHẨM BÁN RA NHIỀU NHẤT";
+            iconType2 = "CalendarMonth";
+            typeText2= "M";
 
             BranchList = new ObservableCollection<CHINHANH>(DataProvider.Ins.DB.CHINHANHs);
             OrderList = new ObservableCollection<HOADON>(DataProvider.Ins.DB.HOADONs);
@@ -164,6 +175,9 @@ namespace LoveTap.ViewModel
                     NameofCard2 = "TỔNG SẢN PHẨM NHẬP KHO";
                     NameofCard3 = "SẢN PHẨM BÁN RA NHIỀU NHẤT";
                     NameofCard4 = "THÁNG CÓ SẢN PHẨM BÁN RA NHIỀU NHẤT";
+                    iconType1 = "CartCheck";
+                    typeText = "G";
+                    colorType = "LightGreen";
                     changeValue(i);
                     break;
                 case 1:
@@ -171,6 +185,9 @@ namespace LoveTap.ViewModel
                     NameofCard2 = "TỔNG ĐƠN HÀNG NHẬP VÀO";
                     NameofCard3 = "ĐƠN HÀNG CÓ TRỊ GIÁ CAO NHẤT";
                     NameofCard4 = "THÁNG CÓ SỐ LƯỢNG ĐƠN HÀNG NHIỀU NHẤT";
+                    iconType1 = "ReceiptTextCheck";
+                    typeText = "O";
+                    colorType = "CornflowerBlue";
                     changeValue(i);
 
                     break;
@@ -179,6 +196,9 @@ namespace LoveTap.ViewModel
                     NameofCard2 = "SỐ LƯỢNG KHÁCH HÀNG MỚI";
                     NameofCard3 = "KHÁCH HÀNG CÓ DOANH SỐ CAO NHẤT";
                     NameofCard4 = "THÁNG CÓ NHIỀU KHÁCH HÀNG NHẤT";
+                    iconType1 = "AccountMultiple";
+                    typeText = "C";
+                    colorType ="Orange";
                     changeValue(i);
                     break;
             }
