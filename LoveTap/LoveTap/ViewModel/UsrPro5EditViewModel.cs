@@ -57,7 +57,8 @@ namespace LoveTap.ViewModel
 
         private string _Role;
         public string Role { get => _Role; set { _Role = value; OnPropertyChanged(); } }
-
+        private string _Ava;
+        public string Ava { get => _Ava; set { _Ava = value; OnPropertyChanged(); } }
 
         public ICommand EditCommand { get; set; }
         public int[] BranchIDList { get; set; } = new int[DataProvider.Ins.DB.CHINHANHs.Count()];
@@ -91,6 +92,7 @@ namespace LoveTap.ViewModel
                     Role = "Admin";
                 else
                     Role = "Staff";
+                Ava = User[0].AVA;
             }
 
             ;

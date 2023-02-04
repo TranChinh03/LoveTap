@@ -151,7 +151,7 @@
           <Property Name="VAITRO" Type="bit" />
           <Property Name="EMAIL" Type="nvarchar" MaxLength="255" />
           <Property Name="DELETED" Type="bit" />
-          <Property Name="IMG_PATH" Type="varchar" MaxLength="20" />
+          <Property Name="AVA" Type="nvarchar" MaxLength="255" />
         </EntityType>
         <EntityType Name="PHIEUNHAP">
           <Key>
@@ -271,7 +271,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__CTSP__MASP__534D60F1">
+        <Association Name="FK__CTSP__MASP__5441852A">
           <End Role="SANPHAM" Type="Self.SANPHAM" Multiplicity="1" />
           <End Role="CTSP" Type="Self.CTSP" Multiplicity="0..1" />
           <ReferentialConstraint>
@@ -355,7 +355,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__LOIICH__MASP__5629CD9C">
+        <Association Name="FK__LOIICH__MASP__571DF1D5">
           <End Role="SANPHAM" Type="Self.SANPHAM" Multiplicity="1" />
           <End Role="LOIICH" Type="Self.LOIICH" Multiplicity="0..1" />
           <ReferentialConstraint>
@@ -508,7 +508,7 @@
             <End Role="SANPHAM" EntitySet="SANPHAM" />
             <End Role="CTPN" EntitySet="CTPN" />
           </AssociationSet>
-          <AssociationSet Name="FK__CTSP__MASP__534D60F1" Association="Self.FK__CTSP__MASP__534D60F1">
+          <AssociationSet Name="FK__CTSP__MASP__5441852A" Association="Self.FK__CTSP__MASP__5441852A">
             <End Role="SANPHAM" EntitySet="SANPHAM" />
             <End Role="CTSP" EntitySet="CTSP" />
           </AssociationSet>
@@ -536,7 +536,7 @@
             <End Role="NHANVIEN" EntitySet="NHANVIEN" />
             <End Role="KHO" EntitySet="KHO" />
           </AssociationSet>
-          <AssociationSet Name="FK__LOIICH__MASP__5629CD9C" Association="Self.FK__LOIICH__MASP__5629CD9C">
+          <AssociationSet Name="FK__LOIICH__MASP__571DF1D5" Association="Self.FK__LOIICH__MASP__571DF1D5">
             <End Role="SANPHAM" EntitySet="SANPHAM" />
             <End Role="LOIICH" EntitySet="LOIICH" />
           </AssociationSet>
@@ -642,7 +642,7 @@
           <Property Name="OS" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
           <Property Name="COLOR" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
           <Property Name="DELETED" Type="Boolean" />
-          <NavigationProperty Name="SANPHAM" Relationship="Self.FK__CTSP__MASP__534D60F1" FromRole="CTSP" ToRole="SANPHAM" />
+          <NavigationProperty Name="SANPHAM" Relationship="Self.FK__CTSP__MASP__5441852A" FromRole="CTSP" ToRole="SANPHAM" />
         </EntityType>
         <EntityType Name="DANHMUC">
           <Key>
@@ -721,7 +721,7 @@
           <Property Name="LI3" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="LI4" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="DELETED" Type="Boolean" />
-          <NavigationProperty Name="SANPHAM" Relationship="Self.FK__LOIICH__MASP__5629CD9C" FromRole="LOIICH" ToRole="SANPHAM" />
+          <NavigationProperty Name="SANPHAM" Relationship="Self.FK__LOIICH__MASP__571DF1D5" FromRole="LOIICH" ToRole="SANPHAM" />
         </EntityType>
         <EntityType Name="NHACUNGCAP">
           <Key>
@@ -750,7 +750,7 @@
           <Property Name="VAITRO" Type="Boolean" />
           <Property Name="EMAIL" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="DELETED" Type="Boolean" />
-          <Property Name="IMG_PATH" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="AVA" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="CHINHANHs" Relationship="Self.FK__CHINHANH__MAADMI__267ABA7A" FromRole="NHANVIEN" ToRole="CHINHANH" />
           <NavigationProperty Name="CHINHANH" Relationship="Self.FK_NHANVIEN" FromRole="NHANVIEN" ToRole="CHINHANH" />
           <NavigationProperty Name="HOADONs" Relationship="Self.FK__HOADON__MANV__2F10007B" FromRole="NHANVIEN" ToRole="HOADON" />
@@ -789,9 +789,9 @@
           <NavigationProperty Name="BAOHANHs" Relationship="Self.FK__BAOHANH__MASP__4CA06362" FromRole="SANPHAM" ToRole="BAOHANH" />
           <NavigationProperty Name="CTHDs" Relationship="Self.FK__CTHD__MASP__3E52440B" FromRole="SANPHAM" ToRole="CTHD" />
           <NavigationProperty Name="CTPNs" Relationship="Self.FK__CTPN__MASP__4222D4EF" FromRole="SANPHAM" ToRole="CTPN" />
-          <NavigationProperty Name="CTSP" Relationship="Self.FK__CTSP__MASP__534D60F1" FromRole="SANPHAM" ToRole="CTSP" />
+          <NavigationProperty Name="CTSP" Relationship="Self.FK__CTSP__MASP__5441852A" FromRole="SANPHAM" ToRole="CTSP" />
           <NavigationProperty Name="DANHMUC" Relationship="Self.FK__SANPHAM__MADM__3A81B327" FromRole="SANPHAM" ToRole="DANHMUC" />
-          <NavigationProperty Name="LOIICH" Relationship="Self.FK__LOIICH__MASP__5629CD9C" FromRole="SANPHAM" ToRole="LOIICH" />
+          <NavigationProperty Name="LOIICH" Relationship="Self.FK__LOIICH__MASP__571DF1D5" FromRole="SANPHAM" ToRole="LOIICH" />
           <NavigationProperty Name="TONKHOes" Relationship="Self.FK__TONKHO__MASP__48CFD27E" FromRole="SANPHAM" ToRole="TONKHO" />
         </EntityType>
         <EntityType Name="TONKHO">
@@ -938,7 +938,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__CTSP__MASP__534D60F1">
+        <Association Name="FK__CTSP__MASP__5441852A">
           <End Role="SANPHAM" Type="Self.SANPHAM" Multiplicity="1" />
           <End Role="CTSP" Type="Self.CTSP" Multiplicity="0..1" />
           <ReferentialConstraint>
@@ -1034,7 +1034,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__LOIICH__MASP__5629CD9C">
+        <Association Name="FK__LOIICH__MASP__571DF1D5">
           <End Role="SANPHAM" Type="Self.SANPHAM" Multiplicity="1" />
           <End Role="LOIICH" Type="Self.LOIICH" Multiplicity="0..1" />
           <ReferentialConstraint>
@@ -1143,7 +1143,7 @@
             <End Role="SANPHAM" EntitySet="SANPHAMs" />
             <End Role="CTPN" EntitySet="CTPNs" />
           </AssociationSet>
-          <AssociationSet Name="FK__CTSP__MASP__534D60F1" Association="Self.FK__CTSP__MASP__534D60F1">
+          <AssociationSet Name="FK__CTSP__MASP__5441852A" Association="Self.FK__CTSP__MASP__5441852A">
             <End Role="SANPHAM" EntitySet="SANPHAMs" />
             <End Role="CTSP" EntitySet="CTSPs" />
           </AssociationSet>
@@ -1175,7 +1175,7 @@
             <End Role="LOGIN" EntitySet="LOGINs" />
             <End Role="NHANVIEN" EntitySet="NHANVIENs" />
           </AssociationSet>
-          <AssociationSet Name="FK__LOIICH__MASP__5629CD9C" Association="Self.FK__LOIICH__MASP__5629CD9C">
+          <AssociationSet Name="FK__LOIICH__MASP__571DF1D5" Association="Self.FK__LOIICH__MASP__571DF1D5">
             <End Role="SANPHAM" EntitySet="SANPHAMs" />
             <End Role="LOIICH" EntitySet="LOIICHes" />
           </AssociationSet>
@@ -1352,7 +1352,7 @@
                 <ScalarProperty Name="VAITRO" ColumnName="VAITRO" />
                 <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
                 <ScalarProperty Name="DELETED" ColumnName="DELETED" />
-                <ScalarProperty Name="IMG_PATH" ColumnName="IMG_PATH" />
+                <ScalarProperty Name="AVA" ColumnName="AVA" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
