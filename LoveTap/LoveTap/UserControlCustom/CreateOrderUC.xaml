@@ -29,13 +29,10 @@
             <StackPanel Orientation="Vertical" >
                 <DockPanel Margin="0 0 0 5">
                     <!--Back Button-->
-                    <Button DockPanel.Dock="Right" Style="{StaticResource OrangeButton}" 
-                    HorizontalAlignment="Right" Uid="2" Name="backBt" Content="Back" Command="{Binding navBack}">
-                    </Button>
+                    <Button DockPanel.Dock="Right" Style="{StaticResource MaterialDesignRaisedSecondaryLightButton}" Background="#F26A4F" Margin="15, 10, 10, 0" Uid="2" Name="backBt" Content="Back" Command="{Binding navBack}" Width="90"/>
 
                     <!--Done Button-->
-                    <Button Uid="1" Name="doneBt" Content="Done" DockPanel.Dock="Right" Style="{StaticResource greenButton}" 
-                    HorizontalAlignment="Right" Width="90" >
+                    <Button Uid="1" Name="doneBt" Content="Done" DockPanel.Dock="Right" Style="{StaticResource MaterialDesignRaisedSecondaryLightButton}" Background="#26B69F" Width="90" Margin="15, 10, 0, 0">
                         <i:Interaction.Triggers>
                             <i:EventTrigger EventName="Click">
                                 <i:InvokeCommandAction Command="{Binding DoneCommand}" CommandParameter="{Binding ElementName=doneBt}"></i:InvokeCommandAction>
@@ -44,7 +41,7 @@
                             </i:EventTrigger>
                         </i:Interaction.Triggers>
                     </Button>
-                    
+
                     <!--Title -->
                     <StackPanel Orientation="Horizontal">
                         <!--Code Order-->

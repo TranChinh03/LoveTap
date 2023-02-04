@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LoveTap.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -24,5 +25,35 @@ namespace LoveTap.UserControlCustom
         {
             InitializeComponent();
         }
+
+        //private void cbbType_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        //{
+
+        //    //if (liveChart.Series != null)
+        //    //{
+        //    //    liveChart.Series.Clear();
+        //    //}
+        //    //liveChart.Series = StatisticViewModel.SeriesCollection;
+        //}
+
+        //private void cbbBranch_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        //{
+
+        //    //if (liveChart.Series != null)
+        //    //{
+        //    //    liveChart.Series.Clear();
+        //    //}
+        //    //liveChart.Series = StatisticViewModel.SeriesCollection;
+        //}
+
+        //private void cbbYear_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        //{
+
+        //    //if (liveChart.Series != null)
+        //    //{
+        //    //    liveChart.Series.Clear();
+        //    //}
+        //    //liveChart.Series = StatisticViewModel.SeriesCollection;
+        //}
     }
 }

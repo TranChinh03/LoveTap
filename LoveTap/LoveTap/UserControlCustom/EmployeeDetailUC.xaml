@@ -35,9 +35,9 @@
                        >#KH001</TextBlock>
 
                 <!--Delete Button-->
-                <Button Background="{StaticResource Burnt Sienna}"
-                                BorderBrush="Transparent" Padding="0" HorizontalAlignment="Right" 
-                                DockPanel.Dock="Right" Margin="0 5 5 0" Width="35">
+                <Button Style="{StaticResource MaterialDesignRaisedSecondaryLightButton}" Background="#F26A4F" 
+                                 Padding="0" HorizontalAlignment="Right" 
+                                DockPanel.Dock="Right" Margin="0 10 10 0" Width="35">
                     <materialDesign:PackIcon Kind="Delete"  Height="20" Width="20"/>
                     <i:Interaction.Triggers>
                         <i:EventTrigger EventName="Click">
@@ -48,25 +48,24 @@
                 </Button>
 
                 <!--Back Button-->
-                <Button DockPanel.Dock="Right" Style="{StaticResource OrangeButton}"
-                    HorizontalAlignment="Right" Uid="3" Name="backBt" Content="Back" Command="{Binding navBack}">
-                </Button>
+                <Button DockPanel.Dock="Right"  Style="{StaticResource MaterialDesignRaisedSecondaryLightButton}" Background="#F26A4F" Margin="0 10 10 0" Uid="3" Name="backBt" Content="Back" Command="{Binding navBack}" Width="61.697"/>
 
                 <!--Invoice Button-->
-                <Button Name="invoiceBt" Uid="2" DockPanel.Dock="Right" Style="{StaticResource greenButton}"
-                    HorizontalAlignment="Right" Width="90" >
+
+                <Button Name="invoiceBt" Uid="2" DockPanel.Dock="Right" Style="{StaticResource MaterialDesignRaisedSecondaryLightButton}" Background="#26B69F" Margin="0 10 10 0" Width="100" >
                     <StackPanel Orientation="Horizontal">
-                        <materialDesign:PackIcon Kind="Download" />
-                        <TextBlock Margin="8,0,0,0">Invoice</TextBlock>
+                        <materialDesign:PackIcon Kind="Download" Height="20" Width="20" />
+                        <TextBlock Margin="3,0,0,0" LineHeight="20">Invoice</TextBlock>
                     </StackPanel>
                 </Button>
 
                 <!--Edit Button-->
-                <Button x:Name="editBt" Uid="1" DockPanel.Dock="Right" Style="{StaticResource greenButton}"
-                    HorizontalAlignment="Right" Width="90" Command="{Binding navEdit}">
+
+                <Button x:Name="editBt" Uid="1" Style="{StaticResource MaterialDesignRaisedSecondaryLightButton}" Command="{Binding navEdit}" Background="#26B69F" Margin="200 10 10 0"
+                            Width="90" DockPanel.Dock="Right" >
                     <StackPanel Orientation="Horizontal">
                         <materialDesign:PackIcon Kind="Pencil" />
-                        <TextBlock Margin="7,0,0,0" >Edit</TextBlock>
+                        <TextBlock Margin="7,0,0,0" LineHeight="20"><Run Text="Edit"/></TextBlock>
                     </StackPanel>
                 </Button>
             </DockPanel>

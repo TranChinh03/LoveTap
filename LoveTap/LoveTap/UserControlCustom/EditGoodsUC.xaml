@@ -82,21 +82,18 @@
             <StackPanel Grid.Column="1" >
                 <!--Top Button-->
                 <DockPanel  Grid.Column="1" VerticalAlignment="top">
-                    <Button DockPanel.Dock="Right" Style="{StaticResource OrangeButton}" Command="{Binding navBack}"
-                    HorizontalAlignment="Right" Uid="3" Name="backBt" Content="Back">
-                    </Button>
+                    <Button DockPanel.Dock="Right" Style="{StaticResource MaterialDesignRaisedSecondaryLightButton}" Background="#F26A4F" Margin="0 10 10 0" Command="{Binding navBack}" Uid="3" Name="backBt" Content="Back" Width="61.697"/>
 
                     <!--Invoice Button-->
-                    <Button Name="invoiceBt" Uid="2" DockPanel.Dock="Right" Style="{StaticResource greenButton}" 
-                    HorizontalAlignment="Right" Width="90" >
+                    <Button Name="invoiceBt" Uid="2" DockPanel.Dock="Right"  Style="{StaticResource MaterialDesignRaisedSecondaryLightButton}" Background="#26B69F" Margin="0 10 10 0" Width="100" >
                         <StackPanel Orientation="Horizontal">
-                            <materialDesign:PackIcon Kind="Download" />
-                            <TextBlock Margin="8,0,0,0">Invoice</TextBlock>
+                            <materialDesign:PackIcon Kind="Download" Height="20" Width="20"/>
+                            <TextBlock LineHeight="20" Margin="3,0,0,0">Invoice</TextBlock>
                         </StackPanel>
                     </Button>
 
                     <!--Done Button-->
-                    <Button x:Name="doneBt" Uid="1" DockPanel.Dock="Right" Style="{StaticResource greenButton}" Command="{Binding DoneCommand}"
+                    <Button x:Name="doneBt" Uid="1" DockPanel.Dock="Right" Style="{StaticResource MaterialDesignRaisedSecondaryLightButton}" Background="#26B69F" Margin="0 10 10 0" Command="{Binding DoneCommand}"
                     HorizontalAlignment="Right" Width="90" >
                         <StackPanel Orientation="Horizontal">
                             <TextBlock Margin="7,0,0,0">Done</TextBlock>
@@ -135,7 +132,7 @@
                         <TextBox FontSize="15" Foreground="#033270" BorderBrush="Transparent" SelectionBrush="Transparent" Width="98">Out of Stock</TextBox>-->
                 </StackPanel>
                 <!--THÔNG SỐ KỸ THUẬT-->
-                <TextBlock Grid.Column="1" Grid.Row="1"   Text="Thông số kỹ thuật: " Foreground="#1368AA" FontSize="18"  FontWeight="SemiBold"></TextBlock>
+                <TextBlock Grid.Column="1" Grid.Row="1"   Text="Thông số kỹ thuật: " Foreground="#1368AA" FontSize="16"  FontWeight="SemiBold"></TextBlock>
 
             </StackPanel>
 

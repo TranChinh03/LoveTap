@@ -37,8 +37,8 @@
                        FontWeight="Black"
                        Foreground="{StaticResource Catalina Blue}"
                        VerticalAlignment="Center"
-                       >Delivery ID: </TextBlock>
-                    
+                       >Delivery ID:</TextBlock>
+
                     <TextBlock Padding="10" Width="50"
                        FontSize="18"
                        FontWeight="Black"
@@ -62,12 +62,12 @@
                        Padding=" 0 15" 
                        VerticalAlignment="Center"
                        Text="{Binding Date, StringFormat='dd/MM/yyyy'}">
-                </TextBlock>
+                    </TextBlock>
 
                     <!--Delete Button-->
-                    <Button Background="{StaticResource Burnt Sienna}"
-                                BorderBrush="Transparent" Padding="0" HorizontalAlignment="Right" 
-                                DockPanel.Dock="Right" Margin="5 10 5 10" Width="35">
+                    <Button Style="{StaticResource MaterialDesignRaisedSecondaryLightButton}" Background="#F26A4F" Margin="10 7 10 0"  
+                                Padding="0" HorizontalAlignment="Right" 
+                                DockPanel.Dock="Right" Width="35">
                         <materialDesign:PackIcon Kind="Delete"  Height="20" Width="20"/>
                         <i:Interaction.Triggers>
                             <i:EventTrigger EventName="Click">
@@ -78,9 +78,7 @@
                     </Button>
 
                     <!--Back Button-->
-                    <Button DockPanel.Dock="Right" Style="{StaticResource OrangeButton}"
-                    HorizontalAlignment="Right" Uid="2" Name="backBt" Content="Back" Margin="0 10 0 10" Command="{Binding navBack}">
-                    </Button>
+                    <Button DockPanel.Dock="Right" Style="{StaticResource MaterialDesignRaisedSecondaryLightButton}" Background="#F26A4F" Uid="2" Name="backBt" Content="Back" Margin="0 16 0 10" Command="{Binding navBack}" Width="61.697"/>
 
                     <!--<Button Background="{StaticResource Linen}" Command="{Binding DeleteCommand}"
                 BorderBrush="Transparent"  VerticalAlignment="Center" Margin="30 0 0 0"
@@ -95,11 +93,11 @@
                         </i:Interaction.Triggers>
                     </Button>-->
                     <!--Invoice Button-->
-                    <Button Name="invoiceBt" Uid="1" DockPanel.Dock="Right" Style="{StaticResource greenButton}" Margin="10"
-                    HorizontalAlignment="Right" Width="90">
+
+                    <Button Name="invoiceBt" Uid="1" DockPanel.Dock="Right" Style="{StaticResource MaterialDesignRaisedSecondaryLightButton}" Background="#26B69F" Margin="120 7 10 0" Width="100" >
                         <StackPanel Orientation="Horizontal">
-                            <materialDesign:PackIcon Kind="Download" />
-                            <TextBlock Margin="8,0,0,0">Invoice</TextBlock>
+                            <materialDesign:PackIcon Kind="Download" Height="20" Width="20" />
+                            <TextBlock Margin="3,0,0,0" LineHeight="20">Invoice</TextBlock>
                         </StackPanel>
                         <i:Interaction.Triggers>
                             <i:EventTrigger EventName="Click">
@@ -160,7 +158,9 @@
                         <ColumnDefinition Width="2*"/>
                     </Grid.ColumnDefinitions>
 
-                    --><!--PRODUCT DETAIL--><!--
+                    -->
+            <!--PRODUCT DETAIL-->
+            <!--
                     <StackPanel Grid.Column="0"  HorizontalAlignment="Center">
                         <StackPanel Orientation="Horizontal">
                             <Image Source="/img/laptopModel1.png" Height="50" Panel.ZIndex="0" Width="49" ></Image>
@@ -181,7 +181,9 @@
                         </StackPanel>
                     </StackPanel>
 
-                    --><!--ITEM PRICE--><!--
+                    -->
+            <!--ITEM PRICE-->
+            <!--
                     <StackPanel Grid.Column="1" Orientation="Vertical" HorizontalAlignment="Center" >
                         <Grid Width="120" Height="60">
                             <TextBlock FontSize="15" TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Center"  >
@@ -199,7 +201,9 @@
                         </Grid>
                     </StackPanel>
 
-                    --><!--QUANTITY--><!--
+                    -->
+            <!--QUANTITY-->
+            <!--
                     <StackPanel Grid.Column="2" HorizontalAlignment="Center">
                         <Grid Width="60" Height="60">
                             <TextBlock FontSize="15" TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Center"  >
@@ -217,7 +221,9 @@
                         </Grid>
                     </StackPanel>
 
-                    --><!--TOTAL AMOUNT--><!--
+                    -->
+            <!--TOTAL AMOUNT-->
+            <!--
                     <StackPanel Grid.Column="3" HorizontalAlignment="Center">
                         <Grid Width="120" Height="60">
                             <TextBlock FontSize="15" TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Center" >
@@ -318,8 +324,8 @@
                            Foreground="#FF5684B0"   FontWeight="Normal" Padding="5 0"
                          Text="{Binding Address}" TextWrapping ="Wrap" Width="165"></TextBlock>
                         </StackPanel>
-                        
-                        
+
+
                     </StackPanel>
                 </Border>
 

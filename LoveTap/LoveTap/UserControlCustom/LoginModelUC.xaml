@@ -88,15 +88,13 @@
 
                 <Button
                     IsDefault="True"
-                    Style="{StaticResource MaterialDesignRaisedButton}"
+                   Style="{StaticResource MaterialDesignRaisedSecondaryLightButton}" Background="#4091C9"
                     Content="Sign In"
                     Margin="0, 10, 0,0 "
                     IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" 
-                    Background="{DynamicResource Celestial Blue}" 
-                    BorderBrush="Transparent"
                     Command="{Binding LoginCommand}"
                     CommandParameter="{Binding ElementName=ucLoginModel}"
-                />   
+                />
             </StackPanel>
         </materialDesign:Card>
 

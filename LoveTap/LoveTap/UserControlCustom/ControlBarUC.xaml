@@ -44,8 +44,8 @@
                             Command="{Binding MaximizeWindowCommand}"
                             CommandParameter="{Binding ElementName=ucControlBar}"
                             ToolTip="Maximize">
-                            <materialDesign:PackIcon Kind="WindowMaximize" />
-                        </Button>
+                <materialDesign:PackIcon Kind="WindowMaximize" />
+            </Button>
             <Button 
                             Command="{Binding CloseWindowCommand}"
                             CommandParameter="{Binding ElementName=ucControlBar}"

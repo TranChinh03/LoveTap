@@ -1,6 +1,10 @@
-﻿using LoveTap.Model;
+﻿using LiveCharts;
+using LiveCharts.Wpf;
+using LiveCharts.Wpf.Charts.Base;
+using LoveTap.Model;
 using LoveTap.Stores;
 using LoveTap.UserControlCustom;
+using MaterialDesignThemes.Wpf;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -17,6 +21,10 @@ namespace LoveTap.ViewModel
         public static int cbbTypeSlted = 0;
         public int _cbbTypeIndex;
         public int cbbTypeIndex { get => _cbbTypeIndex; set { _cbbTypeIndex = value; OnPropertyChanged(); } }
+
+        public string _cbbTypeValue;
+        public string cbbTypeValue { get => _cbbTypeValue; set { _cbbTypeValue = value; OnPropertyChanged(); } }
+
         public int _cbbBranchValue;
         public int cbbBranchValue { get => _cbbBranchValue; set { _cbbBranchValue = value; OnPropertyChanged(); } }
         public int _cbbBranchIndex;
@@ -71,17 +79,20 @@ namespace LoveTap.ViewModel
         private ObservableCollection<KHACHHANG> _CustomerList;
         public ObservableCollection<KHACHHANG> CustomerList { get => _CustomerList; set { _CustomerList = value; OnPropertyChanged(); } }
 
+        public int[] Labels { get; set; } = new int[12];
+
+        public int[] Values { get; set; } = new int[12];
         public int[] BranchIDList { get; set; } = new int[DataProvider.Ins.DB.CHINHANHs.Count()];
         public string[] YearList { get; set; } = new string[DataProvider.Ins.DB.HOADONs.Count()];
 
+        public int count;
+
+        public static SeriesCollection SeriesCollection { get; set; }
+
+
+
         public StatisticViewModel(NavigationStore navigationStore)
         {
-
-            //NameofCard1 = "TỔNG SẢN PHẨM BÁN RA";
-            //NameofCard2 = "TỔNG SẢN PHẨM NHẬP KHO";
-            //NameofCard3 = "SẢN PHẨM BÁN RA NHIỀU NHẤT";
-            //NameofCard4 = "THÁNG CÓ SẢN PHẨM BÁN RA NHIỀU NHẤT";
-
             BranchList = new ObservableCollection<CHINHANH>(DataProvider.Ins.DB.CHINHANHs);
             OrderList = new ObservableCollection<HOADON>(DataProvider.Ins.DB.HOADONs);
             OrderDetailList = new ObservableCollection<CTHD>(DataProvider.Ins.DB.CTHDs);
@@ -90,7 +101,21 @@ namespace LoveTap.ViewModel
             GoodList = new ObservableCollection<SANPHAM>(DataProvider.Ins.DB.SANPHAMs);
             CustomerList = new ObservableCollection<KHACHHANG>(DataProvider.Ins.DB.KHACHHANGs);
 
-            for (int i = 0; i<DataProvider.Ins.DB.CHINHANHs.Count(); i++)
+            count = 0;
+
+            for (int i = 0; i < 12; i++)
+            {
+                Labels[i] = i + 1;
+
+            }
+            //NameofCard1 = "TỔNG SẢN PHẨM BÁN RA";
+            //NameofCard2 = "TỔNG SẢN PHẨM NHẬP KHO";
+            //NameofCard3 = "SẢN PHẨM BÁN RA NHIỀU NHẤT";
+            //NameofCard4 = "THÁNG CÓ SẢN PHẨM BÁN RA NHIỀU NHẤT";
+
+
+
+            for (int i = 0; i < DataProvider.Ins.DB.CHINHANHs.Count(); i++)
             {
                 BranchIDList[i] = BranchList[i].MACN;
             }
@@ -98,28 +123,45 @@ namespace LoveTap.ViewModel
 
             YearList[0] = OrderList[0].NGMUA.Value.Year.ToString();
             int j = 0;
-            for (int i = 1; i<DataProvider.Ins.DB.HOADONs.Count(); i++)
+            for (int i = 1; i < DataProvider.Ins.DB.HOADONs.Count(); i++)
             {
                 if (OrderList[i].NGMUA.Value.Year.ToString() != YearList[j])
                 {
-                    YearList[j+1] = OrderList[i].NGMUA.Value.Year.ToString();
+                    YearList[j + 1] = OrderList[i].NGMUA.Value.Year.ToString();
                     j++;
                 }
             }
-            int flag = 0;
-            for (int i = 0; i<DataProvider.Ins.DB.PHIEUNHAPs.Count(); i++)
+            int flag;
+            for (int i = 0; i < DataProvider.Ins.DB.PHIEUNHAPs.Count(); i++)
             {
-                for (int k = 1; k<YearList.Count(); k++)
+                flag = 0;
+                for (int k = 1; k < YearList.Count(); k++)
                     if (ReceiveList[i].NGNHAP.Value.Year.ToString() == YearList[k])
                     {
                         flag = 1;
                     }
                 if (flag == 0)
                 {
-                    YearList[j+1] = ReceiveList[i].NGNHAP.Value.Year.ToString();
+                    YearList[j + 1] = ReceiveList[i].NGNHAP.Value.Year.ToString();
                     j++;
                 }
             }
+            foreach (KHACHHANG kh in CustomerList)
+            {
+                flag = 0;
+                foreach (string y in YearList)
+                {
+                    if (kh.NGDK.Value.Year.ToString() == y)
+                        flag = 1;
+                }
+                if (flag == 0)
+                {
+                    YearList[j + 1] = kh.NGDK.Value.Year.ToString();
+                    j++;
+                }
+
+            }
+
             cbb1Changed = new RelayCommand<ComboBox>((p) => { return true; }, (p) => _cbbTypeChanged(p.SelectedIndex));
             cbb2Changed = new RelayCommand<ComboBox>((p) => { return true; }, (p) => _cbbBranchChanged(p));
             cbb3Changed = new RelayCommand<ComboBox>((p) => { return true; }, (p) => _cbbYearChanged(p));
@@ -127,12 +169,14 @@ namespace LoveTap.ViewModel
 
             cbbTypeIndex = cbbTypeSlted;
             cbbTypeSlted = 0;
-            cbbBranchIndex= 0;
-            cbbYearIndex= 0;
+            cbbBranchIndex = 0;
+            cbbYearIndex = 0;
 
-            cbbBranchValue= BranchIDList[0];
+            cbbBranchValue = BranchIDList[0];
             cbbYearValue = YearList[0];
             _cbbTypeChanged(cbbTypeIndex);
+            //_cbbBranchChanged(cbbTypeIndex);
+            //_cbbYearChanged(cbbTypeIndex);
         }
         //private string _branchText;
         //public string branchText
@@ -165,6 +209,7 @@ namespace LoveTap.ViewModel
                     NameofCard3 = "SẢN PHẨM BÁN RA NHIỀU NHẤT";
                     NameofCard4 = "THÁNG CÓ SẢN PHẨM BÁN RA NHIỀU NHẤT";
                     changeValue(i);
+                    changeChart(i);
                     break;
                 case 1:
                     NameofCard1 = "TỔNG ĐƠN HÀNG BÁN RA";
@@ -172,6 +217,7 @@ namespace LoveTap.ViewModel
                     NameofCard3 = "ĐƠN HÀNG CÓ TRỊ GIÁ CAO NHẤT";
                     NameofCard4 = "THÁNG CÓ SỐ LƯỢNG ĐƠN HÀNG NHIỀU NHẤT";
                     changeValue(i);
+                    changeChart(i);
 
                     break;
                 case 2:
@@ -180,22 +226,25 @@ namespace LoveTap.ViewModel
                     NameofCard3 = "KHÁCH HÀNG CÓ DOANH SỐ CAO NHẤT";
                     NameofCard4 = "THÁNG CÓ NHIỀU KHÁCH HÀNG NHẤT";
                     changeValue(i);
+                    changeChart(i);
                     break;
             }
         }
         void _cbbBranchChanged(ComboBox p)
         {
-            if (p.SelectedIndex<0) return;
+            if (p.SelectedIndex < 0) return;
             cbbBranchIndex = p.SelectedIndex;
             cbbBranchValue = (int)p.SelectedValue;
             changeValue(cbbTypeIndex);
+            changeChart(cbbTypeIndex);
         }
         void _cbbYearChanged(ComboBox p)
         {
-            if (p.SelectedIndex<0) return;
+            if (p.SelectedIndex < 0) return;
             cbbYearIndex = p.SelectedIndex;
             cbbYearValue = p.SelectedValue.ToString();
             changeValue(cbbTypeIndex);
+            changeChart(cbbTypeIndex);
         }
         void changeValue(int n)
         {
@@ -206,44 +255,44 @@ namespace LoveTap.ViewModel
             int rDetailListlength = DataProvider.Ins.DB.CTPNs.Count();
             int cListlength = DataProvider.Ins.DB.KHACHHANGs.Count();
             int card1 = 0, card2 = 0, card41 = 0, card42 = 0; string card31 = "", card32 = "";
-            int[] maxMonth = new int[14]; maxMonth[12] = 0; maxMonth[13]= 0;
-            int[] maxGood = new int[gListlength+2]; maxGood[gListlength] = 0;
+            int[] maxMonth = new int[14]; maxMonth[12] = 0; maxMonth[13] = 0;
+            int[] maxGood = new int[gListlength + 2]; maxGood[gListlength] = 0;
 
             switch (n) // n = cbbTypeIndex
             {
                 case 0:
                     //TONG SP BAN RA
-                    for (int i = 0; i<oListlength; i++)
+                    for (int i = 0; i < oListlength; i++)
                     {
                         if (OrderList[i].MACN == cbbBranchValue && OrderList[i].NGMUA.Value.Year.ToString() == cbbYearValue && OrderList[i].DELETED == false)
-                            for (int j = 0; j<oDetailListlength; j++)
+                            for (int j = 0; j < oDetailListlength; j++)
                                 if (OrderDetailList[j].MAHD == OrderList[i].MAHD)
-                                    card1+= (int)OrderDetailList[i].SOLUONG; //card1=tong sp ban ra
+                                    card1 += (int)OrderDetailList[i].SOLUONG; //card1=tong sp ban ra
                     }
 
                     //TONG SP NHAP KHO
-                    for (int i = 0; i<rListlength; i++)
+                    for (int i = 0; i < rListlength; i++)
                     {
                         if (ReceiveList[i].MACN == cbbBranchValue && ReceiveList[i].NGNHAP.Value.Year.ToString() == cbbYearValue && ReceiveList[i].DELETED == false)
-                            for (int j = 0; j<rDetailListlength; j++)
+                            for (int j = 0; j < rDetailListlength; j++)
                                 if (ReceiveDetailList[j].MAPN == ReceiveList[i].MAPN)
-                                    card2+= (int)ReceiveDetailList[i].SOLUONG; //card2=tong sp nhap kho
+                                    card2 += (int)ReceiveDetailList[i].SOLUONG; //card2=tong sp nhap kho
                     }
 
                     //SP BAN RA NHIEU NHAT
-                    for (int i = 0; i<gListlength; i++)
+                    for (int i = 0; i < gListlength; i++)
                     {
                         int tong = 0;
-                        for (int j = 0; j<oListlength; j++)
-                            if (OrderList[j].MACN == cbbBranchValue && OrderList[j].NGMUA.Value.Year.ToString()== cbbYearValue && OrderList[i].DELETED==false)
-                                for (int k = 0; k<oDetailListlength; k++)
+                        for (int j = 0; j < oListlength; j++)
+                            if (OrderList[j].MACN == cbbBranchValue && OrderList[j].NGMUA.Value.Year.ToString() == cbbYearValue && OrderList[i].DELETED == false)
+                                for (int k = 0; k < oDetailListlength; k++)
                                     if (GoodList[i].MASP == OrderDetailList[k].MASP && OrderDetailList[k].MAHD == OrderList[j].MAHD)
                                         tong++;
                         maxGood[i] = tong; //so luong tung sp ban duoc
                     }
 
 
-                    for (int i = 0; i<gListlength; i++)
+                    for (int i = 0; i < gListlength; i++)
                     {
                         if (maxGood[i] > maxGood[gListlength])
                         {
@@ -258,9 +307,9 @@ namespace LoveTap.ViewModel
                     for (int i = 0; i < 12; i++)
                     {
                         int tong = 0;
-                        for (int j = 0; j<oListlength; j++)
-                            if (i== (int)OrderList[j].NGMUA.Value.Month && OrderList[j].MACN ==  cbbBranchValue && OrderList[j].NGMUA.Value.Year.ToString() == cbbYearValue && OrderList[j].DELETED==false)
-                                for (int k = 0; k<oDetailListlength; k++)
+                        for (int j = 0; j < oListlength; j++)
+                            if (i == (int)OrderList[j].NGMUA.Value.Month && OrderList[j].MACN == cbbBranchValue && OrderList[j].NGMUA.Value.Year.ToString() == cbbYearValue && OrderList[j].DELETED == false)
+                                for (int k = 0; k < oDetailListlength; k++)
                                     if (OrderDetailList[k].MAHD == OrderList[j].MAHD)
                                         tong += (int)OrderDetailList[k].SOLUONG;
                         maxMonth[i] = tong;
@@ -278,14 +327,14 @@ namespace LoveTap.ViewModel
 
                 case 1:
                     //TONG DON HANG
-                    for (int i = 0; i<oListlength; i++)
+                    for (int i = 0; i < oListlength; i++)
                     {
                         if (OrderList[i].MACN == cbbBranchValue && OrderList[i].NGMUA.Value.Year.ToString() == cbbYearValue && OrderList[i].DELETED == false)
                             card1++; //card1=tong don hang ban ra
                     }
 
                     //TONG PHIEU NHAP
-                    for (int i = 0; i<rListlength; i++)
+                    for (int i = 0; i < rListlength; i++)
                     {
                         if (ReceiveList[i].MACN == cbbBranchValue && ReceiveList[i].NGNHAP.Value.Year.ToString() == cbbYearValue && ReceiveList[i].DELETED == false)
                             card2++; //card2=tong phieu nhap
@@ -293,9 +342,9 @@ namespace LoveTap.ViewModel
 
                     //DON HANG TRI GIA CAO NHAT
                     double max = 0;
-                    for (int i = 0; i<oListlength; i++)
+                    for (int i = 0; i < oListlength; i++)
                     {
-                        if (OrderList[i].MACN == cbbBranchValue && OrderList[i].NGMUA.Value.Year.ToString() == cbbYearValue && OrderList[i].TONGTIEN > max && OrderList[i].DELETED==false)
+                        if (OrderList[i].MACN == cbbBranchValue && OrderList[i].NGMUA.Value.Year.ToString() == cbbYearValue && OrderList[i].TONGTIEN > max && OrderList[i].DELETED == false)
                         {
                             max = (double)OrderList[i].TONGTIEN;
                             card31 = "Order " + OrderList[i].MAHD.ToString();
@@ -307,8 +356,8 @@ namespace LoveTap.ViewModel
                     for (int i = 0; i < 12; i++)
                     {
                         int tong = 0;
-                        for (int j = 0; j<oListlength; j++)
-                            if (i== (int)OrderList[j].NGMUA.Value.Month && OrderList[j].MACN ==  cbbBranchValue && OrderList[j].NGMUA.Value.Year.ToString() == cbbYearValue && OrderList[i].DELETED==false)
+                        for (int j = 0; j < oListlength; j++)
+                            if (i == (int)OrderList[j].NGMUA.Value.Month && OrderList[j].MACN == cbbBranchValue && OrderList[j].NGMUA.Value.Year.ToString() == cbbYearValue && OrderList[j].DELETED == false)
                                 tong++;
                         maxMonth[i] = tong;
                     }
@@ -324,20 +373,20 @@ namespace LoveTap.ViewModel
                 case 2:
                     //TONG SO KHACH HANG
                     int[] Customer = new int[DataProvider.Ins.DB.KHACHHANGs.Count()];
-                    for (int i = 0; i<oListlength; i++)
+                    for (int i = 0; i < oListlength; i++)
                     {
-                        if (OrderList[i].MACN == cbbBranchValue && OrderList[i].NGMUA.Value.Year.ToString() == cbbYearValue&& OrderList[i].DELETED==false)
+                        if (OrderList[i].MACN == cbbBranchValue && OrderList[i].NGMUA.Value.Year.ToString() == cbbYearValue && OrderList[i].DELETED == false)
                             Customer[(int)OrderList[i].MAKH] = 1;
                     }
 
-                    for (int i = 0; i<cListlength; i++)
+                    for (int i = 0; i < cListlength; i++)
                     {
                         if (Customer[i] == 1)
                             card1++;
                     }
 
                     //SO LUONG KH MOI
-                    for (int i = 0; i<cListlength; i++)
+                    for (int i = 0; i < cListlength; i++)
                     {
                         if (CustomerList[i].MACN == cbbBranchValue && CustomerList[i].NGDK.Value.Year.ToString() == cbbYearValue && CustomerList[i].DELETED == false)
                             card2++;
@@ -345,9 +394,9 @@ namespace LoveTap.ViewModel
 
                     //KHACH HANG CO DOANH SO CAO NHAT
                     max = 0;
-                    for (int i = 0; i<cListlength; i++)
+                    for (int i = 0; i < cListlength; i++)
                     {
-                        if (CustomerList[i].MACN == cbbBranchValue && CustomerList[i].DOANHSO > max && CustomerList[i].DELETED == false )
+                        if (CustomerList[i].MACN == cbbBranchValue && CustomerList[i].DOANHSO > max && CustomerList[i].DELETED == false)
                         {
                             max = (double)CustomerList[i].DOANHSO;
                             card31 = CustomerList[i].HOTEN;
@@ -361,10 +410,10 @@ namespace LoveTap.ViewModel
                     for (int i = 0; i < 12; i++)
                     {
                         int tong = 0;
-                        for (int j = 0; j<oListlength; j++)
-                            if (i== (int)OrderList[j].NGMUA.Value.Month && OrderList[j].MACN ==  cbbBranchValue && OrderList[j].NGMUA.Value.Year.ToString() == cbbYearValue && OrderList[i].DELETED==false)
+                        for (int j = 0; j < oListlength; j++)
+                            if (i == (int)OrderList[j].NGMUA.Value.Month && OrderList[j].MACN == cbbBranchValue && OrderList[j].NGMUA.Value.Year.ToString() == cbbYearValue && OrderList[j].DELETED == false)
                                 Customer[(int)OrderList[j].MAKH] = 1;
-                        for (int j = 0; j<cListlength; j++)
+                        for (int j = 0; j < cListlength; j++)
                         {
                             if (Customer[j] == 1)
                                 tong++;
@@ -387,9 +436,114 @@ namespace LoveTap.ViewModel
             TextOfCard2 = card2.ToString();
             TextOfCard31 = card31;
             TextOfCard32 = card32.ToString();
-            TextOfCard41 = "THÁNG " +  card41.ToString();
+            TextOfCard41 = "THÁNG " + card41.ToString();
             TextOfCard42 = card42.ToString();
         }
+
+        void changeChart(int n)
+        {
+            count++;
+            ChartValues<int> gPurchaseValues = new ChartValues<int>();
+
+            if(count ==1)
+            {
+                SeriesCollection = new SeriesCollection();
+            }
+            if (count > 1)
+            {
+                if (SeriesCollection.Chart != null)
+                    SeriesCollection.Clear();
+            }
+            //foreach(var series in SectionsCollection)
+            //{
+
+            //}    
+            //SeriesCollection = new SeriesCollection();
+            int[] values = new int[12];
+            gPurchaseValues.Clear();
+            int tong = 0;
+            int dem = 0;
+            
+            switch(n)
+            {
+                case 0:
+                    for(int i = 0; i< 12;i++)
+                    {
+                        tong = 0;
+                        foreach (HOADON hd in OrderList)
+                            if (hd.NGMUA.Value.Month == i + 1 && hd.MACN == cbbBranchValue && hd.NGMUA.Value.Year.ToString() == cbbYearValue && hd.DELETED == false)
+                            {
+                                foreach(CTHD cthd in OrderDetailList)
+                                    if(cthd.MAHD == hd.MAHD)
+                                    {
+                                        tong += (int)cthd.SOLUONG;
+                                    }
+                            }
+                        values[i] = tong;
+                    }
+                    break;
+                case 1:
+                    for(int i = 0; i< 12;i++)
+                    {
+                        dem = 0;
+                        foreach (HOADON hd in OrderList)
+                            if (hd.NGMUA.Value.Month == i + 1 && hd.MACN == cbbBranchValue&& hd.NGMUA.Value.Year.ToString() == cbbYearValue && hd.DELETED == false)
+                                dem++;
+                        values[i] = dem;
+                    }
+                    break;
+                case 2:
+                    for(int i=0; i< 12; i++)
+                    {
+                        dem = 0;
+                        foreach (KHACHHANG kh in CustomerList)
+                            if (kh.NGDK.Value.Month == i + 1 && kh.MACN == cbbBranchValue && kh.NGDK.Value.Year.ToString() == cbbYearValue && kh.DELETED == false)
+                                dem++;
+                        values[i] = dem;
+                    }
+                    break;
+            }
+           
+
+
+            gPurchaseValues.Add(0);
+
+            foreach (int x in values)
+            {
+                gPurchaseValues.Add(x);
+            }
+
+            if (cbbTypeSlted == 0)
+                cbbTypeValue = "Goods";
+            else if (cbbTypeSlted == 1)
+                cbbTypeValue = "Orders";
+            else
+                cbbTypeValue = "Customers";
+
+            //SeriesCollection = new SeriesCollection()
+            //{
+            //    new ColumnSeries
+            //    {
+            //        Title = cbbTypeValue,
+            //        Values = gPurchaseValues,
+
+            //    }
+            //};
+            SeriesCollection.Add(new LineSeries()
+            {
+                Title = cbbTypeValue,
+                Values = gPurchaseValues,
+            }
+
+            );
+          
+
+            //if (SeriesCollection != null)
+            //{
+            //    SeriesCollection.Clear();
+            //}
+        }
+
     }
 
 

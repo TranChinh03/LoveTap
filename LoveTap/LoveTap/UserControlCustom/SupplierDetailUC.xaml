@@ -31,9 +31,9 @@
                        ></TextBlock>-->
 
                 <!--Delete Button-->
-                <Button Background="{StaticResource Burnt Sienna}"
-                                BorderBrush="Transparent" Padding="0" HorizontalAlignment="Right" 
-                                DockPanel.Dock="Right" Margin="0 5 5 0" Width="35">
+                <Button Style="{StaticResource MaterialDesignRaisedSecondaryLightButton}" Background="#F26A4F" 
+                                Padding="0" HorizontalAlignment="Right" 
+                                DockPanel.Dock="Right" Margin="0 6 10 0" Width="35">
                     <materialDesign:PackIcon Kind="Delete"  Height="20" Width="20"/>
                     <i:Interaction.Triggers>
                         <i:EventTrigger EventName="Click">
@@ -44,12 +44,12 @@
                 </Button>
 
                 <!--Back Button-->
-                <Button DockPanel.Dock="Right" Style="{StaticResource OrangeButton}"
+                <Button DockPanel.Dock="Right" Style="{StaticResource MaterialDesignRaisedSecondaryLightButton}" Background="#F26A4F" Width="61.697" Margin="0 6 10 0"
                     HorizontalAlignment="Right" Uid="3" Name="backBt" Content="Back" Command="{Binding navBack}">
                 </Button>
 
                 <!--Invoice Button-->
-                <!--<Button Name="invoiceBt" Uid="2" DockPanel.Dock="Right" Style="{StaticResource greenButton}"
+                <!--<Button Name="invoiceBt" Uid="2" DockPanel.Dock="Right" Style="{StaticResource greenButton}" 
                     HorizontalAlignment="Right" Width="90" >
                     <StackPanel Orientation="Horizontal">
                         <materialDesign:PackIcon Kind="Download" />
@@ -58,7 +58,7 @@
                 </Button>-->
 
                 <!--Edit Button-->
-                <Button x:Name="editBt" Uid="1" DockPanel.Dock="Right" Style="{StaticResource greenButton}"
+                <Button x:Name="editBt" Uid="1" DockPanel.Dock="Right"  Style="{StaticResource MaterialDesignRaisedSecondaryLightButton}" Background="#26B69F" Margin="100 8 10 0"
                     HorizontalAlignment="Right" Width="90" Command="{Binding navEdit}">
                     <StackPanel Orientation="Horizontal">
                         <materialDesign:PackIcon Kind="Pencil" />
