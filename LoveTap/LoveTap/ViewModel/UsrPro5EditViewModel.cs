@@ -62,7 +62,6 @@ namespace LoveTap.ViewModel
         public ICommand EditCommand { get; set; }
         public int[] BranchIDList { get; set; } = new int[DataProvider.Ins.DB.CHINHANHs.Count()];
 
-
         public UsrPro5EditViewModel(NavigationStore navigationStore)
         {
             BranchList = new ObservableCollection<CHINHANH>(DataProvider.Ins.DB.CHINHANHs);
