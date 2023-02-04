@@ -25,7 +25,7 @@
                 </Grid.RowDefinitions>
 
                 <!--Image of Good-->
-                <Button Padding="0" Height="170" Width="200"  BorderBrush="Transparent" Background="Transparent">
+                <Button Padding="0" Height="170" Width="200"  BorderBrush="Transparent" Background="Transparent" Margin="0, 0, 0, 0">
                     <Border CornerRadius="30" BorderBrush="#5684B0" BorderThickness="0.5" Background="White" >
                         <Grid >
                             <TextBlock Height="170" Width="200" Text="Drop file here or click to upload" Foreground="#79A7CB" FontSize="10"  Margin="33 85 0 0 "></TextBlock>
@@ -87,12 +87,10 @@
                 <DockPanel VerticalAlignment="Top" Grid.Column="1" >
 
                     <!--Back Button-->
-                    <Button DockPanel.Dock="Right" Style="{StaticResource OrangeButton}"
-                    HorizontalAlignment="Right" Uid="2" Name="backBt" Content="Back" Command="{Binding navBack}">
-                    </Button>
+                    <Button DockPanel.Dock="Right" Style="{StaticResource MaterialDesignRaisedSecondaryLightButton}" Background="#F26A4F" Margin="15, 10, 10, 0" Uid="2" Name="backBt" Content="Back" Command="{Binding navBack}" Width="90"/>
 
                     <!--Done Button-->
-                    <Button Uid="1" Name="doneBt" Content="Done" DockPanel.Dock="Right" Style="{StaticResource greenButton}" 
+                    <Button Uid="1" Name="doneBt" Content="Done" DockPanel.Dock="Right" Style="{StaticResource MaterialDesignRaisedSecondaryLightButton}" Background="#26B69F" Margin="15, 10, 0, 0"
                     HorizontalAlignment="Right" Width="90" >
                         <i:Interaction.Triggers>
                             <i:EventTrigger EventName="Click">

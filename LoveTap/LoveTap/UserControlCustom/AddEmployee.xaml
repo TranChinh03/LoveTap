@@ -34,12 +34,12 @@
 
 
                 <!--Back Button-->
-                <Button DockPanel.Dock="Right" Style="{StaticResource OrangeButton}"
+                <Button DockPanel.Dock="Right" Style="{StaticResource MaterialDesignRaisedSecondaryLightButton}" Background="#F26A4F" Width="90" Margin="15, 0, 0, 0"
                     HorizontalAlignment="Right" Content="Back" Uid="1" x:Name="backBt" Command="{Binding navBack}">
                 </Button>
 
                 <!--Done Button-->
-                <Button DockPanel.Dock="Right" Style="{StaticResource greenButton}" 
+                <Button DockPanel.Dock="Right" Style="{StaticResource MaterialDesignRaisedSecondaryLightButton}" Background="#26B69F"
                     HorizontalAlignment="Right" Width="90" Content="Done" Uid="2" x:Name="doneBt" Command="{Binding AddCommand}">
                     <i:Interaction.Triggers>
                         <i:EventTrigger EventName="Click">

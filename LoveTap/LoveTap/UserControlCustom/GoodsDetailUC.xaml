@@ -65,7 +65,7 @@
 
                     <StackPanel Orientation="Horizontal">
                         <StackPanel>
-                            <Image Source="/img/checkCircle.jpg" Margin="10 5 0 10"></Image> 
+                            <Image Source="/img/checkCircle.jpg" Margin="10 5 0 10"></Image>
                             <Image Source="/img/checkCircle.jpg" Margin="10 5 0 10"></Image>
                             <Image Source="/img/checkCircle.jpg" Margin="10 5 0 10"></Image>
                             <Image Source="/img/checkCircle.jpg" Margin="10 5 0 10"></Image>
@@ -77,8 +77,8 @@
                             <TextBox Height="45" Width="170" FontSize="15" Foreground="#033270" Text="{Binding LI4}" TextWrapping="Wrap" VerticalAlignment="Center" TextAlignment="Center" IsEnabled="False" VerticalContentAlignment="Center"></TextBox>
                         </StackPanel>
                     </StackPanel>
-                    
-                    
+
+
                     <!--<ListBox>
                     <ListBoxItem Height ="32" Width="185" Padding="0">
                         <TextBox Foreground="#033270" FontSize="12" Height ="32" Width="185" BorderBrush="Transparent" SelectionBrush="Transparent"  />
@@ -94,13 +94,13 @@
                     </ListBoxItem>
                 </ListBox>-->
                 </StackPanel>
-                
+
                 <!--Top Button-->
                 <DockPanel  Grid.Column="1" VerticalAlignment="top">
                     <!--Delete Button-->
-                    <Button Background="{StaticResource Burnt Sienna}"
-                                BorderBrush="Transparent" Padding="0" HorizontalAlignment="Right"
-                                DockPanel.Dock="Right" Margin="0 5 5 0" Width="35">
+                    <Button Style="{StaticResource MaterialDesignRaisedSecondaryLightButton}" Background="#F26A4F" 
+                                 Padding="0" HorizontalAlignment="Right"
+                                DockPanel.Dock="Right" Margin="0 10 10 0" Width="35">
                         <materialDesign:PackIcon Kind="Delete"  Height="20" Width="20"/>
                         <i:Interaction.Triggers>
                             <i:EventTrigger EventName="Click">
@@ -109,10 +109,9 @@
                             </i:EventTrigger>
                         </i:Interaction.Triggers>
                     </Button>
-                    
+
                     <!--Back Button-->
-                    <Button DockPanel.Dock="Right" Style="{StaticResource OrangeButton}"
-                    HorizontalAlignment="Right" Uid="3" Name="backBt" Content="Back">
+                    <Button DockPanel.Dock="Right" Style="{StaticResource MaterialDesignRaisedSecondaryLightButton}" Background="#F26A4F" Margin="0 10 10 0" Uid="3" Name="backBt" Content="Back">
                         <i:Interaction.Triggers>
                             <i:EventTrigger EventName="Click">
                                 <i:InvokeCommandAction Command="{Binding BackCmd}"></i:InvokeCommandAction>
@@ -122,22 +121,34 @@
                     </Button>
 
                     <!--Invoice Button-->
-                    <Button Name="invoiceBt" Uid="2" DockPanel.Dock="Right" Style="{StaticResource greenButton}" 
-                    HorizontalAlignment="Right" Width="90" >
+                    <Button Name="invoiceBt" Uid="2" DockPanel.Dock="Right" Style="{StaticResource MaterialDesignRaisedSecondaryLightButton}" Background="#26B69F" Margin="0 10 10 0" Width="100" >
                         <StackPanel Orientation="Horizontal">
-                            <materialDesign:PackIcon Kind="Download" />
-                            <TextBlock Margin="8,0,0,0">Invoice</TextBlock>
+                            <materialDesign:PackIcon Kind="Download" Height="20" Width="20" />
+                            <TextBlock Margin="3,0,0,0" LineHeight="20">Invoice</TextBlock>
                         </StackPanel>
                     </Button>
 
                     <!--Edit Button-->
-                    <Button x:Name="editBt" Uid="1" DockPanel.Dock="Right" Style="{StaticResource greenButton}" Command="{Binding navEdit}"
-                    HorizontalAlignment="Right" Width="90" >
+                    <Button x:Name="editBt" Uid="1" Style="{StaticResource MaterialDesignRaisedSecondaryLightButton}" Command="{Binding navEdit}" Background="#26B69F" Margin="100 10 10 0"
+                            Width="90" DockPanel.Dock="Right" >
                         <StackPanel Orientation="Horizontal">
                             <materialDesign:PackIcon Kind="Pencil" />
-                            <TextBlock Margin="7,0,0,0">Edit</TextBlock>
+                            <TextBlock Margin="7,0,0,0" LineHeight="20"><Run Text="Edit"/></TextBlock>
                         </StackPanel>
                     </Button>
+
+
+
+                    <!--<Button Uid="1" x:Name="addProductBt"
+                    HorizontalAlignment="Left" VerticalAlignment="Center"
+                    Margin="28,0,0,0"
+                    Style="{StaticResource MaterialDesignRaisedSecondaryLightButton}"
+                    Width="120"
+                    Background="#26B69F"
+                    Content="+ Add Product"
+                    FontSize="13" Command="{Binding navAddGood}" Click="addProductBt_Click"
+                     >
+                    </Button>-->
                 </DockPanel>
 
                 <!--Information 1-->
@@ -163,7 +174,7 @@
                         <TextBox FontSize="15" Foreground="#033270" BorderBrush="Transparent" SelectionBrush="Transparent" Width="98">Out of Stock</TextBox>-->
                     </StackPanel>
                     <!--THÔNG SỐ KỸ THUẬT-->
-                    <TextBlock Grid.Column="1" Grid.Row="1"    Text="Thông số kỹ thuật: " Foreground="#1368AA" FontSize="18"  FontWeight="SemiBold"></TextBlock>
+                    <TextBlock Grid.Column="1" Grid.Row="1"    Text="Thông số kỹ thuật: " Foreground="#1368AA" FontSize="16"  FontWeight="SemiBold"></TextBlock>
 
                 </StackPanel>
 

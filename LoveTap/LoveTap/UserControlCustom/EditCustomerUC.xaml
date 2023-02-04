@@ -36,12 +36,10 @@
                        ></TextBlock>
 
                 <!--Back Button-->
-                <Button DockPanel.Dock="Right" Style="{StaticResource OrangeButton}"
-                    HorizontalAlignment="Right" Uid="2" Name="backBt" Content="Back" Command="{Binding navBack}">
-                </Button>
+                <Button DockPanel.Dock="Right" Style="{StaticResource MaterialDesignRaisedSecondaryLightButton}" Background="#F26A4F" Margin="0 10 10 0" Uid="2" Name="backBt" Content="Back" Command="{Binding navBack}" Width="90"/>
 
                 <!--Done Button-->
-                <Button Uid="1" Name="doneBt" Content="Done" DockPanel.Dock="Right" Style="{StaticResource greenButton}" 
+                <Button Uid="1" Name="doneBt" Content="Done" DockPanel.Dock="Right" Style="{StaticResource MaterialDesignRaisedSecondaryLightButton}" Background="#26B69F" Margin="0 10 10 0"
                     HorizontalAlignment="Right" Width="90" Command="{Binding EditCommand}">
                     <i:Interaction.Triggers>
                         <i:EventTrigger EventName="Click">

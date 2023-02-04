@@ -159,11 +159,11 @@
                 </Grid>
 
 
-                <Button Grid.Column="6" Grid.ColumnSpan="2"  Uid="1" Name="doneBt"
+                <Button Grid.Column="6" Grid.ColumnSpan="3"  Uid="1" Name="doneBt"
                     Style="{StaticResource MaterialDesignRaisedSecondaryLightButton}"
-                    Width="86"
                     Height="30"
                     Background="#26B69F"
+                        Margin="44,18,60,8"
                     ToolTip="Resource name: MaterialDesignRaisedSecondaryLightButton"
                     Content="Done"
                     FontSize="15"
@@ -186,6 +186,7 @@
                     Style="{StaticResource MaterialDesignRaisedSecondaryLightButton}"
                     Width="86"
                     Height="30"
+                        Margin="0 10 10 0"
                     Background="#F26A4F"
                     ToolTip="Resource name: MaterialDesignRaisedSecondaryLightButton"
                     Content="Back"

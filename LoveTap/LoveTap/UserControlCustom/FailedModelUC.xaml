@@ -19,7 +19,6 @@
                     FontWeight="Bold"
                     FontSize="30"
                     Foreground="{DynamicResource Regal Blue}"
-                    VerticalAlignment="Center"
                     HorizontalAlignment="Center"/>
 
                 <Grid>
@@ -31,20 +30,20 @@
 
                     <Button
                         Grid.Column="0"
-                        Style="{StaticResource MaterialDesignRaisedButton}"
+                         Style="{StaticResource MaterialDesignRaisedSecondaryLightButton}" Background="#F26A4F"
                         Content="Back"
-                        Margin="0, 20, 0,0 "
-                        IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" 
-                        Background="{DynamicResource Burnt Sienna}" 
-                        BorderBrush="Transparent"/>
+                        Margin="0,20,26,0"
+                        Width="90"
+                        IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" Grid.ColumnSpan="2" 
+                        />
                     <Button
                         Grid.Column="2"
-                        Style="{StaticResource MaterialDesignRaisedButton}"
+                         Style="{StaticResource MaterialDesignRaisedSecondaryLightButton}" Background="#4091C9"
                         Content="Continue"
                         Margin="0, 20, 0,0 "
+                        Width="90"
                         IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" 
-                        Background="{DynamicResource Celestial Blue}" 
-                        BorderBrush="Transparent"/>
+                        />
 
                 </Grid>
             </StackPanel>

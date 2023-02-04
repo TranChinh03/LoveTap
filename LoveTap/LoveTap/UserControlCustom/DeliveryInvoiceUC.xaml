@@ -23,15 +23,17 @@
         </Border.Effect>
         <StackPanel  Background="WhiteSmoke" x:Name="deliveryInvoice">
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                <Button Name="invoiceBt" Uid="1" DockPanel.Dock="Right" Style="{StaticResource greenButton}" Margin="10"
-                    Width="90" Click="invoiceBt_Click" >
+
+                <Button Name="invoiceBt" Uid="1" DockPanel.Dock="Right" Style="{StaticResource MaterialDesignRaisedSecondaryLightButton}" Background="#26B69F" Margin="0 10 10 0"
+                    Width="100" Click="invoiceBt_Click" >
                     <StackPanel Orientation="Horizontal">
-                        <materialDesign:PackIcon Kind="Download" />
-                        <TextBlock Margin="8,0,0,0">Invoice</TextBlock>
+                        <materialDesign:PackIcon Kind="Download" Width="20" Height="20"/>
+                        <TextBlock Margin="3,0,0,0" LineHeight="20">Invoice</TextBlock>
                     </StackPanel>
                 </Button>
-                <Button DockPanel.Dock="Right" Style="{StaticResource OrangeButton}"
-                    Uid="2" Name="backBt" Content="Back" Margin="0 10 0 10" Command="{Binding navBack}">
+
+                <Button DockPanel.Dock="Right"  Style="{StaticResource MaterialDesignRaisedSecondaryLightButton}" Background="#F26A4F" Margin="0 10 10 0"
+                    Uid="2" Name="backBt" Content="Back" Command="{Binding navBack}" Width="90">
                 </Button>
             </StackPanel>
             <Grid x:Name="print">
