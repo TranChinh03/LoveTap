@@ -114,7 +114,7 @@ namespace LoveTap.ViewModel
             NavEditUsr = new NavigationCommand<UsrPro5EditViewModel>(navigationStore, () => new UsrPro5EditViewModel(navigationStore));
             NavChangePw = new NavigationCommand<CreatePwViewModel>(navigationStore, () => new CreatePwViewModel(navigationStore));
 
-            LinkAddImage = "img/person.jpg";
+            LinkAddImage = "";
             AddImage = new RelayCommand<ImageBrush>((p) => true, (p) => _AddImage(p));
         }
         void _AddImage(Image img)
@@ -150,8 +150,8 @@ namespace LoveTap.ViewModel
             img.ImageSource = new BitmapImage(fileUri);
 
 
-            File.Copy(LinkAddImage, _localLink + @"img\UserAvatar\" + User[0].MANV + ((LinkAddImage.Contains(".jpg")) ? ".jpg" : ".png").ToString(), true);
-            User[0].AVA = "../img/UserAvatar/" + User[0].MANV + ((LinkAddImage.Contains(".jpg")) ? ".jpg" : ".png").ToString();
+            File.Copy(LinkAddImage, _localLink + @"img\UserAvatar\" + "NV"+ User[0].MANV + ((LinkAddImage.Contains(".jpg")) ? ".jpg" : ".png").ToString(), true);
+            User[0].AVA = @"../img/UserAvatar/" + "NV" + User[0].MANV + ((LinkAddImage.Contains(".jpg")) ? ".jpg" : ".png").ToString();
             DataProvider.Ins.DB.SaveChanges();
         }
 

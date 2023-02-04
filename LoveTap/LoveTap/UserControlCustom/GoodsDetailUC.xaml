@@ -35,12 +35,26 @@
                 <Button Padding="0" Height="170" Width="200"  BorderBrush="Transparent" Background="Transparent">
                     <Border CornerRadius="30" BorderBrush="#5684B0" BorderThickness="0.5" Background="White" >
                         <Grid HorizontalAlignment="Left" >
-                            <Image x:Name="picHolder" Source="/img/laptopModel0.png" Stretch="Fill"></Image>
+                            <Image x:Name="picHolder" Source="{Binding Ava}" Stretch="Fill"></Image>
                             <Button Width="20" Height="20" Background="White" Padding="0" HorizontalAlignment="Left" Margin="3 0 0 0" BorderBrush="White">
-                                <Image Source="/img/previousButton.png"></Image>
+                                <Image Source="/img/previousButton.png">
+                                    <i:Interaction.Triggers>
+                                        <i:EventTrigger EventName="MouseLeftButtonDown">
+                                            <i:InvokeCommandAction Command="{Binding LastImg}"
+                                                       CommandParameter="{Binding ElementName=picHolder}"></i:InvokeCommandAction>
+                                        </i:EventTrigger>
+                                    </i:Interaction.Triggers>
+                                </Image>
                             </Button>
                             <Button Height="20" Background="White" Padding="0" HorizontalAlignment="Right" Margin="0 0 3 0" BorderBrush="White">
-                                <Image Source="/img/nextButton.png"></Image>
+                                <Image Source="/img/nextButton.png">
+                                    <i:Interaction.Triggers>
+                                        <i:EventTrigger EventName="MouseLeftButtonDown">
+                                            <i:InvokeCommandAction Command="{Binding NextImg}"
+                                                       CommandParameter="{Binding ElementName=picHolder}"></i:InvokeCommandAction>
+                                        </i:EventTrigger>
+                                    </i:Interaction.Triggers>
+                                </Image>
                             </Button>
                         </Grid>
                     </Border>
@@ -50,16 +64,44 @@
                 <StackPanel  Grid.Row="1" Orientation="Vertical" >
                     <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0 20">
                         <Button Height="40" Width="40" BorderBrush="#5684B0" BorderThickness="0.5" HorizontalAlignment="Left" Margin="5 0" Background="White" Padding="0" >
-                            <Image Source="/img/laptopModel1.png" Stretch="Fill" ></Image>
+                            <Image Source="{Binding Ava1}" Stretch="Fill" >
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="MouseLeftButtonDown">
+                                        <i:InvokeCommandAction Command="{Binding ChangeImage1}"
+                                                       CommandParameter="{Binding ElementName=picHolder}"></i:InvokeCommandAction>
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                            </Image>
                         </Button>
                         <Button Height="40" Width="40" BorderBrush="#5684B0" BorderThickness="0.5" HorizontalAlignment="Left" Margin="5 0" Background="White" Padding="0" >
-                            <Image Source="/img/laptopModel2.png" Stretch="Fill" ></Image>
+                            <Image Source="{Binding Ava2}" Stretch="Fill" >
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="MouseLeftButtonDown">
+                                        <i:InvokeCommandAction Command="{Binding ChangeImage2}"
+                                                       CommandParameter="{Binding ElementName=picHolder}"></i:InvokeCommandAction>
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                            </Image>
                         </Button>
                         <Button Height="40" Width="40" BorderBrush="#5684B0" BorderThickness="0.5" HorizontalAlignment="Left" Margin="5 0" Background="White" Padding="0" >
-                            <Image Source="/img/laptopModel3.png" Stretch="Fill" ></Image>
+                            <Image Source="{Binding Ava3}" Stretch="Fill" >
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="MouseLeftButtonDown">
+                                        <i:InvokeCommandAction Command="{Binding ChangeImage3}"
+                                                       CommandParameter="{Binding ElementName=picHolder}"></i:InvokeCommandAction>
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                            </Image>
                         </Button>
                         <Button Height="40" Width="40" BorderBrush="#5684B0" BorderThickness="0.5" HorizontalAlignment="Left" Margin="5 0" Background="White" Padding="0" >
-                            <Image Source="/img/laptopModel4.png" Stretch="Fill" ></Image>
+                            <Image Source="{Binding Ava4}" Stretch="Fill" >
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="MouseLeftButtonDown">
+                                        <i:InvokeCommandAction Command="{Binding ChangeImage4}"
+                                                       CommandParameter="{Binding ElementName=picHolder}"></i:InvokeCommandAction>
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                            </Image>
                         </Button>
                     </StackPanel>
 
