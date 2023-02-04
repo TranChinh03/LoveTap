@@ -73,9 +73,8 @@
                         Height="115"
                         >
                     <Ellipse.Fill>
-                        <ImageBrush ImageSource="{Binding ImgPath}"/>
+                        <ImageBrush x:Name="ava" ImageSource="{Binding Ava}"/>
                     </Ellipse.Fill>
-
 
                 </Ellipse>
 
@@ -90,28 +89,11 @@
                 </TextBlock>
 
                 <TextBlock Margin="195,91,0,0" 
+                           Text="{Binding BranchName}"
                                         FontSize="12"
                                         HorizontalAlignment="Left"
                                         VerticalAlignment="Top"
                                         Foreground="#fff">
-                    TP Hồ Chí Minh
-                </TextBlock>
-
-                <Image 
-                                Width="15" 
-                                Source="../img/location2.png"
-                                HorizontalAlignment="Left"
-                                VerticalAlignment="Top"
-                                Margin="170,92,0,0" 
-                                
-                ></Image>
-
-                <TextBlock Margin="194,112,0,0" 
-                                        FontSize="12"
-                                        HorizontalAlignment="Left"
-                                        VerticalAlignment="Top"
-                                        Foreground="#fff">
-                    TP Hồ Chí Minh
                 </TextBlock>
 
                 <Image 
@@ -119,11 +101,48 @@
                                 Source="../img/staff.png"
                                 HorizontalAlignment="Left"
                                 VerticalAlignment="Top"
+                                Margin="170,92,0,0" 
+                                
+                ></Image>
+
+                <TextBlock Margin="194,112,0,0"
+                           Text="{Binding BranchAdress}"
+                                        FontSize="12"
+                                        HorizontalAlignment="Left"
+                                        VerticalAlignment="Top"
+                                        Foreground="#fff">
+                </TextBlock>
+
+                <Image 
+                                Width="15" 
+                                Source="../img/location2.png"
+                                HorizontalAlignment="Left"
+                                VerticalAlignment="Top"
                                 Margin="170,111,0,0" 
                                 
                 ></Image>
 
                 <StackPanel Margin="20" Orientation="Horizontal" VerticalAlignment="Bottom" HorizontalAlignment="Right">
+                    <Button Name="editAva"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Bottom"
+                    BorderBrush="Transparent"
+                    BorderThickness="0"
+                    Background="Transparent"
+                    Content="{materialDesign:PackIcon ImageEdit}"
+                    ToolTip="Icon"
+                    FontSize="12"
+                    Margin="0 0 220 0">
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="Click">
+                                <i:InvokeCommandAction     Command="{Binding AddImage}"
+                            CommandParameter="{Binding ElementName=ava}">
+
+                                </i:InvokeCommandAction>
+
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </Button>
                     <Button Uid="1" Name="changePwBt"
                     HorizontalAlignment="Right"
                     VerticalAlignment="Bottom"

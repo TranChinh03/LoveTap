@@ -30,8 +30,8 @@ namespace LoveTap.ViewModel
         private string _Position;
         public string Position { get => _Position; set { _Position = value; OnPropertyChanged(); } }
 
-        private string _ImgPath;
-        public string ImgPath { get => _ImgPath; set { _ImgPath = value; OnPropertyChanged(); } }
+        private string _Ava;
+        public string Ava { get => _Ava; set { _Ava = value; OnPropertyChanged(); } }
 
         public bool IsLoaded { get; set; } = false;
         public ICommand LoadedMainWd { get; set; }
@@ -69,7 +69,7 @@ namespace LoveTap.ViewModel
                     ID = loginVM.ID;
                     NHANVIEN temp = (DataProvider.Ins.DB.NHANVIENs.Where(x => x.MANV == ID).ToList())[0];
                     NameUsr = temp.HOTEN;
-                    ImgPath = temp.IMG_PATH;
+                    Ava = temp.AVA;
                     int count = 0, i = NameUsr.Length;
                     string nametmp;
                     while (count < 2)
@@ -130,7 +130,7 @@ namespace LoveTap.ViewModel
                         ID = loginVM.ID;
                         NHANVIEN temp = (DataProvider.Ins.DB.NHANVIENs.Where(x => x.MANV == ID).ToList())[0];
                         NameUsr = temp.HOTEN;
-                        ImgPath = temp.IMG_PATH;
+                        Ava = temp.AVA;
                         int count = 0, i = NameUsr.Length;
                         string nametmp;
                         while (count < 2)

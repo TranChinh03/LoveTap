@@ -3,6 +3,7 @@ using LoveTap.Model;
 using LoveTap.Stores;
 using LoveTap.UserControlCustom;
 using MaterialDesignThemes.Wpf;
+using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -12,8 +13,13 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Media.Imaging;
+using System.Windows.Media;
 using System.Windows.Navigation;
 using System.Xml.Linq;
+using System.Runtime.CompilerServices;
+using System.IO;
+using System.Text.RegularExpressions;
 
 namespace LoveTap.ViewModel
 {
@@ -25,6 +31,10 @@ namespace LoveTap.ViewModel
 
         private ObservableCollection<NHANVIEN> _User;
         public ObservableCollection<NHANVIEN> User { get => _User; set { _User = value; OnPropertyChanged(); } }
+        private ObservableCollection<HOADON> _DeliveryList;
+        public ObservableCollection<HOADON> DeliveryList { get => _DeliveryList; set { _DeliveryList = value; OnPropertyChanged(); } }
+        private ObservableCollection<PHIEUNHAP> _ReceiveList;
+        public ObservableCollection<PHIEUNHAP> ReceiveList { get => _ReceiveList; set { _ReceiveList = value; OnPropertyChanged(); } }
 
         private string _FullName;
         public string FullName { get => _FullName; set { _FullName = value; OnPropertyChanged(); } }
@@ -55,11 +65,29 @@ namespace LoveTap.ViewModel
         private string _Role;
         public string Role { get => _Role; set { _Role = value; OnPropertyChanged(); } }
 
+        private string _Ava;
+        public string Ava { get => _Ava; set { _Ava = value; OnPropertyChanged(); } }
+
+        private string _NumberOfOrder;
+        public string OrdersCount { get => _NumberOfOrder; set { _NumberOfOrder = value; OnPropertyChanged(); } }
+        private string _BranchName;
+        public string BranchName { get => _BranchName; set { _BranchName = value; OnPropertyChanged(); } }
+        private string _BranchAdress;
+        public string BranchAdress { get => _BranchAdress; set { _BranchAdress = value; OnPropertyChanged(); } }
+        private string _localLink = System.Reflection.Assembly.GetExecutingAssembly().Location.Remove(System.Reflection.Assembly.GetExecutingAssembly().Location.IndexOf(@"bin\Debug"));
+        private string _LinkAddImage;
+        public string LinkAddImage { get => _LinkAddImage; set { _LinkAddImage = value; OnPropertyChanged(); } }
+
         string Name;
+        public ICommand AddImage { get; set; }
+
         public ProfileUsrViewModel(NavigationStore navigationStore)
         {
             UserID = MainViewModel.ID;
             User = new ObservableCollection<NHANVIEN>(DataProvider.Ins.DB.NHANVIENs.Where(x => x.MANV == UserID));
+
+            DeliveryList = new ObservableCollection<HOADON>(DataProvider.Ins.DB.HOADONs);
+            ReceiveList = new ObservableCollection<PHIEUNHAP>(DataProvider.Ins.DB.PHIEUNHAPs);
             if (User != null && User.Count > 0)
             {
                 FullName = User[0].HOTEN;
@@ -76,13 +104,56 @@ namespace LoveTap.ViewModel
                     Role = "Admin";
                 else
                     Role = "Staff";
-            }
-            ;
+                Ava = User[0].AVA;
+                OrdersCount = DataProvider.Ins.DB.HOADONs.Where(x => x.MANV == UserID).Count().ToString();
+                var UsrBranch = DataProvider.Ins.DB.CHINHANHs.Where(x => x.MACN == Branch).ToList();
+                BranchName = UsrBranch[0].TENCN;
+                BranchAdress = UsrBranch[0].DIACHI;
+            };
 
             NavEditUsr = new NavigationCommand<UsrPro5EditViewModel>(navigationStore, () => new UsrPro5EditViewModel(navigationStore));
             NavChangePw = new NavigationCommand<CreatePwViewModel>(navigationStore, () => new CreatePwViewModel(navigationStore));
-        }
 
+            LinkAddImage = "img/person.jpg";
+            AddImage = new RelayCommand<ImageBrush>((p) => true, (p) => _AddImage(p));
+        }
+        void _AddImage(Image img)
+        {
+            OpenFileDialog open = new OpenFileDialog();
+            open.Filter = "Image Files(*.jpg; *.png)|*.jpg; *.png";
+            if (open.ShowDialog() == true)
+            {
+                LinkAddImage = open.FileName;
+            };
+            if (LinkAddImage == "../img/person.jpg")
+            {
+                Uri fileUri = new Uri(LinkAddImage, UriKind.Relative);
+                img.Source = new BitmapImage(fileUri);
+            }
+            else
+            {
+                Uri fileUri = new Uri(LinkAddImage);
+                img.Source = new BitmapImage(fileUri);
+            }
+        }
+        void _AddImage(ImageBrush img)
+        {
+            OpenFileDialog open = new OpenFileDialog();
+            open.Filter = "Image Files(*.jpg; *.png)|*.jpg; *.png";
+
+            if (open.ShowDialog() == true)
+            {
+                if (open.FileName != "")
+                    LinkAddImage = open.FileName;
+            };
+            Uri fileUri = new Uri(LinkAddImage);
+            img.ImageSource = new BitmapImage(fileUri);
+
+
+            File.Copy(LinkAddImage, _localLink + @"img\UserAvatar\" + User[0].MANV + ((LinkAddImage.Contains(".jpg")) ? ".jpg" : ".png").ToString(), true);
+            User[0].AVA = "../img/UserAvatar/" + User[0].MANV + ((LinkAddImage.Contains(".jpg")) ? ".jpg" : ".png").ToString();
+            DataProvider.Ins.DB.SaveChanges();
+        }
 
     }
 }
