@@ -23,6 +23,10 @@ namespace LoveTap.Model
         public string OS { get; set; }
         public string COLOR { get; set; }
         public Nullable<bool> DELETED { get; set; }
+        public string AVA1 { get; set; }
+        public string AVA2 { get; set; }
+        public string AVA3 { get; set; }
+        public string AVA4 { get; set; }
     
         public virtual SANPHAM SANPHAM { get; set; }
     }

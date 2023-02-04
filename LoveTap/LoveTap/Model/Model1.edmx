@@ -58,6 +58,10 @@
           <Property Name="OS" Type="varchar" MaxLength="500" />
           <Property Name="COLOR" Type="varchar" MaxLength="500" />
           <Property Name="DELETED" Type="bit" />
+          <Property Name="AVA1" Type="nvarchar" MaxLength="255" />
+          <Property Name="AVA2" Type="nvarchar" MaxLength="255" />
+          <Property Name="AVA3" Type="nvarchar" MaxLength="255" />
+          <Property Name="AVA4" Type="nvarchar" MaxLength="255" />
         </EntityType>
         <EntityType Name="DANHMUC">
           <Key>
@@ -642,6 +646,10 @@
           <Property Name="OS" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
           <Property Name="COLOR" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
           <Property Name="DELETED" Type="Boolean" />
+          <Property Name="AVA1" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="AVA2" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="AVA3" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="AVA4" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="SANPHAM" Relationship="Self.FK__CTSP__MASP__5441852A" FromRole="CTSP" ToRole="SANPHAM" />
         </EntityType>
         <EntityType Name="DANHMUC">
@@ -1251,6 +1259,10 @@
                 <ScalarProperty Name="OS" ColumnName="OS" />
                 <ScalarProperty Name="COLOR" ColumnName="COLOR" />
                 <ScalarProperty Name="DELETED" ColumnName="DELETED" />
+                <ScalarProperty Name="AVA1" ColumnName="AVA1" />
+                <ScalarProperty Name="AVA2" ColumnName="AVA2" />
+                <ScalarProperty Name="AVA3" ColumnName="AVA3" />
+                <ScalarProperty Name="AVA4" ColumnName="AVA4" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
