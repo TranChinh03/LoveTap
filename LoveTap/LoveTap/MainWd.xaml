@@ -82,7 +82,7 @@
                         <Grid Height="50" Margin="-10">
                             <Ellipse Height="45" Width="45" HorizontalAlignment="Left">
                                 <Ellipse.Fill>
-                                    <ImageBrush ImageSource="{Binding ImgPath}" ></ImageBrush>
+                                    <ImageBrush ImageSource="{Binding Ava}" ></ImageBrush>
                                 </Ellipse.Fill>
                             </Ellipse>
                             <StackPanel>
