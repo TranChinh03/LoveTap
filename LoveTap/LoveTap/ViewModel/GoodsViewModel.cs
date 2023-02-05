@@ -181,9 +181,9 @@ namespace LoveTap.ViewModel
 
         {
 
-            ProductList = new ObservableCollection<SANPHAM>(DataProvider.Ins.DB.SANPHAMs);
-            OrderDetailList = new ObservableCollection<CTHD>(DataProvider.Ins.DB.CTHDs);
-            StockList = new ObservableCollection<TONKHO>(DataProvider.Ins.DB.TONKHOes);
+            ProductList = new ObservableCollection<SANPHAM>(DataProvider.Ins.DB.SANPHAMs.Where(x => x.DELETED == false));
+            OrderDetailList = new ObservableCollection<CTHD>(DataProvider.Ins.DB.CTHDs.Where(x => x.DELETED == false));
+            StockList = new ObservableCollection<TONKHO>(DataProvider.Ins.DB.TONKHOes.Where(x => x.DELETED == false));
 
             foreach (SANPHAM sp in ProductList)
             {

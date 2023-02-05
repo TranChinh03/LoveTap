@@ -21,6 +21,8 @@ namespace LoveTap.ViewModel
         public ICommand navBack { get; set; }
         public ICommand BackCmd { get; set; }
 
+        public ICommand DeleteCommand { get; set; }
+
         public ICommand LoadedGoodDetail { get; set; }
         public ICommand ChangeImage1 { get; set; }
         public ICommand ChangeImage2 { get; set; }
@@ -38,8 +40,8 @@ namespace LoveTap.ViewModel
         //private string _ProductID { get; set; }
         //public string ProductID { get => _ProductID; set { _ProductID = value; OnPropertyChanged(); } }
 
-        private string _Brand { get; set; }
-        public string Brand { get => _Brand; set { _Brand = value; OnPropertyChanged(); } }
+        private string _Madein { get; set; }
+        public string Madein { get => _Madein; set { _Madein = value; OnPropertyChanged(); } }
 
         private double _Price { get; set; }
         public double Price { get => _Price; set { _Price = value; OnPropertyChanged(); } }
@@ -126,6 +128,7 @@ namespace LoveTap.ViewModel
                 ID = product.MASP;
                 Name = product.TEN;
                 Price = (double)product.GIA;
+                Madein = product.NUOCSX;
                 foreach (CTSP ctsp in ProductDetailList)
                 {
                     if (ctsp.MASP == product.MASP)
@@ -248,6 +251,27 @@ namespace LoveTap.ViewModel
                     p.Source = new BitmapImage(fileUri);
                     return;
                 }
+            });
+            DeleteCommand = new RelayCommand<UserControl>((p) => true, (p) =>
+            {
+                var ctsp = DataProvider.Ins.DB.CTSPs.Where(x => x.MASP == ID).SingleOrDefault();
+                if (ctsp != null)
+                {
+                    ctsp.DELETED = true;
+                }
+
+                DataProvider.Ins.DB.SaveChanges();
+                
+                var li = DataProvider.Ins.DB.LOIICHes.Where(x => x.MASP == ID).SingleOrDefault();
+                if(li != null)
+                {
+                    li.DELETED = true;
+                }    
+                DataProvider.Ins.DB.SaveChanges();
+
+                var sp = DataProvider.Ins.DB.SANPHAMs.Where(x => x.MASP == ID).SingleOrDefault();
+                sp.DELETED = true;
+                DataProvider.Ins.DB.SaveChanges();
             });
         }
 

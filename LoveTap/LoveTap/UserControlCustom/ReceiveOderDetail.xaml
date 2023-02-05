@@ -97,11 +97,16 @@
                     </Button>-->
                     <!--Invoice Button-->
 
-                    <Button Name="invoiceBt" Uid="1" DockPanel.Dock="Right" Style="{StaticResource MaterialDesignRaisedSecondaryLightButton}" Background="#26B69F" Width="100" Margin="120, 10, 0, 0">
+                    <Button Name="invoiceBt" Uid="1" DockPanel.Dock="Right" Style="{StaticResource MaterialDesignRaisedSecondaryLightButton}" Background="#26B69F" Width="100" Margin="60, 10, 0, 0">
                         <StackPanel Orientation="Horizontal">
                             <materialDesign:PackIcon Kind="Download" Height="20" Width="20" />
                             <TextBlock Margin="3,0,0,0" LineHeight="20">Invoice</TextBlock>
                         </StackPanel>
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="Click">
+                                <i:InvokeCommandAction Command="{Binding navPrint}"></i:InvokeCommandAction>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
                     </Button>
 
                 </DockPanel>
