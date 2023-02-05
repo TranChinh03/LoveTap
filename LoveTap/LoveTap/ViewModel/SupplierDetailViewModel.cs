@@ -12,12 +12,12 @@ using System.Windows.Input;
 
 namespace LoveTap.ViewModel
 {
-    public class SupplierDetailViewModel: BaseViewModel
+    public class SupplierDetailViewModel : BaseViewModel
     {
         private string _textType;
         public string textType { get => _textType; set { _textType = value; OnPropertyChanged(); } }
-        private string _bgType;
-        public string bgType { get => _bgType; set { _bgType = value; OnPropertyChanged(); } }
+        private string _Total;
+        public string Total { get => _Total; set { _Total = value; OnPropertyChanged(); } }
 
         private int _ID;
         public int ID { get => _ID; set { _ID = value; OnPropertyChanged(); } }
@@ -49,23 +49,40 @@ namespace LoveTap.ViewModel
 
         private ObservableCollection<NHACUNGCAP> _SupplierList;
         public ObservableCollection<NHACUNGCAP> SupplierList { get => _SupplierList; set { _SupplierList = value; OnPropertyChanged(); } }
+        private ObservableCollection<PHIEUNHAP> _ReceiveList;
+        public ObservableCollection<PHIEUNHAP> ReceiveList { get => _ReceiveList; set { _ReceiveList = value; OnPropertyChanged(); } }
+        private ObservableCollection<CTPN> _DetailReceiveList;
+        public ObservableCollection<CTPN> DetailReceiveList { get => _DetailReceiveList; set { _DetailReceiveList = value; OnPropertyChanged(); } }
         public SupplierDetailViewModel(NavigationStore navigationStore)
         {
-                SupplierViewModel.Supplier temp = SupplierViewModel.CurrentSelected;
-                SupplierList = new ObservableCollection<NHACUNGCAP>(DataProvider.Ins.DB.NHACUNGCAPs.Where(x => x.DELETED == false));
-                foreach (NHACUNGCAP ncc in SupplierList)
+            SupplierViewModel.Supplier temp = SupplierViewModel.CurrentSelected;
+            SupplierList = new ObservableCollection<NHACUNGCAP>(DataProvider.Ins.DB.NHACUNGCAPs.Where(x => x.DELETED == false));
+            ReceiveList = new ObservableCollection<PHIEUNHAP>(DataProvider.Ins.DB.PHIEUNHAPs);
+            DetailReceiveList = new ObservableCollection<CTPN>(DataProvider.Ins.DB.CTPNs);
+            foreach (NHACUNGCAP ncc in SupplierList)
+            {
+                if (temp.SupplierID == ncc.MANCC)
                 {
-                    if (temp.SupplierID == ncc.MANCC)
-                    {
-                        ID = ncc.MANCC;
-                        SupplierName = ncc.TEN;
-                        Phone = ncc.SDT;
-                        Address = ncc.DIACHI;
-                        Email = ncc.EMAIL;
-                    }
+                    ID = ncc.MANCC;
+                    SupplierName = ncc.TEN;
+                    Phone = ncc.SDT;
+                    Address = ncc.DIACHI;
+                    Email = ncc.EMAIL;
                 }
+            }
 
-            
+            int count=0;
+            for (int i = 0; i < ReceiveList.Count; i++)
+            {
+                if (ReceiveList[i].MANCC == ID && ReceiveList[i].DELETED == false ) 
+                {
+                    for (int j = 0; j < ReceiveList.Count; j++)
+                        if (DetailReceiveList[j].MAPN == ReceiveList[i].MAPN && DetailReceiveList[j].DELETED == false)
+                        count += (int)DetailReceiveList[i].SOLUONG;
+                }
+            }
+
+            Total =  count.ToString() + " Goods";
 
 
             DeleteCommand = new RelayCommand<UserControl>((p) => true, (p) =>

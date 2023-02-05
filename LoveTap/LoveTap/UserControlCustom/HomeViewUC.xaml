@@ -19,7 +19,7 @@
              
 >
 
-    <Grid Background="WhiteSmoke">
+    <Grid Background="#EEEEFC">
 
         <Grid>
             <Grid.ColumnDefinitions>
@@ -91,9 +91,12 @@
                                         TextDecorations="Underline"  
                                         >
                                 </TextBlock>
-                                <materialDesign:PackIcon Kind="CartCheck" Width="20" HorizontalAlignment="Right"
-                                VerticalAlignment="Bottom"
-                                Margin="10, 10, 10, 10" Foreground="LightGreen" />
+                                <Border  Background="LightSeaGreen" HorizontalAlignment="Right"
+                                VerticalAlignment="Bottom" CornerRadius="40" Width="60" Height="60" Margin="-23">
+                                    <materialDesign:PackIcon Kind="CartCheck" Width="20" HorizontalAlignment="Left"
+                                VerticalAlignment="Top"
+                                Margin="10, 13, 10, 10" Foreground="White" BorderBrush="White"/>
+                                </Border>
                             </Grid>
                         </materialDesign:Card>
                         <i:Interaction.Triggers>
@@ -141,10 +144,12 @@
                                         Foreground="#5684B0"
                                         TextDecorations="Underline"
                                         >See details</TextBlock>
-                                <materialDesign:PackIcon Kind="ReceiptTextCheck" Width="20" HorizontalAlignment="Right"
-                                VerticalAlignment="Bottom"
-                                Margin="10, 10, 10, 10" Foreground="CornflowerBlue" />
-
+                                <Border  Background="CornflowerBlue" HorizontalAlignment="Right"
+                                VerticalAlignment="Bottom" CornerRadius="40" Width="60" Height="60" Margin="-23">
+                                    <materialDesign:PackIcon Kind="ReceiptTextCheck" Width="20" HorizontalAlignment="Left"
+                                VerticalAlignment="Top"
+                                Margin="10, 13, 10, 10" Foreground="White" BorderBrush="White"/>
+                                </Border>
                             </Grid>
                         </materialDesign:Card>
                         <i:Interaction.Triggers>
@@ -195,9 +200,12 @@
                                         Foreground="#5684B0"
                                         TextDecorations="Underline"
                                         >See details</TextBlock>
-                                <materialDesign:PackIcon Kind="AccountMultiple" Width="20" HorizontalAlignment="Right"
-                                VerticalAlignment="Bottom"
-                                Margin="10, 10, 10, 10" Foreground="Orange" />
+                                <Border  Background="Orange" HorizontalAlignment="Right"
+                                VerticalAlignment="Bottom" CornerRadius="40" Width="60" Height="60" Margin="-23">
+                                    <materialDesign:PackIcon Kind="AccountMultiple" Width="20" HorizontalAlignment="Left"
+                                VerticalAlignment="Top"
+                                Margin="10, 13, 10, 10" Foreground="White" BorderBrush="White"/>
+                                </Border>
 
                             </Grid>
                         </materialDesign:Card>

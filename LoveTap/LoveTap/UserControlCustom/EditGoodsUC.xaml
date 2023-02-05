@@ -133,10 +133,10 @@
             <StackPanel Grid.Column="1" >
                 <!--Top Button-->
                 <DockPanel  Grid.Column="1" VerticalAlignment="top">
-                    <Button DockPanel.Dock="Right" Style="{StaticResource MaterialDesignRaisedSecondaryLightButton}" Background="#F26A4F" Margin="0 10 10 0" Command="{Binding navBack}" Uid="3" Name="backBt" Content="Back" Width="61.697"/>
+                    <Button DockPanel.Dock="Right" Height="35" BorderThickness="0.3" Style="{StaticResource MaterialDesignRaisedSecondaryLightButton}" Background="#F26A4F" Margin="0 10 10 0" Command="{Binding navBack}" Uid="3" Name="backBt" Content="Back" Width="61.697"/>
 
                     <!--Invoice Button-->
-                    <Button Name="invoiceBt" Uid="2" DockPanel.Dock="Right"  Style="{StaticResource MaterialDesignRaisedSecondaryLightButton}" Background="#26B69F" Margin="0 10 10 0" Width="100" >
+                    <Button Name="invoiceBt" Uid="2" DockPanel.Dock="Right" Height="35" BorderThickness="0.3" Style="{StaticResource MaterialDesignRaisedSecondaryLightButton}" Background="#26B69F" Margin="0 10 10 0" Width="100" >
                         <StackPanel Orientation="Horizontal">
                             <materialDesign:PackIcon Kind="Download" Height="20" Width="20"/>
                             <TextBlock LineHeight="20" Margin="3,0,0,0">Invoice</TextBlock>
@@ -144,7 +144,7 @@
                     </Button>
 
                     <!--Done Button-->
-                    <Button x:Name="doneBt" Uid="1" DockPanel.Dock="Right" Style="{StaticResource MaterialDesignRaisedSecondaryLightButton}" Background="#26B69F" Margin="0 10 10 0" Command="{Binding DoneCommand}"
+                    <Button Height="35" BorderThickness="0.3" x:Name="doneBt" Uid="1" DockPanel.Dock="Right" Style="{StaticResource MaterialDesignRaisedSecondaryLightButton}" Background="#26B69F" Margin="0 10 10 0" Command="{Binding DoneCommand}"
                     HorizontalAlignment="Right" Width="90" >
                         <StackPanel Orientation="Horizontal">
                             <TextBlock Margin="7,0,0,0">Done</TextBlock>

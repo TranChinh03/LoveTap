@@ -87,11 +87,11 @@
                 <DockPanel VerticalAlignment="Top" Grid.Column="1" >
 
                     <!--Back Button-->
-                    <Button DockPanel.Dock="Right" Style="{StaticResource MaterialDesignRaisedSecondaryLightButton}" Background="#F26A4F" Margin="15, 10, 10, 0" Uid="2" Name="backBt" Content="Back" Command="{Binding navBack}" Width="90"/>
+                    <Button DockPanel.Dock="Right" Style="{StaticResource MaterialDesignRaisedSecondaryLightButton}" Background="#F26A4F" Margin="15, 10, 10, 0" Uid="2" Name="backBt" Content="Back" Command="{Binding navBack}" Height="35" Width="90" BorderThickness="0.3"/>
 
                     <!--Done Button-->
                     <Button Uid="1" Name="doneBt" Content="Done" DockPanel.Dock="Right" Style="{StaticResource MaterialDesignRaisedSecondaryLightButton}" Background="#26B69F" Margin="15, 10, 0, 0"
-                    HorizontalAlignment="Right" Width="90" >
+                    HorizontalAlignment="Right" Height="35" Width="90" BorderThickness="0.3" >
                         <i:Interaction.Triggers>
                             <i:EventTrigger EventName="Click">
                                 <i:InvokeCommandAction Command="{Binding navDone}"

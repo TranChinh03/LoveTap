@@ -23,15 +23,15 @@
 
             <!--3 Button-->
             <DockPanel Margin="15,0,15,0">
-                <!--<TextBlock FontSize="20"
+                <TextBlock FontSize="20"
                        FontWeight="Black"
                        Foreground="{StaticResource Catalina Blue}"
                        VerticalAlignment="Center"
-                       Text="{Binding Phone}"
-                       ></TextBlock>-->
+                       Text="{Binding SupplierName}"
+                       ></TextBlock>
 
                 <!--Delete Button-->
-                <Button Style="{StaticResource MaterialDesignRaisedSecondaryLightButton}" Background="#F26A4F" 
+                <Button Height="35" BorderThickness="0.3" Style="{StaticResource MaterialDesignRaisedSecondaryLightButton}" Background="#F26A4F" 
                                 Padding="0" HorizontalAlignment="Right" 
                                 DockPanel.Dock="Right" Margin="0 6 10 0" Width="35">
                     <materialDesign:PackIcon Kind="Delete"  Height="20" Width="20"/>
@@ -44,7 +44,7 @@
                 </Button>
 
                 <!--Back Button-->
-                <Button DockPanel.Dock="Right" Style="{StaticResource MaterialDesignRaisedSecondaryLightButton}" Background="#F26A4F" Width="61.697" Margin="0 6 10 0"
+                <Button Height="35" BorderThickness="0.3" DockPanel.Dock="Right" Style="{StaticResource MaterialDesignRaisedSecondaryLightButton}" Background="#F26A4F" Width="61.697" Margin="0 6 10 0"
                     HorizontalAlignment="Right" Uid="3" Name="backBt" Content="Back" Command="{Binding navBack}">
                 </Button>
 
@@ -58,11 +58,11 @@
                 </Button>-->
 
                 <!--Edit Button-->
-                <Button x:Name="editBt" Uid="1" DockPanel.Dock="Right"  Style="{StaticResource MaterialDesignRaisedSecondaryLightButton}" Background="#26B69F" Margin="100 8 10 0"
+                <Button Height="35" BorderThickness="0.3" x:Name="editBt" Uid="1" DockPanel.Dock="Right"  Style="{StaticResource MaterialDesignRaisedSecondaryLightButton}" Background="#26B69F" Margin="100 8 10 0"
                     HorizontalAlignment="Right" Width="90" Command="{Binding navEdit}">
-                    <StackPanel Orientation="Horizontal">
-                        <materialDesign:PackIcon Kind="Pencil" />
-                        <TextBlock Margin="7,0,0,0" >Edit</TextBlock>
+                    <StackPanel Orientation="Horizontal" >
+                        <materialDesign:PackIcon Kind="Pencil" VerticalAlignment="Center" />
+                        <TextBlock Padding="3,0,0,0" VerticalAlignment="Center" >Edit</TextBlock>
                     </StackPanel>
                 </Button>
             </DockPanel>
@@ -82,6 +82,7 @@
                     <TextBlock Style="{StaticResource detailText}" Padding="4">Email:</TextBlock>
                     <!--<TextBlock Style="{StaticResource detailText}" Padding="3">Date of Birth:</TextBlock>-->
                     <TextBlock Style="{StaticResource detailText}" Padding="4">Address:</TextBlock>
+                    <TextBlock Style="{StaticResource detailText}" Padding="4">Total:</TextBlock>
                     <!--<TextBlock Style="{StaticResource detailText}" Padding="3">Registation Date:</TextBlock>
                     <TextBlock Style="{StaticResource detailText}" Padding="3">Branch:</TextBlock>
                     <TextBlock Style="{StaticResource detailText}" Padding="3">Sale:</TextBlock>
@@ -95,6 +96,7 @@
                     <TextBlock Style="{StaticResource detailTextValue}" Text="{Binding Email}"></TextBlock>
                     <!--<TextBlock Style="{StaticResource detailTextValue}" Text="{Binding DOB, StringFormat='dd/MM/yyyy'}"></TextBlock>-->
                     <TextBlock Style="{StaticResource detailTextValue}" TextWrapping="WrapWithOverflow"  Text="{Binding Address}"></TextBlock>
+                    <TextBlock Style="{StaticResource detailTextValue}" Text="{Binding Total}"></TextBlock>
                     <!--<TextBlock Style="{StaticResource detailTextValue}" Text="{Binding RegistDate,  StringFormat='dd/MM/yyyy'}"></TextBlock>
                     <TextBlock Style="{StaticResource detailTextValue}" Text="{Binding Branch}"></TextBlock>
                     <TextBlock Style="{StaticResource detailTextValue}" Text="{Binding Sale}"></TextBlock>

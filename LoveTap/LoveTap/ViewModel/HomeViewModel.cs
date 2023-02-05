@@ -201,7 +201,7 @@ namespace LoveTap.ViewModel
                 {
                     slOrders++;
                     for (int j = 0; j < OrdersDetailList.Count(); j++)
-                        if (OrdersDetailList[j].MAHD == OrderList[i].MAHD)
+                        if (OrdersDetailList[j].MAHD == OrderList[i].MAHD && OrdersDetailList[i].DELETED == false)
                             SanPham += OrdersDetailList[j].SOLUONG;
                 };
             for (int i = 0; i < CustomerList.Count(); i++)
@@ -215,7 +215,7 @@ namespace LoveTap.ViewModel
                 {
                     tmphd++;
                     for (int j = 0; j < OrdersDetailList.Count(); j++)
-                        if (OrdersDetailList[j].MAHD == OrderList[i].MAHD)
+                        if (OrdersDetailList[j].MAHD == OrderList[i].MAHD && OrdersDetailList[i].DELETED == false)
                             tmpsp += (int)OrdersDetailList[j].SOLUONG;
                 };
             for (int i = 0; i < CustomerList.Count(); i++)

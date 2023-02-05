@@ -23,14 +23,14 @@
         <StackPanel  Background="WhiteSmoke" x:Name="deliveryInvoice">
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
 
-                <Button Name="invoiceBt" Uid="2" DockPanel.Dock="Right" Style="{StaticResource MaterialDesignRaisedSecondaryLightButton}" Background="#26B69F" Margin="0 10 10 0" Width="100" >
-                    <StackPanel Orientation="Horizontal">
-                        <materialDesign:PackIcon Kind="Download" Height="20" Width="20" />
-                        <TextBlock Margin="3,0,0,0" LineHeight="20">Invoice</TextBlock>
+                <Button Height="35" BorderThickness="0.3" Name="invoiceBt" Uid="2" DockPanel.Dock="Right" Style="{StaticResource MaterialDesignRaisedSecondaryLightButton}" Background="#26B69F" Margin="0 10 10 0" Width="100" >
+                    <StackPanel Orientation="Horizontal" >
+                        <materialDesign:PackIcon Kind="Download" Height="20" Width="20" VerticalAlignment="Center" />
+                        <TextBlock Padding="3,0,0,0" VerticalAlignment="Center">Invoice</TextBlock>
                     </StackPanel>
                 </Button>
 
-                <Button DockPanel.Dock="Right" Style="{StaticResource MaterialDesignRaisedSecondaryLightButton}" Background="#F26A4F" Margin="0 10 10 0" 
+                <Button Height="35" BorderThickness="0.3" DockPanel.Dock="Right" Style="{StaticResource MaterialDesignRaisedSecondaryLightButton}" Background="#F26A4F" Margin="0 10 10 0" 
                     Uid="2" Name="backBt" Content="Back" Command="{Binding navBack}">
                 </Button>
             </StackPanel>

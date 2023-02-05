@@ -65,25 +65,8 @@
                        Text="{Binding Date, StringFormat='dd/MM/yyyy'}">
                     </TextBlock>
 
-                    <!--Delete Button-->
-                    <Button Style="{StaticResource MaterialDesignRaisedSecondaryLightButton}" Background="#F26A4F"  
-                                 Padding="0" HorizontalAlignment="Right" 
-                                DockPanel.Dock="Right" Margin="0 10 10 0" Width="35">
-                        <materialDesign:PackIcon Kind="Delete"  Height="20" Width="20"/>
-                        <i:Interaction.Triggers>
-                            <i:EventTrigger EventName="Click">
-                                <i:InvokeCommandAction Command="{Binding DeleteCommand}"></i:InvokeCommandAction>
-                                <i:InvokeCommandAction Command="{Binding navDone}"></i:InvokeCommandAction>
-                            </i:EventTrigger>
-                        </i:Interaction.Triggers>
-                    </Button>
-
-                    <!--Back Button-->
-                    <Button DockPanel.Dock="Right" Style="{StaticResource MaterialDesignRaisedSecondaryLightButton}" Background="#F26A4F" Margin="0 10 10 0" 
-                    HorizontalAlignment="Right" Uid="2" Name="backBt" Content="Back" Command="{Binding navBack}">
-                    </Button>
-
-                    <!--<Button Background="{StaticResource Linen}" Command="{Binding DeleteCommand}"
+                    <StackPanel Orientation="Horizontal" DockPanel.Dock="Right" FlowDirection="RightToLeft">
+                        <!--<Button Background="{StaticResource Linen}" Command="{Binding DeleteCommand}"
                 BorderBrush="Transparent"  VerticalAlignment="Center" Margin="30 0 0 0"
 >
                         <Image Source="/img/trash.png" Width="13" Height="13" HorizontalAlignment="Center" VerticalAlignment="Center">
@@ -95,15 +78,35 @@
                             </i:EventTrigger>
                         </i:Interaction.Triggers>
                     </Button>-->
-                    <!--Invoice Button-->
+                        <!--Invoice Button-->
+                        <!--Delete Button-->
+                        <Button Height="35"  BorderThickness="0.3" Style="{StaticResource MaterialDesignRaisedSecondaryLightButton}" Background="#F26A4F" 
+                                Padding="0" HorizontalAlignment="Right" 
+                                 Width="35">
+                            <materialDesign:PackIcon Kind="Delete"  Height="20" Width="20"/>
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="Click">
+                                    <i:InvokeCommandAction Command="{Binding DeleteCommand}"></i:InvokeCommandAction>
+                                    <i:InvokeCommandAction Command="{Binding navDone}"></i:InvokeCommandAction>
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </Button>
 
-                    <Button Name="invoiceBt" Uid="1" DockPanel.Dock="Right" Style="{StaticResource MaterialDesignRaisedSecondaryLightButton}" Background="#26B69F" Width="100" Margin="120, 10, 0, 0">
-                        <StackPanel Orientation="Horizontal">
-                            <materialDesign:PackIcon Kind="Download" Height="20" Width="20" />
-                            <TextBlock Margin="3,0,0,0" LineHeight="20">Invoice</TextBlock>
-                        </StackPanel>
-                    </Button>
+                        <!--Back Button-->
+                        <Button Height="35" BorderThickness="0.3" Style="{StaticResource MaterialDesignRaisedSecondaryLightButton}" Background="#F26A4F" Uid="2" Name="backBt" Margin="5 0 " Content="Back" Command="{Binding navBack}" Width="90"/>
 
+                        <Button HorizontalAlignment="Right" Height="35" BorderThickness="0.3" Name="invoiceBt" Uid="1" DockPanel.Dock="Right" Style="{StaticResource MaterialDesignRaisedSecondaryLightButton}" Background="#26B69F"  Width="100" >
+                            <StackPanel Orientation="Horizontal">
+                                <materialDesign:PackIcon VerticalAlignment="Center" Kind="Download" Height="20" Width="20" />
+                                <TextBlock Padding="3 0" VerticalAlignment="Center">Invoice</TextBlock>
+                            </StackPanel>
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="Click">
+                                    <i:InvokeCommandAction Command="{Binding navPrint}"></i:InvokeCommandAction>
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </Button>
+                    </StackPanel>
                 </DockPanel>
             </Grid>
 

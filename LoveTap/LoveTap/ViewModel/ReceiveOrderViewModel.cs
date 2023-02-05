@@ -16,11 +16,7 @@ namespace LoveTap.ViewModel
     public class ReceiveOrderViewModel : BaseViewModel
     {
         public static Receive ReceiveSelected { get; set; }
-
-
-
         public ICommand navAddReceive { get; set; }
-
         public ICommand navDetail { get; set; }
         public ICommand Detail { get; set; }
 
