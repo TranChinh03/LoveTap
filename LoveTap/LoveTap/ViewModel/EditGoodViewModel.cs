@@ -50,8 +50,8 @@ namespace LoveTap.ViewModel
         //private string _ProductID { get; set; }
         //public string ProductID { get => _ProductID; set { _ProductID = value; OnPropertyChanged(); } }
 
-        private string _Brand { get; set; }
-        public string Brand { get => _Brand; set { _Brand = value; OnPropertyChanged(); } }
+        private string _Madein { get; set; }
+        public string Madein { get => _Madein; set { _Madein = value; OnPropertyChanged(); } }
 
         private double _Price { get; set; }
         public double Price { get => _Price; set { _Price = value; OnPropertyChanged(); } }
@@ -125,6 +125,7 @@ namespace LoveTap.ViewModel
                         ID = sp.MASP;
                         Name = sp.TEN;
                         Price = (double)sp.GIA;
+                        Madein = sp.NUOCSX;
                     }
                 }
                 foreach (CTSP ctsp in ProductDetailList)
@@ -167,6 +168,8 @@ namespace LoveTap.ViewModel
                 var product = DataProvider.Ins.DB.SANPHAMs.Where(x => x.MASP == ID).SingleOrDefault();
                 product.TEN = Name;
                 product.GIA = Price;
+                product.NUOCSX = Madein;
+                DataProvider.Ins.DB.SaveChanges();
                 var productDetail = DataProvider.Ins.DB.CTSPs.Where(x => x.MASP == ID).SingleOrDefault();
                 productDetail.RAM = RAM;
                 productDetail.CPU = CPU;
