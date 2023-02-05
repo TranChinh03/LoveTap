@@ -294,7 +294,7 @@
         </RadioButton>
 
         <!--Frame for Main Screens-->
-        <ContentControl Content="{Binding CurrentViewModel}" Grid.Row="2" Grid.Column="2" Grid.RowSpan="9" Grid.ColumnSpan="10" Background="Transparent">
+        <ContentControl Content="{Binding CurrentViewModel}" Grid.Row="2" Grid.Column="2" Grid.RowSpan="9" Grid.ColumnSpan="10" Background="{DynamicResource MaterialDesignPaper}">
             <ContentControl.Resources>
                 <DataTemplate DataType="{x:Type viewmodel:HomeViewModel}">
                     <uc:HomeViewUC></uc:HomeViewUC>

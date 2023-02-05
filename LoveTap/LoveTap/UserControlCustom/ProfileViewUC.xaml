@@ -149,20 +149,20 @@
                     </Button>
                     <Button Uid="1" Name="changePwBt"
                     HorizontalAlignment="Right"
-                    VerticalAlignment="Bottom"
+                    VerticalAlignment="Bottom" Height="35" BorderThickness="0.3"
                     Style="{StaticResource MaterialDesignRaisedSecondaryLightButton}"
                     Width="130"
-                    Height="30"
+                   
                     Background="#26B69F"   Command="{Binding NavChangePw}"
                     Content="Change Password"
                     FontSize="12"></Button>
 
-                    <Button Uid="2" Name="editBt"
+                    <Button Uid="2" Name="editBt" Margin="5 0 0 0" 
                     HorizontalAlignment="Right"
                     VerticalAlignment="Bottom"
                     Style="{StaticResource MaterialDesignRaisedSecondaryLightButton}"
                     Width="110"
-                    Height="30"
+                    Height="35" BorderThickness="0.3"
                     Background="#26B69F"
                     Command="{Binding NavEditUsr}"
                     FontSize="12" 

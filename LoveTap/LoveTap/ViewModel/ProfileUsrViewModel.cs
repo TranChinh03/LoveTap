@@ -157,20 +157,20 @@ namespace LoveTap.ViewModel
             //img.ImageSource = new BitmapImage(fileUri);
 
 
-            File.Copy(LinkAddImage, _localLink + @"img\UserAvatar\" + "NV" + User[0].MANV + ((LinkAddImage.Contains(".jpg")) ? ".jpg" : ".png").ToString(), true);
+            File.Copy(LinkAddImage, _localLink + @"img\UserAvatar\" + "NV_" + User[0].MANV + ((LinkAddImage.Contains(".jpg")) ? ".jpg" : ".png").ToString(), true);
             var image = new BitmapImage();
+            string str = _localLink + @"img\UserAvatar\" + "NV_" + User[0].MANV + ((LinkAddImage.Contains(".jpg")) ? ".jpg" : ".png").ToString();
             image.BeginInit();
             image.CreateOptions = BitmapCreateOptions.IgnoreImageCache;
             image.CacheOption = BitmapCacheOption.OnLoad;
-            image.UriSource = new Uri(LinkAddImage);
+            image.UriSource = new Uri(str);
             image.EndInit();
 
             img.ImageSource = image;
-            User[0].AVA = @"../img/UserAvatar/" + "NV" + User[0].MANV + ((LinkAddImage.Contains(".jpg")) ? ".jpg" : ".png").ToString();
-            
+            User[0].AVA = image.ToString();
+
             //User[0].AVA = image.ToString();
             DataProvider.Ins.DB.SaveChanges();
         }
-
     }
 }

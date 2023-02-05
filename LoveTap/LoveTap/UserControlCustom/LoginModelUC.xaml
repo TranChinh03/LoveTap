@@ -74,16 +74,16 @@
                     </i:Interaction.Triggers>
                 </PasswordBox>
 
-                <DockPanel>
+                <!--<DockPanel>
                     <CheckBox 
                         Background="{DynamicResource Regal Blue}" 
                         BorderBrush="{DynamicResource Regal Blue}"
                         />
-                    <Label 
+                    --><!--<Label 
                         Content="Remeber me"
                         Foreground="{DynamicResource Regal Blue}"
-                        />
-                </DockPanel>
+                        />--><!--
+                </DockPanel>-->
 
 
                 <Button

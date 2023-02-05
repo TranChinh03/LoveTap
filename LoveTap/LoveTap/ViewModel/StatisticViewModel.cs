@@ -135,7 +135,7 @@ namespace LoveTap.ViewModel
             int j = 0;
             for (int i = 1; i < DataProvider.Ins.DB.HOADONs.Count(); i++)
             {
-                if (OrderList[i].NGMUA.Value.Year.ToString() != YearList[j])
+                if (OrderList[i].NGMUA.Value.Year.ToString() != YearList[j] && OrderList[i].DELETED == false)
                 {
                     YearList[j + 1] = OrderList[i].NGMUA.Value.Year.ToString();
                     j++;
@@ -146,7 +146,7 @@ namespace LoveTap.ViewModel
             {
                 flag = 0;
                 for (int k = 1; k < YearList.Count(); k++)
-                    if (ReceiveList[i].NGNHAP.Value.Year.ToString() == YearList[k])
+                    if (ReceiveList[i].NGNHAP.Value.Year.ToString() == YearList[k] && ReceiveList[i].DELETED == false)
                     {
                         flag = 1;
                     }
@@ -161,7 +161,7 @@ namespace LoveTap.ViewModel
                 flag = 0;
                 foreach (string y in YearList)
                 {
-                    if (kh.NGDK.Value.Year.ToString() == y)
+                    if (kh.NGDK.Value.Year.ToString() == y && kh.DELETED == false)
                         flag = 1;
                 }
                 if (flag == 0)
@@ -285,7 +285,7 @@ namespace LoveTap.ViewModel
                     {
                         if (OrderList[i].MACN == cbbBranchValue && OrderList[i].NGMUA.Value.Year.ToString() == cbbYearValue && OrderList[i].DELETED == false)
                             for (int j = 0; j < oDetailListlength; j++)
-                                if (OrderDetailList[j].MAHD == OrderList[i].MAHD)
+                                if (OrderDetailList[j].MAHD == OrderList[i].MAHD && OrderDetailList[i].DELETED == false)
                                     card1 += (int)OrderDetailList[i].SOLUONG; //card1=tong sp ban ra
                     }
 
@@ -294,7 +294,7 @@ namespace LoveTap.ViewModel
                     {
                         if (ReceiveList[i].MACN == cbbBranchValue && ReceiveList[i].NGNHAP.Value.Year.ToString() == cbbYearValue && ReceiveList[i].DELETED == false)
                             for (int j = 0; j < rDetailListlength; j++)
-                                if (ReceiveDetailList[j].MAPN == ReceiveList[i].MAPN)
+                                if (ReceiveDetailList[j].MAPN == ReceiveList[i].MAPN && ReceiveDetailList[i].DELETED == false)
                                     card2 += (int)ReceiveDetailList[i].SOLUONG; //card2=tong sp nhap kho
                     }
 
@@ -305,7 +305,7 @@ namespace LoveTap.ViewModel
                         for (int j = 0; j < oListlength; j++)
                             if (OrderList[j].MACN == cbbBranchValue && OrderList[j].NGMUA.Value.Year.ToString() == cbbYearValue && OrderList[i].DELETED == false)
                                 for (int k = 0; k < oDetailListlength; k++)
-                                    if (GoodList[i].MASP == OrderDetailList[k].MASP && OrderDetailList[k].MAHD == OrderList[j].MAHD)
+                                    if (GoodList[i].MASP == OrderDetailList[k].MASP && OrderDetailList[k].MAHD == OrderList[j].MAHD && OrderDetailList[k].DELETED == false)
                                         tong++;
                         maxGood[i] = tong; //so luong tung sp ban duoc
                     }
@@ -329,7 +329,7 @@ namespace LoveTap.ViewModel
                         for (int j = 0; j < oListlength; j++)
                             if (i == (int)OrderList[j].NGMUA.Value.Month && OrderList[j].MACN == cbbBranchValue && OrderList[j].NGMUA.Value.Year.ToString() == cbbYearValue && OrderList[j].DELETED == false)
                                 for (int k = 0; k < oDetailListlength; k++)
-                                    if (OrderDetailList[k].MAHD == OrderList[j].MAHD)
+                                    if (OrderDetailList[k].MAHD == OrderList[j].MAHD && OrderDetailList[k].DELETED == false)
                                         tong += (int)OrderDetailList[k].SOLUONG;
                         maxMonth[i] = tong;
                     }

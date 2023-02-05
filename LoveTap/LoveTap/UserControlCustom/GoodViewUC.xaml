@@ -18,7 +18,7 @@
         FontFamily="{DynamicResource MaterialDesignFont}"
         Height="466.2" Width="666.666666666667" Name="GoodsView"
              >
-    <Grid>
+    <Grid Background="#EEEEFC">
         <Grid.ColumnDefinitions>
             <ColumnDefinition></ColumnDefinition>
             <ColumnDefinition></ColumnDefinition>
@@ -64,7 +64,7 @@
                         <RowDefinition></RowDefinition>
                     </Grid.RowDefinitions>
 
-                    <Button Uid="1" x:Name="addProductBt"
+                    <Button Uid="1" x:Name="addProductBt" Height="35" BorderThickness="0.3"
                     HorizontalAlignment="Left" VerticalAlignment="Center"
                     Margin="28,0,0,0"
                     Style="{StaticResource MaterialDesignRaisedSecondaryLightButton}"

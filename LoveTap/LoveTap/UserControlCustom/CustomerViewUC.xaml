@@ -75,7 +75,7 @@
                         </Grid.ColumnDefinitions>
 
                         <Button Grid.Column="1" Style="{StaticResource MaterialDesignRaisedSecondaryLightButton}" Background="#26B69F"
-                                Content="+Add Customer" Uid="1"
+                                Content="+ Add Customer" Uid="1" Height="35" BorderThickness="0.3" Width="120"
                                 HorizontalAlignment="Right" Name="addCustomerBt" Command="{Binding navAddCustomer}"
                             >
                         </Button>
