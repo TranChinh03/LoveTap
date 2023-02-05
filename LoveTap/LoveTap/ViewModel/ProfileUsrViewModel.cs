@@ -35,6 +35,7 @@ namespace LoveTap.ViewModel
         public ObservableCollection<HOADON> DeliveryList { get => _DeliveryList; set { _DeliveryList = value; OnPropertyChanged(); } }
         private ObservableCollection<PHIEUNHAP> _ReceiveList;
         public ObservableCollection<PHIEUNHAP> ReceiveList { get => _ReceiveList; set { _ReceiveList = value; OnPropertyChanged(); } }
+        public int flag = 0;
 
         private string _FullName;
         public string FullName { get => _FullName; set { _FullName = value; OnPropertyChanged(); } }
@@ -80,6 +81,7 @@ namespace LoveTap.ViewModel
 
         string Name;
         public ICommand AddImage { get; set; }
+        public ICommand ReloadAva { get; set; }
 
         public ProfileUsrViewModel(NavigationStore navigationStore)
         {
@@ -116,6 +118,11 @@ namespace LoveTap.ViewModel
 
             LinkAddImage = "";
             AddImage = new RelayCommand<ImageBrush>((p) => true, (p) => _AddImage(p));
+            ReloadAva = new RelayCommand<MainWd>((p) => true, (p) =>
+            {
+                Uri fileUri = new Uri(LinkAddImage);
+                p.ava.ImageSource = new BitmapImage(fileUri);
+            });
         }
         void _AddImage(Image img)
         {
@@ -146,12 +153,22 @@ namespace LoveTap.ViewModel
                 if (open.FileName != "")
                     LinkAddImage = open.FileName;
             };
-            Uri fileUri = new Uri(LinkAddImage);
-            img.ImageSource = new BitmapImage(fileUri);
+            //Uri fileUri = new Uri(LinkAddImage);
+            //img.ImageSource = new BitmapImage(fileUri);
 
 
-            File.Copy(LinkAddImage, _localLink + @"img\UserAvatar\" + "NV"+ User[0].MANV + ((LinkAddImage.Contains(".jpg")) ? ".jpg" : ".png").ToString(), true);
+            File.Copy(LinkAddImage, _localLink + @"img\UserAvatar\" + "NV" + User[0].MANV + ((LinkAddImage.Contains(".jpg")) ? ".jpg" : ".png").ToString(), true);
+            var image = new BitmapImage();
+            image.BeginInit();
+            image.CreateOptions = BitmapCreateOptions.IgnoreImageCache;
+            image.CacheOption = BitmapCacheOption.OnLoad;
+            image.UriSource = new Uri(LinkAddImage);
+            image.EndInit();
+
+            img.ImageSource = image;
             User[0].AVA = @"../img/UserAvatar/" + "NV" + User[0].MANV + ((LinkAddImage.Contains(".jpg")) ? ".jpg" : ".png").ToString();
+            
+            //User[0].AVA = image.ToString();
             DataProvider.Ins.DB.SaveChanges();
         }
 

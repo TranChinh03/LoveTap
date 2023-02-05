@@ -14,6 +14,7 @@ using System.Collections.ObjectModel;
 using System.Net;
 using System.Windows.Media.Imaging;
 using Microsoft.Win32;
+using System.IO;
 
 namespace LoveTap.ViewModel
 {
@@ -31,9 +32,15 @@ namespace LoveTap.ViewModel
         //public ICommand NextImg { get; set; }
         public ICommand UploadImg { get; set; }
         public ICommand ReloadImg { get; set; }
-        private string _LinkImg { get; set; }
-        public string LinkImg { get => _LinkImg; set { _LinkImg = value; OnPropertyChanged(); } }
-
+        private string _LinkImg1 { get; set; }
+        public string LinkImg1 { get => _LinkImg1; set { _LinkImg1 = value; OnPropertyChanged(); } }
+        private string _LinkImg2 { get; set; }
+        public string LinkImg2 { get => _LinkImg2; set { _LinkImg2 = value; OnPropertyChanged(); } }
+        private string _LinkImg3 { get; set; }
+        public string LinkImg3 { get => _LinkImg3; set { _LinkImg3 = value; OnPropertyChanged(); } }
+        private string _LinkImg4 { get; set; }
+        public string LinkImg4 { get => _LinkImg4; set { _LinkImg4 = value; OnPropertyChanged(); } }
+        private string _localLink = System.Reflection.Assembly.GetExecutingAssembly().Location.Remove(System.Reflection.Assembly.GetExecutingAssembly().Location.IndexOf(@"bin\Debug"));
         private int _ID { get; set; }
         public int ID { get => _ID; set { _ID = value; OnPropertyChanged(); } }
 
@@ -98,7 +105,10 @@ namespace LoveTap.ViewModel
         public ObservableCollection<LOIICH> BenefitList { get => _BenefitList; set { _BenefitList = value; OnPropertyChanged(); } }
         public EditGoodViewModel(NavigationStore navigationStore)
         {
-            LinkImg = "";
+            LinkImg1 = "";
+            LinkImg2 = "";
+            LinkImg3 = "";
+            LinkImg4 = "";
             navBack = new NavigationCommand<GoodDetailViewModel>(navigationStore, () => new GoodDetailViewModel(navigationStore));
 
             ProductList = new ObservableCollection<SANPHAM>(DataProvider.Ins.DB.SANPHAMs.Where(x => x.DELETED == false));
@@ -165,12 +175,27 @@ namespace LoveTap.ViewModel
                 productDetail.SCREENSIZE = Size;
                 productDetail.VGA = VGA;
                 productDetail.COLOR = Color;
+                productDetail.AVA1 = "/img/" + "SP" + ID + "_1" + ((LinkImg1.Contains(".jpg")) ? ".jpg" : ".png").ToString();
+                productDetail.AVA2 = "/img/" + "SP" + ID + "_2" + ((LinkImg2.Contains(".jpg")) ? ".jpg" : ".png").ToString();
+                productDetail.AVA3 = "/img/" + "SP" + ID + "_3" + ((LinkImg3.Contains(".jpg")) ? ".jpg" : ".png").ToString();
+                productDetail.AVA4 = "/img/" + "SP" + ID + "_4" + ((LinkImg4.Contains(".jpg")) ? ".jpg" : ".png").ToString();
                 var benefit = DataProvider.Ins.DB.LOIICHes.Where(x => x.MASP == ID).SingleOrDefault();
                 benefit.LI1 = LI1;
                 benefit.LI2 = LI2;
                 benefit.LI3 = LI3;
                 benefit.LI4 = LI4;
                 DataProvider.Ins.DB.SaveChanges();
+                try
+                {
+                    File.Copy(LinkImg1, _localLink + @"img\" + "SP" + ID + "_1" + ((LinkImg1.Contains(".jpg")) ? ".jpg" : ".png").ToString());
+                    File.Copy(LinkImg2, _localLink + @"img\" + "SP" + ID + "_2" + ((LinkImg1.Contains(".jpg")) ? ".jpg" : ".png").ToString());
+                    File.Copy(LinkImg3, _localLink + @"img\" + "SP" + ID + "_3" + ((LinkImg1.Contains(".jpg")) ? ".jpg" : ".png").ToString());
+                    File.Copy(LinkImg4, _localLink + @"img\" + "SP" + ID + "_4" + ((LinkImg1.Contains(".jpg")) ? ".jpg" : ".png").ToString());
+                }
+                catch
+                {
+                    MessageBox.Show("Thêm sản phẩm mới thành công !", "THÔNG BÁO");
+                }
             });
 
             ChangeImage1 = new RelayCommand<Image>((p) => true, (p) => {
@@ -257,24 +282,27 @@ namespace LoveTap.ViewModel
             UploadImg = new RelayCommand<Image>((p) => true, (p) => _AddImage(p));
             ReloadImg = new RelayCommand<EditGoodsUC>((p) => true, (p) =>
             {
-                Uri fileUri = new Uri(LinkImg);
                 if (Ava == Ava1)
                 {
+                    Uri fileUri = new Uri(LinkImg1);
                     p.ava1.Source = new BitmapImage(fileUri);
                     return;
                 }
                 if (Ava == Ava2)
                 {
+                    Uri fileUri = new Uri(LinkImg2);
                     p.ava2.Source = new BitmapImage(fileUri);
                     return;
                 }
                 if (Ava == Ava3)
                 {
+                    Uri fileUri = new Uri(LinkImg3);
                     p.ava3.Source = new BitmapImage(fileUri);
                     return;
                 }
                 if (Ava == Ava4)
                 {
+                    Uri fileUri = new Uri(LinkImg4);
                     p.ava4.Source = new BitmapImage(fileUri);
                     return;
                 }
@@ -286,27 +314,41 @@ namespace LoveTap.ViewModel
             open.Filter = "Image Files(*.jpg; *.png)|*.jpg; *.png";
             if (open.ShowDialog() == true)
             {
-                LinkImg = open.FileName;
-            };
-            if (LinkImg == "")
-            {
-                Uri fileUri = new Uri(LinkImg, UriKind.Relative);
-                img.Source = new BitmapImage(fileUri);
+                if (Ava == Ava1)
+                {
+                    LinkImg1 = open.FileName;
+                    Uri fileUri = new Uri(LinkImg1);
+                    img.Source = new BitmapImage(fileUri);
+                }
+                if (Ava == Ava2)
+                {
+                    LinkImg2 = open.FileName;
+                    Uri fileUri = new Uri(LinkImg2);
+                    img.Source = new BitmapImage(fileUri);
+                }
+                if (Ava == Ava3)
+                {
+                    LinkImg3 = open.FileName;
+                    Uri fileUri = new Uri(LinkImg3);
+                    img.Source = new BitmapImage(fileUri);
+                }
+                if (Ava == Ava4)
+                {
+                    LinkImg4 = open.FileName;
+                    Uri fileUri = new Uri(LinkImg4);
+                    img.Source = new BitmapImage(fileUri);
+                }
+
+                //var ctsp = DataProvider.Ins.DB.CTSPs.Where(x => x.MASP == ID).ToArray();
+                //if (Ava == Ava1)
+                //    ctsp[0].AVA1 = "/img/" + "SP_" + ID + ((LinkImg.Contains(".jpg")) ? ".jpg" : ".png").ToString();
+                //else if (Ava == Ava2)
+                //    ctsp[0].AVA2 = "/img/" + "SP_" + ID + ((LinkImg.Contains(".jpg")) ? ".jpg" : ".png").ToString();
+                //else if (Ava == Ava3)
+                //    ctsp[0].AVA3 = "/img/" + "SP_" + ID + ((LinkImg.Contains(".jpg")) ? ".jpg" : ".png").ToString();
+                //else if (Ava == Ava4)
+                //    ctsp[0].AVA4 = "/img/" + "SP_" + ID + ((LinkImg.Contains(".jpg")) ? ".jpg" : ".png").ToString();
             }
-            else
-            {
-                Uri fileUri = new Uri(LinkImg);
-                img.Source = new BitmapImage(fileUri);
-            }
-            //var ctsp = DataProvider.Ins.DB.CTSPs.Where(x => x.MASP == ID).ToArray();
-            //if (Ava == Ava1)
-            //    ctsp[0].AVA1 = "/img/" + "SP_" + ID + ((LinkImg.Contains(".jpg")) ? ".jpg" : ".png").ToString();
-            //else if (Ava == Ava2)
-            //    ctsp[0].AVA2 = "/img/" + "SP_" + ID + ((LinkImg.Contains(".jpg")) ? ".jpg" : ".png").ToString();
-            //else if (Ava == Ava3)
-            //    ctsp[0].AVA3 = "/img/" + "SP_" + ID + ((LinkImg.Contains(".jpg")) ? ".jpg" : ".png").ToString();
-            //else if (Ava == Ava4)
-            //    ctsp[0].AVA4 = "/img/" + "SP_" + ID + ((LinkImg.Contains(".jpg")) ? ".jpg" : ".png").ToString();
         }
     }
 }

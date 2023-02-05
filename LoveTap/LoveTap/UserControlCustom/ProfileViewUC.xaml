@@ -139,6 +139,10 @@
                             CommandParameter="{Binding ElementName=ava}">
 
                                 </i:InvokeCommandAction>
+                                <i:InvokeCommandAction     Command="{Binding ReloadAva}"
+                            CommandParameter="{Binding ElementName=mainWindow}">
+
+                                </i:InvokeCommandAction>
 
                             </i:EventTrigger>
                         </i:Interaction.Triggers>
