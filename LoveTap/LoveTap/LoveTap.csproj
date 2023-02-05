@@ -619,6 +619,7 @@
     <Resource Include="img\UserAvatar\staff2.png" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="img\UserAvatar\1.jpg" />
     <Content Include="Model\Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Model1.edmx</DependentUpon>

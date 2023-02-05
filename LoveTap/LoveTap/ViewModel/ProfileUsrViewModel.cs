@@ -20,6 +20,7 @@ using System.Xml.Linq;
 using System.Runtime.CompilerServices;
 using System.IO;
 using System.Text.RegularExpressions;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace LoveTap.ViewModel
 {
