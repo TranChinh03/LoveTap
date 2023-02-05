@@ -145,15 +145,15 @@
 
                     <!--Done Button-->
                     <Button x:Name="doneBt" Uid="1" DockPanel.Dock="Right" Style="{StaticResource MaterialDesignRaisedSecondaryLightButton}" Background="#26B69F" Margin="0 10 10 0" Command="{Binding DoneCommand}"
-                    HorizontalAlignment="Right" Width="90" >
+                    HorizontalAlignment="Right" Width="90">
                         <StackPanel Orientation="Horizontal">
                             <TextBlock Margin="7,0,0,0">Done</TextBlock>
                         </StackPanel>
                         <i:Interaction.Triggers>
-                            <i:EventTrigger EventName="Click">
+                            <!--<i:EventTrigger EventName="Click">
                                 <i:InvokeCommandAction Command="{Binding DoneCommand}"
-                                                       CommandParameter="{Binding ElementName=ProfileEdit}"></i:InvokeCommandAction>
-                            </i:EventTrigger>
+                                                       CommandParameter="{Binding ElementName=ProfileEdit}"></i:InvokeCommandAction>-->
+                            <!--</i:EventTrigger>-->
                             <i:EventTrigger EventName="Click">
                                 <i:InvokeCommandAction Command="{Binding navBack}"
                                                        CommandParameter="{Binding ElementName=ProfileEdit}"></i:InvokeCommandAction>
@@ -171,8 +171,8 @@
                     <TextBox FontSize="15" Foreground="#033270" BorderBrush="Transparent" SelectionBrush="Transparent" Text="{Binding Name}" ></TextBox>
                 </DockPanel>
                 <StackPanel Orientation="Horizontal" >
-                    <TextBlock Text="Brand: " Foreground="#1368AA" FontSize="15" VerticalAlignment="Center" ></TextBlock>
-                    <TextBox FontSize="15" Foreground="#033270" BorderBrush="Transparent" SelectionBrush="Transparent" Width="98"></TextBox>
+                    <TextBlock Text="Made in: " Foreground="#1368AA" FontSize="15" VerticalAlignment="Center" ></TextBlock>
+                    <TextBox FontSize="15" Foreground="#033270" BorderBrush="Transparent" SelectionBrush="Transparent" Width="98" Text="{Binding Madein}"></TextBox>
                     <!--<TextBlock Text="Publish day: " Foreground="#1368AA" FontSize="15" VerticalAlignment="Center" Margin="10 0 0 0"></TextBlock>
                         <TextBox FontSize="15" Foreground="#033270" BorderBrush="Transparent" SelectionBrush="Transparent" Width="98">dd/mm/yyyy</TextBox>-->
                 </StackPanel >
