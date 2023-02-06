@@ -121,7 +121,7 @@
                         Text="{Binding searchText, UpdateSourceTrigger=PropertyChanged}"
                         />
 
-                        <materialDesign:PackIcon Kind="Magnify" HorizontalAlignment="Right" Margin="0,16,24,0" Foreground="{StaticResource Cyan Azure}" VerticalAlignment="Center"/>
+                        <materialDesign:PackIcon Kind="Magnify" HorizontalAlignment="Right" Margin="0 25 80 0" Foreground="{StaticResource Cyan Azure}" VerticalAlignment="Center"/>
 
                         <!--<ComboBox  Grid.Column="1" Grid.ColumnSpan="2"
                                    Width="200" HorizontalAlignment="Right"

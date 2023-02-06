@@ -20,6 +20,7 @@ using System.Xml.Linq;
 using System.Runtime.CompilerServices;
 using System.IO;
 using System.Text.RegularExpressions;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace LoveTap.ViewModel
 {
@@ -124,25 +125,25 @@ namespace LoveTap.ViewModel
                 p.ava.ImageSource = new BitmapImage(fileUri);
             });
         }
-        void _AddImage(Image img)
-        {
-            OpenFileDialog open = new OpenFileDialog();
-            open.Filter = "Image Files(*.jpg; *.png)|*.jpg; *.png";
-            if (open.ShowDialog() == true)
-            {
-                LinkAddImage = open.FileName;
-            };
-            if (LinkAddImage == "../img/person.jpg")
-            {
-                Uri fileUri = new Uri(LinkAddImage, UriKind.Relative);
-                img.Source = new BitmapImage(fileUri);
-            }
-            else
-            {
-                Uri fileUri = new Uri(LinkAddImage);
-                img.Source = new BitmapImage(fileUri);
-            }
-        }
+        //void _AddImage(Image img)
+        //{
+        //    OpenFileDialog open = new OpenFileDialog();
+        //    open.Filter = "Image Files(*.jpg; *.png)|*.jpg; *.png";
+        //    if (open.ShowDialog() == true)
+        //    {
+        //        LinkAddImage = open.FileName;
+        //    };
+        //    if (LinkAddImage == "../img/person.jpg")
+        //    {
+        //        Uri fileUri = new Uri(LinkAddImage, UriKind.Relative);
+        //        img.Source = new BitmapImage(fileUri);
+        //    }
+        //    else
+        //    {
+        //        Uri fileUri = new Uri(LinkAddImage);
+        //        img.Source = new BitmapImage(fileUri);
+        //    }
+        //}
         void _AddImage(ImageBrush img)
         {
             OpenFileDialog open = new OpenFileDialog();
@@ -156,21 +157,80 @@ namespace LoveTap.ViewModel
             //Uri fileUri = new Uri(LinkAddImage);
             //img.ImageSource = new BitmapImage(fileUri);
 
+            if (MainViewModel.flagAvt)
+            {
+                try
+                {
+                    File.Copy(LinkAddImage, _localLink + @"img\UserAvatar\" + "NV_" + User[0].MANV + ((LinkAddImage.Contains(".jpg")) ? ".jpg" : ".png").ToString(), true);
+                    var image = new BitmapImage();
+                    string str = _localLink + @"img\UserAvatar\" + "NV_" + User[0].MANV + ((LinkAddImage.Contains(".jpg")) ? ".jpg" : ".png").ToString();
+                    image.BeginInit();
+                    image.CreateOptions = BitmapCreateOptions.IgnoreImageCache;
+                    image.CacheOption = BitmapCacheOption.OnLoad;
+                    image.UriSource = new Uri(str);
+                    image.EndInit();
 
-            File.Copy(LinkAddImage, _localLink + @"img\UserAvatar\" + "NV_" + User[0].MANV + ((LinkAddImage.Contains(".jpg")) ? ".jpg" : ".png").ToString(), true);
-            var image = new BitmapImage();
-            string str = _localLink + @"img\UserAvatar\" + "NV_" + User[0].MANV + ((LinkAddImage.Contains(".jpg")) ? ".jpg" : ".png").ToString();
-            image.BeginInit();
-            image.CreateOptions = BitmapCreateOptions.IgnoreImageCache;
-            image.CacheOption = BitmapCacheOption.OnLoad;
-            image.UriSource = new Uri(str);
-            image.EndInit();
+                    img.ImageSource = image;
+                    User[0].AVA = image.ToString();
 
-            img.ImageSource = image;
-            User[0].AVA = image.ToString();
+                    //User[0].AVA = image.ToString();
+                    DataProvider.Ins.DB.SaveChanges();
+                }
+                catch
+                {
+                    File.Copy(LinkAddImage, _localLink + @"img\UserAvatar\" + "NV" + User[0].MANV + ((LinkAddImage.Contains(".jpg")) ? ".jpg" : ".png").ToString(), true);
+                    var image = new BitmapImage();
+                    string str = _localLink + @"img\UserAvatar\" + "NV" + User[0].MANV + ((LinkAddImage.Contains(".jpg")) ? ".jpg" : ".png").ToString();
+                    image.BeginInit();
+                    image.CreateOptions = BitmapCreateOptions.IgnoreImageCache;
+                    image.CacheOption = BitmapCacheOption.OnLoad;
+                    image.UriSource = new Uri(str);
+                    image.EndInit();
 
-            //User[0].AVA = image.ToString();
-            DataProvider.Ins.DB.SaveChanges();
+                    img.ImageSource = image;
+                    User[0].AVA = image.ToString();
+
+                    //User[0].AVA = image.ToString();
+                    DataProvider.Ins.DB.SaveChanges();
+                }
+            }
+            else {
+                MainViewModel.flagAvt = false;
+                try
+                {
+                    File.Copy(LinkAddImage, _localLink + @"img\UserAvatar\" + "NV" + User[0].MANV + ((LinkAddImage.Contains(".jpg")) ? ".jpg" : ".png").ToString(), true);
+                    var image = new BitmapImage();
+                    string str = _localLink + @"img\UserAvatar\" + "NV" + User[0].MANV + ((LinkAddImage.Contains(".jpg")) ? ".jpg" : ".png").ToString();
+                    image.BeginInit();
+                    image.CreateOptions = BitmapCreateOptions.IgnoreImageCache;
+                    image.CacheOption = BitmapCacheOption.OnLoad;
+                    image.UriSource = new Uri(str);
+                    image.EndInit();
+
+                    img.ImageSource = image;
+                    User[0].AVA = image.ToString();
+
+                    //User[0].AVA = image.ToString();
+                    DataProvider.Ins.DB.SaveChanges();
+                }
+                catch
+                {
+                    File.Copy(LinkAddImage, _localLink + @"img\UserAvatar\" + "NV_" + User[0].MANV + ((LinkAddImage.Contains(".jpg")) ? ".jpg" : ".png").ToString(), true);
+                    var image = new BitmapImage();
+                    string str = _localLink + @"img\UserAvatar\" + "NV_" + User[0].MANV + ((LinkAddImage.Contains(".jpg")) ? ".jpg" : ".png").ToString();
+                    image.BeginInit();
+                    image.CreateOptions = BitmapCreateOptions.IgnoreImageCache;
+                    image.CacheOption = BitmapCacheOption.OnLoad;
+                    image.UriSource = new Uri(str);
+                    image.EndInit();
+
+                    img.ImageSource = image;
+                    User[0].AVA = image.ToString();
+
+                    //User[0].AVA = image.ToString();
+                    DataProvider.Ins.DB.SaveChanges();
+                }
+            }
         }
     }
 }

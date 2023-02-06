@@ -21,6 +21,7 @@ namespace LoveTap.ViewModel
 {
     public class MainViewModel : BaseViewModel
     {
+        public static bool flagAvt=true;
         private readonly NavigationStore _navigationStore;
         public BaseViewModel CurrentViewModel => _navigationStore.CurrentViewModel;
         

@@ -301,7 +301,7 @@
                                         VerticalAlignment="Bottom"
                                         Foreground="#26B69F"
                                        Background="#D3FFF4" FontWeight="DemiBold"
-                                       Padding="6 2" Text="{Binding typeText2}"
+                                       Padding="6 2" Text="M"
                                         >
                         </TextBlock>
 

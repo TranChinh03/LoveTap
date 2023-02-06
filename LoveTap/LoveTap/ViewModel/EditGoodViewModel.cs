@@ -93,6 +93,14 @@ namespace LoveTap.ViewModel
         public string LI3 { get => _LI3; set { _LI3 = value; OnPropertyChanged(); } }
         private string _LI4 { get; set; }
         public string LI4 { get => _LI4; set { _LI4 = value; OnPropertyChanged(); } }
+        private string _DM { get; set; }
+        public string DM { get => _DM; set { _DM = value; OnPropertyChanged(); } }
+        public string[] CategoryNameList { get; set; } = new string[DataProvider.Ins.DB.DANHMUCs.Count()];
+
+
+        private ObservableCollection<DANHMUC> _CategoryList;
+        public ObservableCollection<DANHMUC> CategoryList { get => _CategoryList; set { _CategoryList = value; OnPropertyChanged(); } }
+
 
         private ObservableCollection<SANPHAM> _ProductList;
         public ObservableCollection<SANPHAM> ProductList { get => _ProductList; set { _ProductList = value; OnPropertyChanged(); } }
@@ -117,6 +125,11 @@ namespace LoveTap.ViewModel
 
             LoadedEditGood = new RelayCommand<UserControl>((p) => true, (p) =>
             {
+                CategoryList = new ObservableCollection<DANHMUC>(DataProvider.Ins.DB.DANHMUCs.Where(x => x.DELETED == false));
+                for (int i = 0; i< CategoryList.Count(); i++)
+                {
+                    CategoryNameList[i] = CategoryList[i].TENDM;
+                }
                 GoodsViewModel.Product temp = GoodsViewModel.CurrentSelected;
                 foreach (SANPHAM sp in ProductList)
                 {
@@ -126,6 +139,12 @@ namespace LoveTap.ViewModel
                         Name = sp.TEN;
                         Price = (double)sp.GIA;
                         Madein = sp.NUOCSX;
+                        Madein = sp.NUOCSX;
+                        foreach (DANHMUC dm in CategoryList)
+                        {
+                            if (dm.MADM == sp.MADM)
+                                DM = dm.TENDM;
+                        }
                     }
                 }
                 foreach (CTSP ctsp in ProductDetailList)
@@ -169,6 +188,11 @@ namespace LoveTap.ViewModel
                 product.TEN = Name;
                 product.GIA = Price;
                 product.NUOCSX = Madein;
+                foreach (DANHMUC dm in CategoryList)
+                {
+                    if (dm.TENDM == DM)
+                        product.MADM = dm.MADM;
+                }
                 DataProvider.Ins.DB.SaveChanges();
                 var productDetail = DataProvider.Ins.DB.CTSPs.Where(x => x.MASP == ID).SingleOrDefault();
                 productDetail.RAM = RAM;
