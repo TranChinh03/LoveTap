@@ -163,15 +163,15 @@
                     </Button>
 
                     <!--Invoice Button-->
-                    <Button Height="35" BorderThickness="0.3" Name="invoiceBt" Uid="2" DockPanel.Dock="Right" Style="{StaticResource MaterialDesignRaisedSecondaryLightButton}" Background="#26B69F" Margin="0 10 10 0" Width="100" >
+                    <!--<Button Height="35" BorderThickness="0.3" Name="invoiceBt" Uid="2" DockPanel.Dock="Right" Style="{StaticResource MaterialDesignRaisedSecondaryLightButton}" Background="#26B69F" Margin="0 10 10 0" Width="100" >
                         <StackPanel Orientation="Horizontal">
                             <materialDesign:PackIcon Kind="Download" Height="20" Width="20" VerticalAlignment="Center"/>
                             <TextBlock Padding="3,0,0,0" VerticalAlignment="Center">Invoice</TextBlock>
                         </StackPanel>
-                    </Button>
+                    </Button>-->
 
                     <!--Edit Button-->
-                    <Button x:Name="editBt" Uid="1" Style="{StaticResource MaterialDesignRaisedSecondaryLightButton}" Command="{Binding navEdit}" Background="#26B69F" Margin="100 10 10 0"
+                    <Button x:Name="editBt" Uid="1" Style="{StaticResource MaterialDesignRaisedSecondaryLightButton}" Command="{Binding navEdit}" Background="#26B69F" Margin="210 10 10 0"
                             Width="90" DockPanel.Dock="Right" Height="35" BorderThickness="0.3">
                         <StackPanel Orientation="Horizontal">
                             <materialDesign:PackIcon Kind="Pencil" VerticalAlignment="Center"/>
@@ -194,29 +194,32 @@
                 </DockPanel>
 
                 <!--Information 1-->
-                <StackPanel Grid.Column="1" Margin="10 40 10 0">
+                <StackPanel Grid.Column="1" Margin="10 50 10 0">
                     <StackPanel Orientation="Horizontal">
-                        <TextBlock Foreground="#1368AA" FontSize="15" VerticalAlignment="Center">Product ID:</TextBlock>
-                        <TextBox FontSize="15" Foreground="#033270" BorderBrush="Transparent" SelectionBrush="Transparent" Margin="5 0 0 0" Text="{Binding ID}" IsEnabled="False"></TextBox>
+                        <TextBlock Padding="3" Foreground="#1368AA" FontSize="15" VerticalAlignment="Center">Product ID:</TextBlock>
+                        <TextBlock Padding="3" FontSize="15" Foreground="#033270"  Margin="5 0 0 0" Text="{Binding ID}" ></TextBlock>
+                       
                     </StackPanel>
                     <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="Product Title: " Foreground="#1368AA" FontSize="15" VerticalAlignment="Center"></TextBlock>
-                        <TextBox FontSize="15" Foreground="#033270" BorderBrush="Transparent" SelectionBrush="Transparent" Text="{Binding Name}" IsEnabled="False"></TextBox>
+                        <TextBlock Padding="3" Text="Product Title: " Foreground="#1368AA" FontSize="15" VerticalAlignment="Center"></TextBlock>
+                        <TextBlock Padding="3" FontSize="15" Foreground="#033270"  Text="{Binding Name}" FontWeight="Bold"></TextBlock>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" >
-                        <TextBlock Text="Brand: " Foreground="#1368AA" FontSize="15" VerticalAlignment="Center" ></TextBlock>
-                        <TextBox FontSize="15" Foreground="#033270" BorderBrush="Transparent" SelectionBrush="Transparent" Width="98"></TextBox>
+                        <TextBlock Padding="3" FontSize="15" Foreground="#1368AA"   Text="Made in:" ></TextBlock>
+                        <TextBlock Padding="3" FontSize="15" Foreground="#033270"  Margin="5 0 0 0" Text="{Binding Madein}" ></TextBlock>
+                        <!--<TextBlock Padding="3" Text="Brand: " Foreground="#1368AA" FontSize="15" VerticalAlignment="Center" ></TextBlock>
+                        <TextBlock Padding="3" FontSize="15" Foreground="#033270"  ></TextBlock>-->
                         <!--<TextBlock Text="Publish day: " Foreground="#1368AA" FontSize="15" VerticalAlignment="Center" Margin="10 0 0 0"></TextBlock>
                         <TextBox FontSize="15" Foreground="#033270" BorderBrush="Transparent" SelectionBrush="Transparent" Width="98">dd/mm/yyyy</TextBox>-->
                     </StackPanel >
                     <StackPanel Orientation="Horizontal" >
-                        <TextBlock Text="Price: " Foreground="#1368AA" FontSize="15" VerticalAlignment="Center" ></TextBlock>
-                        <TextBox FontSize="15" Foreground="#033270" BorderBrush="Transparent" SelectionBrush="Transparent" Width="98" Text="{Binding Price}" IsEnabled="False"></TextBox>
+                        <TextBlock Padding="3" Text="Price: " Foreground="#1368AA" FontSize="15" VerticalAlignment="Center" ></TextBlock>
+                        <TextBlock Padding="3" FontSize="15" Foreground="#033270"  Width="98" Text="{Binding Price}" ></TextBlock>
                         <!--<TextBlock Text="Available: " Foreground="#1368AA" FontSize="15" VerticalAlignment="Center" Margin="5 0 0 0"></TextBlock>
                         <TextBox FontSize="15" Foreground="#033270" BorderBrush="Transparent" SelectionBrush="Transparent" Width="98">Out of Stock</TextBox>-->
                     </StackPanel>
                     <!--THÔNG SỐ KỸ THUẬT-->
-                    <TextBlock Grid.Column="1" Grid.Row="1"    Text="Thông số kỹ thuật: " Foreground="#1368AA" FontSize="16"  FontWeight="SemiBold"></TextBlock>
+                    <TextBlock Grid.Column="1" Grid.Row="1"    Text="Technique parameters: " Foreground="#1368AA" FontSize="16"  FontWeight="SemiBold"></TextBlock>
 
                 </StackPanel>
 
