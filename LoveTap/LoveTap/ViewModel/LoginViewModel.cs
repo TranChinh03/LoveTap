@@ -29,7 +29,7 @@ namespace LoveTap.ViewModel
             LoginCommand = new RelayCommand<object>((p) => { return true; }, (p) => { Login(p); });
             PasswordChangedCommand = new RelayCommand<PasswordBox>((p) => { return true; }, (p) => { Password = p.Password; });
         }
-
+  
         void Login(Object p)
         {
             if (p == null) return;

@@ -49,6 +49,7 @@ namespace LoveTap.ViewModel
         public ICommand navStatistic { get; }
         public ICommand navEmployee { get; }
         public ICommand navSupplier { get; }
+        private string _localLink = System.Reflection.Assembly.GetExecutingAssembly().Location.Remove(System.Reflection.Assembly.GetExecutingAssembly().Location.IndexOf(@"bin\Debug"));
         public static int ID { get; set; }
         public static bool IsAdmin { get; set; } = false;
         public MainViewModel(NavigationStore navigationStore)
@@ -71,7 +72,8 @@ namespace LoveTap.ViewModel
                     ID = loginVM.ID;
                     NHANVIEN temp = (DataProvider.Ins.DB.NHANVIENs.Where(x => x.MANV == ID).ToList())[0];
                     NameUsr = temp.HOTEN;
-                    Ava = temp.AVA;
+                    string str = _localLink + temp.AVA.Remove(0, 2);
+                    p.ava.ImageSource = (ImageSource)new ImageSourceConverter().ConvertFromString(str);
                     int count = 0, i = NameUsr.Length;
                     string nametmp;
                     while (count < 2)
@@ -83,7 +85,7 @@ namespace LoveTap.ViewModel
                     nametmp = NameUsr.Substring(i, NameUsr.Length-i);
 
                     p.wishTxt.Text = "Have a good day,"+ nametmp +"!";
-
+                   
                     NameUsr = nametmp;
                     if (temp.VAITRO == true)
                     {
@@ -132,7 +134,8 @@ namespace LoveTap.ViewModel
                         ID = loginVM.ID;
                         NHANVIEN temp = (DataProvider.Ins.DB.NHANVIENs.Where(x => x.MANV == ID).ToList())[0];
                         NameUsr = temp.HOTEN;
-                        Ava = temp.AVA;
+                        string str = _localLink + temp.AVA.Remove(0,2);
+                        p.ava.ImageSource = (ImageSource)new ImageSourceConverter().ConvertFromString(str);
                         int count = 0, i = NameUsr.Length;
                         string nametmp;
                         while (count < 2)

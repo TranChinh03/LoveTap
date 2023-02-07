@@ -85,8 +85,8 @@
                                 ItemsSource="{Binding BranchIDList, Mode=TwoWay}" SelectedItem="{Binding Branch}" />
 
                     <Border  Margin="0 8" CornerRadius="5">
-                        <TextBox  BorderBrush="{Binding bgType}" Width="100" Height="30" HorizontalAlignment="Left" Text="{Binding Type}" IsEnabled="False" HorizontalContentAlignment="Center"
-                              Background="{Binding bgType}" Foreground="{Binding textType}" Padding="5"></TextBox>
+                        <TextBlock   Width="100" Height="30" HorizontalAlignment="Left" Text="{Binding Type}" TextAlignment="Center" FontWeight="DemiBold"
+                              Background="{Binding bgType}" Foreground="{Binding textType}" Padding="5"></TextBlock>
 
                     </Border>
                 </StackPanel>

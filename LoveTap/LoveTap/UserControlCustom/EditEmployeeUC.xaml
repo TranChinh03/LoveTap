@@ -95,12 +95,12 @@
                 </Grid.ColumnDefinitions>
 
                 <StackPanel HorizontalAlignment="Center" >
-                    <TextBlock Style="{StaticResource detailText}" Margin="0,20,0,0">Ngày sinh:</TextBlock>
-                    <TextBlock Style="{StaticResource detailText}" Margin="0,20,0,0">Số điện thoại:</TextBlock>
-                    <TextBlock Style="{StaticResource detailText}" Margin="0,20,0,0">Địa chỉ:</TextBlock>
-                    <TextBlock Style="{StaticResource detailText}" Margin="0,20,0,0">Hệ số lương:</TextBlock>
-                    <TextBlock Style="{StaticResource detailText}" Margin="0,20,0,0">Lương cơ bản:</TextBlock>
-                    <TextBlock Style="{StaticResource detailText}" Margin="0,20,0,0">Chi nhánh:</TextBlock>
+                    <TextBlock Style="{StaticResource detailText}" Margin="0 10 0 0">Date of Birth:</TextBlock>
+                    <TextBlock Style="{StaticResource detailText}" Margin="0 20 0 0">Phone:</TextBlock>
+                    <TextBlock Style="{StaticResource detailText}" Margin="0 20 0 0">Address:</TextBlock>
+                    <TextBlock Style="{StaticResource detailText}" Margin="0 20 0 0">Coefficients Pay:</TextBlock>
+                    <TextBlock Style="{StaticResource detailText}" Margin="0 20 0 0">Basic Pay:</TextBlock>
+                    <TextBlock Style="{StaticResource detailText}" Margin="0 20 0 0">Branch:</TextBlock>
                 </StackPanel>
 
                 <StackPanel Grid.Column="1" HorizontalAlignment="Center" >
