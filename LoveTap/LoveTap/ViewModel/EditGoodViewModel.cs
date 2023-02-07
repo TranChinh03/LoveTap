@@ -131,22 +131,36 @@ namespace LoveTap.ViewModel
                     CategoryNameList[i] = CategoryList[i].TENDM;
                 }
                 GoodsViewModel.Product temp = GoodsViewModel.CurrentSelected;
-                foreach (SANPHAM sp in ProductList)
+                HomeViewModel.BestSelling temp2 = HomeViewModel.BestslSelected;
+                SANPHAM product = new SANPHAM();
+                if(HomeViewModel.flag!= 1)
                 {
-                    if(sp.TEN == temp.Ten)
+                    foreach (SANPHAM sp in ProductList)
                     {
-                        ID = sp.MASP;
-                        Name = sp.TEN;
-                        Price = (double)sp.GIA;
-                        Madein = sp.NUOCSX;
-                        Madein = sp.NUOCSX;
-                        foreach (DANHMUC dm in CategoryList)
-                        {
-                            if (dm.MADM == sp.MADM)
-                                DM = dm.TENDM;
-                        }
+                        if (sp.TEN == temp.Ten)
+                            product = sp;
                     }
                 }
+                else
+                {
+                    foreach (SANPHAM sp in ProductList)
+                    {
+                        if (sp.TEN == temp2.Ten)
+                            product = sp;
+                    }
+                }
+
+                ID = product.MASP;
+                Name = product.TEN;
+                Price = (double)product.GIA;
+                Madein = product.NUOCSX;
+                Madein = product.NUOCSX;
+                foreach (DANHMUC dm in CategoryList)
+                {
+                    if (dm.MADM == product.MADM)
+                        DM = dm.TENDM;
+                }
+
                 foreach (CTSP ctsp in ProductDetailList)
                 {
                     if (ctsp.MASP == ID)
@@ -206,6 +220,7 @@ namespace LoveTap.ViewModel
                 productDetail.AVA2 = "/img/" + "SP" + ID + "_2" + ((LinkImg2.Contains(".jpg")) ? ".jpg" : ".png").ToString();
                 productDetail.AVA3 = "/img/" + "SP" + ID + "_3" + ((LinkImg3.Contains(".jpg")) ? ".jpg" : ".png").ToString();
                 productDetail.AVA4 = "/img/" + "SP" + ID + "_4" + ((LinkImg4.Contains(".jpg")) ? ".jpg" : ".png").ToString();
+                DataProvider.Ins.DB.SaveChanges();
                 var benefit = DataProvider.Ins.DB.LOIICHes.Where(x => x.MASP == ID).SingleOrDefault();
                 benefit.LI1 = LI1;
                 benefit.LI2 = LI2;

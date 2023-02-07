@@ -108,13 +108,18 @@ namespace LoveTap.ViewModel
                 GoodsViewModel.Product temp = GoodsViewModel.CurrentSelected;
                 HomeViewModel.BestSelling temp2 = HomeViewModel.BestslSelected;
                 
-                SANPHAM product = new SANPHAM();
+               
                 if (HomeViewModel.flag != 1)
                 {
                     foreach (SANPHAM sp in ProductList)
                     {
                         if (sp.TEN == temp.Ten)
-                            product= sp;
+                        {
+                            ID = sp.MASP;
+                            Name = sp.TEN;
+                            Price = (double)sp.GIA;
+                            Madein = sp.NUOCSX;
+                        }    
                     }
                 }
                 else
@@ -122,16 +127,19 @@ namespace LoveTap.ViewModel
                     foreach (SANPHAM sp in ProductList)
                     {
                         if (sp.TEN == temp2.Ten)
-                            product= sp;
+
+                        {
+                            ID = sp.MASP;
+                            Name = sp.TEN;
+                            Price = (double)sp.GIA;
+                            Madein = sp.NUOCSX;
+                        }
                     }
                 }
-                ID = product.MASP;
-                Name = product.TEN;
-                Price = (double)product.GIA;
-                Madein = product.NUOCSX;
+               
                 foreach (CTSP ctsp in ProductDetailList)
                 {
-                    if (ctsp.MASP == product.MASP)
+                    if (ctsp.MASP == ID)
                     {
                         RAM = ctsp.RAM;
                         CPU = ctsp.CPU;
@@ -150,7 +158,7 @@ namespace LoveTap.ViewModel
 
                 foreach (LOIICH li in BenefitList)
                 {
-                    if (li.MASP == product.MASP)
+                    if (li.MASP == ID)
                     {
                         LI1 = li.LI1;
                         MyBenefitList.Add(LI1);
