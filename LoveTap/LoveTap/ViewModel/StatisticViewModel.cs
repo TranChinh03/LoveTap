@@ -303,7 +303,7 @@ namespace LoveTap.ViewModel
                     {
                         int tong = 0;
                         for (int j = 0; j < oListlength; j++)
-                            if (OrderList[j].MACN == cbbBranchValue && OrderList[j].NGMUA.Value.Year.ToString() == cbbYearValue && OrderList[i].DELETED == false)
+                            if (OrderList[j].MACN == cbbBranchValue && OrderList[j].NGMUA.Value.Year.ToString() == cbbYearValue && OrderList[j].DELETED == false)
                                 for (int k = 0; k < oDetailListlength; k++)
                                     if (GoodList[i].MASP == OrderDetailList[k].MASP && OrderDetailList[k].MAHD == OrderList[j].MAHD && OrderDetailList[k].DELETED == false)
                                         tong++;
@@ -500,6 +500,7 @@ namespace LoveTap.ViewModel
                             }
                         values[i] = tong;
                     }
+                    cbbTypeValue = "Goods";
                     break;
                 case 1:
                     for(int i = 0; i< 12;i++)
@@ -510,6 +511,7 @@ namespace LoveTap.ViewModel
                                 dem++;
                         values[i] = dem;
                     }
+                    cbbTypeValue = "Orders";
                     break;
                 case 2:
                     for(int i=0; i< 12; i++)
@@ -520,6 +522,7 @@ namespace LoveTap.ViewModel
                                 dem++;
                         values[i] = dem;
                     }
+                    cbbTypeValue = "Customers";
                     break;
             }
            
@@ -532,12 +535,12 @@ namespace LoveTap.ViewModel
                 gPurchaseValues.Add(x);
             }
 
-            if (cbbTypeSlted == 0)
-                cbbTypeValue = "Goods";
-            else if (cbbTypeSlted == 1)
-                cbbTypeValue = "Orders";
-            else
-                cbbTypeValue = "Customers";
+            //if (cbbTypeSlted == 0)
+            //    cbbTypeValue = "Goods";
+            //else if (cbbTypeSlted == 1)
+            //    cbbTypeValue = "Orders";
+            //else
+            //    cbbTypeValue = "Customers";
 
             //SeriesCollection = new SeriesCollection()
             //{
