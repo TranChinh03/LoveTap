@@ -21,18 +21,41 @@
             <DropShadowEffect Opacity="0.3" BlurRadius="10" Direction="315"></DropShadowEffect>
         </Border.Effect>
         <StackPanel  Background="WhiteSmoke" x:Name="deliveryInvoice">
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                <StackPanel Orientation="Horizontal">
+                    <!--Address - Email-->
+                    <Grid Grid.Row="0" Grid.RowSpan="2">
+                        <StackPanel Width="450">
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center" Height="25" >
+                                <Image Source="/img/address.png" Margin="10 0 0 0" Height="10" Width="15" ></Image>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10"><Bold>ADDRESS:</Bold></TextBlock>
+                                    <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10" Text="{Binding BranchAddress}"></TextBlock>
+                                </StackPanel>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Top" Height="25"  >
+                                <Image Source="/img/email.png" Margin="10 0 0 0" Height="10" Width="15" ></Image>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10"><Bold>EMAIL:</Bold></TextBlock>
+                                    <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10" Text="{Binding BranchEmail}"></TextBlock>
+                                </StackPanel>
+                            </StackPanel>
 
-                <Button Height="35" BorderThickness="0.3" Name="invoiceBt" Uid="2" DockPanel.Dock="Right" Style="{StaticResource MaterialDesignRaisedSecondaryLightButton}" Background="#26B69F" Margin="0 10 10 0" Width="100" >
-                    <StackPanel Orientation="Horizontal" >
-                        <materialDesign:PackIcon Kind="Download" Height="20" Width="20" VerticalAlignment="Center" />
-                        <TextBlock Padding="3,0,0,0" VerticalAlignment="Center">Invoice</TextBlock>
-                    </StackPanel>
-                </Button>
+                        </StackPanel>
+                    </Grid>
+                    <Button Name="invoiceBt" Uid="1" DockPanel.Dock="Right" Style="{StaticResource MaterialDesignRaisedSecondaryLightButton}" Background="#26B69F" Margin="0 10 10 0"
+                    Width="100" Click="invoiceBt_Click" Height="35" BorderThickness="0.3" >
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="Download" Width="20" Height="20"/>
+                            <TextBlock Padding="3 0" VerticalAlignment="Center">Invoice</TextBlock>
+                        </StackPanel>
+                    </Button>
 
-                <Button Height="35" BorderThickness="0.3" DockPanel.Dock="Right" Style="{StaticResource MaterialDesignRaisedSecondaryLightButton}" Background="#F26A4F" Margin="0 10 10 0" 
-                    Uid="2" Name="backBt" Content="Back" Command="{Binding navBack}">
-                </Button>
+                    <Button DockPanel.Dock="Right"  Style="{StaticResource MaterialDesignRaisedSecondaryLightButton}" Background="#F26A4F" Margin="0 10 10 0"
+                    Uid="2" Name="backBt" Content="Back" Command="{Binding navBack}" Width="90" Height="35" BorderThickness="0.3">
+                    </Button>
+                </StackPanel>
+
             </StackPanel>
             <Grid x:Name="print">
                 <Grid.RowDefinitions>
@@ -60,41 +83,23 @@
                     <RowDefinition Height="32*"></RowDefinition>
                     <RowDefinition Height="33*"></RowDefinition>
                 </Grid.RowDefinitions>
-
-                <Grid Grid.Row="0" Grid.RowSpan="2">
-                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Top" Height="35" Width="667" Margin="0 -10 0 0">
-                        <Image Source="/img/address.png" Margin="10 0 0 0" Height="10" Width="15" ></Image>
-                        <StackPanel Orientation="Horizontal">
-                            <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10"><Bold>ADDRESS:</Bold></TextBlock>
-                            <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10" Text="{Binding BranchAddress}"></TextBlock>
-                        </StackPanel>
-                    </StackPanel>
-                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Top" Height="35" Margin="0,10,0,0" Width="667" >
-                        <Image Source="/img/email.png" Margin="10 0 0 0" Height="10" Width="15" ></Image>
-                        <StackPanel Orientation="Horizontal">
-                            <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10"><Bold>EMAIL:</Bold></TextBlock>
-                            <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10" Text="{Binding BranchEmail}"></TextBlock>
-                        </StackPanel>
-                    </StackPanel>
-                </Grid>
-
-
                 <Grid Grid.Row="2" Grid.RowSpan="2">
-                    <Image  Source="/img/LoveTapBackground2.png" Height="50" Width="150" HorizontalAlignment="Left" Margin="0 0 0 0" />
-                    <Image Source="/img/LoveTap.png" Height="30" Width="100" HorizontalAlignment="Left" Margin="30 0 0 0"/>
+                    <Grid Height="50" Width="150" HorizontalAlignment="Left" Background="{StaticResource Catalina Blue}">
+                        <Image Source="/img/LoveTap.png" Height="25" Width="100" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                    </Grid>
+                    <Line Stroke="{StaticResource Catalina Blue}" Margin="160 0 0 0" Height="45" StrokeThickness="3"  X1="0" Y1="0"
+    X2="0" Y2="90"/>
                     <TextBlock Margin="170 0 0 0" FontWeight="Bold" FontSize="10">SPECIALIZING IN:</TextBlock>
-                    <!--<TextBlock Width="1" Height="50" Background="#033270" Margin="269,-13,397,-12">
-
-                    </TextBlock>-->
+                   
                     <WrapPanel Orientation="Vertical" Margin="170 15 0 0">
-                        <TextBlock FontSize="10" Width="289"><Run Text="* HIGH QUALITY ITEMS"/></TextBlock>
-                        <TextBlock FontSize="10" Width="289"><Run Text="* PURCHASE - REPAIR ELECTRONIC DEVICES"/></TextBlock>
+                        <TextBlock FontSize="10" Width="289" Padding="3"><Run Text="* HIGH QUALITY ITEMS"/></TextBlock>
+                        <TextBlock FontSize="10" Width="289" Padding="3"><Run Text="* PURCHASE - REPAIR ELECTRONIC DEVICES"/></TextBlock>
                     </WrapPanel>
                 </Grid>
 
 
                 <Grid Margin="0,5,0,0" Grid.Row="4" Grid.RowSpan="1">
-                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" FontSize="20">RECEIVE INVOICE</TextBlock>
+                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="ExtraBold" FontSize="20">RECEIVE INVOICE</TextBlock>
                 </Grid>
 
 
@@ -127,7 +132,7 @@
                 </Grid>
 
 
-                <ListView ItemsSource="{Binding MyReceiveList}" Grid.Row="9" Grid.RowSpan="2" FontSize="10" Margin="0 -10 0 0" Height="150">
+                <ListView ItemsSource="{Binding MyReceiveList}" Grid.Row="9" Grid.RowSpan="2" FontSize="10" Margin="0 -10 0 0" Height="180">
                     <ListView.View>
                         <GridView>
                             <GridViewColumn Width="90" Header="NO" DisplayMemberBinding="{Binding Stt}"></GridViewColumn>
@@ -141,25 +146,25 @@
 
 
 
-                <Grid Margin="10,10,0,0" Grid.Row="18" Grid.RowSpan="3">
+                <Grid Margin="10,12,0,0" Grid.Row="18" Grid.RowSpan="3">
                     <WrapPanel HorizontalAlignment="Left" Orientation="Vertical">
                         <TextBlock FontSize="10">
                 TOTAL
                         </TextBlock>
-                        <TextBlock FontSize="15" Text="{Binding SubTotal}">
+                        <TextBlock FontSize="15" Text="{Binding SubTotal}" FontWeight="Bold">
                         </TextBlock>
                     </WrapPanel>
                     <TextBlock Margin="500,0,40,40" FontSize="10">
                 <Bold>EMPLOYEE</Bold>
                     </TextBlock>
-                    <TextBlock Margin="500,10,33,11" FontSize="10" Text="{Binding EmployeeName}">
+                    <TextBlock Margin="500,10,33,11" FontSize="10" Padding="5" Text="{Binding EmployeeName}">
 
                     </TextBlock>
                 </Grid>
 
 
-                <Grid Grid.Row="21" Grid.RowSpan="2">
-                    <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,0,0,0" FontSize="10">
+                <Grid Grid.Row="21" Grid.RowSpan="2" Margin="0 5">
+                    <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,0,0,0" FontSize="10">
                 Thank you for your business!
                     </TextBlock>
                     <Image  HorizontalAlignment="Left" Source="/img/LoveTapBackground1.png" Margin="550,-20,0,5" Width="150" Height="50">

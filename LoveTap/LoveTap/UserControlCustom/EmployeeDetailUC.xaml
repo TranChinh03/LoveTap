@@ -32,7 +32,8 @@
                        FontWeight="Black" Text="Employee ID: "
                        Foreground="{StaticResource Catalina Blue}"
                        VerticalAlignment="Center"
-                       ></TextBlock><TextBlock FontSize="20" 
+                       ></TextBlock>
+                <TextBlock FontSize="20" 
                        FontWeight="Black" Text="{Binding ID}"
                        Foreground="{StaticResource Catalina Blue}"
                        VerticalAlignment="Center"
@@ -56,19 +57,19 @@
 
                 <!--Invoice Button-->
 
-                <Button Name="invoiceBt" Uid="2" Height="35" BorderThickness="0.3" DockPanel.Dock="Right" Style="{StaticResource MaterialDesignRaisedSecondaryLightButton}" Background="#26B69F" Margin="0 10 10 0" Width="100" >
+                <!--<Button Name="invoiceBt" Uid="2" Height="35" BorderThickness="0.3" DockPanel.Dock="Right" Style="{StaticResource MaterialDesignRaisedSecondaryLightButton}" Background="#26B69F" Margin="0 10 10 0" Width="100" >
                     <StackPanel Orientation="Horizontal">
                         <materialDesign:PackIcon Kind="Download" Height="20" Width="20" VerticalAlignment="Center" />
                         <TextBlock Padding="3,0,0,0" VerticalAlignment="Center">Invoice</TextBlock>
                     </StackPanel>
-                </Button>
+                </Button>-->
 
                 <!--Edit Button-->
 
-                <Button x:Name="editBt" Uid="1" Height="35" BorderThickness="0.3" Style="{StaticResource MaterialDesignRaisedSecondaryLightButton}" Command="{Binding navEdit}" Background="#26B69F" Margin="140 10 10 0"
+                <Button x:Name="editBt" Uid="1" Height="35" BorderThickness="0.3" Style="{StaticResource MaterialDesignRaisedSecondaryLightButton}" Command="{Binding navEdit}" Background="#26B69F" Margin="250 10 10 0"
                             Width="90" DockPanel.Dock="Right" >
                     <StackPanel Orientation="Horizontal">
-                        <materialDesign:PackIcon Kind="Pencil" VerticalAlignment="Center" />
+                        <materialDesign:PackIcon Kind="Pencil" VerticalAlignment="Center" /> 
                         <TextBlock Padding="3 0" VerticalAlignment="Center"><Run Text="Edit"/></TextBlock>
                     </StackPanel>
                 </Button>
@@ -78,7 +79,7 @@
             <!--Image and Name-->
             <StackPanel Margin="15,0,15,0"
                     Grid.Row="1" Orientation="Horizontal">
-                <Image Source="/img/ImageofEmployee.png"  Stretch="Uniform" Height="100" Width="100"/>
+                <Image Source="{Binding Avt}"  Stretch="Uniform" Height="100" Width="100"/>
                 <Grid Margin="20,0,0,0">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="1.5*"/>
@@ -104,12 +105,12 @@
                 </Grid.ColumnDefinitions>
 
                 <StackPanel HorizontalAlignment="Center" >
-                    <TextBlock Style="{StaticResource detailText}" Margin="0 10 0 0">Ngày sinh:</TextBlock>
-                    <TextBlock Style="{StaticResource detailText}" Margin="0 22 0 0">Số điện thoại:</TextBlock>
-                    <TextBlock Style="{StaticResource detailText}" Margin="0 22 0 0">Địa chỉ:</TextBlock>
-                    <TextBlock Style="{StaticResource detailText}" Margin="0 22 0 0">Hệ số lương:</TextBlock>
-                    <TextBlock Style="{StaticResource detailText}" Margin="0 22 0 0">Lương cơ bản:</TextBlock>
-                    <TextBlock Style="{StaticResource detailText}" Margin="0 22 0 0">Chi nhánh:</TextBlock>
+                    <TextBlock Style="{StaticResource detailText}" Margin="0 10 0 0">Date of Birth:</TextBlock>
+                    <TextBlock Style="{StaticResource detailText}" Margin="0 22 0 0">Phone:</TextBlock>
+                    <TextBlock Style="{StaticResource detailText}" Margin="0 22 0 0">Address:</TextBlock>
+                    <TextBlock Style="{StaticResource detailText}" Margin="0 22 0 0">Coefficients Pay:</TextBlock>
+                    <TextBlock Style="{StaticResource detailText}" Margin="0 22 0 0">Basic Pay:</TextBlock>
+                    <TextBlock Style="{StaticResource detailText}" Margin="0 22 0 0">Branch:</TextBlock>
                 </StackPanel>
 
                 <StackPanel Grid.Column="1" HorizontalAlignment="Center" >

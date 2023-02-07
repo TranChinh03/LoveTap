@@ -171,7 +171,7 @@ namespace LoveTap.ViewModel
                     image.EndInit();
 
                     img.ImageSource = image;
-                    User[0].AVA = image.ToString();
+                    User[0].AVA =  @"..\img\UserAvatar\" + "NV_" + User[0].MANV + ((LinkAddImage.Contains(".jpg")) ? ".jpg" : ".png").ToString();
 
                     //User[0].AVA = image.ToString();
                     DataProvider.Ins.DB.SaveChanges();
@@ -188,7 +188,7 @@ namespace LoveTap.ViewModel
                     image.EndInit();
 
                     img.ImageSource = image;
-                    User[0].AVA = image.ToString();
+                    User[0].AVA = @"..\img\UserAvatar\" + "NV" + User[0].MANV + ((LinkAddImage.Contains(".jpg")) ? ".jpg" : ".png").ToString();
 
                     //User[0].AVA = image.ToString();
                     DataProvider.Ins.DB.SaveChanges();
@@ -208,7 +208,7 @@ namespace LoveTap.ViewModel
                     image.EndInit();
 
                     img.ImageSource = image;
-                    User[0].AVA = image.ToString();
+                    User[0].AVA =  @"..\img\UserAvatar\" + "NV" + User[0].MANV + ((LinkAddImage.Contains(".jpg")) ? ".jpg" : ".png").ToString();
 
                     //User[0].AVA = image.ToString();
                     DataProvider.Ins.DB.SaveChanges();
@@ -225,7 +225,7 @@ namespace LoveTap.ViewModel
                     image.EndInit();
 
                     img.ImageSource = image;
-                    User[0].AVA = image.ToString();
+                    User[0].AVA =  @"..\img\UserAvatar\" + "NV_" + User[0].MANV + ((LinkAddImage.Contains(".jpg")) ? ".jpg" : ".png").ToString();
 
                     //User[0].AVA = image.ToString();
                     DataProvider.Ins.DB.SaveChanges();
