@@ -21,6 +21,7 @@ using System.Runtime.CompilerServices;
 using System.IO;
 using System.Text.RegularExpressions;
 using static System.Net.Mime.MediaTypeNames;
+using System.Xml;
 
 namespace LoveTap.ViewModel
 {
@@ -120,9 +121,12 @@ namespace LoveTap.ViewModel
             LinkAddImage = "";
             AddImage = new RelayCommand<ImageBrush>((p) => true, (p) => _AddImage(p));
             ReloadAva = new RelayCommand<MainWd>((p) => true, (p) =>
-            {
-                Uri fileUri = new Uri(LinkAddImage);
-                p.ava.ImageSource = new BitmapImage(fileUri);
+            { 
+                if (LinkAddImage!= "")
+                {
+                    Uri fileUri = new Uri(LinkAddImage);
+                    p.ava.ImageSource = new BitmapImage(fileUri);
+                }    
             });
         }
         //void _AddImage(Image img)
@@ -173,8 +177,27 @@ namespace LoveTap.ViewModel
                     img.ImageSource = image;
                     User[0].AVA =  @"..\img\UserAvatar\" + "NV_" + User[0].MANV + ((LinkAddImage.Contains(".jpg")) ? ".jpg" : ".png").ToString();
 
-                    //User[0].AVA = image.ToString();
-                    DataProvider.Ins.DB.SaveChanges();
+                    ////User[0].AVA = image.ToString();
+                    //DataProvider.Ins.DB.SaveChanges();
+
+                    ///* Load the .csproj file as an XmlDocument */
+                    //XmlDocument doc = new XmlDocument();
+                    //doc.Load("../../LoveTap.csproj");
+
+                    ///* Find the <ItemGroup> element and create a new resource */
+                    //XmlNode itemGroupNode = doc.CreateElement("ItemGroup", doc.DocumentElement.NamespaceURI);
+                    //XmlElement resourceElement = doc.CreateElement("Resource", doc.DocumentElement.NamespaceURI);
+                    //string imgName = @"\img\UserAvatar\" + "NV_" + User[0].MANV + ((LinkAddImage.Contains(".jpg")) ? ".jpg" : ".png").ToString();
+                    //resourceElement.SetAttribute("Include", imgName);
+                    //itemGroupNode.AppendChild(resourceElement);
+                    //doc.DocumentElement.AppendChild(itemGroupNode);
+
+                    ///* Save the .csproj file */
+                    //doc.Save("../../LoveTap.csproj");
+                }
+                catch (ArgumentException)
+                {
+                    MessageBox.Show("No image uploaded!", "Error");
                 }
                 catch
                 {
@@ -190,8 +213,23 @@ namespace LoveTap.ViewModel
                     img.ImageSource = image;
                     User[0].AVA = @"..\img\UserAvatar\" + "NV" + User[0].MANV + ((LinkAddImage.Contains(".jpg")) ? ".jpg" : ".png").ToString();
 
-                    //User[0].AVA = image.ToString();
-                    DataProvider.Ins.DB.SaveChanges();
+                    ////User[0].AVA = image.ToString();
+                    //DataProvider.Ins.DB.SaveChanges();
+
+                    ///* Load the .csproj file as an XmlDocument */
+                    //XmlDocument doc = new XmlDocument();
+                    //doc.Load("../../LoveTap.csproj");
+
+                    ///* Find the <ItemGroup> element and create a new resource */
+                    //XmlNode itemGroupNode = doc.CreateElement("ItemGroup", doc.DocumentElement.NamespaceURI);
+                    //XmlElement resourceElement = doc.CreateElement("Resource", doc.DocumentElement.NamespaceURI);
+                    //string imgName = @"\img\UserAvatar\" + "NV" + User[0].MANV + ((LinkAddImage.Contains(".jpg")) ? ".jpg" : ".png").ToString();
+                    //resourceElement.SetAttribute("Include", imgName);
+                    //itemGroupNode.AppendChild(resourceElement);
+                    //doc.DocumentElement.AppendChild(itemGroupNode);
+
+                    ///* Save the .csproj file */
+                    //doc.Save("../../LoveTap.csproj");
                 }
             }
             else {
@@ -210,8 +248,23 @@ namespace LoveTap.ViewModel
                     img.ImageSource = image;
                     User[0].AVA =  @"..\img\UserAvatar\" + "NV" + User[0].MANV + ((LinkAddImage.Contains(".jpg")) ? ".jpg" : ".png").ToString();
 
-                    //User[0].AVA = image.ToString();
-                    DataProvider.Ins.DB.SaveChanges();
+                    ////User[0].AVA = image.ToString();
+                    //DataProvider.Ins.DB.SaveChanges();
+
+                    ///* Load the .csproj file as an XmlDocument */
+                    //XmlDocument doc = new XmlDocument();
+                    //doc.Load("../../LoveTap.csproj");
+
+                    ///* Find the <ItemGroup> element and create a new resource */
+                    //XmlNode itemGroupNode = doc.CreateElement("ItemGroup", doc.DocumentElement.NamespaceURI);
+                    //XmlElement resourceElement = doc.CreateElement("Resource", doc.DocumentElement.NamespaceURI);
+                    //string imgName = @"\img\UserAvatar\" + "NV" + User[0].MANV + ((LinkAddImage.Contains(".jpg")) ? ".jpg" : ".png").ToString();
+                    //resourceElement.SetAttribute("Include", imgName);
+                    //itemGroupNode.AppendChild(resourceElement);
+                    //doc.DocumentElement.AppendChild(itemGroupNode);
+
+                    ///* Save the .csproj file */
+                    //doc.Save("../../LoveTap.csproj");
                 }
                 catch
                 {
@@ -227,8 +280,23 @@ namespace LoveTap.ViewModel
                     img.ImageSource = image;
                     User[0].AVA =  @"..\img\UserAvatar\" + "NV_" + User[0].MANV + ((LinkAddImage.Contains(".jpg")) ? ".jpg" : ".png").ToString();
 
-                    //User[0].AVA = image.ToString();
-                    DataProvider.Ins.DB.SaveChanges();
+                    ////User[0].AVA = image.ToString();
+                    //DataProvider.Ins.DB.SaveChanges();
+
+                    ///* Load the .csproj file as an XmlDocument */
+                    //XmlDocument doc = new XmlDocument();
+                    //doc.Load("../../LoveTap.csproj");
+
+                    ///* Find the <ItemGroup> element and create a new resource */
+                    //XmlNode itemGroupNode = doc.CreateElement("ItemGroup", doc.DocumentElement.NamespaceURI);
+                    //XmlElement resourceElement = doc.CreateElement("Resource", doc.DocumentElement.NamespaceURI);
+                    //string imgName = @"\img\UserAvatar\" + "NV_" + User[0].MANV + ((LinkAddImage.Contains(".jpg")) ? ".jpg" : ".png").ToString();
+                    //resourceElement.SetAttribute("Include", imgName);
+                    //itemGroupNode.AppendChild(resourceElement);
+                    //doc.DocumentElement.AppendChild(itemGroupNode);
+
+                    ///* Save the .csproj file */
+                    //doc.Save("../../LoveTap.csproj");
                 }
             }
         }

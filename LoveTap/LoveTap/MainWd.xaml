@@ -274,7 +274,7 @@
         </Grid>
 
         <!--Log out-->
-        <RadioButton Style="{StaticResource BtnStyle}" 
+        <RadioButton Style="{StaticResource BtnStyle}" Command="{Binding navHome}"
                      x:Name="LogOutButton"  Grid.Row="10" Grid.ColumnSpan="2"
                               >
 
