@@ -72,8 +72,7 @@ namespace LoveTap.ViewModel
                     ID = loginVM.ID;
                     NHANVIEN temp = (DataProvider.Ins.DB.NHANVIENs.Where(x => x.MANV == ID).ToList())[0];
                     NameUsr = temp.HOTEN;
-                    string str = _localLink + temp.AVA.Remove(0, 2);
-                    p.ava.ImageSource = (ImageSource)new ImageSourceConverter().ConvertFromString(str);
+                    Ava = temp.AVA;
                     int count = 0, i = NameUsr.Length;
                     string nametmp;
                     while (count < 2)
@@ -134,8 +133,12 @@ namespace LoveTap.ViewModel
                         ID = loginVM.ID;
                         NHANVIEN temp = (DataProvider.Ins.DB.NHANVIENs.Where(x => x.MANV == ID).ToList())[0];
                         NameUsr = temp.HOTEN;
-                        string str = _localLink + temp.AVA.Remove(0,2);
+                        string str = _localLink + temp.AVA.Remove(0, 2);
                         p.ava.ImageSource = (ImageSource)new ImageSourceConverter().ConvertFromString(str);
+                        //Ava = temp.AVA;
+                        //Uri ImgUri = new Uri(Ava, UriKind.RelativeOrAbsolute);
+                        //BitmapImage ImgBitmap = new BitmapImage(ImgUri);
+                        //p.ava.ImageSource= ImgBitmap;
                         int count = 0, i = NameUsr.Length;
                         string nametmp;
                         while (count < 2)
