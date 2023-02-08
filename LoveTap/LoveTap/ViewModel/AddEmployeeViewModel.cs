@@ -32,8 +32,10 @@ namespace LoveTap.ViewModel
         private string _Position;
         public string Position { get => _Position; set { _Position = value; OnPropertyChanged(); } }
 
-        private DateTime _Birthday;
-        public DateTime Birthday { get => _Birthday; set { _Birthday = value; OnPropertyChanged(); } }
+        private Nullable<System.DateTime> _Birthday;
+        public Nullable<System.DateTime> Birthday { get => _Birthday; set { _Birthday = value; OnPropertyChanged(); } }
+        //private DateTime _Birthday;
+        //public DateTime Birthday { get => _Birthday; set { _Birthday = value; OnPropertyChanged(); } }
 
         private string _PhoneNumber;
         public string PhoneNumber { get => _PhoneNumber; set { _PhoneNumber = value; OnPropertyChanged(); } }

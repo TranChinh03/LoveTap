@@ -101,11 +101,25 @@
                     <TextBlock Style="{StaticResource detailTextValue}" Text="{Binding RegistDate,  StringFormat='dd/MM/yyyy'}"></TextBlock>
                     <TextBlock Style="{StaticResource detailTextValue}" Text="{Binding Branch}"></TextBlock>
                     <TextBlock Style="{StaticResource detailTextValue}" Text="{Binding Sale}"></TextBlock>
-                    <TextBlock Background="{Binding bgType}" Foreground="{Binding textType}" Text="{Binding Type}" FontWeight="Bold"
+                    <!--<Border HorizontalAlignment="Left" Margin="10 0 0 0" Background="Transparent" BorderBrush="{Binding textType}" BorderThickness="0.5" Width="50">
+                        <TextBlock  Background="{Binding bgType}" Foreground="{Binding textType}" Text="{Binding Type}" FontWeight="Bold"
                            HorizontalAlignment="Left" Padding="10"></TextBlock>
+                    </Border>-->
+                    <Grid HorizontalAlignment="Left" Margin="10 0 0 0"
+  Width="120">
+                        <Button
+     materialDesign:ButtonProgressAssist.Maximum="5"
+     materialDesign:ButtonProgressAssist.IndicatorBackground="{Binding bgProgress}"
+     materialDesign:ButtonProgressAssist.Opacity="0.3"
+    materialDesign:ButtonProgressAssist.IsIndeterminate="True"
+    materialDesign:ButtonProgressAssist.IsIndicatorVisible="True"
+    materialDesign:ButtonProgressAssist.Value="2" 
+    Content="{Binding Type}" BorderBrush="{Binding textType}" Background="{Binding bgType}"  Foreground="{Binding textType}"
+    Style="{StaticResource MaterialDesignRaisedButton}" />
+                    </Grid>
                 </StackPanel>
             </Grid>
-
+            
             <!--Edit UC-->
             <uc:EditCustomerUC x:Name="EditCustomerUC" Grid.RowSpan="2" Visibility="Hidden" Margin="10"></uc:EditCustomerUC>
 

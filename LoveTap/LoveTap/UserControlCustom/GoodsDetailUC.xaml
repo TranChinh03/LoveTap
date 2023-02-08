@@ -36,25 +36,30 @@
                     <Border CornerRadius="30" BorderBrush="#5684B0" BorderThickness="0.5" Background="White" >
                         <Grid HorizontalAlignment="Left" >
                             <Image x:Name="picHolder" Source="{Binding Ava}" Stretch="Fill"></Image>
-                            <Button Width="20" Height="20" Background="White" Padding="0" HorizontalAlignment="Left" Margin="3 0 0 0" BorderBrush="White">
-                                <Image Source="/img/previousButton.png">
-                                    <i:Interaction.Triggers>
-                                        <i:EventTrigger EventName="MouseLeftButtonDown">
-                                            <i:InvokeCommandAction Command="{Binding LastImg}"
+                            <Button Width="30" Height="30" Background="Transparent" Padding="0" HorizontalAlignment="Left" Margin="3 0 0 0" BorderBrush="Transparent">
+                                <Border Height="25" Width="25" Background="White" CornerRadius="15" >
+                                    <materialDesign:PackIcon VerticalAlignment="Center" HorizontalAlignment="Center"  Height="25" Width="25" Kind="ArrowLeftDropCircle" Foreground="{StaticResource Catalina Blue}" Padding="0" >
+                                        <i:Interaction.Triggers>
+                                            <i:EventTrigger EventName="MouseLeftButtonDown">
+                                                <i:InvokeCommandAction Command="{Binding LastImg}"
                                                        CommandParameter="{Binding ElementName=picHolder}"></i:InvokeCommandAction>
-                                        </i:EventTrigger>
-                                    </i:Interaction.Triggers>
-                                </Image>
+                                            </i:EventTrigger>
+                                        </i:Interaction.Triggers>
+                                    </materialDesign:PackIcon>
+                                </Border>
+
                             </Button>
-                            <Button Height="20" Background="White" Padding="0" HorizontalAlignment="Right" Margin="0 0 3 0" BorderBrush="White">
-                                <Image Source="/img/nextButton.png">
-                                    <i:Interaction.Triggers>
-                                        <i:EventTrigger EventName="MouseLeftButtonDown">
-                                            <i:InvokeCommandAction Command="{Binding NextImg}"
+                            <Button Height="30" Width="30" Background="Transparent" Padding="0" HorizontalAlignment="Right" Margin="0 0 3 0" BorderBrush="Transparent">
+                                <Border Height="25" Width="25" Background="White" CornerRadius="15">
+                                    <materialDesign:PackIcon VerticalAlignment="Center" HorizontalAlignment="Center" Height="25" Width="25" Kind="ArrowRightDropCircle" Foreground="{StaticResource Catalina Blue}" Padding="0" >
+                                        <i:Interaction.Triggers>
+                                            <i:EventTrigger EventName="MouseLeftButtonDown">
+                                                <i:InvokeCommandAction Command="{Binding NextImg}"
                                                        CommandParameter="{Binding ElementName=picHolder}"></i:InvokeCommandAction>
-                                        </i:EventTrigger>
-                                    </i:Interaction.Triggers>
-                                </Image>
+                                            </i:EventTrigger>
+                                        </i:Interaction.Triggers>
+                                    </materialDesign:PackIcon>
+                                </Border>
                             </Button>
                         </Grid>
                     </Border>
@@ -198,7 +203,7 @@
                     <StackPanel Orientation="Horizontal">
                         <TextBlock Padding="3" Foreground="#1368AA" FontSize="15" VerticalAlignment="Center">Product ID:</TextBlock>
                         <TextBlock Padding="3" FontSize="15" Foreground="#033270"  Margin="5 0 0 0" Text="{Binding ID}" ></TextBlock>
-                       
+
                     </StackPanel>
                     <StackPanel Orientation="Horizontal">
                         <TextBlock Padding="3" Text="Product Title: " Foreground="#1368AA" FontSize="15" VerticalAlignment="Center"></TextBlock>

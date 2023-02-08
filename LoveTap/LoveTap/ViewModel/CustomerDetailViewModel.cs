@@ -20,6 +20,8 @@ namespace LoveTap.ViewModel
         public string textType { get => _textType; set { _textType = value; OnPropertyChanged(); } }
         private string _bgType;
         public string bgType { get => _bgType; set { _bgType = value; OnPropertyChanged(); } }
+        private string _bgProgress;
+        public string bgProgress { get => _bgProgress; set { _bgProgress = value; OnPropertyChanged(); } }
 
         private int _ID;
         public int ID { get => _ID; set { _ID = value; OnPropertyChanged(); } }
@@ -67,18 +69,21 @@ namespace LoveTap.ViewModel
                         Sale = kh.DOANHSO;
                         Branch = (int)kh.MACN;
                         Type = "Đồng";
-                        if (Sale > 2000000 && Sale <= 5000000)
+                        if (Sale <= 5000000)
                         {
                             Type = "Bronz";
                             bgType = "#eec170";
                             textType = "#E2711D";
+                            bgProgress = "#e2711d";
                         }
 
-                        else if (Sale <= 10000000)
+                        else if (Sale > 5000000 && Sale <= 10000000)
                         {
                             Type = "Silver";
                             bgType = "#dee2e6";
                             textType = "#4f5d75";
+                            textType = "#4f5d75";
+                            bgProgress = "#adb5bd";
                         }
 
                         else if (Sale > 10000000)
@@ -86,6 +91,7 @@ namespace LoveTap.ViewModel
                             Type = "Gold";
                             bgType = "#fff2b2";
                             textType = "#ffaa00";
+                            bgProgress="#ffe97f";
                         }
                     }
                 }
