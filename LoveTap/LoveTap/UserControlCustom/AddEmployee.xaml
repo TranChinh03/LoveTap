@@ -54,12 +54,12 @@
                     Grid.Row="1" Orientation="Horizontal">
 
                 <Border CornerRadius="15" BorderBrush="#5684B0" BorderThickness="0.5" Background="Transparent" Height="110"  >
-                    <Button Grid.RowSpan="3"  Padding="0" Height="100"  Width="100" BorderBrush="Transparent"  Background="Transparent">
+                    <!--<Button Grid.RowSpan="3"  Padding="0" Height="100"  Width="100" BorderBrush="Transparent"  Background="Transparent">
                         <StackPanel>
                             <TextBlock Foreground="#79A7CB" FontSize="10" VerticalAlignment="Center" HorizontalAlignment="Center"> Drop file here or <LineBreak/> click to upload</TextBlock>
                             <Image Source="/img/upload.png" Height="15" Width="15"  HorizontalAlignment="Center"></Image>
                         </StackPanel>
-                    </Button>
+                    </Button>-->
                 </Border>
 
                 <Grid Margin="20,0,0,0">

@@ -51,6 +51,9 @@ namespace LoveTap.ViewModel
 
         private string _Email;
         public string Email { get => _Email; set { _Email = value; OnPropertyChanged(); } }
+        private ObservableCollection<CHINHANH> _BranchList;
+        public ObservableCollection<CHINHANH> BranchList { get => _BranchList; set { _BranchList = value; OnPropertyChanged(); } }
+        public int[] BranchIDList { get; set; } = new int[DataProvider.Ins.DB.CHINHANHs.Count()];
 
         private ObservableCollection<NHANVIEN> _EmployeeList;
         public ObservableCollection<NHANVIEN> EmployeeList { get => _EmployeeList; set { _EmployeeList = value; OnPropertyChanged(); } }
@@ -58,7 +61,12 @@ namespace LoveTap.ViewModel
         public AddEmployeeViewModel(NavigationStore navigationStore)
         {
             EmployeeList = new ObservableCollection<NHANVIEN>(DataProvider.Ins.DB.NHANVIENs);
+            BranchList = new ObservableCollection<CHINHANH>(DataProvider.Ins.DB.CHINHANHs);
+            for (int i = 0; i < DataProvider.Ins.DB.CHINHANHs.Count(); i++)
 
+            {
+                BranchIDList[i] = BranchList[i].MACN;
+            }
             AddCommand = new RelayCommand<object>((p) =>
             {
                 if ( string.IsNullOrEmpty(EmployeeName) || string.IsNullOrEmpty(Position) ||
@@ -72,7 +80,6 @@ namespace LoveTap.ViewModel
             }, (p) =>
             {
                 var nhanvien = new NHANVIEN();
-                nhanvien.MANV= ID;
                 nhanvien.HOTEN = EmployeeName;
                 if (Position.ToUpper() == "STAFF")
                     nhanvien.VAITRO = false;
@@ -86,6 +93,7 @@ namespace LoveTap.ViewModel
                 nhanvien.NTNS = Birthday;
                 nhanvien.EMAIL= Email;
                 nhanvien.DELETED = false;
+                nhanvien.AVA = "../img/Person.jpg";
 
                 DataProvider.Ins.DB.NHANVIENs.Add(nhanvien);
                 DataProvider.Ins.DB.SaveChanges();
