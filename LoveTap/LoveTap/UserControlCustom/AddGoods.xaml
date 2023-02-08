@@ -32,22 +32,27 @@
                             <Image Source="/img/upload.png" Height="20" Width="20" Margin="0 50 0 0"></Image>
                         </Grid>
                     </Border>
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="Click">
+                            <i:InvokeCommandAction  Command="{Binding updateImg}" CommandParameter="{Binding ElementName=ucAddGoods}"></i:InvokeCommandAction>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
                 </Button>
 
                 <!--Discription-->
                 <StackPanel  Grid.Row="1" Orientation="Vertical" >
                     <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0 20">
                         <Button Height="40" Width="40" BorderBrush="#5684B0" BorderThickness="0.5" HorizontalAlignment="Left" Margin="5 0" Background="White" Padding="0" >
-                            <Image Source="/img/upload.png" Height="20" Width="20"></Image>
+                            <Image x:Name="ava1" Source="{Binding Ava1}" Height="20" Width="20"></Image>
                         </Button>
                         <Button Height="40" Width="40" BorderBrush="#5684B0" BorderThickness="0.5" HorizontalAlignment="Left" Margin="5 0" Background="White" Padding="0" >
-                            <Image Source="/img/upload.png" Height="20" Width="20"></Image>
+                            <Image x:Name="ava2" Source="{Binding Ava2}" Height="20" Width="20"></Image>
                         </Button>
                         <Button Height="40" Width="40" BorderBrush="#5684B0" BorderThickness="0.5" HorizontalAlignment="Left" Margin="5 0" Background="White" Padding="0" >
-                            <Image Source="/img/upload.png" Height="20" Width="20"></Image>
+                            <Image x:Name="ava3" Source="{Binding Ava3}" Height="20" Width="20"></Image>
                         </Button>
                         <Button Height="40" Width="40" BorderBrush="#5684B0" BorderThickness="0.5" HorizontalAlignment="Left" Margin="5 0" Background="White" Padding="0" >
-                            <Image Source="/img/upload.png" Height="20" Width="20"></Image>
+                            <Image x:Name="ava4" Source="{Binding Ava4}" Height="20" Width="20"></Image>
                         </Button>
                     </StackPanel>
 

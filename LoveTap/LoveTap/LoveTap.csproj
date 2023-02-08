@@ -614,7 +614,6 @@
     <Resource Include="img\ProductAvatar\LaptopMSI.jpg" />
     <Resource Include="img\ProductAvatar\LaptopSamsung.jpg" />
     <Resource Include="img\ProductAvatar\LaptopVivobook.jpg" />
-    <Resource Include="img\ProductAvatar\LatopASUS.jpg" />
     <Resource Include="img\ProductAvatar\LotChuotDen.jpg" />
     <Resource Include="img\UserAvatar\admin1.png" />
     <Resource Include="img\UserAvatar\admin2.png" />
@@ -667,6 +666,7 @@
     <Resource Include="img\UserAvatar\NV_7.jpg" />
     <Resource Include="img\UserAvatar\NV_8.jpg" />
     <Resource Include="img\UserAvatar\NV_9.jpg" />
+    <Resource Include="img\ProductAvatar\LaptopASUS.jpg" />
     <Content Include="Model\Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Model1.edmx</DependentUpon>

@@ -41,6 +41,10 @@ namespace LoveTap.ViewModel
         private string _LinkImg4 { get; set; }
         public string LinkImg4 { get => _LinkImg4; set { _LinkImg4 = value; OnPropertyChanged(); } }
         private string _localLink = System.Reflection.Assembly.GetExecutingAssembly().Location.Remove(System.Reflection.Assembly.GetExecutingAssembly().Location.IndexOf(@"bin\Debug"));
+        public bool IsChange1 = false;
+        public bool IsChange2 = false;
+        public bool IsChange3 = false;
+        public bool IsChange4 = false;
         private int _ID { get; set; }
         public int ID { get => _ID; set { _ID = value; OnPropertyChanged(); } }
 
@@ -111,12 +115,9 @@ namespace LoveTap.ViewModel
 
         private ObservableCollection<LOIICH> _BenefitList;
         public ObservableCollection<LOIICH> BenefitList { get => _BenefitList; set { _BenefitList = value; OnPropertyChanged(); } }
+
         public EditGoodViewModel(NavigationStore navigationStore)
         {
-            LinkImg1 = "";
-            LinkImg2 = "";
-            LinkImg3 = "";
-            LinkImg4 = "";
             navBack = new NavigationCommand<GoodDetailViewModel>(navigationStore, () => new GoodDetailViewModel(navigationStore));
 
             ProductList = new ObservableCollection<SANPHAM>(DataProvider.Ins.DB.SANPHAMs.Where(x => x.DELETED == false));
@@ -190,6 +191,11 @@ namespace LoveTap.ViewModel
                         LI4 = li.LI4;
                     }
                 }
+                var ob = DataProvider.Ins.DB.CTSPs.Where(x => x.MASP == ID).SingleOrDefault();
+                LinkImg1 = (_localLink + ob.AVA1).ToString();
+                LinkImg2 = (_localLink + ob.AVA2).ToString();
+                LinkImg3 = (_localLink + ob.AVA3).ToString();
+                LinkImg4 = (_localLink + ob.AVA4).ToString();
             });
 
             DoneCommand = new RelayCommand<object>((p) => {
@@ -216,10 +222,26 @@ namespace LoveTap.ViewModel
                 productDetail.SCREENSIZE = Size;
                 productDetail.VGA = VGA;
                 productDetail.COLOR = Color;
-                productDetail.AVA1 = "/img/" + "SP" + ID + "_1" + ((LinkImg1.Contains(".jpg")) ? ".jpg" : ".png").ToString();
-                productDetail.AVA2 = "/img/" + "SP" + ID + "_2" + ((LinkImg2.Contains(".jpg")) ? ".jpg" : ".png").ToString();
-                productDetail.AVA3 = "/img/" + "SP" + ID + "_3" + ((LinkImg3.Contains(".jpg")) ? ".jpg" : ".png").ToString();
-                productDetail.AVA4 = "/img/" + "SP" + ID + "_4" + ((LinkImg4.Contains(".jpg")) ? ".jpg" : ".png").ToString();
+                if (IsChange1)
+                {
+                    productDetail.AVA1 = LinkImg1;
+                    IsChange1 = false;
+                }
+                if (IsChange2)
+                {
+                    productDetail.AVA2 = LinkImg2;
+                    IsChange2= false;
+                }
+                if (IsChange3)
+                {
+                    productDetail.AVA3 = LinkImg3;
+                    IsChange3= false;
+                }
+                if (IsChange4)
+                {
+                    productDetail.AVA4 = LinkImg4;
+                    IsChange4= false;
+                }
                 DataProvider.Ins.DB.SaveChanges();
                 var benefit = DataProvider.Ins.DB.LOIICHes.Where(x => x.MASP == ID).SingleOrDefault();
                 benefit.LI1 = LI1;
@@ -229,14 +251,15 @@ namespace LoveTap.ViewModel
                 DataProvider.Ins.DB.SaveChanges();
                 try
                 {
-                    File.Copy(LinkImg1, _localLink + @"img\" + "SP" + ID + "_1" + ((LinkImg1.Contains(".jpg")) ? ".jpg" : ".png").ToString());
-                    File.Copy(LinkImg2, _localLink + @"img\" + "SP" + ID + "_2" + ((LinkImg1.Contains(".jpg")) ? ".jpg" : ".png").ToString());
-                    File.Copy(LinkImg3, _localLink + @"img\" + "SP" + ID + "_3" + ((LinkImg1.Contains(".jpg")) ? ".jpg" : ".png").ToString());
-                    File.Copy(LinkImg4, _localLink + @"img\" + "SP" + ID + "_4" + ((LinkImg1.Contains(".jpg")) ? ".jpg" : ".png").ToString());
+                    File.Copy(LinkImg1, _localLink + @"img\ProductAvatar\" + "SP" + ID + "_1" + ((LinkImg1.Contains(".jpg")) ? ".jpg" : ".png").ToString());
+                    File.Copy(LinkImg2, _localLink + @"img\ProductAvatar\" + "SP" + ID + "_2" + ((LinkImg1.Contains(".jpg")) ? ".jpg" : ".png").ToString());
+                    File.Copy(LinkImg3, _localLink + @"img\ProductAvatar\" + "SP" + ID + "_3" + ((LinkImg1.Contains(".jpg")) ? ".jpg" : ".png").ToString());
+                    File.Copy(LinkImg4, _localLink + @"img\ProductAvatar\" + "SP" + ID + "_4" + ((LinkImg1.Contains(".jpg")) ? ".jpg" : ".png").ToString());
+                    MessageBox.Show("Thêm sản phẩm mới thành công !", "THÔNG BÁO");
                 }
                 catch
                 {
-                    MessageBox.Show("Thêm sản phẩm mới thành công !", "THÔNG BÁO");
+
                 }
             });
 
@@ -328,24 +351,28 @@ namespace LoveTap.ViewModel
                 {
                     Uri fileUri = new Uri(LinkImg1);
                     p.ava1.Source = new BitmapImage(fileUri);
+                    IsChange1= true;
                     return;
                 }
                 if (Ava == Ava2)
                 {
                     Uri fileUri = new Uri(LinkImg2);
                     p.ava2.Source = new BitmapImage(fileUri);
+                    IsChange2= true;
                     return;
                 }
                 if (Ava == Ava3)
                 {
                     Uri fileUri = new Uri(LinkImg3);
                     p.ava3.Source = new BitmapImage(fileUri);
+                    IsChange3= true;
                     return;
                 }
                 if (Ava == Ava4)
                 {
                     Uri fileUri = new Uri(LinkImg4);
                     p.ava4.Source = new BitmapImage(fileUri);
+                    IsChange4= true;
                     return;
                 }
             });

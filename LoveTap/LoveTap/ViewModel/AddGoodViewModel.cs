@@ -12,6 +12,7 @@ using LoveTap.Commands;
 using LoveTap.Model;
 using System.Collections.ObjectModel;
 using static LoveTap.ViewModel.OrderDetailViewModel;
+using Microsoft.Win32;
 
 namespace LoveTap.ViewModel
 {
@@ -22,7 +23,17 @@ namespace LoveTap.ViewModel
         public ICommand navBack { get; set; }
 
         public ICommand AddCommand { get; set; }
+        public ICommand updateImg { get; set; }
 
+        public int CountImgs = 0;
+        private string _Ava1 { get; set; }
+        public string Ava1 { get => _Ava1; set { _Ava1 = value; OnPropertyChanged(); } }
+        private string _Ava2 { get; set; }
+        public string Ava2 { get => _Ava2; set { _Ava2 = value; OnPropertyChanged(); } }
+        private string _Ava3 { get; set; }
+        public string Ava3 { get => _Ava3; set { _Ava3 = value; OnPropertyChanged(); } }
+        private string _Ava4 { get; set; }
+        public string Ava4 { get => _Ava4; set { _Ava4 = value; OnPropertyChanged(); } }
 
         private int _ID;
         public int ID { get => _ID; set { _ID = value; OnPropertyChanged(); } }
@@ -94,11 +105,17 @@ namespace LoveTap.ViewModel
             CategoryList = new ObservableCollection<DANHMUC>(DataProvider.Ins.DB.DANHMUCs.Where(x => x.DELETED == false));
             ProductList = new ObservableCollection<SANPHAM>(DataProvider.Ins.DB.SANPHAMs.Where(x => x.DELETED == false));
             ProductDetailList = new ObservableCollection<CTSP>(DataProvider.Ins.DB.CTSPs.Where(x => x.DELETED == false));
+            updateImg = new RelayCommand<UserControl>((p) => true, (p) => _updateImg(p));
 
             for(int i = 0; i< CategoryList.Count(); i++)
             {
                 CategoryNameList[i] = CategoryList[i].TENDM;
             }
+
+            Ava1 = "";
+            Ava2 = "";
+            Ava3 = "";
+            Ava4 = "";
 
             AddCommand = new RelayCommand<object>((p) =>
             {
@@ -145,10 +162,58 @@ namespace LoveTap.ViewModel
                 ctsp.COLOR = Color;
                 ctsp.HD = HD;
                 ctsp.DELETED = false;
+                ctsp.AVA1 = Ava1;
+                ctsp.AVA2 = Ava2;
+                ctsp.AVA3 = Ava3;
+                ctsp.AVA4 = Ava4;
                 DataProvider.Ins.DB.CTSPs.Add(ctsp);
                 DataProvider.Ins.DB.SaveChanges();
             });
 
+        }
+        void _updateImg(UserControl p)
+        {
+            OpenFileDialog open = new OpenFileDialog();
+            open.Filter = "Image Files(*.jpg; *.png)|*.jpg; *.png";
+            if (CountImgs == 0)
+            {
+                if (open.ShowDialog() == true)
+                {
+                    Ava1 = open.FileName;
+                    CountImgs++;
+                    return;
+                };
+            }
+            if (CountImgs == 1)
+            {
+                if (open.ShowDialog() == true)
+                {
+                    Ava2 = open.FileName;
+                    CountImgs++;
+                    return;
+                };
+            }
+            if (CountImgs == 2)
+            {
+                if (open.ShowDialog() == true)
+                {
+                    Ava3 = open.FileName;
+                    CountImgs++;
+                    return;
+                };
+            }
+            if (CountImgs == 3)
+            {
+                if (open.ShowDialog() == true)
+                {
+                    Ava4 = open.FileName;
+                    CountImgs++;
+                };
+            }
+            else
+            {
+                MessageBox.Show("You have updated full images!", "Note!");
+            }
         }
 
     }
