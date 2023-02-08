@@ -12,6 +12,7 @@ using LoveTap.Commands;
 using LoveTap.Model;
 using System.Collections.ObjectModel;
 using static LoveTap.ViewModel.OrderDetailViewModel;
+using System.Security.Cryptography;
 
 namespace LoveTap.ViewModel
 {
@@ -79,7 +80,14 @@ namespace LoveTap.ViewModel
                 return true;
             }, (p) =>
             {
+                var login = new LOGIN();
+                login.USERNAME = PhoneNumber;
+                login.USERPASS = MD5Hash(Base64Encode("12345678"));
+                DataProvider.Ins.DB.LOGINs.Add(login);
+                DataProvider.Ins.DB.SaveChanges();
+
                 var nhanvien = new NHANVIEN();
+                nhanvien.MANV = login.ID;
                 nhanvien.HOTEN = EmployeeName;
                 if (Position.ToUpper() == "STAFF")
                     nhanvien.VAITRO = false;
@@ -98,12 +106,31 @@ namespace LoveTap.ViewModel
                 DataProvider.Ins.DB.NHANVIENs.Add(nhanvien);
                 DataProvider.Ins.DB.SaveChanges();
 
-                EmployeeList.Add(nhanvien);
+                
+                
             });
 
             navDone = new NavigationCommand<EmployeeViewModel>(navigationStore, () => new EmployeeViewModel(navigationStore));
             navBack = new NavigationCommand<EmployeeViewModel>(navigationStore, () => new EmployeeViewModel(navigationStore));
 
+        }
+        public static string Base64Encode(string plainText)
+        {
+            var plainTextBytes = System.Text.Encoding.UTF8.GetBytes(plainText);
+            return System.Convert.ToBase64String(plainTextBytes);
+        }
+
+        public static string MD5Hash(string input)
+        {
+            StringBuilder hash = new StringBuilder();
+            MD5CryptoServiceProvider md5provider = new MD5CryptoServiceProvider();
+            byte[] bytes = md5provider.ComputeHash(new UTF8Encoding().GetBytes(input));
+
+            for (int i = 0; i < bytes.Length; i++)
+            {
+                hash.Append(bytes[i].ToString("x2"));
+            }
+            return hash.ToString();
         }
     }
 }
