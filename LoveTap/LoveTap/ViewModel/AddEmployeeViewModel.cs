@@ -82,6 +82,15 @@ namespace LoveTap.ViewModel
                 return true;
             }, (p) =>
             {
+                foreach (NHANVIEN nv in DataProvider.Ins.DB.NHANVIENs.Where(x => x.DELETED == false))
+                {
+                    if (PhoneNumber == nv.SDT)
+                    {
+                        MessageBox.Show("Phone number exist!", "Error");
+                        return;
+                    }
+                }
+
                 var login = new LOGIN();
                 login.USERNAME = PhoneNumber;
                 login.USERPASS = MD5Hash(Base64Encode("12345678"));

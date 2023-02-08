@@ -40,12 +40,12 @@
                     </materialDesign:PackIcon.RenderTransform>
                 </materialDesign:PackIcon>
             </Button>
-            <Button 
+            <!--<Button 
                             Command="{Binding MaximizeWindowCommand}"
                             CommandParameter="{Binding ElementName=ucControlBar}"
                             ToolTip="Maximize">
                 <materialDesign:PackIcon Kind="WindowMaximize" />
-            </Button>
+            </Button>-->
             <Button 
                             Command="{Binding CloseWindowCommand}"
                             CommandParameter="{Binding ElementName=ucControlBar}"
