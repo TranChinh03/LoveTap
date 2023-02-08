@@ -84,6 +84,8 @@ namespace LoveTap.ViewModel
                     while (count < 2)
                     {
                         i--;
+                        if (i == 0)
+                            break;
                         if (NameUsr[i] == ' ')
                             count++;
                     }
@@ -132,8 +134,8 @@ namespace LoveTap.ViewModel
                     var loginVM = loginWindow.DataContext as LoginViewModel;
                     loginVM.UserName = "";
                     loginVM.Password = "";
+                    loginVM.IsLogin = false;
                     loginWindow.ShowDialog();
-
                     if (loginWindow.DataContext == null)
                         return;
                     if (loginVM.IsLogin)
@@ -152,6 +154,8 @@ namespace LoveTap.ViewModel
                         while (count < 2)
                         {
                             i--;
+                            if (i == 0)
+                                break;
                             if (NameUsr[i] == ' ')
                                 count++;
                         }
