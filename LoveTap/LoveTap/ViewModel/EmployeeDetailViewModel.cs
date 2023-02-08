@@ -10,11 +10,13 @@ using System.Windows.Input;
 using LoveTap.Model;
 using LoveTap.Stores;
 using LoveTap.Commands;
+using System.Windows.Media;
 
 namespace LoveTap.ViewModel
 {
     public class EmployeeDetailViewModel:BaseViewModel
     {
+        private string _localLink = System.Reflection.Assembly.GetExecutingAssembly().Location.Remove(System.Reflection.Assembly.GetExecutingAssembly().Location.IndexOf(@"bin\Debug"));
         private int _ID;
         public int ID { get => _ID; set { _ID = value; OnPropertyChanged(); } }
 
@@ -43,6 +45,8 @@ namespace LoveTap.ViewModel
 
         private int _Branch;
         public int Branch { get => _Branch; set { _Branch = value; OnPropertyChanged(); } }
+        private string _Ava;
+        public string Ava { get => _Ava; set { _Ava = value; OnPropertyChanged(); } }
 
         public ICommand LoadedEmployeeDetailUC { get; set; }
         public ICommand DeleteCommand { get; set; }
@@ -67,6 +71,7 @@ namespace LoveTap.ViewModel
                 BasicPay = temp.LUONGCB.ToString();
                 Branch = (int)temp.MACN;
                 Email = temp.EMAIL;
+                Ava = temp.AVA;
             });
 
             DeleteCommand = new RelayCommand<UserControl>((p) => true, (p) =>

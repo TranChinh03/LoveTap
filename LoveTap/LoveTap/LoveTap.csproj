@@ -627,9 +627,46 @@
     <Resource Include="img\UserAvatar\staff2.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="img\UserAvatar\NV2.png" />
+    <Resource Include="img\UserAvatar\NV1.jpg" />
+    <Resource Include="img\UserAvatar\NV10.jpg" />
+    <Resource Include="img\UserAvatar\NV11.jpg" />
+    <Resource Include="img\UserAvatar\NV12.jpg" />
+    <Resource Include="img\UserAvatar\NV13.jpg" />
+    <Resource Include="img\UserAvatar\NV14.jpg" />
+    <Resource Include="img\UserAvatar\NV15.jpg" />
+    <Resource Include="img\UserAvatar\NV16.jpg" />
+    <Resource Include="img\UserAvatar\NV17.jpg" />
+    <Resource Include="img\UserAvatar\NV18.jpg" />
+    <Resource Include="img\UserAvatar\NV19.jpg" />
+    <Resource Include="img\UserAvatar\NV2.jpg" />
+    <Resource Include="img\UserAvatar\NV20.jpg" />
+    <Resource Include="img\UserAvatar\NV3.jpg" />
+    <Resource Include="img\UserAvatar\NV4.jpg" />
+    <Resource Include="img\UserAvatar\NV5.jpg" />
+    <Resource Include="img\UserAvatar\NV6.jpg" />
+    <Resource Include="img\UserAvatar\NV7.jpg" />
+    <Resource Include="img\UserAvatar\NV8.jpg" />
+    <Resource Include="img\UserAvatar\NV9.jpg" />
     <Resource Include="img\UserAvatar\NV_1.jpg" />
+    <Resource Include="img\UserAvatar\NV_10.jpg" />
+    <Resource Include="img\UserAvatar\NV_11.jpg" />
+    <Resource Include="img\UserAvatar\NV_12.jpg" />
+    <Resource Include="img\UserAvatar\NV_13.jpg" />
+    <Resource Include="img\UserAvatar\NV_14.jpg" />
+    <Resource Include="img\UserAvatar\NV_15.jpg" />
+    <Resource Include="img\UserAvatar\NV_16.jpg" />
+    <Resource Include="img\UserAvatar\NV_17.jpg" />
+    <Resource Include="img\UserAvatar\NV_18.jpg" />
+    <Resource Include="img\UserAvatar\NV_19.jpg" />
     <Resource Include="img\UserAvatar\NV_2.jpg" />
+    <Resource Include="img\UserAvatar\NV_20.jpg" />
+    <Resource Include="img\UserAvatar\NV_3.jpg" />
+    <Resource Include="img\UserAvatar\NV_4.jpg" />
+    <Resource Include="img\UserAvatar\NV_5.jpg" />
+    <Resource Include="img\UserAvatar\NV_6.jpg" />
+    <Resource Include="img\UserAvatar\NV_7.jpg" />
+    <Resource Include="img\UserAvatar\NV_8.jpg" />
+    <Resource Include="img\UserAvatar\NV_9.jpg" />
     <Content Include="Model\Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Model1.edmx</DependentUpon>

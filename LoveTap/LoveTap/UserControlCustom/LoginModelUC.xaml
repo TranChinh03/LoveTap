@@ -95,6 +95,7 @@
                     Command="{Binding LoginCommand}"
                     CommandParameter="{Binding ElementName=ucLoginModel}"
                 />
+          
             </StackPanel>
         </materialDesign:Card>
 

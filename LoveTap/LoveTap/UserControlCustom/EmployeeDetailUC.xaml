@@ -79,7 +79,7 @@
             <!--Image and Name-->
             <StackPanel Margin="15,0,15,0"
                     Grid.Row="1" Orientation="Horizontal">
-                <Image Source="{Binding Avt}"  Stretch="Uniform" Height="100" Width="100"/>
+                <Image x:Name="ava" Source="{Binding Ava}"  Stretch="Uniform" Height="100" Width="100"/>
                 <Grid Margin="20,0,0,0">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="1.5*"/>

@@ -31,9 +31,14 @@ namespace LoveTap.ViewModel
         public string NameUsr { get => _NameUsr; set { _NameUsr = value; OnPropertyChanged(); } }
         private string _Position;
         public string Position { get => _Position; set { _Position = value; OnPropertyChanged(); } }
+        private string _localLink = System.Reflection.Assembly.GetExecutingAssembly().Location.Remove(System.Reflection.Assembly.GetExecutingAssembly().Location.IndexOf(@"bin\Debug"));
 
         private string _Ava;
-        public string Ava { get => _Ava; set { _Ava = value; OnPropertyChanged(); } }
+        public string Ava {
+            get => _Ava;
+            set { _Ava = value; OnPropertyChanged(); 
+            } 
+        }
 
         public bool IsLoaded { get; set; } = false;
         public ICommand LoadedMainWd { get; set; }
@@ -49,7 +54,6 @@ namespace LoveTap.ViewModel
         public ICommand navStatistic { get; }
         public ICommand navEmployee { get; }
         public ICommand navSupplier { get; }
-        private string _localLink = System.Reflection.Assembly.GetExecutingAssembly().Location.Remove(System.Reflection.Assembly.GetExecutingAssembly().Location.IndexOf(@"bin\Debug"));
         public static int ID { get; set; }
         public static bool IsAdmin { get; set; } = false;
         public MainViewModel(NavigationStore navigationStore)
@@ -73,6 +77,8 @@ namespace LoveTap.ViewModel
                     NHANVIEN temp = (DataProvider.Ins.DB.NHANVIENs.Where(x => x.MANV == ID).ToList())[0];
                     NameUsr = temp.HOTEN;
                     Ava = temp.AVA;
+                    string str = _localLink + temp.AVA.Remove(0, 2);
+                    p.ava.ImageSource = (ImageSource)new ImageSourceConverter().ConvertFromString(str);
                     int count = 0, i = NameUsr.Length;
                     string nametmp;
                     while (count < 2)
@@ -123,22 +129,24 @@ namespace LoveTap.ViewModel
                 {
                     p.Hide();
                     LoginWindow loginWindow = new LoginWindow();
+                    var loginVM = loginWindow.DataContext as LoginViewModel;
+                    loginVM.UserName = "";
+                    loginVM.Password = "";
                     loginWindow.ShowDialog();
 
                     if (loginWindow.DataContext == null)
                         return;
-                    var loginVM = loginWindow.DataContext as LoginViewModel;
                     if (loginVM.IsLogin)
                     {
                         ID = loginVM.ID;
                         NHANVIEN temp = (DataProvider.Ins.DB.NHANVIENs.Where(x => x.MANV == ID).ToList())[0];
                         NameUsr = temp.HOTEN;
+                        Ava = temp.AVA;
                         string str = _localLink + temp.AVA.Remove(0, 2);
                         p.ava.ImageSource = (ImageSource)new ImageSourceConverter().ConvertFromString(str);
-                        //Ava = temp.AVA;
                         //Uri ImgUri = new Uri(Ava, UriKind.RelativeOrAbsolute);
                         //BitmapImage ImgBitmap = new BitmapImage(ImgUri);
-                        //p.ava.ImageSource= ImgBitmap;
+                        //p.ava.ImageSource = ImgBitmap;
                         int count = 0, i = NameUsr.Length;
                         string nametmp;
                         while (count < 2)
