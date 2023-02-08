@@ -182,50 +182,50 @@ namespace LoveTap.ViewModel
 
             ChangeImage1 = new RelayCommand<Image>((p) => true, (p) => {
                 Ava = Ava1;
-                Uri fileUri = new Uri(Ava1, UriKind.Relative);
+                Uri fileUri = new Uri(Ava1, UriKind.RelativeOrAbsolute);
                 p.Source = new BitmapImage(fileUri);
             });
             ChangeImage2 = new RelayCommand<Image>((p) => true, (p) => { 
                 Ava = Ava2;
-                Uri fileUri = new Uri(Ava2, UriKind.Relative);
+                Uri fileUri = new Uri(Ava2, UriKind.RelativeOrAbsolute);
                 p.Source = new BitmapImage(fileUri);
             });
             ChangeImage3 = new RelayCommand<Image>((p) => true, (p) => { 
                 Ava = Ava3;
-                Uri fileUri = new Uri(Ava3, UriKind.Relative);
+                Uri fileUri = new Uri(Ava3, UriKind.RelativeOrAbsolute);
                 p.Source = new BitmapImage(fileUri);
             });
             ChangeImage4 = new RelayCommand<Image>((p) => true, (p) => { 
                 Ava = Ava4;
-                Uri fileUri = new Uri(Ava4, UriKind.Relative);
+                Uri fileUri = new Uri(Ava4, UriKind.RelativeOrAbsolute);
                 p.Source = new BitmapImage(fileUri);
             });
             LastImg = new RelayCommand<Image>((p) => true, (p) => {
                 if (Ava == Ava1)
                 {
                     Ava = Ava4;
-                    Uri fileUri = new Uri(Ava4, UriKind.Relative);
+                    Uri fileUri = new Uri(Ava4, UriKind.RelativeOrAbsolute);
                     p.Source = new BitmapImage(fileUri);
                     return;
                 }
                 if (Ava == Ava2)
                 {
                     Ava = Ava1;
-                    Uri fileUri = new Uri(Ava1, UriKind.Relative);
+                    Uri fileUri = new Uri(Ava1, UriKind.RelativeOrAbsolute);
                     p.Source = new BitmapImage(fileUri);
                     return;
                 }
                 if (Ava == Ava3)
                 {
                     Ava = Ava2;
-                    Uri fileUri = new Uri(Ava2, UriKind.Relative);
+                    Uri fileUri = new Uri(Ava2, UriKind.RelativeOrAbsolute);
                     p.Source = new BitmapImage(fileUri);
                     return;
                 }
                 if (Ava == Ava4)
                 {
                     Ava = Ava3;
-                    Uri fileUri = new Uri(Ava3, UriKind.Relative);
+                    Uri fileUri = new Uri(Ava3, UriKind.RelativeOrAbsolute);
                     p.Source = new BitmapImage(fileUri);
                     return;
                 }
@@ -234,28 +234,28 @@ namespace LoveTap.ViewModel
                 if (Ava == Ava1)
                 {
                     Ava = Ava2;
-                    Uri fileUri = new Uri(Ava2, UriKind.Relative);
+                    Uri fileUri = new Uri(Ava2, UriKind.RelativeOrAbsolute);
                     p.Source = new BitmapImage(fileUri);
                     return;
                 }
                 if (Ava == Ava2)
                 {
                     Ava = Ava3;
-                    Uri fileUri = new Uri(Ava3, UriKind.Relative);
+                    Uri fileUri = new Uri(Ava3, UriKind.RelativeOrAbsolute);
                     p.Source = new BitmapImage(fileUri);
                     return;
                 }
                 if (Ava == Ava3)
                 {
                     Ava = Ava4;
-                    Uri fileUri = new Uri(Ava4, UriKind.Relative);
+                    Uri fileUri = new Uri(Ava4, UriKind.RelativeOrAbsolute);
                     p.Source = new BitmapImage(fileUri);
                     return;
                 }
                 if (Ava == Ava4)
                 {
                     Ava = Ava1;
-                    Uri fileUri = new Uri(Ava1, UriKind.Relative);
+                    Uri fileUri = new Uri(Ava1, UriKind.RelativeOrAbsolute);
                     p.Source = new BitmapImage(fileUri);
                     return;
                 }

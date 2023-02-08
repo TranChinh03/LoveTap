@@ -28,8 +28,8 @@
                     <TextBox FontSize="20"
                        FontWeight="Black" IsEnabled="False"
                        Foreground="{StaticResource Catalina Blue}"
-                       VerticalAlignment="Center" Width="150" materialDesign:HintAssist.Hint="#ID"
-                       Text="{Binding ID}"></TextBox>
+                       VerticalAlignment="Center" Width="200" materialDesign:HintAssist.Hint="#ID"
+                       Text="Add new employee"></TextBox>
                 </Border>
 
 

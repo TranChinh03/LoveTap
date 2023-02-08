@@ -108,7 +108,7 @@ namespace LoveTap.ViewModel
                     Role = "Admin";
                 else
                     Role = "Staff";
-                Ava = User[0].AVA;
+                Ava = _localLink + User[0].AVA.Remove(0, 2);
                 OrdersCount = DataProvider.Ins.DB.HOADONs.Where(x => x.MANV == UserID).Count().ToString();
                 var UsrBranch = DataProvider.Ins.DB.CHINHANHs.Where(x => x.MACN == Branch).ToList();
                 BranchName = UsrBranch[0].TENCN;
